@@ -229,6 +229,13 @@ assertIncludes(nextConfigSource, 'destination: "/en"', "root rewrite config");
 
 const rootRedirects = (routesManifest.redirects || []).filter((redirect) => redirect.source === "/");
 if (rootRedirects.length !== 0) fail("routes-manifest: root redirect should be absent");
+const apexRedirects = (routesManifest.redirects || []).filter(
+    (redirect) =>
+    redirect.destination === "https://www.lunyu.ai/:path*" &&
+    redirect.statusCode === 308 &&
+    JSON.stringify(redirect.has || []).includes('"value":"lunyu.ai"')
+);
+if (apexRedirects.length !== 1) fail("routes-manifest: apex host must redirect permanently to www");
 
 const flattenedHeaders = JSON.stringify(vercelConfig.headers || []);
 for (const requiredHeader of [

@@ -3,6 +3,18 @@ import path from "node:path";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      // www is the single canonical host. Preserve the complete path and
+      // query string while making the apex host converge in one hop.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "lunyu.ai" }],
+        destination: "https://www.lunyu.ai/:path*",
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {
     root: path.resolve(__dirname),
   },
