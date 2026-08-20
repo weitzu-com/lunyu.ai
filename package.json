@@ -1,0 +1,36 @@
+{
+  "name": "lunyu-ai",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=24 <27"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint",
+    "qa:seo": "node scripts/seo-qa.mjs",
+    "cf:setup": "node scripts/cloudflare-setup.mjs",
+    "build:favicon": "node scripts/make-favicon.mjs",
+    "prebuild": "node scripts/make-favicon.mjs"
+  },
+  "dependencies": {
+    "@next/third-parties": "^16.2.10",
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.10",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4",
+    "to-ico": "^1.1.5",
+    "typescript": "^5"
+  }
+}

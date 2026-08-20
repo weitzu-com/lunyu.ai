@@ -1,0 +1,404 @@
+@import "tailwindcss";
+/*
+ * Tailwind v4's automatic source detection can skip an app when the build
+ * root is inferred from a parent workspace (this project lives inside a
+ * larger Desktop repository). Keep the source boundary explicit so every
+ * utility used by the App Router is emitted in production CSS.
+ */
+@source "src/**/*.{js,ts,jsx,tsx,mdx}";
+
+/* ============================================================================
+   竹简系统 · The Bamboo Slip System — design tokens for lunyu.ai
+   Authored from the Claude Design project "Lunyu — Bamboo Slip Design System".
+   Four first principles: 辞达而已矣 (restraint) · 述而不作 (text is protagonist)
+   · 有教无类 (accessibility, day=night) · 温故而知新 (calm, heuristic).
+   ========================================================================== */
+
+:root {
+  /* 绘事后素 — the plain ground first (Day · Paper & Ink) */
+  --paper: #faf8f3;        /* warm rice-paper page */
+  --surface: #fffdf9;      /* a raised leaf */
+  --surface-sunken: #f1ece3; /* press / inset wash */
+  --ink: #1c1a17;          /* pine-soot ink — primary text */
+  --ink-soft: #6b6660;     /* 淡墨 — secondary text */
+  --rule: #e5e0d8;         /* 界栏 — dividers & borders */
+  /* 丹朱 Cinnabar — the single accent: seal, reading mark, AI 启发 */
+  --cinnabar: #b44b3c;
+  --cinnabar-hover: #9e4133;
+  --scrim: rgba(28, 26, 23, 0.28);
+
+  /* Type — 文质彬彬 (families; --font-*-next from next/font in layout) */
+  --font-cjk: var(--font-cjk-next), "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  --font-cjk-tc: "Noto Serif TC", "Source Han Serif TC", serif;
+  --font-en: var(--font-en-next), "Source Serif 4", "Spectral", Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-ui-next), "Inter", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+
+  /* Modular scale · 1.25 (major third), pinyin 11px → display 59px */
+  --text-pinyin: 0.6875rem; /* 11 */
+  --text-xs: 0.8125rem;     /* 13 */
+  --text-sm: 0.875rem;      /* 14 */
+  --text-base: 1rem;        /* 16 */
+  --text-en: 1.125rem;      /* 18 — English translation */
+  --text-cjk: 1.1875rem;    /* 19 — classic text, the protagonist */
+  --text-lg: 1.25rem;       /* 20 */
+  --text-xl: 1.5625rem;     /* 25 */
+  --text-2xl: 1.9375rem;    /* 31 */
+  --text-3xl: 2.4375rem;    /* 39 */
+  --text-4xl: 3.0625rem;    /* 49 */
+  --text-display: 3.6875rem;/* 59 */
+
+  --lh-cjk: 1.75;
+  --lh-en: 1.7;
+  --lh-ui: 1.5;
+  --lh-tight: 1.2;
+
+  /* Spacing · 8px base, geometric (过犹不及) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 104px;
+  --measure: 40rem; /* reading column: ~38 汉字 / ~66 English chars */
+
+  /* Corners — nearly square */
+  --radius: 4px;
+
+  /* Depth — structure via rules, shadows barely exist */
+  --shadow-sm: 0 1px 2px rgba(28, 26, 23, 0.04);
+  --shadow-md: 0 2px 10px rgba(28, 26, 23, 0.06);
+  --shadow-lg: 0 10px 34px rgba(28, 26, 23, 0.1);
+
+  /* Motion — 欲速则不达: soft ease-out, never bounces */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 300ms;
+  --dur-slow: 500ms;
+
+  color-scheme: light;
+}
+
+/* 夜读 · Night Reading — same text, equally legible; cinnabar lifted a step */
+[data-theme="night"] {
+  --paper: #181613;
+  --surface: #201d19;
+  --surface-sunken: #100e0c;
+  --ink: #ede8df;
+  --ink-soft: #9a938a;
+  --rule: #302b25;
+  --cinnabar: #d06a56;
+  --cinnabar-hover: #c25a46;
+  --scrim: rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+/* Follow the system when the reader hasn't chosen (有教无类) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="day"]) {
+    --paper: #181613;
+    --surface: #201d19;
+    --surface-sunken: #100e0c;
+    --ink: #ede8df;
+    --ink-soft: #9a938a;
+    --rule: #302b25;
+    --cinnabar: #d06a56;
+    --cinnabar-hover: #c25a46;
+    --scrim: rgba(0, 0, 0, 0.5);
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-cinnabar: var(--cinnabar);
+  --color-cinnabar-hover: var(--cinnabar-hover);
+
+  --font-serif: var(--font-cjk);
+  --font-cjk: var(--font-cjk);
+  --font-en: var(--font-en);
+  --font-ui: var(--font-ui);
+
+  --radius-seal: var(--radius);
+}
+
+/* ------------------------------ base ------------------------------------- */
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  line-height: var(--lh-ui);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--cinnabar) 22%, transparent);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--cinnabar) 78%, var(--ink));
+  outline-offset: 3px;
+}
+
+/* 界栏 — the ruled line that draws structure instead of shadow */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* Reading column — the eye never travels too far */
+.measure {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+.page-shell {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+.reading-shell {
+  width: min(100% - 2rem, 44rem);
+  margin-inline: auto;
+}
+
+/* Type roles */
+.font-cjk { font-family: var(--font-cjk); }
+.font-en { font-family: var(--font-en); }
+.font-ui { font-family: var(--font-ui); }
+
+.text-classic {
+  font-family: var(--font-cjk);
+  font-size: var(--text-cjk);
+  line-height: var(--lh-cjk);
+}
+.text-translation {
+  font-family: var(--font-en);
+  font-size: var(--text-en);
+  line-height: var(--lh-en);
+}
+.text-pinyin {
+  font-family: var(--font-ui);
+  font-size: var(--text-pinyin);
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+.ruby-heading {
+  line-height: 2.15;
+}
+.pinyin-ruby {
+  ruby-align: center;
+  ruby-position: over;
+}
+.pinyin-ruby rt {
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-size: 0.38em;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+  user-select: text;
+}
+.label {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.ui-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding: 0.625rem 1rem;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  line-height: 1.25;
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.ui-button:hover,
+.ui-button:focus-visible {
+  border-color: var(--ink);
+  background: var(--surface-sunken);
+}
+
+.ui-button-primary {
+  border-color: var(--cinnabar);
+  background: var(--cinnabar);
+  color: white;
+}
+
+.ui-button-primary:hover,
+.ui-button-primary:focus-visible {
+  border-color: var(--cinnabar-hover);
+  background: var(--cinnabar-hover);
+}
+
+.chip {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  padding: 0.45rem 0.75rem;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  line-height: 1.25;
+  color: var(--ink);
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease);
+}
+
+.chip:hover,
+.chip:focus-visible {
+  border-color: var(--ink);
+  background: var(--surface-sunken);
+}
+
+.reading-panel {
+  border-top: 1px solid var(--rule);
+  padding-block: 1.5rem;
+}
+
+.reading-panel:first-of-type {
+  border-top: 0;
+}
+
+.reading-panel-accent {
+  border-top-color: color-mix(in srgb, var(--cinnabar) 38%, var(--rule));
+}
+
+.reading-controls:has(.translation-toggle:not(:checked)) ~ .sentence-list .translation-text {
+  display: none;
+}
+
+.reading-controls:has(.deep-read-toggle:not(:checked)) ~ .sentence-list .deep-read-toggle-target {
+  display: none;
+}
+
+.reading-controls:has(.pinyin-toggle:not(:checked)) ~ .sentence-list .pinyin-ruby rt,
+.sentence-ruby-control:has(.pinyin-toggle:not(:checked)) .pinyin-ruby rt {
+  display: none;
+}
+
+.reading-controls:has(.pinyin-toggle:not(:checked)) ~ .sentence-list .ruby-heading,
+.sentence-ruby-control:has(.pinyin-toggle:not(:checked)) .ruby-heading {
+  line-height: var(--lh-cjk);
+}
+
+.deep-read-link {
+  display: inline;
+  border: 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  line-height: 1.8;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.deep-read-link:hover,
+.deep-read-link:focus-visible,
+.deep-read-link:visited {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.listen-progress {
+  width: 100%;
+  accent-color: var(--cinnabar);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* 印章 · the seal — the one sanctioned use of cinnabar (阴文印) */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cinnabar);
+  color: var(--paper);
+  font-family: var(--font-cjk);
+  border-radius: var(--radius);
+  line-height: 1;
+  user-select: none;
+}
+
+/* The reading mark — a single cinnabar dot (resume / current position) */
+.reading-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--cinnabar);
+  display: inline-block;
+  flex: none;
+}
+
+/* Motion honored, but never for its own sake */
+* {
+  transition-timing-function: var(--ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

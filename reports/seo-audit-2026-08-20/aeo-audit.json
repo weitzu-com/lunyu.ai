@@ -1,0 +1,4605 @@
+{
+  "url": "https://www.lunyu.ai/",
+  "generatedAt": "2026-08-20T10:43:42.278Z",
+  "crawledPages": 30,
+  "maxPages": 30,
+  "scoring": {
+    "foundationalScore": 75,
+    "heuristicIntelligenceScore": 60,
+    "provisionalScore": 68,
+    "provisionalGrade": "C+",
+    "note": "provisionalScore uses a deterministic heuristic for the intelligence half. The agent should replace heuristicIntelligenceScore with its own 6-dimension LLM evaluation, then compute finalScore = round(0.5*foundationalScore + 0.5*llmIntelligenceScore)."
+  },
+  "checks": [
+    {
+      "id": "title",
+      "label": "Clear page title",
+      "points": 10,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "meta-description",
+      "label": "Meta description",
+      "points": 10,
+      "passed": true,
+      "details": "28/30 pages passed this check."
+    },
+    {
+      "id": "canonical",
+      "label": "Canonical URL",
+      "points": 8,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "h1",
+      "label": "Single H1 heading",
+      "points": 8,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "schema",
+      "label": "Structured data present",
+      "points": 8,
+      "passed": false,
+      "details": "9/30 pages passed this check."
+    },
+    {
+      "id": "schema-types",
+      "label": "Schema types identified",
+      "points": 8,
+      "passed": false,
+      "details": "7/30 pages passed this check."
+    },
+    {
+      "id": "og",
+      "label": "Open Graph basics",
+      "points": 8,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "internal-links",
+      "label": "Internal linking",
+      "points": 10,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "image-alt",
+      "label": "Image alt coverage",
+      "points": 8,
+      "passed": false,
+      "details": "0/30 pages passed this check."
+    },
+    {
+      "id": "text-depth",
+      "label": "Readable content depth",
+      "points": 12,
+      "passed": false,
+      "details": "17/30 pages passed this check."
+    },
+    {
+      "id": "indexability",
+      "label": "Indexable for discovery",
+      "points": 10,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "ai-meta-tags",
+      "label": "AI-accessible meta tags",
+      "points": 6,
+      "passed": true,
+      "details": "30/30 pages passed this check."
+    },
+    {
+      "id": "heading-hierarchy",
+      "label": "Content structure",
+      "points": 6,
+      "passed": true,
+      "details": "27/30 pages passed this check."
+    },
+    {
+      "id": "llms-txt",
+      "label": "llms.txt valid",
+      "passed": true,
+      "points": 10,
+      "details": "Valid llms.txt (6513 chars)."
+    },
+    {
+      "id": "ai-bot-access",
+      "label": "AI bot access",
+      "passed": true,
+      "points": 12,
+      "details": "No AI bots blocked in robots.txt."
+    },
+    {
+      "id": "rss-feed",
+      "label": "RSS/Atom feed",
+      "passed": true,
+      "points": 8,
+      "details": "RSS or Atom feed detected."
+    }
+  ],
+  "coverage": [
+    {
+      "pageType": "other",
+      "pages": 29,
+      "avgScore": 76
+    },
+    {
+      "pageType": "home",
+      "pages": 1,
+      "avgScore": 88
+    }
+  ],
+  "prioritizedFixes": [
+    {
+      "title": "Add structured data (JSON-LD) on key templates",
+      "impact": "High",
+      "effort": "Medium",
+      "why": "Agents rely on machine-readable entities and page intent signals."
+    },
+    {
+      "title": "Expand answer-first content on thin pages",
+      "impact": "High",
+      "effort": "Medium",
+      "why": "Agents need enough explicit facts and context to answer safely."
+    },
+    {
+      "title": "Add recognized schema types to JSON-LD",
+      "impact": "Medium",
+      "effort": "Medium",
+      "why": "Named types like Organization, Product, Article help AI classify your content."
+    },
+    {
+      "title": "Create a docs/knowledge section for product facts",
+      "impact": "Medium",
+      "effort": "Medium",
+      "why": "A stable docs corpus helps agents extract precise answers."
+    }
+  ],
+  "worstPages": [
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen",
+      "score": 76,
+      "maxScore": 112,
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/li-ren",
+      "score": 76,
+      "maxScore": 112,
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/wei-zheng",
+      "score": 76,
+      "maxScore": 112,
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/ba-yi",
+      "score": 76,
+      "maxScore": 112,
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/zi-han",
+      "score": 76,
+      "maxScore": 112,
+      "pageType": "other"
+    }
+  ],
+  "diagnostics": {
+    "crawlMs": 14293,
+    "robotsFound": true,
+    "robotsBlockedCount": 0,
+    "discoveredFromSitemap": 30,
+    "failedPages": 0
+  },
+  "robots": {
+    "found": true,
+    "aiBotBlocked": [],
+    "sitemapCount": 30
+  },
+  "llmsTxt": {
+    "found": true,
+    "hasH1": true,
+    "hasLink": true,
+    "contentLength": 6513,
+    "fullTxtFound": false
+  },
+  "rssFeed": true,
+  "heuristicIntelligenceSignals": [
+    {
+      "id": "answer-readiness",
+      "signal": "Answer Readiness",
+      "score": 37,
+      "rationale": "Does the content lead with direct answers to questions agents get asked?",
+      "keyFinding": "3% pages have Q&A-style headings; 50% lead with definitions.",
+      "status": "Weak",
+      "fixPriority": "Critical"
+    },
+    {
+      "id": "quotability",
+      "signal": "Quotability",
+      "score": 47,
+      "rationale": "Can an agent extract clean, self-contained passages to quote as citations?",
+      "keyFinding": "20% pages have rich headings; 57% meet depth threshold.",
+      "status": "Weak",
+      "fixPriority": "High ROI"
+    },
+    {
+      "id": "content-depth",
+      "signal": "Content Depth",
+      "score": 58,
+      "rationale": "Substantive long-form content that covers topics with depth and breadth.",
+      "keyFinding": "57% pages meet depth threshold across 2 template types.",
+      "status": "Weak",
+      "fixPriority": "High ROI"
+    },
+    {
+      "id": "evidence-density",
+      "signal": "Evidence Density",
+      "score": 66,
+      "rationale": "Density of statistics, data points, named sources, and in-text citations.",
+      "keyFinding": "100% pages include numeric evidence; 0% have author attribution.",
+      "status": "Moderate",
+      "fixPriority": "Quick Win"
+    },
+    {
+      "id": "freshness",
+      "signal": "Freshness",
+      "score": 72,
+      "rationale": "Date signals, update timestamps, and active maintenance indicators.",
+      "keyFinding": "7% pages have date signals; RSS feed found.",
+      "status": "Moderate",
+      "fixPriority": "Quick Win"
+    },
+    {
+      "id": "structural-clarity",
+      "signal": "Structural Clarity",
+      "score": 79,
+      "rationale": "Clean semantic HTML structure that survives extraction to markdown.",
+      "keyFinding": "90% clean heading hierarchy; 100% have single H1.",
+      "status": "Moderate",
+      "fixPriority": "Quick Win"
+    }
+  ],
+  "pagesForReview": [
+    {
+      "url": "https://www.lunyu.ai/",
+      "pageType": "home",
+      "score": 98,
+      "maxScore": 112,
+      "aiView": {
+        "title": "The Analects — 499 passages, book by book",
+        "metaDescription": "All 499 passages of The Analects, passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes.",
+        "h1": [
+          "Make The Analects readable for the world."
+        ],
+        "h1Count": 1,
+        "headings": [
+          "子曰，兴于诗。立于礼。成于乐。"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "WebSite",
+          "Organization"
+        ],
+        "jsonLdSummary": "@type=WebSite | name=lunyu.ai | dateModified=2026-07-07 | description=Read and hear The Analects of Confucius in Simplified Chinese and English.\n@type=Organization | name=lunyu.ai",
+        "internalLinkCount": 20,
+        "textExcerpt": "Twenty books · 499 passages · Bilingual Make The Analects readable for the world. All twenty books — 499 passages — are published with simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes. Readable · indexable · shareable. Listening currently uses browser speech; passage-level pinyin is not promised in the UI until reviewed. Open the twenty books Start with Xue Er Passage of the day Tai Bo（泰伯） · 08 子曰，兴于诗。立于礼。成于乐。 1. The Master said, \"It is by the Odes that the mind is aroused. 2. \"It is by the Rules of Propriety that the character is established. 3. \"It is from Music that the finish is received.\" Study this passage First visit — start with this passage. 20 books Xue Er to Yao Yue, all complete 499 passages Original, guide, English, notes per passage Bilingual Simplified Chinese + Legge's public-domain English Reviewed base Guide from the 1948 广益书局 edition 499/499 Modern Chinese guide covered 499/499 James Legge translation covered Chapter audio Recorded Xue Er audio is live 499/499 Passage pinyin awaits review, not promised yet",
+        "bodyWordCount": 274,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          3
+        ]
+      }
+    },
+    {
+      "url": "https://www.lunyu.ai/en/analects",
+      "pageType": "other",
+      "score": 96,
+      "maxScore": 112,
+      "aiView": {
+        "title": "The Analects — Twenty Books · lunyu.ai",
+        "metaDescription": "The complete twenty books of The Analects — Simplified Chinese source text and James Legge's public-domain English translation, 499 chapters, readable and indexable.",
+        "h1": [
+          "The Analects"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Xue Er （ 学而 ）",
+          "Wei Zheng （ 为政 ）",
+          "Ba Yi （ 八佾 ）",
+          "Li Ren （ 里仁 ）",
+          "Gongye Chang （ 公冶长 ）",
+          "Yong Ye （ 雍也 ）",
+          "Shu Er （ 述而 ）",
+          "Tai Bo （ 泰伯 ）",
+          "Zi Han （ 子罕 ）",
+          "Xiang Dang （ 乡党 ）",
+          "Xian Jin （ 先进 ）",
+          "Yan Yuan （ 颜渊 ）",
+          "Zi Lu （ 子路 ）",
+          "Xian Wen （ 宪问 ）",
+          "Wei Ling Gong （ 卫灵公 ）",
+          "Ji Shi （ 季氏 ）"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=The Analects — Twenty Books",
+        "internalLinkCount": 37,
+        "textExcerpt": "Twenty books The Analects All 499 passages across the twenty books are published passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, notes, and themes — readable, hearable, indexable, shareable. 01 Xue Er （ 学而 ） Learning, self-cultivation, friendship, and the roots of conduct. 16 chapters 02 Wei Zheng （ 为政 ） Virtuous government, filial conduct, learning, and the noble person. 24 chapters 03 Ba Yi （ 八佾 ） Ritual, music, order, and inward reverence. 26 chapters 04 Li Ren （ 里仁 ） Humaneness, rightness, profit, and dwelling with virtue. 26 chapters 05 Gongye Chang （ 公冶长 ） Judgments of people and observations of virtue. 27 chapters 06 Yong Ye （ 雍也 ） The mean, humane concern, and the spirit of learning. 28 chapters 07 Shu Er （ 述而 ） Confucius on himself, learning, and aspiration. 37 chapters 08 Tai Bo （ 泰伯 ） Virtue, ritual order, and the responsibility of scholars. 21 chapters 09 Zi Han （ 子罕 ） Rare words on profit, fate, and humaneness; the sage's bearing. 30 chapters 10 Xiang Dang （ 乡党 ） Everyday ritual, manners, and details of conduct. 18 chapters 11 Xian Jin （ 先进 ） Disciples, character, and the style of teaching. 25 chapters 12 Yan Yuan （ 颜渊 ） Humaneness, government, ritual, and noble practice. 24 chapters 13 Zi Lu （ 子路 ） Government, rectifying names, and action. 30 chapters 14 Xian Wen （ 宪问 ） Moral distinctions and the character of the noble person. 47 chapters 15 Wei Ling Gong （ 卫灵公 ） Loyalty, reciprocity, devotion to the Way, and conduct. 41 chapters 16 Ji Shi （ 季氏 ） Political order, self-cultivation, and prudent concern. 14 chapters 17 Yang Huo （ 阳货 ） Human nature, education, and the condition of the age. 26 chapters 18 Wei Zi （ 微子 ） Withdrawal, service, and figures of history. 11 chapters 19 Zi Zhang （ 子张 ） Sayings of disciples and the transmission of learning. 25 chapters 20 Yao Yue （ 尧曰 ） Political ideals and the closing vision of cultivation. 3 chapters",
+        "bodyWordCount": 440,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/analects",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "url": "https://www.lunyu.ai/en/blogs",
+      "pageType": "other",
+      "score": 104,
+      "maxScore": 112,
+      "aiView": {
+        "title": "Analects Reading Notes · lunyu.ai",
+        "metaDescription": "Editorial notes from lunyu.ai on reading methods, concepts, ritual, practice, and AI boundaries.",
+        "h1": [
+          "Analects Reading Notes"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "How to Start Reading The Analects",
+          "Ren, Junzi, and Everyday Conduct",
+          "Learning, Practice, and Review",
+          "Filial Conduct, Ritual, and Care",
+          "How AI Can Help Read Classics",
+          "Looking for the index?"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=Analects Reading Notes | description=A collection of essays on reading The Analects, core concepts, and editorial boundaries.\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 28,
+        "textExcerpt": "Editorial notes Analects Reading Notes These are actual essays on how to read, how to use the index, and how to separate source text, guides, translations, and AI reflection. 2026-07-08 · reading / starter How to Start Reading The Analects Read The Analects as a passage-by-passage practice: begin with the source text, check the guide, then return to your own situation. Read essay 2026-07-08 · ren / junzi Ren, Junzi, and Everyday Conduct Ren is not a slogan, and junzi is not a status label. In The Analects, both must appear in conduct, speech, and self-examination. Read essay 2026-07-08 · learning / practice Learning, Practice, and Review The opening of Xue Er joins learning with timely review and practice. Learning is not collecting knowledge; it is letting knowledge enter conduct. Read essay 2026-07-08 · filial conduct / ritual Filial Conduct, Ritual, and Care When The Analects speaks of filial conduct, it also speaks of ritual. Form is not the enemy of care; it helps care become steady. Read essay 2026-07-08 · AI / GEO How AI Can Help Read Classics AI can support questions and reflection around classic texts, but source text, translation, editorial guide, and generated reflection must remain separate. Read essay Looking for the index? People, places, concepts, and text entries now live in the knowledge index. Open knowledge index",
+        "bodyWordCount": 316,
+        "publishedDate": "2026-07-08",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/blogs",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "url": "https://www.lunyu.ai/en/index",
+      "pageType": "other",
+      "score": 104,
+      "maxScore": 112,
+      "aiView": {
+        "title": "Analects people, places, and ideas · lunyu.ai",
+        "metaDescription": "A knowledge index for people, places, texts, and core ideas in The Analects, with every entry linked back to related passages.",
+        "h1": [
+          "People, places, and ideas"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "People",
+          "Places",
+          "Concepts",
+          "Texts and eras"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=Analects people, places, and ideas | description=A knowledge index for people, places, texts, and core ideas in The Analects.\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 70,
+        "textExcerpt": "Knowledge index People, places, and ideas These are not isolated articles. Each page links back to related passages and to people, places, and ideas that appear with it. People Confucius 447 related passages Yan Yuan 21 related passages Zi Lu 36 related passages Zi Gong 36 related passages Zi Xia 20 related passages Zi Zhang 19 related passages Zeng Zi 15 related passages You Zi 7 related passages Ran You 16 related passages Zhong Gong 6 related passages Zai Wo 5 related passages Zi You 8 related passages Fan Chi 6 related passages Gongxi Hua 4 related passages Min Zijian 5 related passages Nan Gong Kuo 1 related passages Yuan Xian 1 related passages Ji Family 16 related passages Meng Family 4 related passages Duke Ai of Lu 5 related passages Duke Ding of Lu 2 related passages Duke Jing of Qi 3 related passages Duke Ling of Wei 2 related passages Yang Huo 1 related passages Guan Zhong 4 related passages Bo Yi and Shu Qi 4 related passages Weizi, Jizi, and Bigan 1 related passages Yao, Shun, and Yu 10 related passages Tang, King Wen, King Wu, and the Duke of Zhou 12 related passages Places Lu 22 related passages Qi 7 related passages Wei 3 related passages Song 2 related passages Chen and Cai 6 related passages Chu 6 related passages Wu 1 related passages Kuang 3 related passages Mount Tai 1 related passages Yi River 0 related passages Concepts Ren 62 related passages Li 67 related passages Yi 25 related passages Trustworthiness 36 related passages Filial conduct 15 related passages Junzi 83 related passages Small person 24 related passages Loyalty and reciprocity 19 related passages Government 44 related passages Learning 68 related passages Music 25 related passages Texts and eras Book of Poetry 15 related passages Book of Documents 12 related passages Xia, Yin, and Zhou 24 related passages",
+        "bodyWordCount": 407,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/index",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/blogs",
+      "pageType": "other",
+      "score": 82,
+      "maxScore": 112,
+      "aiView": {
+        "title": "论语阅读札记 · lunyu.ai",
+        "metaDescription": "lunyu.ai 的编辑札记：读法、概念、礼学、学习实践与 AI 阅读边界。",
+        "h1": [
+          "论语阅读札记"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "如何从第一句开始读《论语》",
+          "仁、君子与日常行为",
+          "学而时习：学习为什么要回到实践",
+          "孝与礼：亲情为什么需要形式",
+          "AI 可以怎样辅助读经典",
+          "需要查词条？"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=论语阅读札记 | description=围绕《论语》阅读方法、核心概念与编辑边界的文章集合。\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 28,
+        "textExcerpt": "编辑札记 论语阅读札记 这里放真正的文章：解释如何阅读、如何使用索引、如何区分原文、导读、译文与 AI 启发。 2026-07-08 · 读法 / 入门 如何从第一句开始读《论语》 把《论语》当作逐句练习，而不是一次读完的名言集：先读原文，再看白话导读，最后回到自己的处境。 阅读全文 2026-07-08 · 仁 / 君子 仁、君子与日常行为 仁不是口号，君子也不是身份标签。二者在《论语》中都要落到待人、处事、言语和自省上。 阅读全文 2026-07-08 · 学习 / 实践 学而时习：学习为什么要回到实践 《学而》开篇把学习和按时温习、实践放在一起。学习不是收藏知识，而是让知识进入行为。 阅读全文 2026-07-08 · 孝 / 礼 孝与礼：亲情为什么需要形式 《论语》谈孝，不只谈感情，也谈礼。形式不是感情的敌人，而是让关怀稳定呈现的方式。 阅读全文 2026-07-08 · AI / GEO AI 可以怎样辅助读经典 经典网站可以使用 AI 辅助提问和启发，但必须把原文、译文、导读和生成性反思分开。 阅读全文 需要查词条？ 人物、地点、概念与典籍词条已经迁移到知识索引。 打开知识索引",
+        "bodyWordCount": 104,
+        "publishedDate": "2026-07-08",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/blogs",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  ],
+  "pageAudits": [
+    {
+      "url": "https://www.lunyu.ai/",
+      "score": 98,
+      "maxScore": 112,
+      "summary": "Strong for AI agents. Improve a few weak signals to harden performance.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (41 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: WebSite, Organization"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 20 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 274 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": false,
+          "points": 6,
+          "details": "Heading levels skipped — weakens the content outline AI agents use for extraction."
+        }
+      ],
+      "aiView": {
+        "title": "The Analects — 499 passages, book by book",
+        "metaDescription": "All 499 passages of The Analects, passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes.",
+        "h1": [
+          "Make The Analects readable for the world."
+        ],
+        "h1Count": 1,
+        "headings": [
+          "子曰，兴于诗。立于礼。成于乐。"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "WebSite",
+          "Organization"
+        ],
+        "jsonLdSummary": "@type=WebSite | name=lunyu.ai | dateModified=2026-07-07 | description=Read and hear The Analects of Confucius in Simplified Chinese and English.\n@type=Organization | name=lunyu.ai",
+        "internalLinkCount": 20,
+        "textExcerpt": "Twenty books · 499 passages · Bilingual Make The Analects readable for the world. All twenty books — 499 passages — are published with simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes. Readable · indexable · shareable. Listening currently uses browser speech; passage-level pinyin is not promised in the UI until reviewed. Open the twenty books Start with Xue Er Passage of the day Tai Bo（泰伯） · 08 子曰，兴于诗。立于礼。成于乐。 1. The Master said, \"It is by the Odes that the mind is aroused. 2. \"It is by the Rules of Propriety that the character is established. 3. \"It is from Music that the finish is received.\" Study this passage First visit — start with this passage. 20 books Xue Er to Yao Yue, all complete 499 passages Original, guide, English, notes per passage Bilingual Simplified Chinese + Legge's public-domain English Reviewed base Guide from the 1948 广益书局 edition 499/499 Modern Chinese guide covered 499/499 James Legge translation covered Chapter audio Recorded Xue Er audio is live 499/499 Passage pinyin awaits review, not promised yet",
+        "bodyWordCount": 274,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          3
+        ]
+      },
+      "pageType": "home"
+    },
+    {
+      "url": "https://www.lunyu.ai/en",
+      "score": 98,
+      "maxScore": 112,
+      "summary": "Strong for AI agents. Improve a few weak signals to harden performance.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (41 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: WebSite, Organization"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 20 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 274 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": false,
+          "points": 6,
+          "details": "Heading levels skipped — weakens the content outline AI agents use for extraction."
+        }
+      ],
+      "aiView": {
+        "title": "The Analects — 499 passages, book by book",
+        "metaDescription": "All 499 passages of The Analects, passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes.",
+        "h1": [
+          "Make The Analects readable for the world."
+        ],
+        "h1Count": 1,
+        "headings": [
+          "子曰，兴于诗。立于礼。成于乐。"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "WebSite",
+          "Organization"
+        ],
+        "jsonLdSummary": "@type=WebSite | name=lunyu.ai | dateModified=2026-07-07 | description=Read and hear The Analects of Confucius in Simplified Chinese and English.\n@type=Organization | name=lunyu.ai",
+        "internalLinkCount": 20,
+        "textExcerpt": "Twenty books · 499 passages · Bilingual Make The Analects readable for the world. All twenty books — 499 passages — are published with simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes. Readable · indexable · shareable. Listening currently uses browser speech; passage-level pinyin is not promised in the UI until reviewed. Open the twenty books Start with Xue Er Passage of the day Tai Bo（泰伯） · 08 子曰，兴于诗。立于礼。成于乐。 1. The Master said, \"It is by the Odes that the mind is aroused. 2. \"It is by the Rules of Propriety that the character is established. 3. \"It is from Music that the finish is received.\" Study this passage First visit — start with this passage. 20 books Xue Er to Yao Yue, all complete 499 passages Original, guide, English, notes per passage Bilingual Simplified Chinese + Legge's public-domain English Reviewed base Guide from the 1948 广益书局 edition 499/499 Modern Chinese guide covered 499/499 James Legge translation covered Chapter audio Recorded Xue Er audio is live 499/499 Passage pinyin awaits review, not promised yet",
+        "bodyWordCount": 274,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans",
+      "score": 86,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (19 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (51 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: WebSite, Organization"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 20 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 106 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": false,
+          "points": 6,
+          "details": "Heading levels skipped — weakens the content outline AI agents use for extraction."
+        }
+      ],
+      "aiView": {
+        "title": "《论语》二十篇 · 499 章逐句可读",
+        "metaDescription": "《论语》二十篇 499 章已按简体原文、审校白话导读、James Legge 公版英译、注释逐句发布。",
+        "h1": [
+          "让世界读懂《论语》。"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "子曰，兴于诗。立于礼。成于乐。"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "WebSite",
+          "Organization"
+        ],
+        "jsonLdSummary": "@type=WebSite | name=lunyu.ai | dateModified=2026-07-07 | description=中文简体与英文双语阅读、听读《论语》。\n@type=Organization | name=lunyu.ai",
+        "internalLinkCount": 20,
+        "textExcerpt": "二十篇 · 499 章 · 中英双语 让世界读懂《论语》。 二十篇 499 章已按简体原文、审校白话导读、James Legge 公版英译、注释逐句发布。 可读 · 可索引 · 可分享。听读当前使用浏览器朗读；逐句拼音在审校完成前不作为上线承诺展示。 进入二十篇 从学而第一篇开始 今日一句 泰伯 · 08 子曰，兴于诗。立于礼。成于乐。 孔子说：人的修养从学《诗》开始，因懂礼而立身，由音乐的陶冶而完成。 深读这一句 首次访问 — 选定此句作为今日的起读。 20 篇 学而至尧曰逐篇完整 499 章 逐句原文、白话、英译与注释 中英双语 简体 + Legge 公版英译 审校底本 白话据 1948《白话论语读本》 499/499 白话导读已覆盖 499/499 James Legge 英译已覆盖 章节音频 《学而》真人女声已上线 499/499 逐句拼音待审校，不外显承诺",
+        "bodyWordCount": 106,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/analects",
+      "score": 84,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (55 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/analects"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 37 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 160 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (2 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "《论语》二十篇目录 · lunyu.ai",
+        "metaDescription": "《论语》二十篇完整目录，简体原文与 James Legge 公版英译，共 499 章，逐章可读、可听、可索引。",
+        "h1": [
+          "《论语》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "学而",
+          "为政",
+          "八佾",
+          "里仁",
+          "公冶长",
+          "雍也",
+          "述而",
+          "泰伯",
+          "子罕",
+          "乡党",
+          "先进",
+          "颜渊",
+          "子路",
+          "宪问",
+          "卫灵公",
+          "季氏"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=《论语》二十篇",
+        "internalLinkCount": 37,
+        "textExcerpt": "二十篇目录 《论语》 二十篇 499 章已按简体原文、审校白话导读、James Legge 公版英译、注释与主题逐句发布。逐章可读、可听、可索引、可分享。 01 学而 学习、修身、交友与做人根基。 16 章 02 为政 德政、孝道、学习与君子人格。 24 章 03 八佾 礼乐秩序与内在诚敬。 26 章 04 里仁 仁德、义利与择善而处。 26 章 05 公冶长 人物评论与德行观察。 27 章 06 雍也 中道、仁心与学习气象。 28 章 07 述而 孔子的自述、学问与志向。 37 章 08 泰伯 德行、礼制与士人责任。 21 章 09 子罕 罕言利命仁，见圣人气象。 30 章 10 乡党 日常礼仪与生活细节。 18 章 11 先进 弟子品评与教育风格。 25 章 12 颜渊 仁、政、礼与君子实践。 24 章 13 子路 政治、正名与行动。 30 章 14 宪问 德行辨析与士君子品格。 47 章 15 卫灵公 忠恕、志道与处世。 41 章 16 季氏 政治秩序、修身与忧患。 14 章 17 阳货 人性、教育与世道。 26 章 18 微子 出处进退与历史人物。 11 章 19 子张 弟子言论与学问传承。 25 章 20 尧曰 政治理想与修身终章。 3 章",
+        "bodyWordCount": 160,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/analects",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/analects",
+      "score": 96,
+      "maxScore": 112,
+      "summary": "Strong for AI agents. Improve a few weak signals to harden performance.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (38 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (165 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/analects"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 37 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 440 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (2 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "The Analects — Twenty Books · lunyu.ai",
+        "metaDescription": "The complete twenty books of The Analects — Simplified Chinese source text and James Legge's public-domain English translation, 499 chapters, readable and indexable.",
+        "h1": [
+          "The Analects"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Xue Er （ 学而 ）",
+          "Wei Zheng （ 为政 ）",
+          "Ba Yi （ 八佾 ）",
+          "Li Ren （ 里仁 ）",
+          "Gongye Chang （ 公冶长 ）",
+          "Yong Ye （ 雍也 ）",
+          "Shu Er （ 述而 ）",
+          "Tai Bo （ 泰伯 ）",
+          "Zi Han （ 子罕 ）",
+          "Xiang Dang （ 乡党 ）",
+          "Xian Jin （ 先进 ）",
+          "Yan Yuan （ 颜渊 ）",
+          "Zi Lu （ 子路 ）",
+          "Xian Wen （ 宪问 ）",
+          "Wei Ling Gong （ 卫灵公 ）",
+          "Ji Shi （ 季氏 ）"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=The Analects — Twenty Books",
+        "internalLinkCount": 37,
+        "textExcerpt": "Twenty books The Analects All 499 passages across the twenty books are published passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, notes, and themes — readable, hearable, indexable, shareable. 01 Xue Er （ 学而 ） Learning, self-cultivation, friendship, and the roots of conduct. 16 chapters 02 Wei Zheng （ 为政 ） Virtuous government, filial conduct, learning, and the noble person. 24 chapters 03 Ba Yi （ 八佾 ） Ritual, music, order, and inward reverence. 26 chapters 04 Li Ren （ 里仁 ） Humaneness, rightness, profit, and dwelling with virtue. 26 chapters 05 Gongye Chang （ 公冶长 ） Judgments of people and observations of virtue. 27 chapters 06 Yong Ye （ 雍也 ） The mean, humane concern, and the spirit of learning. 28 chapters 07 Shu Er （ 述而 ） Confucius on himself, learning, and aspiration. 37 chapters 08 Tai Bo （ 泰伯 ） Virtue, ritual order, and the responsibility of scholars. 21 chapters 09 Zi Han （ 子罕 ） Rare words on profit, fate, and humaneness; the sage's bearing. 30 chapters 10 Xiang Dang （ 乡党 ） Everyday ritual, manners, and details of conduct. 18 chapters 11 Xian Jin （ 先进 ） Disciples, character, and the style of teaching. 25 chapters 12 Yan Yuan （ 颜渊 ） Humaneness, government, ritual, and noble practice. 24 chapters 13 Zi Lu （ 子路 ） Government, rectifying names, and action. 30 chapters 14 Xian Wen （ 宪问 ） Moral distinctions and the character of the noble person. 47 chapters 15 Wei Ling Gong （ 卫灵公 ） Loyalty, reciprocity, devotion to the Way, and conduct. 41 chapters 16 Ji Shi （ 季氏 ） Political order, self-cultivation, and prudent concern. 14 chapters 17 Yang Huo （ 阳货 ） Human nature, education, and the condition of the age. 26 chapters 18 Wei Zi （ 微子 ） Withdrawal, service, and figures of history. 11 chapters 19 Zi Zhang （ 子张 ） Sayings of disciples and the transmission of learning. 25 chapters 20 Yao Yue （ 尧曰 ） Political ideals and the closing vision of cultivation. 3 chapters",
+        "bodyWordCount": 440,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/analects",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/index",
+      "score": 82,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (23 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": false,
+          "points": 10,
+          "details": "Found description (35 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/index"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: Organization, BreadcrumbList"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 70 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 219 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (2 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "论语人物、地点与概念索引 · lunyu.ai",
+        "metaDescription": "《论语》人物、地点、典籍与核心概念的知识索引；每个词条都回链相关章句。",
+        "h1": [
+          "人物、地点、概念"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "人物",
+          "地点",
+          "概念",
+          "典籍与时代"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=论语人物、地点与概念索引 | description=《论语》人物、地点、典籍与核心概念的知识索引。\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 70,
+        "textExcerpt": "知识索引 人物、地点、概念 这些页面不是孤立文章，而是《论语》正文的索引入口：每个词条都回链到相关章句，也互相连接到同章出现的人物、地点与概念。 人物 孔子 447 个相关章句 颜渊 21 个相关章句 子路 36 个相关章句 子贡 36 个相关章句 子夏 20 个相关章句 子张 19 个相关章句 曾子 15 个相关章句 有子 7 个相关章句 冉有 16 个相关章句 仲弓 6 个相关章句 宰我 5 个相关章句 子游 8 个相关章句 樊迟 6 个相关章句 公西华 4 个相关章句 闵子骞 5 个相关章句 南宫适 1 个相关章句 原宪 1 个相关章句 季氏 16 个相关章句 孟氏 4 个相关章句 鲁哀公 5 个相关章句 鲁定公 2 个相关章句 齐景公 3 个相关章句 卫灵公 2 个相关章句 阳货 1 个相关章句 管仲 4 个相关章句 伯夷叔齐 4 个相关章句 微子、箕子、比干 1 个相关章句 尧、舜、禹 10 个相关章句 汤、文、武、周公 12 个相关章句 地点 鲁 22 个相关章句 齐 7 个相关章句 卫 3 个相关章句 宋 2 个相关章句 陈、蔡 6 个相关章句 楚 6 个相关章句 吴 1 个相关章句 匡 3 个相关章句 泰山 1 个相关章句 沂水 0 个相关章句 概念 仁 62 个相关章句 礼 67 个相关章句 义 25 个相关章句 信 36 个相关章句 孝 15 个相关章句 君子 83 个相关章句 小人 24 个相关章句 忠恕 19 个相关章句 政 44 个相关章句 学 68 个相关章句 乐 25 个相关章句 典籍与时代 诗 15 个相关章句 书 12 个相关章句 夏、殷、周 24 个相关章句",
+        "bodyWordCount": 219,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/index",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 228 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·学而》 · lunyu.ai",
+        "metaDescription": "播放《论语·学而第一》真人女声音频，共 16 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《学而第一》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "学而 · 01",
+          "子 zǐ 曰 yuē ， 学 xué 而 ér 时 shí 习 xí 之 zhī ， 不 bú 亦 yì 说 yuè 乎 hū 。 有 yǒu 朋 péng 自 zì 远 yuǎn 方 fāng 来 lái ， 不 bú 亦 yì 乐 lè 乎 hū 。 人 rén 不 bù 知 zhī 而 ér 不 bú 愠 yùn ， 不 bú 亦 yì 君 jūn 子 zǐ 乎 hū 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《学而第一》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 学而第一 学而 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 16 0:00 子 zǐ 曰 yuē ， 学 xué 而 ér 时 shí 习 xí 之 zhī ， 不 bú 亦 yì 说 yuè 乎 hū 。 有 yǒu 朋 péng 自 zì 远 yuǎn 方 fāng 来 lái ， 不 bú 亦 yì 乐 lè 乎 hū 。 人 rén 不 bù 知 zhī 而 ér 不 bú 愠 yùn ， 不 bú 亦 yì 君 jūn 子 zǐ 乎 hū 。 孔子说：学习了道理，并且按时温习、实践，不也是令人喜悦的吗？有志同道合的朋友从远方来，不也是令人快乐的吗？别人不了解自己，自己却不怨恨，不也是君子吗？ 章节 点击任一章立即播放。 01 子曰，学而时习之，不亦说乎。有朋自远方来，不亦乐乎。人不知而不愠，不亦君子乎。 02 有子曰，其为人也孝弟，而好犯上者鲜矣，不好犯上，而好作乱者，未之有也。君子务本，本立，而道生，孝弟也者，其为仁之本与。 03 子曰，巧言令色，鲜矣仁。 04 曾子曰，吾日三省吾身，为人谋，而不忠乎，与朋友交，而不信乎，传不习乎。 05 子曰，道千乘之国，敬事而信，节用而爱人，使民以时。 06 子曰，弟子，入则孝，出则弟，谨而信，凡爱众，而亲仁，行有余力，则以学文。 07 子夏曰，贤贤易色，事父母，能竭其力，事君，能致其身，与朋友交，言而有信，虽曰未学，吾必谓之学矣。 08 子曰，君子不重，则不威，学则不固。主忠信。无友不如己者。过则勿惮改。 09 曾子曰，愼终追远，民德归厚矣。 10 子禽问于子贡曰，夫子至于是邦也，必闻其政，求之与，抑与之与。子贡曰，夫子温，良，恭，俭，让，以得之，夫子之求之也，其诸异乎人之求之与。 11 子曰，父在，观其志，父没，观其行，三年无改于父之道，可谓孝矣。 12 有子曰，礼之用，和为贵，先王之道，斯为美，小大由之。有所不行，知和而和，不以礼节之，亦不可行也。 13 有子曰，信近于义，言可复也，恭近于礼，远耻辱也，因不失其亲，亦可宗也。 14 子曰，君子食无求饱，居无求安，敏于事，而愼于言，就有道，而正焉，可谓好学也已。 15 子贡曰贫，而无谄，富而无骄，何如。子曰，可也，未若贫而乐，富而好礼者也。子贡曰，诗云，如切如磋，如琢如磨，其斯之谓与。子曰，赐也，始可与言诗已矣，吿诸往而知来者。 16 子曰，不患人之不己知，患不知人也。",
+        "bodyWordCount": 228,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/index",
+      "score": 104,
+      "maxScore": 112,
+      "summary": "Strong for AI agents. Improve a few weak signals to harden performance.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (45 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (126 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/index"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: Organization, BreadcrumbList"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 70 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 407 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (2 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Analects people, places, and ideas · lunyu.ai",
+        "metaDescription": "A knowledge index for people, places, texts, and core ideas in The Analects, with every entry linked back to related passages.",
+        "h1": [
+          "People, places, and ideas"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "People",
+          "Places",
+          "Concepts",
+          "Texts and eras"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=Analects people, places, and ideas | description=A knowledge index for people, places, texts, and core ideas in The Analects.\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 70,
+        "textExcerpt": "Knowledge index People, places, and ideas These are not isolated articles. Each page links back to related passages and to people, places, and ideas that appear with it. People Confucius 447 related passages Yan Yuan 21 related passages Zi Lu 36 related passages Zi Gong 36 related passages Zi Xia 20 related passages Zi Zhang 19 related passages Zeng Zi 15 related passages You Zi 7 related passages Ran You 16 related passages Zhong Gong 6 related passages Zai Wo 5 related passages Zi You 8 related passages Fan Chi 6 related passages Gongxi Hua 4 related passages Min Zijian 5 related passages Nan Gong Kuo 1 related passages Yuan Xian 1 related passages Ji Family 16 related passages Meng Family 4 related passages Duke Ai of Lu 5 related passages Duke Ding of Lu 2 related passages Duke Jing of Qi 3 related passages Duke Ling of Wei 2 related passages Yang Huo 1 related passages Guan Zhong 4 related passages Bo Yi and Shu Qi 4 related passages Weizi, Jizi, and Bigan 1 related passages Yao, Shun, and Yu 10 related passages Tang, King Wen, King Wu, and the Duke of Zhou 12 related passages Places Lu 22 related passages Qi 7 related passages Wei 3 related passages Song 2 related passages Chen and Cai 6 related passages Chu 6 related passages Wu 1 related passages Kuang 3 related passages Mount Tai 1 related passages Yi River 0 related passages Concepts Ren 62 related passages Li 67 related passages Yi 25 related passages Trustworthiness 36 related passages Filial conduct 15 related passages Junzi 83 related passages Small person 24 related passages Loyalty and reciprocity 19 related passages Government 44 related passages Learning 68 related passages Music 25 related passages Texts and eras Book of Poetry 15 related passages Book of Documents 12 related passages Xia, Yin, and Zhou 24 related passages",
+        "bodyWordCount": 407,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/index",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/blogs",
+      "score": 104,
+      "maxScore": 112,
+      "summary": "Strong for AI agents. Improve a few weak signals to harden performance.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (33 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (96 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/blogs"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: Organization, BreadcrumbList"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 28 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 316 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (2 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Analects Reading Notes · lunyu.ai",
+        "metaDescription": "Editorial notes from lunyu.ai on reading methods, concepts, ritual, practice, and AI boundaries.",
+        "h1": [
+          "Analects Reading Notes"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "How to Start Reading The Analects",
+          "Ren, Junzi, and Everyday Conduct",
+          "Learning, Practice, and Review",
+          "Filial Conduct, Ritual, and Care",
+          "How AI Can Help Read Classics",
+          "Looking for the index?"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=Analects Reading Notes | description=A collection of essays on reading The Analects, core concepts, and editorial boundaries.\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 28,
+        "textExcerpt": "Editorial notes Analects Reading Notes These are actual essays on how to read, how to use the index, and how to separate source text, guides, translations, and AI reflection. 2026-07-08 · reading / starter How to Start Reading The Analects Read The Analects as a passage-by-passage practice: begin with the source text, check the guide, then return to your own situation. Read essay 2026-07-08 · ren / junzi Ren, Junzi, and Everyday Conduct Ren is not a slogan, and junzi is not a status label. In The Analects, both must appear in conduct, speech, and self-examination. Read essay 2026-07-08 · learning / practice Learning, Practice, and Review The opening of Xue Er joins learning with timely review and practice. Learning is not collecting knowledge; it is letting knowledge enter conduct. Read essay 2026-07-08 · filial conduct / ritual Filial Conduct, Ritual, and Care When The Analects speaks of filial conduct, it also speaks of ritual. Form is not the enemy of care; it helps care become steady. Read essay 2026-07-08 · AI / GEO How AI Can Help Read Classics AI can support questions and reflection around classic texts, but source text, translation, editorial guide, and generated reflection must remain separate. Read essay Looking for the index? People, places, concepts, and text entries now live in the knowledge index. Open knowledge index",
+        "bodyWordCount": 316,
+        "publishedDate": "2026-07-08",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/blogs",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/blogs",
+      "score": 82,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (17 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": false,
+          "points": 10,
+          "details": "Found description (38 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/blogs"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 JSON-LD block(s)."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": true,
+          "points": 8,
+          "details": "Types: Organization, BreadcrumbList"
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 28 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 104 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (2 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "论语阅读札记 · lunyu.ai",
+        "metaDescription": "lunyu.ai 的编辑札记：读法、概念、礼学、学习实践与 AI 阅读边界。",
+        "h1": [
+          "论语阅读札记"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "如何从第一句开始读《论语》",
+          "仁、君子与日常行为",
+          "学而时习：学习为什么要回到实践",
+          "孝与礼：亲情为什么需要形式",
+          "AI 可以怎样辅助读经典",
+          "需要查词条？"
+        ],
+        "jsonLdCount": 1,
+        "schemaTypes": [
+          "CollectionPage",
+          "Organization",
+          "BreadcrumbList"
+        ],
+        "jsonLdSummary": "@type=CollectionPage | name=论语阅读札记 | description=围绕《论语》阅读方法、核心概念与编辑边界的文章集合。\n@type=Organization | name=lunyu.ai\n@type=BreadcrumbList",
+        "internalLinkCount": 28,
+        "textExcerpt": "编辑札记 论语阅读札记 这里放真正的文章：解释如何阅读、如何使用索引、如何区分原文、导读、译文与 AI 启发。 2026-07-08 · 读法 / 入门 如何从第一句开始读《论语》 把《论语》当作逐句练习，而不是一次读完的名言集：先读原文，再看白话导读，最后回到自己的处境。 阅读全文 2026-07-08 · 仁 / 君子 仁、君子与日常行为 仁不是口号，君子也不是身份标签。二者在《论语》中都要落到待人、处事、言语和自省上。 阅读全文 2026-07-08 · 学习 / 实践 学而时习：学习为什么要回到实践 《学而》开篇把学习和按时温习、实践放在一起。学习不是收藏知识，而是让知识进入行为。 阅读全文 2026-07-08 · 孝 / 礼 孝与礼：亲情为什么需要形式 《论语》谈孝，不只谈感情，也谈礼。形式不是感情的敌人，而是让关怀稳定呈现的方式。 阅读全文 2026-07-08 · AI / GEO AI 可以怎样辅助读经典 经典网站可以使用 AI 辅助提问和启发，但必须把原文、译文、导读和生成性反思分开。 阅读全文 需要查词条？ 人物、地点、概念与典籍词条已经迁移到知识索引。 打开知识索引",
+        "bodyWordCount": 104,
+        "publishedDate": "2026-07-08",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/blogs",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (36 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 383 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Xue Er · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 1 Xue Er (16 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Xue Er by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Hsio R. · 01",
+          "子 zǐ 曰 yuē ， 学 xué 而 ér 时 shí 习 xí 之 zhī ， 不 bú 亦 yì 说 yuè 乎 hū 。 有 yǒu 朋 péng 自 zì 远 yuǎn 方 fāng 来 lái ， 不 bú 亦 yì 乐 lè 乎 hū 。 人 rén 不 bù 知 zhī 而 ér 不 bú 愠 yùn ， 不 bú 亦 yì 君 jūn 子 zǐ 乎 hū 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Xue Er by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Xue Er Hsio R. · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 16 0:00 子 zǐ 曰 yuē ， 学 xué 而 ér 时 shí 习 xí 之 zhī ， 不 bú 亦 yì 说 yuè 乎 hū 。 有 yǒu 朋 péng 自 zì 远 yuǎn 方 fāng 来 lái ， 不 bú 亦 yì 乐 lè 乎 hū 。 人 rén 不 bù 知 zhī 而 ér 不 bú 愠 yùn ， 不 bú 亦 yì 君 jūn 子 zǐ 乎 hū 。 1. The Master said, \"Is it not pleasant to learn with a constant perseverance and application? 2. \"Is it not delightful to have friends coming from distant quarters? 3. \"Is he not a man of complete virtue, who feels no discomposure though men may take no note of him?\" Chapters Select any chapter to play. 01 子曰，学而时习之，不亦说乎。有朋自远方来，不亦乐乎。人不知而不愠，不亦君子乎。 02 有子曰，其为人也孝弟，而好犯上者鲜矣，不好犯上，而好作乱者，未之有也。君子务本，本立，而道生，孝弟也者，其为仁之本与。 03 子曰，巧言令色，鲜矣仁。 04 曾子曰，吾日三省吾身，为人谋，而不忠乎，与朋友交，而不信乎，传不习乎。 05 子曰，道千乘之国，敬事而信，节用而爱人，使民以时。 06 子曰，弟子，入则孝，出则弟，谨而信，凡爱众，而亲仁，行有余力，则以学文。 07 子夏曰，贤贤易色，事父母，能竭其力，事君，能致其身，与朋友交，言而有信，虽曰未学，吾必谓之学矣。 08 子曰，君子不重，则不威，学则不固。主忠信。无友不如己者。过则勿惮改。 09 曾子曰，愼终追远，民德归厚矣。 10 子禽问于子贡曰，夫子至于是邦也，必闻其政，求之与，抑与之与。子贡曰，夫子温，良，恭，俭，让，以得之，夫子之求之也，其诸异乎人之求之与。 11 子曰，父在，观其志，父没，观其行，三年无改于父之道，可谓孝矣。 12 有子曰，礼之用，和为贵，先王之道，斯为美，小大由之。有所不行，知和而和，不以礼节之，亦不可行也。 13 有子曰，信近于义，言可复也，恭近于礼，远耻辱也，因不失其亲，亦可宗也。 14 子曰，君子食无求饱，居无求安，敏于事，而愼于言，就有道，而正焉，可谓好学也已。 15 子贡曰贫，而无谄，富而无骄，何如。子曰，可也，未若贫而乐，富而好礼者也。子贡曰，诗云，如切如磋，如琢如磨，其斯之谓与。子曰，赐也，始可与言诗已矣，吿诸往而知来者。 16 子曰，不患人之不己知，患不知人也。",
+        "bodyWordCount": 383,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/ba-yi",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (35 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (165 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/ba-yi"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 357 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Ba Yi · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 3 Ba Yi (26 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Ba Yi by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Pa Yih · 01",
+          "孔 kǒng 子 zǐ 谓 wèi 季 jì 氏 shì ， 八 bā 佾 yì 舞 wǔ 于 yú 庭 tíng ， 是 shì 可 kě 忍 rěn 也 yě ， 孰 shú 不 bù 可 kě 忍 rěn 也 yě 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Ba Yi by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Ba Yi Pa Yih · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 26 0:00 孔 kǒng 子 zǐ 谓 wèi 季 jì 氏 shì ， 八 bā 佾 yì 舞 wǔ 于 yú 庭 tíng ， 是 shì 可 kě 忍 rěn 也 yě ， 孰 shú 不 bù 可 kě 忍 rěn 也 yě 。 Confucius said of the head of the Chi family, who had eight rows of pantomimes in his area, \"If he can bear to do this, what may he not bear to do?\" Chapters Select any chapter to play. 01 孔子谓季氏，八佾舞于庭，是可忍也，孰不可忍也。 02 三家者，以雍彻。子曰，相维辟公，天子穆穆，奚取于三家之堂。 03 子曰，人而不仁，如礼何，人而不仁，如乐何。 04 林放问礼之本。子曰，大哉问。礼，与其奢也，宁俭，丧，与其易也，宁戚。 05 子曰，夷狄之有君，不如诸夏之亡也。 06 季氏旅于泰山。子谓冉有曰，女弗能救与。对曰，不能。子曰，呜呼，曾谓泰山，不如林放乎。 07 子曰，君子无所争，必也射乎，揖让而升，下而飮，其争也君子。 08 子夏问曰，巧笑倩兮，美目盼兮，素以为绚兮。何谓也。子曰，绘事后素。曰，礼后乎。子曰，起予者商也，始可与言诗已矣。 09 子曰，夏礼吾能言之，杞不足征也，殷礼吾能言之，宋不足征也，文献不足故也，足，则吾能征之矣。 10 子曰，禘，自既灌而往者，吾不欲观之矣。 11 或问禘之说。子曰，不知也，知其说者，之于天下也，其如示诸斯乎。指其掌。 12 祭如在，祭神如神在。子曰，吾不与祭，如不祭。 13 王孙贾问曰，与其媚于奥，宁媚于灶，何谓也。子曰，不然，获罪于天，无所祷也。 14 子曰，周监于二代，郁郁乎文哉，吾从周。 15 子入大庙，每事问。或曰，孰谓鄹人之子知礼乎，入大庙，每事问。子闻之曰，是礼也。 16 子曰，射不主皮，为力不同科，古之道也。 17 子贡欲去吿朔之饩羊。子曰，赐也，尔爱其羊，我爱其礼。 18 子曰，事君尽礼，人以为谄也。 19 定公问君使臣，臣事君，如之何。孔子对曰，君使臣以礼，臣事君以忠。 20 子曰，关睢乐而不淫，哀而不伤。 21 哀公问社于宰我。宰我对曰，夏后氏以松，殷人以柏，周人以栗，曰，使民战栗。子闻之曰，成事不说，遂事不谏，既往不咎。 22 子曰，管仲之器小哉。或曰，管仲俭乎。曰，管氏有三归，官事不摄，焉得俭。然则管仲知礼乎。曰，邦君树塞门，管氏亦树塞门，邦君为两君之好，有反坫，管氏亦有反坫，管氏而知礼，孰不知礼。 23 子语鲁大师乐曰，乐其可知也，始作，翕如也，从之，纯如也，缴如也，绎如也，以成。 24 仪封人请见，曰，君子之至于斯也，吾未尝不得见也。从者见之，出曰，二三子，何患于丧乎，天下之无道也久矣，天将以夫子为木铎。 25 子谓韶，尽美矣，又尽善也，谓武，尽美矣，未尽善也。 26 子曰，居上不宽，为礼不敬，临丧不哀，吾何以观之哉。",
+        "bodyWordCount": 357,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/ba-yi",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/li-ren",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/li-ren"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 207 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·里仁》 · lunyu.ai",
+        "metaDescription": "播放《论语·里仁第四》真人女声音频，共 26 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《里仁第四》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "里仁 · 01",
+          "子 zǐ 曰 yuē ， 里 lǐ 仁 rén 为 wéi 美 měi ， 择 zé 不 bù 处 chǔ 仁 rén ， 焉 yān 得 dé 知 zhì 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《里仁第四》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 里仁第四 里仁 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 26 0:00 子 zǐ 曰 yuē ， 里 lǐ 仁 rén 为 wéi 美 měi ， 择 zé 不 bù 处 chǔ 仁 rén ， 焉 yān 得 dé 知 zhì 。 孔子说：居住在有仁德风气的地方才好。选择住处却不选在有仁德的地方，怎么算得上明智呢？ 章节 点击任一章立即播放。 01 子曰，里仁为美，择不处仁，焉得知。 02 子曰，不仁者，不可以久处约，不可以长处乐，仁者安仁，知者利仁。 03 子曰，惟仁者，能好人，能恶人。 04 子曰，苟志于仁矣，无恶也。 05 子曰，富与贵，是人之所欲也，不以其道得之，不处也。贫与贱，是人之所恶也，不以其道得之，不去也。君子去仁，恶乎成名。君子无终食之间违仁，造次必于是，顚沛必于是。 06 子曰，我未见好仁者，恶不仁者，好仁者，无以尙之，恶不仁者，其为仁矣，不使不仁者，加乎其身。有能一日用其力于仁矣乎，我未见力不足者。盖有之矣，我未之见也。 07 子曰，人之过也，各于其党，观过，斯知仁矣。 08 子曰，朝闻道，夕死，可矣。 09 子曰，士志于道，而耻恶衣恶食者，未足与议也。 10 子曰，君子之于天下也，无适也，无莫也，义之与比。 11 子曰，君子怀德，小人怀土，君子怀刑，小人怀惠。 12 子曰，放于利而行，多怨。 13 子曰，能以礼让为国乎，何有，不能以礼让为国，如礼何。 14 子曰，不患无位，患所以立，不患莫己知，求为可知也。 15 子曰，参乎，吾道一以贯之。曾子曰，唯。子出，门人问曰，何谓也。曾子曰，夫子之道，忠恕而已矣。 16 子曰，君子喻于义，小人喻于利。 17 子曰，见贤思齐焉，见不贤而内自省也。 18 子曰，事父母几谏，见志不从，又敬不违，劳而不怨。 19 子曰，父母在，不远游，游必有方。 20 子曰，三年无改于父之道，可谓孝矣。 21 子曰，父母之年，不可不知也，一则以喜，一则以惧。 22 子曰，古者言之不出，耻躬之不逮也。 23 子曰，以约，失之者鲜矣。 24 子曰，君子欲讷于言，而敏于行。 25 子曰，德不孤，必有邻。 26 子游曰，事君数，斯辱矣，朋友数，斯疏矣。",
+        "bodyWordCount": 207,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/li-ren",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/wei-zheng",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/wei-zheng"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 214 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·为政》 · lunyu.ai",
+        "metaDescription": "播放《论语·为政第二》真人女声音频，共 24 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《为政第二》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "为政 · 01",
+          "子 zǐ 曰 yuē ， 为 wéi 政 zhèng 以 yǐ 德 dé ， 譬 pì 如 rú 北 běi 辰 chén ， 居 jū 其 qí 所 suǒ ， 而 ér 众 zhòng 星 xīng 共 gǒng 之 zhī 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《为政第二》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 为政第二 为政 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 24 0:00 子 zǐ 曰 yuē ， 为 wéi 政 zhèng 以 yǐ 德 dé ， 譬 pì 如 rú 北 běi 辰 chén ， 居 jū 其 qí 所 suǒ ， 而 ér 众 zhòng 星 xīng 共 gǒng 之 zhī 。 孔子说：用德行来治理政事，就像北极星安居在自己的位置上，众星都会围绕着它运行。 章节 点击任一章立即播放。 01 子曰，为政以德，譬如北辰，居其所，而众星共之。 02 子曰，诗三百，一言以蔽之，曰，思无邪。 03 子曰，道之以政，齐之以刑，民免而无耻。道之以德，齐之以礼，有耻且格。 04 子曰，吾十有五而志于学。三十而立。四十而不惑。五十而知天命。六十而耳顺。七十而从心所欲，不逾矩。 05 孟懿子问孝，子曰，无违。樊迟御，子吿之曰，孟孙问孝于我，我对曰，无违。樊迟曰，何谓也，子曰，生事之以礼，死葬之以礼，祭之以礼。 06 孟武伯问孝，子曰，父母唯其疾之忧。 07 子游问孝，子曰，今之孝者，是谓能养，至于犬马，皆能有养，不敬，何以别乎。 08 子夏问孝，子曰，色难，有事，弟子服其劳，有酒食，先生馔，曾是以为孝乎。 09 子曰，吾与回言终日，不违，如愚。退而省其私，亦足以发，回也不愚。 10 子曰，视其所以。观其所由。察其所安。人焉廋哉，人焉廋哉。 11 子曰，温故而知新，可以为师矣。 12 子曰，君子不器。 13 子贡问君子，子曰，先行其言，而后从之。 14 子曰，君子周而不比，小人比而不周。 15 子曰，学而不思则罔，思而不学则殆。 16 子曰，攻乎异端，斯害也已。 17 子曰，由，诲女知之乎，知之为知之，不知为不知，是知也。 18 子张学干禄。子曰，多闻阙疑，愼言其余，则寡尤，多见阙殆，愼行其余，则寡悔，言寡尤，行寡悔，禄在其中矣。 19 哀公问曰，何为则民服。孔子对曰，擧直错诸枉，则民服，擧枉错诸直，则民不服。 20 季康子问使民敬忠以劝，如之何。子曰，临之以庄，则敬，孝慈，则忠，擧善而教不能，则劝。 21 或谓孔子曰，子奚不为政。子曰，书云孝乎，惟孝友于兄弟，施于有政，是亦为政，奚其为为政。 22 子曰，人而无信，不知其可也，大车无𫐐，小车无𫐄，其何以行之哉。 23 子张问十世，可知也。子曰，殷因于夏礼，所损益，可知也，周因于殷礼，所损益，可知也，其或继周者，虽百世，可知也。 24 子曰，非其鬼而祭之，谄也。见义不为，无勇也。",
+        "bodyWordCount": 214,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/wei-zheng",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/wei-zheng",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (39 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (169 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/wei-zheng"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 351 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Wei Zheng · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 2 Wei Zheng (24 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Wei Zheng by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Wei Chang · 01",
+          "子 zǐ 曰 yuē ， 为 wéi 政 zhèng 以 yǐ 德 dé ， 譬 pì 如 rú 北 běi 辰 chén ， 居 jū 其 qí 所 suǒ ， 而 ér 众 zhòng 星 xīng 共 gǒng 之 zhī 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Wei Zheng by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Wei Zheng Wei Chang · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 24 0:00 子 zǐ 曰 yuē ， 为 wéi 政 zhèng 以 yǐ 德 dé ， 譬 pì 如 rú 北 běi 辰 chén ， 居 jū 其 qí 所 suǒ ， 而 ér 众 zhòng 星 xīng 共 gǒng 之 zhī 。 The Master said, \"He who exercises government by means of his virtue may be compared to the north polar star, which keeps its place and all the stars turn towards it.\" Chapters Select any chapter to play. 01 子曰，为政以德，譬如北辰，居其所，而众星共之。 02 子曰，诗三百，一言以蔽之，曰，思无邪。 03 子曰，道之以政，齐之以刑，民免而无耻。道之以德，齐之以礼，有耻且格。 04 子曰，吾十有五而志于学。三十而立。四十而不惑。五十而知天命。六十而耳顺。七十而从心所欲，不逾矩。 05 孟懿子问孝，子曰，无违。樊迟御，子吿之曰，孟孙问孝于我，我对曰，无违。樊迟曰，何谓也，子曰，生事之以礼，死葬之以礼，祭之以礼。 06 孟武伯问孝，子曰，父母唯其疾之忧。 07 子游问孝，子曰，今之孝者，是谓能养，至于犬马，皆能有养，不敬，何以别乎。 08 子夏问孝，子曰，色难，有事，弟子服其劳，有酒食，先生馔，曾是以为孝乎。 09 子曰，吾与回言终日，不违，如愚。退而省其私，亦足以发，回也不愚。 10 子曰，视其所以。观其所由。察其所安。人焉廋哉，人焉廋哉。 11 子曰，温故而知新，可以为师矣。 12 子曰，君子不器。 13 子贡问君子，子曰，先行其言，而后从之。 14 子曰，君子周而不比，小人比而不周。 15 子曰，学而不思则罔，思而不学则殆。 16 子曰，攻乎异端，斯害也已。 17 子曰，由，诲女知之乎，知之为知之，不知为不知，是知也。 18 子张学干禄。子曰，多闻阙疑，愼言其余，则寡尤，多见阙殆，愼行其余，则寡悔，言寡尤，行寡悔，禄在其中矣。 19 哀公问曰，何为则民服。孔子对曰，擧直错诸枉，则民服，擧枉错诸直，则民不服。 20 季康子问使民敬忠以劝，如之何。子曰，临之以庄，则敬，孝慈，则忠，擧善而教不能，则劝。 21 或谓孔子曰，子奚不为政。子曰，书云孝乎，惟孝友于兄弟，施于有政，是亦为政，奚其为为政。 22 子曰，人而无信，不知其可也，大车无𫐐，小车无𫐄，其何以行之哉。 23 子张问十世，可知也。子曰，殷因于夏礼，所损益，可知也，周因于殷礼，所损益，可知也，其或继周者，虽百世，可知也。 24 子曰，非其鬼而祭之，谄也。见义不为，无勇也。",
+        "bodyWordCount": 351,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/wei-zheng",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/ba-yi",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/ba-yi"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 219 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·八佾》 · lunyu.ai",
+        "metaDescription": "播放《论语·八佾第三》真人女声音频，共 26 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《八佾第三》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "八佾 · 01",
+          "孔 kǒng 子 zǐ 谓 wèi 季 jì 氏 shì ， 八 bā 佾 yì 舞 wǔ 于 yú 庭 tíng ， 是 shì 可 kě 忍 rěn 也 yě ， 孰 shú 不 bù 可 kě 忍 rěn 也 yě 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《八佾第三》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 八佾第三 八佾 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 26 0:00 孔 kǒng 子 zǐ 谓 wèi 季 jì 氏 shì ， 八 bā 佾 yì 舞 wǔ 于 yú 庭 tíng ， 是 shì 可 kě 忍 rěn 也 yě ， 孰 shú 不 bù 可 kě 忍 rěn 也 yě 。 孔子谈到季氏时说：他用天子才能享用的八佾这套六十四人的乐舞在自家庭院里表演，这样的事他都忍心去做，还有什么事是他不忍心去做的呢？ 章节 点击任一章立即播放。 01 孔子谓季氏，八佾舞于庭，是可忍也，孰不可忍也。 02 三家者，以雍彻。子曰，相维辟公，天子穆穆，奚取于三家之堂。 03 子曰，人而不仁，如礼何，人而不仁，如乐何。 04 林放问礼之本。子曰，大哉问。礼，与其奢也，宁俭，丧，与其易也，宁戚。 05 子曰，夷狄之有君，不如诸夏之亡也。 06 季氏旅于泰山。子谓冉有曰，女弗能救与。对曰，不能。子曰，呜呼，曾谓泰山，不如林放乎。 07 子曰，君子无所争，必也射乎，揖让而升，下而飮，其争也君子。 08 子夏问曰，巧笑倩兮，美目盼兮，素以为绚兮。何谓也。子曰，绘事后素。曰，礼后乎。子曰，起予者商也，始可与言诗已矣。 09 子曰，夏礼吾能言之，杞不足征也，殷礼吾能言之，宋不足征也，文献不足故也，足，则吾能征之矣。 10 子曰，禘，自既灌而往者，吾不欲观之矣。 11 或问禘之说。子曰，不知也，知其说者，之于天下也，其如示诸斯乎。指其掌。 12 祭如在，祭神如神在。子曰，吾不与祭，如不祭。 13 王孙贾问曰，与其媚于奥，宁媚于灶，何谓也。子曰，不然，获罪于天，无所祷也。 14 子曰，周监于二代，郁郁乎文哉，吾从周。 15 子入大庙，每事问。或曰，孰谓鄹人之子知礼乎，入大庙，每事问。子闻之曰，是礼也。 16 子曰，射不主皮，为力不同科，古之道也。 17 子贡欲去吿朔之饩羊。子曰，赐也，尔爱其羊，我爱其礼。 18 子曰，事君尽礼，人以为谄也。 19 定公问君使臣，臣事君，如之何。孔子对曰，君使臣以礼，臣事君以忠。 20 子曰，关睢乐而不淫，哀而不伤。 21 哀公问社于宰我。宰我对曰，夏后氏以松，殷人以柏，周人以栗，曰，使民战栗。子闻之曰，成事不说，遂事不谏，既往不咎。 22 子曰，管仲之器小哉。或曰，管仲俭乎。曰，管氏有三归，官事不摄，焉得俭。然则管仲知礼乎。曰，邦君树塞门，管氏亦树塞门，邦君为两君之好，有反坫，管氏亦有反坫，管氏而知礼，孰不知礼。 23 子语鲁大师乐曰，乐其可知也，始作，翕如也，从之，纯如也，缴如也，绎如也，以成。 24 仪封人请见，曰，君子之至于斯也，吾未尝不得见也。从者见之，出曰，二三子，何患于丧乎，天下之无道也久矣，天将以夫子为木铎。 25 子谓韶，尽美矣，又尽善也，谓武，尽美矣，未尽善也。 26 子曰，居上不宽，为礼不敬，临丧不哀，吾何以观之哉。",
+        "bodyWordCount": 219,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/ba-yi",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/li-ren",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (36 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/li-ren"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 347 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Li Ren · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 4 Li Ren (26 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Li Ren by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Le Jin · 01",
+          "子 zǐ 曰 yuē ， 里 lǐ 仁 rén 为 wéi 美 měi ， 择 zé 不 bù 处 chǔ 仁 rén ， 焉 yān 得 dé 知 zhì 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Li Ren by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Li Ren Le Jin · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 26 0:00 子 zǐ 曰 yuē ， 里 lǐ 仁 rén 为 wéi 美 měi ， 择 zé 不 bù 处 chǔ 仁 rén ， 焉 yān 得 dé 知 zhì 。 The Master said, \"It is virtuous manners which constitute the excellence of a neighborhood. If a man in selecting a residence, do not fix on one where such prevail, how can he be wise?\" Chapters Select any chapter to play. 01 子曰，里仁为美，择不处仁，焉得知。 02 子曰，不仁者，不可以久处约，不可以长处乐，仁者安仁，知者利仁。 03 子曰，惟仁者，能好人，能恶人。 04 子曰，苟志于仁矣，无恶也。 05 子曰，富与贵，是人之所欲也，不以其道得之，不处也。贫与贱，是人之所恶也，不以其道得之，不去也。君子去仁，恶乎成名。君子无终食之间违仁，造次必于是，顚沛必于是。 06 子曰，我未见好仁者，恶不仁者，好仁者，无以尙之，恶不仁者，其为仁矣，不使不仁者，加乎其身。有能一日用其力于仁矣乎，我未见力不足者。盖有之矣，我未之见也。 07 子曰，人之过也，各于其党，观过，斯知仁矣。 08 子曰，朝闻道，夕死，可矣。 09 子曰，士志于道，而耻恶衣恶食者，未足与议也。 10 子曰，君子之于天下也，无适也，无莫也，义之与比。 11 子曰，君子怀德，小人怀土，君子怀刑，小人怀惠。 12 子曰，放于利而行，多怨。 13 子曰，能以礼让为国乎，何有，不能以礼让为国，如礼何。 14 子曰，不患无位，患所以立，不患莫己知，求为可知也。 15 子曰，参乎，吾道一以贯之。曾子曰，唯。子出，门人问曰，何谓也。曾子曰，夫子之道，忠恕而已矣。 16 子曰，君子喻于义，小人喻于利。 17 子曰，见贤思齐焉，见不贤而内自省也。 18 子曰，事父母几谏，见志不从，又敬不违，劳而不怨。 19 子曰，父母在，不远游，游必有方。 20 子曰，三年无改于父之道，可谓孝矣。 21 子曰，父母之年，不可不知也，一则以喜，一则以惧。 22 子曰，古者言之不出，耻躬之不逮也。 23 子曰，以约，失之者鲜矣。 24 子曰，君子欲讷于言，而敏于行。 25 子曰，德不孤，必有邻。 26 子游曰，事君数，斯辱矣，朋友数，斯疏矣。",
+        "bodyWordCount": 347,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/li-ren",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/yong-ye",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/yong-ye"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 299 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·雍也》 · lunyu.ai",
+        "metaDescription": "播放《论语·雍也第六》真人女声音频，共 28 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《雍也第六》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "雍也 · 01",
+          "子 zǐ 曰 yuē ， 雍 yōng 也 yě 可 kě 使 shǐ 南 nán 面 miàn 。 仲 zhòng 弓 gōng 问 wèn 子 zǐ 桑 sāng 伯 bó 子 zǐ 。 子 zǐ 曰 yuē ， 可 kě 也 yě ， 简 jiǎn 。 仲 zhòng 弓 gōng 曰 yuē ， 居 jū 敬 jìng 而 ér 行 xíng 简 jiǎn ， 以 yǐ 临 lín 其 qí 民 mín ， 不 bú 亦 yì 可 kě 乎 hū ， 居 jū 简 jiǎn 而 ér 行 xíng 简 jiǎn ， 无 wú 乃 nǎi 大 tài 简 jiǎn 乎 hū 。 子 zǐ 曰 yuē ， 雍 yōng 之 zhī 言 yán 然 rán 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《雍也第六》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 雍也第六 雍也 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 28 0:00 子 zǐ 曰 yuē ， 雍 yōng 也 yě 可 kě 使 shǐ 南 nán 面 miàn 。 仲 zhòng 弓 gōng 问 wèn 子 zǐ 桑 sāng 伯 bó 子 zǐ 。 子 zǐ 曰 yuē ， 可 kě 也 yě ， 简 jiǎn 。 仲 zhòng 弓 gōng 曰 yuē ， 居 jū 敬 jìng 而 ér 行 xíng 简 jiǎn ， 以 yǐ 临 lín 其 qí 民 mín ， 不 bú 亦 yì 可 kě 乎 hū ， 居 jū 简 jiǎn 而 ér 行 xíng 简 jiǎn ， 无 wú 乃 nǎi 大 tài 简 jiǎn 乎 hū 。 子 zǐ 曰 yuē ， 雍 yōng 之 zhī 言 yán 然 rán 。 孔子说：冉雍这个人，可以让他去做诸侯，面向南治理百姓。仲弓向孔子问起子桑伯子这个人。孔子说：还可以，他办事简约不烦琐。仲弓说：一个人内心敬慎而行事简约，用这样的态度来治理百姓，不也是可以的吗？可是如果内心随便，行事又简约，那不就太过简单草率了吗？孔子说：冉雍的话说得对。 章节 点击任一章立即播放。 01 子曰，雍也可使南面。仲弓问子桑伯子。子曰，可也，简。仲弓曰，居敬而行简，以临其民，不亦可乎，居简而行简，无乃大简乎。子曰，雍之言然。 02 哀公问弟子孰为好学。孔子对曰，有颜回者好学，不迁怒，不贰过，不幸短命死矣，今也则亡，未闻好学者也。 03 子华使于齐，冉子为其母请粟。子曰，与之釜。请益。曰，与之庾。冉子与之粟五秉。子曰，赤之适齐也，乘肥马，衣轻裘，吾闻之也，君子周急，不继富。原思为之宰，与之粟九百，辞。子曰，毋，以与尔邻里乡党乎。 04 子谓仲弓曰，犁牛之子骍且角，虽欲勿用，山川其舍诸。 05 子曰，回也，其心三月不违仁，其余，则日月至焉而已矣。 06 季康子问仲由，可使从政也与。子曰，由也果，于从政乎何有。曰，赐也，可使从政也与。曰，赐也达，于从政乎何有。曰，求也，可使从政也与。曰，求也艺，于从政乎何有。 07 季氏使闵子骞为费宰，闵子骞曰，善为我辞焉，如有复我者，则吾必在汶上矣。 08 伯牛有疾，子问之，自牖执其手，曰，亡之，命矣夫，斯人也，而有斯疾也，斯人也，而有斯疾也。 09 子曰，贤哉回也，一箪食，一瓢飮，在陋巷，人不堪其忧，回也不改其乐，贤哉回也。 10 冉求曰，非不说子之道，力不足也。子曰，力不足者，中道而废，今女画。 11 子谓子夏曰，女为君子儒，无为小人儒。 12 子游为武城宰，子曰，女得人焉耳乎。曰，有澹台灭明者，行不由径，非公事，未尝至于偃之室也。 13 子曰，孟之反不伐，奔而殿，将入门，策其马，曰，非敢后也，马不进也。 14 子曰，不有祝𬶍之佞，而有宋朝之美，难乎免于今之世矣。 15 子曰，谁能出不由户，何莫由斯道也。 16 子曰，质胜文则野，文胜质则史，文质彬彬，然后君子。 17 子曰，人之生也直，罔之生也，幸而免。 18 子曰，知之者，不如好之者，好之者，不如乐之者。 19 子曰，中人以上，可以语上也，中人以下，不可以语上也。 20 樊迟问知。子曰，务民之义，敬鬼神而远之，可谓知矣。问仁。曰，仁者先难而后获，可谓仁矣。 21 子曰，知者乐水，仁者乐山，知者动，仁者静，知者乐，仁者寿。 22 子曰，齐一变，至于鲁，鲁一变，至于道。 23 子曰，觚不觚，觚哉觚哉。 24 宰我问曰，仁者虽吿之曰，井有仁焉，其从之也。子曰，何为其然也，君子可逝也，不可陷也，可欺也，不可罔也。 25 子曰，君子博学于文，约之以礼，亦可以弗畔矣夫。 26 子见南子，子路不说，夫子矢之，曰，予所否者，天厌之，天厌之。 27 子曰，中庸之为德也，其至矣乎，民鲜久矣。 28 子贡曰，如有博施于民，而能济众，何如，可谓仁乎。子曰，何事于仁，必也圣乎，尧舜其犹病诸。夫仁者，己欲立而立人，己欲达而达人。能近取譬，可谓仁之方也已。",
+        "bodyWordCount": 299,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/yong-ye",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/gong-ye-chang",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (42 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (172 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/gong-ye-chang"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 466 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Gongye Chang · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 5 Gongye Chang (27 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Gongye Chang by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Kung-ye Ch&#x27;ang · 01",
+          "子 zǐ 谓 wèi 公 gōng 冶 yě 长 cháng ， 可 kě 妻 qì 也 yě ， 虽 suī 在 zài 缧 léi 绁 xiè 之 zhī 中 zhōng ， 非 fēi 其 qí 罪 zuì 也 yě 。 以 yǐ 其 qí 子 zǐ 妻 qì 之 zhī 。 子 zǐ 谓 wèi 南 nán 容 róng ， 邦 bāng 有 yǒu 道 dào ， 不 bú 废 fèi ， 邦 bāng 无 wú 道 dào ， 免 miǎn 于 yú 刑 xíng 戮 lù 。 以 yǐ 其 qí 兄 xiōng 之 zhī 子 zǐ 妻 qì 之 zhī 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Gongye Chang by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Gongye Chang Kung-ye Ch'ang · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 27 0:00 子 zǐ 谓 wèi 公 gōng 冶 yě 长 cháng ， 可 kě 妻 qì 也 yě ， 虽 suī 在 zài 缧 léi 绁 xiè 之 zhī 中 zhōng ， 非 fēi 其 qí 罪 zuì 也 yě 。 以 yǐ 其 qí 子 zǐ 妻 qì 之 zhī 。 子 zǐ 谓 wèi 南 nán 容 róng ， 邦 bāng 有 yǒu 道 dào ， 不 bú 废 fèi ， 邦 bāng 无 wú 道 dào ， 免 miǎn 于 yú 刑 xíng 戮 lù 。 以 yǐ 其 qí 兄 xiōng 之 zhī 子 zǐ 妻 qì 之 zhī 。 1. The Master said of Kung-ye Ch'ang that he might be wived; although he was put in bonds, he had not been guilty of any crime. Accordingly, he gave him his own daughter to wife. 2. Of Nan Yung he said that if the country were well governed he would not be out of office, and if it were ill-governed, he would escape punishment and disgrace. He gave him the daughter of his own elder brother to wife. Chapters Select any chapter to play. 01 子谓公冶长，可妻也，虽在缧绁之中，非其罪也。以其子妻之。子谓南容，邦有道，不废，邦无道，免于刑戮。以其兄之子妻之。 02 子谓子贱，君子哉若人。鲁无君子者，斯焉取斯。 03 子贡问曰，赐也何如。子曰，女器也。曰，何器也。曰，瑚琏也。 04 或曰，雍也仁，而不佞。子曰，焉用佞，御人以口给，屡憎于人，不知其仁，焉用佞。 05 子使漆雕开仕。对曰，吾斯之未能信。子说。 06 子曰，道不行，乘桴浮于海，从我者，其由与。子路闻之喜。子曰，由也，好勇过我，无所取材。 07 孟武伯问子路仁乎。子曰，不知也。又问。子曰，由也，千乘之国，可使治其赋也，不知其仁也。求也何如。子曰，求也，千室之邑，百乘之家，可使为之宰也，不知其仁也。赤也何如。子曰，赤也，束带立于朝，可使与宾客言也，不知其仁也。 08 子谓子贡曰，女与回也，孰愈。对曰，赐也，何敢望回，回也，闻一以知十，赐也，闻一以知二。子曰，弗如也，吾与女，弗如也。 09 宰予昼寝。子曰，朽木不可雕也，粪土之墙，不可杇也，于予与何诛。子曰，始吾于人也，听其言而信其行，今吾于人也，听其言而观其行，于予与改是。 10 子曰，吾未见刚者。或对曰，申枨。子曰，枨也欲，焉得刚。 11 子贡曰，我不欲人之加诸我也，吾亦欲无加诸人。子曰，赐也，非尔所及也。 12 子贡曰，夫子之文章，可得而闻也，夫子之言性与天道，不可得而闻也。 13 子路有闻，未之能行，唯恐有闻。 14 子贡问曰，孔文子，何以谓之文也。子曰，敏而好学，不耻下问，是以谓之文也。 15 子谓子产，有君子之道四焉，其行己也恭，其事上也敬，其养民也惠，其使民也义。 16 子曰，晏平仲善与人交，久而敬之。 17 子曰，藏文仲，居蔡，山节藻棁，何如其知也。 18 子张问曰，令尹子文三仕为令尹，无喜色，三已之，无愠色。旧令尹之政，必以吿新令尹，何如。子曰，忠矣。曰，仁矣乎。曰，未知，焉得仁。崔子弑齐君，陈文子有马十乘，弃而违之。至于他邦，则曰，犹吾大夫崔子也，违之，之一邦，则又曰，犹吾大夫崔子也，违之，何如。子曰，淸矣。曰，仁矣乎。曰，未知，焉得仁。 19 季文",
+        "bodyWordCount": 466,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/gong-ye-chang",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/yong-ye",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (37 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (167 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/yong-ye"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 508 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Yong Ye · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 6 Yong Ye (28 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Yong Ye by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Yung Yey · 01",
+          "子 zǐ 曰 yuē ， 雍 yōng 也 yě 可 kě 使 shǐ 南 nán 面 miàn 。 仲 zhòng 弓 gōng 问 wèn 子 zǐ 桑 sāng 伯 bó 子 zǐ 。 子 zǐ 曰 yuē ， 可 kě 也 yě ， 简 jiǎn 。 仲 zhòng 弓 gōng 曰 yuē ， 居 jū 敬 jìng 而 ér 行 xíng 简 jiǎn ， 以 yǐ 临 lín 其 qí 民 mín ， 不 bú 亦 yì 可 kě 乎 hū ， 居 jū 简 jiǎn 而 ér 行 xíng 简 jiǎn ， 无 wú 乃 nǎi 大 tài 简 jiǎn 乎 hū 。 子 zǐ 曰 yuē ， 雍 yōng 之 zhī 言 yán 然 rán 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Yong Ye by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Yong Ye Yung Yey · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 28 0:00 子 zǐ 曰 yuē ， 雍 yōng 也 yě 可 kě 使 shǐ 南 nán 面 miàn 。 仲 zhòng 弓 gōng 问 wèn 子 zǐ 桑 sāng 伯 bó 子 zǐ 。 子 zǐ 曰 yuē ， 可 kě 也 yě ， 简 jiǎn 。 仲 zhòng 弓 gōng 曰 yuē ， 居 jū 敬 jìng 而 ér 行 xíng 简 jiǎn ， 以 yǐ 临 lín 其 qí 民 mín ， 不 bú 亦 yì 可 kě 乎 hū ， 居 jū 简 jiǎn 而 ér 行 xíng 简 jiǎn ， 无 wú 乃 nǎi 大 tài 简 jiǎn 乎 hū 。 子 zǐ 曰 yuē ， 雍 yōng 之 zhī 言 yán 然 rán 。 1. The Master said, \"There is Yung!—He might occupy the place of a prince.\" 2. Chung-kung asked about Tsze-sang Po-tsze. The Master said, \"He may pass. He does not mind small matters.\" 3. Chung-kung said, \"If a man cherish in himself a reverential feeling of the necessity of attention to business, though he may be easy in small matters in his government of the people, that may be allowed. But if he cherish in himself that easy feeling, and also carry it out in his practice, is not such an easy mode of procedure excessive?\" 4. The Master said, \"Yung's words are right.\" Chapters Select any chapter to play. 01 子曰，雍也可使南面。仲弓问子桑伯子。子曰，可也，简。仲弓曰，居敬而行简，以临其民，不亦可乎，居简而行简，无乃大简乎。子曰，雍之言然。 02 哀公问弟子孰为好学。孔子对曰，有颜回者好学，不迁怒，不贰过，不幸短命死矣，今也则亡，未闻好学者也。 03 子华使于齐，冉子为其母请粟。子曰，与之釜。请益。曰，与之庾。冉子与之粟五秉。子曰，赤之适齐也，乘肥马，衣轻裘，吾闻之也，君子周急，不继富。原思为之宰，与之粟九百，辞。子曰，毋，以与尔邻里乡党乎。 04 子谓仲弓曰，犁牛之子骍且角，虽欲勿用，山川其舍诸。 05 子曰，回也，其心三月不违仁，其余，则日月至焉而已矣。 06 季康子问仲由，可使从政也与。子曰，由也果，于从政乎何有。曰，赐也，可使从政也与。曰，赐也达，于从政乎何有。曰，求也，可使从政也与。曰，求也艺，于从政乎何有。 07 季氏使闵子骞为费宰，闵子骞曰，善为我辞焉，如有复我者，则吾必在汶上矣。 08 伯牛有疾，子问之，自牖执其手，曰，亡之，命矣夫，斯人也，而有斯疾也，斯人也，而有斯疾也。 09 子曰，贤哉回也，一箪食，一瓢飮，在陋巷，人不堪其忧，回也不改其乐，贤哉回也。 10 冉求曰，非不说子之道，力不足也。子曰，力不足者，中道而废，今女画。 11 子谓子夏曰，女为君子儒，无为小人儒。 12 子游为武城宰，子曰，女得人焉耳乎。曰，有澹台灭明者，行不由径，非公事，未尝至于偃之室也。 13 子曰，孟之反不伐，奔而殿，将入门，策其马，曰，非敢后也，马不进也。 14 子曰，不有祝𬶍之佞，而有宋朝之美，难乎免于今之世矣。 15 子曰，谁能出不",
+        "bodyWordCount": 508,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/yong-ye",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/gong-ye-chang",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (21 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (68 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/gong-ye-chang"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 282 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·公冶长》 · lunyu.ai",
+        "metaDescription": "播放《论语·公冶长第五》真人女声音频，共 27 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《公冶长第五》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "公冶长 · 01",
+          "子 zǐ 谓 wèi 公 gōng 冶 yě 长 cháng ， 可 kě 妻 qì 也 yě ， 虽 suī 在 zài 缧 léi 绁 xiè 之 zhī 中 zhōng ， 非 fēi 其 qí 罪 zuì 也 yě 。 以 yǐ 其 qí 子 zǐ 妻 qì 之 zhī 。 子 zǐ 谓 wèi 南 nán 容 róng ， 邦 bāng 有 yǒu 道 dào ， 不 bú 废 fèi ， 邦 bāng 无 wú 道 dào ， 免 miǎn 于 yú 刑 xíng 戮 lù 。 以 yǐ 其 qí 兄 xiōng 之 zhī 子 zǐ 妻 qì 之 zhī 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《公冶长第五》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 公冶长第五 公冶长 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 27 0:00 子 zǐ 谓 wèi 公 gōng 冶 yě 长 cháng ， 可 kě 妻 qì 也 yě ， 虽 suī 在 zài 缧 léi 绁 xiè 之 zhī 中 zhōng ， 非 fēi 其 qí 罪 zuì 也 yě 。 以 yǐ 其 qí 子 zǐ 妻 qì 之 zhī 。 子 zǐ 谓 wèi 南 nán 容 róng ， 邦 bāng 有 yǒu 道 dào ， 不 bú 废 fèi ， 邦 bāng 无 wú 道 dào ， 免 miǎn 于 yú 刑 xíng 戮 lù 。 以 yǐ 其 qí 兄 xiōng 之 zhī 子 zǐ 妻 qì 之 zhī 。 孔子谈到公冶长，说：可以把女儿嫁给他。他虽然曾被关在牢里，但那并不是他的罪过。于是把自己的女儿嫁给了他。孔子谈到南容，说：国家政治清明时，他不会被废弃不用；国家政治黑暗时，他也能免于刑罚杀戮。于是把自己哥哥的女儿嫁给了他。 章节 点击任一章立即播放。 01 子谓公冶长，可妻也，虽在缧绁之中，非其罪也。以其子妻之。子谓南容，邦有道，不废，邦无道，免于刑戮。以其兄之子妻之。 02 子谓子贱，君子哉若人。鲁无君子者，斯焉取斯。 03 子贡问曰，赐也何如。子曰，女器也。曰，何器也。曰，瑚琏也。 04 或曰，雍也仁，而不佞。子曰，焉用佞，御人以口给，屡憎于人，不知其仁，焉用佞。 05 子使漆雕开仕。对曰，吾斯之未能信。子说。 06 子曰，道不行，乘桴浮于海，从我者，其由与。子路闻之喜。子曰，由也，好勇过我，无所取材。 07 孟武伯问子路仁乎。子曰，不知也。又问。子曰，由也，千乘之国，可使治其赋也，不知其仁也。求也何如。子曰，求也，千室之邑，百乘之家，可使为之宰也，不知其仁也。赤也何如。子曰，赤也，束带立于朝，可使与宾客言也，不知其仁也。 08 子谓子贡曰，女与回也，孰愈。对曰，赐也，何敢望回，回也，闻一以知十，赐也，闻一以知二。子曰，弗如也，吾与女，弗如也。 09 宰予昼寝。子曰，朽木不可雕也，粪土之墙，不可杇也，于予与何诛。子曰，始吾于人也，听其言而信其行，今吾于人也，听其言而观其行，于予与改是。 10 子曰，吾未见刚者。或对曰，申枨。子曰，枨也欲，焉得刚。 11 子贡曰，我不欲人之加诸我也，吾亦欲无加诸人。子曰，赐也，非尔所及也。 12 子贡曰，夫子之文章，可得而闻也，夫子之言性与天道，不可得而闻也。 13 子路有闻，未之能行，唯恐有闻。 14 子贡问曰，孔文子，何以谓之文也。子曰，敏而好学，不耻下问，是以谓之文也。 15 子谓子产，有君子之道四焉，其行己也恭，其事上也敬，其养民也惠，其使民也义。 16 子曰，晏平仲善与人交，久而敬之。 17 子曰，藏文仲，居蔡，山节藻棁，何如其知也。 18 子张问曰，令尹子文三仕为令尹，无喜色，三已之，无愠色。旧令尹之政，必以吿新令尹，何如。子曰，忠矣。曰，仁矣乎。曰，未知，焉得仁。崔子弑齐君，陈文子有马十乘，弃而违之。至于他邦，则曰，犹吾大夫崔子也，违之，之一邦，则又曰，犹吾大夫崔子也，违之，何如。子曰，淸矣。曰，仁矣乎。曰，未知，焉得仁。 19 季文子三思而后行。子闻之曰，再，斯可矣。 20 子曰，宁武子，邦有道，则知，邦无道，则愚，其知可及也，其愚不可及也。 21 子在陈曰，归与归与，吾党之小子狂简，斐然成章，不知所以裁之。 22 子曰，伯夷叔齐，不念旧恶，怨是用希。 23 子曰，孰谓微生高直，或乞醯焉，乞诸邻而与之。 24 子曰，巧言令色，足恭，左丘明耻之，丘亦耻之，匿怨而友其人，左丘明耻之，丘亦耻之。 25 颜渊季路侍。子曰，盍各言尔志。子路曰，愿车马，衣轻裘，与朋友共，蔽之而无憾。颜渊曰，愿无伐善，无施劳。子路曰，愿闻子之志。子曰，老者安之，朋友信之，少者怀之。 26 子曰，已矣乎，吾未见能见其过，而内自讼者也。 27 子曰，十室之邑，必有忠信，如丘者焉，不如丘之好学也。",
+        "bodyWordCount": 282,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/gong-ye-chang",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/tai-bo",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (36 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/tai-bo"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 359 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Tai Bo · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 8 Tai Bo (21 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Tai Bo by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "T&#x27;ai-po · 01",
+          "子 zǐ 曰 yuē ， 泰 tài 伯 bó 其 qí 可 kě 谓 wèi 至 zhì 德 dé 也 yě 已 yǐ 矣 yǐ ， 三 sān 以 yǐ 天 tiān 下 xià 让 ràng ， 民 mín 无 wú 得 dé 而 ér 称 chēng 焉 yān 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Tai Bo by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Tai Bo T'ai-po · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 21 0:00 子 zǐ 曰 yuē ， 泰 tài 伯 bó 其 qí 可 kě 谓 wèi 至 zhì 德 dé 也 yě 已 yǐ 矣 yǐ ， 三 sān 以 yǐ 天 tiān 下 xià 让 ràng ， 民 mín 无 wú 得 dé 而 ér 称 chēng 焉 yān 。 The Master said, \"T'ai-po may be said to have reached the highest point of virtuous action. Thrice he declined the kingdom, and the people in ignorance of his motives could not express their approbation of his conduct.\" Chapters Select any chapter to play. 01 子曰，泰伯其可谓至德也已矣，三以天下让，民无得而称焉。 02 子曰，恭而无礼则劳，愼而无礼则葸，勇而无礼则乱，直而无礼则绞。君子笃于亲，则民兴于仁，故旧不遗，则民不偷。 03 曾子有疾，召门弟子曰，启予足，启予手，诗云，战战兢兢，如临深渊，如履薄冰，而今而后，吾知免夫，小子。 04 曾子有疾，孟敬子问之。曾子言曰，鸟之将死，其鸣也哀，人之将死，其言也善。君子所贵乎道者三，动容貌，斯远暴慢矣，正颜色，斯近信笑，出辞气，斯远鄙倍矣，笾豆之事，则有司存。 05 曾子曰，以能问于不能，以多问于寡，有若无，实若虚，犯而不校，昔者吾友，尝从事于斯矣。 06 曾子曰，可以托六尺之孤，可以寄百里之命，临大节，而不可夺也，君子人与，君子人也。 07 曾子曰，士，不可以不弘毅，任重而道远。仁以为己任，不亦重乎，死而后已，不亦远乎。 08 子曰，兴于诗。立于礼。成于乐。 09 子曰，民可使由之，不可使知之。 10 子曰，好勇疾贫，乱也，人而不仁，疾之已甚，乱也。 11 子曰，如有周公之才之美，使骄且吝，其余不足观也已。 12 子曰，三年学，不至于谷，不易得也。 13 子曰，笃信好学，守死善道。危邦不入，乱邦不居，天下有道则见，无道则隐。邦有道，贫且贱焉，耻也，邦无道，富且贵焉，耻也。 14 子曰，不在其位，不谋其政。 15 子曰，师挚之始，关睢之乱，洋洋乎盈耳哉。 16 子曰，狂而不直，侗而不愿，悾悾而不信，吾不知之矣。 17 子曰，学如不及，犹恐失之。 18 子曰，巍巍乎，舜禹之有天下也，而不与焉。 19 子曰，大哉，尧之为君也，巍巍乎，唯天为大，唯尧则之，荡荡乎，民无能名焉。巍巍乎，其有成功也，焕乎，其有文章。 20 舜有臣五人，而天下治。武王曰，予有乱臣十人。孔子曰，才难，不其然乎，唐虞之际，于斯为盛，有妇人焉，九人而已。三分天下有其二，以服事殷，周之德，其可谓至德也已矣。 21 子曰，禹吾无间然矣，菲飮食，而致孝乎鬼神，恶衣服，而致美乎黻冕，卑宫室，而尽力乎沟恤，禹吾无间然矣。",
+        "bodyWordCount": 359,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/tai-bo",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/zi-han",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/zi-han"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 205 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·子罕》 · lunyu.ai",
+        "metaDescription": "播放《论语·子罕第九》真人女声音频，共 30 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《子罕第九》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "子罕 · 01",
+          "子 zǐ 罕 hǎn 言 yán ， 利 lì ， 与 yǔ 命 mìng ， 与 yǔ 仁 rén 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《子罕第九》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 子罕第九 子罕 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 30 0:00 子 zǐ 罕 hǎn 言 yán ， 利 lì ， 与 yǔ 命 mìng ， 与 yǔ 仁 rén 。 孔子很少谈及利益，只赞许天命和仁德。 章节 点击任一章立即播放。 01 子罕言，利，与命，与仁。 02 达巷党人曰，大哉孔子，博学而无所成名。子闻之，谓门弟子曰，吾何执，执御乎，执射乎，吾执御矣。 03 子曰，麻冕，礼也，今也纯，俭，吾从众。拜下，礼也。今拜乎上，泰也，虽违众，吾从下。 04 子绝四，毋意，毋必，毋固，毋我。 05 子畏于匡。曰，文王既没，文不在兹乎。天之将丧斯文也，后死者不得与于斯文也，天之未丧斯文也，匡人其如予何。 06 大宰问于子贡，曰，夫子圣者与，何其多能也。子贡曰，固天纵之将圣，又多能也。子闻之曰，大宰知我乎，吾少也贱，故多能，鄙事，君子多乎哉，不多也。牢曰，子云，吾不试，故艺。 07 子曰，吾有知乎哉，无知也，有鄙夫问于我，空空如也，我叩其两端而竭焉。 08 子曰，凤鸟不至，河不出图，吾已矣乎。 09 子见齐衰者，冕衣裳者，与瞽者，见之，虽少必作，过之必趋。 10 颜渊喟然叹曰，仰之弥高，钻之弥坚，瞻之在前，忽焉在后。夫子循循然善诱人，博我以文，约我以礼。欲罢不能，既竭吾才，如有所立卓尔，虽欲从之，末由也已。 11 子疾病，子路使门人为臣。病间曰，久矣哉，由之行诈也，无臣而为有臣，吾谁欺，欺天乎。且予与其死于臣之手也，无宁死于二三子之手乎，且予纵不得大葬，予死于道路乎。 12 子贡曰，有美玉于斯，韫匵而藏诸，求善贾而沽诸。子曰，沽之哉，沽之哉，我待贾者也。 13 子欲居九夷。或曰，陋，如之何。子曰，君子居之，何陋之有。 14 子曰，吾自衞反鲁，然后乐正，雅颂各得其所。 15 子曰，出则事公卿，入则事父兄，丧事不敢不勉，不为酒困，何有于我哉。 16 子在川上曰，逝者如斯夫，不舍昼夜。 17 子曰，吾未见好德，如好色者也。 18 子曰，譬如为山，未成一篑，止，吾止也，譬如平地，虽覆一篑，进，吾往也。 19 子曰，语之而不惰者，其回也与。 20 子谓颜渊曰，惜乎，吾见其进也，未见其止也。 21 子曰，苗而不秀者，有矣夫，秀而不实者，有矣夫。 22 子曰，后生可畏，焉知来者之不如今也，四十五十而无闻焉，斯亦不足畏也已。 23 子曰，法语之言，能无从乎，改之为贵，巽与之言，能无说乎，绎之为贵，说而不绎，从而不改，吾末如之何也已矣。 24 子曰，主忠信，毋友不如己者，过则勿惮改。 25 子曰，三军可夺师也，匹夫不可夺志也。 26 子曰，衣敝缊袍，与衣孤貉者立，而不耻者，其由也与。不忮不求，何用不臧。子路终身诵之，子曰，是道也，何足以臧。 27 子曰，岁寒，然后知松柏之后雕也。 28 子曰，知者不惑，仁者不忧，勇者不惧。 29 子曰，可与共学，未可与适道，可与适道，未可与立，可与立，未可与权。 30 唐棣之华，偏其反而，岂不尔思，室是远而。子曰，未之思也，夫何远之有。",
+        "bodyWordCount": 205,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/zi-han",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/tai-bo",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/tai-bo"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 217 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·泰伯》 · lunyu.ai",
+        "metaDescription": "播放《论语·泰伯第八》真人女声音频，共 21 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《泰伯第八》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "泰伯 · 01",
+          "子 zǐ 曰 yuē ， 泰 tài 伯 bó 其 qí 可 kě 谓 wèi 至 zhì 德 dé 也 yě 已 yǐ 矣 yǐ ， 三 sān 以 yǐ 天 tiān 下 xià 让 ràng ， 民 mín 无 wú 得 dé 而 ér 称 chēng 焉 yān 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《泰伯第八》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 泰伯第八 泰伯 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 21 0:00 子 zǐ 曰 yuē ， 泰 tài 伯 bó 其 qí 可 kě 谓 wèi 至 zhì 德 dé 也 yě 已 yǐ 矣 yǐ ， 三 sān 以 yǐ 天 tiān 下 xià 让 ràng ， 民 mín 无 wú 得 dé 而 ér 称 chēng 焉 yān 。 孔子说：泰伯可以说是道德最高尚的人了，他多次把天下让给别人，百姓简直找不到恰当的话来称赞他。 章节 点击任一章立即播放。 01 子曰，泰伯其可谓至德也已矣，三以天下让，民无得而称焉。 02 子曰，恭而无礼则劳，愼而无礼则葸，勇而无礼则乱，直而无礼则绞。君子笃于亲，则民兴于仁，故旧不遗，则民不偷。 03 曾子有疾，召门弟子曰，启予足，启予手，诗云，战战兢兢，如临深渊，如履薄冰，而今而后，吾知免夫，小子。 04 曾子有疾，孟敬子问之。曾子言曰，鸟之将死，其鸣也哀，人之将死，其言也善。君子所贵乎道者三，动容貌，斯远暴慢矣，正颜色，斯近信笑，出辞气，斯远鄙倍矣，笾豆之事，则有司存。 05 曾子曰，以能问于不能，以多问于寡，有若无，实若虚，犯而不校，昔者吾友，尝从事于斯矣。 06 曾子曰，可以托六尺之孤，可以寄百里之命，临大节，而不可夺也，君子人与，君子人也。 07 曾子曰，士，不可以不弘毅，任重而道远。仁以为己任，不亦重乎，死而后已，不亦远乎。 08 子曰，兴于诗。立于礼。成于乐。 09 子曰，民可使由之，不可使知之。 10 子曰，好勇疾贫，乱也，人而不仁，疾之已甚，乱也。 11 子曰，如有周公之才之美，使骄且吝，其余不足观也已。 12 子曰，三年学，不至于谷，不易得也。 13 子曰，笃信好学，守死善道。危邦不入，乱邦不居，天下有道则见，无道则隐。邦有道，贫且贱焉，耻也，邦无道，富且贵焉，耻也。 14 子曰，不在其位，不谋其政。 15 子曰，师挚之始，关睢之乱，洋洋乎盈耳哉。 16 子曰，狂而不直，侗而不愿，悾悾而不信，吾不知之矣。 17 子曰，学如不及，犹恐失之。 18 子曰，巍巍乎，舜禹之有天下也，而不与焉。 19 子曰，大哉，尧之为君也，巍巍乎，唯天为大，唯尧则之，荡荡乎，民无能名焉。巍巍乎，其有成功也，焕乎，其有文章。 20 舜有臣五人，而天下治。武王曰，予有乱臣十人。孔子曰，才难，不其然乎，唐虞之际，于斯为盛，有妇人焉，九人而已。三分天下有其二，以服事殷，周之德，其可谓至德也已矣。 21 子曰，禹吾无间然矣，菲飮食，而致孝乎鬼神，恶衣服，而致美乎黻冕，卑宫室，而尽力乎沟恤，禹吾无间然矣。",
+        "bodyWordCount": 217,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/tai-bo",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/shu-er",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/shu-er"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 235 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·述而》 · lunyu.ai",
+        "metaDescription": "播放《论语·述而第七》真人女声音频，共 37 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《述而第七》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "述而 · 01",
+          "子 zǐ 曰 yuē ， 述 shù 而 ér 不 bú 作 zuò ， 信 xìn 而 ér 好 hào 古 gǔ ， 窃 qiè 比 bǐ 于 yú 我 wǒ 老 lǎo 彭 péng 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《述而第七》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 述而第七 述而 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 37 0:00 子 zǐ 曰 yuē ， 述 shù 而 ér 不 bú 作 zuò ， 信 xìn 而 ér 好 hào 古 gǔ ， 窃 qiè 比 bǐ 于 yú 我 wǒ 老 lǎo 彭 péng 。 孔子说：阐述前人的道理而不擅自创作，相信并喜爱古代的文化，我私下里把自己比作商朝的老彭。 章节 点击任一章立即播放。 01 子曰，述而不作，信而好古，窃比于我老彭。 02 子曰，默而识之，学而不厌，诲人不倦，何有于我哉。 03 子曰，德之不修，学之不讲，闻义不能徒，不善不能改，是吾忧也。 04 子之燕居，申申如也，夭夭如也。 05 子曰，甚矣吾衰也，久矣，吾不复梦见周公。 06 子曰，志于道。据于德。依于仁。游于艺。 07 子曰，自行束修以上，吾未尝无诲焉。 08 子曰，不愤不启，不悱不发，擧一隅，不以三隅反，则不复也。 09 子食于有丧者之侧，未尝饱也。子于是日哭，则不歌。 10 子谓颜渊曰，用之则行，舍之则藏，惟我与尔有是夫。子路曰，子行三军则谁与。子曰，暴虎冯河，死而无悔者，吾不与也，必也临事而惧，好谋而成者也。 11 子曰，富而可求也，虽执鞭之士，吾亦为之，如不可求，从吾所好。 12 子之所愼，齐，战，疾。 13 子在齐闻韶，三月不知肉味，曰，不图为乐之至于斯也。 14 冉有曰，夫子为衞君乎。子贡曰，诺，吾将问之。入曰，伯夷叔齐，何人也。曰，古之贤人也。曰，怨乎。曰，求仁而得仁，又何怨。出曰，夫子不为也。 15 子曰，饭疏食飮水，曲肱而枕之，乐亦在其中矣，不义而富且贵，于我如浮云。 16 子曰，加我数年，五十以学易，可以无大过矣。 17 子所雅言，诗，书，执礼，皆雅言也。 18 叶公问孔子于子路，子路不对。子曰，女奚不曰，其为人也，发愤忘食，乐以忘忧，不知老之将至云尔。 19 子曰，我非生而知之者，好古，敏以求之者也。 20 子不语，怪，力，乱，神。 21 子曰，三人行，必有我师焉，择其善者而从之，其不善者而改之。 22 子曰，天生德于予，桓魋其如予何。 23 子曰，二三子，以我为隐乎。吾无隐乎尔。吾无行而不与二三子者，是丘也。 24 子以四教，文，行，忠，信。 25 子曰，圣人吾不得而见之矣，得见君子者，斯可矣。子曰，善人吾不得而见之矣，得见有恒者，斯可矣。亡而为有，虚而为盈，约而为泰，难乎有恒矣。 26 子钓而不纲，弋不射宿。 27 子曰，盖有不知而作之者，我无是也。多闻，择其善者而从之，多见而识之，知之次也。 28 互乡难与言，童子见，门人惑。子曰，与其进也，不与其退也，唯何甚，人洁己以进，与其洁也，不保其往也。 29 子曰，仁远乎哉，我欲仁，斯仁至矣。 30 陈司败问昭公知礼乎。孔子曰，知礼。孔子退，揖巫马期而进之，曰，吾闻君子不党，君子亦党乎，君取于吴为同姓，谓之吴孟子，君而知礼，孰不知礼。巫马期以吿。子曰，丘也幸，苟有过，人必知之。 31 子与人歌，而善，必使反之，而后和之。 32 子曰，文，莫吾犹人也，躬行君子，则吾未之有得。 33 子曰，若圣与仁，则吾岂敢，抑为之不厌，诲人不倦，则可谓云尔已矣。公西华曰，正唯弟子不能学也。 34 子疾病。子路请祷。子曰，有诸。子路对曰，有之，诔曰，祷尔于上下神祇。子曰，丘之祷久矣。 35 子曰，奢则不孙，俭则固，与其不孙也，宁固。 36 子曰，君子坦荡荡，小人长戚戚。 37 子温而厉，威而不猛，恭而安。",
+        "bodyWordCount": 235,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/shu-er",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/shu-er",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (36 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/shu-er"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 365 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Shu Er · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 7 Shu Er (37 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Shu Er by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Shu R. · 01",
+          "子 zǐ 曰 yuē ， 述 shù 而 ér 不 bú 作 zuò ， 信 xìn 而 ér 好 hào 古 gǔ ， 窃 qiè 比 bǐ 于 yú 我 wǒ 老 lǎo 彭 péng 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Shu Er by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Shu Er Shu R. · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 37 0:00 子 zǐ 曰 yuē ， 述 shù 而 ér 不 bú 作 zuò ， 信 xìn 而 ér 好 hào 古 gǔ ， 窃 qiè 比 bǐ 于 yú 我 wǒ 老 lǎo 彭 péng 。 The Master said, \"A transmitter and not a maker, believing in and loving the ancients, I venture to compare myself with our old P'ang.\" Chapters Select any chapter to play. 01 子曰，述而不作，信而好古，窃比于我老彭。 02 子曰，默而识之，学而不厌，诲人不倦，何有于我哉。 03 子曰，德之不修，学之不讲，闻义不能徒，不善不能改，是吾忧也。 04 子之燕居，申申如也，夭夭如也。 05 子曰，甚矣吾衰也，久矣，吾不复梦见周公。 06 子曰，志于道。据于德。依于仁。游于艺。 07 子曰，自行束修以上，吾未尝无诲焉。 08 子曰，不愤不启，不悱不发，擧一隅，不以三隅反，则不复也。 09 子食于有丧者之侧，未尝饱也。子于是日哭，则不歌。 10 子谓颜渊曰，用之则行，舍之则藏，惟我与尔有是夫。子路曰，子行三军则谁与。子曰，暴虎冯河，死而无悔者，吾不与也，必也临事而惧，好谋而成者也。 11 子曰，富而可求也，虽执鞭之士，吾亦为之，如不可求，从吾所好。 12 子之所愼，齐，战，疾。 13 子在齐闻韶，三月不知肉味，曰，不图为乐之至于斯也。 14 冉有曰，夫子为衞君乎。子贡曰，诺，吾将问之。入曰，伯夷叔齐，何人也。曰，古之贤人也。曰，怨乎。曰，求仁而得仁，又何怨。出曰，夫子不为也。 15 子曰，饭疏食飮水，曲肱而枕之，乐亦在其中矣，不义而富且贵，于我如浮云。 16 子曰，加我数年，五十以学易，可以无大过矣。 17 子所雅言，诗，书，执礼，皆雅言也。 18 叶公问孔子于子路，子路不对。子曰，女奚不曰，其为人也，发愤忘食，乐以忘忧，不知老之将至云尔。 19 子曰，我非生而知之者，好古，敏以求之者也。 20 子不语，怪，力，乱，神。 21 子曰，三人行，必有我师焉，择其善者而从之，其不善者而改之。 22 子曰，天生德于予，桓魋其如予何。 23 子曰，二三子，以我为隐乎。吾无隐乎尔。吾无行而不与二三子者，是丘也。 24 子以四教，文，行，忠，信。 25 子曰，圣人吾不得而见之矣，得见君子者，斯可矣。子曰，善人吾不得而见之矣，得见有恒者，斯可矣。亡而为有，虚而为盈，约而为泰，难乎有恒矣。 26 子钓而不纲，弋不射宿。 27 子曰，盖有不知而作之者，我无是也。多闻，择其善者而从之，多见而识之，知之次也。 28 互乡难与言，童子见，门人惑。子曰，与其进也，不与其退也，唯何甚，人洁己以进，与其洁也，不保其往也。 29 子曰，仁远乎哉，我欲仁，斯仁至矣。 30 陈司败问昭公知礼乎。孔子曰，知礼。孔子退，揖巫马期而进之，曰，吾闻君子不党，君子亦党乎，君取于吴为同姓，谓之吴孟子，君而知礼，孰不知礼。巫马期以吿。子曰，丘也幸，苟有过，人必知之。 31 子与人歌，而善，必使反之，而后和之。 32 子曰，文，莫吾犹人也，躬行君子，则吾未之有得。 33 子曰，若圣与仁，则吾岂敢，抑为之不厌，诲人不倦，则可谓云尔已矣。公西华曰，正唯弟子不能学也。 34 子疾病。子路请祷。子曰，有诸。子路对曰，有之，诔曰，祷尔于上下神祇。子曰，丘之祷久矣。 35 子曰，奢则不孙，俭则固，与其不孙也，宁固。 36 子曰，君子坦荡荡，小人长戚戚。 37 子温而厉，威而不猛，恭而安。",
+        "bodyWordCount": 365,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/shu-er",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/xian-jin",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (68 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/xian-jin"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 234 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·先进》 · lunyu.ai",
+        "metaDescription": "播放《论语·先进第十一》真人女声音频，共 25 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《先进第十一》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "先进 · 01",
+          "子 zǐ 曰 yuē ， 先 xiān 进 jìn 于 yú 礼 lǐ 乐 yuè ， 野 yě 人 rén 也 yě ， 后 hòu 进 jìn 于 yú 礼 lǐ 乐 yuè ， 君 jūn 子 zǐ 也 yě ， 如 rú 用 yòng 之 zhī ， 则 zé 吾 wú 从 cóng 先 xiān 进 jìn 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《先进第十一》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 先进第十一 先进 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 25 0:00 子 zǐ 曰 yuē ， 先 xiān 进 jìn 于 yú 礼 lǐ 乐 yuè ， 野 yě 人 rén 也 yě ， 后 hòu 进 jìn 于 yú 礼 lǐ 乐 yuè ， 君 jūn 子 zǐ 也 yě ， 如 rú 用 yòng 之 zhī ， 则 zé 吾 wú 从 cóng 先 xiān 进 jìn 。 孔子说：先学习礼乐然后再做官的，是未曾受过爵禄的平民；先做了官然后再学习礼乐的，是世家子弟。如果要选用人才，那我主张选用先学礼乐的那一批人。 章节 点击任一章立即播放。 01 子曰，先进于礼乐，野人也，后进于礼乐，君子也，如用之，则吾从先进。 02 子曰，从我于陈蔡者，皆不及门也。德行，颜渊，闵子骞，冉伯牛，仲弓。言语，宰我，子贡。政事，冉有，季路。文学，子游，子夏。 03 子曰，回也，非助我者也，于吾言，无所不说。 04 子曰，孝哉闵子骞，人不间于其父母昆弟之言。 05 南容三复白圭，孔子以其兄之子妻之。 06 季康子问弟子孰为好学。孔子对曰，有颜回者好学，不幸短命死矣，今也则亡。 07 颜渊死，颜路请子之车，以为之椁。子曰，才不才，亦各言其子也，鲤也死，有棺而无椁，吾不徒行以为之椁，以吾从大夫之后，不可徒行也。 08 颜渊死，子曰，噫，天丧予，天丧予。 09 颜渊死，子哭之恸，从者曰，子恸矣。曰，有恸乎。非夫人之为恸而谁为。 10 颜渊死，门人欲厚葬之。子曰，不可。门人厚葬之。子曰，回也，视予犹父也，予不得视犹子也，非我也，夫二三子也。 11 季路问事鬼神。子曰，未能事人，焉能事鬼。敢问死。曰，未知生，焉知死。 12 闵子侍侧，訚訚如也，子路行行如也，冉有，子贡，侃侃如也。子乐。若由也，不得其死然。 13 鲁人为长府。闵子骞曰，仍旧贯，如之何，何必改作。子曰，夫人不言，言必有中。 14 子曰，由之瑟，奚为于丘之门。门人不敬子路。子曰，由也，升堂矣，未入于室也。 15 子贡问师与商也孰贤。子曰，师也过，商也不及。曰，然则师愈与。子曰，过犹不及。 16 季氏富于周公，而求也为之聚敛而附益之。子曰，非吾徒也，小子，鸣鼓而攻之可也。 17 柴也愚。参也鲁。师也辟。由也喭。 18 子曰，回也其庶乎屡空。赐不受命，而货殖焉，亿则屡中。 19 子张问善人之道。子曰，不践迹，亦不入于室。 20 子曰，论笃是与，君子者乎，色庄者乎。 21 子路问闻斯行诸。子曰，有父兄在，如之何其闻斯行之。冉有问闻斯行诸。子曰，闻斯行之。公西华曰，由也问闻斯行诸，子曰，有父兄在，求也问闻斯行诸，子曰，闻斯行之，赤也惑，敢问。子曰，求也退，故进之，由也兼人，故退之。 22 子畏于匡，颜渊后，子曰，吾以女为死矣。曰，子在，回何敢死。 23 季子然问仲由冉求，可谓大臣与。子曰，吾以子为异之问，曾由与求之问。所谓大臣者，以道事君，不可则止。今由与求也，可谓具臣矣。曰，然则从之者与。子曰，弑父与君，亦不从也。 24 子路使子羔为费宰。子曰，贼夫人之子。子路曰，有民人焉，有社稷焉，何必读书，然后为学。子曰，是故恶夫佞者。 25 子路，曾皙，冉有，公西华，侍坐。子曰，以吾一日长乎尔，毋吾以也。居则曰，不吾知也，如或知尔，则何以哉。子路率尔而对曰，千乘之国，摄乎大国之闲，加之以师旅，因之以饥馑，由也为之，比及三年，可使有勇，且知方也。夫子哂之。",
+        "bodyWordCount": 234,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/xian-jin",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/zi-han",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (36 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (166 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/zi-han"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 329 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Zi Han · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 9 Zi Han (30 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Zi Han by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Tsze Han · 01",
+          "子 zǐ 罕 hǎn 言 yán ， 利 lì ， 与 yǔ 命 mìng ， 与 yǔ 仁 rén 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Zi Han by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Zi Han Tsze Han · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 30 0:00 子 zǐ 罕 hǎn 言 yán ， 利 lì ， 与 yǔ 命 mìng ， 与 yǔ 仁 rén 。 The subjects of which the Master seldom spoke were—profitableness, and also the appointments of Heaven, and perfect virtue. Chapters Select any chapter to play. 01 子罕言，利，与命，与仁。 02 达巷党人曰，大哉孔子，博学而无所成名。子闻之，谓门弟子曰，吾何执，执御乎，执射乎，吾执御矣。 03 子曰，麻冕，礼也，今也纯，俭，吾从众。拜下，礼也。今拜乎上，泰也，虽违众，吾从下。 04 子绝四，毋意，毋必，毋固，毋我。 05 子畏于匡。曰，文王既没，文不在兹乎。天之将丧斯文也，后死者不得与于斯文也，天之未丧斯文也，匡人其如予何。 06 大宰问于子贡，曰，夫子圣者与，何其多能也。子贡曰，固天纵之将圣，又多能也。子闻之曰，大宰知我乎，吾少也贱，故多能，鄙事，君子多乎哉，不多也。牢曰，子云，吾不试，故艺。 07 子曰，吾有知乎哉，无知也，有鄙夫问于我，空空如也，我叩其两端而竭焉。 08 子曰，凤鸟不至，河不出图，吾已矣乎。 09 子见齐衰者，冕衣裳者，与瞽者，见之，虽少必作，过之必趋。 10 颜渊喟然叹曰，仰之弥高，钻之弥坚，瞻之在前，忽焉在后。夫子循循然善诱人，博我以文，约我以礼。欲罢不能，既竭吾才，如有所立卓尔，虽欲从之，末由也已。 11 子疾病，子路使门人为臣。病间曰，久矣哉，由之行诈也，无臣而为有臣，吾谁欺，欺天乎。且予与其死于臣之手也，无宁死于二三子之手乎，且予纵不得大葬，予死于道路乎。 12 子贡曰，有美玉于斯，韫匵而藏诸，求善贾而沽诸。子曰，沽之哉，沽之哉，我待贾者也。 13 子欲居九夷。或曰，陋，如之何。子曰，君子居之，何陋之有。 14 子曰，吾自衞反鲁，然后乐正，雅颂各得其所。 15 子曰，出则事公卿，入则事父兄，丧事不敢不勉，不为酒困，何有于我哉。 16 子在川上曰，逝者如斯夫，不舍昼夜。 17 子曰，吾未见好德，如好色者也。 18 子曰，譬如为山，未成一篑，止，吾止也，譬如平地，虽覆一篑，进，吾往也。 19 子曰，语之而不惰者，其回也与。 20 子谓颜渊曰，惜乎，吾见其进也，未见其止也。 21 子曰，苗而不秀者，有矣夫，秀而不实者，有矣夫。 22 子曰，后生可畏，焉知来者之不如今也，四十五十而无闻焉，斯亦不足畏也已。 23 子曰，法语之言，能无从乎，改之为贵，巽与之言，能无说乎，绎之为贵，说而不绎，从而不改，吾末如之何也已矣。 24 子曰，主忠信，毋友不如己者，过则勿惮改。 25 子曰，三军可夺师也，匹夫不可夺志也。 26 子曰，衣敝缊袍，与衣孤貉者立，而不耻者，其由也与。不忮不求，何用不臧。子路终身诵之，子曰，是道也，何足以臧。 27 子曰，岁寒，然后知松柏之后雕也。 28 子曰，知者不惑，仁者不忧，勇者不惧。 29 子曰，可与共学，未可与适道，可与适道，未可与立，可与立，未可与权。 30 唐棣之华，偏其反而，岂不尔思，室是远而。子曰，未之思也，夫何远之有。",
+        "bodyWordCount": 329,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/zi-han",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/en/listen/xiang-dang",
+      "score": 88,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (40 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (171 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/en/listen/xiang-dang"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": true,
+          "points": 12,
+          "details": "Estimated 364 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "Hear The Analects: Xiang Dang · lunyu.ai",
+        "metaDescription": "Play recorded female-voice audio for The Analects, Book 10 Xiang Dang (18 chapters), with source text, pinyin, and guide text. All 20 books and 499 chapters are available.",
+        "h1": [
+          "Listen to Xiang Dang by chapter"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "Heang Tang · 01",
+          "孔 kǒng 子 zǐ 于 yú 乡 xiāng 党 dǎng ， 恂 xún 恂 xún 如 rú 也 yě ， 似 sì 不 bù 能 néng 言 yán 者 zhě 。 其 qí 在 zài 宗 zōng 庙 miào 朝 cháo 廷 tíng ， 便 pián 便 pián 言 yán ， 唯 wéi 谨 jǐn 尔 ěr 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "Listening mode · recorded female voice · pinyin edition Listen to Xiang Dang by chapter All 20 books and 499 chapters of The Analects are available as recorded MP3 audio, one file per chapter, paired with source text, pinyin, and guide text. Play in order or jump to any chapter. The Analects · Xiang Dang Heang Tang · 01 Study Previous Play Restart Next Autoplay 0:00 1 / 18 0:00 孔 kǒng 子 zǐ 于 yú 乡 xiāng 党 dǎng ， 恂 xún 恂 xún 如 rú 也 yě ， 似 sì 不 bù 能 néng 言 yán 者 zhě 。 其 qí 在 zài 宗 zōng 庙 miào 朝 cháo 廷 tíng ， 便 pián 便 pián 言 yán ， 唯 wéi 谨 jǐn 尔 ěr 。 1. Confucius, in his village, looked simple and sincere, and as if he were not able to speak. 2. When he was in the prince's ancestorial temple, or in the court, he spoke minutely on every point, but cautiously. Chapters Select any chapter to play. 01 孔子于乡党，恂恂如也，似不能言者。其在宗庙朝廷，便便言，唯谨尔。 02 朝，与下大夫言，侃侃如也，与上大夫言，訚訚如也。君在，踧踖如也，与与如也。 03 君召使摈，色勃如也，足躩如也。揖所与立，左右手，衣前后，檐如也。趋进，翼如也。宾退，必复命曰，宾不顾矣。 04 入公门，鞠躬如也，如不容。立不中门，行不履阈。过位，色勃如也，足躩如也，其言似不足者。摄齐升堂，鞠躬如也，屛气似不息者。出，降一等，逞颜色，怡怡如也，没阶，趋进，翼如也，复其位，踧踖如也。 05 执圭，鞠躬如也，如不胜，上如揖，下如授，勃如战色，足蹜蹜如有循。享礼，有容色。私觌，愉愉如也。 06 君子不以绀緅饰。红紫不以为亵服。当暑袗𫄨绤，必表而出之。缁衣羔裘，素衣麑裘，黄衣狐裘。亵裘长，短右袂。必有寝衣，长一身有半。狐貉之厚以居。去丧，无所不佩。非帷裳，必杀之。羔裘玄冠不以吊。吉月，必朝服而朝。 07 齐，必有明衣，布。齐必变食，居必迁坐。 08 食不厌精，脍不厌细。食饐而餲，鱼馁而肉败，不食，色恶不食，臭恶不食，失饪不食，不时不食。割不正不食，不得其酱不食。肉虽多，不使胜食气，惟酒无量，不及乱。沽酒市脯不食。不撤姜食。不多食。祭于公，不宿肉。祭肉不出三日，出三日，不食之矣。食不语，寝不言。虽疏食菜羹，瓜祭，必齐如也。 09 席不正不坐。 10 乡人飮酒，杖者出，斯出矣。乡人傩，朝服而立于阼阶。 11 问人于他邦，再拜而送之。康子馈药，拜而受之，曰，丘未达，不敢尝。 12 厩焚，子退朝，曰，伤人乎，不问马。 13 君赐食，必正席，先尝之，君赐腥，必熟而荐之，君赐生，必畜之。侍食于君，君祭，先饭。疾，君视之，东首，加朝服拖绅。君命召，不俟驾行矣。 14 入大庙每事问。 15 朋友死，无所归，曰，于我殡。朋友之馈，虽车马，非祭肉不拜。 16 寝不尸，居不容。见齐衰者，虽狎必变，见冕者，与瞽者，虽亵必以貌。凶服者式之，式负版者。有盛馔，必变色而作。迅雷，风烈，必变。 17 升车，必正立，执绥。车中，不内顾，不疾言，不亲指。 18 色斯擧矣，翔而后集。曰，山梁雌雉，时哉时哉。子路共之，三嗅而作。",
+        "bodyWordCount": 364,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/en/listen/xiang-dang",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    },
+    {
+      "url": "https://www.lunyu.ai/zh-Hans/listen/xiang-dang",
+      "score": 76,
+      "maxScore": 112,
+      "summary": "Decent base, but key machine-readable signals are missing.",
+      "checks": [
+        {
+          "id": "title",
+          "label": "Clear page title",
+          "passed": true,
+          "points": 10,
+          "details": "Found title (20 chars)."
+        },
+        {
+          "id": "meta-description",
+          "label": "Meta description",
+          "passed": true,
+          "points": 10,
+          "details": "Found description (67 chars)."
+        },
+        {
+          "id": "canonical",
+          "label": "Canonical URL",
+          "passed": true,
+          "points": 8,
+          "details": "Canonical: https://www.lunyu.ai/zh-Hans/listen/xiang-dang"
+        },
+        {
+          "id": "h1",
+          "label": "Single H1 heading",
+          "passed": true,
+          "points": 8,
+          "details": "Found 1 h1 tag(s)."
+        },
+        {
+          "id": "schema",
+          "label": "Structured data present",
+          "passed": false,
+          "points": 8,
+          "details": "No JSON-LD structured data found."
+        },
+        {
+          "id": "schema-types",
+          "label": "Schema types identified",
+          "passed": false,
+          "points": 8,
+          "details": "No recognized @type found in JSON-LD."
+        },
+        {
+          "id": "og",
+          "label": "Open Graph basics",
+          "passed": true,
+          "points": 8,
+          "details": "og:title and og:description found."
+        },
+        {
+          "id": "internal-links",
+          "label": "Internal linking",
+          "passed": true,
+          "points": 10,
+          "details": "Found 38 internal links."
+        },
+        {
+          "id": "image-alt",
+          "label": "Image alt coverage",
+          "passed": false,
+          "points": 8,
+          "details": "1/2 images include alt text."
+        },
+        {
+          "id": "text-depth",
+          "label": "Readable content depth",
+          "passed": false,
+          "points": 12,
+          "details": "Estimated 219 words in body text."
+        },
+        {
+          "id": "indexability",
+          "label": "Indexable for discovery",
+          "passed": true,
+          "points": 10,
+          "details": "No noindex directive found."
+        },
+        {
+          "id": "ai-meta-tags",
+          "label": "AI-accessible meta tags",
+          "passed": true,
+          "points": 6,
+          "details": "No restrictive AI meta tags."
+        },
+        {
+          "id": "heading-hierarchy",
+          "label": "Content structure",
+          "passed": true,
+          "points": 6,
+          "details": "Clean heading structure (3 levels) — easy for AI agents to chunk and cite."
+        }
+      ],
+      "aiView": {
+        "title": "听读《论语·乡党》 · lunyu.ai",
+        "metaDescription": "播放《论语·乡党第十》真人女声音频，共 18 章，按章节连续听读，并同步查看原文、注音与白话导读。全书 20 篇 499 章均已上线。",
+        "h1": [
+          "按章节听《乡党第十》"
+        ],
+        "h1Count": 1,
+        "headings": [
+          "乡党 · 01",
+          "孔 kǒng 子 zǐ 于 yú 乡 xiāng 党 dǎng ， 恂 xún 恂 xún 如 rú 也 yě ， 似 sì 不 bù 能 néng 言 yán 者 zhě 。 其 qí 在 zài 宗 zōng 庙 miào 朝 cháo 廷 tíng ， 便 pián 便 pián 言 yán ， 唯 wéi 谨 jǐn 尔 ěr 。"
+        ],
+        "jsonLdCount": 0,
+        "schemaTypes": [],
+        "jsonLdSummary": "",
+        "internalLinkCount": 38,
+        "textExcerpt": "听读模式 · 真人女声 · 注音版 按章节听《乡党第十》 《论语》全书 20 篇 499 章真人女声音频已全部上线：每章一个 MP3，保留原文、拼音与白话导读。播放器按章节顺序连续播放，也可以直接点任一章开始。 论语 · 乡党第十 乡党 · 01 深读 上一章 播放 重听 下一章 连续播放 0:00 1 / 18 0:00 孔 kǒng 子 zǐ 于 yú 乡 xiāng 党 dǎng ， 恂 xún 恂 xún 如 rú 也 yě ， 似 sì 不 bù 能 néng 言 yán 者 zhě 。 其 qí 在 zài 宗 zōng 庙 miào 朝 cháo 廷 tíng ， 便 pián 便 pián 言 yán ， 唯 wéi 谨 jǐn 尔 ěr 。 孔子在本乡的父老乡亲中间，显得温和恭顺，好像不太会说话的样子。他在宗庙和朝廷里，却说话明白流畅，只是态度很谨慎。 章节 点击任一章立即播放。 01 孔子于乡党，恂恂如也，似不能言者。其在宗庙朝廷，便便言，唯谨尔。 02 朝，与下大夫言，侃侃如也，与上大夫言，訚訚如也。君在，踧踖如也，与与如也。 03 君召使摈，色勃如也，足躩如也。揖所与立，左右手，衣前后，檐如也。趋进，翼如也。宾退，必复命曰，宾不顾矣。 04 入公门，鞠躬如也，如不容。立不中门，行不履阈。过位，色勃如也，足躩如也，其言似不足者。摄齐升堂，鞠躬如也，屛气似不息者。出，降一等，逞颜色，怡怡如也，没阶，趋进，翼如也，复其位，踧踖如也。 05 执圭，鞠躬如也，如不胜，上如揖，下如授，勃如战色，足蹜蹜如有循。享礼，有容色。私觌，愉愉如也。 06 君子不以绀緅饰。红紫不以为亵服。当暑袗𫄨绤，必表而出之。缁衣羔裘，素衣麑裘，黄衣狐裘。亵裘长，短右袂。必有寝衣，长一身有半。狐貉之厚以居。去丧，无所不佩。非帷裳，必杀之。羔裘玄冠不以吊。吉月，必朝服而朝。 07 齐，必有明衣，布。齐必变食，居必迁坐。 08 食不厌精，脍不厌细。食饐而餲，鱼馁而肉败，不食，色恶不食，臭恶不食，失饪不食，不时不食。割不正不食，不得其酱不食。肉虽多，不使胜食气，惟酒无量，不及乱。沽酒市脯不食。不撤姜食。不多食。祭于公，不宿肉。祭肉不出三日，出三日，不食之矣。食不语，寝不言。虽疏食菜羹，瓜祭，必齐如也。 09 席不正不坐。 10 乡人飮酒，杖者出，斯出矣。乡人傩，朝服而立于阼阶。 11 问人于他邦，再拜而送之。康子馈药，拜而受之，曰，丘未达，不敢尝。 12 厩焚，子退朝，曰，伤人乎，不问马。 13 君赐食，必正席，先尝之，君赐腥，必熟而荐之，君赐生，必畜之。侍食于君，君祭，先饭。疾，君视之，东首，加朝服拖绅。君命召，不俟驾行矣。 14 入大庙每事问。 15 朋友死，无所归，曰，于我殡。朋友之馈，虽车马，非祭肉不拜。 16 寝不尸，居不容。见齐衰者，虽狎必变，见冕者，与瞽者，虽亵必以貌。凶服者式之，式负版者。有盛馔，必变色而作。迅雷，风烈，必变。 17 升车，必正立，执绥。车中，不内顾，不疾言，不亲指。 18 色斯擧矣，翔而后集。曰，山梁雌雉，时哉时哉。子路共之，三嗅而作。",
+        "bodyWordCount": 219,
+        "publishedDate": "",
+        "modifiedDate": "",
+        "author": "",
+        "aiMetaTags": [],
+        "hasNoindex": false,
+        "canonical": "https://www.lunyu.ai/zh-Hans/listen/xiang-dang",
+        "hasOg": true,
+        "imgCount": 2,
+        "imgsWithAlt": 1,
+        "headingLevels": [
+          1,
+          2,
+          3
+        ]
+      },
+      "pageType": "other"
+    }
+  ]
+}

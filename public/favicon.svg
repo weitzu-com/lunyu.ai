@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="lunyu.ai">
+  <rect width="128" height="128" rx="18" fill="#faf8f3"/>
+  <rect x="12" y="12" width="104" height="104" rx="16" fill="none" stroke="#b44b3c" stroke-width="8"/>
+  <rect x="24" y="24" width="80" height="80" rx="10" fill="#b44b3c"/>
+  <circle cx="64" cy="64" r="31" fill="none" stroke="#faf8f3" stroke-width="4" opacity="0.55"/>
+  <text x="64" y="79" text-anchor="middle" font-size="56" font-family="serif" font-weight="700" fill="#faf8f3">论</text>
+</svg>
