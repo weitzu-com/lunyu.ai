@@ -6,19 +6,13 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
-  async redirects() {
+  async rewrites() {
     return [
-      // Root must never 404. Keep the redirect on the same host so apex and
-      // www both reach the default language page without a domain hop.
+      // Keep the default-language home at "/" without a redirect hop.
       {
         source: "/",
         destination: "/en",
-        permanent: true,
       },
-    ];
-  },
-  async rewrites() {
-    return [
       // Serve the LLM discovery file from both common locations without
       // duplicating content.
       {

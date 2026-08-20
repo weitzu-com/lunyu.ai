@@ -223,23 +223,12 @@ assertIncludes(chatRouteSource, "if (!origin) return false", "chat origin allowl
 assertIncludes(chatRouteSource, "CHAT_ALLOWED_ORIGINS", "chat origin allowlist");
 assertIncludes(chatRouteSource, "rateLimited", "chat rate limit");
 assertIncludes(nextConfigSource, "poweredByHeader: false", "next config");
-assertIncludes(nextConfigSource, 'source: "/"', "root redirect config");
-assertIncludes(nextConfigSource, 'destination: "/en"', "root redirect config");
+assertIncludes(nextConfigSource, "async rewrites()", "root rewrite config");
+assertIncludes(nextConfigSource, 'source: "/"', "root rewrite config");
+assertIncludes(nextConfigSource, 'destination: "/en"', "root rewrite config");
 
 const rootRedirects = (routesManifest.redirects || []).filter((redirect) => redirect.source === "/");
-if (
-  !rootRedirects.some((redirect) => redirect.destination === "/en" && redirect.statusCode === 308)
-) {
-  fail("routes-manifest: missing same-host root redirect to /en");
-}
-if (
-  rootRedirects.some(
-    (redirect) =>
-      typeof redirect.destination === "string" && redirect.destination.includes("www.lunyu.ai")
-  )
-) {
-  fail("routes-manifest: root redirect still points at www");
-}
+if (rootRedirects.length !== 0) fail("routes-manifest: root redirect should be absent");
 
 const flattenedHeaders = JSON.stringify(vercelConfig.headers || []);
 for (const requiredHeader of [
