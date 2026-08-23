@@ -3,8 +3,9 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Book, books, Locale, t } from "@/lib/analects";
+import { contentCoverageSummary, getBookContentCoverage } from "@/lib/content-coverage";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
-import { buildListenChapters, getListenCoverage } from "@/lib/listen";
+import { buildListenChapters } from "@/lib/listen";
 import { buildListenStructuredData } from "@/lib/listen-structured-data";
 import { jsonLd } from "@/lib/site";
 import { ListenControls } from "./ListenControls";
@@ -44,12 +45,12 @@ export function listenPath(slug: string) {
 }
 
 export function listenMetadata(locale: Locale, book: Book): Metadata {
-  const coverage = getListenCoverage(book.slug);
+  const coverage = getBookContentCoverage(book.slug)!;
   const title = t(locale, `听读《论语·${book.zhTitle}》`, `Hear The Analects: ${book.pinyin}`);
   const description = t(
     locale,
-    `播放《论语·${zhOrdinalTitle(book)}》真人女声音频，共 ${coverage.availableChapters}/${book.chapterCount} 章可播放，并同步查看原文、拼音与白话导读。`,
-    `Play recorded female-voice audio for The Analects, Book ${book.number} ${book.pinyin}; ${coverage.availableChapters}/${book.chapterCount} chapters are playable, with source text, pinyin, and guide text alongside.`
+    `播放《论语·${zhOrdinalTitle(book)}》真人女声音频，共 ${coverage.audio.ratio} 章可播放，并同步查看原文、拼音与白话导读。`,
+    `Play recorded female-voice audio for The Analects, Book ${book.number} ${book.pinyin}; ${coverage.audio.ratio} chapters are playable, with source text, pinyin, and guide text alongside.`
   );
   const path = listenPath(book.slug);
   return {
@@ -62,7 +63,7 @@ export function listenMetadata(locale: Locale, book: Book): Metadata {
 }
 
 export function BookListenPage({ locale, book }: { locale: Locale; book: Book }) {
-  const coverage = getListenCoverage(book.slug);
+  const coverage = getBookContentCoverage(book.slug)!;
   const path = listenPath(book.slug);
   const chapters = buildListenChapters(locale, book);
   const structuredDataName = t(
@@ -72,8 +73,8 @@ export function BookListenPage({ locale, book }: { locale: Locale; book: Book })
   );
   const structuredDataDescription = t(
     locale,
-    `当前可播放 ${coverage.availableChapters}/${coverage.totalChapters} 章真人女声音频，未录章节会在列表中明确标注。`,
-    `Recorded audio currently covers ${coverage.availableChapters}/${coverage.totalChapters} chapters, and unavailable chapters are clearly labeled in the list.`
+    `当前可播放 ${coverage.audio.ratio} 章真人女声音频，未录章节会在列表中明确标注。${contentCoverageSummary(locale, coverage)}`,
+    `Recorded audio currently covers ${coverage.audio.ratio} chapters, and unavailable chapters are clearly labeled in the list. ${contentCoverageSummary(locale, coverage)}`
   );
   const listenJsonLd = buildListenStructuredData({
     locale,
@@ -97,15 +98,15 @@ export function BookListenPage({ locale, book }: { locale: Locale; book: Book })
         <p className="mt-5 max-w-3xl text-base leading-8 text-ink-soft sm:text-lg">
           {t(
             locale,
-            `当前已上线 ${coverage.availableChapters}/${coverage.totalChapters} 章真人女声音频；未录章节会在列表中标明并禁用，避免误点到 404。`,
-            `Recorded audio is currently live for ${coverage.availableChapters}/${coverage.totalChapters} chapters. Unrecorded chapters are labeled and disabled to avoid dead links.`
+            `当前已上线 ${coverage.audio.ratio} 章真人女声音频；未录章节会在列表中标明并禁用，避免误点到 404。`,
+            `Recorded audio is currently live for ${coverage.audio.ratio} chapters. Unrecorded chapters are labeled and disabled to avoid dead links.`
           )}
         </p>
         <p className="mt-3 max-w-3xl font-ui text-sm text-ink-soft">
           {t(
             locale,
-            `这一篇当前可播放 ${coverage.availableChapters}/${book.chapterCount} 章。`,
-            `This book currently has ${coverage.availableChapters}/${book.chapterCount} playable chapters.`
+            `这一篇当前可播放 ${coverage.audio.ratio} 章。`,
+            `This book currently has ${coverage.audio.ratio} playable chapters.`
           )}
         </p>
         <nav aria-label={t(locale, "选择篇章", "Choose a book")} className="mt-6 flex flex-wrap gap-2">

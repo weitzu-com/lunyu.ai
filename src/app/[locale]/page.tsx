@@ -5,8 +5,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SentenceCard } from "@/components/SentenceCard";
 import { passageOfTheDayId } from "@/lib/reading-circle";
 import { ReadingHint } from "@/components/ReadingCircle";
-import { books, contentCoverage, getAllSentences, getSentences, Locale, locales, t } from "@/lib/analects";
-import { getListenCoverage } from "@/lib/listen";
+import { books, getAllSentences, getSentences, Locale, locales, t } from "@/lib/analects";
+import { contentCoverage, contentCoverageSummary } from "@/lib/content-coverage";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { contentModifiedDate, jsonLd, organizationId, sameAs, siteName, siteUrl, websiteId } from "@/lib/site";
 
@@ -22,13 +22,13 @@ export function generateMetadata({
   return params.then(({ locale }) => {
     const title = t(
       locale,
-      "《论语》二十篇 · 499 章逐句可读",
-      "The Analects — 499 passages, book by book"
+      `《论语》二十篇 · ${contentCoverage.totalPassages} 章逐句可读`,
+      `The Analects — ${contentCoverage.totalPassages} passages, book by book`
     );
     const description = t(
       locale,
-      "《论语》二十篇 499 章已按简体原文、审校白话导读、James Legge 公版英译、注释逐句发布。",
-      "All 499 passages of The Analects, passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes."
+      `《论语》二十篇 ${contentCoverage.totalPassages} 章已按简体原文、${contentCoverage.reviewedGuide.complete ? "审校白话导读" : `白话导读（已审校 ${contentCoverage.reviewedGuide.ratio}）`}、James Legge 公版英译、注释逐句发布。`,
+      `All ${contentCoverage.totalPassages} passages of The Analects, passage by passage: simplified Chinese, ${contentCoverage.reviewedGuide.complete ? "a reviewed modern Chinese guide" : `a modern Chinese guide reviewed for ${contentCoverage.reviewedGuide.ratio} passages`}, James Legge's public-domain English translation, and notes.`
     );
     return {
       title,
@@ -46,7 +46,6 @@ export default async function LocaleHome({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
-  const listenCoverage = getListenCoverage();
   const allIds = getAllSentences().map((s) => s.id);
   const todaysId = passageOfTheDayId(allIds);
   const featured =
@@ -62,11 +61,7 @@ export default async function LocaleHome({
         name: siteName,
         inLanguage: locale,
         dateModified: contentModifiedDate,
-        description: t(
-          locale,
-          "中文简体与英文双语阅读《论语》；逐句拼音全量可见，章节录音按章节补齐。",
-          "Read The Analects in Simplified Chinese and English; passage-level pinyin is fully visible, and chapter audio is being filled chapter by chapter."
-        ),
+        description: contentCoverageSummary(locale),
         publisher: { "@id": organizationId },
       },
       {
@@ -86,7 +81,11 @@ export default async function LocaleHome({
       <section className="page-shell grid gap-9 py-10 sm:py-12 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
         <div className="flex flex-col justify-center">
           <p className="label mb-5">
-            {t(locale, "二十篇 · 499 章 · 中英双语", "Twenty books · 499 passages · Bilingual")}
+            {t(
+              locale,
+              `二十篇 · ${contentCoverage.totalPassages} 章 · 中英双语`,
+              `Twenty books · ${contentCoverage.totalPassages} passages · Bilingual`
+            )}
           </p>
           <h1 className="max-w-3xl font-cjk text-[2.75rem] font-medium leading-[1.16] text-ink sm:text-6xl">
             {t(locale, "让世界读懂《论语》。", "Make The Analects readable for the world.")}
@@ -94,15 +93,15 @@ export default async function LocaleHome({
           <p className="mt-6 max-w-2xl font-cjk text-base leading-[1.8] text-ink-soft sm:text-lg">
             {t(
               locale,
-              "二十篇 499 章已按简体原文、审校白话导读、James Legge 公版英译、注释逐句发布。",
-              "All twenty books — 499 passages — are published with simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, and notes."
+              `二十篇 ${contentCoverage.totalPassages} 章已按简体原文、${contentCoverage.reviewedGuide.complete ? "审校白话导读" : `白话导读（已审校 ${contentCoverage.reviewedGuide.ratio}）`}、James Legge 公版英译、注释逐句发布。`,
+              `All twenty books — ${contentCoverage.totalPassages} passages — are published with simplified Chinese, ${contentCoverage.reviewedGuide.complete ? "a reviewed modern Chinese guide" : `a modern Chinese guide reviewed for ${contentCoverage.reviewedGuide.ratio} passages`}, James Legge's public-domain English translation, and notes.`
             )}
           </p>
           <p className="mt-3 max-w-2xl font-ui text-sm leading-[1.7] text-ink-soft">
             {t(
               locale,
-              `可读 · 可索引 · 可分享。逐句拼音已全量展示；章节录音当前覆盖 ${listenCoverage.availableChapters}/${listenCoverage.totalChapters} 章。`,
-              `Readable · indexable · shareable. Passage-level pinyin is fully rendered; chapter audio currently covers ${listenCoverage.availableChapters}/${listenCoverage.totalChapters} chapters.`
+              `可读 · 可索引 · 可分享。逐句拼音${contentCoverage.pinyin.complete ? "已全量展示" : `当前覆盖 ${contentCoverage.pinyin.ratio}`}；章节录音当前覆盖 ${contentCoverage.audio.ratio} 章。`,
+              `Readable · indexable · shareable. Passage-level pinyin ${contentCoverage.pinyin.complete ? "is fully rendered" : `currently covers ${contentCoverage.pinyin.ratio} passages`}; chapter audio currently covers ${contentCoverage.audio.ratio} chapters.`
             )}
           </p>
           <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
@@ -142,19 +141,25 @@ export default async function LocaleHome({
         <div className="mx-auto grid max-w-6xl gap-5 px-5 py-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
             [
-              `${contentCoverage.modernChinesePassages}/${contentCoverage.totalPassages}`,
+              contentCoverage.reviewedGuide.ratio,
               t(locale, "白话导读已覆盖", "Modern Chinese guide covered"),
             ],
             [
-              `${contentCoverage.englishPassages}/${contentCoverage.totalPassages}`,
+              contentCoverage.englishTranslation.ratio,
               t(locale, "James Legge 英译已覆盖", "James Legge translation covered"),
             ],
             [
-              `${contentCoverage.pinyinPassages}/${contentCoverage.totalPassages}`,
-              t(locale, "逐句拼音已全量展示", "Passage-level pinyin rendered"),
+              contentCoverage.pinyin.ratio,
+              t(
+                locale,
+                contentCoverage.pinyin.complete ? "逐句拼音已全量展示" : "逐句拼音已展示",
+                contentCoverage.pinyin.complete
+                  ? "Passage-level pinyin fully rendered"
+                  : "Passage-level pinyin rendered"
+              ),
             ],
             [
-              `${listenCoverage.availableChapters}/${listenCoverage.totalChapters}`,
+              contentCoverage.audio.ratio,
               t(locale, "章节音频已上线", "Chapter audio available"),
             ],
           ].map(([value, label]) => (

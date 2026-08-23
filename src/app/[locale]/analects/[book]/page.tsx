@@ -5,7 +5,7 @@ import { SentenceCard } from "@/components/SentenceCard";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { books, getBook, getSentences, locales, type Locale, t } from "@/lib/analects";
-import { getListenCoverage } from "@/lib/listen";
+import { contentCoverageSummary, getBookContentCoverage } from "@/lib/content-coverage";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { breadcrumbJsonLd, contentModifiedDate, jsonLd, localizedUrl, organizationId, siteName } from "@/lib/site";
 
@@ -23,11 +23,12 @@ export async function generateMetadata({
   const { locale, book: bookSlug } = await params;
   const book = getBook(bookSlug);
   if (!book) return {};
+  const coverage = getBookContentCoverage(book.slug)!;
   const title = t(locale, `《论语》· ${book.zhTitle}`, `The Analects · ${book.pinyin}`);
   const description = t(
     locale,
-    `${book.zhTitle} 共 ${book.chapterCount} 章，逐句可读、可索引、可分享；拼音全量展示，听读页可继续进入章节录音。`,
-    `${book.pinyin} contains ${book.chapterCount} chapters. It is readable, indexable, shareable, and fully rendered with pinyin; the listening page continues to chapter audio.`
+    `${book.zhTitle} 共 ${book.chapterCount} 章，逐句可读、可索引、可分享；拼音${coverage.pinyin.complete ? "全量展示" : `覆盖 ${coverage.pinyin.ratio}`}，听读页当前有 ${coverage.audio.ratio} 章可播放。`,
+    `${book.pinyin} contains ${book.chapterCount} chapters. It is readable, indexable, and shareable; pinyin ${coverage.pinyin.complete ? "is fully rendered" : `covers ${coverage.pinyin.ratio} chapters`}, and ${coverage.audio.ratio} chapters are currently playable.`
   );
   const path = `/analects/${book.slug}`;
   return {
@@ -49,7 +50,7 @@ export default async function AnalectsBookPage({
   if (!book) notFound();
 
   const sentences = getSentences(book.slug);
-  const listenCoverage = getListenCoverage(book.slug);
+  const coverage = getBookContentCoverage(book.slug)!;
   const listenHref = book.slug === books[0].slug ? `/${locale}/listen` : `/${locale}/listen/${book.slug}`;
   const pageUrl = localizedUrl(locale, `/analects/${book.slug}`);
   const jsonLdGraph = {
@@ -62,8 +63,8 @@ export default async function AnalectsBookPage({
         name: t(locale, `《论语》· ${book.zhTitle}`, `The Analects · ${book.pinyin}`),
         description: t(
           locale,
-          `${book.zhTitle} 共 ${book.chapterCount} 章，逐句可读、可索引、可分享。`,
-          `${book.pinyin} contains ${book.chapterCount} chapters and is readable, indexable, and shareable.`
+          `${book.zhTitle} 共 ${book.chapterCount} 章，逐句可读、可索引、可分享。${contentCoverageSummary(locale, coverage)}`,
+          `${book.pinyin} contains ${book.chapterCount} chapters and is readable, indexable, and shareable. ${contentCoverageSummary(locale, coverage)}`
         ),
         inLanguage: locale,
         dateModified: contentModifiedDate,
@@ -124,8 +125,8 @@ export default async function AnalectsBookPage({
         <p className="mt-3 max-w-3xl font-ui text-sm text-ink-soft">
           {t(
             locale,
-            `本篇共 ${book.chapterCount} 章；当前音频覆盖 ${listenCoverage.availableChapters}/${book.chapterCount} 章。`,
-            `This book has ${book.chapterCount} chapters; ${listenCoverage.availableChapters}/${book.chapterCount} chapters currently have audio.`
+            `本篇共 ${book.chapterCount} 章；当前音频覆盖 ${coverage.audio.ratio} 章。`,
+            `This book has ${book.chapterCount} chapters; ${coverage.audio.ratio} chapters currently have audio.`
           )}
         </p>
 

@@ -104,13 +104,6 @@ export const allSentences: Sentence[] = books.flatMap((book) => book.sentences);
 const bookBySlug = new Map(books.map((book) => [book.slug, book] as const));
 const sentenceById = new Map(allSentences.map((sentence) => [sentence.id, sentence] as const));
 
-export const contentCoverage = {
-  totalPassages: allSentences.length,
-  modernChinesePassages: Object.keys(reviewed.translations ?? {}).length,
-  englishPassages: allSentences.filter((sentence) => sentence.english.trim().length > 0).length,
-  pinyinPassages: allSentences.filter((sentence) => sentence.pinyin.trim().length > 0).length,
-};
-
 export function getAllSentences() {
   return allSentences;
 }
@@ -146,4 +139,3 @@ export function sentenceUrl(locale: Locale, sentence: Sentence) {
 export function bookUrl(locale: Locale, bookSlug: string) {
   return `/${locale}/analects/${bookSlug}`;
 }
-

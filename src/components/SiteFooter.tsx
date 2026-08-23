@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { contentCoverage, Locale, t } from "@/lib/analects";
-import { getListenCoverage } from "@/lib/listen";
+import { Locale, t } from "@/lib/analects";
+import { contentCoverage } from "@/lib/content-coverage";
 import { contentModifiedDate, trustPageLabel } from "@/lib/site";
 
 type FooterLink = {
@@ -26,7 +26,6 @@ function FooterLinkList({ links }: { links: FooterLink[] }) {
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear();
-  const listenCoverage = getListenCoverage();
   const readingLinks: FooterLink[] = [
     {
       href: `/${locale}/analects`,
@@ -85,8 +84,8 @@ export function SiteFooter({ locale }: { locale: Locale }) {
             <p className="mt-3 leading-6 text-ink-soft">
               {t(
                 locale,
-                "《论语》二十篇 499 章，逐句可读、可索引、可分享。",
-                "All 499 passages of The Analects — readable, indexable, shareable."
+                `《论语》二十篇 ${contentCoverage.totalPassages} 章，逐句可读、可索引、可分享。`,
+                `All ${contentCoverage.totalPassages} passages of The Analects — readable, indexable, shareable.`
               )}
             </p>
             <p className="mt-4 border-l border-rule pl-4 leading-6">
@@ -111,29 +110,29 @@ export function SiteFooter({ locale }: { locale: Locale }) {
               <li>
                 {t(
                   locale,
-                  `白话导读：${contentCoverage.modernChinesePassages}/${contentCoverage.totalPassages}`,
-                  `Modern Chinese guide: ${contentCoverage.modernChinesePassages}/${contentCoverage.totalPassages}`
+                  `白话导读审校：${contentCoverage.reviewedGuide.ratio}`,
+                  `Reviewed modern Chinese guide: ${contentCoverage.reviewedGuide.ratio}`
                 )}
               </li>
               <li>
                 {t(
                   locale,
-                  `英译：${contentCoverage.englishPassages}/${contentCoverage.totalPassages}`,
-                  `English translation: ${contentCoverage.englishPassages}/${contentCoverage.totalPassages}`
+                  `英译：${contentCoverage.englishTranslation.ratio}`,
+                  `English translation: ${contentCoverage.englishTranslation.ratio}`
                 )}
               </li>
               <li>
                 {t(
                   locale,
-                  `音频：${listenCoverage.availableBooks}/${listenCoverage.totalBooks} 篇含录音，${listenCoverage.availableChapters}/${listenCoverage.totalChapters} 章可播放`,
-                  `Audio: ${listenCoverage.availableBooks}/${listenCoverage.totalBooks} books include recordings, with ${listenCoverage.availableChapters}/${listenCoverage.totalChapters} playable chapters`
+                  `音频：${contentCoverage.audio.books.ratio} 篇含录音，${contentCoverage.audio.ratio} 章可播放`,
+                  `Audio: ${contentCoverage.audio.books.ratio} books include recordings, with ${contentCoverage.audio.ratio} playable chapters`
                 )}
               </li>
               <li>
                 {t(
                   locale,
-                  `逐句拼音：${contentCoverage.pinyinPassages}/${contentCoverage.totalPassages} 已展示`,
-                  `Passage pinyin: ${contentCoverage.pinyinPassages}/${contentCoverage.totalPassages} rendered`
+                  `逐句拼音：${contentCoverage.pinyin.ratio} 已展示`,
+                  `Passage pinyin: ${contentCoverage.pinyin.ratio} rendered`
                 )}
               </li>
             </ul>

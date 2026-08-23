@@ -10,6 +10,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "qa:coverage": "node scripts/content-coverage-qa.mjs",
     "qa:seo": "node scripts/seo-qa.mjs",
     "cf:setup": "node scripts/cloudflare-setup.mjs",
     "build:favicon": "node scripts/make-favicon.mjs",

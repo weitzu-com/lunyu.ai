@@ -1,7 +1,10 @@
 import { getAllSentences } from "@/lib/analects";
+import { contentCoverageSummary } from "@/lib/content-coverage";
 import { editorialPosts, postDek, postTitle } from "@/lib/editorial-posts";
 import { localizedUrl, siteName, siteUrl } from "@/lib/site";
 import { contentModifiedDate } from "@/lib/site";
+
+export const dynamic = "force-static";
 
 type FeedItem = {
   title: string;
@@ -48,7 +51,7 @@ export function GET() {
   <channel>
     <title>${escapeXml(siteName)} updates</title>
     <link>${siteUrl}/en</link>
-    <description>Recent editorial posts and Analects passage updates from lunyu.ai</description>
+    <description>${escapeXml(`Recent editorial posts and Analects passage updates from lunyu.ai. ${contentCoverageSummary("en")}`)}</description>
     <language>en-US</language>
     <lastBuildDate>${toRfc2822(contentModifiedDate)}</lastBuildDate>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
