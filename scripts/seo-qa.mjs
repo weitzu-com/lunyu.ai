@@ -67,6 +67,26 @@ function countRegex(text, regex) {
   return [...text.matchAll(regex)].length;
 }
 
+function extractJsonLd(html, route) {
+  const documents = [];
+  const scripts = html.matchAll(
+    /<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
+  );
+  for (const match of scripts) {
+    try {
+      documents.push(JSON.parse(match[1]));
+    } catch (error) {
+      fail(`${route}: invalid JSON-LD (${error instanceof Error ? error.message : String(error)})`);
+    }
+  }
+  return documents;
+}
+
+function hasSchemaType(node, type) {
+  const value = node?.["@type"];
+  return Array.isArray(value) ? value.includes(type) : value === type;
+}
+
 const generated = JSON.parse(read("src/data/analects.generated.json"));
 const reviewed = JSON.parse(read("src/data/modern-chinese.reviewed.json"));
 const packageJson = JSON.parse(read("package.json"));
@@ -125,9 +145,160 @@ checkHtml("/zh-Hans/analects/xue-er/xue-er-001", [
   "/zh-Hans/method#corrections",
 ]);
 
-checkHtml("/zh-Hans/listen", ['"@type":"CollectionPage"', '"@type":"ItemList"', '"@type":"AudioObject"', '"@type":"BreadcrumbList"']);
-checkHtml("/en/listen", ['"@type":"CollectionPage"', '"@type":"ItemList"', '"@type":"AudioObject"', '"@type":"BreadcrumbList"']);
-checkHtml("/zh-Hans/listen/wei-zheng", ['"@type":"CollectionPage"', '"@type":"ItemList"', '"@type":"AudioObject"', '"@type":"BreadcrumbList"']);
+const listenRoutes = [];
+let expectedListenAudioObjects = 0;
+let renderedListenAudioObjects = 0;
+const allowedAudioObjectFields = new Set([
+  "@type",
+  "@id",
+  "name",
+  "contentUrl",
+  "inLanguage",
+  "encodingFormat",
+  "duration",
+  "isPartOf",
+]);
+
+for (const locale of locales) {
+  for (const book of generated.books) {
+    const listenPath = book.number === 1 ? "/listen" : `/listen/${book.slug}`;
+    const route = `/${locale}${listenPath}`;
+    const pageUrl = `${siteUrl}${route}`;
+    const file = htmlPath(route);
+    listenRoutes.push(route);
+    checkHtml(route, [`rel="canonical" href="${pageUrl}"`]);
+    if (!exists(file)) continue;
+
+    const html = read(file);
+    const documents = extractJsonLd(html, route);
+    const graphDocument = documents.find(
+      (document) =>
+        Array.isArray(document?.["@graph"]) &&
+        document["@graph"].some((node) => node?.["@id"] === `${pageUrl}#webpage`)
+    );
+    if (!graphDocument) {
+      fail(`${route}: listening JSON-LD graph missing`);
+      continue;
+    }
+
+    const graph = graphDocument["@graph"];
+    const pageNode = graph.find((node) => node?.["@id"] === `${pageUrl}#webpage`);
+    const bookNode = graph.find((node) => node?.["@id"] === `${siteUrl}#the-analects`);
+    const breadcrumbNode = graph.find(
+      (node) => node?.["@id"] === `${pageUrl}#breadcrumb`
+    );
+    const itemListNode = graph.find((node) => node?.["@id"] === `${pageUrl}#chapters`);
+
+    if (!hasSchemaType(pageNode, "CollectionPage") || !hasSchemaType(pageNode, "WebPage")) {
+      fail(`${route}: page must be typed as CollectionPage and WebPage`);
+    }
+    if (pageNode?.url !== pageUrl) fail(`${route}: WebPage URL mismatch`);
+    if (pageNode?.inLanguage !== locale) fail(`${route}: WebPage language mismatch`);
+    if (pageNode?.about?.["@id"] !== `${siteUrl}#the-analects`) {
+      fail(`${route}: WebPage to Book relationship missing`);
+    }
+    if (pageNode?.breadcrumb?.["@id"] !== `${pageUrl}#breadcrumb`) {
+      fail(`${route}: WebPage to BreadcrumbList relationship missing`);
+    }
+    if (pageNode?.mainEntity?.["@id"] !== `${pageUrl}#chapters`) {
+      fail(`${route}: WebPage to ItemList relationship missing`);
+    }
+
+    if (!hasSchemaType(bookNode, "Book")) fail(`${route}: Book node missing`);
+    if (bookNode?.url !== `${siteUrl}/${locale}/analects`) {
+      fail(`${route}: Book URL mismatch`);
+    }
+
+    if (!hasSchemaType(breadcrumbNode, "BreadcrumbList")) {
+      fail(`${route}: BreadcrumbList node missing`);
+    } else {
+      const breadcrumbs = breadcrumbNode.itemListElement ?? [];
+      const expectedBreadcrumbCount = book.number === 1 ? 3 : 4;
+      if (breadcrumbs.length !== expectedBreadcrumbCount) {
+        fail(`${route}: expected ${expectedBreadcrumbCount} breadcrumbs, got ${breadcrumbs.length}`);
+      }
+      breadcrumbs.forEach((item, index) => {
+        if (item?.position !== index + 1) fail(`${route}: breadcrumb position ${index + 1} invalid`);
+      });
+      if (breadcrumbs.at(-1)?.item !== pageUrl) fail(`${route}: final breadcrumb URL mismatch`);
+      const breadcrumbUrls = breadcrumbs.map((item) => item?.item);
+      if (new Set(breadcrumbUrls).size !== breadcrumbUrls.length) {
+        fail(`${route}: breadcrumb URLs must be unique`);
+      }
+    }
+
+    if (!hasSchemaType(itemListNode, "ItemList")) {
+      fail(`${route}: ItemList node missing`);
+      continue;
+    }
+    const items = itemListNode.itemListElement ?? [];
+    if (itemListNode.numberOfItems !== book.sentences.length) {
+      fail(`${route}: ItemList numberOfItems mismatch`);
+    }
+    if (items.length !== book.sentences.length) {
+      fail(`${route}: expected ${book.sentences.length} ListItems, got ${items.length}`);
+    }
+
+    const bookTitle = locale === "zh-Hans" ? book.zhTitle : book.enTitle;
+    book.sentences.forEach((sentence, index) => {
+      const item = items[index];
+      const chapterTitle = `${bookTitle} · ${String(sentence.sentenceNumber).padStart(2, "0")}`;
+      const chapterUrl = `${siteUrl}/${locale}/analects/${book.slug}/${sentence.id}`;
+      const audioPath = `/audio/analects/${book.slug}/ruby-female/${book.slug}-${String(sentence.sentenceNumber).padStart(3, "0")}-ruby-female.mp3`;
+      const audioUrl = `${siteUrl}${audioPath}`;
+      const audioExists = exists(`public${audioPath}`);
+
+      if (!hasSchemaType(item, "ListItem")) fail(`${route}: item ${index + 1} is not a ListItem`);
+      if (item?.position !== index + 1) fail(`${route}: ListItem position ${index + 1} invalid`);
+      if (item?.name !== chapterTitle) fail(`${route}: ListItem ${index + 1} title mismatch`);
+      if (item?.url !== chapterUrl) fail(`${route}: ListItem ${index + 1} URL mismatch`);
+
+      if (audioExists) {
+        expectedListenAudioObjects += 1;
+        const audio = item?.item;
+        if (!hasSchemaType(audio, "AudioObject")) {
+          fail(`${route}: playable item ${index + 1} must be an AudioObject`);
+          return;
+        }
+        renderedListenAudioObjects += 1;
+        for (const key of Object.keys(audio)) {
+          if (!allowedAudioObjectFields.has(key)) {
+            fail(`${route}: AudioObject ${index + 1} has unsupported field ${key}`);
+          }
+        }
+        if (audio.name !== chapterTitle) fail(`${route}: AudioObject ${index + 1} title mismatch`);
+        if (audio.contentUrl !== audioUrl) fail(`${route}: AudioObject ${index + 1} MP3 URL mismatch`);
+        if (audio.inLanguage !== "zh-CN") fail(`${route}: AudioObject ${index + 1} language must be zh-CN`);
+        if (audio.encodingFormat !== "audio/mpeg") fail(`${route}: AudioObject ${index + 1} format mismatch`);
+        if (audio.isPartOf?.["@id"] !== `${siteUrl}#the-analects`) {
+          fail(`${route}: AudioObject ${index + 1} Book relationship missing`);
+        }
+        if (!/^PT\d+(?:\.\d+)?S$/.test(audio.duration ?? "")) {
+          fail(`${route}: AudioObject ${index + 1} real duration missing`);
+        }
+      } else {
+        if (!hasSchemaType(item?.item, "WebPage")) {
+          fail(`${route}: unavailable item ${index + 1} must remain a WebPage`);
+        }
+        if (item?.item?.url !== chapterUrl) {
+          fail(`${route}: unavailable WebPage ${index + 1} URL mismatch`);
+        }
+        if (item?.item?.contentUrl || item?.item?.duration) {
+          fail(`${route}: unavailable item ${index + 1} must not claim audio fields`);
+        }
+      }
+    });
+  }
+}
+
+if (listenRoutes.length !== 40 || new Set(listenRoutes).size !== 40) {
+  fail(`listen routes: expected 40 unique routes, got ${new Set(listenRoutes).size}`);
+}
+if (renderedListenAudioObjects !== expectedListenAudioObjects) {
+  fail(
+    `listen audio: rendered ${renderedListenAudioObjects}/${expectedListenAudioObjects} real AudioObjects`
+  );
+}
 
 const seenSentenceDescriptions = new Map();
 for (const locale of locales) {
@@ -258,5 +429,5 @@ if (failures.length > 0) {
 }
 
 console.log(
-  `SEO QA passed: ${sentences.length} passages, ${reviewedCount} reviewed guides, ${locs} sitemap URLs.`
+  `SEO QA passed: ${sentences.length} passages, ${reviewedCount} reviewed guides, ${locs} sitemap URLs, ${listenRoutes.length} listening routes, ${renderedListenAudioObjects} real AudioObjects.`
 );

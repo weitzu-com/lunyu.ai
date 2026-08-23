@@ -5,15 +5,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Book, books, Locale, t } from "@/lib/analects";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { buildListenChapters, getListenCoverage } from "@/lib/listen";
-import {
-  breadcrumbJsonLd,
-  contentModifiedDate,
-  jsonLd,
-  localizedUrl,
-  organizationId,
-  siteName,
-  siteUrl,
-} from "@/lib/site";
+import { buildListenStructuredData } from "@/lib/listen-structured-data";
+import { jsonLd } from "@/lib/site";
 import { ListenControls } from "./ListenControls";
 
 const zhNumerals = [
@@ -72,72 +65,23 @@ export function BookListenPage({ locale, book }: { locale: Locale; book: Book })
   const coverage = getListenCoverage(book.slug);
   const path = listenPath(book.slug);
   const chapters = buildListenChapters(locale, book);
-  const pageUrl = localizedUrl(locale, path);
-  const listenJsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        "@id": `${pageUrl}#webpage`,
-        url: pageUrl,
-        name: t(locale, `听读《论语·${book.zhTitle}》`, `Hear The Analects: ${book.pinyin}`),
-        description: t(
-          locale,
-          `当前可播放 ${coverage.availableChapters}/${coverage.totalChapters} 章真人女声音频，未录章节会在列表中明确标注。`,
-          `Recorded audio currently covers ${coverage.availableChapters}/${coverage.totalChapters} chapters, and unavailable chapters are clearly labeled in the list.`
-        ),
-        inLanguage: locale,
-        dateModified: contentModifiedDate,
-        publisher: { "@id": organizationId },
-        isPartOf: { "@id": `${localizedUrl(locale, "")}#website` },
-        mainEntity: {
-          "@type": "ItemList",
-          numberOfItems: chapters.length,
-          itemListOrder: "https://schema.org/ItemListOrderAscending",
-          itemListElement: chapters.map((chapter, index) => {
-            const chapterUrl = new URL(chapter.href, siteUrl).toString();
-            const audioUrl = new URL(chapter.audioSrc, siteUrl).toString();
-            return {
-              "@type": "ListItem",
-              position: index + 1,
-              url: chapterUrl,
-              name: `${book.zhTitle} ${String(chapter.sentenceNumber).padStart(2, "0")}`,
-              item: chapter.audioAvailable
-                ? {
-                    "@type": "AudioObject",
-                    name: `${book.zhTitle} ${String(chapter.sentenceNumber).padStart(2, "0")}`,
-                    url: chapterUrl,
-                    contentUrl: audioUrl,
-                    encodingFormat: "audio/mpeg",
-                    inLanguage: locale,
-                    isAccessibleForFree: true,
-                  }
-                : {
-                    "@type": "WebPage",
-                    name: `${book.zhTitle} ${String(chapter.sentenceNumber).padStart(2, "0")}`,
-                    url: chapterUrl,
-                  },
-            };
-          }),
-        },
-        breadcrumb: breadcrumbJsonLd(locale, [
-          { name: siteName, path: "" },
-          { name: t(locale, "论语", "The Analects"), path: "/analects" },
-          {
-            name: t(locale, "听读", "Listen"),
-            path: "/listen",
-          },
-          { name: t(locale, book.zhTitle, book.enTitle), path },
-        ]),
-      },
-      {
-        "@type": "Organization",
-        "@id": organizationId,
-        name: siteName,
-        url: localizedUrl(locale, ""),
-      },
-    ],
-  };
+  const structuredDataName = t(
+    locale,
+    `听读《论语·${book.zhTitle}》`,
+    `Hear The Analects: ${book.pinyin}`
+  );
+  const structuredDataDescription = t(
+    locale,
+    `当前可播放 ${coverage.availableChapters}/${coverage.totalChapters} 章真人女声音频，未录章节会在列表中明确标注。`,
+    `Recorded audio currently covers ${coverage.availableChapters}/${coverage.totalChapters} chapters, and unavailable chapters are clearly labeled in the list.`
+  );
+  const listenJsonLd = buildListenStructuredData({
+    locale,
+    path,
+    name: structuredDataName,
+    description: structuredDataDescription,
+    chapters,
+  });
 
   return (
     <main id="main" className="min-h-screen bg-paper text-ink">

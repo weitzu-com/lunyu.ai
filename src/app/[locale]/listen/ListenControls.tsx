@@ -4,18 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PinyinRuby } from "@/components/PinyinRuby";
 import type { Locale } from "@/lib/analects";
-
-type Chapter = {
-  id: string;
-  sentenceNumber: number;
-  bookTitle: string;
-  classical: string;
-  pinyin: string;
-  modern: string;
-  href: string;
-  audioSrc: string;
-  audioAvailable: boolean;
-};
+import type { ListenChapter } from "@/lib/listen";
 
 function formatClock(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
@@ -35,21 +24,23 @@ export function ListenControls({
 }: {
   locale: Locale;
   bookTitle: string;
-  chapters: Chapter[];
+  chapters: ListenChapter[];
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [index, setIndex] = useState(() => chapters.findIndex((chapter) => chapter.audioAvailable));
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoPlay, setAutoPlay] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState(() =>
+    index >= 0 ? (chapters[index]?.durationSeconds ?? 0) : 0
+  );
 
   const active = index >= 0 ? chapters[index] : undefined;
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   const chapterLabel = useMemo(() => {
     if (!active) return "";
-    return `${active.bookTitle} · ${String(active.sentenceNumber).padStart(2, "0")}`;
+    return active.title;
   }, [active]);
 
   const findAvailableIndex = useCallback(
@@ -79,7 +70,7 @@ export function ListenControls({
       const nextIndex = findAvailableIndex(index + 1, 1);
       if (nextIndex < 0) return;
       setCurrentTime(0);
-      setDuration(0);
+      setDuration(chapters[nextIndex]?.durationSeconds ?? 0);
       setIndex(nextIndex);
       window.setTimeout(() => {
         void audioRef.current?.play();
@@ -100,7 +91,7 @@ export function ListenControls({
       audio.removeEventListener("play", syncPlay);
       audio.removeEventListener("ended", playNextChapter);
     };
-  }, [autoPlay, chapters.length, findAvailableIndex, index]);
+  }, [autoPlay, chapters, findAvailableIndex, index]);
 
   useEffect(() => {
     const el = active ? document.getElementById(`listen-${active.id}`) : null;
@@ -127,7 +118,7 @@ export function ListenControls({
       chapters[nextIndex]?.audioAvailable ? nextIndex : findAvailableIndex(nextIndex, direction);
     if (availableIndex < 0) return;
     setCurrentTime(0);
-    setDuration(0);
+    setDuration(chapters[availableIndex]?.durationSeconds ?? 0);
     setIndex(availableIndex);
     if (shouldPlay) {
       window.setTimeout(() => {
