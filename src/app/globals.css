@@ -1,11 +1,9 @@
-@import "tailwindcss";
+@import "tailwindcss" source("..");
 /*
- * Tailwind v4's automatic source detection can skip an app when the build
- * root is inferred from a parent workspace (this project lives inside a
- * larger Desktop repository). Keep the source boundary explicit so every
- * utility used by the App Router is emitted in production CSS.
+ * Tailwind v4 resolves source() relative to this stylesheet. Pin detection to
+ * the real src directory so parent workspaces and deployment working
+ * directories cannot silently change which App Router utilities are emitted.
  */
-@source "src/**/*.{js,ts,jsx,tsx,mdx}";
 
 /* ============================================================================
    竹简系统 · The Bamboo Slip System — design tokens for lunyu.ai
