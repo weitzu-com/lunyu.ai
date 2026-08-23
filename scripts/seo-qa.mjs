@@ -78,6 +78,7 @@ const indexSource = read("src/lib/blogs.ts");
 const postSource = read("src/lib/editorial-posts.ts");
 const chatRouteSource = read("src/app/api/chat/route.ts");
 const nextConfigSource = read("next.config.ts");
+const globalStylesSource = read("src/app/globals.css");
 const vercelConfig = JSON.parse(read("vercel.json"));
 const routesManifest = JSON.parse(read(".next/routes-manifest.json"));
 const indexCount = countRegex(indexSource, /slug:\s*"[^"]+"/g);
@@ -226,6 +227,31 @@ assertIncludes(nextConfigSource, "poweredByHeader: false", "next config");
 assertIncludes(nextConfigSource, "async rewrites()", "root rewrite config");
 assertIncludes(nextConfigSource, 'source: "/"', "root rewrite config");
 assertIncludes(nextConfigSource, 'destination: "/en"', "root rewrite config");
+assertIncludes(globalStylesSource, '@import "tailwindcss" source("..");', "Tailwind source root");
+
+const compiledCssDir = path.join(root, ".next/static/css");
+const compiledCssFiles = exists(".next/static/css")
+  ? fs.readdirSync(compiledCssDir).filter((file) => file.endsWith(".css"))
+  : [];
+if (compiledCssFiles.length === 0) {
+  fail("production CSS: no compiled stylesheets found");
+} else {
+  const compiledCss = compiledCssFiles
+    .map((file) => fs.readFileSync(path.join(compiledCssDir, file), "utf8"))
+    .join("\n");
+  for (const selector of [
+    ".flex{",
+    ".grid{",
+    ".min-h-screen{",
+    ".bg-paper",
+    ".text-ink",
+    ".sm\\:grid-cols-2",
+    ".page-shell{",
+    ".ui-button{",
+  ]) {
+    assertIncludes(compiledCss, selector, "production CSS");
+  }
+}
 
 const rootRedirects = (routesManifest.redirects || []).filter((redirect) => redirect.source === "/");
 if (rootRedirects.length !== 0) fail("routes-manifest: root redirect should be absent");
