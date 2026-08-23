@@ -7,6 +7,8 @@ const siteUrl = "https://www.lunyu.ai";
 const locales = ["zh-Hans", "en"];
 const trustPages = ["about", "method", "sources", "faq"];
 const stableLastmod = "2026-08-20";
+const intentHubLastmod = "2026-08-23";
+const intentHubSlugs = ["lunyu", "the-analects", "analects-of-confucius", "confucius-quotes"];
 const aiCrawlers = [
   "GPTBot",
   "ClaudeBot",
@@ -346,6 +348,34 @@ checkHtml("/zh-Hans/blogs/how-to-read-the-analects", [
   '"datePublished":"2026-07-08"',
 ]);
 
+const seenHubDescriptions = new Map();
+for (const locale of locales) {
+  for (const slug of intentHubSlugs) {
+    const route = `/${locale}/topics/${slug}`;
+    checkHtml(route, [
+      `rel="canonical" href="${siteUrl}${route}"`,
+      `hrefLang="${locale === "en" ? "zh-Hans" : "en"}"`,
+      '"@type":"CollectionPage"',
+      '"@type":"ItemList"',
+      '"@type":"FAQPage"',
+      '"@type":"Quotation"',
+      "/analects/",
+      "Project Gutenberg",
+    ]);
+    const file = htmlPath(route);
+    if (exists(file)) {
+      const description = extractMetaDescription(read(file));
+      if (!description) {
+        fail(`${route}: meta description missing`);
+      } else if (seenHubDescriptions.has(description)) {
+        fail(`duplicate hub description: ${route} and ${seenHubDescriptions.get(description)}`);
+      } else {
+        seenHubDescriptions.set(description, route);
+      }
+    }
+  }
+}
+
 const robots = read(".next/server/app/robots.txt.body");
 assertIncludes(robots, "Disallow: /api/", "robots");
 assertIncludes(robots, `Sitemap: ${siteUrl}/sitemap.xml`, "robots");
@@ -359,6 +389,7 @@ const expectedLocs =
     (
       1 +
       4 +
+      intentHubSlugs.length +
       listenBookPageCount +
       trustPages.length +
       generated.books.length +
@@ -372,6 +403,10 @@ if (locs !== expectedLocs) fail(`sitemap: expected ${expectedLocs} <loc>, got ${
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index/confucius`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-read-the-analects`, "sitemap");
+for (const slug of intentHubSlugs) {
+  assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
+  assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
+}
 for (const trust of trustPages) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/${trust}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/${trust}`, "sitemap");
@@ -379,7 +414,13 @@ for (const trust of trustPages) {
 if (!sitemap.includes(`<lastmod>${stableLastmod}T00:00:00.000Z</lastmod>`) && !sitemap.includes(`<lastmod>${stableLastmod}</lastmod>`)) {
   fail("sitemap: stable 2026-08-20 lastmod missing");
 }
-if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemap.replaceAll(`${stableLastmod}T00:00:00.000Z`, ""))) {
+if (!sitemap.includes(`<lastmod>${intentHubLastmod}T00:00:00.000Z</lastmod>`) && !sitemap.includes(`<lastmod>${intentHubLastmod}</lastmod>`)) {
+  fail("sitemap: stable 2026-08-23 hub lastmod missing");
+}
+const sitemapWithoutStableDates = sitemap
+  .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "");
+if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }
 
@@ -390,6 +431,16 @@ for (const trust of ["About", "Method", "Sources", "FAQ"]) {
   assertIncludes(llms, trust, "llms.txt");
 }
 assertIncludes(llms, "token-free static RAG", "llms.txt");
+if (exists(".next/server/app/llms.txt.body")) {
+  for (const slug of intentHubSlugs) {
+    assertIncludes(llms, `${siteUrl}/en/topics/${slug}`, "llms.txt");
+    assertIncludes(llms, `${siteUrl}/zh-Hans/topics/${slug}`, "llms.txt");
+  }
+} else {
+  assertIncludes(llms, "intentHubSlugs", "llms.txt source");
+  assertIncludes(llms, "${siteUrl}/en/topics/${slug}", "llms.txt source");
+  assertIncludes(llms, "${siteUrl}/zh-Hans/topics/${slug}", "llms.txt source");
+}
 
 assertIncludes(chatRouteSource, "if (!origin) return false", "chat origin allowlist");
 assertIncludes(chatRouteSource, "CHAT_ALLOWED_ORIGINS", "chat origin allowlist");

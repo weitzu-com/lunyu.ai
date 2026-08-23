@@ -13,6 +13,8 @@ export const contentModifiedDate = "2026-08-20";
 export const sourceUrls = {
   wikisource: "https://en.wikisource.org/wiki/The_Chinese_Classics/Volume_1/Confucian_Analects",
   jamesLegge: "https://www.gutenberg.org/ebooks/3330",
+  chineseTextProject: "https://ctext.org/analects",
+  stanfordConfucius: "https://plato.stanford.edu/entries/confucius/",
   modernChineseBase:
     "https://commons.wikimedia.org/wiki/File:NCL-9910006822_%E7%99%BD%E8%A9%B1%E8%AB%96%E8%AA%9E%E8%AE%80%E6%9C%AC.pdf",
 } as const;
@@ -75,4 +77,3 @@ export function trustPageLabel(locale: Locale, slug: keyof typeof trustPageLabel
 export function correctionUrl(locale: Locale) {
   return localizedUrl(locale, "/method#corrections");
 }
-
