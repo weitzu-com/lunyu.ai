@@ -3,6 +3,7 @@ import { locales, type Locale } from "@/lib/analects";
 import { blogEntities } from "@/lib/blogs";
 import { contentCoverage } from "@/lib/content-coverage";
 import { editorialPosts } from "@/lib/editorial-posts";
+import { hubModifiedDate, intentHubSlugs } from "@/lib/intent-hubs";
 import { contentModifiedDate, localizedUrl, siteUrl } from "@/lib/site";
 import { trustPageSlugs } from "@/lib/trust-pages";
 
@@ -40,6 +41,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     if (contentCoverage.audio.available > 0) {
       addLocalized(entries, locale, "/listen", contentModifiedDate, listenFrequency);
+    }
+
+    for (const slug of intentHubSlugs) {
+      addLocalized(entries, locale, `/topics/${slug}`, hubModifiedDate);
     }
 
     for (const trust of trustPageSlugs) {

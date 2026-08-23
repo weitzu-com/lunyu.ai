@@ -2,6 +2,7 @@ import { books } from "@/lib/analects";
 import { blogEntities } from "@/lib/blogs";
 import { contentCoverage } from "@/lib/content-coverage";
 import { editorialPosts } from "@/lib/editorial-posts";
+import { intentHubs, intentHubSlugs } from "@/lib/intent-hubs";
 import { siteUrl } from "@/lib/seo";
 import { contentModifiedDate, sourceUrls } from "@/lib/site";
 
@@ -13,6 +14,12 @@ export function GET() {
       (b) =>
         `- [${b.enTitle} · ${b.zhTitle}](${siteUrl}/en/analects/${b.slug}) | [zh-Hans](${siteUrl}/zh-Hans/analects/${b.slug}) — ${b.chapterCount} passages`
     )
+    .join("\n");
+  const topicIndex = intentHubSlugs
+    .map((slug) => {
+      const hub = intentHubs[slug];
+      return `- [${hub.metaTitle.en}](${siteUrl}/en/topics/${slug}) | [${hub.metaTitle.zh}](${siteUrl}/zh-Hans/topics/${slug}) — ${hub.deck.en}`;
+    })
     .join("\n");
 
   const body = `# lunyu.ai · The Analects, passage by passage
@@ -39,6 +46,12 @@ The mission of lunyu.ai is to make The Analects readable for the world — passa
 - [FAQ](${siteUrl}/en/faq) — common questions for readers and AI systems
 - [Sitemap (full URL list)](${siteUrl}/sitemap.xml) — all books, passages, both languages
 - [RSS feed](${siteUrl}/rss.xml) — recent passage updates
+
+## Search-intent guides
+
+These four bilingual hubs answer distinct queries and point into the existing passage catalogue rather than duplicating it.
+
+${topicIndex}
 
 ## Current coverage
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { books, Locale, t } from "@/lib/analects";
+import { intentHubs, intentHubPath, intentHubSlugs, localize } from "@/lib/intent-hubs";
 import { alternates, localizedUrl, openGraph, twitterCard } from "@/lib/seo";
 
 export async function generateMetadata({
@@ -69,6 +70,33 @@ export default async function AnalectsIndex({
             "All 499 passages across the twenty books are published passage by passage: simplified Chinese, a reviewed modern Chinese guide, James Legge's public-domain English translation, notes, and themes — readable, hearable, indexable, shareable."
           )}
         </p>
+        <section aria-labelledby="intent-guides" className="mt-10 border-y border-rule bg-surface px-5 py-7 sm:px-7">
+          <h2 id="intent-guides" className="font-serif text-2xl">
+            {t(locale, "先回答你的阅读问题", "Start with the question you are asking")}
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-ink-soft">
+            {t(
+              locale,
+              "下面四页分别解释中文书名、英文书名、作者归属与名言真伪；它们选择章句并回链本目录，不重复罗列二十篇。",
+              "These four guides separately address the Chinese title, English title, attribution, and quote verification. They select passages and return here instead of rebuilding the catalogue."
+            )}
+          </p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            {intentHubSlugs.map((slug) => {
+              const hub = intentHubs[slug];
+              return (
+                <Link
+                  key={slug}
+                  href={`/${locale}${intentHubPath(slug)}`}
+                  className="border border-rule bg-paper p-4 transition-colors duration-300 hover:border-ink"
+                >
+                  <h3 className="font-serif text-xl">{localize(locale, hub.metaTitle)}</h3>
+                  <p className="mt-2 text-sm leading-6 text-ink-soft">{localize(locale, hub.deck)}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {books.map((book) => (
             <Link

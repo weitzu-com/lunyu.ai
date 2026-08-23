@@ -43,6 +43,22 @@ export function SiteFooter({ locale }: { locale: Locale }) {
       href: `/${locale}/blogs`,
       label: t(locale, "阅读札记", "Reading notes"),
     },
+    {
+      href: `/${locale}/topics/lunyu`,
+      label: t(locale, "《论语》阅读指南", "Lunyu reading guide"),
+    },
+    {
+      href: `/${locale}/topics/the-analects`,
+      label: "The Analects",
+    },
+    {
+      href: `/${locale}/topics/analects-of-confucius`,
+      label: "Analects of Confucius",
+    },
+    {
+      href: `/${locale}/topics/confucius-quotes`,
+      label: "Confucius quotes",
+    },
   ];
   const verificationLinks: FooterLink[] = [
     {
