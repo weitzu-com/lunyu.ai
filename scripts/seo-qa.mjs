@@ -350,7 +350,6 @@ for (const trust of trustPages) {
 }
 
 checkHtml("/zh-Hans/faq", ['"@type":"FAQPage"', '"@type":"Question"', '"acceptedAnswer"']);
-checkHtml("/en/index/confucius", ['"@type":"WebPage"', '"@type":"BreadcrumbList"', '"about"']);
 checkHtml("/en/index/ren", [
   '"@type":"WebPage"',
   '"@type":"FAQPage"',
@@ -400,6 +399,120 @@ for (const locale of locales) {
     if (html.includes("/analects/ba-yi/ba-yi-008")) {
       fail(`${route}: guide-only 仁 match ba-yi-008 must not appear`);
     }
+  }
+}
+
+const featuredIndexChecks = [
+  {
+    slug: "li",
+    href: "/analects/yang-huo/yang-huo-011",
+    glossaryZh: "礼是行为秩序与内在敬意的统一",
+    glossaryEn: "Ritual propriety as the unity of social form",
+    marker: "玉帛",
+  },
+  {
+    slug: "zhongshu",
+    href: "/analects/wei-ling-gong/wei-ling-gong-023",
+    glossaryZh: "忠恕是推己及人与尽己之道",
+    glossaryEn: "Doing one's utmost and extending oneself to others",
+    marker: "Golden Rule",
+  },
+  {
+    slug: "junzi",
+    href: "/analects/wei-ling-gong/wei-ling-gong-020",
+    glossaryZh: "君子是《论语》中理想人格的核心名称",
+    glossaryEn: "The noble person: an ideal of virtue",
+    marker: "successful person",
+  },
+  {
+    slug: "xue",
+    href: "/analects/xue-er/xue-er-001",
+    glossaryZh: "学是修身、知礼、成德的长期实践",
+    glossaryEn: "Learning as long-term practice of cultivation",
+    marker: "review app",
+  },
+  {
+    slug: "confucius",
+    href: "/analects/shu-er/shu-er-001",
+    glossaryZh: "《论语》的核心人物，言行、教学",
+    glossaryEn: "The central figure of The Analects: teacher",
+    marker: "signed author",
+    person: true,
+  },
+  {
+    slug: "yan-yuan",
+    href: "/analects/yong-ye/yong-ye-005",
+    glossaryZh: "孔门高弟，以好学、安贫、近仁著称",
+    glossaryEn: "A beloved disciple known for learning, simplicity",
+    marker: "perfect student",
+    person: true,
+  },
+  {
+    slug: "zi-gong",
+    href: "/analects/wei-ling-gong/wei-ling-gong-023",
+    glossaryZh: "孔门弟子，善言辞与外交",
+    glossaryEn: "A disciple known for speech, diplomacy",
+    marker: "15.23",
+    person: true,
+  },
+];
+
+for (const page of featuredIndexChecks) {
+  checkHtml(`/en/index/${page.slug}`, [
+    '"@type":"WebPage"',
+    '"@type":"FAQPage"',
+    '"@type":"Question"',
+    page.person ? "How the person appears in the book" : "How the word is used in the book",
+    "Easy confusions",
+    "Featured passages",
+    "View all related passages",
+    "What you can do today",
+    "Frequently asked questions",
+    "Related entries",
+    "Back to the twenty books",
+    `/en${page.href}`,
+    page.marker,
+  ]);
+  checkHtml(`/zh-Hans/index/${page.slug}`, [
+    '"@type":"FAQPage"',
+    page.person ? "书中怎么出现这个人" : "书中怎么用这个字",
+    "容易混淆的地方",
+    "选读",
+    "查看全部相关章句",
+    "今天可以做的一件事",
+    "常见问题",
+    "相关词条",
+    "回到二十篇",
+    `/zh-Hans${page.href}`,
+  ]);
+  for (const locale of locales) {
+    const route = `/${locale}/index/${page.slug}`;
+    const file = htmlPath(route);
+    if (!exists(file)) continue;
+    const html = read(file);
+    const description = extractMetaDescription(html);
+    if (!description) fail(`${route}: meta description missing`);
+    if (description.includes(page.glossaryZh) || description.includes(page.glossaryEn)) {
+      fail(`${route}: still using the one-line glossary description`);
+    }
+  }
+}
+
+checkHtml("/en/index/yi", [
+  "Relevant passages",
+  "Rightness and appropriateness, the noble person's measure amid interests.",
+]);
+checkHtml("/zh-Hans/index/yi", ["相关章句", "义指合宜与正当"]);
+for (const locale of locales) {
+  const route = `/${locale}/index/yi`;
+  const file = htmlPath(route);
+  if (!exists(file)) continue;
+  const html = read(file);
+  if (html.includes("Easy confusions") || html.includes("容易混淆的地方")) {
+    fail(`${route}: unfeatured index must keep the old dump template`);
+  }
+  if (html.includes('"@type":"FAQPage"')) {
+    fail(`${route}: unfeatured index must not grow FAQ JSON-LD`);
   }
 }
 

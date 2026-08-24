@@ -12,6 +12,7 @@ import {
   allAnalectsBooks,
   featuredAndRemainingSentences,
   featuredRelatedEntities,
+  featuredSentence,
   localize,
   type FeaturedIndexContent,
 } from "@/lib/featured-index";
@@ -47,6 +48,7 @@ export function FeaturedIndexEntry({
   const { featured, remaining } = featuredAndRemainingSentences(entity, content);
   const related = featuredRelatedEntities(content);
   const catalogue = allAnalectsBooks();
+  const practiceSentence = featuredSentence(content.practiceSentenceId);
 
   return (
     <>
@@ -71,7 +73,7 @@ export function FeaturedIndexEntry({
         </h2>
         <ol className="mt-4 divide-y divide-rule">
           {content.uses.map((use) => {
-            const sentence = featured.find((item) => item.id === use.sentenceId);
+            const sentence = featuredSentence(use.sentenceId);
             return (
               <li key={use.sentenceId} className="py-4">
                 <h3 className="font-serif text-xl">{localize(locale, use.title)}</h3>
@@ -148,6 +150,14 @@ export function FeaturedIndexEntry({
           {localize(locale, content.practiceHeading)}
         </h2>
         <p className="mt-4 max-w-3xl text-base leading-8 text-ink">{localize(locale, content.practice)}</p>
+        {practiceSentence ? (
+          <div className="mt-4">
+            <Link href={sentenceHref(locale, practiceSentence)} className="chip">
+              {sentenceBookLabel(locale, practiceSentence)}
+              <span className="ml-2 text-xs text-ink-soft">{practiceSentence.id}</span>
+            </Link>
+          </div>
+        ) : null}
       </section>
 
       <section id="faq" className="mt-8 border-y border-rule bg-surface px-4 py-5 sm:px-6" aria-labelledby="h-index-faq">
