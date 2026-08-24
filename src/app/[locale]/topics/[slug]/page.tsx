@@ -183,6 +183,9 @@ export default async function IntentHubPage({
             <p className="mt-6 max-w-4xl text-lg leading-8 text-ink-soft sm:text-xl">
               {localize(locale, hub.deck)}
             </p>
+            <p className="mt-4 max-w-4xl text-base leading-8 text-ink">
+              {localize(locale, hub.scopeLine)}
+            </p>
 
             <nav aria-label={t(locale, "四个检索意图导读", "Four search-intent guides")} className="mt-8 flex flex-wrap gap-2">
               {intentHubSlugs.map((itemSlug) => {
@@ -283,6 +286,16 @@ export default async function IntentHubPage({
                 </article>
               ))}
             </div>
+            <div className="mt-8 max-w-3xl border border-rule bg-surface p-5">
+              <h3 className="font-serif text-xl">{localize(locale, hub.practiceHeading)}</h3>
+              <p className="mt-3 text-base leading-8 text-ink-soft">{localize(locale, hub.practiceLine)}</p>
+              <Link
+                href={`/${locale}${hub.practicePath}`}
+                className="mt-4 inline-block font-ui text-sm text-ink underline decoration-rule underline-offset-4 hover:text-cinnabar"
+              >
+                {localize(locale, hub.practiceLinkLabel)} →
+              </Link>
+            </div>
           </section>
 
           <section aria-labelledby="translation-layers" className="mt-16 border-t border-rule pt-12">
@@ -344,6 +357,19 @@ export default async function IntentHubPage({
             <h2 id="continue" className="font-serif text-3xl">{t(locale, "继续阅读，不重复目录", "Continue without duplicating the catalogue")}</h2>
             <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {hub.relatedLinks.map((link) => (
+                <Link key={link.path} href={`/${locale}${link.path}`} className="border border-rule bg-surface p-5 transition-colors duration-300 hover:border-ink">
+                  <h3 className="font-serif text-xl">{localize(locale, link.title)}</h3>
+                  <p className="mt-3 text-sm leading-7 text-ink-soft">{localize(locale, link.description)}</p>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section aria-labelledby="index-links" className="mt-16 border-t border-rule pt-12">
+            <h2 id="index-links" className="font-serif text-3xl">{localize(locale, hub.indexLinksHeading)}</h2>
+            <p className="mt-4 max-w-3xl text-base leading-8 text-ink-soft">{localize(locale, hub.indexLinksIntro)}</p>
+            <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {hub.indexLinks.map((link) => (
                 <Link key={link.path} href={`/${locale}${link.path}`} className="border border-rule bg-surface p-5 transition-colors duration-300 hover:border-ink">
                   <h3 className="font-serif text-xl">{localize(locale, link.title)}</h3>
                   <p className="mt-3 text-sm leading-7 text-ink-soft">{localize(locale, link.description)}</p>
