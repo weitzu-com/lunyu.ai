@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { FeaturedIndexEntry } from "@/components/FeaturedIndexEntry";
 import {
   blogCountLine,
   blogEntities,
@@ -16,6 +17,7 @@ import {
   sentenceBookLabel,
   sentenceHref,
 } from "@/lib/blogs";
+import { getFeaturedIndex, localize as localizeFeatured } from "@/lib/featured-index";
 import { Locale, locales, t } from "@/lib/analects";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import {
@@ -41,8 +43,11 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   const entity = getBlogEntity(slug);
   if (!entity) return {};
+  const featured = getFeaturedIndex(slug);
   const title = blogTitle(locale, entity);
-  const description = blogSummary(locale, entity);
+  const description = featured
+    ? localizeFeatured(locale, featured.metaDescription)
+    : blogSummary(locale, entity);
   return {
     title,
     description,
@@ -63,7 +68,11 @@ export default async function KnowledgeEntryPage({
 
   const relatedSentences = getSentencesForBlog(entity);
   const relatedEntities = getRelatedBlogs(entity);
+  const featured = getFeaturedIndex(slug);
   const pageUrl = localizedUrl(locale, `/index/${entity.slug}`);
+  const description = featured
+    ? localizeFeatured(locale, featured.metaDescription)
+    : blogSummary(locale, entity);
 
   const entryJsonLd = {
     "@context": "https://schema.org",
@@ -73,7 +82,7 @@ export default async function KnowledgeEntryPage({
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
         name: blogTitle(locale, entity),
-        description: blogSummary(locale, entity),
+        description,
         inLanguage: locale,
         dateModified: contentModifiedDate,
         publisher: { "@id": organizationId },
@@ -82,7 +91,32 @@ export default async function KnowledgeEntryPage({
           "@type": "Thing",
           name: blogTitle(locale, entity),
         },
+        ...(featured
+          ? {
+              hasPart: {
+                "@id": `${pageUrl}#faq`,
+              },
+            }
+          : {}),
       },
+      ...(featured
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#faq`,
+              url: `${pageUrl}#faq`,
+              inLanguage: locale,
+              mainEntity: featured.faqs.map((faq) => ({
+                "@type": "Question",
+                name: localizeFeatured(locale, faq.question),
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: localizeFeatured(locale, faq.answer),
+                },
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "Organization",
         "@id": organizationId,
@@ -124,66 +158,72 @@ export default async function KnowledgeEntryPage({
         <h1 className="font-serif text-[2.5rem] leading-tight sm:text-5xl">
           {blogTitle(locale, entity)}
         </h1>
-        <p className="mt-5 max-w-3xl text-base leading-8 text-ink-soft sm:text-lg">
-          {blogSummary(locale, entity)}
-        </p>
-        <p className="mt-3 max-w-3xl font-ui text-sm text-ink-soft">
-          {blogCountLine(locale, entity)}
-        </p>
-
-        <div className="mt-6 flex flex-wrap gap-2">
-          <Link href={`/${locale}/index`} className="chip">
-            {t(locale, "返回索引", "Back to index")}
-          </Link>
-          <Link href={`/${locale}/analects`} className="chip">
-            {t(locale, "查看论语目录", "Open the Analects index")}
-          </Link>
-        </div>
-
-        <section className="mt-10 border-y border-rule bg-surface px-4 py-5 sm:px-6">
-          <h2 className="label">{t(locale, "相关章句", "Relevant passages")}</h2>
-          {relatedSentences.length > 0 ? (
-            <ol className="mt-4 divide-y divide-rule">
-              {relatedSentences.map((sentence) => (
-                <li key={sentence.id} className="py-4">
-                  <Link href={sentenceHref(locale, sentence)} className="group block">
-                    <div className="flex flex-wrap items-center justify-between gap-2 font-ui text-xs text-ink-soft">
-                      <span>{sentenceBookLabel(locale, sentence)}</span>
-                      <span>{sentence.id}</span>
-                    </div>
-                    <p className="mt-2 font-serif text-xl leading-[1.7] text-ink group-hover:text-cinnabar">
-                      {sentence.classicalChinese}
-                    </p>
-                    <p className="mt-2 text-sm leading-7 text-ink-soft">
-                      {locale === "zh-Hans" ? sentence.modernChinese : sentence.english}
-                    </p>
-                  </Link>
-                </li>
-              ))}
-            </ol>
-          ) : (
-            <p className="mt-4 text-sm leading-7 text-ink-soft">
-              {t(
-                locale,
-                "当前未找到匹配章句；这通常意味着该词条尚未在站内文本中出现。",
-                "No matching passages were found. That usually means the entry has not yet appeared in the site text."
-              )}
+        {featured ? (
+          <FeaturedIndexEntry locale={locale} entity={entity} content={featured} />
+        ) : (
+          <>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-ink-soft sm:text-lg">
+              {blogSummary(locale, entity)}
             </p>
-          )}
-        </section>
+            <p className="mt-3 max-w-3xl font-ui text-sm text-ink-soft">
+              {blogCountLine(locale, entity)}
+            </p>
 
-        {relatedEntities.length > 0 && (
-          <section className="mt-8 border-y border-rule bg-surface px-4 py-5 sm:px-6">
-            <h2 className="label">{t(locale, "相关词条", "Related entries")}</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {relatedEntities.map(({ entity: relatedEntity, overlap }) => (
-                <Link key={relatedEntity.slug} href={blogUrl(locale, relatedEntity)} className="chip">
-                  {blogTitle(locale, relatedEntity)}
-                  <span className="ml-2 text-xs text-ink-soft">{overlap}</span>
-                </Link>
-              ))}
+            <div className="mt-6 flex flex-wrap gap-2">
+              <Link href={`/${locale}/index`} className="chip">
+                {t(locale, "返回索引", "Back to index")}
+              </Link>
+              <Link href={`/${locale}/analects`} className="chip">
+                {t(locale, "查看论语目录", "Open the Analects index")}
+              </Link>
             </div>
-          </section>
+
+            <section className="mt-10 border-y border-rule bg-surface px-4 py-5 sm:px-6">
+              <h2 className="label">{t(locale, "相关章句", "Relevant passages")}</h2>
+              {relatedSentences.length > 0 ? (
+                <ol className="mt-4 divide-y divide-rule">
+                  {relatedSentences.map((sentence) => (
+                    <li key={sentence.id} className="py-4">
+                      <Link href={sentenceHref(locale, sentence)} className="group block">
+                        <div className="flex flex-wrap items-center justify-between gap-2 font-ui text-xs text-ink-soft">
+                          <span>{sentenceBookLabel(locale, sentence)}</span>
+                          <span>{sentence.id}</span>
+                        </div>
+                        <p className="mt-2 font-serif text-xl leading-[1.7] text-ink group-hover:text-cinnabar">
+                          {sentence.classicalChinese}
+                        </p>
+                        <p className="mt-2 text-sm leading-7 text-ink-soft">
+                          {locale === "zh-Hans" ? sentence.modernChinese : sentence.english}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <p className="mt-4 text-sm leading-7 text-ink-soft">
+                  {t(
+                    locale,
+                    "当前未找到匹配章句；这通常意味着该词条尚未在站内文本中出现。",
+                    "No matching passages were found. That usually means the entry has not yet appeared in the site text."
+                  )}
+                </p>
+              )}
+            </section>
+
+            {relatedEntities.length > 0 && (
+              <section className="mt-8 border-y border-rule bg-surface px-4 py-5 sm:px-6">
+                <h2 className="label">{t(locale, "相关词条", "Related entries")}</h2>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {relatedEntities.map(({ entity: relatedEntity, overlap }) => (
+                    <Link key={relatedEntity.slug} href={blogUrl(locale, relatedEntity)} className="chip">
+                      {blogTitle(locale, relatedEntity)}
+                      <span className="ml-2 text-xs text-ink-soft">{overlap}</span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
         )}
       </article>
       <SiteFooter locale={locale} />
