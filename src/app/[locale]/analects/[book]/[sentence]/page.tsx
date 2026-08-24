@@ -257,10 +257,12 @@ export default async function SentencePage({
           </ul>
         </section>
         </div>
-        {relatedBlogs.length > 0 && (
+        {(relatedBlogs.length > 0 || listenHref) && (
           <section className="mt-6 border-y border-rule bg-surface px-4 py-5 sm:px-6" aria-labelledby="h-related-blogs">
             <h2 id="h-related-blogs" className="label">
-              {t(locale, "相关人物、地点与概念", "Related people, places, and ideas")}
+              {relatedBlogs.length > 0
+                ? t(locale, "相关人物、地点与概念", "Related people, places, and ideas")
+                : t(locale, "听读", "Listen")}
             </h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {relatedBlogs.map((entity) => (

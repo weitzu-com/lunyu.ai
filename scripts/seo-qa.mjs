@@ -114,6 +114,10 @@ if (reviewedCount !== sentences.length) fail(`content: reviewed guide ${reviewed
 if (sentences.some((s) => !s.english?.trim())) fail("content: missing English translation");
 if (sentences.some((s) => !Array.isArray(s.notes) || s.notes.length === 0)) fail("content: missing notes");
 
+assertIncludes(read("src/lib/listen.ts"), "export function parseListenHash", "listen hash parser");
+assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "parseListenHash", "ListenControls consumes listen hash");
+assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "location.hash", "ListenControls reads location.hash");
+
 assertIncludes(envExample, `NEXT_PUBLIC_SITE_URL=${siteUrl}`, ".env.example");
 assertIncludes(packageJson.engines?.node ?? "", ">=24 <27", "package engines");
 assertIncludes(ciWorkflow, "node-version: 24", "GitHub CI Node version");
@@ -417,6 +421,18 @@ const relatedSpotChecks = [
     hrefs: ["/index/zhongshu", "/index/zi-gong", "/index/confucius"],
     listen: false,
   },
+  {
+    id: "xian-jin-015",
+    book: "xian-jin",
+    hrefs: ["/index/zi-zhang", "/index/zi-xia", "/index/zi-gong"],
+    listen: false,
+  },
+  {
+    id: "gong-ye-chang-001",
+    book: "gong-ye-chang",
+    hrefs: ["/index/nan-gong-kuo"],
+    listen: true,
+  },
 ];
 for (const locale of locales) {
   for (const spot of relatedSpotChecks) {
@@ -434,6 +450,31 @@ for (const locale of locales) {
       const html = read(file);
       if (html.includes(`#listen-${spot.id}`)) {
         fail(`${route}: listen chip must not appear without audio`);
+      }
+    }
+  }
+}
+
+checkHtml("/en/index/zi-zhang", ["/en/analects/xian-jin/xian-jin-015"]);
+checkHtml("/en/index/zi-xia", ["/en/analects/xian-jin/xian-jin-015"]);
+
+const aliasCollisionChecks = [
+  { id: "zi-han-025", book: "zi-han", forbidden: ["/index/zi-zhang"] },
+  { id: "zi-han-010", book: "zi-han", forbidden: ["/index/zi-lu"] },
+  { id: "shu-er-011", book: "shu-er", forbidden: ["/index/ran-you"] },
+];
+for (const locale of locales) {
+  for (const spot of aliasCollisionChecks) {
+    const route = `/${locale}/analects/${spot.book}/${spot.id}`;
+    const file = htmlPath(route);
+    if (!exists(file)) {
+      fail(`${route}: build HTML missing at ${file}`);
+      continue;
+    }
+    const html = read(file);
+    for (const path of spot.forbidden) {
+      if (html.includes(`/${locale}${path}`)) {
+        fail(`${route}: colliding alias linked ${path}`);
       }
     }
   }

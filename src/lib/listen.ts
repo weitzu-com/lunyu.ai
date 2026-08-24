@@ -7,9 +7,22 @@ export function listenPath(bookSlug: string) {
   return bookSlug === books[0].slug ? "/listen" : `/listen/${bookSlug}`;
 }
 
+export function listenFragment(sentenceId: string) {
+  return `listen-${sentenceId}`;
+}
+
+/** Read `#listen-{sentenceId}` from a location hash. */
+export function parseListenHash(hash: string) {
+  const value = hash.startsWith("#") ? hash.slice(1) : hash;
+  const prefix = "listen-";
+  if (!value.startsWith(prefix)) return undefined;
+  const sentenceId = value.slice(prefix.length);
+  return sentenceId || undefined;
+}
+
 export function listenUrl(locale: Locale, bookSlug: string, sentenceId?: string) {
   const path = `/${locale}${listenPath(bookSlug)}`;
-  return sentenceId ? `${path}#listen-${sentenceId}` : path;
+  return sentenceId ? `${path}#${listenFragment(sentenceId)}` : path;
 }
 
 export type ListenChapter = {

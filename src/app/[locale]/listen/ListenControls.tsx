@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { PinyinRuby } from "@/components/PinyinRuby";
 import type { Locale } from "@/lib/analects";
-import type { ListenChapter } from "@/lib/listen";
+import { listenFragment, parseListenHash, type ListenChapter } from "@/lib/listen";
 
 function formatClock(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
@@ -17,6 +17,24 @@ function tr(locale: Locale, zh: string, en: string) {
   return locale === "zh-Hans" ? zh : en;
 }
 
+function firstPlayableIndex(chapters: ListenChapter[]) {
+  return chapters.findIndex((chapter) => chapter.audioAvailable);
+}
+
+function indexFromListenHash(chapters: ListenChapter[], hash: string) {
+  const sentenceId = parseListenHash(hash);
+  if (!sentenceId) return -1;
+  const hashed = chapters.findIndex((chapter) => chapter.id === sentenceId);
+  if (hashed >= 0 && chapters[hashed]?.audioAvailable) return hashed;
+  return -1;
+}
+
+function writeListenHash(sentenceId: string) {
+  const next = `#${listenFragment(sentenceId)}`;
+  if (window.location.hash === next) return;
+  history.replaceState(null, "", `${window.location.pathname}${window.location.search}${next}`);
+}
+
 export function ListenControls({
   locale,
   bookTitle,
@@ -27,7 +45,8 @@ export function ListenControls({
   chapters: ListenChapter[];
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [index, setIndex] = useState(() => chapters.findIndex((chapter) => chapter.audioAvailable));
+  const [index, setIndex] = useState(() => firstPlayableIndex(chapters));
+  const [hashReady, setHashReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoPlay, setAutoPlay] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
@@ -72,6 +91,8 @@ export function ListenControls({
       setCurrentTime(0);
       setDuration(chapters[nextIndex]?.durationSeconds ?? 0);
       setIndex(nextIndex);
+      const next = chapters[nextIndex];
+      if (next) writeListenHash(next.id);
       window.setTimeout(() => {
         void audioRef.current?.play();
       }, 80);
@@ -93,10 +114,33 @@ export function ListenControls({
     };
   }, [autoPlay, chapters, findAvailableIndex, index]);
 
+  useLayoutEffect(() => {
+    const hashed = indexFromListenHash(chapters, window.location.hash);
+    if (hashed >= 0) {
+      setCurrentTime(0);
+      setDuration(chapters[hashed]?.durationSeconds ?? 0);
+      setIndex(hashed);
+    }
+    setHashReady(true);
+  }, [chapters]);
+
   useEffect(() => {
-    const el = active ? document.getElementById(`listen-${active.id}`) : null;
+    function onHashChange() {
+      const hashed = indexFromListenHash(chapters, window.location.hash);
+      if (hashed < 0) return;
+      setCurrentTime(0);
+      setDuration(chapters[hashed]?.durationSeconds ?? 0);
+      setIndex(hashed);
+    }
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [chapters]);
+
+  useEffect(() => {
+    if (!hashReady || !active) return;
+    const el = document.getElementById(`listen-${active.id}`);
     el?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }, [active]);
+  }, [active, hashReady]);
 
   async function play() {
     await audioRef.current?.play();
@@ -120,6 +164,8 @@ export function ListenControls({
     setCurrentTime(0);
     setDuration(chapters[availableIndex]?.durationSeconds ?? 0);
     setIndex(availableIndex);
+    const selected = chapters[availableIndex];
+    if (selected) writeListenHash(selected.id);
     if (shouldPlay) {
       window.setTimeout(() => {
         void audioRef.current?.play();

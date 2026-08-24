@@ -22,6 +22,11 @@ export type BlogEntity = {
    * These must not inflate the entity's own passage dump.
    */
   relatedAliases?: string[];
+  /**
+   * Classical passages that name this entity without a collision-safe alias
+   * (courtesy/personal names such as 师/商). IDs only; not guide-layer text.
+   */
+  sourcePassageIds?: string[];
   zhSummary: string;
   enSummary: string;
 };
@@ -58,7 +63,24 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "子路",
     enName: "Zi Lu",
-    aliases: ["子路", "季路"],
+    aliases: [
+      "子路",
+      "季路",
+      "仲由",
+      "由也好勇",
+      "由也果",
+      "由也喭",
+      "若由也",
+      "其由也与",
+      "由也问",
+      "由也为之",
+      "野哉，由也",
+      "由也兼人",
+      "昔者由也",
+      "由也，女闻",
+      "由也，升堂",
+      "由也，千乘",
+    ],
     zhSummary: "孔门弟子，勇直好问，常在政事与行动中被孔子点拨。",
     enSummary: "A direct and courageous disciple, often taught through questions of action and government.",
   },
@@ -67,7 +89,7 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "子贡",
     enName: "Zi Gong",
-    aliases: ["子贡"],
+    aliases: ["子贡", "赐也"],
     zhSummary: "孔门弟子，善言辞与外交，也常追问仁、君子与孔子人格。",
     enSummary: "A disciple known for speech, diplomacy, and probing questions about virtue.",
   },
@@ -76,7 +98,8 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "子夏",
     enName: "Zi Xia",
-    aliases: ["子夏"],
+    aliases: ["子夏", "师与商", "商也不及", "起予者商"],
+    sourcePassageIds: ["xian-jin-015"],
     zhSummary: "孔门弟子，重视文学、礼学与学习次第。",
     enSummary: "A disciple associated with learning, literary cultivation, and ritual study.",
   },
@@ -85,7 +108,8 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "子张",
     enName: "Zi Zhang",
-    aliases: ["子张"],
+    aliases: ["子张", "师与商", "师也过", "师也辟", "师愈"],
+    sourcePassageIds: ["xian-jin-015", "xian-jin-019"],
     zhSummary: "孔门弟子，常问从政、求仁、行道与士人风范。",
     enSummary: "A disciple who asks about government, virtue, and the conduct of a scholar.",
   },
@@ -94,7 +118,7 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "曾子",
     enName: "Zeng Zi",
-    aliases: ["曾子", "曾参"],
+    aliases: ["曾子", "曾参", "参乎", "参也"],
     zhSummary: "孔门弟子，以反省、孝道和传承意识著称。",
     enSummary: "A disciple known for self-examination, filial conduct, and transmission.",
   },
@@ -112,7 +136,7 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "冉有",
     enName: "Ran You",
-    aliases: ["冉有", "冉求"],
+    aliases: ["冉有", "冉求", "求也何如", "求也艺", "求也为之", "求也问", "求也退", "求也，千"],
     zhSummary: "孔门弟子，常与政事、家臣职责和行动能力相关。",
     enSummary: "A disciple often linked with government service and practical ability.",
   },
@@ -121,7 +145,7 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "仲弓",
     enName: "Zhong Gong",
-    aliases: ["仲弓", "冉雍"],
+    aliases: ["仲弓", "冉雍", "雍也"],
     zhSummary: "孔门弟子，围绕仁、政、德性受孔子称许。",
     enSummary: "A disciple praised in discussions of ren, government, and character.",
   },
@@ -157,7 +181,7 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "公西华",
     enName: "Gongxi Hua",
-    aliases: ["公西华"],
+    aliases: ["公西华", "赤也"],
     zhSummary: "孔门弟子，常见于弟子志向与礼仪事务的语境。",
     enSummary: "A disciple appearing in contexts of aspiration and ritual service.",
   },
@@ -175,7 +199,7 @@ export const blogEntities: BlogEntity[] = [
     category: "person",
     zhName: "南宫适",
     enName: "Nan Gong Kuo",
-    aliases: ["南宫适", "南宫括"],
+    aliases: ["南宫适", "南宫括", "南容"],
     zhSummary: "孔门相关人物，涉及德行、尚贤与历史人物评价。",
     enSummary: "A figure linked with virtue, worthiness, and judgments of historical models.",
   },
@@ -543,21 +567,25 @@ function containsAnyAlias(haystack: string, aliases: readonly string[]) {
   return aliases.some((alias) => alias.length > 0 && haystack.includes(alias));
 }
 
-/** Passages that actually use this entry's name in the Analects source text. */
-export function getSentencesForBlog(entity: BlogEntity) {
-  return getAllSentences().filter((sentence) => containsAnyAlias(sourceText(sentence), entity.aliases));
-}
-
 function relatedAliasesFor(entity: BlogEntity) {
   return entity.relatedAliases?.length
     ? [...entity.aliases, ...entity.relatedAliases]
     : entity.aliases;
 }
 
+function matchesSourceEntity(sentence: Sentence, entity: BlogEntity, aliases: readonly string[]) {
+  if (entity.sourcePassageIds?.includes(sentence.id)) return true;
+  return containsAnyAlias(sourceText(sentence), aliases);
+}
+
+/** Passages that actually use this entry's name in the Analects source text. */
+export function getSentencesForBlog(entity: BlogEntity) {
+  return getAllSentences().filter((sentence) => matchesSourceEntity(sentence, entity, entity.aliases));
+}
+
 /** Index chips that belong to this passage's source text, not the guide or Legge layers. */
 export function getBlogsForSentence(sentence: Sentence) {
-  const text = sourceText(sentence);
-  return blogEntities.filter((entity) => containsAnyAlias(text, relatedAliasesFor(entity)));
+  return blogEntities.filter((entity) => matchesSourceEntity(sentence, entity, relatedAliasesFor(entity)));
 }
 
 export function getRelatedBlogs(entity: BlogEntity) {
