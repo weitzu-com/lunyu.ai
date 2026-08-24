@@ -73,10 +73,18 @@ export type IntentHub = {
   faqs: HubFaq[];
   sourceIds: HubCitationId[];
   relatedLinks: HubRelatedLink[];
+  scopeLine: LocalizedText;
+  indexLinksHeading: LocalizedText;
+  indexLinksIntro: LocalizedText;
+  indexLinks: HubRelatedLink[];
+  practiceHeading: LocalizedText;
+  practiceLine: LocalizedText;
+  practicePath: string;
+  practiceLinkLabel: LocalizedText;
 };
 
 export const hubPublishedDate = "2026-08-23";
-export const hubModifiedDate = "2026-08-23";
+export const hubModifiedDate = "2026-08-24";
 
 export const hubCitations: Record<
   HubCitationId,
@@ -278,9 +286,42 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
       { question: { zh: "《论语》有多少篇、多少章？", en: "How many books and passages are in this edition?" }, answer: { zh: "今本分二十篇。lunyu.ai 依站内分章方式发布 499 章，每章都有中英文稳定 URL；不同版本在细分章次时可能出现计数差异。", en: "The received text has twenty books. Lunyu.ai publishes 499 passages under its passage division, each with stable Chinese and English URLs; other editions may count subdivisions differently." } },
       { question: { zh: "为什么英文使用 James Legge 译本？", en: "Why does the site use James Legge?" }, answer: { zh: "该译本与配套中文底本可公开核验并处于公版，适合逐句建立可复用链接。它不是唯一或最终译法，十九世纪措辞和术语选择也需要结合中文审读。", en: "The translation and paired Chinese base are publicly verifiable and in the public domain, which supports stable passage-level reuse. It is not the only or final translation, and its nineteenth-century diction still requires comparison with the Chinese." } },
       { question: { zh: "怎样引用本站的一则《论语》？", en: "How should I cite a passage from lunyu.ai?" }, answer: { zh: "保留篇章号与具体句子 URL，并注明所引层次，例如“《论语》15.23，原文”或“James Legge 英译”。如果引用白话导读，也应明确它是本站编辑说明。", en: "Keep the book-passage reference and exact sentence URL, then name the layer—for example, “Analects 15.23, source text” or “James Legge translation.” If you use the modern-Chinese guide, identify it as site editorial explanation." } },
+      {
+        question: {
+          zh: "本页和 The Analects、Analects of Confucius、Confucius quotes 另外三个意图导读有何不同？",
+          en: "How does this Lunyu hub differ from the other three intent guides?",
+        },
+        answer: {
+          zh: "本页只回答中文书名检索：《论语》是什么、底本与译文怎样分层、从哪几则进入原文。The Analects 页回答英文书名下的定义、二十篇体例与读法。Analects of Confucius 页处理“of Confucius”的归属与谁在说话。Confucius quotes 页只核验可定位的名言。四个检索意图仍分四页，不合并成一张总页。",
+          en: "This page answers the Chinese-title search: what 《论语》 is, how the text layers work, and where to enter the source. The Analects page answers the English title, twenty-book form, and how to begin. Analects of Confucius treats attribution and who speaks. Confucius quotes only verifies locatable sayings. The four search intents stay on four pages and are not collapsed into one.",
+        },
+      },
     ],
     sourceIds: ["wikisource", "gutenberg", "ctext", "stanford", "modernChinese"],
     relatedLinks: sharedRelatedLinks,
+    scopeLine: {
+      zh: "本页回答：《论语》是什么、底本与译文如何分层、从哪几则进入原文。本页不回答：把四类检索合成一页、核验网络金句，或重列二十篇 499 章。",
+      en: "This page answers what 《论语》 is, how the text layers work, and where to enter the source. It does not merge the four search intents, verify internet quotes, or relist all twenty books.",
+    },
+    indexLinksHeading: { zh: "从本页意图进入已有知识索引", en: "Existing knowledge-index pages for this reading path" },
+    indexLinksIntro: {
+      zh: "这些不是第二套二十篇目录，而是与“先读原文、再理解译文”直接相关的已有索引页。",
+      en: "These are not a second twenty-book catalogue. They are existing index pages that belong to reading the Chinese text before reducing it to slogans.",
+    },
+    indexLinks: [
+      { path: "/index/xue", title: { zh: "学", en: "Learning (xue)" }, description: { zh: "《学而》是常见起点；先看“学”在全书中的章句分布，再回到具体问答。", en: "Xue Er is a common starting book; use the learning index to see how study is asked, then return to the passage." } },
+      { path: "/index/ren", title: { zh: "仁", en: "Ren" }, description: { zh: "读原文时，“仁”不能当一句口号；先进入概念索引，再核对应答对象。", en: "Ren is not a poster word. Open the concept index, then check whom a given answer is addressing." } },
+      { path: "/index/li", title: { zh: "礼", en: "Li" }, description: { zh: "礼关乎行为秩序与敬意；适合在核对原文层次后，再沿概念回看相关章句。", en: "Li joins form and reverence; after checking the source layer, follow the index back to the relevant exchanges." } },
+      { path: "/index/junzi", title: { zh: "君子", en: "Junzi" }, description: { zh: "君子是人格名称，不是抽象标签；索引帮助比较不同章句中的用法。", en: "Junzi names a person, not an abstract badge; the index compares how different passages use the word." } },
+      { path: "/index/zhongshu", title: { zh: "忠恕", en: "Zhongshu" }, description: { zh: "“恕”出现在完整问答里；先看索引，再打开可引用的句子页。", en: "Shu appears inside a full question-and-answer; use the index, then open the citable sentence page." } },
+    ],
+    practiceHeading: { zh: "今天可以做的一步", en: "One thing you can do today" },
+    practiceLine: {
+      zh: "打开《学而》1.1 的稳定句子页，先核对原文、白话导读与 Legge 英译三层，再决定是否继续往下读。",
+      en: "Open the stable URL for Xue Er 1.1, check the source, modern guide, and Legge layers, then decide whether to continue.",
+    },
+    practicePath: "/analects/xue-er/xue-er-001",
+    practiceLinkLabel: { zh: "打开《学而》1.1", en: "Open Xue Er 1.1" },
   },
   "the-analects": {
     slug: "the-analects",
@@ -366,9 +407,42 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
       { question: { zh: "The Analects 是一本哲学论著吗？", en: "Is The Analects a philosophical treatise?" }, answer: { zh: "它当然承载哲学思想，但体例不是连续论证的专著。它由短章、对话、人物评价和行为记述构成，解释时必须考虑说话者与场景。", en: "It carries philosophical thought, but its form is not a continuous argumentative treatise. It consists of short sayings, dialogues, judgments of people, and descriptions of conduct, so interpretation must attend to speakers and scenes." } },
       { question: { zh: "初读应该从第一篇开始吗？", en: "Should a first-time reader start at Book One?" }, answer: { zh: "从《学而》顺读最容易保留全书秩序；也可以先读本页六则，再沿具体主题回到目录。无论哪条路线，都应阅读完整章句而不是只有摘句。", en: "Starting with Xue Er preserves the transmitted order and works well. A reader may also begin with the six passages here and follow a theme back into the catalogue. Either way, read the full passage rather than an isolated excerpt." } },
       { question: { zh: "哪一个英文译本最好？", en: "What is the best English translation of The Analects?" }, answer: { zh: "没有脱离用途的“最好”。公版 Legge 适合核验、历史比较和自由引用；学习关键概念时，应再比较现代学术译本，并始终回看中文原文。", en: "There is no context-free “best.” Public-domain Legge is useful for verification, historical comparison, and reusable quotation. For close study of key concepts, compare modern scholarly translations and keep returning to the Chinese." } },
+      {
+        question: {
+          zh: "本页和《论语》、Analects of Confucius、Confucius quotes 另外三个意图导读有何不同？",
+          en: "How does this Analects hub differ from the other three intent guides?",
+        },
+        answer: {
+          zh: "本页只回答英文书名检索：The Analects 是什么、二十篇怎样构成、从哪里开始读。中文书名页《论语》负责原文层次与阅读入口。Analects of Confucius 页处理归属与说话者。Confucius quotes 页只核验可定位的名言。四个检索意图仍分四页，不合并成一张总页。",
+          en: "This page answers the English-title search: what The Analects is, how the twenty books work, and where to begin. The Lunyu page is the Chinese-title route into source layers and a reading path. Analects of Confucius treats attribution and speakers. Confucius quotes only verifies locatable sayings. The four search intents stay on four pages and are not collapsed into one.",
+        },
+      },
     ],
     sourceIds: ["wikisource", "gutenberg", "ctext", "stanford"],
     relatedLinks: sharedRelatedLinks,
+    scopeLine: {
+      zh: "本页回答英文书名下的三个问题：The Analects 是什么、二十篇如何组织、从哪里开始。本页不处理成书署名、不核验孤立金句，也不替代中文书名阅读页。",
+      en: "This page answers the English-title questions: what The Analects is, how the twenty books work, and how to begin. It does not settle authorship, verify isolated quotes, or replace the Chinese-title reading path.",
+    },
+    indexLinksHeading: { zh: "从本页意图进入已有知识索引", en: "Existing knowledge-index pages for this English-title guide" },
+    indexLinksIntro: {
+      zh: "这些索引对应 The Analects 常见的英文主题入口，而不是再列一遍二十篇。",
+      en: "These index pages match common English-title themes. They are not another listing of the twenty books.",
+    },
+    indexLinks: [
+      { path: "/index/xue", title: { zh: "学", en: "Learning (xue)" }, description: { zh: "英文读者常从学习与思考的对举进入全书；索引标出相关章句。", en: "English readers often enter through learning and thought; the index marks the relevant passages." } },
+      { path: "/index/ren", title: { zh: "仁", en: "Ren" }, description: { zh: "定义全书时，“仁”是反复出现的问题，而不是一次下完的定义。", en: "When defining the work, ren is a recurring question rather than a definition given once for all." } },
+      { path: "/index/junzi", title: { zh: "君子", en: "Junzi" }, description: { zh: "“文质彬彬”等章把君子写成平衡，而不是一句性格标签。", en: "Passages such as the balance of substance and refinement treat junzi as a measured person, not a personality label." } },
+      { path: "/index/li", title: { zh: "礼", en: "Li" }, description: { zh: "礼帮助说明二十篇为何不是现代主题章：同一问题会跨篇重现。", en: "Li helps show why the twenty books are not modern topic chapters: one question can recur across books." } },
+      { path: "/index/yi", title: { zh: "义", en: "Yi" }, description: { zh: "义是英文读者常追问的正当尺度；先看索引，再回到具体判断。", en: "Yi is a measure of rightness English readers often ask about; use the index, then return to the particular judgment." } },
+    ],
+    practiceHeading: { zh: "今天可以做的一步", en: "One thing you can do today" },
+    practiceLine: {
+      zh: "打开《学而》1.3 的稳定句子页，看一则极短判断如何仍有明确对象，再决定是否顺读第一篇。",
+      en: "Open the stable URL for Xue Er 1.3, see how even a short saying still has a target, then decide whether to continue Book One in order.",
+    },
+    practicePath: "/analects/xue-er/xue-er-003",
+    practiceLinkLabel: { zh: "打开《学而》1.3", en: "Open Xue Er 1.3" },
   },
   "analects-of-confucius": {
     slug: "analects-of-confucius",
@@ -454,12 +528,45 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
       { question: { zh: "为什么书名仍叫 Analects of Confucius？", en: "Why is it still called Analects of Confucius?" }, answer: { zh: "这个书名清楚指出文本所属的孔子言行和思想传统，便于普通读者识别。只要同时解释编纂背景，它并不必然主张孔子亲笔写作。", en: "The title efficiently identifies the work with the Confucius teaching tradition for general readers. It need not claim personal authorship when the compilation context is stated clearly." } },
       { question: { zh: "《论语》中的话都能署名“孔子说”吗？", en: "Can every Analects saying be introduced as “Confucius said”?" }, answer: { zh: "不能。今本明确保存有子、曾子、子夏、子张等人的话，也有叙事文字。引用前应查看章句开头的说话者。", en: "No. The received text explicitly preserves sayings by Youzi, Zengzi, Zixia, Zizhang, and others, as well as narrative prose. Check the speaker at the start of the passage before attributing it." } },
       { question: { zh: "英文人名为什么和拼音不一样？", en: "Why do names in Legge differ from modern pinyin?" }, answer: { zh: "Legge 使用十九世纪的罗马字体系，所以 Tsze-hsia、Tsang 等分别对应现代常写的 Zixia、Zengzi。差异是转写系统变化，不代表不同人物。", en: "Legge used nineteenth-century romanization systems, so forms such as Tsze-hsia and Tsang correspond to modern Zixia and Zengzi. The difference is transliteration, not a different person." } },
+      {
+        question: {
+          zh: "本页和《论语》、The Analects、Confucius quotes 另外三个意图导读有何不同？",
+          en: "How does this Analects of Confucius hub differ from the other three intent guides?",
+        },
+        answer: {
+          zh: "本页只回答归属问题：“of Confucius”指什么、传统编纂与现代审慎如何并存、某一章是谁在说话。中文书名页《论语》负责原文与读法。The Analects 页负责英文书名与二十篇体例。Confucius quotes 页只核验可定位的名言。四个检索意图仍分四页，不合并成一张总页。",
+          en: "This page answers the attribution question: what “of Confucius” means, how tradition and caution can both be stated, and who speaks in a given passage. Lunyu is the Chinese-title reading path. The Analects is the English-title definition and structure guide. Confucius quotes only verifies locatable sayings. The four search intents stay on four pages and are not collapsed into one.",
+        },
+      },
     ],
     sourceIds: ["wikisource", "gutenberg", "ctext", "stanford"],
     relatedLinks: [
       ...sharedRelatedLinks,
       { path: "/index/confucius", title: { zh: "孔子人物索引", en: "Confucius index entry" }, description: { zh: "查看孔子相关章句与人物入口。", en: "Follow passages and index routes connected with Confucius." } },
     ],
+    scopeLine: {
+      zh: "本页回答“of Confucius”指什么、谁在说话、传统编纂与现代审慎如何并存。本页不替代中英书名导读，也不做名言真伪清单。",
+      en: "This page answers what “of Confucius” means, who speaks, and how tradition and caution can be stated together. It does not replace the Chinese- or English-title guides, and it is not a quote-authenticity list.",
+    },
+    indexLinksHeading: { zh: "从本页意图进入已有人物索引", en: "Existing people-index pages for this attribution question" },
+    indexLinksIntro: {
+      zh: "先分清说话者，再引用。下列都是已有人物页，不是新的作者传记。",
+      en: "Identify the speaker before citing. These are existing people pages, not new biographies.",
+    },
+    indexLinks: [
+      { path: "/index/confucius", title: { zh: "孔子", en: "Confucius" }, description: { zh: "核心人物与主要声音；用来对照“子曰”章句，而不是证明他亲笔定稿全书。", en: "The central figure and principal voice; use this to follow “The Master said,” not to prove single authorship." } },
+      { path: "/index/yan-yuan", title: { zh: "颜渊", en: "Yan Yuan" }, description: { zh: "弟子问答会改变同一概念的答法；先看人物页，再回具体章句。", en: "A disciple's question can change how a concept is answered; open the person page, then return to the passage." } },
+      { path: "/index/zi-gong", title: { zh: "子贡", en: "Zi Gong" }, description: { zh: "“一言而终身行之”由子贡提出；问题属于答案的一部分。", en: "Zi Gong asks for one lifelong word; the question belongs to the answer." } },
+      { path: "/index/zeng-zi", title: { zh: "曾子", en: "Zeng Zi" }, description: { zh: "“吾日三省吾身”由曾子说出，是最常被错署给孔子的句子之一。", en: "Daily self-examination is spoken by Zengzi and is often incorrectly reassigned to Confucius." } },
+      { path: "/index/zi-xia", title: { zh: "子夏", en: "Zi Xia" }, description: { zh: "第十九篇保留子夏等人的话，说明今本是学派记忆而非单人独白。", en: "Book Nineteen preserves Zixia's voice, showing a school memory rather than a one-person monologue." } },
+    ],
+    practiceHeading: { zh: "今天可以做的一步", en: "One thing you can do today" },
+    practiceLine: {
+      zh: "打开《学而》1.4 的稳定句子页，核对开头是“曾子曰”还是“子曰”，再决定如何署名。",
+      en: "Open the stable URL for Xue Er 1.4, check whether it begins “Zengzi said” or “The Master said,” then decide how to attribute it.",
+    },
+    practicePath: "/analects/xue-er/xue-er-004",
+    practiceLinkLabel: { zh: "打开《学而》1.4", en: "Open Xue Er 1.4" },
   },
   "confucius-quotes": {
     slug: "confucius-quotes",
@@ -548,12 +655,45 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
       { question: { zh: "可以只写“Confucius said”吗？", en: "Is “Confucius said” enough for a citation?" }, answer: { zh: "用于随手分享仍不够可靠。至少补充 Analects 篇章号；引用英文再写译者，最好附完整句子页链接。", en: "Not for a reliable citation. Add the Analects book-passage reference, name the translator for English wording, and preferably include the full passage URL." } },
       { question: { zh: "为什么本站不把英文改得更现代？", en: "Why not silently modernize Legge's English?" }, answer: { zh: "静默改写会失去可核验的译者文本，也容易让编辑措辞冒充历史译文。本站保留 Legge 原译；现代解释另行标注。", en: "Silent modernization would remove a verifiable translator text and risk passing editorial wording off as historical translation. The site preserves Legge and labels modern explanation separately." } },
       { question: { zh: "“吾日三省吾身”是孔子说的吗？", en: "Did Confucius say the line about daily self-examination?" }, answer: { zh: "今本《论语》1.4 明确写“曾子曰”。它属于《论语》，但说话者是曾子；准确引用应写曾子，而不是孔子。", en: "Received Analects 1.4 explicitly begins “Zengzi said.” The saying belongs to the Analects, but its speaker is Zengzi, so an accurate attribution names him rather than Confucius." } },
+      {
+        question: {
+          zh: "本页和《论语》、The Analects、Analects of Confucius 另外三个意图导读有何不同？",
+          en: "How does this Confucius quotes hub differ from the other three intent guides?",
+        },
+        answer: {
+          zh: "本页只回答名言核验：这句话能否在《论语》定位、说话者是谁、怎样引用。中文书名页《论语》解释全书与读法。The Analects 页定义英文书名与二十篇体例。Analects of Confucius 页说明何以文本以孔子为中心却不是他的署名专著。四个检索意图仍分四页，不合并成一张总页。",
+          en: "This page answers quote verification: can the line be located in the Analects, who speaks, and how to cite it. Lunyu explains the Chinese book and how to read it here. The Analects defines the English title and twenty-book form. Analects of Confucius explains why the work is centered on Confucius without being his signed monograph. The four search intents stay on four pages and are not collapsed into one.",
+        },
+      },
     ],
     sourceIds: ["wikisource", "gutenberg", "ctext", "stanford"],
     relatedLinks: [
       ...sharedRelatedLinks,
       { path: "/topics/analects-of-confucius", title: { zh: "谁在《论语》中说话？", en: "Who speaks in the Analects?" }, description: { zh: "区分孔子、弟子与编纂传统。", en: "Distinguish Confucius, disciple voices, and the compilation tradition." } },
     ],
+    scopeLine: {
+      zh: "本页回答一条 Confucius quote 能否在《论语》定位、说话者是谁、如何引用。本页不收录无法核对的网络金句，也不把全书改写成海报文案。",
+      en: "This page answers whether a Confucius quote can be located in the Analects, who speaks, and how to cite it. It does not collect unverifiable internet lines or rewrite the book as poster copy.",
+    },
+    indexLinksHeading: { zh: "从本页意图进入已有知识索引", en: "Existing knowledge-index pages for verifying a saying" },
+    indexLinksIntro: {
+      zh: "核验名言时，先回到人物或概念页，再打开带篇章号的句子链接。",
+      en: "When verifying a quote, return to a person or concept page, then open the passage that carries a reference.",
+    },
+    indexLinks: [
+      { path: "/index/confucius", title: { zh: "孔子", en: "Confucius" }, description: { zh: "先确认说话者是否真是孔子，再把句子放进名言卡片。", en: "Confirm that Confucius is the speaker before placing the line on a quote card." } },
+      { path: "/index/ren", title: { zh: "仁", en: "Ren" }, description: { zh: "许多流行句把“仁”抽成标语；索引帮助回到完整问答。", en: "Popular lines often lift ren into a slogan; the index returns it to complete exchanges." } },
+      { path: "/index/zhongshu", title: { zh: "忠恕", en: "Zhongshu" }, description: { zh: "“己所不欲”必须连着“恕”与提问者，不能只截短句。", en: "The negative formulation belongs with shu and the questioner, not as a clipped motto." } },
+      { path: "/index/junzi", title: { zh: "君子", en: "Junzi" }, description: { zh: "“君子求诸己”一类句子要保留对照结构，索引标出相关出处。", en: "Sayings such as seeking the demand in oneself keep their contrast; the index marks the sources." } },
+      { path: "/index/xue", title: { zh: "学", en: "Learning (xue)" }, description: { zh: "开篇名言常被只摘“有朋自远方来”；先看“学”，再读完整章。", en: "The opening saying is often reduced to distant friends; check learning, then read the whole passage." } },
+    ],
+    practiceHeading: { zh: "今天可以做的一步", en: "One thing you can do today" },
+    practiceLine: {
+      zh: "打开《卫灵公》15.23 的稳定句子页，按“篇章号 + 说话者 + 译者”引用这一则，而不是只写 Confucius said。",
+      en: "Open the stable URL for Wei Ling Gong 15.23 and cite it with reference, speaker, and translator, rather than writing only “Confucius said.”",
+    },
+    practicePath: "/analects/wei-ling-gong/wei-ling-gong-023",
+    practiceLinkLabel: { zh: "打开《卫灵公》15.23", en: "Open Wei Ling Gong 15.23" },
   },
 };
 

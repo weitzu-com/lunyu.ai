@@ -7,8 +7,14 @@ const siteUrl = "https://www.lunyu.ai";
 const locales = ["zh-Hans", "en"];
 const trustPages = ["about", "method", "sources", "faq"];
 const stableLastmod = "2026-08-20";
-const intentHubLastmod = "2026-08-23";
+const intentHubLastmod = "2026-08-24";
 const intentHubSlugs = ["lunyu", "the-analects", "analects-of-confucius", "confucius-quotes"];
+const hubIndexLinks = {
+  lunyu: ["/index/xue", "/index/ren", "/index/li", "/index/junzi", "/index/zhongshu"],
+  "the-analects": ["/index/xue", "/index/ren", "/index/junzi", "/index/li", "/index/yi"],
+  "analects-of-confucius": ["/index/confucius", "/index/yan-yuan", "/index/zi-gong", "/index/zeng-zi", "/index/zi-xia"],
+  "confucius-quotes": ["/index/confucius", "/index/ren", "/index/zhongshu", "/index/junzi", "/index/xue"],
+};
 const aiCrawlers = [
   "GPTBot",
   "ClaudeBot",
@@ -502,6 +508,8 @@ for (const locale of locales) {
       '"@type":"Quotation"',
       "/analects/",
       "Project Gutenberg",
+      locale === "en" ? "the other three intent guides" : "另外三个意图导读",
+      ...hubIndexLinks[slug],
     ]);
     const file = htmlPath(route);
     if (exists(file)) {
@@ -556,7 +564,7 @@ if (!sitemap.includes(`<lastmod>${stableLastmod}T00:00:00.000Z</lastmod>`) && !s
   fail("sitemap: stable 2026-08-20 lastmod missing");
 }
 if (!sitemap.includes(`<lastmod>${intentHubLastmod}T00:00:00.000Z</lastmod>`) && !sitemap.includes(`<lastmod>${intentHubLastmod}</lastmod>`)) {
-  fail("sitemap: stable 2026-08-23 hub lastmod missing");
+  fail("sitemap: stable 2026-08-24 hub lastmod missing");
 }
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
