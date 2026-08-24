@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { PinyinRuby } from "@/components/PinyinRuby";
 import type { Locale } from "@/lib/analects";
-import { listenFragment, parseListenHash, type ListenChapter } from "@/lib/listen";
+import type { ListenChapter } from "@/lib/listen";
+import { listenFragment, parseListenHash } from "@/lib/listen-hash";
 
 function formatClock(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";

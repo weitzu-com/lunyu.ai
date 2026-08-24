@@ -114,9 +114,10 @@ if (reviewedCount !== sentences.length) fail(`content: reviewed guide ${reviewed
 if (sentences.some((s) => !s.english?.trim())) fail("content: missing English translation");
 if (sentences.some((s) => !Array.isArray(s.notes) || s.notes.length === 0)) fail("content: missing notes");
 
-assertIncludes(read("src/lib/listen.ts"), "export function parseListenHash", "listen hash parser");
+assertIncludes(read("src/lib/listen-hash.ts"), "export function parseListenHash", "listen hash parser");
 assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "parseListenHash", "ListenControls consumes listen hash");
 assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "location.hash", "ListenControls reads location.hash");
+assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "@/lib/listen-hash", "ListenControls avoids server listen module");
 
 assertIncludes(envExample, `NEXT_PUBLIC_SITE_URL=${siteUrl}`, ".env.example");
 assertIncludes(packageJson.engines?.node ?? "", ">=24 <27", "package engines");
