@@ -52,13 +52,11 @@ export async function generateMetadata({
   const description = featured
     ? localizeFeatured(locale, featured.metaDescription)
     : blogSummary(locale, entity);
-  const graph = openGraph(locale, `/index/${entity.slug}`, `${title} · lunyu.ai`, description);
-  const featuredModified = indexEntryModifiedDate(slug);
   return {
     title,
     description,
     alternates: alternates(locale, `/index/${entity.slug}`),
-    openGraph: featuredModified ? { ...graph, modifiedTime: featuredModified } : graph,
+    openGraph: openGraph(locale, `/index/${entity.slug}`, `${title} · lunyu.ai`, description),
     twitter: twitterCard(locale, `/index/${entity.slug}`, `${title} · lunyu.ai`, description),
   };
 }
