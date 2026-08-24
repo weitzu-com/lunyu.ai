@@ -8,6 +8,7 @@ const locales = ["zh-Hans", "en"];
 const trustPages = ["about", "method", "sources", "faq"];
 const stableLastmod = "2026-08-20";
 const intentHubLastmod = "2026-08-24";
+const featuredIndexLastmod = "2026-08-24";
 const intentHubSlugs = ["lunyu", "the-analects", "analects-of-confucius", "confucius-quotes"];
 const hubIndexLinks = {
   lunyu: ["/index/xue", "/index/ren", "/index/li", "/index/junzi", "/index/zhongshu"],
@@ -370,6 +371,7 @@ checkHtml("/en/index/ren", [
   "/en/index/junzi",
   "/en/analects/xue-er",
   "Golden Rule",
+  `"dateModified":"${featuredIndexLastmod}"`,
 ]);
 checkHtml("/zh-Hans/index/ren", [
   '"@type":"FAQPage"',
@@ -472,6 +474,7 @@ for (const page of featuredIndexChecks) {
     "Back to the twenty books",
     `/en${page.href}`,
     page.marker,
+    `"dateModified":"${featuredIndexLastmod}"`,
   ]);
   checkHtml(`/zh-Hans/index/${page.slug}`, [
     '"@type":"FAQPage"',
@@ -495,14 +498,26 @@ for (const page of featuredIndexChecks) {
     if (description.includes(page.glossaryZh) || description.includes(page.glossaryEn)) {
       fail(`${route}: still using the one-line glossary description`);
     }
+    if (!html.includes(`"dateModified":"${featuredIndexLastmod}"`)) {
+      fail(`${route}: featured index must publish ${featuredIndexLastmod}`);
+    }
+    if (page.slug === "zi-gong" && locale === "en") {
+      if (html.includes("Si is the personal name") || html.includes("addresses him as Si")) {
+        fail(`${route}: 赐 must not be romanized as Si`);
+      }
+      if (!html.includes("Ci is the personal name")) {
+        fail(`${route}: 赐 should be romanized as Ci`);
+      }
+    }
   }
 }
 
 checkHtml("/en/index/yi", [
   "Relevant passages",
   "Rightness and appropriateness, the noble person's measure amid interests.",
+  `"dateModified":"${stableLastmod}"`,
 ]);
-checkHtml("/zh-Hans/index/yi", ["相关章句", "义指合宜与正当"]);
+checkHtml("/zh-Hans/index/yi", ["相关章句", "义指合宜与正当", `"dateModified":"${stableLastmod}"`]);
 for (const locale of locales) {
   const route = `/${locale}/index/yi`;
   const file = htmlPath(route);
@@ -513,6 +528,9 @@ for (const locale of locales) {
   }
   if (html.includes('"@type":"FAQPage"')) {
     fail(`${route}: unfeatured index must not grow FAQ JSON-LD`);
+  }
+  if (html.includes(`"dateModified":"${featuredIndexLastmod}"`)) {
+    fail(`${route}: unfeatured index must keep the 2026-08-20 modification date`);
   }
 }
 
@@ -679,9 +697,33 @@ if (!sitemap.includes(`<lastmod>${stableLastmod}T00:00:00.000Z</lastmod>`) && !s
 if (!sitemap.includes(`<lastmod>${intentHubLastmod}T00:00:00.000Z</lastmod>`) && !sitemap.includes(`<lastmod>${intentHubLastmod}</lastmod>`)) {
   fail("sitemap: stable 2026-08-24 hub lastmod missing");
 }
+function sitemapLastmodFor(loc) {
+  const escaped = loc.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = sitemap.match(new RegExp(`<loc>${escaped}</loc>\\s*<lastmod>([^<]+)</lastmod>`));
+  return match?.[1] ?? "";
+}
+const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
+const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
+for (const slug of ["ren", "li", "zhongshu", "junzi", "xue", "confucius", "yan-yuan", "zi-gong"]) {
+  for (const locale of locales) {
+    const loc = `${siteUrl}/${locale}/index/${slug}`;
+    const lastmod = sitemapLastmodFor(loc);
+    if (lastmod !== featuredSitemapDate && lastmod !== featuredIndexLastmod) {
+      fail(`sitemap: ${loc} should lastmod ${featuredIndexLastmod}, got ${lastmod || "missing"}`);
+    }
+  }
+}
+for (const locale of locales) {
+  const loc = `${siteUrl}/${locale}/index/yi`;
+  const lastmod = sitemapLastmodFor(loc);
+  if (lastmod !== unfeaturedSitemapDate && lastmod !== stableLastmod) {
+    fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
+  }
+}
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }

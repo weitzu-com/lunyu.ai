@@ -3,6 +3,7 @@ import { locales, type Locale } from "@/lib/analects";
 import { blogEntities } from "@/lib/blogs";
 import { contentCoverage } from "@/lib/content-coverage";
 import { editorialPosts } from "@/lib/editorial-posts";
+import { indexEntryModifiedDate } from "@/lib/featured-index";
 import { hubModifiedDate, intentHubSlugs } from "@/lib/intent-hubs";
 import { contentModifiedDate, localizedUrl, siteUrl } from "@/lib/site";
 import { trustPageSlugs } from "@/lib/trust-pages";
@@ -74,7 +75,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
 
     for (const entity of blogEntities) {
-      addLocalized(entries, locale, `/index/${entity.slug}`);
+      addLocalized(
+        entries,
+        locale,
+        `/index/${entity.slug}`,
+        indexEntryModifiedDate(entity.slug) ?? contentModifiedDate
+      );
     }
 
     for (const post of editorialPosts) {

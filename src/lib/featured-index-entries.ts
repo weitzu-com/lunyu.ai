@@ -971,10 +971,10 @@ export const moreFeaturedIndexBySlug: Record<string, FeaturedIndexContent> = {
     practiceSentenceId: "wei-ling-gong-023",
     faqs: [
       {
-        question: { zh: "子贡和赐是同一个人吗？", en: "Are Zi Gong and Si the same person?" },
+        question: { zh: "子贡和赐是同一个人吗？", en: "Are Zi Gong and Ci the same person?" },
         answer: {
           zh: "是。赐是名，子贡是字。孔子常呼赐也。",
-          en: "Yes. Si is the personal name, Zi Gong the courtesy name. Confucius often addresses him as Si.",
+          en: "Yes. Ci is the personal name, Zi Gong the courtesy name. Confucius often addresses him as Ci.",
         },
       },
       {
@@ -1009,7 +1009,7 @@ export const moreFeaturedIndexBySlug: Record<string, FeaturedIndexContent> = {
         question: { zh: "子贡方人为什么被说？", en: "Why is Zi Gong criticized for ranking people?" },
         answer: {
           zh: "《宪问》记子贡方人，孔子说赐也贤乎哉，夫我则不暇。会问，仍可能把力气用在评人。这正是言语与佞之间要守的界。",
-          en: "Book 14 records Zi Gong ranking others. Confucius asks whether Si is so worthy, and says he himself has no leisure for that. The gift of questioning can still be spent on judging people. That is the line between speech and ning.",
+          en: "Book 14 records Zi Gong ranking others. Confucius asks whether Ci is so worthy, and says he himself has no leisure for that. The gift of questioning can still be spent on judging people. That is the line between speech and ning.",
         },
       },
     ],

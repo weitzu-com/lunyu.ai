@@ -50,6 +50,9 @@ export function localize(locale: Locale, text: LocalizedText) {
   return t(locale, text.zh, text.en);
 }
 
+/** Editorial date for featured index pages (仁 + the deepened entries). */
+export const featuredIndexModifiedDate = "2026-08-24";
+
 const featuredIndexBySlug: Record<string, FeaturedIndexContent> = {
   ren: {
     slug: "ren",
@@ -286,6 +289,10 @@ for (const content of Object.values(featuredIndexBySlug)) {
 
 export function getFeaturedIndex(slug: string) {
   return featuredIndexBySlug[slug];
+}
+
+export function indexEntryModifiedDate(slug: string) {
+  return getFeaturedIndex(slug) ? featuredIndexModifiedDate : undefined;
 }
 
 export function featuredSentence(sentenceId: string): Sentence | undefined {
