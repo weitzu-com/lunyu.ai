@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { PinyinRuby } from "@/components/PinyinRuby";
 import type { Locale } from "@/lib/analects";
 import type { ListenChapter } from "@/lib/listen";
+import { listenFragment, parseListenHash } from "@/lib/listen-hash";
 
 function formatClock(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
@@ -17,6 +18,38 @@ function tr(locale: Locale, zh: string, en: string) {
   return locale === "zh-Hans" ? zh : en;
 }
 
+function firstPlayableIndex(chapters: ListenChapter[]) {
+  return chapters.findIndex((chapter) => chapter.audioAvailable);
+}
+
+function indexFromListenHash(chapters: ListenChapter[], hash: string) {
+  const sentenceId = parseListenHash(hash);
+  if (!sentenceId) return -1;
+  const hashed = chapters.findIndex((chapter) => chapter.id === sentenceId);
+  if (hashed >= 0 && chapters[hashed]?.audioAvailable) return hashed;
+  return -1;
+}
+
+function subscribeListenHash(onChange: () => void) {
+  window.addEventListener("hashchange", onChange);
+  return () => window.removeEventListener("hashchange", onChange);
+}
+
+function getListenHash() {
+  return window.location.hash;
+}
+
+function getServerListenHash() {
+  return "";
+}
+
+function writeListenHash(sentenceId: string) {
+  const next = `#${listenFragment(sentenceId)}`;
+  if (window.location.hash === next) return;
+  history.replaceState(null, "", `${window.location.pathname}${window.location.search}${next}`);
+  window.dispatchEvent(new HashChangeEvent("hashchange"));
+}
+
 export function ListenControls({
   locale,
   bookTitle,
@@ -27,15 +60,19 @@ export function ListenControls({
   chapters: ListenChapter[];
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [index, setIndex] = useState(() => chapters.findIndex((chapter) => chapter.audioAvailable));
+  const hash = useSyncExternalStore(subscribeListenHash, getListenHash, getServerListenHash);
+  const hashIndex = indexFromListenHash(chapters, hash);
+  const index = hashIndex >= 0 ? hashIndex : firstPlayableIndex(chapters);
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoPlay, setAutoPlay] = useState(true);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(() =>
-    index >= 0 ? (chapters[index]?.durationSeconds ?? 0) : 0
-  );
+  const [clock, setClock] = useState({ id: "", time: 0, duration: 0 });
 
   const active = index >= 0 ? chapters[index] : undefined;
+  const currentTime = clock.id === active?.id ? clock.time : 0;
+  const duration =
+    clock.id === active?.id && clock.duration > 0
+      ? clock.duration
+      : (active?.durationSeconds ?? 0);
   const progress = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
   const chapterLabel = useMemo(() => {
@@ -60,8 +97,18 @@ export function ListenControls({
     const audio = audioRef.current;
     if (!audio) return;
 
-    const syncTime = () => setCurrentTime(audio.currentTime);
-    const syncDuration = () => setDuration(audio.duration);
+    const syncTime = () => {
+      const id = chapters[index]?.id ?? "";
+      setClock({ id, time: audio.currentTime, duration: audio.duration || chapters[index]?.durationSeconds || 0 });
+    };
+    const syncDuration = () => {
+      const id = chapters[index]?.id ?? "";
+      setClock((current) => ({
+        id,
+        time: current.id === id ? current.time : 0,
+        duration: audio.duration || chapters[index]?.durationSeconds || 0,
+      }));
+    };
     const syncPause = () => setIsPlaying(false);
     const syncPlay = () => setIsPlaying(true);
     const playNextChapter = () => {
@@ -69,9 +116,8 @@ export function ListenControls({
       if (!autoPlay) return;
       const nextIndex = findAvailableIndex(index + 1, 1);
       if (nextIndex < 0) return;
-      setCurrentTime(0);
-      setDuration(chapters[nextIndex]?.durationSeconds ?? 0);
-      setIndex(nextIndex);
+      const next = chapters[nextIndex];
+      if (next) writeListenHash(next.id);
       window.setTimeout(() => {
         void audioRef.current?.play();
       }, 80);
@@ -94,7 +140,8 @@ export function ListenControls({
   }, [autoPlay, chapters, findAvailableIndex, index]);
 
   useEffect(() => {
-    const el = active ? document.getElementById(`listen-${active.id}`) : null;
+    if (!active) return;
+    const el = document.getElementById(`listen-${active.id}`);
     el?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [active]);
 
@@ -110,6 +157,7 @@ export function ListenControls({
     const audio = audioRef.current;
     if (!audio) return;
     audio.currentTime = 0;
+    setClock({ id: active?.id ?? "", time: 0, duration: audio.duration || active?.durationSeconds || 0 });
     void audio.play();
   }
 
@@ -117,9 +165,8 @@ export function ListenControls({
     const availableIndex =
       chapters[nextIndex]?.audioAvailable ? nextIndex : findAvailableIndex(nextIndex, direction);
     if (availableIndex < 0) return;
-    setCurrentTime(0);
-    setDuration(chapters[availableIndex]?.durationSeconds ?? 0);
-    setIndex(availableIndex);
+    const selected = chapters[availableIndex];
+    if (selected) writeListenHash(selected.id);
     if (shouldPlay) {
       window.setTimeout(() => {
         void audioRef.current?.play();
@@ -132,7 +179,11 @@ export function ListenControls({
     if (!audio || !duration) return;
     const nextTime = (Number(value) / 100) * duration;
     audio.currentTime = nextTime;
-    setCurrentTime(nextTime);
+    setClock({
+      id: active?.id ?? "",
+      time: nextTime,
+      duration: audio.duration || duration,
+    });
   }
 
   if (!active) {
@@ -163,7 +214,7 @@ export function ListenControls({
             </Link>
           </div>
 
-          <audio ref={audioRef} src={active.audioSrc} preload="metadata" />
+          <audio key={active.id} ref={audioRef} src={active.audioSrc} preload="metadata" />
 
           <div className="mt-5 flex flex-wrap gap-2">
             <button

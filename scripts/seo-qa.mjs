@@ -120,6 +120,11 @@ if (reviewedCount !== sentences.length) fail(`content: reviewed guide ${reviewed
 if (sentences.some((s) => !s.english?.trim())) fail("content: missing English translation");
 if (sentences.some((s) => !Array.isArray(s.notes) || s.notes.length === 0)) fail("content: missing notes");
 
+assertIncludes(read("src/lib/listen-hash.ts"), "export function parseListenHash", "listen hash parser");
+assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "parseListenHash", "ListenControls consumes listen hash");
+assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "location.hash", "ListenControls reads location.hash");
+assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "@/lib/listen-hash", "ListenControls avoids server listen module");
+
 assertIncludes(envExample, `NEXT_PUBLIC_SITE_URL=${siteUrl}`, ".env.example");
 assertIncludes(packageJson.engines?.node ?? "", ">=24 <27", "package engines");
 assertIncludes(ciWorkflow, "node-version: 24", "GitHub CI Node version");
@@ -346,6 +351,142 @@ for (const trust of trustPages) {
 
 checkHtml("/zh-Hans/faq", ['"@type":"FAQPage"', '"@type":"Question"', '"acceptedAnswer"']);
 checkHtml("/en/index/confucius", ['"@type":"WebPage"', '"@type":"BreadcrumbList"', '"about"']);
+checkHtml("/en/index/ren", [
+  '"@type":"WebPage"',
+  '"@type":"FAQPage"',
+  '"@type":"Question"',
+  "How the word is used in the book",
+  "Easy confusions",
+  "Featured passages",
+  "View all related passages",
+  "What you can do today",
+  "Frequently asked questions",
+  "Related entries",
+  "Back to the twenty books",
+  "/en/analects/yan-yuan/yan-yuan-001",
+  "/en/analects/wei-ling-gong/wei-ling-gong-023",
+  "/en/analects/li-ren/li-ren-015",
+  "/en/index/li",
+  "/en/index/zhongshu",
+  "/en/index/junzi",
+  "/en/analects/xue-er",
+  "Golden Rule",
+]);
+checkHtml("/zh-Hans/index/ren", [
+  '"@type":"FAQPage"',
+  "书中怎么用这个字",
+  "容易混淆的地方",
+  "选读",
+  "查看全部相关章句",
+  "今天可以做的一件事",
+  "常见问题",
+  "相关词条",
+  "回到二十篇",
+  "/zh-Hans/analects/yan-yuan/yan-yuan-001",
+  "/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023",
+  "/zh-Hans/index/li",
+  "/zh-Hans/index/zhongshu",
+]);
+for (const locale of locales) {
+  const route = `/${locale}/index/ren`;
+  const file = htmlPath(route);
+  if (exists(file)) {
+    const html = read(file);
+    const description = extractMetaDescription(html);
+    if (!description) fail(`${route}: meta description missing`);
+    if (description.includes("A central virtue linking humaneness") || description.includes("《论语》的核心德目")) {
+      fail(`${route}: still using the one-line glossary description`);
+    }
+    if (html.includes("/analects/ba-yi/ba-yi-008")) {
+      fail(`${route}: guide-only 仁 match ba-yi-008 must not appear`);
+    }
+  }
+}
+
+const relatedSpotChecks = [
+  {
+    id: "xue-er-001",
+    book: "xue-er",
+    hrefs: ["/index/xue", "/index/junzi", "/index/confucius"],
+    listen: false,
+  },
+  {
+    id: "li-ren-015",
+    book: "li-ren",
+    hrefs: ["/index/zhongshu", "/index/zeng-zi", "/index/confucius"],
+    listen: true,
+  },
+  {
+    id: "yan-yuan-001",
+    book: "yan-yuan",
+    hrefs: ["/index/ren", "/index/li", "/index/yan-yuan"],
+    listen: true,
+  },
+  {
+    id: "wei-ling-gong-023",
+    book: "wei-ling-gong",
+    hrefs: ["/index/zhongshu", "/index/zi-gong", "/index/confucius"],
+    listen: false,
+  },
+  {
+    id: "xian-jin-015",
+    book: "xian-jin",
+    hrefs: ["/index/zi-zhang", "/index/zi-xia", "/index/zi-gong"],
+    listen: false,
+  },
+  {
+    id: "gong-ye-chang-001",
+    book: "gong-ye-chang",
+    hrefs: ["/index/nan-gong-kuo"],
+    listen: true,
+  },
+];
+for (const locale of locales) {
+  for (const spot of relatedSpotChecks) {
+    const route = `/${locale}/analects/${spot.book}/${spot.id}`;
+    const expected = [
+      locale === "zh-Hans" ? "相关人物、地点与概念" : "Related people, places, and ideas",
+      ...spot.hrefs.map((path) => `/${locale}${path}`),
+    ];
+    if (spot.listen) {
+      expected.push(`/${locale}/listen/${spot.book}#listen-${spot.id}`);
+    }
+    checkHtml(route, expected);
+    const file = htmlPath(route);
+    if (exists(file) && !spot.listen) {
+      const html = read(file);
+      if (html.includes(`#listen-${spot.id}`)) {
+        fail(`${route}: listen chip must not appear without audio`);
+      }
+    }
+  }
+}
+
+checkHtml("/en/index/zi-zhang", ["/en/analects/xian-jin/xian-jin-015"]);
+checkHtml("/en/index/zi-xia", ["/en/analects/xian-jin/xian-jin-015"]);
+
+const aliasCollisionChecks = [
+  { id: "zi-han-025", book: "zi-han", forbidden: ["/index/zi-zhang"] },
+  { id: "zi-han-010", book: "zi-han", forbidden: ["/index/zi-lu"] },
+  { id: "shu-er-011", book: "shu-er", forbidden: ["/index/ran-you"] },
+];
+for (const locale of locales) {
+  for (const spot of aliasCollisionChecks) {
+    const route = `/${locale}/analects/${spot.book}/${spot.id}`;
+    const file = htmlPath(route);
+    if (!exists(file)) {
+      fail(`${route}: build HTML missing at ${file}`);
+      continue;
+    }
+    const html = read(file);
+    for (const path of spot.forbidden) {
+      if (html.includes(`/${locale}${path}`)) {
+        fail(`${route}: colliding alias linked ${path}`);
+      }
+    }
+  }
+}
+
 checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, "知识索引"]);
 checkHtml("/zh-Hans/blogs", [`rel="canonical" href="${siteUrl}/zh-Hans/blogs"`, '"@type":"CollectionPage"', "论语阅读札记"]);
 checkHtml("/zh-Hans/blogs/how-to-read-the-analects", [

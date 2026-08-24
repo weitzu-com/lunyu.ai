@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Book, books, Locale, t } from "@/lib/analects";
 import { contentCoverageSummary, getBookContentCoverage } from "@/lib/content-coverage";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
-import { buildListenChapters } from "@/lib/listen";
+import { buildListenChapters, listenPath } from "@/lib/listen";
 import { buildListenStructuredData } from "@/lib/listen-structured-data";
 import { jsonLd } from "@/lib/site";
 import { ListenControls } from "./ListenControls";
@@ -37,11 +37,6 @@ const zhNumerals = [
 /** 学而 + 1 → 学而第一 */
 export function zhOrdinalTitle(book: Book) {
   return `${book.zhTitle}第${zhNumerals[book.number] ?? book.number}`;
-}
-
-/** Book 1 stays on /listen; the other books live at /listen/<slug>. */
-export function listenPath(slug: string) {
-  return slug === books[0].slug ? "/listen" : `/listen/${slug}`;
 }
 
 export function listenMetadata(locale: Locale, book: Book): Metadata {
