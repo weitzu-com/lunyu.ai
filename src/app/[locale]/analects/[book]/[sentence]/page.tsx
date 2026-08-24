@@ -7,6 +7,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { MarkOpened } from "@/components/ReadingCircle";
 import { LocalConfuciusChat } from "@/components/LocalConfuciusChat";
 import { blogTitle, blogUrl, categoryLabel, getBlogsForSentence } from "@/lib/blogs";
+import { getPassageContentCoverage } from "@/lib/content-coverage";
+import { listenUrl } from "@/lib/listen";
 import {
   getAllSentences,
   getBook,
@@ -160,6 +162,9 @@ export default async function SentencePage({
 
   const { prev, next } = getNeighbourSentences(sentence.id);
   const relatedBlogs = getBlogsForSentence(sentence).slice(0, 16);
+  const coverage = getPassageContentCoverage(sentence.id);
+  const listenHref =
+    coverage?.audio ? listenUrl(locale, sentence.bookSlug, sentence.id) : undefined;
 
   return (
     <main id="main" className="min-h-screen bg-paper text-ink">
@@ -270,6 +275,11 @@ export default async function SentencePage({
                   </span>
                 </Link>
               ))}
+              {listenHref ? (
+                <Link href={listenHref} className="chip">
+                  {t(locale, "听读此章", "Listen to this passage")}
+                </Link>
+              ) : null}
             </div>
           </section>
         )}

@@ -340,6 +340,105 @@ for (const trust of trustPages) {
 
 checkHtml("/zh-Hans/faq", ['"@type":"FAQPage"', '"@type":"Question"', '"acceptedAnswer"']);
 checkHtml("/en/index/confucius", ['"@type":"WebPage"', '"@type":"BreadcrumbList"', '"about"']);
+checkHtml("/en/index/ren", [
+  '"@type":"WebPage"',
+  '"@type":"FAQPage"',
+  '"@type":"Question"',
+  "How the word is used in the book",
+  "Easy confusions",
+  "Featured passages",
+  "View all related passages",
+  "What you can do today",
+  "Frequently asked questions",
+  "Related entries",
+  "Back to the twenty books",
+  "/en/analects/yan-yuan/yan-yuan-001",
+  "/en/analects/wei-ling-gong/wei-ling-gong-023",
+  "/en/analects/li-ren/li-ren-015",
+  "/en/index/li",
+  "/en/index/zhongshu",
+  "/en/index/junzi",
+  "/en/analects/xue-er",
+  "Golden Rule",
+]);
+checkHtml("/zh-Hans/index/ren", [
+  '"@type":"FAQPage"',
+  "书中怎么用这个字",
+  "容易混淆的地方",
+  "选读",
+  "查看全部相关章句",
+  "今天可以做的一件事",
+  "常见问题",
+  "相关词条",
+  "回到二十篇",
+  "/zh-Hans/analects/yan-yuan/yan-yuan-001",
+  "/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023",
+  "/zh-Hans/index/li",
+  "/zh-Hans/index/zhongshu",
+]);
+for (const locale of locales) {
+  const route = `/${locale}/index/ren`;
+  const file = htmlPath(route);
+  if (exists(file)) {
+    const html = read(file);
+    const description = extractMetaDescription(html);
+    if (!description) fail(`${route}: meta description missing`);
+    if (description.includes("A central virtue linking humaneness") || description.includes("《论语》的核心德目")) {
+      fail(`${route}: still using the one-line glossary description`);
+    }
+    if (html.includes("/analects/ba-yi/ba-yi-008")) {
+      fail(`${route}: guide-only 仁 match ba-yi-008 must not appear`);
+    }
+  }
+}
+
+const relatedSpotChecks = [
+  {
+    id: "xue-er-001",
+    book: "xue-er",
+    hrefs: ["/index/xue", "/index/junzi", "/index/confucius"],
+    listen: false,
+  },
+  {
+    id: "li-ren-015",
+    book: "li-ren",
+    hrefs: ["/index/zhongshu", "/index/zeng-zi", "/index/confucius"],
+    listen: true,
+  },
+  {
+    id: "yan-yuan-001",
+    book: "yan-yuan",
+    hrefs: ["/index/ren", "/index/li", "/index/yan-yuan"],
+    listen: true,
+  },
+  {
+    id: "wei-ling-gong-023",
+    book: "wei-ling-gong",
+    hrefs: ["/index/zhongshu", "/index/zi-gong", "/index/confucius"],
+    listen: false,
+  },
+];
+for (const locale of locales) {
+  for (const spot of relatedSpotChecks) {
+    const route = `/${locale}/analects/${spot.book}/${spot.id}`;
+    const expected = [
+      locale === "zh-Hans" ? "相关人物、地点与概念" : "Related people, places, and ideas",
+      ...spot.hrefs.map((path) => `/${locale}${path}`),
+    ];
+    if (spot.listen) {
+      expected.push(`/${locale}/listen/${spot.book}#listen-${spot.id}`);
+    }
+    checkHtml(route, expected);
+    const file = htmlPath(route);
+    if (exists(file) && !spot.listen) {
+      const html = read(file);
+      if (html.includes(`#listen-${spot.id}`)) {
+        fail(`${route}: listen chip must not appear without audio`);
+      }
+    }
+  }
+}
+
 checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, "知识索引"]);
 checkHtml("/zh-Hans/blogs", [`rel="canonical" href="${siteUrl}/zh-Hans/blogs"`, '"@type":"CollectionPage"', "论语阅读札记"]);
 checkHtml("/zh-Hans/blogs/how-to-read-the-analects", [

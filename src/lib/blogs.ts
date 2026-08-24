@@ -15,7 +15,13 @@ export type BlogEntity = {
   category: BlogCategory;
   zhName: string;
   enName: string;
+  /** Source-text strings used to decide which passages belong on this index page. */
   aliases: string[];
+  /**
+   * Extra source-text patterns for passage → index chips only.
+   * These must not inflate the entity's own passage dump.
+   */
+  relatedAliases?: string[];
   zhSummary: string;
   enSummary: string;
 };
@@ -34,6 +40,7 @@ export const blogEntities: BlogEntity[] = [
     zhName: "孔子",
     enName: "Confucius",
     aliases: ["孔子", "夫子", "仲尼"],
+    relatedAliases: ["子曰"],
     zhSummary: "《论语》的核心人物，言行、教学、政治理想与人格气象贯穿全书。",
     enSummary: "The central figure of The Analects: teacher, moral exemplar, and political thinker.",
   },
@@ -528,17 +535,29 @@ export function categoryLabel(locale: Locale, category: BlogCategory) {
   return t(locale, label.zh, label.en);
 }
 
-function containsAlias(sentence: Sentence, entity: BlogEntity) {
-  const haystack = `${sentence.classicalChinese}\n${sentence.modernChinese}\n${sentence.english}`;
-  return entity.aliases.some((alias) => haystack.includes(alias));
+function sourceText(sentence: Sentence) {
+  return sentence.classicalChinese;
 }
 
+function containsAnyAlias(haystack: string, aliases: readonly string[]) {
+  return aliases.some((alias) => alias.length > 0 && haystack.includes(alias));
+}
+
+/** Passages that actually use this entry's name in the Analects source text. */
 export function getSentencesForBlog(entity: BlogEntity) {
-  return getAllSentences().filter((sentence) => containsAlias(sentence, entity));
+  return getAllSentences().filter((sentence) => containsAnyAlias(sourceText(sentence), entity.aliases));
 }
 
+function relatedAliasesFor(entity: BlogEntity) {
+  return entity.relatedAliases?.length
+    ? [...entity.aliases, ...entity.relatedAliases]
+    : entity.aliases;
+}
+
+/** Index chips that belong to this passage's source text, not the guide or Legge layers. */
 export function getBlogsForSentence(sentence: Sentence) {
-  return blogEntities.filter((entity) => containsAlias(sentence, entity));
+  const text = sourceText(sentence);
+  return blogEntities.filter((entity) => containsAnyAlias(text, relatedAliasesFor(entity)));
 }
 
 export function getRelatedBlogs(entity: BlogEntity) {

@@ -1,6 +1,16 @@
-import { type Book, getSentences, sentenceUrl, type Locale, t } from "@/lib/analects";
+import { type Book, books, getSentences, sentenceUrl, type Locale, t } from "@/lib/analects";
 import { listenAudioFormat, listenAudioLanguage } from "@/lib/audio-inventory";
 import { getPassageContentCoverage } from "@/lib/content-coverage";
+
+/** Book 1 stays on /listen; the other books live at /listen/<slug>. */
+export function listenPath(bookSlug: string) {
+  return bookSlug === books[0].slug ? "/listen" : `/listen/${bookSlug}`;
+}
+
+export function listenUrl(locale: Locale, bookSlug: string, sentenceId?: string) {
+  const path = `/${locale}${listenPath(bookSlug)}`;
+  return sentenceId ? `${path}#listen-${sentenceId}` : path;
+}
 
 export type ListenChapter = {
   id: string;
