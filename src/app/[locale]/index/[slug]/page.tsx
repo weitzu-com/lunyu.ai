@@ -17,7 +17,11 @@ import {
   sentenceBookLabel,
   sentenceHref,
 } from "@/lib/blogs";
-import { getFeaturedIndex, localize as localizeFeatured } from "@/lib/featured-index";
+import {
+  getFeaturedIndex,
+  indexEntryModifiedDate,
+  localize as localizeFeatured,
+} from "@/lib/featured-index";
 import { Locale, locales, t } from "@/lib/analects";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import {
@@ -73,6 +77,7 @@ export default async function KnowledgeEntryPage({
   const description = featured
     ? localizeFeatured(locale, featured.metaDescription)
     : blogSummary(locale, entity);
+  const dateModified = indexEntryModifiedDate(slug) ?? contentModifiedDate;
 
   const entryJsonLd = {
     "@context": "https://schema.org",
@@ -84,7 +89,7 @@ export default async function KnowledgeEntryPage({
         name: blogTitle(locale, entity),
         description,
         inLanguage: locale,
-        dateModified: contentModifiedDate,
+        dateModified,
         publisher: { "@id": organizationId },
         isPartOf: { "@id": `${localizedUrl(locale, "")}#website` },
         about: {

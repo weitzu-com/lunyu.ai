@@ -1,5 +1,6 @@
 import { books, getSentence, type Locale, t, type Sentence } from "@/lib/analects";
 import { getBlogEntity, getSentencesForBlog, type BlogEntity } from "@/lib/blogs";
+import { moreFeaturedIndexBySlug } from "@/lib/featured-index-entries";
 
 export type LocalizedText = {
   zh: string;
@@ -37,6 +38,7 @@ export type FeaturedIndexContent = {
   viewAllLabel: LocalizedText;
   practiceHeading: LocalizedText;
   practice: LocalizedText;
+  practiceSentenceId: string;
   faqHeading: LocalizedText;
   faqs: FeaturedFaq[];
   relatedHeading: LocalizedText;
@@ -47,6 +49,9 @@ export type FeaturedIndexContent = {
 export function localize(locale: Locale, text: LocalizedText) {
   return t(locale, text.zh, text.en);
 }
+
+/** Editorial date for featured index pages (仁 + the deepened entries). */
+export const featuredIndexModifiedDate = "2026-08-24";
 
 const featuredIndexBySlug: Record<string, FeaturedIndexContent> = {
   ren: {
@@ -170,6 +175,7 @@ const featuredIndexBySlug: Record<string, FeaturedIndexContent> = {
       zh: "选一件今天你几乎要说出口或要做下去的事，停一停，只问：这一下，是不是我自己也不愿承受的？若是，就放下。不必把《论语》写成日课表；恕只需从一句原文回到一次具体的克制。",
       en: "Choose one thing you were about to say or do today. Pause and ask only: is this something I would not want done to me? If it is, stop. This is not a self-help plan. It returns 恕 from one source sentence to one act of restraint.",
     },
+    practiceSentenceId: "wei-ling-gong-023",
     faqHeading: {
       zh: "常见问题",
       en: "Frequently asked questions",
@@ -256,10 +262,37 @@ const featuredIndexBySlug: Record<string, FeaturedIndexContent> = {
       en: "Back to the twenty books",
     },
   },
+  ...moreFeaturedIndexBySlug,
 };
+
+function assertFeaturedIndex(content: FeaturedIndexContent) {
+  const ids = [
+    ...content.uses.map((use) => use.sentenceId),
+    ...content.featuredSentenceIds,
+    content.practiceSentenceId,
+  ];
+  for (const id of ids) {
+    if (!getSentence(id)) {
+      throw new Error(`featured-index ${content.slug}: unknown sentenceId ${id}`);
+    }
+  }
+  for (const slug of content.relatedSlugs) {
+    if (!getBlogEntity(slug)) {
+      throw new Error(`featured-index ${content.slug}: unknown related slug ${slug}`);
+    }
+  }
+}
+
+for (const content of Object.values(featuredIndexBySlug)) {
+  assertFeaturedIndex(content);
+}
 
 export function getFeaturedIndex(slug: string) {
   return featuredIndexBySlug[slug];
+}
+
+export function indexEntryModifiedDate(slug: string) {
+  return getFeaturedIndex(slug) ? featuredIndexModifiedDate : undefined;
 }
 
 export function featuredSentence(sentenceId: string): Sentence | undefined {

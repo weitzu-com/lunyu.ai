@@ -8,6 +8,7 @@ const locales = ["zh-Hans", "en"];
 const trustPages = ["about", "method", "sources", "faq"];
 const stableLastmod = "2026-08-20";
 const intentHubLastmod = "2026-08-24";
+const featuredIndexLastmod = "2026-08-24";
 const intentHubSlugs = ["lunyu", "the-analects", "analects-of-confucius", "confucius-quotes"];
 const hubIndexLinks = {
   lunyu: ["/index/xue", "/index/ren", "/index/li", "/index/junzi", "/index/zhongshu"],
@@ -350,7 +351,6 @@ for (const trust of trustPages) {
 }
 
 checkHtml("/zh-Hans/faq", ['"@type":"FAQPage"', '"@type":"Question"', '"acceptedAnswer"']);
-checkHtml("/en/index/confucius", ['"@type":"WebPage"', '"@type":"BreadcrumbList"', '"about"']);
 checkHtml("/en/index/ren", [
   '"@type":"WebPage"',
   '"@type":"FAQPage"',
@@ -371,6 +371,7 @@ checkHtml("/en/index/ren", [
   "/en/index/junzi",
   "/en/analects/xue-er",
   "Golden Rule",
+  `"dateModified":"${featuredIndexLastmod}"`,
 ]);
 checkHtml("/zh-Hans/index/ren", [
   '"@type":"FAQPage"',
@@ -400,6 +401,136 @@ for (const locale of locales) {
     if (html.includes("/analects/ba-yi/ba-yi-008")) {
       fail(`${route}: guide-only 仁 match ba-yi-008 must not appear`);
     }
+  }
+}
+
+const featuredIndexChecks = [
+  {
+    slug: "li",
+    href: "/analects/yang-huo/yang-huo-011",
+    glossaryZh: "礼是行为秩序与内在敬意的统一",
+    glossaryEn: "Ritual propriety as the unity of social form",
+    marker: "玉帛",
+  },
+  {
+    slug: "zhongshu",
+    href: "/analects/wei-ling-gong/wei-ling-gong-023",
+    glossaryZh: "忠恕是推己及人与尽己之道",
+    glossaryEn: "Doing one's utmost and extending oneself to others",
+    marker: "Golden Rule",
+  },
+  {
+    slug: "junzi",
+    href: "/analects/wei-ling-gong/wei-ling-gong-020",
+    glossaryZh: "君子是《论语》中理想人格的核心名称",
+    glossaryEn: "The noble person: an ideal of virtue",
+    marker: "successful person",
+  },
+  {
+    slug: "xue",
+    href: "/analects/xue-er/xue-er-001",
+    glossaryZh: "学是修身、知礼、成德的长期实践",
+    glossaryEn: "Learning as long-term practice of cultivation",
+    marker: "review app",
+  },
+  {
+    slug: "confucius",
+    href: "/analects/shu-er/shu-er-001",
+    glossaryZh: "《论语》的核心人物，言行、教学",
+    glossaryEn: "The central figure of The Analects: teacher",
+    marker: "signed author",
+    person: true,
+  },
+  {
+    slug: "yan-yuan",
+    href: "/analects/yong-ye/yong-ye-005",
+    glossaryZh: "孔门高弟，以好学、安贫、近仁著称",
+    glossaryEn: "A beloved disciple known for learning, simplicity",
+    marker: "perfect student",
+    person: true,
+  },
+  {
+    slug: "zi-gong",
+    href: "/analects/wei-ling-gong/wei-ling-gong-023",
+    glossaryZh: "孔门弟子，善言辞与外交",
+    glossaryEn: "A disciple known for speech, diplomacy",
+    marker: "15.23",
+    person: true,
+  },
+];
+
+for (const page of featuredIndexChecks) {
+  checkHtml(`/en/index/${page.slug}`, [
+    '"@type":"WebPage"',
+    '"@type":"FAQPage"',
+    '"@type":"Question"',
+    page.person ? "How the person appears in the book" : "How the word is used in the book",
+    "Easy confusions",
+    "Featured passages",
+    "View all related passages",
+    "What you can do today",
+    "Frequently asked questions",
+    "Related entries",
+    "Back to the twenty books",
+    `/en${page.href}`,
+    page.marker,
+    `"dateModified":"${featuredIndexLastmod}"`,
+  ]);
+  checkHtml(`/zh-Hans/index/${page.slug}`, [
+    '"@type":"FAQPage"',
+    page.person ? "书中怎么出现这个人" : "书中怎么用这个字",
+    "容易混淆的地方",
+    "选读",
+    "查看全部相关章句",
+    "今天可以做的一件事",
+    "常见问题",
+    "相关词条",
+    "回到二十篇",
+    `/zh-Hans${page.href}`,
+  ]);
+  for (const locale of locales) {
+    const route = `/${locale}/index/${page.slug}`;
+    const file = htmlPath(route);
+    if (!exists(file)) continue;
+    const html = read(file);
+    const description = extractMetaDescription(html);
+    if (!description) fail(`${route}: meta description missing`);
+    if (description.includes(page.glossaryZh) || description.includes(page.glossaryEn)) {
+      fail(`${route}: still using the one-line glossary description`);
+    }
+    if (!html.includes(`"dateModified":"${featuredIndexLastmod}"`)) {
+      fail(`${route}: featured index must publish ${featuredIndexLastmod}`);
+    }
+    if (page.slug === "zi-gong" && locale === "en") {
+      if (html.includes("Si is the personal name") || html.includes("addresses him as Si")) {
+        fail(`${route}: 赐 must not be romanized as Si`);
+      }
+      if (!html.includes("Ci is the personal name")) {
+        fail(`${route}: 赐 should be romanized as Ci`);
+      }
+    }
+  }
+}
+
+checkHtml("/en/index/yi", [
+  "Relevant passages",
+  "Rightness and appropriateness, the noble person's measure amid interests.",
+  `"dateModified":"${stableLastmod}"`,
+]);
+checkHtml("/zh-Hans/index/yi", ["相关章句", "义指合宜与正当", `"dateModified":"${stableLastmod}"`]);
+for (const locale of locales) {
+  const route = `/${locale}/index/yi`;
+  const file = htmlPath(route);
+  if (!exists(file)) continue;
+  const html = read(file);
+  if (html.includes("Easy confusions") || html.includes("容易混淆的地方")) {
+    fail(`${route}: unfeatured index must keep the old dump template`);
+  }
+  if (html.includes('"@type":"FAQPage"')) {
+    fail(`${route}: unfeatured index must not grow FAQ JSON-LD`);
+  }
+  if (html.includes(`"dateModified":"${featuredIndexLastmod}"`)) {
+    fail(`${route}: unfeatured index must keep the 2026-08-20 modification date`);
   }
 }
 
@@ -566,9 +697,33 @@ if (!sitemap.includes(`<lastmod>${stableLastmod}T00:00:00.000Z</lastmod>`) && !s
 if (!sitemap.includes(`<lastmod>${intentHubLastmod}T00:00:00.000Z</lastmod>`) && !sitemap.includes(`<lastmod>${intentHubLastmod}</lastmod>`)) {
   fail("sitemap: stable 2026-08-24 hub lastmod missing");
 }
+function sitemapLastmodFor(loc) {
+  const escaped = loc.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const match = sitemap.match(new RegExp(`<loc>${escaped}</loc>\\s*<lastmod>([^<]+)</lastmod>`));
+  return match?.[1] ?? "";
+}
+const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
+const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
+for (const slug of ["ren", "li", "zhongshu", "junzi", "xue", "confucius", "yan-yuan", "zi-gong"]) {
+  for (const locale of locales) {
+    const loc = `${siteUrl}/${locale}/index/${slug}`;
+    const lastmod = sitemapLastmodFor(loc);
+    if (lastmod !== featuredSitemapDate && lastmod !== featuredIndexLastmod) {
+      fail(`sitemap: ${loc} should lastmod ${featuredIndexLastmod}, got ${lastmod || "missing"}`);
+    }
+  }
+}
+for (const locale of locales) {
+  const loc = `${siteUrl}/${locale}/index/yi`;
+  const lastmod = sitemapLastmodFor(loc);
+  if (lastmod !== unfeaturedSitemapDate && lastmod !== stableLastmod) {
+    fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
+  }
+}
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }
