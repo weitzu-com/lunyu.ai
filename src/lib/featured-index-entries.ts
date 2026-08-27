@@ -596,6 +596,602 @@ export const moreFeaturedIndexBySlug: Record<string, FeaturedIndexContent> = {
     relatedSlugs: ["ren", "li", "junzi", "confucius", "yan-yuan", "shi", "zhongshu"],
   }),
 
+  yi: wordPage({
+    slug: "yi",
+    subtitle: {
+      zh: "义不是一张先写好的规则表，而是利、勇、诺言与处境逼近时，仍肯问这一件事做得正不正。",
+      en: "Yi is not a rulebook written in advance. It is the judgment that still asks what is right when gain, courage, promises, and circumstance press in.",
+    },
+    metaDescription: {
+      zh: "义在《论语》里不是抽象口号，也不是反对一切利益。此页从义与利、信近于义、见利思义和勇而无义划清边界，并链回原文章句。",
+      en: "Yi in the Analects is not an abstract slogan or a rejection of gain. Read how rightness judges promises, profit, courage, and action in the source text.",
+    },
+    uses: [
+      {
+        title: { zh: "信近于义，言可复也", en: "A promise must first be near yi" },
+        body: {
+          zh: "有子先用义限制信：话要合于义，才可以兑现。义不是守诺之后的装饰，而是决定这个诺言该不该守的尺度。",
+          en: "Youzi first limits trustworthiness by yi: only words near what is right can be made good. Yi is not decoration after a promise; it judges whether the promise should bind at all.",
+        },
+        sentenceId: "xue-er-013",
+      },
+      {
+        title: { zh: "无适也，无莫也，义之与比", en: "Neither fixed for nor fixed against" },
+        body: {
+          zh: "君子不先规定凡事必可或必不可，而与义相亲。这里的义是一种临事判断，不是一句脱离处境的绝对口号。",
+          en: "The junzi is not fixed beforehand for or against everything, but sides with yi. Here rightness is judgment in a situation, not an absolute slogan detached from it.",
+        },
+        sentenceId: "li-ren-010",
+      },
+      {
+        title: { zh: "君子喻于义，小人喻于利", en: "Yi and gain are different measures" },
+        body: {
+          zh: "这句不是说君子看不见利益，而是说最后用什么来理解和裁断。利可以进入处境，不能成为唯一尺度。",
+          en: "The line does not say a junzi cannot see benefit. It asks which measure finally interprets and decides. Gain may enter the situation; it cannot be the only measure.",
+        },
+        sentenceId: "li-ren-016",
+      },
+      {
+        title: { zh: "不义而富且贵，于我如浮云", en: "The objection is to unjust gain" },
+        body: {
+          zh: "浮云所拒的是不义而得的富贵，不是把贫困本身写成美德。义在这里判断取得富贵的路径。",
+          en: "What becomes a floating cloud is wealth and rank gained without yi. Poverty itself is not praised. Yi judges the way wealth and rank are acquired.",
+        },
+        sentenceId: "shu-er-015",
+      },
+      {
+        title: { zh: "义以为质，礼以行之，信以成之", en: "Yi is the substance, not the whole performance" },
+        body: {
+          zh: "义给君子以质，仍要用礼行之、用逊出之、用信成之。合宜的判断必须进入形式、态度与兑现，才成为行动。",
+          en: "Yi gives the junzi substance, but li enacts it, humility expresses it, and xin completes it. Right judgment must pass into form, manner, and fulfillment before it becomes conduct.",
+        },
+        sentenceId: "wei-ling-gong-017",
+      },
+    ],
+    confusions: [
+      {
+        title: { zh: "义不是固定规则", en: "Yi is not a fixed rule" },
+        body: {
+          zh: "“无适也，无莫也”先撤掉一概而论，再说义之与比。把义写成任何处境都原样套用的条文，会丢掉这句的次序。",
+          en: "“Neither for nor against” removes the blanket answer before the text says to side with yi. Turning yi into a clause applied unchanged everywhere loses that order.",
+        },
+      },
+      {
+        title: { zh: "义不要求守住每一个诺言", en: "Yi does not require every promise to be kept" },
+        body: {
+          zh: "《学而》不是说言出必行，而是说信近于义，言可复也。若承诺本身不义，机械兑现并不会使它变正。",
+          en: "Book 1 does not say every utterance must be carried through. It says words can be fulfilled when xin is near yi. Mechanical fulfillment cannot make a wrongful promise right.",
+        },
+      },
+      {
+        title: { zh: "义不是逞勇，也不是逢利便退", en: "Yi is neither bravado nor flight from every gain" },
+        body: {
+          zh: "见义不为被说成无勇；勇而无义又会作乱、为盗。见得思义也不是见利就逃，而是先让义裁断。勇与利都要受义约束。",
+          en: "Failing to act when yi is seen lacks courage, while courage without yi produces disorder or robbery. Thinking of yi at the sight of gain is not automatic retreat. Both courage and gain are answerable to judgment.",
+        },
+      },
+    ],
+    featuredIntro: {
+      zh: "下面只选能说明义如何裁断诺言、利益、勇气与行动的章句。其余原文中出现“义”字的章句，收在选读之后。",
+      en: "These passages show yi judging promises, gain, courage, and action. Other source passages that contain the character 义 follow under “view all.”",
+    },
+    featuredSentenceIds: [
+      "xue-er-013",
+      "wei-zheng-024",
+      "li-ren-010",
+      "li-ren-016",
+      "yong-ye-020",
+      "shu-er-003",
+      "shu-er-015",
+      "yan-yuan-010",
+      "xian-wen-013",
+      "wei-ling-gong-017",
+      "ji-shi-010",
+      "yang-huo-023",
+    ],
+    practice: {
+      zh: "今天遇到一项利益或一个承诺时，先停在“见得思义”这四个字上：写下你会得到什么，再写下怎样取得才正当。只据第二行决定下一步。",
+      en: "At one gain or promise today, pause at “on seeing gain, think of yi.” Write what you would get, then write what way of getting it would be right. Let the second line decide the next act.",
+    },
+    practiceSentenceId: "ji-shi-010",
+    faqs: [
+      {
+        question: { zh: "义该译作 rightness、righteousness，还是 justice？", en: "Should yi be translated as rightness, righteousness, or justice?" },
+        answer: {
+          zh: "Legge 常用 righteousness 或 what is right。justice 容易只剩制度正义，rightness 又可能太轻。本站标题保留 Yi，并把判断交还具体章句。",
+          en: "Legge often uses “righteousness” or “what is right.” Justice can narrow the word to institutions; rightness can sound too light. This page keeps Yi and returns the judgment to each passage.",
+        },
+      },
+      {
+        question: { zh: "义和礼是同一个东西吗？", en: "Are yi and li the same thing?" },
+        answer: {
+          zh: "不是。《卫灵公》把义说成质，把礼说成行之的形式，又加上逊与信。它们相连，不可互换。",
+          en: "No. Wei Ling Gong calls yi the substance and li the way it is enacted, then adds humility and xin. They work together but are not interchangeable.",
+        },
+      },
+      {
+        question: { zh: "“君子喻于义，小人喻于利”是在反对赚钱？", en: "Does “the junzi understands yi; the small person gain” oppose earning money?" },
+        answer: {
+          zh: "原文区分的是裁断尺度。另有“不义而富且贵”，明确把问题放在“不义而得”，不是富贵本身。",
+          en: "The source distinguishes measures of judgment. Another line objects specifically to wealth and rank gained without yi, not to wealth and rank as such.",
+        },
+      },
+      {
+        question: { zh: "“见义不为，无勇也”是不是要求马上行动？", en: "Does “seeing yi and not acting lacks courage” demand immediate action?" },
+        answer: {
+          zh: "不能脱开“勇而无义，为乱、为盗”来读。先要见得是义，勇才有方向；冲动本身不是义。",
+          en: "Not when read beside “courage without yi makes disorder or robbery.” Yi must first be seen; only then does courage have direction. Impulse is not yi.",
+        },
+      },
+      {
+        question: { zh: "“信近于义”是谁说的？", en: "Who says that xin must be near yi?" },
+        answer: {
+          zh: "有子，不是孔子。这句话也没有把信与义并成同义词，而是用义给承诺划界。",
+          en: "Youzi, not Confucius. The sentence does not make xin and yi synonyms; it uses yi to set a boundary for promises.",
+        },
+      },
+      {
+        question: { zh: "为什么“义”的全部相关只有原文命中？", en: "Why does the full Yi list only use source-text matches?" },
+        answer: {
+          zh: "索引的“全部相关”只认古文原文里的“义”，不认白话导读或英译里补出的义、right、justice。选读负责判断，自动列表负责守住版本边界。",
+          en: "The full list recognizes 义 in the classical source, not words added by the Chinese guide or English translation. Editorial selection supplies judgment; the automatic list keeps the edition boundary.",
+        },
+      },
+    ],
+    relatedSlugs: ["junzi", "li", "xin", "ren", "zhongshu", "confucius", "zi-lu"],
+  }),
+
+  xin: wordPage({
+    slug: "xin",
+    subtitle: {
+      zh: "信不是把每句话硬做到底，而是让话可核对、让行动可托付，并让不义的承诺停在兑现之前。",
+      en: "Xin is not forcing every word through. It makes speech checkable and action dependable, while stopping a wrongful promise before fulfillment.",
+    },
+    metaDescription: {
+      zh: "信在《论语》里不是轻信，也不是言出必行。此页从信近于义、听言观行、民无信不立和信而后劳其民说明可信如何成立。",
+      en: "Xin in the Analects is neither credulity nor keeping every utterance. Read how yi, observed conduct, friendship, and public trust bound trustworthiness.",
+    },
+    uses: [
+      {
+        title: { zh: "与朋友交而不信乎", en: "Trustworthiness with friends" },
+        body: {
+          zh: "曾子把与朋友相交是否可信列入每日自省。信先是检查自己，不是要求别人先信我。",
+          en: "Zengzi puts trustworthiness with friends inside daily self-examination. Xin begins by checking oneself, not by demanding that others trust first.",
+        },
+        sentenceId: "xue-er-004",
+      },
+      {
+        title: { zh: "信近于义，言可复也", en: "Words become fulfillable near yi" },
+        body: {
+          zh: "有子不给“说过就必须做”背书。他先问这句话是否近义，再说言可复。信有边界。",
+          en: "Youzi does not endorse “if it was said, it must be done.” He first asks whether the word is near yi, and only then says it can be fulfilled. Xin has a boundary.",
+        },
+        sentenceId: "xue-er-013",
+      },
+      {
+        title: { zh: "人而无信，不知其可也", en: "Without xin, the vehicle cannot move" },
+        body: {
+          zh: "大车、小车缺了关键的连接就不能行。比喻说的不是受欢迎，而是一个人若不可托付，协作便没有着力点。",
+          en: "A large or small carriage cannot move without its connecting piece. The image is not popularity: when a person cannot be relied on, cooperation has no point of purchase.",
+        },
+        sentenceId: "wei-zheng-022",
+      },
+      {
+        title: { zh: "听其言而观其行", en: "Hear the words and observe the conduct" },
+        body: {
+          zh: "宰予使孔子改掉听言而信行。这里的信有“相信”之义，而书给出的办法不是多疑，是把话放到行动里核对。",
+          en: "Zai Yu makes Confucius change from hearing words and trusting the conduct to hearing words and observing it. Here xin includes belief, and the remedy is not suspicion but verification in action.",
+        },
+        sentenceId: "gong-ye-chang-009",
+      },
+      {
+        title: { zh: "民无信不立", en: "Public trust is what remains" },
+        body: {
+          zh: "子贡把足食、足兵、民信逐层追问。孔子最后保留民信。这里不是私人诚实清单，而是共同体能否站立。",
+          en: "Zi Gong presses through food, arms, and the people's trust. Public trust is what Confucius finally retains. This is not a private honesty checklist; it is whether a polity can stand.",
+        },
+        sentenceId: "yan-yuan-007",
+      },
+      {
+        title: { zh: "信而后劳其民，信而后谏", en: "Trust must precede burden and remonstrance" },
+        body: {
+          zh: "子夏把次序说得很清楚：未信而使民劳，会被看成伤害；未信而谏，会被看成毁谤。正确的话也不能跳过关系条件。",
+          en: "Zixia makes the order explicit: burden people before trust and they feel injured; remonstrate before trust and it sounds like slander. Even a correct word cannot skip the relation that lets it be heard.",
+        },
+        sentenceId: "zi-zhang-010",
+      },
+    ],
+    confusions: [
+      {
+        title: { zh: "信不是言出必行", en: "Xin is not carrying out every word" },
+        body: {
+          zh: "“言必信，行必果”在《子路》只被放到较低一等，还被说成硁硁然小人。书要可靠，不要顽固地兑现错误。",
+          en: "“Every word kept, every act carried through” is placed in a lower rank in Zi Lu and called the obstinacy of a small person. The book asks for dependability, not stubborn fulfillment of error.",
+        },
+      },
+      {
+        title: { zh: "信不是轻信", en: "Xin is not credulity" },
+        body: {
+          zh: "听言而信行被改成听言观行；不逆诈、不亿不信也仍以先觉为贤。既不预设别人欺骗，也不取消核对。",
+          en: "Trusting conduct from words alone is replaced by observing conduct. Refusing to anticipate deceit is still paired with noticing it early. The book neither presumes fraud nor abandons verification.",
+        },
+      },
+      {
+        title: { zh: "信不只属于私人关系", en: "Xin is not only private" },
+        body: {
+          zh: "朋友相交要信，治国也要敬事而信；民无信则国不立。把信缩成“做一个诚实的人”，会丢掉制度与公共行动的承托。",
+          en: "Friends require xin, and governing a state requires reverent work and xin; without public trust, the state does not stand. “Be honest” is too small for the institutional weight the word carries.",
+        },
+      },
+    ],
+    featuredIntro: {
+      zh: "下面只选能说明信如何被义限制、被行动核对、又如何承托朋友与政治的章句。其余原文中出现“信”字的章句，收在选读之后。",
+      en: "These passages show xin limited by yi, checked in conduct, and carrying friendship and government. Other source passages that contain 信 follow under “view all.”",
+    },
+    featuredSentenceIds: [
+      "xue-er-004",
+      "xue-er-005",
+      "xue-er-007",
+      "xue-er-013",
+      "wei-zheng-022",
+      "gong-ye-chang-009",
+      "shu-er-024",
+      "yan-yuan-007",
+      "zi-lu-020",
+      "wei-ling-gong-005",
+      "yang-huo-008",
+      "zi-zhang-010",
+    ],
+    practice: {
+      zh: "取一个今天要作出的承诺，先把它改写成可核对的一句话，再问它是否“近于义”。若做不到或不正当，现在就缩小或撤回，不把失信推迟到以后。",
+      en: "Take one promise you are about to make. Rewrite it as a checkable sentence, then ask whether it is near yi. If it is impossible or wrong, narrow or withdraw it now instead of postponing failure.",
+    },
+    practiceSentenceId: "xue-er-013",
+    faqs: [
+      {
+        question: { zh: "信是 trust、trustworthiness，还是 belief？", en: "Is xin trust, trustworthiness, or belief?" },
+        answer: {
+          zh: "三种用法都能在书中看到：言而有信偏可信，民信偏公共信任，信而好古与听言信行又有相信之义。本站标题用 Trustworthiness，但不抹平语境。",
+          en: "All three appear: 言而有信 leans toward trustworthiness, 民信 toward public trust, while 信而好古 and 信其行 include belief. The title uses Trustworthiness without flattening those contexts.",
+        },
+      },
+      {
+        question: { zh: "《论语》要求所有承诺都兑现吗？", en: "Does the Analects require every promise to be fulfilled?" },
+        answer: {
+          zh: "不。“信近于义，言可复也”把义放在兑现之前；“言必信，行必果”也没有得到最高评价。",
+          en: "No. “When xin is near yi, words can be fulfilled” places yi before fulfillment, and “every word kept, every act carried through” does not receive the highest judgment.",
+        },
+      },
+      {
+        question: { zh: "“吾日三省吾身”是谁说的？", en: "Who says “I examine myself three times daily”?" },
+        answer: {
+          zh: "曾子，不是孔子。其中第二问才是与朋友交而不信乎。引用时要保留说话者。",
+          en: "Zengzi, not Confucius. Its second question asks about being untrustworthy with friends. Keep the speaker when citing it.",
+        },
+      },
+      {
+        question: { zh: "“民无信不立”是在说个人信用吗？", en: "Is “without trust the people cannot stand” about personal credit?" },
+        answer: {
+          zh: "那是子贡问政的结尾，语境是食、兵与民对统治的信任。个人的“人而无信”另在《为政》2.22。",
+          en: "It closes Zi Gong's question about government, after food, arms, and the people's trust in rule. The personal “a person without xin” is a different passage, Wei Zheng 2.22.",
+        },
+      },
+      {
+        question: { zh: "“言必信，行必果”为什么不是最高赞语？", en: "Why is “every word kept, every act carried through” not the highest praise?" },
+        answer: {
+          zh: "孔子把这种硁硁然放在士的较低一等，并称小人。没有义与学习的校正，果决会变成固执。",
+          en: "Confucius places that obstinacy in a lower rank of the shi and calls it small. Without correction by yi and learning, firmness becomes rigidity.",
+        },
+      },
+      {
+        question: { zh: "为什么白话里写“诚信”的章不自动进来？", en: "Why do passages whose guide says “trust” not enter automatically?" },
+        answer: {
+          zh: "自动相关只匹配古文原文里的“信”。白话导读与英译是解释层，不能反过来扩张底本索引。",
+          en: "Automatic related passages match 信 in the classical source only. The Chinese guide and English translation are interpretive layers; they do not enlarge the base-text index.",
+        },
+      },
+    ],
+    relatedSlugs: ["yi", "zhongshu", "junzi", "zeng-zi", "zi-gong", "zheng", "xue"],
+  }),
+
+  xiao: wordPage({
+    slug: "xiao",
+    subtitle: {
+      zh: "孝不是把父母的话一概照做，也不是供养完成便算数；《论语》把它追到敬、色、忧与礼的具体处。",
+      en: "Xiao is neither obeying every parental word nor completing material support. The Analects presses it into reverence, manner, concern, and li.",
+    },
+    metaDescription: {
+      zh: "孝在《论语》里不是盲从或只给父母物质供养。此页辨析无违、能养、色难与孝弟为仁之本，并链回不同问者的原文答案。",
+      en: "Xiao in the Analects is not blind obedience or material support alone. Read how li, reverence, manner, and concern shape filial conduct in the source.",
+    },
+    uses: [
+      {
+        title: { zh: "孝弟也者，其为仁之本与", en: "Youzi calls filial conduct a root of ren" },
+        body: {
+          zh: "说话者是有子，句末还是“与”的问断。孝弟被放在务本的起点，不等于仁的全部，也不是孔子亲下的唯一公式。",
+          en: "The speaker is Youzi, and the line ends as a question. Xiao and fraternal respect are placed at the root of the work, not made the whole of ren or Confucius's sole formula.",
+        },
+        sentenceId: "xue-er-002",
+      },
+      {
+        title: { zh: "无违：生事、死葬、祭之以礼", en: "“Do not disobey” is explained through li" },
+        body: {
+          zh: "孟懿子得到“无违”，孔子随后亲自向樊迟解释：生事、死葬、祭之以礼。原文没有说父母的每个要求都不可拒绝。",
+          en: "Meng Yizi receives “do not disobey,” and Confucius then explains it to Fan Chi: serve the living, bury the dead, and sacrifice according to li. The source does not say every parental request must be obeyed.",
+        },
+        sentenceId: "wei-zheng-005",
+      },
+      {
+        title: { zh: "父母唯其疾之忧", en: "Let parents have only illness to worry about" },
+        body: {
+          zh: "孟武伯问孝，答案落在父母之忧。它把孝拉回会使亲者担心的具体生命，不给一条抽象家训。",
+          en: "Meng Wubo asks about xiao, and the answer lands on parental worry over illness. It returns filial conduct to a vulnerable life that causes concern, not an abstract family maxim.",
+        },
+        sentenceId: "wei-zheng-006",
+      },
+      {
+        title: { zh: "能养，不敬，何以别乎", en: "Support without reverence is not enough" },
+        body: {
+          zh: "子游问孝，孔子把“能养”压低：犬马也能得到供养。区分不在有没有付钱或送饭，而在敬。",
+          en: "When Ziyou asks, Confucius lowers the claim of material support: dogs and horses also receive feeding. The distinction is not payment or food, but reverence.",
+        },
+        sentenceId: "wei-zheng-007",
+      },
+      {
+        title: { zh: "色难", en: "Manner is the difficult part" },
+        body: {
+          zh: "子夏问孝，代劳、有酒食让长者先用都不够。最难的是脸色与态度。孝在这里不是任务完成率。",
+          en: "When Zixia asks, doing the work and serving food first are not enough. The difficult part is the face and manner. Xiao is not a completion rate for family tasks.",
+        },
+        sentenceId: "wei-zheng-008",
+      },
+    ],
+    confusions: [
+      {
+        title: { zh: "孝不是盲从", en: "Xiao is not blind obedience" },
+        body: {
+          zh: "“无违”不能从孔子自己的解释里剪出来。解释落在礼，不是把任何命令都变成正当。把孝直接译成 obedience，会删掉这层限制。",
+          en: "“Do not disobey” cannot be cut away from Confucius's own explanation, which lands on li. It does not make every command right. Translating xiao simply as obedience deletes that limit.",
+        },
+      },
+      {
+        title: { zh: "孝不等于物质供养", en: "Xiao is not material support alone" },
+        body: {
+          zh: "能养、服劳、酒食都被书主动列出，又主动说不够。敬与色不是额外加分，而是把供养变成人伦之事的条件。",
+          en: "Support, labor, and food are all named and then judged insufficient. Reverence and manner are not bonus points; they are what make support a human relation.",
+        },
+      },
+      {
+        title: { zh: "孝弟是根，不是仁的全部", en: "Filial conduct is a root, not the whole of ren" },
+        body: {
+          zh: "有子说的是“其为仁之本与”。《论语》另有克己复礼、爱人、恕等问仁答案。把孝写成仁的完整定义，会把这些问答排除出去。",
+          en: "Youzi says it may be a root of becoming ren. The Analects also answers questions about ren with restraint, loving others, and shu. Making xiao the whole definition excludes those dialogues.",
+        },
+      },
+    ],
+    featuredIntro: {
+      zh: "下面只选能说明孝如何落在敬、礼、忧与态度上的章句。其余原文中出现“孝”字的章句，收在选读之后。",
+      en: "These passages show xiao taking form in reverence, li, concern, and manner. Other source passages that contain 孝 follow under “view all.”",
+    },
+    featuredSentenceIds: [
+      "xue-er-002",
+      "xue-er-006",
+      "xue-er-011",
+      "wei-zheng-005",
+      "wei-zheng-006",
+      "wei-zheng-007",
+      "wei-zheng-008",
+      "wei-zheng-021",
+      "li-ren-020",
+      "xian-jin-004",
+      "zi-zhang-018",
+    ],
+    practice: {
+      zh: "今天与父母、长辈或承担照护关系的人说一次话，只练“色难”：在开口前放下不耐烦的脸色，先把对方的问题听完，再回答。",
+      en: "In one conversation today with a parent, elder, or someone in a relation of care, practice only “the manner is difficult”: release the impatient face, hear the question through, then answer.",
+    },
+    practiceSentenceId: "wei-zheng-008",
+    faqs: [
+      {
+        question: { zh: "“无违”是不是父母说什么都要听？", en: "Does “do not disobey” mean doing whatever parents say?" },
+        answer: {
+          zh: "孔子在同一章向樊迟解释为生事、死葬、祭之以礼。答案受礼约束，原文没有把父母的每句话都变成命令。",
+          en: "In the same passage Confucius explains it to Fan Chi as serving, burying, and sacrificing according to li. The answer is bounded by li; it does not turn every parental word into a command.",
+        },
+      },
+      {
+        question: { zh: "“孝弟为仁之本”是谁说的？", en: "Who says filial conduct is a root of ren?" },
+        answer: {
+          zh: "有子。原文是“孝弟也者，其为仁之本与”，不是“子曰”，也保留问断语气。",
+          en: "Youzi. The source says “孝弟也者，其为仁之本与”; it is not marked “the Master said,” and it retains a questioning cadence.",
+        },
+      },
+      {
+        question: { zh: "为什么四个人问孝得到不同答案？", en: "Why do four askers receive different answers about xiao?" },
+        answer: {
+          zh: "孟懿子、孟武伯、子游、子夏各问一次，答案落在礼、忧、敬、色。问者与缺口不同，书没有把四答压成一句定义。",
+          en: "Meng Yizi, Meng Wubo, Ziyou, and Zixia each ask once; the replies land on li, concern, reverence, and manner. Different askers expose different lacks, and the book does not compress them into one definition.",
+        },
+      },
+      {
+        question: { zh: "给父母生活费就算孝吗？", en: "Is providing money to parents enough for xiao?" },
+        answer: {
+          zh: "《为政》直接说能养不够，又说服劳、酒食也不够。物质支持重要，但原文用敬与色判断它成不成人伦。",
+          en: "Wei Zheng explicitly says support is insufficient, then says labor and food are insufficient too. Material care matters, but reverence and manner determine the human relation in the source.",
+        },
+      },
+      {
+        question: { zh: "“三年无改于父之道”在本站有几处？", en: "Where does “not changing the father's way for three years” appear?" },
+        answer: {
+          zh: "《学而》xue-er-011 与《里仁》li-ren-020 都有。它是古代继承与丧制语境中的判断，不能脱离两章直接改写成现代家庭的普遍命令。",
+          en: "It appears at xue-er-011 and li-ren-020. It is a judgment within ancient succession and mourning contexts, not a universal modern family command that can be lifted out unchanged.",
+        },
+      },
+      {
+        question: { zh: "为什么白话导读里谈孝的句子不都进索引？", en: "Why does every guide passage about filial care not enter the index?" },
+        answer: {
+          zh: "自动相关只匹配古文原文里的“孝”。导读可以解释一个动作具有孝意，但解释层不能反过来改变底本的词语分布。",
+          en: "Automatic related passages match 孝 in the classical source only. A guide may interpret an act as filial, but an interpretive layer cannot rewrite the word distribution of the base text.",
+        },
+      },
+    ],
+    relatedSlugs: ["ren", "li", "you-zi", "zeng-zi", "xue", "zheng", "min-zijian"],
+  }),
+
+  zheng: wordPage({
+    slug: "zheng",
+    subtitle: {
+      zh: "政不是一套管人的技巧；《论语》先问在位者能否正己、取信、举贤，并让刑罚退到德与礼之后。",
+      en: "Zheng is not a toolkit for managing others. The Analects first asks whether the person in office can rectify the self, earn trust, raise the worthy, and put punishment behind virtue and li.",
+    },
+    metaDescription: {
+      zh: "政在《论语》里不是管理术或以刑求齐。此页从为政以德、政者正也、民无信不立、举贤才与正名说明政治先约束在位者。",
+      en: "Government in the Analects is not management technique or rule by punishment. Read how virtue, self-rectification, trust, appointments, and names shape office.",
+    },
+    uses: [
+      {
+        title: { zh: "为政以德，譬如北辰", en: "Govern through virtue, like the north star" },
+        body: {
+          zh: "北辰居其所而众星共之，强调的是在位者所立的方向，不是操作群众的技巧。政从自身的位置与德性开始。",
+          en: "The north star stays in its place while the other stars turn toward it. The image concerns the direction established by the person in office, not a technique for manipulating a crowd.",
+        },
+        sentenceId: "wei-zheng-001",
+      },
+      {
+        title: { zh: "政刑使民免，德礼使民有耻且格", en: "Punishment produces escape; virtue and li produce correction" },
+        body: {
+          zh: "政与刑可以让人只求免罪；德与礼才把行为带到羞耻与自我归正。这里不是取消规则，而是拒绝把免罚当成政治完成。",
+          en: "Administration and punishment can make people seek only escape. Virtue and li bring shame and self-correction. The contrast does not abolish rules; it refuses to treat avoiding penalty as completed government.",
+        },
+        sentenceId: "wei-zheng-003",
+      },
+      {
+        title: { zh: "民无信不立", en: "A polity cannot stand without public trust" },
+        body: {
+          zh: "子贡逼问食、兵、信何者可去，孔子最后保留民信。政治资源不是只有粮食与武力，还包括人民是否相信共同秩序。",
+          en: "Zi Gong asks which of food, arms, and trust can be given up. Confucius finally retains public trust. Political resources are not only supplies and force, but whether people can rely on the shared order.",
+        },
+        sentenceId: "yan-yuan-007",
+      },
+      {
+        title: { zh: "政者正也", en: "To govern is to rectify" },
+        body: {
+          zh: "季康子问政，孔子把政拉回正：子帅以正，孰敢不正。它先要求领头者，不先把问题推给被治理者。",
+          en: "Asked by Ji Kangzi, Confucius pulls zheng back to rectification: lead with correctness, and who will dare not be correct? The demand falls first on the leader, not the governed.",
+        },
+        sentenceId: "yan-yuan-017",
+      },
+      {
+        title: { zh: "子为政，焉用杀", en: "Why should governing require killing?" },
+        body: {
+          zh: "季康子提议杀无道以就有道，孔子拒绝：在位者欲善，民会趋善。风草之喻把政治责任再次放回上位者。",
+          en: "Ji Kangzi proposes killing the unprincipled to reach the Way. Confucius refuses: if the ruler desires good, the people turn toward good. The wind-and-grass image again returns responsibility upward.",
+        },
+        sentenceId: "yan-yuan-019",
+      },
+      {
+        title: { zh: "先有司，赦小过，举贤才", en: "Assign offices, pardon small faults, raise the worthy" },
+        body: {
+          zh: "仲弓得到的是用人的次序，不是领袖独断：先让职事有人负责，容小过，举所知的贤才，也相信别人不会舍弃你不知道的人。",
+          en: "Zhong Gong receives an order of appointment, not a license for solitary command: staff the offices, pardon small faults, raise the worthy you know, and trust others not to neglect those you do not.",
+        },
+        sentenceId: "zi-lu-002",
+      },
+    ],
+    confusions: [
+      {
+        title: { zh: "政不是管理技巧目录", en: "Zheng is not a catalogue of management techniques" },
+        body: {
+          zh: "同样问政，子贡得到信，季康子得到正与不杀，子路得到先之劳之，子夏得到无欲速。答案随职责与缺口而变，不是一份万能清单。",
+          en: "The same question yields trust for Zi Gong, rectification and no killing for Ji Kangzi, leading and labor for Zi Lu, and no haste for Zixia. Replies follow responsibility and lack; they are not one universal checklist.",
+        },
+      },
+      {
+        title: { zh: "政不是靠刑罚把人管齐", en: "Government is not aligning people by punishment" },
+        body: {
+          zh: "《为政》明说政刑只能使民免而无耻，《颜渊》又拒绝以杀求道。规则仍在，但强制不能代替德、礼与取信。",
+          en: "Wei Zheng says administration and punishment produce escape without shame; Yan Yuan rejects killing as the road to order. Rules remain, but coercion cannot replace virtue, li, and trust.",
+        },
+      },
+      {
+        title: { zh: "正名不是文字管制", en: "Rectifying names is not policing vocabulary" },
+        body: {
+          zh: "正名章的链条是名、言、事、礼乐、刑罚与百姓手足。要求是所名必须可言，所言必须可行；重点在名称、责任与行动相符。",
+          en: "The chain in the rectification passage runs through names, speech, affairs, li and music, punishments, and the people's action. A name must be speakable and speech actionable: title, responsibility, and conduct must fit.",
+        },
+      },
+    ],
+    featuredIntro: {
+      zh: "下面只选能说明政如何约束在位者、建立信任、用人并限制强制的章句。其余原文中出现“政”或“为政”的章句，收在选读之后。",
+      en: "These passages show government binding officeholders, building trust, appointing people, and limiting coercion. Other source passages that contain 政 or 为政 follow under “view all.”",
+    },
+    featuredSentenceIds: [
+      "wei-zheng-001",
+      "wei-zheng-003",
+      "wei-zheng-021",
+      "yan-yuan-007",
+      "yan-yuan-014",
+      "yan-yuan-017",
+      "yan-yuan-019",
+      "zi-lu-001",
+      "zi-lu-002",
+      "zi-lu-003",
+      "zi-lu-013",
+      "zi-lu-017",
+      "yao-yue-002",
+    ],
+    practice: {
+      zh: "今天在要求别人改正一件事之前，先写下你在同一件事上示范了什么。若自己没有可见的正，先改这一处，再开口要求。",
+      en: "Before asking someone to correct one thing today, write down what you have visibly modeled in that same matter. If your own conduct supplies no correction, change that first, then make the request.",
+    },
+    practiceSentenceId: "zi-lu-013",
+    faqs: [
+      {
+        question: { zh: "“政者正也”是政的完整定义吗？", en: "Is “to govern is to rectify” a complete definition of zheng?" },
+        answer: {
+          zh: "不是词典定义，是孔子对季康子的判断。别的问政章还谈德、礼、信、用人、劳民与无欲速，不能被一个字谜收尽。",
+          en: "It is a judgment addressed to Ji Kangzi, not a dictionary definition. Other government dialogues concern virtue, li, trust, appointments, labor, and haste; a wordplay cannot exhaust them.",
+        },
+      },
+      {
+        question: { zh: "孔子反对刑罚吗？", en: "Does Confucius reject punishment altogether?" },
+        answer: {
+          zh: "《为政》把政刑与德礼对举，说前者只能使民求免；正名章仍提到刑罚不中。书限制刑罚的政治位置，没有假装刑罚不存在。",
+          en: "Wei Zheng contrasts administration and punishment with virtue and li, saying the former produces mere escape. The rectification passage still mentions punishments going awry. The book limits their political place; it does not pretend they do not exist.",
+        },
+      },
+      {
+        question: { zh: "正名是不是要求所有人使用官方词语？", en: "Does rectifying names require everyone to use official vocabulary?" },
+        answer: {
+          zh: "原章关心名不正如何导致言不顺、事不成，最后要求名可言、言可行。核心是名实与责任，不是列禁词。",
+          en: "The passage asks how crooked names make speech fail and affairs collapse, ending with names that can be spoken and speech that can be enacted. Its center is accountable fit, not a banned-word list.",
+        },
+      },
+      {
+        question: { zh: "为什么不同人问政，答案不一样？", en: "Why do different askers receive different answers about government?" },
+        answer: {
+          zh: "子贡、季康子、子路、仲弓、子夏各处在不同角色，也暴露不同问题。问答是针对性的训练，不是从同一本管理手册抄出的章节。",
+          en: "Zi Gong, Ji Kangzi, Zi Lu, Zhong Gong, and Zixia occupy different roles and reveal different failures. The dialogues are targeted instruction, not excerpts from one management manual.",
+        },
+      },
+      {
+        question: { zh: "民无信不立是否说信比粮食更重要？", en: "Does “without trust the people cannot stand” say trust always matters more than food?" },
+        answer: {
+          zh: "子贡是在“必不得已而去”的极端追问里逐项删减。原文不是日常预算公式，而是把政治最后不能失去的成立条件逼出来。",
+          en: "Zi Gong removes items only under the extreme condition that one must be given up. The passage is not a routine budget formula; it forces out the final condition government cannot lose.",
+        },
+      },
+      {
+        question: { zh: "“不在其位，不谋其政”是不是叫人不要关心公共事务？", en: "Does “not in the office, do not plan its government” forbid public concern?" },
+        answer: {
+          zh: "原句划的是职位与职责边界。它不能自动推出普通人不得讨论公共善；同书还记录大量不在君位的人问政、议政。",
+          en: "The line draws a boundary around office and responsibility. It does not automatically forbid ordinary concern for public good; the same book records many people outside rulership asking and arguing about government.",
+        },
+      },
+    ],
+    relatedSlugs: ["xin", "yi", "li", "junzi", "confucius", "zi-lu", "zi-gong"],
+  }),
+
   confucius: personPage({
     slug: "confucius",
     subtitle: {
