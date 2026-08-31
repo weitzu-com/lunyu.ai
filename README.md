@@ -15,6 +15,18 @@ npm install
 npm run dev
 ```
 
+## 来源与部署一致性
+
+```bash
+npm run qa:provenance -- --checkout-only
+npm run qa:provenance
+```
+
+第一条检查 `origin`、GitHub `main` 与当前 checkout 的基线；第二条还会读取
+`https://www.lunyu.ai/.well-known/provenance`，严格比对 Vercel 的仓库、生产分支、
+部署 ID 和提交 SHA。退出码 `1` 表示来源或部署已过期，`2` 表示 GitHub 或生产站
+不可访问，二者不会混为同一种失败。
+
 ## 部署
 
 - Vercel：`vercel deploy --prod`
