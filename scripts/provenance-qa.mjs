@@ -187,10 +187,13 @@ function text(value) {
 async function validateDeployment(remoteMainSha) {
   if (!remoteMainSha) return;
 
+  const configuredLiveUrl = process.env.PROVENANCE_LIVE_URL?.trim();
   const liveUrl = new URL(
-    process.env.PROVENANCE_LIVE_URL?.trim() ||
-      `https://${expected.productionHost}/.well-known/provenance`
+    configuredLiveUrl || `https://${expected.productionHost}/.well-known/provenance`
   );
+  const expectedLiveHost = configuredLiveUrl
+    ? liveUrl.hostname
+    : expected.productionHost;
   liveUrl.searchParams.set("qa", Date.now().toString());
 
   let response;
@@ -204,6 +207,14 @@ async function validateDeployment(remoteMainSha) {
     });
   } catch (error) {
     block("PRODUCTION_UNREACHABLE", `cannot fetch ${liveUrl.origin}${liveUrl.pathname}: ${error.message}`);
+    return;
+  }
+
+  if (response.status >= 500) {
+    block(
+      "PRODUCTION_UNAVAILABLE",
+      `${liveUrl.origin}${liveUrl.pathname} returned HTTP ${response.status}.`
+    );
     return;
   }
 
@@ -224,11 +235,12 @@ async function validateDeployment(remoteMainSha) {
   }
 
   const checks = [
+    [new URL(response.url).hostname === expectedLiveHost, "LIVE_HOST_MISMATCH", `response host is ${new URL(response.url).hostname}; expected ${expectedLiveHost}.`],
     [document.schemaVersion === 1, "SCHEMA_MISMATCH", `schemaVersion is ${document.schemaVersion ?? "missing"}; expected 1.`],
     [document.deployment?.provider === "vercel", "PROVIDER_MISMATCH", `provider is ${text(document.deployment?.provider) || "missing"}; expected vercel.`],
     [document.deployment?.environment === "production", "ENVIRONMENT_MISMATCH", `environment is ${text(document.deployment?.environment) || "missing"}; expected production.`],
     [text(document.deployment?.id).startsWith("dpl_"), "DEPLOYMENT_ID_MISSING", "VERCEL_DEPLOYMENT_ID is missing."],
-    [document.deployment?.projectProductionUrl === expected.productionHost, "PRODUCTION_HOST_MISMATCH", `projectProductionUrl is ${text(document.deployment?.projectProductionUrl) || "missing"}; expected ${expected.productionHost}.`],
+    [Boolean(text(document.deployment?.projectProductionUrl)), "PROJECT_PRODUCTION_URL_MISSING", "VERCEL_PROJECT_PRODUCTION_URL is missing."],
     [document.git?.provider === "github", "GIT_PROVIDER_MISMATCH", `git provider is ${text(document.git?.provider) || "missing"}; expected github.`],
     [document.git?.repositoryOwner === expected.repositoryOwner, "REPO_OWNER_MISMATCH", `repository owner is ${text(document.git?.repositoryOwner) || "missing"}; expected ${expected.repositoryOwner}.`],
     [document.git?.repositorySlug === expected.repositorySlug, "REPO_SLUG_MISMATCH", `repository slug is ${text(document.git?.repositorySlug) || "missing"}; expected ${expected.repositorySlug}.`],
