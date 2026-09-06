@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         destination: "https://www.lunyu.ai/:path*",
         permanent: true,
       },
+      {
+        source: "/game",
+        destination: "/zh-Hans/game",
+        permanent: false,
+      },
     ];
   },
   turbopack: {
