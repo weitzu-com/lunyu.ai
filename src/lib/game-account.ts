@@ -36,10 +36,11 @@ function storedDraft(id: string | null): GameProgress | null { try { const raw =
 function savedDraft(id: string | null) { return storedDraft(id) ?? emptyProgress; }
 function removeDraft(id: string) { try { sessionStorage.removeItem(draftKey(id)); } catch { /* Optional recovery. */ } }
 function hasProgress(progress: GameProgress) { return Object.keys(progress.answers).length > 0 || Object.values(progress.reflections).some((note) => note.trim()); }
+function notifyProgressReplacement() { window.dispatchEvent(new Event("lunyu-cloud-loaded")); }
 function replaceLocal(progress: GameProgress) {
   applyingProgress = true;
   try { saveProgress(progress); } finally { applyingProgress = false; }
-  window.dispatchEvent(new Event("lunyu-cloud-loaded"));
+  notifyProgressReplacement();
 }
 function broadcastSession() { try { localStorage.setItem(SESSION_EVENT, `${Date.now()}:${Math.random()}`); } catch { /* Focus refresh remains available. */ } }
 async function request(path: string, body?: unknown, method = "POST", accountId = snapshot.user?.id) {
@@ -56,7 +57,9 @@ function applyCloud(save: CloudSave) {
   const progress = parseGameProgress(JSON.stringify(save.progress));
   fingerprint = serialize(progress); revision = save.revision;
   if (snapshot.user) setOwner(snapshot.user.id);
-  replaceLocal(progress);
+  // A matching cloud save confirms this account's cache without interrupting
+  // reading or clearing its tab-local bookmark on an ordinary page reload.
+  if (serialize(getProgressSnapshot()) !== fingerprint) replaceLocal(progress);
   if (snapshot.user) removeDraft(snapshot.user.id);
   update({ status: "synced", cloud: save, savedAt: save.updatedAt, error: "" });
 }
@@ -116,6 +119,11 @@ function queueSave() {
 function prepareAccount(user: AccountUser | null) {
   const localOwner = storageGet(OWNER_KEY);
   const local = getProgressSnapshot();
+  // Only the first load may infer identity from the persistent cache owner.
+  // Once initialized, the in-memory identity still identifies this tab when
+  // another tab has already switched the shared owner marker and cache.
+  const previousOwner = snapshot.user?.id ?? (snapshot.status === "loading" ? localOwner : null);
+  const identityChanged = previousOwner !== (user?.id ?? null);
   // The owner marker survives a reload while the in-memory user does not.
   // Preserve its cache before an expired session restores the guest journey.
   if (localOwner && localOwner !== user?.id) rememberDraft(localOwner, local);
@@ -123,12 +131,15 @@ function prepareAccount(user: AccountUser | null) {
   setOwner(user?.id ?? null);
   // If another tab already switched the shared cache to this user, preserve its
   // newest edits. Clearing that cache here would erase the other tab's draft.
-  if (!user && localOwner) replaceLocal(savedDraft(null));
+  let replacement: GameProgress | null = null;
+  if (!user && localOwner) replacement = savedDraft(null);
   else if (user && localOwner !== user.id) {
     const recovery = storedDraft(user.id);
-    if (recovery) replaceLocal(recovery);
-    else if (localOwner) replaceLocal(emptyProgress);
+    if (recovery) replacement = recovery;
+    else if (localOwner) replacement = emptyProgress;
   }
+  if (replacement) replaceLocal(replacement);
+  else if (identityChanged) notifyProgressReplacement();
 }
 async function initialize(force = false): Promise<void> {
   if (sessionPromise && !force) return sessionPromise;
