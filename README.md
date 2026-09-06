@@ -35,6 +35,13 @@ npm run qa:provenance
   - `www` 默认写入 `A www.lunyu.ai 76.76.21.21`
   - 默认 `CLOUDFLARE_PROXIED=false`，先让 Vercel 完成域名验证
 
+## Google Analytics
+
+- GA4 媒体资源：`544292853`；网站数据流：`15209449510`（`https://www.lunyu.ai`）；公开衡量 ID：`G-7KQTRXVXF4`。
+- 所有语种共用的根布局通过 `@next/third-parties/google` 加载 Google Analytics，仅在 `VERCEL_ENV=production` 时启用；开发环境和 Vercel Preview 不发送正式统计。
+- 保持 GA4 数据流的增强型衡量及“基于浏览器历史记录事件的网页更改”开启，由 Google 标签自动记录首次访问和站内路由切换，避免重复发送 `page_view`。
+- 发布后在浏览器 Network 检查 `gtag/js?id=G-7KQTRXVXF4` 及带有 `tid=G-7KQTRXVXF4` 的 `g/collect` 请求，并在 GA4 实时报告核验收数。CSP 的采集域名依据 [Google 官方指南](https://developers.google.com/tag-platform/security/guides/csp)配置。
+
 ## 第一阶段目标
 
 1. 建立《论语》原文、章节、注释、白话、英译、跨语种翻译的数据模型。
