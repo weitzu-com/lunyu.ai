@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { BiographyPortrait, BiographyWorks } from "@/components/biographies/BiographyEvidence";
+import { BiographyPortrait, BiographyWorks, BiographyReferences } from "@/components/biographies/BiographyEvidence";
 import { getBiographyEvidence, portraitSources, worksSources } from "@/lib/biography-evidence";
 import { BiographyTimeline, CitationList, ChronologyMethod } from "@/components/biographies/BiographyTimeline";
 import { biographyModifiedDate, biographyProfiles, biographySources, getBiography } from "@/lib/biographies";
@@ -11,6 +11,7 @@ import { biographyPath } from "@/lib/biography-utils";
 import { breadcrumbJsonLd, jsonLd, localizedUrl, organizationId } from "@/lib/site";
 import { openGraph, twitterCard } from "@/lib/seo";
 import { blogEntities } from "@/lib/blogs";
+import { BiographyNavigation } from "@/components/biographies/BiographyNavigation";
 import "@/components/biographies/biographies.css";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -41,6 +42,17 @@ export default async function BiographyPage({ params }: Props) {
   for (const source of portraitSources) usedSourceIds.add(source.id);
   const usedSources = evidenceSources.filter((source) => usedSourceIds.has(source.id));
   const passageIndex = blogEntities.find((entity) => entity.category === "person" && (entity.zhName === profile.name || profile.aliases.includes(entity.zhName)));
+  const biographySourceIds = new Set([...profile.citations, ...profile.events.flatMap((event) => event.citations)].map((citation) => citation.sourceId));
+  const writingSourceIds = new Set([...writings.citations, ...writings.works.flatMap((work) => work.citations)].map((citation) => citation.sourceId));
+  const referenceGroups = [
+    { title: "生平与纪年", description: "人物身份与生平事迹的参考资料；具体卷、篇与年份见各条记录。", sources: biographySources.filter((source) => biographySourceIds.has(source.id)) },
+    { title: "著作与传承", description: "用于区分传统归属、后人整理与伪托；目录著录不自动等于本人亲笔。", sources: worksSources.filter((source) => writingSourceIds.has(source.id)) },
+    { title: "肖像与图像", description: "用于识别后世画册所绘人物、确认图像出处与使用许可。", sources: portraitSources },
+  ];
+  const profileIndex = biographyProfiles.findIndex((person) => person.slug === slug);
+  const previous = biographyProfiles[profileIndex - 1];
+  const next = biographyProfiles[profileIndex + 1];
+  const sections = [{ id: "profile-overview", label: "概览" }, { id: "biography", label: "简介" }, { id: dated.length ? "timeline" : "undated", label: dated.length ? "生平" : "记载" }, { id: "works", label: "文献" }, { id: "references", label: "资料" }];
   const schema = {
     "@context": "https://schema.org", "@graph": [
       { "@type": "ProfilePage", "@id": `${url}#webpage`, url, name: `${profile.name}人物简介与生平年表`, description: profile.summary, inLanguage: "zh-Hans", dateModified: biographyModifiedDate, publisher: { "@id": organizationId }, mainEntity: { "@type": "Person", "@id": `${url}#person`, name: profile.name, alternateName: [...new Set([profile.courtesyName, ...profile.aliases].filter(Boolean))], description: profile.summary, url, ...(portrait.image ? { image: { "@type": "ImageObject", contentUrl: new URL(portrait.image.assetPath, url).href, caption: `${portrait.image.title}，后世画像，非生前写真`, creditText: portrait.image.collection, license: portrait.image.licenseUrl, acquireLicensePage: portrait.image.sourceUrl } } : {}) }, citation: usedSources.map((source) => ({ "@type": "CreativeWork", name: source.title, url: source.url })) },
@@ -51,34 +63,62 @@ export default async function BiographyPage({ params }: Props) {
     <>
       <a className="biography-skip sr-only focus:not-sr-only focus:block focus:p-4" href="#main">跳至正文</a>
       <SiteHeader locale="zh-Hans" path={`/people/${slug}`} availableLocales={["zh-Hans"]} />
-      <main id="main" className="page-shell">
+      <main id="main" className="page-shell people-profile">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
-        <nav className="pt-6 text-sm text-ink-soft" aria-label="面包屑"><Link href={biographyPath()} className="inline-flex min-h-11 items-center hover:text-ink">← 孔子与弟子 · 人物年表</Link></nav>
-        <section className="biography-hero biography-profile-hero border-b border-rule" aria-labelledby="profile-name">
-          <div><p className="label mb-5">孔门人物志 · {profile.group}</p><h1 id="profile-name" className="font-cjk text-5xl leading-tight sm:text-6xl">{profile.name}</h1><p className="mt-4 font-cjk text-xl leading-8 text-ink-soft">{profile.courtesyName ? `字${profile.courtesyName}` : "字未详"}{profile.aliases.length > 0 ? ` · ${profile.aliases.join("、")}` : ""}</p><p className="mt-6 max-w-2xl text-lg leading-9">{profile.summary}</p>
-          <dl className="mt-8 border-y border-rule text-base leading-8">
-            <div className="grid grid-cols-[4rem_minmax(0,1fr)] gap-4 border-b border-rule py-4"><dt className="text-ink-soft">生卒</dt><dd>{profile.lifespan}</dd></div>
-            <div className="grid grid-cols-[4rem_minmax(0,1fr)] gap-4 border-b border-rule py-4"><dt className="text-ink-soft">籍贯</dt><dd>{profile.origin}</dd></div>
-            <div className="grid grid-cols-[4rem_minmax(0,1fr)] gap-4 py-4"><dt className="text-ink-soft">身份</dt><dd>{profile.role === "teacher" ? "思想家、教育者，孔门之师" : "《史记·仲尼弟子列传》所列弟子"}</dd></div>
-          </dl></div>
-          <BiographyPortrait portrait={portrait} name={profile.name} />
-        </section>
-        <div className="grid items-start gap-10 py-10 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-16 lg:py-14">
-          <aside className="lg:sticky lg:top-6">
-            <nav aria-label="本页目录" className="flex flex-wrap gap-x-6 gap-y-1 text-sm lg:flex-col lg:gap-1"><a href="#portrait" className="inline-flex min-h-11 items-center">肖像依据</a><a href="#biography" className="inline-flex min-h-11 items-center">人物简介</a><a href="#works" className="inline-flex min-h-11 items-center">著作与文献</a><a href="#timeline" className="inline-flex min-h-11 items-center">按年生平 · {dated.length}</a>{undated.length > 0 && <a href="#undated" className="inline-flex min-h-11 items-center">未定年记载 · {undated.length}</a>}<a href="#references" className="inline-flex min-h-11 items-center">史料与参考</a></nav>
-            {passageIndex && <Link className="mt-4 inline-flex min-h-11 items-center border-t border-rule pt-4 text-sm leading-7 underline underline-offset-4" href={`/zh-Hans/index/${passageIndex.slug}`}>在《论语》中读{profile.name} →</Link>}
-            <p className="mt-5 hidden text-sm leading-7 text-ink-soft lg:block">同一年可能有多项记载。虚岁、实岁与生年异说会影响年龄推算，请连同出处阅读。</p>
-          </aside>
-          <div className="min-w-0">
-            <section id="biography" className="scroll-mt-6" aria-labelledby="biography-heading"><h2 id="biography-heading" className="font-cjk text-3xl">人物简介</h2><div className="mt-6 space-y-5 text-base leading-9 text-ink-soft">{profile.biography.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div><div className="mt-5"><CitationList citations={profile.citations} sources={biographySources} /></div></section>
-            <BiographyWorks record={writings} sources={evidenceSources} />
-            <section id="timeline" className="scroll-mt-6 pt-12" aria-labelledby="timeline-heading"><div className="mb-8 flex flex-wrap items-baseline gap-3"><h2 id="timeline-heading" className="font-cjk text-3xl">按年生平</h2><span className="text-sm text-ink-soft">公元前 · 由早至晚</span></div>{dated.length > 0 ? <BiographyTimeline events={dated} sources={biographySources} linkable /> : <p className="border-l-2 border-rule pl-5 text-base leading-8 text-ink-soft">现有参考文献不足以为{profile.name}建立可靠的逐年生平。下方保留可核对的记载，不以推测补全年份。</p>}</section>
-            {undated.length > 0 && <section id="undated" className="scroll-mt-6 pt-8" aria-labelledby="undated-heading"><h2 id="undated-heading" className="font-cjk text-3xl">未定年记载</h2><p className="mb-8 mt-4 text-base leading-8 text-ink-soft">有文献依据，但不能可靠放入某一公元前年份；以下顺序不代表事件先后。</p><BiographyTimeline events={undated} sources={biographySources} /></section>}
-            <section id="references" className="scroll-mt-6 border-t border-rule pt-8" aria-labelledby="references-heading"><h2 id="references-heading" className="font-cjk text-3xl">史料与参考</h2><ol className="mt-6 space-y-6">{usedSources.map((source) => <li key={source.id}><a href={source.url} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center font-cjk text-lg underline decoration-rule underline-offset-4">{source.title} ↗<span className="sr-only">（新标签页）</span></a><p className="text-sm leading-7 text-ink-soft">{source.note}</p></li>)}</ol><p className="mt-8 text-sm text-ink-soft">资料核对：{biographyModifiedDate} · <Link href="/zh-Hans/method#corrections" className="underline underline-offset-4">提供订正依据</Link></p></section>
+        <nav className="people-breadcrumb" aria-label="面包屑"><Link href={`${biographyPath()}#directory`}>← 人物名录</Link><span aria-hidden="true">/</span><span>{profile.name}</span></nav>
+        <BiographyNavigation name={profile.name} sections={sections} />
+        <section id="profile-overview" className="people-profile-hero" aria-labelledby="profile-name">
+          <div className="people-identity">
+            <p className="label">孔门人物志 · {profile.group}</p>
+            <h1 id="profile-name">{profile.name}</h1>
+            <p className="people-courtesy">{profile.courtesyName ? `字${profile.courtesyName}` : "字未详"}</p>
+            {profile.aliases.length > 0 && <p className="people-aliases">{profile.aliases.join("、")}</p>}
           </div>
+          <BiographyPortrait portrait={portrait} name={profile.name} />
+          <p className="people-profile-summary">{profile.summary}</p>
+          <dl className="people-profile-facts">
+            <div><dt>生卒</dt><dd>{profile.lifespan}</dd></div>
+            <div><dt>籍贯</dt><dd>{profile.origin}</dd></div>
+            <div><dt>身份</dt><dd>{profile.role === "teacher" ? "思想家、教育者，孔门之师" : "《史记·仲尼弟子列传》所列弟子"}</dd></div>
+          </dl>
+          <div className="people-profile-actions">
+            <a className="ui-button ui-button-primary" href={dated.length ? "#timeline" : "#undated"}>{dated.length ? "阅读生平年表" : "阅读现存记载"} ↓</a>
+            {passageIndex && <Link className="people-text-link" href={`/zh-Hans/index/${passageIndex.slug}`}>在《论语》中读{profile.name} ↗</Link>}
+          </div>
+        </section>
+        <div className="people-reading-layout">
+          <section id="biography" className="people-reading-section" aria-labelledby="biography-heading">
+            <div className="people-section-heading"><div><p className="label">认识{profile.name}</p><h2 id="biography-heading">人物简介</h2></div></div>
+            <div className="people-prose people-biography-text">{profile.biography.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
+            <details className="people-citation-disclosure"><summary>简介依据 · {profile.citations.length}</summary><CitationList citations={profile.citations} sources={biographySources} /></details>
+          </section>
+          {dated.length > 0 && <section id="timeline" className="people-reading-section" aria-labelledby="timeline-heading">
+            <div className="people-section-heading"><div><p className="label">沿着年份阅读</p><h2 id="timeline-heading">生平年表</h2></div><span>{dated.length} 项纪年事件</span></div>
+            <div className="people-section-context"><p>公元前 · 由早至晚。约年与异说在每条记录中标明。</p><a href="#chronology-method">纪年说明 ↓</a>{undated.length > 0 && <a href="#undated">未定年记载 · {undated.length} ↓</a>}</div>
+            <BiographyTimeline events={dated} sources={biographySources} linkable />
+          </section>}
+          {undated.length > 0 && <section id="undated" className="people-reading-section" aria-labelledby="undated-heading">
+            {!dated.length && <span id="timeline" className="people-anchor-alias" aria-hidden="true" />}
+            <div className="people-section-heading"><div><p className="label">史料留下的线索</p><h2 id="undated-heading">{dated.length ? "未定年记载" : "现存记载"}</h2></div><span>{undated.length} 项文献记载</span></div>
+            <p className="people-section-intro">{dated.length ? "有文献依据，但不能可靠放入某一公元前年份；以下顺序不代表事件先后。" : `现有参考文献不足以为${profile.name}建立可靠的逐年生平。这里保留可核对的记载，不以推测补全年份。`}</p>
+            <BiographyTimeline events={undated} sources={biographySources} />
+          </section>}
+          <BiographyWorks record={writings} sources={evidenceSources} />
+          <section id="references" className="people-reading-section" aria-labelledby="references-heading">
+            <div className="people-section-heading"><div><p className="label">循出处查证</p><h2 id="references-heading">史料与参考</h2></div><span>{usedSources.length} 项引用条目</span></div>
+            <p className="people-section-intro">按生平、著作与图像分组。展开可查看资料说明与原始链接。</p>
+            <BiographyReferences groups={referenceGroups} />
+            <p className="people-reviewed">资料核对：{biographyModifiedDate} · <Link href="/zh-Hans/method#corrections">提供订正依据 ↗</Link></p>
+          </section>
+          <ChronologyMethod />
         </div>
-        <ChronologyMethod />
-        <nav className="flex flex-wrap gap-3 py-8" aria-label="继续阅读"><Link className="ui-button" href={biographyPath()}>返回人物与年表</Link><Link className="ui-button" href="/zh-Hans/analects">回到《论语》二十篇 →</Link></nav>
+        <section className="people-continue" aria-labelledby="continue-heading">
+          <div className="people-continue-heading"><h2 id="continue-heading">继续认识孔门人物</h2><Link href={`${biographyPath()}#directory`}>查看全部 {biographyProfiles.length} 位人物 →</Link></div>
+          <nav className="people-adjacent" aria-label="按人物名录顺序继续阅读">
+            {previous && <Link href={biographyPath(previous.slug)} prefetch={false}><span>← 名录上一位</span><strong>{previous.name}</strong><span>{previous.courtesyName ? `字${previous.courtesyName}` : previous.group}</span></Link>}
+            {next && <Link href={biographyPath(next.slug)} prefetch={false}><span>名录下一位 →</span><strong>{next.name}</strong><span>{next.courtesyName ? `字${next.courtesyName}` : next.group}</span></Link>}
+          </nav>
+        </section>
       </main>
       <SiteFooter locale="zh-Hans" />
     </>

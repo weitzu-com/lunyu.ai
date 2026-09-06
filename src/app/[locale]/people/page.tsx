@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { BiographyDirectory, ChronologyExplorer } from "@/components/biographies/BiographyExplorer";
+import { BiographyNavigation } from "@/components/biographies/BiographyNavigation";
+import { portraitRecords } from "@/lib/biography-evidence";
 import { ChronologyMethod } from "@/components/biographies/BiographyTimeline";
 import { biographyModifiedDate, biographyProfiles, biographySources } from "@/lib/biographies";
 import { biographyPath } from "@/lib/biography-utils";
@@ -29,6 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function PeoplePage({ params }: { params: Promise<{ locale: string }> }) {
   if ((await params).locale !== "zh-Hans") notFound();
+  const portraits = Object.fromEntries(portraitRecords.flatMap(({ slug, image }) => image ? [[slug, { assetPath: image.assetPath, width: image.width, height: image.height }]] : []));
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -44,24 +47,22 @@ export default async function PeoplePage({ params }: { params: Promise<{ locale:
     <>
       <a className="biography-skip sr-only focus:not-sr-only focus:block focus:p-4" href="#main">跳至正文</a>
       <SiteHeader locale="zh-Hans" path="/people" availableLocales={["zh-Hans"]} />
-      <main id="main" className="page-shell">
+      <main id="main" className="page-shell people-overview">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
-        <section className="biography-hero border-b border-rule" aria-labelledby="page-heading">
+        <section className="people-intro" aria-labelledby="page-heading">
           <div>
-            <p className="label mb-5">春秋末年 · 孔门人物志</p>
-            <h1 id="page-heading" className="font-cjk text-4xl leading-[1.45] tracking-wide sm:text-5xl">孔子与弟子<span className="mt-2 block text-ink-soft">生平年表</span></h1>
-            <p className="mt-6 max-w-xl text-base leading-8 text-ink-soft sm:text-lg">从一个人的名字，走进他所处的年代。沿着求学、出仕、周游与传道的经历，认识《论语》里的师生。</p>
-            <div className="mt-7 flex flex-wrap gap-3"><a className="ui-button ui-button-primary" href="#chronology">按年份阅读 ↓</a><a className="ui-button" href="#directory">查找人物 ↓</a></div>
+            <p className="label">春秋末年 · 孔门人物志</p>
+            <h1 id="page-heading">孔子与弟子</h1>
+            <p>从一个名字，走进《论语》里的师生。查找 {biographyProfiles.length} 位人物的生平、后世画像与相关文献，也可以沿着年份阅读他们的经历。</p>
           </div>
-          <aside className="border-l-2 border-cinnabar pl-5 sm:pl-6">
-            <h2 className="font-cjk text-xl">让每段生平，都有出处</h2>
-            <p className="mt-4 text-base leading-8 text-ink-soft">收录孔子与《史记》列传中的 {biographyProfiles.length - 1} 位弟子。史料有年则系年，有事无年则留白；后世传说与推定不写成确证。</p>
-            <dl className="mt-5 space-y-2 text-sm leading-7"><div className="flex gap-4"><dt className="text-ink-soft">主要依据</dt><dd>《论语》《史记》《左传》</dd></div><div className="flex gap-4"><dt className="text-ink-soft">资料核对</dt><dd>{biographyModifiedDate}</dd></div></dl>
-            <Link className="mt-4 inline-flex min-h-11 items-center text-sm underline underline-offset-4" href={biographyPath("confucius")}>先读孔子的完整生平 →</Link>
+          <aside className="people-intro-aside">
+            <p>收录孔子与《史记》列传中的 {biographyProfiles.length - 1} 位弟子。有年则系年，有事无年则保留记载；推定与争议分别标明。</p>
+            <Link href={biographyPath("confucius")}>从孔子的生平开始 →</Link>
           </aside>
         </section>
+        <BiographyNavigation name="孔门人物志" sections={[{ id: "directory", label: "找人物" }, { id: "chronology", label: "看年表" }, { id: "sources", label: "查出处" }]} />
+        <BiographyDirectory profiles={biographyProfiles} portraits={portraits} />
         <ChronologyExplorer profiles={biographyProfiles} sources={biographySources} />
-        <BiographyDirectory profiles={biographyProfiles} />
         <ChronologyMethod />
         <section id="sources" className="scroll-mt-6 py-12 sm:py-16" aria-labelledby="sources-heading">
           <p className="label mb-3">可追溯的阅读</p><h2 id="sources-heading" className="font-cjk text-3xl">参考文献与原典</h2>
