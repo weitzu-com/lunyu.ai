@@ -80,12 +80,83 @@ for (const profile of profiles) {
   }
 }
 
+function decodeHtml(value) {
+  const named = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
+  return value.replace(/&(#x[\da-f]+|#\d+|amp|lt|gt|quot|apos|nbsp);/gi, (entity, code) => {
+    if (code[0] !== "#") return named[code.toLowerCase()] ?? entity;
+    const number = code[1].toLowerCase() === "x" ? parseInt(code.slice(2), 16) : Number(code.slice(1));
+    return number <= 0x10ffff ? String.fromCodePoint(number) : entity;
+  });
+}
+
+// Inspect real SSR elements and text, never Next's serialized props or JSON-LD.
+// This small reader covers the well-formed HTML emitted by React; it is not a
+// browser layout/visibility check, which remains part of the interaction review.
+function readStaticHtml(html) {
+  const markup = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, "").replace(/<!--[\s\S]*?-->/g, "");
+  const root = { tag: "document", attributes: {}, children: [], parent: null, position: 0 };
+  const stack = [root];
+  const elements = [];
+  const voidTags = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
+  const tokens = markup.matchAll(/<\/?[a-z][a-z\d:-]*\b(?:"[^"]*"|'[^']*'|[^'">])*\/?\s*>|[^<]+/gi);
+  for (const token of tokens) {
+    const value = token[0];
+    const closing = value.match(/^<\/([a-z][a-z\d:-]*)/i);
+    if (closing) {
+      const index = stack.findLastIndex((node) => node.tag === closing[1].toLowerCase());
+      if (index > 0) stack.length = index;
+      continue;
+    }
+    const opening = value.match(/^<([a-z][a-z\d:-]*)\b/i);
+    if (!opening) {
+      stack.at(-1).children.push(decodeHtml(value));
+      continue;
+    }
+    const tag = opening[1].toLowerCase();
+    const attributes = {};
+    const attributeText = value.slice(opening[0].length).replace(/\/?\s*>$/, "");
+    for (const attribute of attributeText.matchAll(/([^\s=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g)) {
+      attributes[attribute[1].toLowerCase()] = decodeHtml(attribute[2] ?? attribute[3] ?? attribute[4] ?? "");
+    }
+    const parent = stack.at(-1);
+    const node = { tag, attributes, children: [], parent, position: token.index };
+    parent.children.push(node);
+    elements.push(node);
+    if (!voidTags.has(tag) && !/\/\s*>$/.test(value)) stack.push(node);
+  }
+  return { root, elements };
+}
+
+const textContent = (node) => typeof node === "string" ? node : node.children.map(textContent).join("");
+const normalizeText = (value) => value.normalize("NFC").replace(/\s+/g, "");
+function within(node, ancestor) {
+  for (let current = node; current; current = current.parent) if (current === ancestor) return true;
+  return false;
+}
+function checkText(node, expected, label) {
+  assert.ok(normalizeText(textContent(node)).includes(normalizeText(expected)), `${label}: text missing from SSR content: ${expected}`);
+}
+function checkRenderedCitations(citations, anchors, label) {
+  for (const citation of citations) {
+    const source = sources.find((item) => item.id === citation.sourceId);
+    const expected = normalizeText(`${source.title} · ${citation.locator}`);
+    assert.ok(anchors.some((anchor) => anchor.attributes.href === source.url && normalizeText(textContent(anchor)).includes(expected)), `${label}: linked source and passage locator missing: ${source.title} · ${citation.locator}`);
+  }
+}
+
 if (process.argv.includes("--built")) {
   const base = ".next/server/app/zh-Hans/people";
   for (const slug of ["", ...profiles.map((profile) => profile.slug)]) {
     const file = slug ? `${base}/${slug}.html` : `${base}.html`;
     const html = fs.readFileSync(file, "utf8");
     const path = `/zh-Hans/people${slug ? `/${slug}` : ""}`;
+    const { elements } = readStaticHtml(html);
+    const main = elements.find((element) => element.tag === "main");
+    assert.ok(main, `${path}: a main reading landmark is required`);
+    const content = elements.filter((element) => within(element, main));
+    const anchors = content.filter((element) => element.tag === "a");
+    const elementIds = content.filter((element) => element.attributes.id).map((element) => element.attributes.id);
+    assert.equal(new Set(elementIds).size, elementIds.length, `${path}: reading targets must have unique IDs`);
     assert.ok(html.includes(`rel="canonical" href="https://www.lunyu.ai${path}"`), `${path}: self canonical required`);
     assert.ok(!/href="[^\"]*\/en\/people/.test(html), `${path}: must not advertise an untranslated route`);
     assert.ok(html.includes('lang="zh-Hans"'), `${path}: Chinese document language required`);
@@ -94,19 +165,72 @@ if (process.argv.includes("--built")) {
     assert.ok(schemas.length > 0, `${path}: structured data required`);
     if (slug) {
       const profile = profiles.find((item) => item.slug === slug);
-      assert.ok(html.includes(profile.name) && html.includes(profile.summary), `${path}: biography must be present in static HTML`);
-      for (const event of profile.events) assert.ok(html.includes(event.title), `${path}: every event must render`);
-      assert.ok(html.includes("史料与参考"), `${path}: references must render`);
-      assert.ok(html.includes('id="portrait"') && html.includes('id="works"'), `${path}: portrait and works sections must be in static HTML`);
+      for (const value of [profile.name, profile.summary, profile.lifespan, profile.origin, ...profile.biography, ...profile.aliases]) checkText(main, value, path);
+      if (profile.courtesyName) checkText(main, profile.courtesyName, path);
+      checkRenderedCitations(profile.citations, anchors, `${path}/biography`);
+      for (const event of profile.events) {
+        for (const field of ["title", "description", "dateLabel"]) checkText(main, event[field], `${path}/${event.title}`);
+        checkRenderedCitations(event.citations, anchors, `${path}/${event.title}`);
+      }
+      checkText(main, "史料与参考", path);
+      assert.ok(elementIds.includes("portrait") && elementIds.includes("works"), `${path}: portrait and works sections must be in static HTML`);
+      const sectionNavigation = content.find((element) => element.tag === "nav" && element.attributes["aria-label"]?.includes("本页目录"));
+      assert.ok(sectionNavigation, `${path}: provide a named section navigation`);
+      const sectionLinks = anchors.filter((anchor) => within(anchor, sectionNavigation) && anchor.attributes.href?.startsWith("#"));
+      assert.ok(sectionLinks.length > 1, `${path}: section navigation must offer reading destinations`);
+      for (const anchor of sectionLinks) {
+        const target = decodeURIComponent(anchor.attributes.href.slice(1));
+        assert.ok(elementIds.includes(target), `${path}: section navigation points to missing #${target}`);
+        assert.ok((anchor.attributes["aria-label"] || textContent(anchor)).trim(), `${path}: section link needs an accessible name`);
+      }
+      if (!profile.events.some((event) => event.year !== null)) {
+        const datedHeadings = content.filter((element) => /^h[2-6]$/.test(element.tag) && /^(?:按年生平|生平年表)$/.test(normalizeText(textContent(element))));
+        assert.equal(datedHeadings.length, 0, `${path}: a person without dates must not show an empty dated timeline`);
+        assert.ok(!/(?:按年生平|生平年表)[·：:]?0/.test(normalizeText(textContent(sectionNavigation))), `${path}: do not advertise a zero-event timeline`);
+        assert.ok(elementIds.includes("undated") || elementIds.includes("timeline"), `${path}: keep a destination for the surviving records`);
+      }
       const portrait = portraits.find((record) => record.slug === slug);
       const writing = writings.find((record) => record.slug === slug);
-      assert.ok(html.includes(portrait.image ? "后世画像 · 非生前写真" : "肖像待考"), `${path}: disclose the status of the likeness`);
-      assert.ok(html.includes(writing.summary), `${path}: works assessment must render`);
-      for (const work of writing.works) assert.ok(html.includes(work.title) && html.includes(work.attributionLabel), `${path}: show work attribution`);
+      checkText(main, portrait.image ? "后世画像 · 非生前写真" : "肖像待考", path);
+      checkText(main, portrait.summary, `${path}/portrait`);
+      if (portrait.image) {
+        for (const field of ["title", "artist", "dateLabel", "collection", "identityNote", "licenseLabel", "credit"]) {
+          if (portrait.image[field]) checkText(main, portrait.image[field], `${path}/portrait`);
+        }
+        for (const field of ["sourceUrl", "licenseUrl", "catalogUrl"]) {
+          if (portrait.image[field]) assert.ok(anchors.some((anchor) => anchor.attributes.href === portrait.image[field]), `${path}: preserve portrait ${field}`);
+        }
+      }
+      checkText(main, writing.summary, `${path}/works`);
+      checkRenderedCitations(writing.citations, anchors, `${path}/works review`);
+      for (const work of writing.works) {
+        for (const field of ["title", "attributionLabel", "statusLabel", "dateLabel", "description"]) checkText(main, work[field], `${path}/${work.title}`);
+        checkRenderedCitations(work.citations, anchors, `${path}/${work.title}`);
+      }
+      const usedIds = new Set([...profile.citations, ...profile.events.flatMap((event) => event.citations), ...writing.citations, ...writing.works.flatMap((work) => work.citations)].map((citation) => citation.sourceId));
+      for (const source of portraitResearch.sources) usedIds.add(source.id);
+      for (const source of sources.filter((item) => usedIds.has(item.id))) {
+        checkText(main, source.note, `${path}/${source.id}`);
+        assert.ok(anchors.some((anchor) => anchor.attributes.href === source.url && normalizeText(textContent(anchor)).includes(normalizeText(source.title))), `${path}: preserve the reference link for ${source.title}`);
+      }
+    } else {
+      const directory = content.find((element) => element.attributes.id === "directory");
+      const chronology = content.find((element) => element.attributes.id === "chronology");
+      assert.ok(directory && chronology, `${path}: directory and shared chronology must both render`);
+      assert.ok(directory.position < chronology.position, `${path}: place the people directory before the long chronology`);
+      const directoryLinks = anchors.filter((anchor) => within(anchor, directory));
+      for (const profile of profiles) {
+        const link = directoryLinks.find((anchor) => anchor.attributes.href === `/zh-Hans/people/${profile.slug}`);
+        assert.ok(link, `${path}: ${profile.name} must have a real link in the unfiltered static directory`);
+        checkText(link, profile.name, `${path}/directory/${profile.slug}`);
+        for (let ancestor = link; ancestor && ancestor !== main; ancestor = ancestor.parent) {
+          assert.ok(!Object.hasOwn(ancestor.attributes, "hidden") && ancestor.attributes["aria-hidden"] !== "true", `${path}: ${profile.name} must not be hidden from the directory`);
+        }
+      }
     }
   }
   const sitemap = fs.readFileSync(".next/server/app/sitemap.xml.body", "utf8");
   for (const profile of profiles) assert.ok(sitemap.includes(`/zh-Hans/people/${profile.slug}</loc>`), `${profile.slug}: missing from sitemap`);
   assert.ok(!sitemap.includes("/en/people"), "Chinese-only pages must not create English sitemap entries");
 }
-console.log(`[biography][PASS] ${profiles.length} people, ${dated} dated events, ${undated} unplaced events, ${sources.length} sources; ${imageUrls.length} attributed portraits, ${writings.length} works reviews${process.argv.includes("--built") ? "; all static pages and sitemap verified" : ""}.`);
+console.log(`[biography][PASS] ${profiles.length} people, ${dated} dated events, ${undated} unplaced events, ${sources.length} sources; ${imageUrls.length} attributed portraits, ${writings.length} works reviews${process.argv.includes("--built") ? "; static directory, section destinations, complete evidence text and sitemap verified" : ""}.`);
