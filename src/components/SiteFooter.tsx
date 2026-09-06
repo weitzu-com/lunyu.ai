@@ -62,6 +62,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
   ];
   const verificationLinks: FooterLink[] = [
     ...(locale === "zh-Hans" ? [{ href: "/zh-Hans/people", label: "孔子与弟子生平年表" }] : []),
+    ...(locale === "zh-Hans" ? [{ href: "/zh-Hans/places", label: "人物活动地理图志" }] : []),
     {
       href: `/${locale}/index`,
       label: t(locale, "人物地点索引", "People and places index"),

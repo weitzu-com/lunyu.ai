@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { FeaturedIndexEntry } from "@/components/FeaturedIndexEntry";
 import { biographyProfiles } from "@/lib/biographies";
+import { geographyPlaces } from "@/lib/geography";
 import {
   blogCountLine,
   blogEntities,
@@ -75,6 +76,9 @@ export default async function KnowledgeEntryPage({
   const biography = locale === "zh-Hans" && entity.category === "person"
     ? biographyProfiles.find((person) => person.name === entity.zhName || person.aliases.includes(entity.zhName))
     : undefined;
+  const geographicEntries = locale === "zh-Hans" && entity.category === "place"
+    ? geographyPlaces.filter((place) => [entity.zhName, ...entity.zhName.split("、")].some((name) => place.name === name || place.aliases.includes(name)))
+    : [];
   const relatedEntities = getRelatedBlogs(entity);
   const featured = getFeaturedIndex(slug);
   const pageUrl = localizedUrl(locale, `/index/${entity.slug}`);
@@ -168,6 +172,7 @@ export default async function KnowledgeEntryPage({
           {blogTitle(locale, entity)}
         </h1>
         {biography && <Link className="ui-button mt-6" href={`/zh-Hans/people/${biography.slug}`}>查看{biography.name}的肖像、著作与生平年表 →</Link>}
+        {geographicEntries.length > 0 && <div className="mt-6 flex flex-wrap gap-3">{geographicEntries.map((place) => <Link key={place.slug} className="ui-button" href={`/zh-Hans/places/${place.slug}`}>查看{place.name}的图片、地望与人物活动 →</Link>)}</div>}
         {featured ? (
           <FeaturedIndexEntry locale={locale} entity={entity} content={featured} />
         ) : (

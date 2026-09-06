@@ -26,6 +26,7 @@ export function SiteHeader({ locale, path = "", availableLocales }: { locale: Lo
     { href: "/zh-Hans/game", labelZh: "孔子之旅", labelEn: "Journey (中文)" },
     { href: `/${locale}/index`, labelZh: "索引", labelEn: "Index" },
     ...(locale === "zh-Hans" ? [{ href: "/zh-Hans/people", labelZh: "人物年表", labelEn: "People" }] : []),
+    ...(locale === "zh-Hans" ? [{ href: "/zh-Hans/places", labelZh: "地理图志", labelEn: "Places" }] : []),
     { href: `/${locale}/blogs`, labelZh: "札记", labelEn: "Notes" },
     { href: `/${locale}/about`, labelZh: "关于", labelEn: "About" },
   ];

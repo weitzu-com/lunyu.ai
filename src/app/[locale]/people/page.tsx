@@ -57,7 +57,10 @@ export default async function PeoplePage({ params }: { params: Promise<{ locale:
           </div>
           <aside className="people-intro-aside">
             <p>收录孔子与《史记》列传中的 {biographyProfiles.length - 1} 位弟子。有年则系年，有事无年则保留记载；推定与争议分别标明。</p>
-            <Link href={biographyPath("confucius")}>从孔子的生平开始 →</Link>
+            <div className="flex flex-col items-start">
+              <Link href={biographyPath("confucius")}>从孔子的生平开始 →</Link>
+              <Link href="/zh-Hans/places">走进人物活动的地方 →</Link>
+            </div>
           </aside>
         </section>
         <BiographyNavigation name="孔门人物志" sections={[{ id: "directory", label: "找人物" }, { id: "chronology", label: "看年表" }, { id: "sources", label: "查出处" }]} />

@@ -12,6 +12,7 @@ import { breadcrumbJsonLd, jsonLd, localizedUrl, organizationId } from "@/lib/si
 import { openGraph, twitterCard } from "@/lib/seo";
 import { blogEntities } from "@/lib/blogs";
 import { BiographyNavigation } from "@/components/biographies/BiographyNavigation";
+import { PersonGeography } from "@/components/geography/PersonGeography";
 import "@/components/biographies/biographies.css";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -52,7 +53,7 @@ export default async function BiographyPage({ params }: Props) {
   const profileIndex = biographyProfiles.findIndex((person) => person.slug === slug);
   const previous = biographyProfiles[profileIndex - 1];
   const next = biographyProfiles[profileIndex + 1];
-  const sections = [{ id: "profile-overview", label: "概览" }, { id: "biography", label: "简介" }, { id: dated.length ? "timeline" : "undated", label: dated.length ? "生平" : "记载" }, { id: "works", label: "文献" }, { id: "references", label: "资料" }];
+  const sections = [{ id: "profile-overview", label: "概览" }, { id: "biography", label: "简介" }, { id: dated.length ? "timeline" : "undated", label: dated.length ? "生平" : "记载" }, { id: "works", label: "文献" }, { id: "geography", label: "地理" }, { id: "references", label: "资料" }];
   const schema = {
     "@context": "https://schema.org", "@graph": [
       { "@type": "ProfilePage", "@id": `${url}#webpage`, url, name: `${profile.name}人物简介与生平年表`, description: profile.summary, inLanguage: "zh-Hans", dateModified: biographyModifiedDate, publisher: { "@id": organizationId }, mainEntity: { "@type": "Person", "@id": `${url}#person`, name: profile.name, alternateName: [...new Set([profile.courtesyName, ...profile.aliases].filter(Boolean))], description: profile.summary, url, ...(portrait.image ? { image: { "@type": "ImageObject", contentUrl: new URL(portrait.image.assetPath, url).href, caption: `${portrait.image.title}，后世画像，非生前写真`, creditText: portrait.image.collection, license: portrait.image.licenseUrl, acquireLicensePage: portrait.image.sourceUrl } } : {}) }, citation: usedSources.map((source) => ({ "@type": "CreativeWork", name: source.title, url: source.url })) },
@@ -104,6 +105,7 @@ export default async function BiographyPage({ params }: Props) {
             <BiographyTimeline events={undated} sources={biographySources} />
           </section>}
           <BiographyWorks record={writings} sources={evidenceSources} />
+          <PersonGeography personSlug={slug} />
           <section id="references" className="people-reading-section" aria-labelledby="references-heading">
             <div className="people-section-heading"><div><p className="label">循出处查证</p><h2 id="references-heading">史料与参考</h2></div><span>{usedSources.length} 项引用条目</span></div>
             <p className="people-section-intro">按生平、著作与图像分组。展开可查看资料说明与原始链接。</p>
