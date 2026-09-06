@@ -9,18 +9,21 @@ const progress = text => ({ ...empty(), reflections: { 'the-first-question': tex
 const clone = value => JSON.parse(JSON.stringify(value));
 const tick = () => new Promise(resolve => setTimeout(resolve, 0));
 function storage() { const items = new Map(); return { getItem: k => items.get(k) ?? null, setItem: (k,v) => items.set(k,String(v)), removeItem: k => items.delete(k) }; }
-function setup(initial = empty(), initialOwner = null) {
+function setup(initial = empty(), initialOwner = null, { user: initialUser = null, cloud: initialCloud = null } = {}) {
   let current = clone(initial);
-  let user = null;
+  let user = initialUser ? clone(initialUser) : null;
   let readSnapshot;
   let pendingWrite = null;
   const clouds = new Map();
+  if (initialUser && initialCloud) clouds.set(initialUser.id, clone(initialCloud));
   const calls = [];
+  const replacements = [];
   const local = storage(), session = storage();
   if (initialOwner) local.setItem('lunyu-journey-owner-v2', initialOwner);
   const progressListeners = new Set(), windowListeners = new Map(), documentListeners = new Map();
   const events = map => ({ addEventListener(k,v) { if(!map.has(k)) map.set(k,new Set()); map.get(k).add(v); }, removeEventListener(k,v) { map.get(k)?.delete(v); }, dispatchEvent(e) { for(const f of map.get(e.type) ?? []) f(e); } });
   const fakeWindow = events(windowListeners), fakeDocument = { ...events(documentListeners), visibilityState:'visible' };
+  fakeWindow.addEventListener('lunyu-cloud-loaded', () => replacements.push(clone(current)));
   const exports = {};
   const response = (status,data) => ({ status, ok:status >=200 && status<300, json:async()=>clone(data) });
   const context = {
@@ -51,9 +54,91 @@ function setup(initial = empty(), initialOwner = null) {
   };
   vm.runInNewContext(source,context);
   exports.useGameAccount();
-  return {api:exports,clouds,calls,local,session,window:fakeWindow,get current(){return clone(current);},get state(){return readSnapshot();},setUser(u){user=u;},edit(p){current=clone(p);for(const f of progressListeners)f();},delayWrite(p){pendingWrite=p;}};
+  return {api:exports,clouds,calls,replacements,local,session,window:fakeWindow,get current(){return clone(current);},get state(){return readSnapshot();},setUser(u){user=u;},edit(p){current=clone(p);for(const f of progressListeners)f();},delayWrite(p){pendingWrite=p;}};
 }
 async function until(f,message){for(let i=0;i<100;i++){if(f())return;await tick();}throw new Error(message);}
+
+// Postgres JSONB may reorder keys. Equivalent answers and notes must compare
+// by content on reload, retry, and save checks without creating false conflicts.
+const orderedProgress = {
+  ...empty(),
+  answers: { 'learning-in-an-ordinary-day':'work-and-listen', 'the-first-mistake':'learn-with-a-peer' },
+  reflections: { 'the-first-question':'先承担身边的责任', 'ask-about-everything':'不懂就问' },
+  lastChapter:1,
+};
+const reversedProgress = {
+  ...orderedProgress,
+  answers:Object.fromEntries(Object.entries(orderedProgress.answers).reverse()),
+  reflections:Object.fromEntries(Object.entries(orderedProgress.reflections).reverse()),
+};
+assert.notEqual(JSON.stringify(orderedProgress),JSON.stringify(reversedProgress));
+const orderedSave = {progress:reversedProgress,revision:7,updatedAt:new Date().toISOString()};
+const reordered=setup(orderedProgress,'A',{user:{id:'A',email:'A',name:'A'},cloud:orderedSave});
+await until(()=>reordered.state.status==='synced','initialize equal JSONB progress with reordered keys');
+assert.equal(reordered.replacements.length,0,'Key order must not replace progress or clear the reading bookmark');
+assert.equal(reordered.api.useGameAccount().pendingChanges,false,'Reordered equivalent content is already saved');
+await reordered.api.retryAccountSync();
+assert.equal(reordered.state.status,'synced');
+assert.equal(reordered.replacements.length,0,'Retrying equivalent JSONB content must preserve reading');
+await reordered.api.flushAccountProgress();
+assert.ok(!reordered.calls.some(call=>call.path==='progress' && call.body),'Equivalent content must not trigger a redundant cloud write');
+reordered.edit({...orderedProgress,reflections:{...orderedProgress.reflections,'the-first-question':'新增一条真正的想法'}});
+assert.equal(reordered.api.useGameAccount().pendingChanges,true,'Unsaved edits must be visible before the debounce fires');
+await reordered.api.retryAccountSync();
+assert.equal(reordered.state.status,'conflict','A real content difference must still require conflict resolution');
+assert.equal(reordered.replacements.length,0);
+await reordered.api.resolveAccountProgress('cloud');
+assert.equal(reordered.replacements.length,1);
+assert.equal(reordered.api.useGameAccount().pendingChanges,false);
+reordered.edit({...reordered.current,lastChapter:0});
+assert.equal(reordered.api.useGameAccount().pendingChanges,true,'The chapter position remains part of the save fingerprint');
+await reordered.api.flushAccountProgress();
+assert.equal(reordered.api.useGameAccount().pendingChanges,false,'A successful write clears pending changes');
+const guestPending=setup(orderedProgress);
+await until(()=>guestPending.state.status==='guest','initialize guest pending-change check');
+assert.equal(guestPending.api.useGameAccount().pendingChanges,false,'Visitor drafts are not pending cloud writes');
+
+// Reloading the same account with a matching cloud save must leave the current
+// reading point intact. A real cloud replacement must still notify the reader.
+const sameProgress = progress('same account, same saved journey');
+const sameSave = {progress:sameProgress,revision:4,updatedAt:new Date().toISOString()};
+const reader=setup(sameProgress,'A',{user:{id:'A',email:'A',name:'A'},cloud:sameSave});
+await until(()=>reader.state.status==='synced','reload matching signed-in save');
+assert.equal(reader.replacements.length,0,'A same-account reload must preserve its reading bookmark');
+await reader.api.retryAccountSync();
+assert.equal(reader.replacements.length,0,'Rechecking an unchanged cloud save must preserve its reading bookmark');
+reader.clouds.set('A',{...sameSave,progress:progress('newer cloud journey'),revision:5});
+await reader.api.retryAccountSync();
+assert.equal(reader.state.status,'conflict');
+assert.equal(reader.replacements.length,0,'Reading must remain intact until the cloud replacement is chosen');
+await reader.api.resolveAccountProgress('cloud');
+assert.equal(reader.replacements.length,1,'An actual cloud replacement must clear the old reading bookmark');
+assert.equal(reader.current.reflections['the-first-question'],'newer cloud journey');
+
+// An identity switch invalidates reading even when another tab has already
+// copied the same journey and owner marker into this tab's shared local cache.
+reader.clouds.set('B',{...sameSave,progress:reader.current});
+reader.setUser({id:'B',email:'B',name:'B'});
+reader.local.setItem('lunyu-journey-owner-v2','B');
+reader.window.dispatchEvent({type:'storage',key:'lunyu-account-session-v2'});
+await until(()=>reader.state.user?.id==='B' && reader.state.status==='synced','switch accounts with identical progress');
+assert.equal(reader.replacements.length,2,'Different accounts with identical progress must invalidate reading');
+
+// A visitor becoming signed in is also an identity change, including when
+// another tab set the owner marker before this tab observes the new session.
+const visitor=setup(sameProgress);
+await until(()=>visitor.state.status==='guest','initialize bookmark visitor');
+visitor.clouds.set('A',clone(sameSave));
+await visitor.api.signInAccount('A','password');
+assert.equal(visitor.replacements.length,1,'Visitor-to-account login must invalidate reading even with identical progress');
+const visitorTab=setup(sameProgress);
+await until(()=>visitorTab.state.status==='guest','initialize visitor in another tab');
+visitorTab.clouds.set('A',clone(sameSave));
+visitorTab.setUser({id:'A',email:'A',name:'A'});
+visitorTab.local.setItem('lunyu-journey-owner-v2','A');
+visitorTab.window.dispatchEvent({type:'storage',key:'lunyu-account-session-v2'});
+await until(()=>visitorTab.state.user?.id==='A' && visitorTab.state.status==='synced','observe visitor login from another tab');
+assert.equal(visitorTab.replacements.length,1,'A changed shared owner must not hide this tab’s visitor-to-account switch');
 
 // A local draft and a cloud draft require an explicit choice, then immediate
 // logout flushes the last edit before restoring the guest's original journey.
@@ -145,4 +230,4 @@ assert.equal(d.state.status,'conflict');
 assert.deepEqual(d.current.reflections,{});
 assert.equal(d.clouds.get('A').progress.reflections['the-first-question'],'private A before reload');
 await d.api.signOutAccount({discardUnsynced:true});
-console.log('PASS: conflict choice, immediate logout flush, edits during save, guest restoration, account isolation, cross-tab preservation, and draft recovery after session expiry or reload.');
+console.log('PASS: stable JSONB content comparison, pending-change reporting, same-account reading continuity, cloud and identity replacement notifications, conflict choice, immediate logout flush, edits during save, guest restoration, account isolation, cross-tab preservation, and draft recovery after session expiry or reload.');

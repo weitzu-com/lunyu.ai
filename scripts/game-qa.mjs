@@ -14,6 +14,7 @@ const plain = (value) => JSON.parse(JSON.stringify(value));
 
 function createHarness() {
   const storage = new Map();
+  const sessionStorage = new Map();
   const events = new Map();
   let failReads = false;
   let failWrites = false;
@@ -35,6 +36,11 @@ function createHarness() {
   };
   const jsx = (type, props, key) => ({ type, props: props ?? {}, key });
   const window = {
+    sessionStorage: {
+      getItem(key) { return sessionStorage.get(key) ?? null; },
+      setItem(key, value) { sessionStorage.set(key, value); },
+      removeItem(key) { sessionStorage.delete(key); },
+    },
     localStorage: {
       getItem(key) { if (failReads) throw new Error("storage unavailable"); return storage.get(key) ?? null; },
       setItem(key, value) { if (failWrites) throw new Error("quota or access denied"); storage.set(key, value); },
@@ -46,7 +52,7 @@ function createHarness() {
   const modules = new Map();
   const context = vm.createContext({
     window,
-    document: { querySelector: () => ({ focus() {} }), getElementById: () => ({ focus() {}, scrollIntoView() {} }) },
+    document: { querySelector: () => ({ focus() {}, scrollIntoView() {} }), getElementById: () => ({ focus() {}, scrollIntoView() {} }) },
     requestAnimationFrame: (callback) => callback(),
     setTimeout,
     Blob,
@@ -75,6 +81,7 @@ function createHarness() {
       if (specifier.endsWith(".css")) return {};
       if (specifier === "@/data/confucius-game") return load("src/data/confucius-game.ts");
       if (specifier === "@/lib/game-progress") return load("src/lib/game-progress.ts");
+      if (specifier === "@/lib/game-reading-position") return load("src/lib/game-reading-position.ts");
       throw new Error(`Unexpected import: ${specifier}`);
     };
     vm.runInContext(`(function (require, module, exports) {${output}\n})`, context, { filename: relative })(localRequire, loadedModule, loadedModule.exports);
@@ -86,6 +93,7 @@ function createHarness() {
   return {
     data, progress, client, storage, events,
     render() { hookIndex = 0; return client.ConfuciusGame(); },
+    remount() { hookSlots.length = 0; hookIndex = 0; return client.ConfuciusGame(); },
     denyStorage(reads, writes) { failReads = reads; failWrites = writes; },
     emitStorage() { for (const listener of events.get("storage") ?? []) listener(); },
   };
@@ -321,6 +329,36 @@ check("partial reload resumes at the next scene and completed chapters remain re
   assert.equal(Object.keys(progress.getProgressSnapshot().answers).length, 3);
   assert.equal(Object.values(progress.gameStats(progress.getProgressSnapshot())).reduce((sum, value) => sum + value, 0), 9);
   assert.ok(nodes(tree, (node) => node.props.id === "choice-feedback").length === 1);
+});
+
+check("refresh and side trips preserve unread feedback and chapter reflection", () => {
+  const harness = createHarness();
+  let tree = harness.render();
+  click(tree, "开启我的旅程");
+  tree = harness.render();
+  nodes(tree, (node) => node.type === "button" && String(node.props.className).split(" ").includes("game-choice"))[0].props.onClick();
+  tree = harness.remount();
+  click(tree, "继续我的旅程");
+  tree = harness.render();
+  assert.ok(nodes(tree, (node) => node.props.id === "choice-feedback").length === 1);
+  click(tree, "学思手记");
+  tree = harness.render();
+  click(tree, "回到旅程");
+  tree = harness.render();
+  assert.ok(nodes(tree, (node) => node.props.id === "choice-feedback").length === 1);
+  click(tree, "走入下一幕");
+  tree = harness.render();
+  nodes(tree, (node) => node.type === "button" && String(node.props.className).split(" ").includes("game-choice"))[1].props.onClick();
+  tree = harness.remount();
+  click(tree, "继续我的旅程");
+  tree = harness.render();
+  assert.ok(nodes(tree, (node) => node.type === "h1" && textContent(node) === harness.data.gameChapters[0].scenes[1].title).length === 1);
+  assert.ok(nodes(tree, (node) => node.props.id === "choice-feedback").length === 1);
+  click(tree, "收下此章感悟");
+  tree = harness.remount();
+  click(tree, "继续我的旅程");
+  tree = harness.render();
+  assert.ok(nodes(tree, (node) => node.props.id === "chapter-note").length === 1);
 });
 
 check("a cross-tab reset cannot write an answer through a stale chapter cursor", () => {
