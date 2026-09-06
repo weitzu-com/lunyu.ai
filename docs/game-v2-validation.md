@@ -16,10 +16,12 @@
 
 `npm run qa:game`、`npm run lint`、`npm run build`、`npm run qa:seo`、`npm run qa:biographies -- --built`、`npm run qa:coverage` 均通过。浏览器实际验收产物保存在本地 `output/playwright/v2-*`。
 
-## 发布前仍需完成
+## 账号开放状态与发布范围
 
 新建Supabase项目 `lunyu-game` 的 Confirm email 仍开启；未配置公众SMTP。本版邮箱仅作为登录标识，计划关闭Confirm email后直接注册，不声称邮箱所有权已验证、不提供邮件找回。
 
 自动化浏览器管理页持续连接超时，已请项目所有者在 Authentication → Sign In / Providers 关闭 Confirm email 并保存。应用读取真实 `/auth/v1/settings`，当前明确关闭注册入口，注册API返回503，不会给用户虚假的注册成功提示。该设置生效后5秒内自动开放，不需重新发版。
 
-完成设置后必须再执行真实公众注册测试，并确认创建、登录、存档、退出和跨设备恢复均成功，再合并上线。生产网站当前保留此前已上线版本。
+用户再次明确要求将游戏部署到正式网站。本次发布完整游客游戏、78人人物馆、动画与移动端体验，以及已验证的已有账号登录与云端存档。公众注册保留上述状态保护；注册配置待完成不阻塞游客游戏上线，不宣称公众已经可以注册。
+
+完成账号设置后还需执行真实公众注册测试，并确认创建、登录、存档、退出和重新登录恢复均成功。发布分支已合入人物年表改进提交 `130a821`，保留正式网站现有功能；通过该合并版本的 GitHub quality 和 Vercel 检查后发布，并核对正式站点 provenance 与最终合并提交一致。
