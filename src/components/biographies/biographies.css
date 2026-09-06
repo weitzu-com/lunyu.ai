@@ -47,6 +47,13 @@
 .biography-event-body a { overflow-wrap: anywhere; }
 .biography-filter { min-width: 0; min-height: 2.75rem; border: 1px solid var(--rule); padding: 0.625rem 0.75rem; background: var(--surface); color: var(--ink); border-radius: 0; }
 
+.biography-profile-hero { align-items: start; }
+.biography-portrait { min-width: 0; width: 100%; max-width: 24rem; }
+.biography-portrait-frame { width: min(100%, 20rem); padding: 0.75rem; border: 1px solid var(--rule); background: var(--surface-sunken); }
+.biography-portrait-image { display: block; width: 100%; height: auto; max-height: 29rem; object-fit: contain; }
+.biography-image-fallback { display: flex; min-height: 18rem; flex-direction: column; justify-content: center; padding: 1.5rem; }
+.biography-portrait a { overflow-wrap: anywhere; }
+
 @media (min-width: 640px) {
   .biography-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .biography-hero { padding-block: 3.5rem; }
@@ -59,6 +66,7 @@
 
 @media (min-width: 1024px) {
   .biography-hero { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: end; gap: 4rem; }
+  .biography-profile-hero { align-items: start; }
   .biography-directory { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 

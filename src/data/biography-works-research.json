@@ -1,0 +1,2190 @@
+{
+  "reviewedAt": "2026-09-06",
+  "scope": "孔子及《史记·仲尼弟子列传》本专题采用的77名弟子；核对本传、汉隋目录、重要托名书与相关学术研究。未见作品为限定范围结论，不是穷尽所有文献后的不存在断言。",
+  "sources": [
+    {
+      "id": "works-han-30",
+      "title": "《汉书》卷三十·艺文志（含目录小注）",
+      "url": "https://www.gushiwen.cn/guwen/bookv_56cdf72ffa6f.aspx",
+      "kind": "primary",
+      "note": "核对六艺略、诸子略的书名、篇数及人物归属小注；目录著录不等于亲笔作者证明。"
+    },
+    {
+      "id": "works-sui-32",
+      "title": "《隋书》卷三十二·经籍志一",
+      "url": "https://zh.wikisource.org/zh-hans/隋書/卷32",
+      "kind": "primary",
+      "note": "核对经部目录及传经归属；汉、隋之间卷篇变化不直接等同于今日传本。"
+    },
+    {
+      "id": "works-sui-34",
+      "title": "《隋书》卷三十四·经籍志三",
+      "url": "https://zh.wikisource.org/zh-hans/隋書/卷34",
+      "kind": "primary",
+      "note": "核对儒家、名家等子部目录。《曾子》题曾参，《子思子》明确题孔伋。"
+    },
+    {
+      "id": "works-shiji-67",
+      "title": "《史记》卷六十七·仲尼弟子列传",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷067",
+      "kind": "primary",
+      "note": "依本页所采用的七十七人名录核定名、字、身份及传经事迹；被记述者不等于传记作者。"
+    },
+    {
+      "id": "works-shiji-47",
+      "title": "《史记》卷四十七·孔子世家",
+      "url": "https://zh.wikisource.org/zh-hans/史記/卷047",
+      "kind": "primary",
+      "note": "孔子整理经典、作春秋的传统记载；与现代意义的个人创作区分。"
+    },
+    {
+      "id": "works-analects",
+      "title": "《论语》公版原文",
+      "url": "https://zh.wikisource.org/wiki/論語/全覽",
+      "kind": "primary",
+      "note": "用于区分人物言行、篇名与作者署名。"
+    },
+    {
+      "id": "works-sep-confucius",
+      "title": "Stanford Encyclopedia of Philosophy：Confucius",
+      "url": "https://plato.stanford.edu/entries/confucius/",
+      "kind": "academic",
+      "note": "第1节讨论孔子资料的层次、后世结集及出土文献；不把记言材料视为孔子亲笔。"
+    },
+    {
+      "id": "works-daxue-zhuxi",
+      "title": "朱熹《四书章句集注·大学章句》",
+      "url": "https://zh.wikisource.org/zh-hans/四書章句集注/大學章句",
+      "kind": "primary",
+      "note": "经一章后的说明将经文、传文分别归于孔子之言、曾子述意和门人记录，是宋代诠释与归属说。"
+    },
+    {
+      "id": "works-daxue-research",
+      "title": "陈君：《大学》《中庸》的经典化及其现代意义",
+      "url": "https://www.cssn.cn/skgz/bwyc/202407/t20240715_5764374.shtml",
+      "kind": "academic",
+      "note": "中国社会科学报，2024-07-15；介绍大学、中庸的成篇、独立及四书化。"
+    },
+    {
+      "id": "works-xiaojing-research",
+      "title": "曾振宇：论先秦儒家思想中的“孝本论”与“仁本论”",
+      "url": "https://www.rjwm.sdu.edu.cn/info/1016/2799.htm",
+      "kind": "academic",
+      "note": "山东大学儒家文明协同创新中心；注释列举孝经作者与成书时代的多种观点。"
+    },
+    {
+      "id": "works-zeng-research",
+      "title": "梁涛：上博简《内礼》与《大戴礼记·曾子》",
+      "url": "https://www.jianbo.sdu.edu.cn/info/1011/1748.htm",
+      "kind": "academic",
+      "note": "2005-06-26；核对汉志十八篇、隋志二卷、后世十篇本与大戴礼记的关系及作者争议。"
+    },
+    {
+      "id": "works-zixia-yi",
+      "title": "《子夏易传》四库提要",
+      "url": "https://ctext.org/wiki.pl?chapter=831942&if=gb",
+      "kind": "primary",
+      "note": "四库馆臣辨析古目录、唐宋引文与今十一卷本，认定今本为后世伪托。"
+    },
+    {
+      "id": "works-maoshi-research",
+      "title": "傅刚：《毛诗序》作者略说",
+      "url": "https://ir.pku.edu.cn/handle/20.500.11897/448263",
+      "kind": "academic",
+      "note": "北京大学学报2016年第53卷第2期，91—98页；汇集并辨析孔子、子夏、毛公、卫宏等归属说。"
+    },
+    {
+      "id": "works-zixia-tradition",
+      "title": "《钦定古今图书集成·经籍典》第三百一十六卷",
+      "url": "https://zh.wikisource.org/zh-hans/欽定古今圖書集成/理學彙編/經籍典/第316卷",
+      "kind": "primary",
+      "note": "子夏相关条引洪迈等论传经、丧服传与论语撰定；仅作为传统说的出处。"
+    },
+    {
+      "id": "works-zigong-shizhuan",
+      "title": "《四库全书总目》诗传一卷提要",
+      "url": "https://www.shidianguji.com/mid-page/7478065005587464229",
+      "kind": "primary",
+      "note": "提要明确区分旧题子贡与明人丰坊所作的伪托诗传。"
+    },
+    {
+      "id": "works-lost-texts",
+      "title": "徐正英：先秦文论佚文考辑",
+      "url": "https://www5.zzu.edu.cn/arts/info/1059/2524.htm",
+      "kind": "academic",
+      "note": "郑州大学文学院；第二节核对宓子古佚书的目录、佚文及传承。"
+    },
+    {
+      "id": "works-zhonggong-slips",
+      "title": "上博简《中弓》的文献价值",
+      "url": "https://rxzx.scu.edu.cn/info/1040/2003.htm",
+      "kind": "academic",
+      "note": "四川大学古籍整理研究所，2005-04-16；说明中弓即仲弓及篇章的言行记录性质。"
+    },
+    {
+      "id": "works-shangbo-catalogue",
+      "title": "《上博楚简儒学文献校理》出版介绍与目录",
+      "url": "https://www.ctwx.tsinghua.edu.cn/info/1012/1434.htm",
+      "kind": "institutional",
+      "note": "清华大学出土文献研究与保护中心，2018-08-30；核对上博简子羔、仲弓、颜渊问于孔子等篇名与分册。"
+    },
+    {
+      "id": "works-zigao-research",
+      "title": "李锐：上博六札记二则",
+      "url": "https://www.jianbo.sdu.edu.cn/info/1011/1849.htm",
+      "kind": "academic",
+      "note": "山东大学儒学简帛；明确讨论以子羔起句题篇不等于子羔作者署名。"
+    },
+    {
+      "id": "works-shilun-research",
+      "title": "上博简《诗论》作者复议",
+      "url": "https://www5.zzu.edu.cn/arts/info/1059/2631.htm",
+      "kind": "academic",
+      "note": "郑州大学文学院；讨论孔子、子夏等作者解释与记言、记录者的区别。"
+    },
+    {
+      "id": "works-liyun-research",
+      "title": "赵敏俐：《礼记·礼运》：先秦儒家礼学思想的理论奠基",
+      "url": "https://wkxb.bnu.edu.cn/CN/Y2024/V0/I4/69",
+      "kind": "academic",
+      "note": "北京师范大学学报，2024年第4期；说明篇章以孔子与言偃对话阐述礼学。"
+    },
+    {
+      "id": "works-liyun-attribution",
+      "title": "儒家心性之学的转出",
+      "url": "https://www.cssn.cn/zx/zgzx/202210/t20221027_5554853.shtml",
+      "kind": "academic",
+      "note": "中国社会科学网；将礼运归入子游后学的学术解释，用于提示本人署名并无定论。"
+    },
+    {
+      "id": "works-liyun-primary",
+      "title": "《礼记正义》卷二十一·礼运",
+      "url": "https://zh.wikisource.org/zh-hans/禮記正義/21",
+      "kind": "primary",
+      "note": "经疏说明礼运的篇名与孔子、言偃问答，不等于言偃作者题署。"
+    },
+    {
+      "id": "works-analects-editors",
+      "title": "刘宝楠《论语正义》附录·郑玄论语序逸文",
+      "url": "https://ctext.org/wiki.pl?chapter=3975147&if=en&remap=gb",
+      "kind": "primary",
+      "note": "辑录仲弓、子游、子夏等撰定的传统说；保留引文来源与不止三人的辨析。"
+    },
+    {
+      "id": "works-qidiao-research",
+      "title": "徐正英：先秦佚文中的文艺思想",
+      "url": "https://www5.zzu.edu.cn/arts/info/1042/2867.htm",
+      "kind": "academic",
+      "note": "郑州大学文学院；漆雕子佚文及注释提供相关材料的辑佚线索，不证明全书为本人亲笔。"
+    },
+    {
+      "id": "works-erya-primary",
+      "title": "《尔雅注疏》卷一",
+      "url": "https://zh.wikisource.org/zh-hans/爾雅註疏/卷01",
+      "kind": "primary",
+      "note": "卷一疏引传统作者及增益说，同时明言作非一时；不能当作子夏独著证明。"
+    },
+    {
+      "id": "works-gongsun-identity",
+      "title": "国家图书馆出版社：《公孙龙子》相关整理研究介绍",
+      "url": "https://www.nlcpress.com/ProductView.aspx?Id=10064",
+      "kind": "institutional",
+      "note": "出版介绍明确区分史记中的孔子弟子子石与赵国辩者公孙龙，核对同名误归。"
+    }
+  ],
+  "records": [
+    {
+      "slug": "confucius",
+      "summary": "孔子的思想主要经后人记言和经典传授保存。本次核查不能把《论语》、六经或冠以“孔子”之名的后世汇编一概列为孔子亲笔著作；下列分别说明言行资料、传统整理说及作者争议。",
+      "works": [
+        {
+          "title": "《论语》",
+          "attributionLabel": "后人汇编／言行资料",
+          "statusLabel": "传世，非孔子自著",
+          "dateLabel": "孔子身后逐步结集；具体层次与年代有争议",
+          "description": "记录孔子与弟子、时人的问答，也收弟子言论。《汉书》已说明由门人汇辑；它是研究孔子的核心资料，不能把记录对象改写为作者。",
+          "citations": [
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·论语：“当时弟子各有所记”“夫子既卒”段"
+            },
+            {
+              "sourceId": "works-sep-confucius",
+              "locator": "第1节 Sources for the life of Confucius"
+            }
+          ]
+        },
+        {
+          "title": "《春秋》",
+          "attributionLabel": "传统归属：修订鲁史",
+          "statusLabel": "传世；“孔子作春秋”须作传统说理解",
+          "dateLabel": "传统联系孔子晚年；编年涵盖前722—前481年",
+          "description": "《史记》把春秋的修订与褒贬寄意联系于孔子。作品以鲁国史官记录为基础，记事年代不是整部书的写作年，传统“作”也不等于全部材料由孔子个人原创。",
+          "citations": [
+            {
+              "sourceId": "works-shiji-47",
+              "locator": "晚年论六艺及“乃因史记作春秋”段"
+            },
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·春秋"
+            }
+          ]
+        },
+        {
+          "title": "《诗》《书》《礼》《乐》",
+          "attributionLabel": "传统归属：整理、传授",
+          "statusLabel": "多层古代文献；非个人文集",
+          "dateLabel": "素材多早于孔子；整理及成篇年代各异",
+          "description": "《史记》记孔子编次诗书、修礼正乐。这些经典包含前代积累的材料，传统整理、教学贡献与个人创作须分开；“礼”“乐”的古称也不应直接等同于今天某一本同名书。",
+          "citations": [
+            {
+              "sourceId": "works-shiji-47",
+              "locator": "“孔子之时，周室微而礼乐废，诗书缺”以下诸段"
+            },
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·诗、书、礼、乐"
+            }
+          ]
+        },
+        {
+          "title": "《易传》（十翼）",
+          "attributionLabel": "传统归属／作者有争议",
+          "statusLabel": "传世；不能确认为孔子独撰",
+          "dateLabel": "传统联系孔子晚年；各篇成书年代有争议",
+          "description": "《史记》《汉书》将彖、象、系辞等传文联系于孔子。这是传统作者说的证据，不能据此把今本十翼各篇全部确认为孔子亲笔；《易经》的卦爻辞又是另一文本层次。",
+          "citations": [
+            {
+              "sourceId": "works-shiji-47",
+              "locator": "“孔子晚而喜易”段"
+            },
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·易：孔氏为之彖、象、系辞等十篇"
+            }
+          ]
+        },
+        {
+          "title": "《孝经》",
+          "attributionLabel": "传统归属／作者未定",
+          "statusLabel": "传世；以孔子、曾子问答为框架",
+          "dateLabel": "先秦至汉初成书说不一",
+          "description": "古说有孔子作、曾子记录及曾子后学编定等解释；《汉书》说明的是孔子向曾子陈述孝道。被记录的讲授者与实际编撰者不能直接划等号。",
+          "citations": [
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·孝经"
+            },
+            {
+              "sourceId": "works-xiaojing-research",
+              "locator": "孝经作者与成书时代讨论及注①"
+            }
+          ]
+        },
+        {
+          "title": "上博简《孔子诗论》",
+          "attributionLabel": "言行资料／作者有争议",
+          "statusLabel": "战国楚简文献；非亲笔稿",
+          "dateLabel": "战国时期抄本；原始成篇时间待考",
+          "description": "上博楚简保存论诗材料，整理者以孔子诗论题名。研究中存在孔子说、子夏说等解释；篇名与所述思想不能证明实物是孔子亲书。",
+          "citations": [
+            {
+              "sourceId": "works-shangbo-catalogue",
+              "locator": "第一章上博简（一）·孔子诗论"
+            },
+            {
+              "sourceId": "works-shilun-research",
+              "locator": "作者诸说及简文称谓讨论"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略·易、书、诗、礼、乐、春秋、论语、孝经"
+        },
+        {
+          "sourceId": "works-shiji-47",
+          "locator": "晚年整理与传授经典诸段"
+        },
+        {
+          "sourceId": "works-sui-32",
+          "locator": "经籍志一·总序及经部目录"
+        }
+      ]
+    },
+    {
+      "slug": "yan-hui",
+      "summary": "本次未见可确认为颜回本人撰写的独立传世著作。传世书和战国竹简保存了与颜回有关的问答；以颜渊命名的篇章是人物资料，并不自动构成作者署名。",
+      "works": [
+        {
+          "title": "上博简《颜渊问于孔子》",
+          "attributionLabel": "言行资料",
+          "statusLabel": "战国楚简篇章；非颜回亲笔著作证明",
+          "dateLabel": "战国时期抄本；具体成篇年未详",
+          "description": "上博简第八册收有该篇，篇名指向颜渊与孔子问答。现有研究可用于补充师门思想资料，不能只根据篇名将记录者、编者或抄写者定为颜回。",
+          "citations": [
+            {
+              "sourceId": "works-shangbo-catalogue",
+              "locator": "第八章上博简（八）·颜渊问于孔子"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜回（子渊）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-shangbo-catalogue",
+          "locator": "上博简（八）目录"
+        }
+      ]
+    },
+    {
+      "slug": "min-sun",
+      "summary": "本次按闵损（字子骞）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·闵损（子骞）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "ran-geng",
+      "summary": "本次按冉耕（字伯牛）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·冉耕（伯牛）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "ran-yong",
+      "summary": "本次未见可确认为冉雍本人撰写的独立传世著作。仲弓参与《论语》撰定是传统说，上博简《仲弓》是相关言行文献；网络流传的《敬简集》六篇，本次未核得可确认的早期著录与传本，暂不列为已证实作品。",
+      "works": [
+        {
+          "title": "上博简《仲弓》（亦释《中弓》）",
+          "attributionLabel": "言行资料",
+          "statusLabel": "战国楚简文献；非作者署名",
+          "dateLabel": "战国时期抄本；问政原始年代未详",
+          "description": "篇章补充了仲弓与孔子论政的材料。“仲弓”是篇章所记人物，不能因题名与本人相同便把竹书列为冉雍亲笔著作。",
+          "citations": [
+            {
+              "sourceId": "works-zhonggong-slips",
+              "locator": "开篇、中弓人物说明及文献价值"
+            },
+            {
+              "sourceId": "works-shangbo-catalogue",
+              "locator": "第三章上博简（三）·仲弓"
+            }
+          ]
+        },
+        {
+          "title": "《论语》的撰定传统",
+          "attributionLabel": "传统归属：参与编纂",
+          "statusLabel": "传世；共同结集非个人专著",
+          "dateLabel": "孔子身后；具体参与阶段未详",
+          "description": "郑玄佚说和《傅子》传统把仲弓及其门徒与论语结集联系起来。保留为编纂史的传统解释，不据此确立整书由冉雍一人撰写。",
+          "citations": [
+            {
+              "sourceId": "works-analects-editors",
+              "locator": "郑玄论语序逸文及傅子引文"
+            },
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·论语门人汇辑说明"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·冉雍（仲弓）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-zhonggong-slips",
+          "locator": "仲弓相关传世与出土资料"
+        },
+        {
+          "sourceId": "works-sui-32",
+          "locator": "经部目录：本次核对未见敬简集著录"
+        }
+      ]
+    },
+    {
+      "slug": "ran-qiu",
+      "summary": "本次按冉求（字子有）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·冉求（子有）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "zhong-you",
+      "summary": "本次按仲由（字子路）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·仲由（子路）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "zai-yu",
+      "summary": "本次按宰予（字子我）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·宰予（子我）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "duanmu-ci",
+      "summary": "子贡的言论和外交活动见于早期记述，但本次未见可确认为本人撰写的独立传世著作。尤其需要排除后世托名《子贡诗传》；竹简或《礼记》中出现子贡问答，也不能作为他亲笔著书的证明。",
+      "works": [
+        {
+          "title": "《子贡诗传》（又题《诗传》）",
+          "attributionLabel": "后世伪托",
+          "statusLabel": "明代托名本，非端木赐自著",
+          "dateLabel": "明代；四库提要归于丰坊",
+          "description": "旧题子贡撰，《四库全书总目》指出实际出于明人丰坊。它可以作为明代经学与伪书史资料阅读，不能用来证明春秋时期子贡的著作。",
+          "citations": [
+            {
+              "sourceId": "works-zigong-shizhuan",
+              "locator": "《诗传》一卷提要"
+            }
+          ]
+        },
+        {
+          "title": "上博简《鲁邦大旱》",
+          "attributionLabel": "言行资料",
+          "statusLabel": "战国楚简中的孔子、子贡问答",
+          "dateLabel": "战国时期抄本；对话原始年代待考",
+          "description": "篇章记孔子与子贡的问答，是后世保存的师门记言。文本中的对话人物与书写、编定者是不同概念。",
+          "citations": [
+            {
+              "sourceId": "works-zigao-research",
+              "locator": "讨论子羔、孔子诗论、鲁邦大旱三篇关系"
+            },
+            {
+              "sourceId": "works-shangbo-catalogue",
+              "locator": "第二章上博简（二）·鲁邦大旱"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·端木赐（子贡）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-zigong-shizhuan",
+          "locator": "《诗传》辨伪"
+        }
+      ]
+    },
+    {
+      "slug": "yan-yan",
+      "summary": "言偃的礼学思想主要见于后人记录。有关他作《礼运》或参与《论语》编纂的说法应单独标注，本次不把相关问答文献直接认作言偃自著。",
+      "works": [
+        {
+          "title": "《礼记·礼运》",
+          "attributionLabel": "言行资料／作者归属有争议",
+          "statusLabel": "传世；不能确认为言偃独撰",
+          "dateLabel": "先秦礼学文献；成篇时间有争议",
+          "description": "篇章以孔子与言偃问答展开。后世有子游作、子游后学作等解释；言偃在篇中发问是文本事实，他是否实际编撰则是另一个需要证据的问题。",
+          "citations": [
+            {
+              "sourceId": "works-liyun-primary",
+              "locator": "礼运篇题疏及“仲尼与于蜡宾”以下"
+            },
+            {
+              "sourceId": "works-liyun-research",
+              "locator": "摘要：孔子与言偃对话的篇章形式"
+            },
+            {
+              "sourceId": "works-liyun-attribution",
+              "locator": "子游传世文献及礼运作者讨论"
+            }
+          ]
+        },
+        {
+          "title": "《论语》的撰定传统",
+          "attributionLabel": "传统归属：参与编纂",
+          "statusLabel": "传世；共同结集非个人专著",
+          "dateLabel": "孔子身后；具体参与阶段未详",
+          "description": "郑玄佚说的后世辑本列仲弓、子游、子夏等为撰定者，且不同引文所列人名有差异。页面将其呈现为传统编纂说，不作为个人独著证明。",
+          "citations": [
+            {
+              "sourceId": "works-analects-editors",
+              "locator": "首条及音义、叙录两处引文比较"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·言偃（子游）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-liyun-attribution",
+          "locator": "子游相关文献与礼运归属"
+        }
+      ]
+    },
+    {
+      "slug": "bu-shang",
+      "summary": "子夏有重要的传经传统，但传授者不等于今本作者。下列书名中，《子夏易传》今本被四库馆臣判为伪托，《毛诗序》《丧服传》等则应注明传统归属与作者问题。",
+      "works": [
+        {
+          "title": "《子夏易传》",
+          "attributionLabel": "后世伪托",
+          "statusLabel": "传世十一卷本，非可确认的卜商著作",
+          "dateLabel": "古目录与今本之间有多次变化；今本具体成书年待考",
+          "description": "旧本题卜子夏撰。《四库提要》比较汉隋目录、唐宋引文与今本，认定今本属于后世伪托，且不能简单认作古目录所载原本。",
+          "citations": [
+            {
+              "sourceId": "works-zixia-yi",
+              "locator": "提要全文：汉志、隋志、唐宋本与今十一卷本的辨析"
+            }
+          ]
+        },
+        {
+          "title": "《毛诗序》",
+          "attributionLabel": "传统归属／作者有争议",
+          "statusLabel": "传世；不可全归卜商",
+          "dateLabel": "形成过程及作者层次待考",
+          "description": "传统有子夏创作、毛公等增益的说法，历代另有国史、卫宏等作者说。现代研究仍辨析这些归属，不能把大小序所有文字直接列为卜商自著。",
+          "citations": [
+            {
+              "sourceId": "works-maoshi-research",
+              "locator": "摘要及作者诸说"
+            },
+            {
+              "sourceId": "works-zixia-tradition",
+              "locator": "引洪迈论子夏于诗有序及传授"
+            }
+          ]
+        },
+        {
+          "title": "《仪礼·丧服传》",
+          "attributionLabel": "传统归属：子夏传礼",
+          "statusLabel": "传世；本人独撰未确证",
+          "dateLabel": "传统追溯子夏；传文形成时间待考",
+          "description": "这里指解释丧服礼制的传文，不是全部《仪礼》。旧说以之联系子夏传礼；本次保留传统归属，不据传经谱系断定每段均由卜商亲笔写成。",
+          "citations": [
+            {
+              "sourceId": "works-zixia-tradition",
+              "locator": "引洪迈：“于礼则有仪礼丧服传一篇”"
+            },
+            {
+              "sourceId": "works-sui-32",
+              "locator": "礼类及丧服相关著录"
+            }
+          ]
+        },
+        {
+          "title": "《论语》的撰定传统",
+          "attributionLabel": "传统归属：参与编纂",
+          "statusLabel": "传世；共同结集非个人专著",
+          "dateLabel": "孔子身后；具体参与阶段未详",
+          "description": "郑玄佚说经后人辑录，称仲弓、子游、子夏等参与撰定。这是编纂传统，不能据此把整部《论语》署为卜商个人著作。",
+          "citations": [
+            {
+              "sourceId": "works-analects-editors",
+              "locator": "郑玄论语序逸文首条"
+            },
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·论语门人汇辑说明"
+            }
+          ]
+        },
+        {
+          "title": "《尔雅》的增益传统",
+          "attributionLabel": "传统归属：增益、训诂",
+          "statusLabel": "传世；非卜商个人专著",
+          "dateLabel": "多时累积的训诂材料；具体增益时间未详",
+          "description": "《尔雅注疏》保存孔子、子夏等增足文字的旧说，并说明作非一时。此处呈现其传经与训诂传统，不能据此把今本《尔雅》整体署为子夏自著。",
+          "citations": [
+            {
+              "sourceId": "works-erya-primary",
+              "locator": "卷一释诂疏：作者增益诸说及“作非一时”说明"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·卜商（子夏）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-zixia-yi",
+          "locator": "今本辨伪"
+        },
+        {
+          "sourceId": "works-maoshi-research",
+          "locator": "作者诸说"
+        }
+      ]
+    },
+    {
+      "slug": "zhuansun-shi",
+      "summary": "本次未见可确认为颛孙师本人撰写的独立传世著作。《论语·子张》是收录弟子言论的篇章，篇名不能证明整篇或整书由子张执笔；子张参与结集的研究推测也不能直接写成确定作者。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颛孙师（子张）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-analects",
+          "locator": "子张篇；子张、子夏、子游、曾子等言论并见"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略·论语门人汇辑说明"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-shen",
+      "summary": "有以曾子命名或传统上归于曾子的文献，但原书、后人辑本与师门记言需要区分。《大学》《孝经》的曾参作者说都有传承与解释背景，本次不标为可确认的个人亲笔著作。",
+      "works": [
+        {
+          "title": "《曾子》十八篇及后世十篇本",
+          "attributionLabel": "学派文献／后人汇编",
+          "statusLabel": "古本散佚；部分材料由《大戴礼记》等保存",
+          "dateLabel": "汉志已著录；具体成篇年代有争议",
+          "description": "《汉书》著录十八篇，《隋书》著录二卷及目录一卷。今天常说的“曾子十篇”保存在《大戴礼记》，含曾子及门人言论；后世抽出、辑佚的版本不能直接等同于汉志原书或本人亲笔。",
+          "citations": [
+            {
+              "sourceId": "works-han-30",
+              "locator": "诸子略·儒家：《曾子》十八篇"
+            },
+            {
+              "sourceId": "works-sui-34",
+              "locator": "儒家：《曾子》二卷、目一卷"
+            },
+            {
+              "sourceId": "works-zeng-research",
+              "locator": "开篇及汉志十八篇、大戴十篇的比较"
+            }
+          ]
+        },
+        {
+          "title": "《大学》",
+          "attributionLabel": "传统归属／作者未定",
+          "statusLabel": "传世；后从《礼记》独立",
+          "dateLabel": "原为《礼记》篇章；宋代确立四书地位",
+          "description": "朱熹解释经一章为孔子之言、曾子述之，传十章为曾子之意、门人记之。这是明确的宋代归属说，本身仍区分口述与记录，不能简化为“曾参独著《大学》”。",
+          "citations": [
+            {
+              "sourceId": "works-daxue-zhuxi",
+              "locator": "经一章后“右经一章”说明"
+            },
+            {
+              "sourceId": "works-daxue-research",
+              "locator": "首段及宋代四书化说明"
+            }
+          ]
+        },
+        {
+          "title": "《孝经》",
+          "attributionLabel": "传统归属／作者有争议",
+          "statusLabel": "传世；不可确认为曾参独撰",
+          "dateLabel": "先秦至汉初成书说不一",
+          "description": "本传把曾子通孝道与孝经联系起来，篇中又以孔子、曾子问答展开。曾子自作、记孔子之言或由后学编纂等说并存；页面不以问答人物充当已证实的作者。",
+          "citations": [
+            {
+              "sourceId": "works-shiji-67",
+              "locator": "曾参段：“孔子以为能通孝道，故授之业”以下"
+            },
+            {
+              "sourceId": "works-han-30",
+              "locator": "六艺略·孝经"
+            },
+            {
+              "sourceId": "works-xiaojing-research",
+              "locator": "孝经作者与成书时代讨论及注①"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·曾参（子舆）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-zeng-research",
+          "locator": "曾子书的散佚、重辑及作者争议"
+        }
+      ]
+    },
+    {
+      "slug": "tantai-mieming",
+      "summary": "本次核对本传及汉、隋相关目录，未见可确认为澹台灭明本人撰写的独立传世著作。《史记》记其门人授受与施名诸侯之事，说明教学和传播，不能据此凭空补出个人书名。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·澹台灭明（子羽）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "mi-buqi",
+      "summary": "汉代目录确有与宓不齐关联的《宓子》，原书已佚，今天须经他书所引和后人辑本研究；目录归名仍不足以确认全部由本人亲笔撰成。",
+      "works": [
+        {
+          "title": "《宓子》十六篇",
+          "attributionLabel": "古目录归名／作者细节未详",
+          "statusLabel": "佚书；有后世辑佚材料",
+          "dateLabel": "《汉书·艺文志》已有著录；成书年不详",
+          "description": "汉志小注明不齐、字子贱。原书不见隋唐目录，相关材料在《韩非子》《吕氏春秋》《说苑》等书中保存；辑佚成果不能冒充完整古本或本人手稿。",
+          "citations": [
+            {
+              "sourceId": "works-han-30",
+              "locator": "诸子略·儒家：《宓子》十六篇及小注"
+            },
+            {
+              "sourceId": "works-lost-texts",
+              "locator": "二、《宓子》佚文"
+            }
+          ]
+        },
+        {
+          "title": "《景子》三篇",
+          "attributionLabel": "后学记言／相关佚书",
+          "statusLabel": "佚书；非宓不齐署名作品",
+          "dateLabel": "汉志著录；成书年不详",
+          "description": "汉志指出该书记说宓子之言，作者似其弟子。它与宓子思想有关，但应明确放在后学文献一侧，不可改署宓不齐。",
+          "citations": [
+            {
+              "sourceId": "works-han-30",
+              "locator": "诸子略·儒家：《景子》三篇及“说宓子语”小注"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·宓不齐（子贱）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-lost-texts",
+          "locator": "二、《宓子》佚文"
+        }
+      ]
+    },
+    {
+      "slug": "yuan-xian",
+      "summary": "本次未见可确认为原宪本人撰写的独立传世著作。原宪字子思，但汉志《子思》、隋志《子思子》所指为孔子之孙孔伋；《中庸》等与孔伋的传统归属不能移植到原宪名下。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·原宪（子思）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "诸子略·儒家：《子思》二十三篇小注明伋、孔子孙"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "儒家：《子思子》七卷，孔伋撰"
+        }
+      ]
+    },
+    {
+      "slug": "gongye-chang",
+      "summary": "本次按公冶长（字子长）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公冶长（子长）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "nangong-kuo",
+      "summary": "本次按南宫括（字子容）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·南宫括（子容）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongxi-ai",
+      "summary": "本次按公皙哀（字季次）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公皙哀（季次）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-dian",
+      "summary": "本次按曾蒧（字皙）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·曾蒧（皙）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-wuyao",
+      "summary": "本次按颜无繇（字路）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜无繇（路）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "shang-qu",
+      "summary": "《史记》明确记商瞿受《易》于孔子并传授他人，这是传经事迹。本次核对汉、隋相关目录，未见可确认为商瞿本人撰写的独立传世著作，不能把《易经》或后来的易传统归于他。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·商瞿（子木）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "商瞿段：孔子传易于瞿及后续授受谱系"
+        }
+      ]
+    },
+    {
+      "slug": "gao-chai",
+      "summary": "本次未见可确认为高柴本人撰写的独立传世著作。上博简《子羔》以人物问答题名；学者对其他竹简的作者推测也不应直接当作已确认作品。",
+      "works": [
+        {
+          "title": "上博简《子羔》",
+          "attributionLabel": "言行资料",
+          "statusLabel": "战国楚简篇章；非作者署名",
+          "dateLabel": "战国时期抄本；原始成篇年未详",
+          "description": "篇章记子羔向孔子发问。研究明确区分“子羔”篇名与作者身份，故将其列为相关资料，不列作高柴自著。",
+          "citations": [
+            {
+              "sourceId": "works-zigao-research",
+              "locator": "“子羔”取篇首问答题名的讨论"
+            },
+            {
+              "sourceId": "works-shangbo-catalogue",
+              "locator": "第二章上博简（二）·子羔"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·高柴（子羔）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-zigao-research",
+          "locator": "篇名与作者身份的辨析"
+        }
+      ]
+    },
+    {
+      "slug": "qidiao-kai",
+      "summary": "《汉书·艺文志》著录《漆雕子》十三篇，但小注联系漆雕启（即漆雕开）之后。原书已散佚，作者及学派整理层次不可省略，本次不把它确认为漆雕开本人完整自著。",
+      "works": [
+        {
+          "title": "《漆雕子》十三篇",
+          "attributionLabel": "学派归名／后学编纂待考",
+          "statusLabel": "佚书；可参后世辑佚材料",
+          "dateLabel": "汉志已有著录；原始成书年不详",
+          "description": "汉志小注有“漆雕启后”之文，涉及本人、后人或后学关系的解释。现存引述与后人辑佚不能证明十三篇全部出自漆雕开亲笔。",
+          "citations": [
+            {
+              "sourceId": "works-han-30",
+              "locator": "诸子略·儒家：《漆雕子》十三篇及小注"
+            },
+            {
+              "sourceId": "works-qidiao-research",
+              "locator": "论才情段所引漆雕子佚文及注[10]"
+            }
+          ]
+        }
+      ],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·漆雕开（子开）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongbo-liao",
+      "summary": "本次按公伯缭（字子周）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公伯缭（子周）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "sima-geng",
+      "summary": "本次按司马耕（字子牛）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·司马耕（子牛）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "fan-xu",
+      "summary": "本次按樊须（字子迟）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·樊须（子迟）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "you-ruo",
+      "summary": "本次未见可确认为有若本人撰写的独立传世著作。《论语》保存有子关于孝弟、礼、信等言论；这些是被汇辑的发言，不能据尊称或所占篇幅确认他个人撰写了《论语》。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·有若（字未载）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-analects",
+          "locator": "学而篇“有子曰”诸章；颜渊篇哀公问于有若"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略·论语门人汇辑说明"
+        }
+      ]
+    },
+    {
+      "slug": "gongxi-chi",
+      "summary": "本次按公西赤（字子华）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公西赤（子华）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "wuma-shi",
+      "summary": "本次按巫马施（字子旗）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·巫马施（子旗）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "liang-zhan",
+      "summary": "本次按梁鳣（字叔鱼）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·梁鳣（叔鱼）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-xing",
+      "summary": "本次按颜幸（字子柳）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜幸（子柳）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "ran-ru",
+      "summary": "本次按冉孺（字子鲁）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·冉孺（子鲁）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "cao-xu",
+      "summary": "本次按曹恤（字子循）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·曹恤（子循）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "bo-qian",
+      "summary": "本次按伯虔（字子析）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·伯虔（子析）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongsun-long",
+      "summary": "本页人物是孔子弟子公孙龙，字子石。本次未见可确认为他本人撰写的独立传世著作；名家《公孙龙子》关联战国赵国的同名人物，不能因姓名相同移列为本页人物作品。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公孙龙（子石）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "末段名录：公孙龙字子石，少孔子五十三岁"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "诸子略·名家：《公孙龙子》十四篇及“赵人”小注"
+        },
+        {
+          "sourceId": "works-gongsun-identity",
+          "locator": "内容介绍：史记两位公孙龙与汉志名家著录"
+        }
+      ]
+    },
+    {
+      "slug": "ran-ji",
+      "summary": "本次按冉季（字子产）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·冉季（子产）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongzu-gouzi",
+      "summary": "本次按公祖句兹（字子之）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公祖句兹（子之）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qin-zu",
+      "summary": "本次按秦祖（字子南）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·秦祖（子南）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qidiao-duo",
+      "summary": "本次按漆雕哆（字子敛）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。《漆雕子》目录小注关联漆雕启（开）及其后，不能仅因同为漆雕氏便认作本人的著作。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·漆雕哆（子敛）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "诸子略·儒家：《漆雕子》小注"
+        }
+      ]
+    },
+    {
+      "slug": "yan-gao",
+      "summary": "本次按颜高（字子骄）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜高（子骄）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qidiao-tufu",
+      "summary": "本次按漆雕徒父及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。《漆雕子》目录小注关联漆雕启（开）及其后，不能仅因同为漆雕氏便认作本人的著作。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·漆雕徒父（字未载）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "诸子略·儒家：《漆雕子》小注"
+        }
+      ]
+    },
+    {
+      "slug": "rangsi-chi",
+      "summary": "本次按壤驷赤（字子徒）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·壤驷赤（子徒）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "shang-ze",
+      "summary": "本次按商泽及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·商泽（字未载）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "shizuo-shu",
+      "summary": "本次按石作蜀（字子明）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·石作蜀（子明）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "ren-buqi",
+      "summary": "本次按任不齐（字选）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·任不齐（选）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongliang-ru",
+      "summary": "本次按公良孺（字子正）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公良孺（子正）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "hou-chu",
+      "summary": "本次按后处（字子里）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·后处（子里）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qin-ran",
+      "summary": "本次按秦冉（字开）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·秦冉（开）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongxia-shou",
+      "summary": "本次按公夏首（字乘）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公夏首（乘）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "xirong-zhen",
+      "summary": "本次按奚容箴（字子皙）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·奚容箴（子皙）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongjian-ding",
+      "summary": "本次按公肩定（字子中）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公肩定（子中）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-zu",
+      "summary": "本次按颜祖（字襄）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜祖（襄）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qiao-dan",
+      "summary": "本次按鄡单（字子家）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·鄡单（子家）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "goujing-jiang",
+      "summary": "本次按句井疆及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·句井疆（字未载）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "hanfu-hei",
+      "summary": "本次按罕父黑（字子索）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·罕父黑（子索）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qin-shang",
+      "summary": "本次按秦商（字子丕）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·秦商（子丕）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "shen-dang",
+      "summary": "本次按申党（字周）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·申党（周）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-zhipu",
+      "summary": "本次按颜之仆（字叔）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜之仆（叔）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "rong-qi",
+      "summary": "本次按荣旂（字子祈）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·荣旂（子祈）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "xian-cheng",
+      "summary": "本次按县成（字子祺）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·县成（子祺）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "zuoren-ying",
+      "summary": "本次按左人郢（字行）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·左人郢（行）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-ji",
+      "summary": "本次按燕伋（字思）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·燕伋（思）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "zheng-guo",
+      "summary": "本次按郑国（字子徒）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·郑国（子徒）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "qin-fei",
+      "summary": "本次按秦非（字子之）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·秦非（子之）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "shi-zhichang",
+      "summary": "本次按施之常（字子恒）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·施之常（子恒）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-kuai",
+      "summary": "本次按颜哙（字子声）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜哙（子声）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "bushu-cheng",
+      "summary": "本次按步叔乘（字子车）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·步叔乘（子车）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yuan-kangji",
+      "summary": "本次按原亢籍及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·原亢籍（字未载）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yue-ke",
+      "summary": "本次按乐欬（字子声）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·乐欬（子声）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "lian-jie",
+      "summary": "本次按廉絜（字庸）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·廉絜（庸）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "shuzhong-hui",
+      "summary": "本次按叔仲会（字子期）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·叔仲会（子期）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "yan-he",
+      "summary": "本次按颜何（字冉）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·颜何（冉）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "di-hei",
+      "summary": "本次按狄黑（字皙）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·狄黑（皙）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "bang-xun",
+      "summary": "本次按邦巽（字子敛）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·邦巽（子敛）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "kong-zhong",
+      "summary": "本次按孔忠及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·孔忠（字未载）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongxi-yuru",
+      "summary": "本次按公西舆如（字子上）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公西舆如（子上）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    },
+    {
+      "slug": "gongxi-zhen",
+      "summary": "本次按公西葴（字子上）及本页异名，核对本传、《汉书·艺文志》与《隋书·经籍志》的相关目录，未见可确认为本人撰写的独立传世著作。后人记录或汇编的言行，不等于本人自著。",
+      "works": [],
+      "citations": [
+        {
+          "sourceId": "works-shiji-67",
+          "locator": "卷六十七·公西葴（子上）条及末段名录"
+        },
+        {
+          "sourceId": "works-han-30",
+          "locator": "六艺略、诸子略：按本名、字及异名核对相关著录"
+        },
+        {
+          "sourceId": "works-sui-34",
+          "locator": "经籍志三·儒家、名家等子部目录（核对人物归属）"
+        }
+      ]
+    }
+  ]
+}

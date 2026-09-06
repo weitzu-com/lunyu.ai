@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { FeaturedIndexEntry } from "@/components/FeaturedIndexEntry";
+import { biographyProfiles } from "@/lib/biographies";
 import {
   blogCountLine,
   blogEntities,
@@ -71,6 +72,9 @@ export default async function KnowledgeEntryPage({
   if (!entity) notFound();
 
   const relatedSentences = getSentencesForBlog(entity);
+  const biography = locale === "zh-Hans" && entity.category === "person"
+    ? biographyProfiles.find((person) => person.name === entity.zhName || person.aliases.includes(entity.zhName))
+    : undefined;
   const relatedEntities = getRelatedBlogs(entity);
   const featured = getFeaturedIndex(slug);
   const pageUrl = localizedUrl(locale, `/index/${entity.slug}`);
@@ -163,6 +167,7 @@ export default async function KnowledgeEntryPage({
         <h1 className="font-serif text-[2.5rem] leading-tight sm:text-5xl">
           {blogTitle(locale, entity)}
         </h1>
+        {biography && <Link className="ui-button mt-6" href={`/zh-Hans/people/${biography.slug}`}>查看{biography.name}的肖像、著作与生平年表 →</Link>}
         {featured ? (
           <FeaturedIndexEntry locale={locale} entity={entity} content={featured} />
         ) : (
