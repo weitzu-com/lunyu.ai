@@ -23,6 +23,7 @@ export function SiteHeader({ locale, path = "", availableLocales }: { locale: Lo
     { href: `/${locale}`, labelZh: "首页", labelEn: "Home", exact: true },
     { href: `/${locale}/analects`, labelZh: "二十篇", labelEn: "Analects" },
     { href: `/${locale}/listen`, labelZh: "听读", labelEn: "Listen" },
+    { href: "/zh-Hans/game", labelZh: "孔子之旅", labelEn: "Journey (中文)" },
     { href: `/${locale}/index`, labelZh: "索引", labelEn: "Index" },
     ...(locale === "zh-Hans" ? [{ href: "/zh-Hans/people", labelZh: "人物年表", labelEn: "People" }] : []),
     { href: `/${locale}/blogs`, labelZh: "札记", labelEn: "Notes" },

@@ -89,6 +89,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  addLocalized(entries, "zh-Hans", "/game", "2026-09-06");
   addLocalized(entries, "zh-Hans", "/people", biographyModifiedDate);
   for (const profile of biographyProfiles) {
     addLocalized(entries, "zh-Hans", `/people/${profile.slug}`, biographyModifiedDate);

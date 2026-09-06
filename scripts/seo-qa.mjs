@@ -148,6 +148,45 @@ checkHtml("/en", [
   '"@type":"WebSite"',
 ]);
 
+const gameRoute = "/zh-Hans/game";
+const gameUrl = `${siteUrl}${gameRoute}`;
+for (const locale of locales) {
+  const homeHtml = read(htmlPath(`/${locale}`));
+  const navigation = homeHtml.match(/<nav\b[^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? "";
+  assertIncludes(navigation, `href="${gameRoute}"`, `/${locale}: game navigation`);
+  assertIncludes(navigation, locale === "zh-Hans" ? "孔子之旅" : "Journey (中文)", `/${locale}: game navigation label`);
+  assertIncludes(homeHtml, 'aria-labelledby="confucius-game-heading"', `/${locale}: game introduction`);
+  if (countRegex(homeHtml, /<a\b[^>]*href="\/zh-Hans\/game"/g) < 2) {
+    fail(`/${locale}: home must link to the game from navigation and introduction`);
+  }
+  if (homeHtml.includes('href="/en/game"')) fail(`/${locale}: must not link to an unavailable English game`);
+}
+
+// The demo is Chinese-only: verify its real page without requiring a fictional translation.
+if (!exists(htmlPath(gameRoute))) {
+  fail(`${gameRoute}: build HTML missing`);
+} else {
+  const gameHtml = read(htmlPath(gameRoute));
+  assertIncludes(gameHtml, '<html lang="zh-Hans"', gameRoute);
+  assertIncludes(gameHtml, `rel="canonical" href="${gameUrl}"`, gameRoute);
+  assertIncludes(gameHtml, `property="og:url" content="${gameUrl}"`, gameRoute);
+  if (!/<title>[^<]*孔子[^<]*<\/title>/.test(gameHtml)) fail(`${gameRoute}: descriptive page title missing`);
+  if (!extractMetaDescription(gameHtml)) fail(`${gameRoute}: meta description missing`);
+  if (!/<h1\b[^>]*>[\s\S]*?孔子[\s\S]*?<\/h1>/.test(gameHtml)) fail(`${gameRoute}: server-rendered game heading missing`);
+  if (/<meta\b[^>]*name="robots"[^>]*content="[^"]*\b(?:noindex|none)\b/i.test(gameHtml)) {
+    fail(`${gameRoute}: game must be indexable`);
+  }
+  if (gameHtml.includes('hrefLang="en"')) fail(`${gameRoute}: must not advertise an unavailable English translation`);
+  const gameSchema = extractJsonLd(gameHtml, gameRoute).find((item) => hasSchemaType(item, "VideoGame"));
+  if (!gameSchema || gameSchema.url !== gameUrl || gameSchema.inLanguage !== "zh-Hans" || gameSchema.isAccessibleForFree !== true) {
+    fail(`${gameRoute}: VideoGame schema must describe the free Chinese game at its canonical URL`);
+  }
+}
+const englishGameMetadata = ".next/server/app/en/game.meta";
+if (exists(englishGameMetadata) && JSON.parse(read(englishGameMetadata)).status !== 404) {
+  fail("/en/game: unavailable translation must return 404");
+}
+
 checkHtml("/zh-Hans/analects/xue-er/xue-er-001", [
   `rel="canonical" href="${siteUrl}/zh-Hans/analects/xue-er/xue-er-001"`,
   `hrefLang="en" href="${siteUrl}/en/analects/xue-er/xue-er-001"`,
@@ -660,12 +699,16 @@ for (const locale of locales) {
 const robots = read(".next/server/app/robots.txt.body");
 assertIncludes(robots, "Disallow: /api/", "robots");
 assertIncludes(robots, `Sitemap: ${siteUrl}/sitemap.xml`, "robots");
+if (/^Disallow:\s*\/(?:game\/?|zh-Hans\/?|zh-Hans\/game\/?)?\s*$/im.test(robots)) {
+  fail("robots: must allow crawling the Chinese game");
+}
 for (const crawler of aiCrawlers) {
   assertIncludes(robots, `User-Agent: ${crawler}`, "robots");
 }
 
 const sitemap = read(".next/server/app/sitemap.xml.body");
 const chineseBiographyPageCount = 2 + discipleBiographies.length; // hub + Confucius + disciples
+const chineseGamePageCount = 1;
 const expectedLocs =
   locales.length *
     (
@@ -679,9 +722,15 @@ const expectedLocs =
       indexCount +
       postCount
     ) +
-  1 + chineseBiographyPageCount;
+  1 + chineseBiographyPageCount + chineseGamePageCount;
 const locs = countRegex(sitemap, /<loc>/g);
 if (locs !== expectedLocs) fail(`sitemap: expected ${expectedLocs} <loc>, got ${locs}`);
+if (sitemap.split(`<loc>${gameUrl}</loc>`).length - 1 !== chineseGamePageCount) {
+  fail("sitemap: must include the Chinese game exactly once");
+}
+for (const unavailableGameUrl of [`${siteUrl}/en/game`, `${siteUrl}/game`]) {
+  if (sitemap.includes(`<loc>${unavailableGameUrl}</loc>`)) fail(`sitemap: must not include ${unavailableGameUrl}`);
+}
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index/confucius`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-read-the-analects`, "sitemap");
@@ -790,6 +839,10 @@ const apexRedirects = (routesManifest.redirects || []).filter(
     JSON.stringify(redirect.has || []).includes('"value":"lunyu.ai"')
 );
 if (apexRedirects.length !== 1) fail("routes-manifest: apex host must redirect permanently to www");
+const gameRedirects = (routesManifest.redirects || []).filter((redirect) => redirect.source === "/game");
+if (gameRedirects.length !== 1 || gameRedirects[0].destination !== gameRoute || gameRedirects[0].statusCode !== 307) {
+  fail("routes-manifest: /game must redirect temporarily to the Chinese demo");
+}
 
 const flattenedHeaders = JSON.stringify(vercelConfig.headers || []);
 for (const requiredHeader of [

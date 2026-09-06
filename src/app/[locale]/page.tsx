@@ -122,6 +122,30 @@ export default async function LocaleHome({
           <ReadingHint currentId={featured.id} locale={locale} />
         </div>
       </section>
+      <section aria-labelledby="confucius-game-heading" className="border-t border-rule bg-surface">
+        <div className="page-shell flex flex-col gap-7 py-8 sm:py-10 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+          <div className="max-w-2xl">
+            <p className="label mb-3">{t(locale, "互动体验 · 孔子的一生", "An interactive journey · The life of Confucius")}</p>
+            <h2 id="confucius-game-heading" className="font-cjk text-2xl leading-snug sm:text-3xl">
+              {t(locale, "走进孔子与弟子的故事。", "Walk through the life of Confucius.")}
+            </h2>
+            <p className="mt-3 font-ui text-sm leading-7 text-ink-soft sm:text-base">
+              {t(
+                locale,
+                "在故事中作出选择，与弟子一起思考，再回到原典。把读过的道理，变成亲身经历的问题。",
+                "Make choices in stories, reflect alongside his disciples, and return to the original texts. Explore the questions behind the teachings."
+              )}
+            </p>
+          </div>
+          <div className="flex shrink-0 flex-col items-start gap-3">
+            <Link href="/zh-Hans/game" className="ui-button ui-button-primary font-medium">
+              {t(locale, "开启孔子人生之旅", "Play the Chinese demo")}
+              <span aria-hidden="true" className="ml-3">↗</span>
+            </Link>
+            <p className="font-ui text-xs text-ink-soft">{t(locale, "中文 Demo · 无需注册", "Chinese-language demo · No account needed")}</p>
+          </div>
+        </div>
+      </section>
       <section className="border-y border-rule bg-surface">
         <div className="page-shell grid gap-6 py-8 sm:grid-cols-4 sm:py-10">
           {[
