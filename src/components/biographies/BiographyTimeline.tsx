@@ -1,9 +1,10 @@
+import Link from "next/link";
 import type { BiographySource, Citation, TimelineEvent } from "@/lib/biography-types";
 import { certaintyLabels, eventAnchor } from "@/lib/biography-utils";
 
 export function CitationList({ citations, sources }: { citations: Citation[]; sources: BiographySource[] }) {
   return (
-    <ul className="space-y-2 text-sm leading-6 text-ink-soft">
+    <ul className="people-citation-list">
       {citations.map((citation, index) => {
         const source = sources.find((item) => item.id === citation.sourceId);
         return source ? (
@@ -19,20 +20,21 @@ export function CitationList({ citations, sources }: { citations: Citation[]; so
   );
 }
 
-export function BiographyTimeline({ events, sources, linkable = false }: { events: TimelineEvent[]; sources: BiographySource[]; linkable?: boolean }) {
+export function BiographyTimeline({ events, sources, linkable = false }: { events: (TimelineEvent & { personLink?: { href: string; name: string } })[]; sources: BiographySource[]; linkable?: boolean }) {
   return (
     <ol className="biography-timeline">
       {events.map((event, index) => (
-        <li key={`${event.title}-${index}`} id={linkable ? eventAnchor(index) : undefined} className="biography-event scroll-mt-6">
+        <li key={`${event.title}-${index}`} id={linkable ? eventAnchor(index) : undefined} className="biography-event">
           <div className="biography-event-date">
             <p className="font-cjk text-xl leading-8">{event.dateLabel}</p>
-            <span className="mt-1 block text-sm leading-6 text-ink-soft">{certaintyLabels[event.certainty]}</span>
+            <span className="people-certainty" data-certainty={event.certainty}>{certaintyLabels[event.certainty]}</span>
           </div>
           <div className="biography-event-body">
+            {event.personLink && <Link className="people-event-person" href={event.personLink.href} prefetch={false}>{event.personLink.name}的人物档案 ↗</Link>}
             <h3 className="font-cjk text-xl leading-8">{event.title}</h3>
             <p className="mt-3 max-w-3xl text-base leading-8 text-ink-soft">{event.description}</p>
-            <details className="mt-3">
-              <summary className="min-h-11 w-fit cursor-pointer py-2 text-sm text-ink-soft hover:text-ink">史料出处 · {event.citations.length}</summary>
+            <details className="people-citation-disclosure">
+              <summary >史料出处 · {event.citations.length}</summary>
               <div className="border-l border-rule py-2 pl-4"><CitationList citations={event.citations} sources={sources} /></div>
             </details>
           </div>
@@ -44,7 +46,7 @@ export function BiographyTimeline({ events, sources, linkable = false }: { event
 
 export function ChronologyMethod() {
   return (
-    <details id="chronology-method" className="scroll-mt-6 border-y border-rule bg-surface px-5 py-4 sm:px-6">
+    <details id="chronology-method" className="people-method border-y border-rule bg-surface px-5 py-4 sm:px-6">
       <summary className="min-h-11 cursor-pointer py-2 font-cjk text-lg">这份年表如何定年？</summary>
       <div className="mt-4 grid gap-6 text-sm leading-7 text-ink-soft sm:grid-cols-2">
         <p><strong className="font-medium text-ink">纪年记载</strong>：史书明确记下鲁国等诸侯的某公某年，再换算为公元前年份。这说明文献有纪年，并不等于所有细节都已被证实。</p>
