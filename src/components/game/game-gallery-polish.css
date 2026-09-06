@@ -1,0 +1,86 @@
+/* The gallery uses the game's paper, pine, and Songti tokens; controls stay scoped. */
+.game-character-gallery .game-gallery-toolbar { display: grid; gap: 1rem; margin-top: 1.75rem; padding: 1.25rem 0; }
+.game-character-gallery .game-gallery-search-row { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: center; }
+.game-character-gallery .game-character-search { width: 100%; min-width: 0; min-height: 3rem; gap: .625rem; padding: 0 .375rem 0 1rem; border-radius: .5rem; }
+.game-character-gallery .game-character-search > svg { flex-shrink: 0; }
+.game-character-gallery .game-character-search input { min-width: 0; min-height: 3rem; font-size: 1rem; }
+.game-character-gallery .game-character-search input::-webkit-search-cancel-button { -webkit-appearance: none; }
+.game-character-gallery .game-character-search-clear { display: grid; place-items: center; flex-shrink: 0; min-width: 2.75rem; min-height: 2.75rem; border: 0; border-radius: .375rem; color: var(--g-muted); background: transparent; }
+.game-character-gallery .game-character-search-clear:hover { color: var(--g-pine); background: var(--g-jade); }
+.game-character-gallery .game-gallery-search-hint { font-size: .875rem; color: var(--g-muted); }
+.game-character-gallery .game-character-filters { gap: .5rem; }
+.game-character-gallery .game-character-filters button { display: inline-flex; align-items: center; gap: .5rem; padding: .625rem .875rem; min-height: 2.75rem; font-size: .875rem; border-color: var(--g-rule); }
+.game-character-gallery .game-character-filters .game-filter-count { font: .75rem/1.5 var(--g-sans); min-width: 1.25rem; padding: 0 .25rem; border-radius: .25rem; text-align: center; background: #254d420d; }
+.game-character-gallery .game-character-filters button[aria-pressed="true"] .game-filter-count { background: #ffffff26; color: #fff; }
+.game-character-gallery .game-gallery-result-row { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; padding: 1rem 0 1.5rem; }
+.game-character-gallery .game-gallery-result-row > div { min-width: 0; }
+.game-character-gallery .game-gallery-description { font-size: .875rem; line-height: 1.7; color: var(--g-ink); }
+.game-character-gallery .game-gallery-results { padding: .375rem 0 0; font-size: .8125rem; line-height: 1.6; color: var(--g-muted); overflow-wrap: anywhere; }
+.game-character-gallery .game-gallery-reset { display: inline-flex; align-items: center; justify-content: center; gap: .375rem; min-height: 2.75rem; padding: .5rem; margin-top: -.375rem; border: 0; background: transparent; color: var(--g-pine); font-size: .8125rem; white-space: nowrap; flex-shrink: 0; }
+.game-character-gallery .game-gallery-reset:hover { text-decoration: underline; text-underline-offset: .25rem; }
+.game-character-gallery .game-character-card-info { gap: .375rem .5rem; }
+.game-character-gallery .game-character-card-info > span { font-size: .8125rem; line-height: 1.5; }
+.game-character-gallery .game-character-card > p { font-size: .875rem; line-height: 1.7; }
+.game-character-gallery .game-character-category { font-size: .8125rem; }
+.game-character-gallery .game-gallery-count span, .game-character-gallery .game-gallery-count small { font-size: .8125rem; }
+.game-character-gallery .game-character-provenance { font-size: .8125rem; }
+
+.game-character-dialog[open] { display: flex; flex-direction: column; overflow: hidden; max-height: calc(100dvh - 1.5rem); width: calc(100% - 1.5rem); border-radius: .75rem; }
+.game-character-dialog .game-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-shrink: 0; padding: 1rem 1.125rem; border-bottom: 1px solid var(--g-rule); background: var(--g-surface); }
+.game-character-dialog .game-dialog-identity { min-width: 0; }
+.game-character-dialog .game-dialog-identity .game-eyebrow { font-size: .6875rem; letter-spacing: .1em; }
+.game-character-dialog .game-dialog-identity h2 { display: flex; flex-wrap: wrap; align-items: baseline; gap: .375rem .75rem; margin-top: .25rem; font: 500 1.75rem/1.4 var(--g-serif); letter-spacing: .05em; }
+.game-character-dialog .game-dialog-identity h2 > span { font: .8125rem/1.6 var(--g-sans); color: var(--g-muted); letter-spacing: 0; }
+.game-character-dialog .game-dialog-close { position: static; display: flex; gap: .25rem; width: auto; height: auto; min-width: 2.75rem; min-height: 2.75rem; padding: .5rem .625rem; flex-shrink: 0; border-radius: .5rem; font-size: .8125rem; }
+.game-character-dialog .game-character-dialog-inner { grid-template-columns: minmax(0, 1fr); grid-template-areas: "introduction" "portrait" "biography"; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.game-character-dialog .game-dialog-introduction { grid-area: introduction; padding: 1.125rem 1.25rem; }
+.game-character-dialog .game-dialog-courtesy { font-size: .8125rem; margin: 0 0 .5rem !important; }
+.game-character-dialog .game-dialog-summary { margin: 0 !important; font: 1rem/1.85 var(--g-serif); }
+.game-character-dialog .game-dialog-portrait { grid-area: portrait; padding: .75rem 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .375rem; }
+.game-character-dialog .game-dialog-portrait > img { height: 13rem; min-height: 0; width: 100%; object-fit: contain; }
+.game-character-dialog .game-portrait-mode { position: static; transform: none; margin: 0 auto; box-shadow: none; }
+.game-character-dialog .game-portrait-mode button { font-size: .8125rem; min-height: 2.75rem; padding: .5rem .875rem; }
+.game-character-dialog .game-dialog-biography { grid-area: biography; padding: 1.25rem; }
+.game-character-dialog .game-dialog-biography .game-button-primary { width: 100%; color: #f6f8ef; }
+.game-character-dialog .game-dialog-link-hint { margin-top: .625rem; color: var(--g-muted); font-size: .8125rem; line-height: 1.7; }
+.game-character-dialog .game-dialog-source { margin-top: 1.25rem; padding-top: 1rem; font-size: .8125rem; }
+.game-character-dialog .game-dialog-source > span { font-size: .875rem; }
+.game-character-dialog .game-dialog-source a { min-height: 2.75rem; }
+.game-character-dialog .game-dialog-navigation { flex-shrink: 0; padding: .625rem .75rem max(.625rem, env(safe-area-inset-bottom)); border-top: 1px solid var(--g-rule); background: var(--g-surface); }
+.game-character-dialog .game-dialog-pager { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: .5rem; margin: 0; padding: 0; border: 0; }
+.game-character-dialog .game-dialog-pager button { display: flex; justify-content: flex-start; gap: .375rem; border: 0; border-radius: .5rem; width: 100%; height: auto; min-height: 3.25rem; padding: .375rem; text-align: left; }
+.game-character-dialog .game-dialog-pager button:last-child { justify-content: flex-end; text-align: right; }
+.game-character-dialog .game-dialog-pager button:hover { background: var(--g-jade); }
+.game-character-dialog .game-dialog-pager button > svg { flex-shrink: 0; }
+.game-character-dialog .game-dialog-pager button > span { min-width: 0; font-family: var(--g-sans); }
+.game-character-dialog .game-dialog-pager button small { display: block; color: var(--g-muted); font-size: .6875rem; line-height: 1.6; }
+.game-character-dialog .game-dialog-pager button strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 500 .875rem/1.5 var(--g-serif); }
+.game-character-dialog .game-dialog-position { text-align: center; font: .875rem/1.6 var(--g-sans); color: var(--g-muted); }
+.game-character-dialog .game-dialog-position strong { font-weight: 600; color: var(--g-pine); }
+.game-character-dialog .game-dialog-position i { padding: 0 .375rem; }
+.game-character-dialog .game-dialog-position small { display: block; font: .6875rem/1.5 var(--g-sans); }
+.game-character-dialog .game-dialog-single { padding: .375rem; color: var(--g-muted); text-align: center; font-size: .8125rem; }
+
+@media (min-width: 640px) {
+  .game-character-gallery .game-character-search { max-width: 26rem; }
+  .game-character-gallery .game-gallery-toolbar { margin-top: 2rem; }
+  .game-character-dialog .game-dialog-header { padding: 1.25rem 1.75rem; }
+  .game-character-dialog .game-dialog-identity h2 { font-size: 2rem; }
+  .game-character-dialog .game-character-dialog-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "portrait introduction" "portrait biography"; grid-template-rows: auto 1fr; }
+  .game-character-dialog .game-dialog-introduction { padding: 1.5rem 1.5rem 0; }
+  .game-character-dialog .game-dialog-biography { padding: 1.25rem 1.5rem 1.5rem; }
+  .game-character-dialog .game-dialog-portrait { padding: 1.25rem 0; }
+  .game-character-dialog .game-dialog-portrait > img { height: min(25rem, 48dvh); min-height: 0; }
+  .game-character-dialog .game-dialog-navigation { padding: .75rem 1.25rem; }
+  .game-character-dialog .game-dialog-pager button { padding: .5rem .875rem; }
+  .game-character-dialog .game-dialog-pager button strong { font-size: 1rem; }
+}
+@media (min-width: 1024px) {
+  .game-character-gallery .game-gallery-search-hint { font-size: .875rem; }
+  .game-character-dialog .game-dialog-introduction { padding: 1.75rem 2rem 0; }
+  .game-character-dialog .game-dialog-biography { padding: 1.25rem 2rem 1.75rem; }
+}
+.confucius-game[data-motion="off"] .game-character-dialog::backdrop { animation: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .game-character-dialog::backdrop { animation: none !important; }
+}

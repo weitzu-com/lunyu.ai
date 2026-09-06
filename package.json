@@ -17,7 +17,7 @@
     "cf:setup": "node scripts/cloudflare-setup.mjs",
     "build:favicon": "node scripts/make-favicon.mjs",
     "prebuild": "node scripts/make-favicon.mjs && node scripts/generate-geography-maps.mjs",
-    "qa:game": "node scripts/game-qa.mjs && node scripts/game-assets-qa.mjs && node scripts/account-sync-qa.mjs && node scripts/account-registration-qa.mjs",
+    "qa:game": "node scripts/game-qa.mjs && node scripts/game-assets-qa.mjs && node scripts/account-sync-qa.mjs && node scripts/account-registration-qa.mjs && node scripts/game-reading-position-qa.mjs",
     "qa:accounts": "node scripts/account-qa.mjs",
     "qa:geography": "node scripts/geography-qa.mjs && node scripts/geography-pages-qa.mjs"
   },

@@ -1,0 +1,100 @@
+/* Reading comes first on a small screen; chapter context stays close at hand. */
+.confucius-game .game-hero-description { font-size: 1rem; }
+.confucius-game .game-hero-actions { display: flex; align-items: center; gap: .25rem 1.25rem; flex-wrap: wrap; margin-top: 1.75rem; }
+.confucius-game .game-hero-actions .game-start { margin-top: 0; }
+.confucius-game .game-explore-people { gap: .5rem; font-size: .875rem !important; }
+.confucius-game .game-explore-people span { font-size: .75rem; color: var(--g-muted); }
+.confucius-game .game-hero-meta { font-size: .8125rem; gap: .75rem; flex-wrap: wrap; }
+.confucius-game .game-resume-detail { display: flex; gap: .5rem; align-items: center; margin-top: .875rem; color: var(--g-pine); font-size: .875rem; line-height: 1.7; }
+.confucius-game .game-chapter-age, .confucius-game .game-chapter-status { font-size: .875rem; }
+.confucius-game .game-chapter-top { font-size: .8125rem; }
+.confucius-game .game-chapter-status { height: auto; min-height: 2.75rem; padding-block: .5rem; gap: .5rem; }
+.confucius-game .game-chapter.is-locked { cursor: not-allowed; }
+.confucius-game .game-chapter.is-locked:hover { transform: none; border-color: var(--g-rule); }
+.confucius-game .game-principles p { font-size: .875rem; }
+.confucius-game .game-return-bookmark { display: flex; justify-content: space-between; align-items: center; gap: .875rem; border-block: 1px solid var(--g-rule); padding: .75rem 0; }
+.game-return-bookmark > span { display: flex; align-items: center; gap: .75rem; font-size: .875rem; }
+.game-return-bookmark small { display: block; font-size: .75rem; color: var(--g-muted); margin-top: .25rem; }
+.game-return-bookmark .game-text-button { flex-shrink: 0; font-size: .875rem !important; }
+.confucius-game[data-view="story"] .game-context { padding-block: .75rem; }
+.confucius-game .game-story-layout { gap: 1rem; padding-top: 0; }
+.confucius-game .game-story-sidebar > .game-text-button { font-size: .875rem !important; }
+.confucius-game .game-context-toggle { display: flex; align-items: center; justify-content: space-between; gap: .75rem; width: 100%; text-align: left; padding: .75rem 0; border: 0; border-top: 1px solid var(--g-rule); color: var(--g-ink); background: transparent; }
+.game-context-toggle > span:first-child { min-width: 0; font-size: .9375rem; line-height: 1.6; }
+.game-context-toggle small { display: block; color: var(--g-muted); font-size: .75rem; margin-top: .25rem; }
+.game-context-toggle > span:last-child { display: flex; align-items: center; gap: .375rem; flex-shrink: 0; font-size: .75rem; color: var(--g-pine); }
+.confucius-game .game-chapter-context-details { display: none; padding-block: 1rem; }
+.confucius-game .game-story-sidebar[data-expanded="true"] .game-chapter-context-details { display: block; }
+.confucius-game .game-chapter-context-details .game-sidebar-summary { display: block; font: .9375rem/1.9 var(--g-serif); margin-top: 1rem; }
+.confucius-game .game-story-cast > small { font-size: .75rem; line-height: 1.7; }
+.confucius-game .game-story-cast button span { font-size: .875rem; }
+.confucius-game .game-story-content { padding: 1.25rem 1rem; border-radius: .75rem; scroll-margin-top: .75rem; box-shadow: 0 .5rem 2rem #233d3305; }
+.confucius-game .game-reading-header { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; font-size: .875rem; color: var(--g-pine); line-height: 1.7; }
+.game-reading-header > span:last-child { font-size: .8125rem; color: var(--g-muted); flex-shrink: 0; }
+.confucius-game .game-reading-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .375rem; margin-block: .875rem 1.75rem; }
+.game-reading-steps button { position: relative; display: flex; align-items: center; justify-content: center; gap: .375rem; min-height: 2.75rem; padding: .5rem .25rem; background: #f2f5ed; color: var(--g-muted); border: 0; border-bottom: 2px solid #dce2d6; border-radius: .25rem .25rem 0 0; }
+.game-reading-steps button strong { font-size: .8125rem; font-weight: 500; white-space: nowrap; }
+.game-reading-steps button > span { font: .6875rem var(--g-sans); opacity: .8; }
+.game-reading-steps button[aria-current] { color: var(--g-pine); border-color: var(--g-pine); background: var(--g-jade); }
+.game-reading-steps button[aria-current] strong { font-weight: 600; }
+.game-reading-steps button:disabled { color: #7b8375; background: transparent; border-color: #e5e8df; }
+.confucius-game .game-scene-top .game-eyebrow { font-size: .8125rem; letter-spacing: .07em; }
+.confucius-game .game-adaptation { font-size: .6875rem; }
+.confucius-game .game-story-content h1 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.5; margin-top: .875rem; }
+.confucius-game .game-narrative { font-size: 1.0625rem; line-height: 1.95; margin-top: 1.25rem !important; color: #354a3e; max-width: 42em; }
+.confucius-game .game-question { margin-block: 1.75rem 1.125rem; }
+.confucius-game .game-question > span { font-size: .8125rem; }
+.confucius-game .game-question h2 { font-size: 1.125rem; line-height: 1.8; }
+.confucius-game .game-choices { gap: .75rem; }
+.confucius-game .game-choice { padding: 1rem .875rem; border-radius: .5rem; align-items: flex-start; }
+.confucius-game .game-choice-letter { margin-top: .125rem; }
+.confucius-game .game-choice > svg { margin-top: .5rem; }
+.confucius-game .game-choice strong { font-size: 1rem; font-weight: 500; }
+.confucius-game .game-choice small { font-size: .875rem; line-height: 1.85; }
+.confucius-game .game-choice-hint { font-size: .875rem; }
+.game-choices.has-selection:not(.is-expanded) .game-choice:not(.is-selected) { display: none; }
+.confucius-game .game-selected-caption { display: flex; align-items: center; gap: .375rem; margin-block: 1rem .625rem; color: var(--g-pine); font-size: .8125rem; }
+.confucius-game .game-compare-choices { display: flex; width: 100%; justify-content: space-between; font-size: .875rem !important; }
+.game-compare-choices > span { color: var(--g-muted); font-size: .75rem; }
+.confucius-game .game-feedback { margin-top: 1rem; padding: 1.25rem 1rem; border-radius: .5rem; scroll-margin-top: 1rem; }
+.confucius-game .game-feedback > .game-eyebrow { font-size: .875rem; letter-spacing: .06em; }
+.confucius-game .game-feedback > p:not(.game-eyebrow) { font: 1.0625rem/1.95 var(--g-serif); }
+.confucius-game .game-reflection strong { font-size: .875rem; }
+.confucius-game .game-reflection p { font-size: 1rem; line-height: 1.9; }
+.confucius-game .game-feedback-bottom { border-top: 1px solid #cfdbc3; padding-top: 1rem; gap: .875rem; }
+.confucius-game .game-feedback-bottom .game-button { width: 100%; min-height: 3.25rem; font-size: .9375rem !important; }
+.confucius-game .game-stat-tags span { font-size: .8125rem; }
+.confucius-game .game-source, .confucius-game .game-choice-source { font-size: .875rem; line-height: 1.85; }
+.confucius-game .game-source summary, .confucius-game .game-choice-source summary { min-height: 2.75rem; }
+.confucius-game .game-note-editor label, .confucius-game .game-journal label { font-size: 1rem; line-height: 1.8; }
+.confucius-game .game-note-status { display: flex; justify-content: space-between; gap: .75rem; flex-wrap: wrap; margin-top: .625rem; color: var(--g-muted); font-size: .8125rem; line-height: 1.6; text-align: left; }
+.confucius-game .game-note-optional { font-size: .875rem; line-height: 1.85; color: var(--g-muted); margin-bottom: 1.25rem; }
+.confucius-game .game-journal-entries summary { font-size: 1rem; line-height: 1.7; }
+.confucius-game .game-journal-entries summary span, .confucius-game .game-journal-entries details p { font-size: .875rem; }
+.confucius-game .game-journal-entries cite { font-size: .8125rem; line-height: 1.7; }
+.confucius-game .game-journal-stats { display: flex; gap: 1.25rem; flex-wrap: wrap; padding-block: 1rem; border-bottom: 1px solid var(--g-rule); font-size: .875rem; color: var(--g-muted); }
+.game-journal-stats strong { color: var(--g-pine); font-weight: 600; margin-right: .25rem; }
+@media (min-width: 640px) {
+  .confucius-game .game-story-content { padding: 2rem; }
+  .confucius-game .game-reading-steps button strong { font-size: .875rem; }
+  .confucius-game .game-feedback { padding: 1.75rem; }
+  .confucius-game .game-feedback-bottom .game-button { width: auto; }
+  .confucius-game .game-hero-actions { gap: .5rem 1.25rem; }
+}
+@media (min-width: 1024px) {
+  .confucius-game .game-chapter-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .confucius-game .game-story-layout { grid-template-columns: 15rem minmax(0, 1fr); gap: 2.5rem; padding-top: 1rem; max-width: 74rem; margin-inline: auto; }
+  .confucius-game .game-context-toggle { display: none; }
+  .confucius-game .game-chapter-context-details { display: block; padding-top: 1.5rem; }
+  .confucius-game .game-story-content { padding: 2rem 2.5rem; }
+  .confucius-game .game-narrative { font-size: 1.125rem; }
+  .confucius-game .game-reading-steps { margin-bottom: 2rem; }
+  .confucius-game .game-choice { padding: 1.125rem 1.25rem; }
+  .confucius-game .game-reading-header { font-size: .9375rem; }
+}
+@media (min-width: 1280px) { .confucius-game .game-chapter-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); } }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .confucius-game[data-motion="on"] .game-choice:not(:disabled):hover { transform: translateX(.2rem); }
+}
+.confucius-game[data-motion="off"] dialog::backdrop { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { .confucius-game dialog::backdrop { animation: none !important; transition: none !important; } }
