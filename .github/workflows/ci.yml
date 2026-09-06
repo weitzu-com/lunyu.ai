@@ -30,7 +30,11 @@ jobs:
 
       - run: npm run qa:game
 
+      - run: npm run qa:geography
+
       - run: npm run build
+
+      - run: node scripts/geography-pages-qa.mjs --built
 
       - run: npm run qa:seo
 

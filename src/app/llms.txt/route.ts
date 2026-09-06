@@ -5,6 +5,7 @@ import { editorialPosts } from "@/lib/editorial-posts";
 import { intentHubs, intentHubSlugs } from "@/lib/intent-hubs";
 import { siteUrl } from "@/lib/seo";
 import { contentModifiedDate, sourceUrls } from "@/lib/site";
+import { geographyModifiedDate, geographyPlaces } from "@/lib/geography";
 
 export const dynamic = "force-static";
 
@@ -37,6 +38,7 @@ The mission of lunyu.ai is to make The Analects readable for the world — passa
 - [Knowledge index (EN)](${siteUrl}/en/index) — ${blogEntities.length} people, places, texts, and ideas
 - [人物地点概念索引 (简体)](${siteUrl}/zh-Hans/index) — ${blogEntities.length} 个索引页面
 - [孔子与弟子生平年表 (简体)](${siteUrl}/zh-Hans/people) — Chinese biographies and chronological events, with source citations and explicit approximate, disputed, and undated records
+- [人物活动地理图志 (简体)](${siteUrl}/zh-Hans/places) — ${geographyPlaces.length} geographic concepts drawn from all 78 biographies and their cited passages, with descriptions, attributed photographs or location diagrams, and person/place evidence. Last reviewed ${geographyModifiedDate}. Actual activity, origin, mentions and unrealized plans are separate; modern reference points are not historical borders.
 - [Editorial notes (EN)](${siteUrl}/en/blogs) — ${editorialPosts.length} reading essays
 - [阅读札记 (简体)](${siteUrl}/zh-Hans/blogs) — ${editorialPosts.length} 篇文章
 - [Listening mode](${siteUrl}/en/listen) — chapter audio with source text, pinyin ruby, and guide text

@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { discipleBiographies } from "../src/data/disciples-biographies.ts";
+import { geographyPlaces } from "../src/data/geography.ts";
 
 const root = process.cwd();
 const siteUrl = "https://www.lunyu.ai";
@@ -709,6 +710,7 @@ for (const crawler of aiCrawlers) {
 const sitemap = read(".next/server/app/sitemap.xml.body");
 const chineseBiographyPageCount = 2 + discipleBiographies.length; // hub + Confucius + disciples
 const chineseGamePageCount = 1;
+const chineseGeographyPageCount = 1 + geographyPlaces.length;
 const expectedLocs =
   locales.length *
     (
@@ -722,7 +724,7 @@ const expectedLocs =
       indexCount +
       postCount
     ) +
-  1 + chineseBiographyPageCount + chineseGamePageCount;
+  1 + chineseBiographyPageCount + chineseGamePageCount + chineseGeographyPageCount;
 const locs = countRegex(sitemap, /<loc>/g);
 if (locs !== expectedLocs) fail(`sitemap: expected ${expectedLocs} <loc>, got ${locs}`);
 if (sitemap.split(`<loc>${gameUrl}</loc>`).length - 1 !== chineseGamePageCount) {
