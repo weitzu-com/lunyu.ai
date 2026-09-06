@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { discipleBiographies } from "../src/data/disciples-biographies.ts";
 
 const root = process.cwd();
 const siteUrl = "https://www.lunyu.ai";
@@ -664,6 +665,7 @@ for (const crawler of aiCrawlers) {
 }
 
 const sitemap = read(".next/server/app/sitemap.xml.body");
+const chineseBiographyPageCount = 2 + discipleBiographies.length; // hub + Confucius + disciples
 const expectedLocs =
   locales.length *
     (
@@ -677,7 +679,7 @@ const expectedLocs =
       indexCount +
       postCount
     ) +
-  1;
+  1 + chineseBiographyPageCount;
 const locs = countRegex(sitemap, /<loc>/g);
 if (locs !== expectedLocs) fail(`sitemap: expected ${expectedLocs} <loc>, got ${locs}`);
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index`, "sitemap");

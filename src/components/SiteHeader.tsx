@@ -17,12 +17,14 @@ function isActive(path: string | undefined, href: string, exact = false) {
   return path === href || path.startsWith(`${href}/`);
 }
 
-export function SiteHeader({ locale, path = "" }: { locale: Locale; path?: string }) {
+export function SiteHeader({ locale, path = "", availableLocales }: { locale: Locale; path?: string; availableLocales?: Locale[] }) {
+  const currentPath = path === `/${locale}` || path.startsWith(`/${locale}/`) ? path : `/${locale}${path}`;
   const navItems: NavItem[] = [
     { href: `/${locale}`, labelZh: "首页", labelEn: "Home", exact: true },
     { href: `/${locale}/analects`, labelZh: "二十篇", labelEn: "Analects" },
     { href: `/${locale}/listen`, labelZh: "听读", labelEn: "Listen" },
     { href: `/${locale}/index`, labelZh: "索引", labelEn: "Index" },
+    ...(locale === "zh-Hans" ? [{ href: "/zh-Hans/people", labelZh: "人物年表", labelEn: "People" }] : []),
     { href: `/${locale}/blogs`, labelZh: "札记", labelEn: "Notes" },
     { href: `/${locale}/about`, labelZh: "关于", labelEn: "About" },
   ];
@@ -48,19 +50,19 @@ export function SiteHeader({ locale, path = "" }: { locale: Locale; path?: strin
             </div>
           </Link>
 
-          <LanguageSwitcher locale={locale} path={path} />
+          <LanguageSwitcher locale={locale} path={path} availableLocales={availableLocales} />
         </div>
 
         <nav aria-label={t(locale, "主导航", "Primary navigation")}>
           <ul className="flex flex-wrap gap-x-4 gap-y-2 font-ui text-sm text-ink-soft">
             {navItems.map((item) => {
-              const active = isActive(path, item.href, item.exact);
+              const active = isActive(currentPath, item.href, item.exact);
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
-                    className={`inline-flex min-h-9 items-center border-b px-0.5 transition-colors duration-300 ${
+                    className={`inline-flex min-h-11 items-center border-b px-0.5 transition-colors duration-300 ${
                       active
                         ? "border-ink text-ink"
                         : "border-transparent hover:border-ink hover:text-ink"
@@ -77,4 +79,3 @@ export function SiteHeader({ locale, path = "" }: { locale: Locale; path?: strin
     </header>
   );
 }
-

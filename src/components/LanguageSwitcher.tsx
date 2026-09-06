@@ -9,13 +9,15 @@ const shortLabels: Record<Locale, string> = {
 export function LanguageSwitcher({
   locale,
   path = "",
+  availableLocales = Object.keys(locales) as Locale[],
 }: {
   locale: Locale;
   path?: string;
+  availableLocales?: Locale[];
 }) {
   return (
     <div className="inline-flex shrink-0 border border-rule bg-surface p-1 text-sm font-ui">
-      {(Object.keys(locales) as Locale[]).map((key) => (
+      {availableLocales.map((key) => (
         <Link
           key={key}
           href={`/${key}${path}`}

@@ -7,6 +7,7 @@ import { indexEntryModifiedDate } from "@/lib/featured-index";
 import { hubModifiedDate, intentHubSlugs } from "@/lib/intent-hubs";
 import { contentModifiedDate, localizedUrl, siteUrl } from "@/lib/site";
 import { trustPageSlugs } from "@/lib/trust-pages";
+import { biographyModifiedDate, biographyProfiles } from "@/lib/biographies";
 
 const hubPages = ["/analects", "/blogs", "/index"] as const;
 
@@ -86,6 +87,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const post of editorialPosts) {
       addLocalized(entries, locale, `/blogs/${post.slug}`, post.dateModified);
     }
+  }
+
+  addLocalized(entries, "zh-Hans", "/people", biographyModifiedDate);
+  for (const profile of biographyProfiles) {
+    addLocalized(entries, "zh-Hans", `/people/${profile.slug}`, biographyModifiedDate);
   }
 
   entries.push({

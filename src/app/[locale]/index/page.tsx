@@ -102,6 +102,12 @@ export default async function KnowledgeIndexPage({
           )}
         </p>
 
+        {locale === "zh-Hans" && (
+          <Link href="/zh-Hans/people" className="mt-8 block border-l-2 border-cinnabar bg-surface p-5 sm:p-6">
+            <h2 className="font-cjk text-2xl">孔子与弟子 · 人物简介与生平年表 →</h2>
+            <p className="mt-3 text-base leading-8 text-ink-soft">按年份阅读孔门师生的经历，查找姓名、字与籍贯；逐项附史料出处，保留年代异说与未定年记载。</p>
+          </Link>
+        )}
         <div className="mt-10 space-y-10">
           {groups.map((group) => (
             <section key={group.category}>

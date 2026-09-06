@@ -89,7 +89,7 @@ export default async function TrustPage({
 
         <div className="mt-8 border-y border-rule bg-surface px-4 py-2 sm:px-6">
           {sections.map((section) => (
-            <section key={section.heading} className="reading-panel">
+            <section key={section.heading} id={slug === "method" && section.heading === t(locale, "更正机制", "Corrections") ? "corrections" : undefined} className="reading-panel scroll-mt-6">
               <h2 className="label">{section.heading}</h2>
               <div className="mt-4 space-y-4 text-base leading-8 text-ink">
                 {section.body.map((paragraph) => (
