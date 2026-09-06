@@ -22,6 +22,7 @@ export function BiographyDirectory({ profiles }: { profiles: BiographyProfile[] 
         <div><p className="label mb-3">从人物出发</p><h2 id="directory-heading" className="font-cjk text-3xl">人物档案</h2></div>
         <p className="text-sm leading-6 text-ink-soft">孔子与《史记》列传中的 {profiles.length - 1} 位弟子</p>
       </div>
+      <p className="mt-4 text-base leading-8 text-ink-soft">打开人物档案，查看后世肖像及馆藏出处、生平年表，以及著作与相关文献的归属说明。</p>
       <div className="biography-controls mt-6 grid gap-4 border-y border-rule py-5 sm:grid-cols-[minmax(0,1fr)_minmax(12rem,0.45fr)]">
         <label className="grid gap-2 text-sm" htmlFor="person-search">查找姓名、字或别称
           <input id="person-search" type="search" autoComplete="off" placeholder="例如：颜回、子路、端木赐" value={query} onChange={(event) => setQuery(event.target.value)} className="biography-filter w-full" />

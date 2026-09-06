@@ -12,7 +12,7 @@ import { openGraph, twitterCard } from "@/lib/seo";
 import "@/components/biographies/biographies.css";
 
 const title = "孔子与弟子：人物简介与生平年表";
-const description = "按年份阅读孔子及《史记·仲尼弟子列传》具名弟子的生平，查找姓名、字、籍贯与事迹。每项记载标明史料出处，并区分纪年、约年、异说与年代不详。";
+const description = "按年份阅读孔子及《史记·仲尼弟子列传》具名弟子的生平，查找姓名、字、籍贯与事迹。人物档案附后世肖像、馆藏出处及著作归属核查，区分纪年、约年、异说与年代不详。";
 const pageUrl = localizedUrl("zh-Hans", "/people");
 
 export function generateStaticParams() { return [{ locale: "zh-Hans" }]; }

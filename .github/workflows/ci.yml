@@ -32,4 +32,6 @@ jobs:
 
       - run: npm run qa:seo
 
+      - run: npm run qa:biographies -- --built
+
       - run: npm run qa:coverage
