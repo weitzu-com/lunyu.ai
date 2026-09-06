@@ -25,7 +25,10 @@ let sessionPromise: Promise<void> | null = null;
 let sessionSequence = 0;
 let applyingProgress = false;
 const listeners = new Set<() => void>();
-const serialize = (progress: GameProgress) => JSON.stringify({ answers: progress.answers, reflections: progress.reflections, lastChapter: progress.lastChapter });
+// JSONB may return object keys in a different order than the browser wrote.
+// Compare content deterministically without changing the stored journey.
+const orderedEntries = (fields: Record<string, string>) => Object.keys(fields).sort().map((key) => [key, fields[key]]);
+const serialize = (progress: GameProgress) => JSON.stringify({ answers: orderedEntries(progress.answers), reflections: orderedEntries(progress.reflections), lastChapter: progress.lastChapter });
 function update(patch: Partial<AccountSnapshot>) { snapshot = { ...snapshot, ...patch }; listeners.forEach((listener) => listener()); }
 function subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener); }; }
 function storageGet(key: string) { try { return localStorage.getItem(key); } catch { return null; } }
@@ -199,7 +202,7 @@ export function useGameAccount() {
     }
     return () => { if (--mounts === 0) { backgroundFlush(); active = false; cleanup?.(); } };
   }, []);
-  return value;
+  return { ...value, pendingChanges: !!value.user && serialize(getProgressSnapshot()) !== fingerprint };
 }
 async function adoptUser(user: AccountUser) {
   const expectedEpoch = ++epoch;
