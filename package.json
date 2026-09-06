@@ -11,6 +11,7 @@
     "start": "next start",
     "lint": "eslint",
     "qa:coverage": "node scripts/content-coverage-qa.mjs",
+    "qa:biographies": "node scripts/biography-qa.mjs",
     "qa:provenance": "node scripts/provenance-qa.mjs",
     "qa:seo": "node scripts/seo-qa.mjs",
     "cf:setup": "node scripts/cloudflare-setup.mjs",

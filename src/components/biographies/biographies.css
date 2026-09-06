@@ -1,0 +1,69 @@
+.biography-hero {
+  display: grid;
+  gap: 2rem;
+  padding-block: 2.5rem;
+}
+
+.biography-directory {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 2rem;
+}
+
+.biography-person-link {
+  display: block;
+  min-width: 0;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.biography-person-link:hover h3 { color: var(--cinnabar); }
+
+.biography-timeline { margin: 0; padding: 0; list-style: none; }
+
+.biography-event {
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--rule);
+}
+
+.biography-event::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: -0.25rem;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-radius: 50%;
+  background: var(--cinnabar);
+}
+
+.biography-event-date, .biography-event-body { min-width: 0; }
+.biography-event-body { padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
+.biography-event:last-child .biography-event-body { border-bottom: 0; }
+.biography-event-body a { overflow-wrap: anywhere; }
+.biography-filter { min-width: 0; min-height: 2.75rem; border: 1px solid var(--rule); padding: 0.625rem 0.75rem; background: var(--surface); color: var(--ink); border-radius: 0; }
+
+@media (min-width: 640px) {
+  .biography-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .biography-hero { padding-block: 3.5rem; }
+  .biography-event { grid-template-columns: 10rem minmax(0, 1fr); gap: 2rem; padding-left: 0; border-left: 0; }
+  .biography-event::before { left: 10.75rem; }
+  .biography-event-body { position: relative; }
+  .biography-event-body::before { content: ""; position: absolute; left: -1rem; top: 1.5rem; bottom: -1.25rem; width: 1px; background: var(--rule); }
+  .biography-event:last-child .biography-event-body::before { bottom: 1rem; }
+}
+
+@media (min-width: 1024px) {
+  .biography-hero { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: end; gap: 4rem; }
+  .biography-directory { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media print {
+  .biography-controls, .biography-skip, header, footer { display: none !important; }
+  .biography-event { break-inside: avoid; }
+  details::details-content { display: block; content-visibility: visible; }
+}
