@@ -20,6 +20,7 @@ function createHarness() {
   const hookSlots = [];
   let hookIndex = 0;
   const react = {
+    useEffect() {},
     useState(initial) {
       const slot = hookIndex++;
       if (!(slot in hookSlots)) hookSlots[slot] = typeof initial === "function" ? initial() : initial;
@@ -45,7 +46,7 @@ function createHarness() {
   const modules = new Map();
   const context = vm.createContext({
     window,
-    document: { getElementById: () => ({ focus() {}, scrollIntoView() {} }) },
+    document: { querySelector: () => ({ focus() {} }), getElementById: () => ({ focus() {}, scrollIntoView() {} }) },
     requestAnimationFrame: (callback) => callback(),
     setTimeout,
     Blob,
@@ -57,7 +58,7 @@ function createHarness() {
     const loadedModule = { exports: {} };
     modules.set(relative, loadedModule);
     const code = fs.readFileSync(path.join(root, relative), "utf8");
-    const exposed = relative.endsWith("ConfuciusGame.tsx") ? `${code}\nexport const __qaCompanions = companions;\n` : code;
+    const exposed = code;
     const output = ts.transpileModule(exposed, {
       fileName: relative,
       compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true },
@@ -67,6 +68,9 @@ function createHarness() {
       if (specifier === "react/jsx-runtime") return { jsx, jsxs: jsx, Fragment: "fragment" };
       if (specifier === "next/link") return { __esModule: true, default: "a" };
       if (specifier === "./GameLandscape") return { GameLandscape: "landscape" };
+      if (specifier === "./GameAccount") return { GameAccount: "account", AccountSaveIndicator: "save-indicator" };
+      if (specifier === "./CharacterGallery") return { CharacterGallery: "gallery", CharacterPortrait: "portrait" };
+      if (specifier === "@/lib/game-cast") return load("src/lib/game-cast.ts");
       if (specifier === "./GameIcon") return { GameIcon: "icon" };
       if (specifier.endsWith(".css")) return {};
       if (specifier === "@/data/confucius-game") return load("src/data/confucius-game.ts");
@@ -353,21 +357,18 @@ check("a cross-tab reset cannot write an answer through a stale chapter cursor",
   unsubscribe();
 });
 
-check("companion encounter labels refer to a chapter containing that character", () => {
-  const { data: { gameChapters }, client } = createHarness();
-  const issues = [];
-  for (const person of client.__qaCompanions) {
-    const chapter = gameChapters[person.chapter];
-    if (!chapter) { issues.push(`${person.name}: invalid chapter index ${person.chapter}`); continue; }
-    if (!chapter.characters.some((name) => name === person.name || name.startsWith(`${person.name}（`))) {
-      issues.push(`${person.name}: labeled as chapter ${person.chapter + 1} (${chapter.title}), but its characters are ${chapter.characters.join("、")}`);
-    }
-    const first = gameChapters.findIndex((item) => item.characters.some((name) => name === person.name || name.startsWith(`${person.name}（`)));
-    if (first >= 0 && first < person.chapter) issues.push(`${person.name}: first appears in chapter ${first + 1}, but encounter is delayed to chapter ${person.chapter + 1}`);
-    const biographies = fs.readFileSync(path.join(root, "src/data/disciples-biographies.ts"), "utf8");
-    if (!biographies.includes(`slug: "${person.slug}"`)) issues.push(`${person.name}: biography slug ${person.slug} not found`);
+check("all 78 character records have unique original references and usable biography links", () => {
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, "src/data/game-character-manifest.json"), "utf8"));
+  assert.equal(manifest.length, 78);
+  assert.equal(new Set(manifest.map((person) => person.slug)).size, 78);
+  assert.equal(new Set(manifest.map((person) => person.originalAsset)).size, 78);
+  assert.equal(manifest[0].slug, "confucius");
+  const biographies = fs.readFileSync(path.join(root, "src/data/disciples-biographies.ts"), "utf8");
+  for (const person of manifest) {
+    assert.ok(fs.existsSync(path.join(root, "public", person.originalAsset)), `${person.name}: reference image missing`);
+    assert.ok(person.originalSource.startsWith("https://"));
+    if (person.slug !== "confucius") assert.ok(biographies.includes(`slug: "${person.slug}"`));
   }
-  assert.equal(issues.length, 0, issues.join("\n"));
 });
 
 const failed = results.filter((result) => !result.passed);

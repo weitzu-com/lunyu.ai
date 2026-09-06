@@ -28,7 +28,7 @@ jobs:
 
       - run: npm ci
 
-      - run: node scripts/game-qa.mjs
+      - run: npm run qa:game
 
       - run: npm run build
 

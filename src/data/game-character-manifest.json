@@ -1,0 +1,548 @@
+[
+  {
+    "slug": "confucius",
+    "name": "孔子",
+    "originalAsset": "/portraits/confucius-3628e2ae1827.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-001-%E5%AD%94%E5%AD%90.jpg",
+    "cartoonAsset": "/game/characters-3d/confucius.webp"
+  },
+  {
+    "slug": "yan-hui",
+    "name": "颜回",
+    "originalAsset": "/portraits/yan-hui-6af52213199e.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-002-%E9%A1%8F%E5%9B%9E.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-hui.webp"
+  },
+  {
+    "slug": "min-sun",
+    "name": "闵损",
+    "originalAsset": "/portraits/min-sun-fd7d054c4492.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-006-%E9%96%94%E5%AD%90%E9%A8%AB.jpg",
+    "cartoonAsset": "/game/characters-3d/min-sun.webp"
+  },
+  {
+    "slug": "ran-geng",
+    "name": "冉耕",
+    "originalAsset": "/portraits/ran-geng-9e35cd72ac29.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-007-%E5%86%89%E4%BC%AF%E7%89%9B.jpg",
+    "cartoonAsset": "/game/characters-3d/ran-geng.webp"
+  },
+  {
+    "slug": "ran-yong",
+    "name": "冉雍",
+    "originalAsset": "/portraits/ran-yong-ed74f553d1e7.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-008-%E5%86%89%E9%9B%8D.jpg",
+    "cartoonAsset": "/game/characters-3d/ran-yong.webp"
+  },
+  {
+    "slug": "ran-qiu",
+    "name": "冉求",
+    "originalAsset": "/portraits/ran-qiu-e2ca698b129f.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-011-%E5%86%89%E6%B1%82.jpg",
+    "cartoonAsset": "/game/characters-3d/ran-qiu.webp"
+  },
+  {
+    "slug": "zhong-you",
+    "name": "仲由",
+    "originalAsset": "/portraits/zhong-you-92ccc11ad9cb.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-012-%E4%BB%B2%E7%94%B1.jpg",
+    "cartoonAsset": "/game/characters-3d/zhong-you.webp"
+  },
+  {
+    "slug": "zai-yu",
+    "name": "宰予",
+    "originalAsset": "/portraits/zai-yu-6c754090d4d3.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-009-%E5%AE%B0%E4%BA%88.jpg",
+    "cartoonAsset": "/game/characters-3d/zai-yu.webp"
+  },
+  {
+    "slug": "duanmu-ci",
+    "name": "端木赐",
+    "originalAsset": "/portraits/duanmu-ci-e9725c613069.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-010-%E7%AB%AF%E6%9C%A8%E8%B3%9C.jpg",
+    "cartoonAsset": "/game/characters-3d/duanmu-ci.webp"
+  },
+  {
+    "slug": "yan-yan",
+    "name": "言偃",
+    "originalAsset": "/portraits/yan-yan-e0eadf3cb559.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-013-%E8%A8%80%E5%81%83.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-yan.webp"
+  },
+  {
+    "slug": "bu-shang",
+    "name": "卜商",
+    "originalAsset": "/portraits/bu-shang-b219bca09a1d.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-014-%E5%8D%9C%E5%95%86.jpg",
+    "cartoonAsset": "/game/characters-3d/bu-shang.webp"
+  },
+  {
+    "slug": "zhuansun-shi",
+    "name": "颛孙师",
+    "originalAsset": "/portraits/zhuansun-shi-bfd86c08866f.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-015-%E9%A1%93%E5%AD%AB%E5%B8%AB.jpg",
+    "cartoonAsset": "/game/characters-3d/zhuansun-shi.webp"
+  },
+  {
+    "slug": "zeng-shen",
+    "name": "曾参",
+    "originalAsset": "/portraits/zeng-shen-708e0a04b9be.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-003-%E6%9B%BE%E5%8F%83.jpg",
+    "cartoonAsset": "/game/characters-3d/zeng-shen.webp"
+  },
+  {
+    "slug": "tantai-mieming",
+    "name": "澹台灭明",
+    "originalAsset": "/portraits/tantai-mieming-78a4dfc7c2cc.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-017-%E6%BE%B9%E8%87%BA%E6%BB%85%E6%98%8E.jpg",
+    "cartoonAsset": "/game/characters-3d/tantai-mieming.webp"
+  },
+  {
+    "slug": "mi-buqi",
+    "name": "宓不齐",
+    "originalAsset": "/portraits/mi-buqi-ec225e510cc6.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-016-%E5%AE%93%E4%B8%8D%E9%BD%8A.jpg",
+    "cartoonAsset": "/game/characters-3d/mi-buqi.webp"
+  },
+  {
+    "slug": "yuan-xian",
+    "name": "原宪",
+    "originalAsset": "/portraits/yuan-xian-eefee8540be9.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-019-%E5%8E%9F%E6%86%B2.jpg",
+    "cartoonAsset": "/game/characters-3d/yuan-xian.webp"
+  },
+  {
+    "slug": "gongye-chang",
+    "name": "公冶长",
+    "originalAsset": "/portraits/gongye-chang-c2a0bc9954d9.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-018-%E5%85%AC%E5%86%B6%E9%95%B7.jpg",
+    "cartoonAsset": "/game/characters-3d/gongye-chang.webp"
+  },
+  {
+    "slug": "nangong-kuo",
+    "name": "南宫括",
+    "originalAsset": "/portraits/nangong-kuo-e788bfd0bcf1.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-021-%E5%8D%97%E5%AE%AE%E9%80%82.jpg",
+    "cartoonAsset": "/game/characters-3d/nangong-kuo.webp"
+  },
+  {
+    "slug": "gongxi-ai",
+    "name": "公皙哀",
+    "originalAsset": "/portraits/gongxi-ai-b5b25afe0f67.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-020-%E5%85%AC%E7%9A%99%E5%93%80.jpg",
+    "cartoonAsset": "/game/characters-3d/gongxi-ai.webp"
+  },
+  {
+    "slug": "zeng-dian",
+    "name": "曾蒧",
+    "originalAsset": "/portraits/zeng-dian-7d77bfeea91f.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-023-%E6%9B%BE%E9%BB%9E.jpg",
+    "cartoonAsset": "/game/characters-3d/zeng-dian.webp"
+  },
+  {
+    "slug": "yan-wuyao",
+    "name": "颜无繇",
+    "originalAsset": "/portraits/yan-wuyao-7d8c74ae938e.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-022-%E9%A1%8F%E7%84%A1%E7%B9%87.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-wuyao.webp"
+  },
+  {
+    "slug": "shang-qu",
+    "name": "商瞿",
+    "originalAsset": "/portraits/shang-qu-03362c79606f.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-025-%E5%95%86%E7%9E%BF.jpg",
+    "cartoonAsset": "/game/characters-3d/shang-qu.webp"
+  },
+  {
+    "slug": "gao-chai",
+    "name": "高柴",
+    "originalAsset": "/portraits/gao-chai-0fc1775b7d66.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-024-%E9%AB%98%E6%9F%B4.jpg",
+    "cartoonAsset": "/game/characters-3d/gao-chai.webp"
+  },
+  {
+    "slug": "qidiao-kai",
+    "name": "漆雕开",
+    "originalAsset": "/portraits/qidiao-kai-1f5f42b82953.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-027-%E6%BC%86%E9%9B%95%E9%96%8B.jpg",
+    "cartoonAsset": "/game/characters-3d/qidiao-kai.webp"
+  },
+  {
+    "slug": "gongbo-liao",
+    "name": "公伯缭",
+    "originalAsset": "/portraits/gongbo-liao-9e4fcf02e3a0.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-026-%E5%85%AC%E4%BC%AF%E5%AF%AE.jpg",
+    "cartoonAsset": "/game/characters-3d/gongbo-liao.webp"
+  },
+  {
+    "slug": "sima-geng",
+    "name": "司马耕",
+    "originalAsset": "/portraits/sima-geng-5980a72ba2cb.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-029-%E5%8F%B8%E9%A6%AC%E8%80%95.jpg",
+    "cartoonAsset": "/game/characters-3d/sima-geng.webp"
+  },
+  {
+    "slug": "fan-xu",
+    "name": "樊须",
+    "originalAsset": "/portraits/fan-xu-7a9d14613db5.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-030-%E6%A8%8A%E9%A0%88.jpg",
+    "cartoonAsset": "/game/characters-3d/fan-xu.webp"
+  },
+  {
+    "slug": "you-ruo",
+    "name": "有若",
+    "originalAsset": "/portraits/you-ruo-e0fcfd4d792e.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-031-%E6%9C%89%E8%8B%A5.jpg",
+    "cartoonAsset": "/game/characters-3d/you-ruo.webp"
+  },
+  {
+    "slug": "gongxi-chi",
+    "name": "公西赤",
+    "originalAsset": "/portraits/gongxi-chi-d57a3fe45b61.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-028-%E5%85%AC%E8%A5%BF%E8%B5%A4.jpg",
+    "cartoonAsset": "/game/characters-3d/gongxi-chi.webp"
+  },
+  {
+    "slug": "wuma-shi",
+    "name": "巫马施",
+    "originalAsset": "/portraits/wuma-shi-a0f0ad08499c.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-033-%E5%B7%AB%E9%A6%AC%E6%96%BD.jpg",
+    "cartoonAsset": "/game/characters-3d/wuma-shi.webp"
+  },
+  {
+    "slug": "liang-zhan",
+    "name": "梁鳣",
+    "originalAsset": "/portraits/liang-zhan-6b3157f17407.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-032-%E6%A2%81%E9%B1%A3.jpg",
+    "cartoonAsset": "/game/characters-3d/liang-zhan.webp"
+  },
+  {
+    "slug": "yan-xing",
+    "name": "颜幸",
+    "originalAsset": "/portraits/yan-xing-df0e63096c3c.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-035-%E9%A1%8F%E8%BE%9B.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-xing.webp"
+  },
+  {
+    "slug": "ran-ru",
+    "name": "冉孺",
+    "originalAsset": "/portraits/ran-ru-639613fdc65e.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-036-%E5%86%89%E5%AD%BA.jpg",
+    "cartoonAsset": "/game/characters-3d/ran-ru.webp"
+  },
+  {
+    "slug": "cao-xu",
+    "name": "曹恤",
+    "originalAsset": "/portraits/cao-xu-7c95b43a2f38.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-037-%E6%9B%B9%E5%8D%B9.jpg",
+    "cartoonAsset": "/game/characters-3d/cao-xu.webp"
+  },
+  {
+    "slug": "bo-qian",
+    "name": "伯虔",
+    "originalAsset": "/portraits/bo-qian-6db7a77bec58.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-034-%E4%BC%AF%E8%99%94.jpg",
+    "cartoonAsset": "/game/characters-3d/bo-qian.webp"
+  },
+  {
+    "slug": "gongsun-long",
+    "name": "公孙龙",
+    "originalAsset": "/portraits/gongsun-long-a9cd651c03fd.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-039-%E5%85%AC%E5%AD%AB%E9%BE%8D.jpg",
+    "cartoonAsset": "/game/characters-3d/gongsun-long.webp"
+  },
+  {
+    "slug": "ran-ji",
+    "name": "冉季",
+    "originalAsset": "/portraits/ran-ji-6440b71a197e.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-046-%E5%86%89%E5%AD%A3.jpg",
+    "cartoonAsset": "/game/characters-3d/ran-ji.webp"
+  },
+  {
+    "slug": "gongzu-gouzi",
+    "name": "公祖句兹",
+    "originalAsset": "/portraits/gongzu-gouzi-6880de6981bc.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-061-%E5%85%AC%E7%A5%96%E5%8F%A5%E8%8C%B2.jpg",
+    "cartoonAsset": "/game/characters-3d/gongzu-gouzi.webp"
+  },
+  {
+    "slug": "qin-zu",
+    "name": "秦祖",
+    "originalAsset": "/portraits/qin-zu-b00785cc7d87.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-059-%E7%A7%A6%E7%A5%96.jpg",
+    "cartoonAsset": "/game/characters-3d/qin-zu.webp"
+  },
+  {
+    "slug": "qidiao-duo",
+    "name": "漆雕哆",
+    "originalAsset": "/portraits/qidiao-duo-50002ea90a8a.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-044-%E6%BC%86%E9%9B%95%E5%93%86.jpg",
+    "cartoonAsset": "/game/characters-3d/qidiao-duo.webp"
+  },
+  {
+    "slug": "yan-gao",
+    "name": "颜高",
+    "originalAsset": "/portraits/yan-gao-1085727e6bab.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-043-%E9%A1%8F%E9%AB%98.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-gao.webp"
+  },
+  {
+    "slug": "qidiao-tufu",
+    "name": "漆雕徒父",
+    "originalAsset": "/portraits/qidiao-tufu-51cf73dfa6b6.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-040-%E6%BC%86%E9%9B%95%E5%BE%92%E7%88%B6.jpg",
+    "cartoonAsset": "/game/characters-3d/qidiao-tufu.webp"
+  },
+  {
+    "slug": "rangsi-chi",
+    "name": "壤驷赤",
+    "originalAsset": "/portraits/rangsi-chi-ee3f910ebb48.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-045-%E5%A3%A4%E9%A7%9F%E8%B5%A4.jpg",
+    "cartoonAsset": "/game/characters-3d/rangsi-chi.webp"
+  },
+  {
+    "slug": "shang-ze",
+    "name": "商泽",
+    "originalAsset": "/portraits/shang-ze-db4c54ccf303.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-042-%E5%95%86%E6%BE%A4.jpg",
+    "cartoonAsset": "/game/characters-3d/shang-ze.webp"
+  },
+  {
+    "slug": "shizuo-shu",
+    "name": "石作蜀",
+    "originalAsset": "/portraits/shizuo-shu-b8cd31dca16c.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-047-%E7%9F%B3%E4%BD%9C%E8%9C%80.jpg",
+    "cartoonAsset": "/game/characters-3d/shizuo-shu.webp"
+  },
+  {
+    "slug": "ren-buqi",
+    "name": "任不齐",
+    "originalAsset": "/portraits/ren-buqi-8bfa60711745.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-038-%E4%BB%BB%E4%B8%8D%E9%BD%8A.jpg",
+    "cartoonAsset": "/game/characters-3d/ren-buqi.webp"
+  },
+  {
+    "slug": "gongliang-ru",
+    "name": "公良孺",
+    "originalAsset": "/portraits/gongliang-ru-b56b0768a5bb.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-048-%E5%85%AC%E8%89%AF%E5%AD%BA.jpg",
+    "cartoonAsset": "/game/characters-3d/gongliang-ru.webp"
+  },
+  {
+    "slug": "hou-chu",
+    "name": "后处",
+    "originalAsset": "/portraits/hou-chu-ac75b0e0bf59.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-051-%E5%90%8E%E8%99%95.jpg",
+    "cartoonAsset": "/game/characters-3d/hou-chu.webp"
+  },
+  {
+    "slug": "qin-ran",
+    "name": "秦冉",
+    "originalAsset": "/portraits/qin-ran-9a845c482f19.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-052-%E7%A7%A6%E5%86%89.jpg",
+    "cartoonAsset": "/game/characters-3d/qin-ran.webp"
+  },
+  {
+    "slug": "gongxia-shou",
+    "name": "公夏首",
+    "originalAsset": "/portraits/gongxia-shou-49736073b077.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-049-%E5%85%AC%E5%A4%8F%E9%A6%96.jpg",
+    "cartoonAsset": "/game/characters-3d/gongxia-shou.webp"
+  },
+  {
+    "slug": "xirong-zhen",
+    "name": "奚容箴",
+    "originalAsset": "/portraits/xirong-zhen-0bb0bed9b9f1.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-057-%E5%A5%9A%E5%AE%B9%E8%92%A7.jpg",
+    "cartoonAsset": "/game/characters-3d/xirong-zhen.webp"
+  },
+  {
+    "slug": "gongjian-ding",
+    "name": "公肩定",
+    "originalAsset": "/portraits/gongjian-ding-0cf56474c276.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-050-%E5%85%AC%E8%82%A9%E5%AE%9A.jpg",
+    "cartoonAsset": "/game/characters-3d/gongjian-ding.webp"
+  },
+  {
+    "slug": "yan-zu",
+    "name": "颜祖",
+    "originalAsset": "/portraits/yan-zu-b60020f540d4.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-055-%E9%A1%8F%E7%A5%96.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-zu.webp"
+  },
+  {
+    "slug": "qiao-dan",
+    "name": "鄡单",
+    "originalAsset": "/portraits/qiao-dan-fcb9d2d9aef1.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-054-%E9%84%94%E5%96%AE.jpg",
+    "cartoonAsset": "/game/characters-3d/qiao-dan.webp"
+  },
+  {
+    "slug": "goujing-jiang",
+    "name": "句井疆",
+    "originalAsset": "/portraits/goujing-jiang-e68a5ee6656c.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-053-%E5%8B%BE%E4%BA%95%E7%96%86.jpg",
+    "cartoonAsset": "/game/characters-3d/goujing-jiang.webp"
+  },
+  {
+    "slug": "hanfu-hei",
+    "name": "罕父黑",
+    "originalAsset": "/portraits/hanfu-hei-de50fea5cccb.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-056-%E7%BD%95%E7%88%B6%E9%BB%91.jpg",
+    "cartoonAsset": "/game/characters-3d/hanfu-hei.webp"
+  },
+  {
+    "slug": "qin-shang",
+    "name": "秦商",
+    "originalAsset": "/portraits/qin-shang-f55ea9cf1e8d.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-041-%E7%A7%A6%E5%95%86.jpg",
+    "cartoonAsset": "/game/characters-3d/qin-shang.webp"
+  },
+  {
+    "slug": "shen-dang",
+    "name": "申党",
+    "originalAsset": "/portraits/shen-dang-28120095e598.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-058-%E7%94%B3%E9%BB%A8.jpg",
+    "cartoonAsset": "/game/characters-3d/shen-dang.webp"
+  },
+  {
+    "slug": "yan-zhipu",
+    "name": "颜之仆",
+    "originalAsset": "/portraits/yan-zhipu-f9781c5d6387.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-067-%E9%A1%8F%E4%B9%8B%E5%83%95.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-zhipu.webp"
+  },
+  {
+    "slug": "rong-qi",
+    "name": "荣旂",
+    "originalAsset": "/portraits/rong-qi-03e367bd32a4.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-060-%E6%A6%AE%E6%97%82.jpg",
+    "cartoonAsset": "/game/characters-3d/rong-qi.webp"
+  },
+  {
+    "slug": "xian-cheng",
+    "name": "县成",
+    "originalAsset": "/portraits/xian-cheng-c55841151a8d.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-065-%E7%B8%A3%E6%88%90.jpg",
+    "cartoonAsset": "/game/characters-3d/xian-cheng.webp"
+  },
+  {
+    "slug": "zuoren-ying",
+    "name": "左人郢",
+    "originalAsset": "/portraits/zuoren-ying-10099c0fa337.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-062-%E5%B7%A6%E4%BA%BA%E9%83%A2.jpg",
+    "cartoonAsset": "/game/characters-3d/zuoren-ying.webp"
+  },
+  {
+    "slug": "yan-ji",
+    "name": "燕伋",
+    "originalAsset": "/portraits/yan-ji-07fb884ea1a4.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-063-%E7%87%95%E4%BC%8B.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-ji.webp"
+  },
+  {
+    "slug": "zheng-guo",
+    "name": "郑国",
+    "originalAsset": "/portraits/zheng-guo-e5f284d7bd86.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-066-%E9%84%AD%E5%9C%8B.jpg",
+    "cartoonAsset": "/game/characters-3d/zheng-guo.webp"
+  },
+  {
+    "slug": "qin-fei",
+    "name": "秦非",
+    "originalAsset": "/portraits/qin-fei-7ce4bc1ac3ea.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-081-%E7%A7%A6%E9%9D%9E.jpg",
+    "cartoonAsset": "/game/characters-3d/qin-fei.webp"
+  },
+  {
+    "slug": "shi-zhichang",
+    "name": "施之常",
+    "originalAsset": "/portraits/shi-zhichang-c329a9b42e88.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-079-%E6%96%BD%E4%B9%8B%E5%B8%B8.jpg",
+    "cartoonAsset": "/game/characters-3d/shi-zhichang.webp"
+  },
+  {
+    "slug": "yan-kuai",
+    "name": "颜哙",
+    "originalAsset": "/portraits/yan-kuai-39f569563baf.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-085-%E9%A1%8F%E5%99%B2.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-kuai.webp"
+  },
+  {
+    "slug": "bushu-cheng",
+    "name": "步叔乘",
+    "originalAsset": "/portraits/bushu-cheng-038f309ec03a.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-084-%E6%AD%A5%E5%8F%94%E4%B9%98.jpg",
+    "cartoonAsset": "/game/characters-3d/bushu-cheng.webp"
+  },
+  {
+    "slug": "yuan-kangji",
+    "name": "原亢籍",
+    "originalAsset": "/portraits/yuan-kangji-3068d6b8de4f.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-064-%E5%8E%9F%E4%BA%A2.jpg",
+    "cartoonAsset": "/game/characters-3d/yuan-kangji.webp"
+  },
+  {
+    "slug": "yue-ke",
+    "name": "乐欬",
+    "originalAsset": "/portraits/yue-ke-7f27e923536a.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-069-%E6%A8%82%E6%AC%AC.jpg",
+    "cartoonAsset": "/game/characters-3d/yue-ke.webp"
+  },
+  {
+    "slug": "lian-jie",
+    "name": "廉絜",
+    "originalAsset": "/portraits/lian-jie-9e6a22868b1d.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-068-%E5%BB%89%E6%BD%94.jpg",
+    "cartoonAsset": "/game/characters-3d/lian-jie.webp"
+  },
+  {
+    "slug": "shuzhong-hui",
+    "name": "叔仲会",
+    "originalAsset": "/portraits/shuzhong-hui-beb01fec64f2.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-070-%E5%8F%94%E4%BB%B2%E6%9C%83.jpg",
+    "cartoonAsset": "/game/characters-3d/shuzhong-hui.webp"
+  },
+  {
+    "slug": "yan-he",
+    "name": "颜何",
+    "originalAsset": "/portraits/yan-he-60824dfd71c5.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-071-%E9%A1%8F%E4%BD%95.jpg",
+    "cartoonAsset": "/game/characters-3d/yan-he.webp"
+  },
+  {
+    "slug": "di-hei",
+    "name": "狄黑",
+    "originalAsset": "/portraits/di-hei-f3f50e0cc5fb.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-073-%E7%8B%84%E9%BB%91.jpg",
+    "cartoonAsset": "/game/characters-3d/di-hei.webp"
+  },
+  {
+    "slug": "bang-xun",
+    "name": "邦巽",
+    "originalAsset": "/portraits/bang-xun-1640396a1bcb.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-072-%E9%82%BD%E9%81%B8.jpg",
+    "cartoonAsset": "/game/characters-3d/bang-xun.webp"
+  },
+  {
+    "slug": "kong-zhong",
+    "name": "孔忠",
+    "originalAsset": "/portraits/kong-zhong-975cf9311488.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-075-%E5%AD%94%E5%BF%A0.jpg",
+    "cartoonAsset": "/game/characters-3d/kong-zhong.webp"
+  },
+  {
+    "slug": "gongxi-yuru",
+    "name": "公西舆如",
+    "originalAsset": "/portraits/gongxi-yuru-c5066ccc2101.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-074-%E5%85%AC%E8%A5%BF%E8%BC%BF%E5%A6%82.jpg",
+    "cartoonAsset": "/game/characters-3d/gongxi-yuru.webp"
+  },
+  {
+    "slug": "gongxi-zhen",
+    "name": "公西葴",
+    "originalAsset": "/portraits/gongxi-zhen-1ed9a6d92f96.jpg",
+    "originalSource": "https://commons.wikimedia.org/wiki/File:%E8%87%B3%E8%81%96%E5%85%88%E8%B3%A2%E5%8D%8A%E8%BA%AB%E5%83%8F_%E5%86%8A-077-%E5%85%AC%E8%A5%BF%E8%91%B4.jpg",
+    "cartoonAsset": "/game/characters-3d/gongxi-zhen.webp"
+  }
+]

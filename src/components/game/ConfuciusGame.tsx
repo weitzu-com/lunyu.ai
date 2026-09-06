@@ -1,24 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { gameChapters, virtueLabels, type GameChoice } from "@/data/confucius-game";
 import { emptyProgress, gameStats, getProgressSnapshot, getServerProgressSnapshot, saveProgress, subscribeProgress, type GameProgress } from "@/lib/game-progress";
 import { GameLandscape } from "./GameLandscape";
 import { GameIcon } from "./GameIcon";
+import { CharacterDialog, CharacterGallery, CharacterPortrait } from "./CharacterGallery";
+import { AccountSaveIndicator, GameAccount } from "./GameAccount";
+import type { GameCharacter } from "@/lib/game-characters";
+import { chapterCharacterSlugs } from "@/lib/game-cast";
 import "./game.css";
+import "./game-v2.css";
+
+const motionKey = "lunyu-game-motion";
+function subscribeMotion(callback: () => void) { window.addEventListener("storage", callback); window.addEventListener("lunyu-motion", callback); return () => { window.removeEventListener("storage", callback); window.removeEventListener("lunyu-motion", callback); }; }
+function readMotion() { try { return localStorage.getItem(motionKey) !== "off"; } catch { return true; } }
+function toggleMotion() { try { localStorage.setItem(motionKey, readMotion() ? "off" : "on"); } catch { /* The system preference still applies when storage is unavailable. */ } window.dispatchEvent(new Event("lunyu-motion")); }
+
 
 type View = "map" | "story" | "journal" | "people" | "ending";
 const numerals = ["一", "二", "三", "四", "五", "六", "七", "八"];
 const chapterNames = ["少年志学", "问礼求知", "有教无类", "出仕于鲁", "周游列国", "弦歌不绝", "归鲁传道", "薪火相传"];
-const companions = [
-  { name: "颜回", courtesy: "字子渊", slug: "yan-hui", seal: "回", trait: "在简朴中，守住内心的丰盈。", note: "孔子称赞他的好学。面对困厄，他让我们重新思考：什么才是值得追求的快乐？", chapter: 5, color: "jade" },
-  { name: "子路", courtesy: "仲由 · 字子路", slug: "zhong-you", seal: "由", trait: "勇敢向前，也学会停步思量。", note: "直率、勇敢，敢于向老师发问。孔子时常提醒他：勇气需要合宜的方向。", chapter: 3, color: "ochre" },
-  { name: "子贡", courtesy: "端木赐 · 字子贡", slug: "duanmu-ci", seal: "赐", trait: "善于问答，也善于理解他人。", note: "擅长言语与交往。他与孔子的问答，把待人接物引向更深一层的相互体谅。", chapter: 4, color: "blue" },
-  { name: "曾参", courtesy: "字子舆 · 尊称曾子", slug: "zeng-shen", seal: "参", trait: "每日自省，把所学传向明天。", note: "《论语》记载他的自省与忠恕之说。回望老师的一生，他也提醒后来者把学问落实于自己。", chapter: 7, color: "clay" },
-];
-
-export function ConfuciusGame() {
+export function ConfuciusGame({ characters = [] }: { characters?: GameCharacter[] } = {}) {
+  const motion = useSyncExternalStore(subscribeMotion, readMotion, () => false);
+  const [selectedCharacter, setSelectedCharacter] = useState<string | null>(null);
   const progress = useSyncExternalStore(subscribeProgress, getProgressSnapshot, getServerProgressSnapshot);
   const [view, setView] = useState<View>("map");
   const [chapterIndex, setChapterIndex] = useState(0);
@@ -37,8 +43,16 @@ export function ConfuciusGame() {
   const stats = gameStats(progress);
   const current = gameChapters[Math.min(completed, gameChapters.length - 1)];
 
+  useEffect(() => {
+    const restore = () => { setView("map"); setNotice("旅程进度已更新，可以继续启程。"); };
+    window.addEventListener("lunyu-cloud-loaded", restore);
+    return () => window.removeEventListener("lunyu-cloud-loaded", restore);
+  }, []);
+  const teacher = characters.find((person) => person.slug === "confucius");
+  const cast = chapterCharacterSlugs[chapterIndex].flatMap((slug) => { const person = characters.find((item) => item.slug === slug); return person ? [person] : []; });
+  function openCharacter(slug: string) { setSelectedCharacter(slug); }
   function persist(next: GameProgress) { setSavedLocally(saveProgress(next)); }
-  function focusHeading() { requestAnimationFrame(() => { heading.current?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: "instant" }); }); }
+  function focusHeading() { requestAnimationFrame(() => { (heading.current ?? document.querySelector<HTMLElement>("#journey-main h1"))?.focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: "instant" }); }); }
   function navigate(next: View) { setView(next); setNotice(""); setConfirmReset(false); focusHeading(); }
   function enterChapter(index: number) {
     if (index > completed) { setNotice(`先完成第${numerals[completed]}章，再开启这段旅程。`); return; }
@@ -85,10 +99,10 @@ export function ConfuciusGame() {
     setNotice("学思手记已导出。");
   }
 
-  const navItems: { view: View; label: string; icon: string }[] = [{ view: "map", label: "人生长卷", icon: "mountain" }, { view: "people", label: "同行弟子", icon: "people" }, { view: "journal", label: "学思手记", icon: "book" }];
+  const navItems: { view: View; label: string; icon: string }[] = [{ view: "map", label: "人生长卷", icon: "mountain" }, { view: "people", label: "孔门人物", icon: "people" }, { view: "journal", label: "学思手记", icon: "book" }];
 
   return (
-    <div className="confucius-game">
+    <div className="confucius-game" data-motion={motion ? "on" : "off"}>
       <a className="game-skip" href="#journey-main">跳到游戏内容</a>
       <header className="game-header">
         <div className="game-header-inner">
@@ -96,15 +110,16 @@ export function ConfuciusGame() {
             <span className="game-brand-seal">行</span><span><strong>与孔子同行</strong><small>A LIFE WITH CONFUCIUS</small></span>
           </button>
           <nav className="game-nav" aria-label="游戏导航">
-            {navItems.map((item) => <button key={item.view} onClick={() => navigate(item.view)} aria-current={(view === item.view || (item.view === "map" && (view === "story" || view === "ending"))) ? "page" : undefined}><GameIcon name={item.icon} size={17} />{item.label}{item.view === "journal" && answered > 0 && <span className="game-count">{answered}</span>}</button>)}
+            {navItems.map((item) => <button key={item.view} onClick={() => { setSelectedCharacter(null); navigate(item.view); }} aria-current={(view === item.view || (item.view === "map" && (view === "story" || view === "ending"))) ? "page" : undefined}><GameIcon name={item.icon} size={17} />{item.label}{item.view === "journal" && answered > 0 && <span className="game-count">{answered}</span>}</button>)}
           </nav>
-          <Link href="/zh-Hans" className="game-library">论语书房 <GameIcon name="arrow" size={16} /></Link>
+          <div className="game-header-actions"><button className="game-motion-button" onClick={toggleMotion} aria-pressed={motion} aria-label={motion ? "关闭动态效果" : "开启动画效果"} title={motion ? "关闭动态效果" : "开启动画效果"}><GameIcon name={motion ? "motion" : "pause"} size={18} /></button><GameAccount /><Link href="/zh-Hans" className="game-library">论语书房 <GameIcon name="arrow" size={16} /></Link></div>
         </div>
       </header>
       <main id="journey-main" className="game-shell">
-        <div className="game-context"><span><i /> 互动叙事 · 中文体验版</span><span role="status"><GameIcon name={savedLocally ? "check" : "time"} size={14} />{savedLocally ? "进度保存在此浏览器" : "暂存于本页，关闭后将丢失"}</span></div>
+        <div className="game-context"><span><i /> 互动叙事 · 中文体验版</span>{savedLocally ? <AccountSaveIndicator /> : <span role="status">暂存于本页，请导出手记留存</span>}</div>
         <div role="status" className={notice ? "game-notice" : "game-sr-only"}>{notice}</div>
 
+        <div className="game-view-transition" key={`${view}-${chapterIndex}-${sceneIndex}-${showSummary}`} >
         {view === "map" && <>
           <section className="game-hero">
             <div className="game-hero-copy">
@@ -114,18 +129,21 @@ export function ConfuciusGame() {
               <button className="game-button game-button-primary game-start" onClick={() => answered === totalScenes ? navigate("ending") : enterChapter(Math.min(completed, 7))}>{answered === totalScenes ? "回看我的一生之旅" : answered ? "继续我的旅程" : "开启我的旅程"}<GameIcon name="arrow" /></button>
               <div className="game-hero-meta"><span><GameIcon name="time" size={15} />约 25 分钟</span><span>无需注册</span><span>随时继续</span></div>
             </div>
-            <div className="game-hero-art">
+            <div className="game-hero-art" onPointerMove={(event) => { if (!motion || event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; const bounds = event.currentTarget.getBoundingClientRect(); event.currentTarget.style.setProperty("--portrait-turn", `${((event.clientX - bounds.left) / bounds.width - .5) * 9}deg`); event.currentTarget.style.setProperty("--portrait-lean", `${(.5 - (event.clientY - bounds.top) / bounds.height) * 7}deg`); }} onPointerLeave={(event) => {event.currentTarget.style.setProperty("--portrait-turn", "0deg");event.currentTarget.style.setProperty("--portrait-lean", "0deg");}}>
               <GameLandscape chapter={Math.min(completed, 7)} />
-              <div className="game-art-inscription" aria-hidden="true">山高水长<br />吾道不孤</div>
+              <div className="game-atmosphere" aria-hidden="true"><i /><i /><i /><i /></div>
+              {teacher && <button className="game-hero-character" onClick={() => openCharacter(teacher.slug)} aria-label="认识孔子，查看3D卡通画像与原画"><span className="game-hero-character-ring" /><CharacterPortrait character={teacher} priority /><span className="game-hero-character-label"><strong>孔子</strong><small>字仲尼 · 你的同行之师</small><GameIcon name="arrow" size={18} /></span></button>}
+              <div className="game-hero-companions">{["yan-hui", "zhong-you", "duanmu-ci"].flatMap((slug) => { const person = characters.find((item) => item.slug === slug); return person ? [<button key={slug} onClick={() => openCharacter(slug)} aria-label={`认识${person.name}`}><CharacterPortrait character={person} /><span>{person.courtesyName || person.name}</span></button>] : []; })}</div>
+              <div className="game-art-inscription" aria-hidden="true">有朋自远方来<br />不亦乐乎</div>
               <div className="game-art-place"><span className="game-map-dot" /><span><strong>{current.location}</strong><small>{current.year} · {current.age}</small></span></div>
-              <div className="game-art-caption"><span>春秋行旅图</span><span>意象绘景 · 非历史地图</span></div>
+              <div className="game-art-caption"><span>春秋行旅图</span><span>后世画像 · 3D 卡通再创作</span></div>
             </div>
           </section>
           <section className="game-path" aria-labelledby="path-title">
             <div className="game-section-heading"><div><p className="game-eyebrow">THE JOURNEY</p><h2 id="path-title">一生八章，步履不停。</h2></div><div className="game-progress-caption"><span>已走过 <strong>{completed}</strong> / 8 章</span><div className="game-progress-track"><span style={{ width: `${completed / 8 * 100}%` }} /></div></div></div>
             <div className="game-chapter-grid">{gameChapters.map((item, index) => {
               const done = index < completed; const active = index === Math.min(completed, 7); const locked = index > completed;
-              return <button key={item.id} className={`game-chapter ${active ? "is-current" : ""} ${done ? "is-complete" : ""} ${locked ? "is-locked" : ""}`} aria-disabled={locked} onClick={() => enterChapter(index)}>
+              return <button key={item.id} style={{ "--card-order": index } as React.CSSProperties} className={`game-chapter ${active ? "is-current" : ""} ${done ? "is-complete" : ""} ${locked ? "is-locked" : ""}`} aria-disabled={locked} onClick={() => enterChapter(index)}>
                 <span className="game-chapter-top"><span>第{numerals[index]}章</span><GameIcon name={done ? "check" : locked ? "lock" : "compass"} size={16} /></span>
                 <span className="game-chapter-symbol" aria-hidden="true">{["学", "礼", "教", "仕", "行", "困", "归", "传"][index]}</span>
                 <strong>{chapterNames[index]}</strong><span className="game-chapter-age">{item.age}</span>
@@ -133,7 +151,7 @@ export function ConfuciusGame() {
               </button>;
             })}</div>
           </section>
-          <section className="game-principles" aria-label="如何体验"><div><GameIcon name="compass" size={26} /><div><h3>在故事里，作出选择</h3><p>16 个真实困境的改编情境，体会每次抉择的得失。</p></div></div><div><GameIcon name="people" size={26} /><div><h3>与弟子一起，向学而行</h3><p>遇见颜回、子路、子贡，理解不同性情与人生。</p></div></div><div><GameIcon name="book" size={26} /><div><h3>回到原文，留下自己的答案</h3><p>收集经典与感悟，让两千多年前的智慧走进今天。</p></div></div></section>
+          <section className="game-principles" aria-label="如何体验"><div><GameIcon name="compass" size={26} /><div><h3>在故事里，作出选择</h3><p>16 个真实困境的改编情境，体会每次抉择的得失。</p></div></div><div><GameIcon name="people" size={26} /><div><h3>与弟子一起，向学而行</h3><p>认识孔子与 77 位弟子，让每一句经典有面孔、有来处。</p></div></div><div><GameIcon name="book" size={26} /><div><h3>回到原文，留下自己的答案</h3><p>收集经典与感悟，让两千多年前的智慧走进今天。</p></div></div></section>
         </>}
 
         {view === "story" && <div className="game-story-layout">
@@ -143,6 +161,7 @@ export function ConfuciusGame() {
             <div className="game-story-landscape"><GameLandscape chapter={chapterIndex} compact /></div>
             <p className="game-sidebar-place"><GameIcon name="pin" size={16} />{chapter.location}</p><p className="game-sidebar-year">{chapter.year} · {chapter.age}</p>
             <p className="game-sidebar-summary">{chapter.summary}</p>
+            <div className="game-story-cast"><p className="game-eyebrow">此章人物</p><div>{cast.map((person) => <button key={person.slug} onClick={() => openCharacter(person.slug)} aria-label={`了解${person.name}`}><CharacterPortrait character={person} /><span>{person.name}</span></button>)}</div><small>后世画像再创作，非特定年龄容貌</small></div>
             <div className="game-character-tags">{chapter.characters.map((person) => <span key={person}>{person}</span>)}</div>
             <div className="game-virtues"><h3>此行所得</h3>{(["ren", "zhi", "yong"] as const).map((key) => <div key={key}><span>{virtueLabels[key]}</span><div><i style={{ width: `${stats[key] / Math.max(1, answered * 3) * 100}%` }} /></div><strong>{stats[key]}</strong></div>)}<p>记录思考倾向，不评定品德高低。</p></div>
           </aside>
@@ -170,15 +189,17 @@ export function ConfuciusGame() {
           </section>
         </div>}
 
-        {view === "people" && <section className="game-collection"><p className="game-eyebrow">FELLOW TRAVELERS</p><h1 ref={heading} tabIndex={-1}>三人行，必有我师。</h1><p className="game-collection-intro">他们有不同的性情，也有各自的困惑。在同行中，读懂孔子的因材施教。</p><div className="game-people-grid">{companions.map((person) => <article className={`game-person game-person-${person.color}`} key={person.name}><div className="game-person-top"><span className="game-person-seal">{person.seal}</span><span className="game-person-status">{completed > person.chapter ? "已在旅程中相遇" : `第${numerals[person.chapter]}章相遇`}</span></div><h2>{person.name}<small>{person.courtesy}</small></h2><strong>{person.trait}</strong><p>{person.note}</p><Link href={`/zh-Hans/people/${person.slug}`}>阅读人物年表<GameIcon name="arrow" size={17} /></Link></article>)}</div><Link href="/zh-Hans/people" className="game-text-button">认识更多孔门弟子<GameIcon name="arrow" size={17} /></Link></section>}
+        {view === "people" && <CharacterGallery characters={characters} />}
 
-        {view === "journal" && <section className="game-collection game-journal"><div className="game-section-heading"><div><p className="game-eyebrow">THOUGHTS ALONG THE WAY</p><h1 ref={heading} tabIndex={-1}>我的学思手记</h1></div>{answered > 0 && <button className="game-button" onClick={exportJournal}><GameIcon name="download" size={17} />导出手记</button>}</div><p className="game-collection-intro">每一个选择，都留下了你的思考。手记只保存在此浏览器，可以导出留存。</p>
+        {view === "journal" && <section className="game-collection game-journal"><div className="game-section-heading"><div><p className="game-eyebrow">THOUGHTS ALONG THE WAY</p><h1 ref={heading} tabIndex={-1}>我的学思手记</h1></div>{answered > 0 && <button className="game-button" onClick={exportJournal}><GameIcon name="download" size={17} />导出手记</button>}</div><p className="game-collection-intro">每一个选择，都留下了你的思考。游客手记保存在此浏览器；登录后同步到账号，也可以随时导出。</p>
           {answered === 0 ? <div className="game-empty"><GameIcon name="book" size={46} /><h2>旅程尚未开始，书页正等着你。</h2><p>走进第一个故事，这里就会记下你的选择与感悟。</p><button className="game-button game-button-primary" onClick={() => enterChapter(0)}>开始第一章<GameIcon name="arrow" size={17} /></button></div> : <div className="game-journal-entries">{gameChapters.filter((item) => item.scenes.some((story) => progress.answers[story.id])).map((item) => <article key={item.id}><p className="game-eyebrow">第{numerals[item.number - 1]}章 · {item.year}</p><h2>{item.title}</h2>{item.scenes.map((story) => { const choice = story.choices.find((option) => option.id === progress.answers[story.id]); return choice && <details key={story.id}><summary>{story.title}<span>{choice.label}</span></summary><p>{choice.consequence}</p><p>{choice.reflection}</p></details>; })}<blockquote>{item.quote.text}<cite>{item.quote.source}</cite></blockquote><label htmlFor={`note-${item.id}`}>我的感悟</label><textarea id={`note-${item.id}`} maxLength={1000} placeholder="现在回看，你有了什么新的想法？" value={progress.reflections[item.id] ?? ""} onChange={(event) => persist({ ...progress, reflections: { ...progress.reflections, [item.id]: event.target.value } })} /></article>)}</div>}
-          {answered > 0 && <div className="game-reset-area">{confirmReset ? <><p>重新启程会清除这台浏览器中的选择与手记。建议先导出留存。</p><button className="game-button" onClick={() => setConfirmReset(false)}>保留旅程</button><button className="game-button game-button-danger" onClick={() => { persist({ ...emptyProgress, answers: {}, reflections: {} }); setChapterIndex(0); setSceneIndex(0); navigate("map"); setNotice("已准备好，重新出发。"); }}>确认清除并重新启程</button></> : <button className="game-text-button" onClick={() => setConfirmReset(true)}><GameIcon name="reset" size={16} />重新启程</button>}</div>}
+          {answered > 0 && <div className="game-reset-area">{confirmReset ? <><p>重新启程会清除当前选择与手记；登录时也会同步清空云端进度。建议先导出留存。</p><button className="game-button" onClick={() => setConfirmReset(false)}>保留旅程</button><button className="game-button game-button-danger" onClick={() => { persist({ ...emptyProgress, answers: {}, reflections: {} }); setChapterIndex(0); setSceneIndex(0); navigate("map"); setNotice("已准备好，重新出发。"); }}>确认清除并重新启程</button></> : <button className="game-text-button" onClick={() => setConfirmReset(true)}><GameIcon name="reset" size={16} />重新启程</button>}</div>}
         </section>}
 
         {view === "ending" && <section className="game-ending"><p className="game-eyebrow">八章走过 · 求索未止</p><span className="game-completion-seal">同行</span><h1 ref={heading} tabIndex={-1}>一生的路，<br />通向今天的你。</h1><p>从少年志学到晚年传道，你已走过孔子一生的八个片段。<br />真正的学习，才刚刚回到日常。</p><div className="game-ending-stats">{(["ren", "zhi", "yong"] as const).map((key) => <div key={key}><span>{virtueLabels[key]}</span><strong>{stats[key]}</strong><small>{key === "ren" ? "体察与关怀" : key === "zhi" ? "辨析与求知" : "担当与行动"}</small></div>)}</div><p className="game-ending-note">这些数值只记录本次选择的思考倾向，不是对品德或人格的评定。</p><div className="game-ending-actions"><button className="game-button game-button-primary" onClick={() => navigate("journal")}>翻开我的手记<GameIcon name="book" size={18} /></button><button className="game-button" onClick={exportJournal}>导出旅程<GameIcon name="download" size={18} /></button><Link className="game-text-button" href="/zh-Hans/analects">带着问题，重读《论语》<GameIcon name="arrow" size={18} /></Link></div><div className="game-ending-art"><GameLandscape chapter={7} /></div></section>}
+        </div>
       </main>
+      {selectedCharacter && (() => { const index = characters.findIndex((person) => person.slug === selectedCharacter); const person = characters[index]; return person ? <CharacterDialog character={person} onClose={() => setSelectedCharacter(null)} onPrevious={() => setSelectedCharacter(characters[(index - 1 + characters.length) % characters.length].slug)} onNext={() => setSelectedCharacter(characters[(index + 1) % characters.length].slug)} index={index + 1} total={characters.length} /> : null; })()}
       <footer className="game-footer"><span><span className="game-footer-seal">论</span>lunyu.ai <span className="game-footer-divider">/</span>让经典，成为一段亲历。</span><span>故事据《论语》《史记》等改编 · <Link href="/zh-Hans/people/confucius">查阅孔子年表 ↗</Link></span></footer>
     </div>
   );

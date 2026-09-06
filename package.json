@@ -16,13 +16,18 @@
     "qa:seo": "node scripts/seo-qa.mjs",
     "cf:setup": "node scripts/cloudflare-setup.mjs",
     "build:favicon": "node scripts/make-favicon.mjs",
-    "prebuild": "node scripts/make-favicon.mjs"
+    "prebuild": "node scripts/make-favicon.mjs",
+    "qa:game": "node scripts/game-qa.mjs && node scripts/game-assets-qa.mjs && node scripts/account-sync-qa.mjs && node scripts/account-registration-qa.mjs",
+    "qa:accounts": "node scripts/account-qa.mjs"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.10",
+    "@supabase/ssr": "^0.12.6",
+    "@supabase/supabase-js": "^2.115.0",
     "next": "16.2.10",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "server-only": "^0.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -31,6 +36,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.10",
+    "postgres": "^3.4.9",
     "sharp": "^0.35.3",
     "tailwindcss": "^4",
     "to-ico": "^1.1.5",
