@@ -11,6 +11,7 @@ const trustPages = ["about", "method", "sources", "faq"];
 const stableLastmod = "2026-08-20";
 const intentHubLastmod = "2026-08-24";
 const featuredIndexLastmod = "2026-08-24";
+const expandedFeaturedIndexLastmod = "2026-08-27";
 const intentHubSlugs = ["lunyu", "the-analects", "analects-of-confucius", "confucius-quotes"];
 const hubIndexLinks = {
   lunyu: ["/index/xue", "/index/ren", "/index/li", "/index/junzi", "/index/zhongshu"],
@@ -123,6 +124,11 @@ if (reviewedCount !== sentences.length) fail(`content: reviewed guide ${reviewed
 if (sentences.some((s) => !s.english?.trim())) fail("content: missing English translation");
 if (sentences.some((s) => !Array.isArray(s.notes) || s.notes.length === 0)) fail("content: missing notes");
 
+assertIncludes(
+  indexSource,
+  "return sentence.classicalChinese;",
+  "knowledge index source-only matching"
+);
 assertIncludes(read("src/lib/listen-hash.ts"), "export function parseListenHash", "listen hash parser");
 assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "parseListenHash", "ListenControls consumes listen hash");
 assertIncludes(read("src/app/[locale]/listen/ListenControls.tsx"), "location.hash", "ListenControls reads location.hash");
@@ -475,6 +481,50 @@ const featuredIndexChecks = [
     marker: "review app",
   },
   {
+    slug: "yi",
+    href: "/analects/li-ren/li-ren-010",
+    glossaryZh: "义指合宜与正当",
+    glossaryEn: "Rightness and appropriateness, the noble person's measure amid interests",
+    marker: "rulebook written in advance",
+    modifiedDate: expandedFeaturedIndexLastmod,
+    faqCount: 6,
+    sourceAliases: ["义"],
+    sourceCount: 20,
+  },
+  {
+    slug: "xin",
+    href: "/analects/gong-ye-chang/gong-ye-chang-009",
+    glossaryZh: "信关乎言行一致、政令可信",
+    glossaryEn: "Trustworthiness in speech, government, and friendship",
+    marker: "credulity",
+    modifiedDate: expandedFeaturedIndexLastmod,
+    faqCount: 6,
+    sourceAliases: ["信"],
+    sourceCount: 32,
+  },
+  {
+    slug: "xiao",
+    href: "/analects/wei-zheng/wei-zheng-007",
+    glossaryZh: "孝是亲亲之情与礼的实践",
+    glossaryEn: "Filial conduct as familial care",
+    marker: "blind obedience",
+    modifiedDate: expandedFeaturedIndexLastmod,
+    faqCount: 6,
+    sourceAliases: ["孝"],
+    sourceCount: 14,
+  },
+  {
+    slug: "zheng",
+    href: "/analects/yan-yuan/yan-yuan-019",
+    glossaryZh: "政在《论语》中首先关乎正己",
+    glossaryEn: "Government as moral rectification",
+    marker: "management technique",
+    modifiedDate: expandedFeaturedIndexLastmod,
+    faqCount: 6,
+    sourceAliases: ["政", "为政"],
+    sourceCount: 30,
+  },
+  {
     slug: "confucius",
     href: "/analects/shu-er/shu-er-001",
     glossaryZh: "《论语》的核心人物，言行、教学",
@@ -500,7 +550,9 @@ const featuredIndexChecks = [
   },
 ];
 
+const seenFeaturedDescriptions = new Map();
 for (const page of featuredIndexChecks) {
+  const modifiedDate = page.modifiedDate ?? featuredIndexLastmod;
   checkHtml(`/en/index/${page.slug}`, [
     '"@type":"WebPage"',
     '"@type":"FAQPage"',
@@ -515,7 +567,7 @@ for (const page of featuredIndexChecks) {
     "Back to the twenty books",
     `/en${page.href}`,
     page.marker,
-    `"dateModified":"${featuredIndexLastmod}"`,
+    `"dateModified":"${modifiedDate}"`,
   ]);
   checkHtml(`/zh-Hans/index/${page.slug}`, [
     '"@type":"FAQPage"',
@@ -539,8 +591,56 @@ for (const page of featuredIndexChecks) {
     if (description.includes(page.glossaryZh) || description.includes(page.glossaryEn)) {
       fail(`${route}: still using the one-line glossary description`);
     }
-    if (!html.includes(`"dateModified":"${featuredIndexLastmod}"`)) {
-      fail(`${route}: featured index must publish ${featuredIndexLastmod}`);
+    const previousRoute = seenFeaturedDescriptions.get(description);
+    if (description && previousRoute && previousRoute !== route) {
+      fail(`duplicate featured-index description: ${route} and ${previousRoute}`);
+    } else if (description) {
+      seenFeaturedDescriptions.set(description, route);
+    }
+    if (!html.includes(`"dateModified":"${modifiedDate}"`)) {
+      fail(`${route}: featured index must publish ${modifiedDate}`);
+    }
+    if (page.faqCount) {
+      const graphDocument = extractJsonLd(html, route).find((document) =>
+        Array.isArray(document?.["@graph"])
+      );
+      const graph = graphDocument?.["@graph"] ?? [];
+      const pageUrl = `${siteUrl}${route}`;
+      const pageNode = graph.find((node) => node?.["@id"] === `${pageUrl}#webpage`);
+      const faqNode = graph.find((node) => node?.["@id"] === `${pageUrl}#faq`);
+      if (pageNode?.dateModified !== modifiedDate) {
+        fail(`${route}: WebPage dateModified should be ${modifiedDate}`);
+      }
+      if (pageNode?.hasPart?.["@id"] !== `${pageUrl}#faq`) {
+        fail(`${route}: WebPage must link its FAQPage`);
+      }
+      if (!hasSchemaType(faqNode, "FAQPage") || faqNode?.mainEntity?.length !== page.faqCount) {
+        fail(`${route}: FAQPage should contain ${page.faqCount} source-visible questions`);
+      }
+    }
+    if (page.sourceAliases) {
+      const matchingPassages = sentences.filter((sentence) =>
+        page.sourceAliases.some((alias) => sentence.classicalChinese.includes(alias))
+      );
+      if (matchingPassages.length !== page.sourceCount) {
+        fail(`${route}: expected ${page.sourceCount} source matches, got ${matchingPassages.length}`);
+      }
+      const expectedIds = new Set(matchingPassages.map((sentence) => sentence.id));
+      const passageHrefPattern = new RegExp(
+        `href="/${locale}/analects/[^/"]+/([^"#?]+)"`,
+        "g"
+      );
+      const linkedIds = new Set(
+        [...html.matchAll(passageHrefPattern)].map((match) => match[1])
+      );
+      for (const id of expectedIds) {
+        if (!linkedIds.has(id)) fail(`${route}: missing source-matched passage ${id}`);
+      }
+      for (const id of linkedIds) {
+        if (!expectedIds.has(id)) {
+          fail(`${route}: passage ${id} is not matched by the classical source text`);
+        }
+      }
     }
     if (page.slug === "zi-gong" && locale === "en") {
       if (html.includes("Si is the personal name") || html.includes("addresses him as Si")) {
@@ -553,14 +653,14 @@ for (const page of featuredIndexChecks) {
   }
 }
 
-checkHtml("/en/index/yi", [
+checkHtml("/en/index/xiaoren", [
   "Relevant passages",
-  "Rightness and appropriateness, the noble person's measure amid interests.",
+  "The contrast to the noble person",
   `"dateModified":"${stableLastmod}"`,
 ]);
-checkHtml("/zh-Hans/index/yi", ["相关章句", "义指合宜与正当", `"dateModified":"${stableLastmod}"`]);
+checkHtml("/zh-Hans/index/xiaoren", ["相关章句", "小人与君子相对", `"dateModified":"${stableLastmod}"`]);
 for (const locale of locales) {
-  const route = `/${locale}/index/yi`;
+  const route = `/${locale}/index/xiaoren`;
   const file = htmlPath(route);
   if (!exists(file)) continue;
   const html = read(file);
@@ -570,7 +670,10 @@ for (const locale of locales) {
   if (html.includes('"@type":"FAQPage"')) {
     fail(`${route}: unfeatured index must not grow FAQ JSON-LD`);
   }
-  if (html.includes(`"dateModified":"${featuredIndexLastmod}"`)) {
+  if (
+    html.includes(`"dateModified":"${featuredIndexLastmod}"`) ||
+    html.includes(`"dateModified":"${expandedFeaturedIndexLastmod}"`)
+  ) {
     fail(`${route}: unfeatured index must keep the 2026-08-20 modification date`);
   }
 }
@@ -755,19 +858,26 @@ function sitemapLastmodFor(loc) {
   const match = sitemap.match(new RegExp(`<loc>${escaped}</loc>\\s*<lastmod>([^<]+)</lastmod>`));
   return match?.[1] ?? "";
 }
-const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
-for (const slug of ["ren", "li", "zhongshu", "junzi", "xue", "confucius", "yan-yuan", "zi-gong"]) {
+const featuredSitemapDates = new Map([
+  ["ren", featuredIndexLastmod],
+  ...featuredIndexChecks.map((page) => [
+    page.slug,
+    page.modifiedDate ?? featuredIndexLastmod,
+  ]),
+]);
+for (const [slug, expectedDate] of featuredSitemapDates) {
+  const serializedDate = `${expectedDate}T00:00:00.000Z`;
   for (const locale of locales) {
     const loc = `${siteUrl}/${locale}/index/${slug}`;
     const lastmod = sitemapLastmodFor(loc);
-    if (lastmod !== featuredSitemapDate && lastmod !== featuredIndexLastmod) {
-      fail(`sitemap: ${loc} should lastmod ${featuredIndexLastmod}, got ${lastmod || "missing"}`);
+    if (lastmod !== serializedDate && lastmod !== expectedDate) {
+      fail(`sitemap: ${loc} should lastmod ${expectedDate}, got ${lastmod || "missing"}`);
     }
   }
 }
 for (const locale of locales) {
-  const loc = `${siteUrl}/${locale}/index/yi`;
+  const loc = `${siteUrl}/${locale}/index/xiaoren`;
   const lastmod = sitemapLastmodFor(loc);
   if (lastmod !== unfeaturedSitemapDate && lastmod !== stableLastmod) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
@@ -776,7 +886,8 @@ for (const locale of locales) {
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${expandedFeaturedIndexLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }

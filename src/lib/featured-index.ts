@@ -50,8 +50,13 @@ export function localize(locale: Locale, text: LocalizedText) {
   return t(locale, text.zh, text.en);
 }
 
-/** Editorial date for featured index pages (仁 + the deepened entries). */
+/** Editorial date for the first featured-index release. */
 export const featuredIndexModifiedDate = "2026-08-24";
+
+/** Editorial date for the four source-grounded concept pages added later. */
+export const expandedFeaturedIndexModifiedDate = "2026-08-27";
+
+const expandedFeaturedIndexSlugs = new Set(["yi", "xin", "xiao", "zheng"]);
 
 const featuredIndexBySlug: Record<string, FeaturedIndexContent> = {
   ren: {
@@ -292,7 +297,10 @@ export function getFeaturedIndex(slug: string) {
 }
 
 export function indexEntryModifiedDate(slug: string) {
-  return getFeaturedIndex(slug) ? featuredIndexModifiedDate : undefined;
+  if (!getFeaturedIndex(slug)) return undefined;
+  return expandedFeaturedIndexSlugs.has(slug)
+    ? expandedFeaturedIndexModifiedDate
+    : featuredIndexModifiedDate;
 }
 
 export function featuredSentence(sentenceId: string): Sentence | undefined {
