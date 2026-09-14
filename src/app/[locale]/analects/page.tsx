@@ -15,8 +15,8 @@ export async function generateMetadata({
   const title = t(locale, "《论语》二十篇目录", "The Analects — Twenty Books");
   const description = t(
     locale,
-    "《论语》二十篇完整目录，简体原文与 James Legge 公版英译，共 499 章，逐章可读、可听、可索引。",
-    "The complete twenty books of The Analects — Simplified Chinese source text and James Legge's public-domain English translation, 499 chapters, readable and indexable."
+    "《论语》二十篇完整目录：简体原文与 James Legge 公版英译，共 499 章，逐章可读、可听、可索引。",
+    "Twenty Analects books: simplified Chinese source, James Legge's public-domain English, 499 chapters — readable, hearable, and indexable."
   );
   return {
     title,

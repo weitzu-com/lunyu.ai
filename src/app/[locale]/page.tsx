@@ -27,8 +27,8 @@ export function generateMetadata({
     );
     const description = t(
       locale,
-      `《论语》二十篇 ${contentCoverage.totalPassages} 章已按简体原文、${contentCoverage.reviewedGuide.complete ? "审校白话导读" : `白话导读（已审校 ${contentCoverage.reviewedGuide.ratio}）`}、James Legge 公版英译、注释逐句发布。`,
-      `All ${contentCoverage.totalPassages} passages of The Analects, passage by passage: simplified Chinese, ${contentCoverage.reviewedGuide.complete ? "a reviewed modern Chinese guide" : `a modern Chinese guide reviewed for ${contentCoverage.reviewedGuide.ratio} passages`}, James Legge's public-domain English translation, and notes.`
+      `《论语》二十篇 ${contentCoverage.totalPassages} 章：简体原文、${contentCoverage.reviewedGuide.complete ? "审校白话导读" : `白话导读（已审校 ${contentCoverage.reviewedGuide.ratio}）`}、James Legge 公版英译与注释，逐句可读。`,
+      `All ${contentCoverage.totalPassages} Analects passages, book by book: simplified Chinese, ${contentCoverage.reviewedGuide.complete ? "a reviewed modern Chinese guide" : `a modern Chinese guide reviewed for ${contentCoverage.reviewedGuide.ratio} passages`}, Legge's public-domain English, and notes.`
     );
     return {
       title,
@@ -117,7 +117,9 @@ export default async function LocaleHome({
           <div className="absolute right-4 top-4">
             <span className="reading-dot" aria-hidden />
           </div>
-          <div className="mb-4 font-ui text-sm text-ink-soft">{t(locale, "今日一句", "Passage of the day")}</div>
+          <h2 className="mb-4 font-ui text-sm font-normal text-ink-soft">
+            {t(locale, "今日一句", "Passage of the day")}
+          </h2>
           <SentenceCard locale={locale} sentence={featured} compact />
           <ReadingHint currentId={featured.id} locale={locale} />
         </div>

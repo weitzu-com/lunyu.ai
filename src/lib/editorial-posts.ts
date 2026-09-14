@@ -726,6 +726,12 @@ export function getEditorialPost(slug: string) {
   return editorialPosts.find((post) => post.slug === slug);
 }
 
+/** Notes that already list an index entry in `related` — used for the reverse index → Note link. */
+export function editorialPostsForIndexSlug(slug: string) {
+  const path = `/index/${slug}`;
+  return editorialPosts.filter((post) => post.related.includes(path));
+}
+
 export function postTitle(locale: Locale, post: EditorialPost) {
   return t(locale, post.titleZh, post.titleEn);
 }

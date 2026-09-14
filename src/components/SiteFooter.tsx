@@ -96,7 +96,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <div className="max-w-sm">
             <div className="flex items-center gap-2">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-seal-solid.svg" alt="" width={28} height={28} />
+              <img src="/logo-seal-solid.svg" alt="lunyu.ai" width={28} height={28} />
               <div className="font-cjk text-base text-ink">lunyu.ai</div>
             </div>
             <p className="mt-3 leading-6 text-ink-soft">

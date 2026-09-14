@@ -11,6 +11,7 @@ const trustPages = ["about", "method", "sources", "faq"];
 const stableLastmod = "2026-08-20";
 const intentHubLastmod = "2026-08-24";
 const featuredIndexLastmod = "2026-08-24";
+const entityIndexRefreshLastmod = "2026-09-14";
 const intentHubSlugs = ["lunyu", "the-analects", "analects-of-confucius", "confucius-quotes"];
 const hubIndexLinks = {
   lunyu: ["/index/xue", "/index/ren", "/index/li", "/index/junzi", "/index/zhongshu"],
@@ -72,6 +73,33 @@ function checkHtml(route, expectations) {
 function extractMetaDescription(html) {
   const match = html.match(/<meta name="description" content="([^"]*)"/);
   return match ? match[1] : "";
+}
+
+function decodeHtmlEntities(value) {
+  return value
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;/gi, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&#x2F;/gi, "/");
+}
+
+function headingLevels(html) {
+  return [...html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
+}
+
+function assertNoHeadingSkip(route, html) {
+  const levels = headingLevels(html);
+  if (!levels.length || levels[0] !== 1) {
+    fail(`${route}: first heading must be h1`);
+    return;
+  }
+  let previous = 1;
+  for (const level of levels.slice(1)) {
+    if (level > previous + 1) fail(`${route}: heading skip h${previous} → h${level}`);
+    previous = level;
+  }
 }
 
 function countRegex(text, regex) {
@@ -140,6 +168,7 @@ checkHtml("/zh-Hans", [
   '"@type":"WebSite"',
   '"@type":"Organization"',
   '"sameAs"',
+  'alt="lunyu.ai"',
 ]);
 
 checkHtml("/en", [
@@ -147,6 +176,7 @@ checkHtml("/en", [
   `rel="canonical" href="${siteUrl}/en"`,
   `hrefLang="zh-Hans" href="${siteUrl}/zh-Hans"`,
   '"@type":"WebSite"',
+  'alt="lunyu.ai"',
 ]);
 
 const gameRoute = "/zh-Hans/game";
@@ -178,6 +208,11 @@ if (!exists(htmlPath(gameRoute))) {
     fail(`${gameRoute}: game must be indexable`);
   }
   if (gameHtml.includes('hrefLang="en"')) fail(`${gameRoute}: must not advertise an unavailable English translation`);
+  assertIncludes(gameHtml, 'hrefLang="zh-Hans"', gameRoute);
+  assertIncludes(gameHtml, 'hrefLang="x-default"', gameRoute);
+  if (!gameHtml.includes(`hrefLang="zh-Hans" href="${gameUrl}"`) && !gameHtml.includes(`hrefLang="x-default" href="${gameUrl}"`)) {
+    fail(`${gameRoute}: hreflang pair must point at the Chinese game URL`);
+  }
   const gameSchema = extractJsonLd(gameHtml, gameRoute).find((item) => hasSchemaType(item, "VideoGame"));
   if (!gameSchema || gameSchema.url !== gameUrl || gameSchema.inLanguage !== "zh-Hans" || gameSchema.isAccessibleForFree !== true) {
     fail(`${gameRoute}: VideoGame schema must describe the free Chinese game at its canonical URL`);
@@ -186,6 +221,30 @@ if (!exists(htmlPath(gameRoute))) {
 const englishGameMetadata = ".next/server/app/en/game.meta";
 if (exists(englishGameMetadata) && JSON.parse(read(englishGameMetadata)).status !== 404) {
   fail("/en/game: unavailable translation must return 404");
+}
+
+for (const route of ["/", "/zh-Hans", "/en", "/en/analects/xue-er", "/zh-Hans/analects/xue-er"].map((item) =>
+  item === "/" ? "/en" : item
+)) {
+  const file = htmlPath(route);
+  if (exists(file)) assertNoHeadingSkip(route, read(file));
+}
+
+for (const route of ["/en", "/zh-Hans", "/en/analects", "/zh-Hans/analects"]) {
+  const file = htmlPath(route);
+  if (!exists(file)) continue;
+  const description = decodeHtmlEntities(extractMetaDescription(read(file)));
+  if (!description) fail(`${route}: meta description missing`);
+  if (description.length > 160) fail(`${route}: meta description length ${description.length} exceeds 160`);
+}
+
+{
+  const lunyuHtml = exists(htmlPath("/en/topics/lunyu")) ? read(htmlPath("/en/topics/lunyu")) : "";
+  const lunyuTitle = lunyuHtml.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? "";
+  if (lunyuTitle.includes("&amp;")) fail("/en/topics/lunyu: title still contains literal &amp;");
+  if (lunyuTitle && !/Chinese Text and Translation/.test(lunyuTitle)) {
+    fail("/en/topics/lunyu: title should use 'and' instead of an encoded ampersand");
+  }
 }
 
 checkHtml("/zh-Hans/analects/xue-er/xue-er-001", [
@@ -953,6 +1012,49 @@ checkHtml("/zh-Hans/blogs/what-is-a-junzi", [
   }
 }
 
+for (const locale of locales) {
+  checkHtml(`/${locale}/index/zai-wo`, [
+    "Zaiwo",
+    "Tsai Wo",
+    `href="/${locale}/blogs/zai-wo-in-the-analects"`,
+    `/${locale}/analects/yang-huo/yang-huo-021`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-009`,
+    `"dateModified":"${entityIndexRefreshLastmod}"`,
+  ]);
+  checkHtml(`/${locale}/index/duke-ai`, [
+    locale === "en" ? "Duke Ai of Lu" : "鲁哀公",
+    "Ai Gong",
+    `/${locale}/analects/wei-zheng/wei-zheng-019`,
+    `"dateModified":"${entityIndexRefreshLastmod}"`,
+  ]);
+  checkHtml(`/${locale}/index/duke-ding`, [
+    locale === "en" ? "Duke Ding of Lu" : "鲁定公",
+    "Ding Gong",
+    `/${locale}/analects/ba-yi/ba-yi-019`,
+    `"dateModified":"${entityIndexRefreshLastmod}"`,
+  ]);
+  checkHtml(`/${locale}/index/yao-shun-yu`, [
+    "yao shun yu",
+    "yaoshun",
+    `/${locale}/analects/yao-yue/yao-yue-001`,
+    `"dateModified":"${entityIndexRefreshLastmod}"`,
+  ]);
+  checkHtml(`/${locale}/index/wei-ling-gong-person`, [
+    "Wei Ling Gong",
+    "Wei Ling",
+    `/${locale}/analects/xian-wen/xian-wen-020`,
+    `"dateModified":"${entityIndexRefreshLastmod}"`,
+  ]);
+}
+
+checkHtml("/en/index", [
+  "English person and place entries are in the lists below",
+  'id="people"',
+  'id="places"',
+  'href="/zh-Hans/people"',
+  'href="/zh-Hans/places"',
+]);
+
 const seenHubDescriptions = new Map();
 for (const locale of locales) {
   for (const slug of intentHubSlugs) {
@@ -1050,6 +1152,12 @@ for (const locale of locales) {
   if (!lastmod.includes("2026-09-14")) {
     fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
   }
+  for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
+    const entityLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/index/${slug}`);
+    if (!entityLastmod.includes(entityIndexRefreshLastmod)) {
+      fail(`sitemap: /${locale}/index/${slug} lastmod should be ${entityIndexRefreshLastmod}, got ${entityLastmod || "missing"}`);
+    }
+  }
 }
 const rssBodyFile = exists(".next/server/app/rss.xml.body")
   ? ".next/server/app/rss.xml.body"
@@ -1082,7 +1190,8 @@ for (const locale of locales) {
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }
@@ -1151,6 +1260,18 @@ const gameRedirects = (routesManifest.redirects || []).filter((redirect) => redi
 if (gameRedirects.length !== 1 || gameRedirects[0].destination !== gameRoute || gameRedirects[0].statusCode !== 307) {
   fail("routes-manifest: /game must redirect temporarily to the Chinese demo");
 }
+function assertPermanentIndexRedirect(source, hash) {
+  const match = (routesManifest.redirects || []).find((redirect) => redirect.source === source);
+  if (!match || match.statusCode !== 308 || !String(match.destination).startsWith("/en/index")) {
+    fail(`routes-manifest: ${source} must 308 to /en/index`);
+  } else if (hash && !String(match.destination).includes(hash)) {
+    fail(`routes-manifest: ${source} should target ${hash}`);
+  }
+}
+assertPermanentIndexRedirect("/en/people", "#people");
+assertPermanentIndexRedirect("/en/people/:path*", "#people");
+assertPermanentIndexRedirect("/en/places", "#places");
+assertPermanentIndexRedirect("/en/places/:path*", "#places");
 
 const flattenedHeaders = JSON.stringify(vercelConfig.headers || []);
 for (const requiredHeader of [

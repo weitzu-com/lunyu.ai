@@ -101,6 +101,19 @@ export default async function KnowledgeIndexPage({
             "When The Analects leads you to people, places, concepts, and texts, this index provides citable entry pages; each entry maps back to the passages that mention it."
           )}
         </p>
+        {locale === "en" && (
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-ink-soft">
+            English person and place entries are in the lists below. Full biographies and geography maps are published in Chinese at{" "}
+            <Link href="/zh-Hans/people" className="underline underline-offset-4 hover:text-ink">
+              /zh-Hans/people
+            </Link>{" "}
+            and{" "}
+            <Link href="/zh-Hans/places" className="underline underline-offset-4 hover:text-ink">
+              /zh-Hans/places
+            </Link>
+            .
+          </p>
+        )}
 
         {locale === "zh-Hans" && (
           <Link href="/zh-Hans/people" className="mt-8 block border-l-2 border-cinnabar bg-surface p-5 sm:p-6">
@@ -110,7 +123,10 @@ export default async function KnowledgeIndexPage({
         )}
         <div className="mt-10 space-y-10">
           {groups.map((group) => (
-            <section key={group.category}>
+            <section
+              key={group.category}
+              id={group.category === "person" ? "people" : group.category === "place" ? "places" : group.category}
+            >
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <h2 className="font-serif text-3xl text-ink">
                   {categoryLabel(locale, group.category)}
