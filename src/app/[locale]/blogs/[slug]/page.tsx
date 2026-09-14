@@ -43,24 +43,27 @@ export async function generateMetadata({
   const title = postTitle(locale, post);
   const description = postDek(locale, post);
   const path = `/blogs/${post.slug}`;
-  const og = openGraph(locale, path, `${title} · lunyu.ai`, description);
-  const twitter = twitterCard(locale, path, `${title} · lunyu.ai`, description);
-  if (post.cover) {
-    const cover = {
-      url: editorialImageUrl(post.cover),
-      alt: post.cover.alt,
-      width: post.cover.width,
-      height: post.cover.height,
-    };
-    og.images = [cover];
-    twitter.images = [{ url: cover.url, alt: cover.alt }];
-  }
+  const cover =
+    post.cover == null
+      ? undefined
+      : {
+          url: editorialImageUrl(post.cover),
+          alt: post.cover.alt,
+          width: post.cover.width,
+          height: post.cover.height,
+        };
   return {
     title,
     description,
     alternates: alternates(locale, path),
-    openGraph: og,
-    twitter,
+    openGraph: {
+      ...openGraph(locale, path, `${title} · lunyu.ai`, description),
+      ...(cover ? { images: [cover] } : {}),
+    },
+    twitter: {
+      ...twitterCard(locale, path, `${title} · lunyu.ai`, description),
+      ...(cover ? { images: [{ url: cover.url, alt: cover.alt }] } : {}),
+    },
   };
 }
 
