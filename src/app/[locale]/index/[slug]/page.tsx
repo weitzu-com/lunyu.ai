@@ -19,6 +19,7 @@ import {
   sentenceBookLabel,
   sentenceHref,
 } from "@/lib/blogs";
+import { editorialPostsForIndexSlug, postTitle } from "@/lib/editorial-posts";
 import {
   getFeaturedIndex,
   indexEntryModifiedDate,
@@ -80,6 +81,7 @@ export default async function KnowledgeEntryPage({
     ? geographyPlaces.filter((place) => [entity.zhName, ...entity.zhName.split("、")].some((name) => place.name === name || place.aliases.includes(name)))
     : [];
   const relatedEntities = getRelatedBlogs(entity);
+  const relatedNotes = editorialPostsForIndexSlug(entity.slug);
   const featured = getFeaturedIndex(slug);
   const pageUrl = localizedUrl(locale, `/index/${entity.slug}`);
   const description = featured
@@ -171,6 +173,15 @@ export default async function KnowledgeEntryPage({
         <h1 className="font-serif text-[2.5rem] leading-tight sm:text-5xl">
           {blogTitle(locale, entity)}
         </h1>
+        {relatedNotes.length > 0 && (
+          <div className="mt-5 flex flex-wrap gap-2">
+            {relatedNotes.map((post) => (
+              <Link key={post.slug} href={`/${locale}/blogs/${post.slug}`} className="chip">
+                {postTitle(locale, post)}
+              </Link>
+            ))}
+          </div>
+        )}
         {biography && <Link className="ui-button mt-6" href={`/zh-Hans/people/${biography.slug}`}>查看{biography.name}的肖像、著作与生平年表 →</Link>}
         {geographicEntries.length > 0 && <div className="mt-6 flex flex-wrap gap-3">{geographicEntries.map((place) => <Link key={place.slug} className="ui-button" href={`/zh-Hans/places/${place.slug}`}>查看{place.name}的图片、地望与人物活动 →</Link>)}</div>}
         {featured ? (
@@ -191,6 +202,11 @@ export default async function KnowledgeEntryPage({
               <Link href={`/${locale}/analects`} className="chip">
                 {t(locale, "查看论语目录", "Open the Analects index")}
               </Link>
+              {relatedNotes.map((post) => (
+                <Link key={`chip-${post.slug}`} href={`/${locale}/blogs/${post.slug}`} className="chip">
+                  {postTitle(locale, post)}
+                </Link>
+              ))}
             </div>
 
             <section className="mt-10 border-y border-rule bg-surface px-4 py-5 sm:px-6">

@@ -155,8 +155,10 @@ export const blogEntities: BlogEntity[] = [
     zhName: "宰我",
     enName: "Zai Wo",
     aliases: ["宰我", "宰予"],
-    zhSummary: "孔门弟子，常因言行与礼制问题引发孔子的严厉辨析。",
-    enSummary: "A disciple whose questions often provoke sharp teaching on ritual and conduct.",
+    zhSummary:
+      "宰我（又名宰予，字子我）是《论语》里的孔门弟子；英译常见 Zai Wo、Zaiwo、Tsai Wo，Legge 亦作 Tsai Yu。本页回答“宰我是谁”：他出现在问社、昼寝、井有仁焉、言语分科与三年之丧等五章。请从下方章句进入原文，或打开阅读札记。",
+    enSummary:
+      "Zai Wo (also Zaiwo or Tsai Wo; Chinese 宰我, also 宰予; Tsai Yu in Legge) is a disciple in the Analects. This page answers who Zai Wo is from the source text: five chapters on the land altars, daytime sleep, benevolence and the well, the speech grouping, and three years' mourning. Open the passages below, or the reading note.",
   },
   {
     slug: "zi-you",
@@ -236,8 +238,10 @@ export const blogEntities: BlogEntity[] = [
     zhName: "鲁哀公",
     enName: "Duke Ai of Lu",
     aliases: ["哀公", "鲁哀公"],
-    zhSummary: "鲁国国君，常向孔子请教政事。",
-    enSummary: "A ruler of Lu who asks Confucius about government.",
+    zhSummary:
+      "鲁哀公（亦称哀公、Duke Ai of Lu、Ai Gong）是《论语》中的鲁国国君。他问如何使民服、弟子孰为好学，又向有若问年饥用不足，并向宰我问社；齐国陈恒弑君后，孔子还向他请讨。本页列出这些可核对的章句。",
+    enSummary:
+      "Duke Ai of Lu (鲁哀公; also Ai Gong or Duke Ai) is the Lu ruler who questions Confucius and his circle in the Analects. He asks how the people can be made to submit, which disciple loved to learn, and—through You Ruo—what to do in a year of scarcity; he also asks Zai Wo about the land altars and hears a request to punish a usurper. The passages are linked below.",
   },
   {
     slug: "duke-ding",
@@ -245,8 +249,10 @@ export const blogEntities: BlogEntity[] = [
     zhName: "鲁定公",
     enName: "Duke Ding of Lu",
     aliases: ["定公", "鲁定公"],
-    zhSummary: "鲁国国君，出现在君臣、礼乐与政事语境中。",
-    enSummary: "A ruler of Lu appearing in contexts of rulership, ritual, and government.",
+    zhSummary:
+      "鲁定公（亦称定公、Duke Ding of Lu、Ding Gong）是《论语》中的鲁国国君。书中他只直接发问两章：君使臣、臣事君当如何，以及是否有一言可以兴邦或丧邦。本页链回这两则原文，不把篇名或后世纪年写成额外事迹。",
+    enSummary:
+      "Duke Ding of Lu (鲁定公; also Ding Gong or Duke Ding) is the Lu ruler named in two Analects passages. He asks how a prince should employ ministers and how ministers should serve their prince, and whether one sentence can prosper or ruin a state. Those two source chapters are linked below.",
   },
   {
     slug: "duke-jing-of-qi",
@@ -263,8 +269,10 @@ export const blogEntities: BlogEntity[] = [
     zhName: "卫灵公",
     enName: "Duke Ling of Wei",
     aliases: ["卫灵公"],
-    zhSummary: "卫国国君，关联孔子周游与政治判断。",
-    enSummary: "A ruler of Wei connected with Confucius's travels and political judgment.",
+    zhSummary:
+      "卫灵公（Wei Ling Gong / Wei Ling / Duke Ling of Wei）是《论语》点名的卫国国君，与第十五篇《卫灵公》不是同一对象——篇名取自首章，本页只收点出这个人的原文。现存一章记孔子言其无道，又说明宾客、宗庙与军旅各有人主持，故卫不丧。请从下方章句读原文。",
+    enSummary:
+      "Duke Ling of Wei (卫灵公; also Wei Ling Gong, Wei Ling, or Duke Ling) is the Wei ruler named in the Analects—not Book 15, whose title is taken from opening words. One source sentence records Confucius calling his course unprincipled, then naming officers for guests, the ancestral temple, and the army, which is why Wei did not fall. That passage is linked below.",
   },
   {
     slug: "yang-huo",
@@ -308,8 +316,10 @@ export const blogEntities: BlogEntity[] = [
     zhName: "尧、舜、禹",
     enName: "Yao, Shun, and Yu",
     aliases: ["尧", "舜", "禹"],
-    zhSummary: "上古圣王，是《论语》中政治理想与德治传统的重要源头。",
-    enSummary: "Ancient sage kings forming a source of political and moral ideals.",
+    zhSummary:
+      "尧、舜、禹（Yao, Shun, and Yu；检索亦见 yao shun yu、yao shun、yaoshun）是《论语》用来衡量为政的上古圣王。书中称尧之为君、舜无为而治、禹无间然，并以《尧曰》把“允执其中”由尧命舜、舜亦以命禹。本页汇集原文出现这些名字的章句。",
+    enSummary:
+      "Yao, Shun, and Yu (尧、舜、禹; also searched as yao shun yu, yao shun, or yaoshun) are the ancient sage kings the Analects uses as a measure of rule. Passages praise Yao as sovereign, Shun as governing without exertion, Yu as without flaw, and the Yao Yue charge that passes the mean from Yao to Shun to Yu. This index gathers every source sentence that names them.",
   },
   {
     slug: "tang-wen-wu-zhougong",

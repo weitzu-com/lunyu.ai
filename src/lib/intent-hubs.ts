@@ -164,7 +164,7 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
     slug: "lunyu",
     metaTitle: {
       zh: "《论语》原文、英译与阅读指南",
-      en: "《论语》 (Lunyu): Chinese Text & Translation",
+      en: "《论语》 (Lunyu): Chinese Text and Translation",
     },
     metaDescription: {
       zh: "读《论语》简体原文、审校白话导读与 James Legge 公版英译；先理解书名、底本和二十篇结构，再进入六则精选章句及可引用的逐句页面。",
@@ -327,7 +327,7 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
     slug: "the-analects",
     metaTitle: {
       zh: "The Analects《论语》：全书、主题与章句",
-      en: "The Analects: Text, Context & Passages",
+      en: "The Analects: Text, Context and Passages",
     },
     metaDescription: {
       zh: "直接了解 The Analects 是什么、二十篇怎样构成、为何不能当作线性论著；阅读六则双语章句，核对 James Legge 译文、来源与引用链接。",
@@ -448,7 +448,7 @@ export const intentHubs: Record<IntentHubSlug, IntentHub> = {
     slug: "analects-of-confucius",
     metaTitle: {
       zh: "Analects of Confucius：书名、编者与英译",
-      en: "Analects of Confucius: Authorship & Translation",
+      en: "Analects of Confucius: Authorship and Translation",
     },
     metaDescription: {
       zh: "Analects of Confucius 指什么？区分“以孔子为中心”与“孔子亲笔所著”，了解弟子声音、成书讨论、Legge 公版英译及六则双语文本。",
