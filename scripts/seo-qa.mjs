@@ -666,6 +666,32 @@ checkHtml("/zh-Hans/blogs/how-to-read-the-analects", [
   '"@type":"Article"',
   '"datePublished":"2026-07-08"',
 ]);
+checkHtml("/en/blogs/zai-wo-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zai-wo-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-14"',
+  '"dateModified":"2026-09-14"',
+  "Who Was Zai Wo in the Analects?",
+  ">Zai Wo</a>",
+  ">The Analects · Yang Ho 17.21</a>",
+  'href="/en/index/zai-wo"',
+  'href="/en/analects/yang-huo/yang-huo-021"',
+  "/images/blogs/zai-wo-in-the-analects/cover.jpg",
+  "/images/blogs/zai-wo-in-the-analects/speech-and-conduct.jpg",
+  "/images/blogs/zai-wo-in-the-analects/mourning-three-years.jpg",
+  "Quiet study desk with open Analects and empty second seat — who was Zai Wo",
+  "Ink sketch of spoken words beside a quiet practice path — speech tested by conduct",
+  "Calendar cycle of one year beside a longer care span — three years’ mourning question",
+  `property="og:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.jpg"`,
+  `name="twitter:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.jpg"`,
+]);
+checkHtml("/zh-Hans/blogs/zai-wo-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects"`,
+  '"@type":"Article"',
+  "《论语》里的宰我是谁？",
+  "中文全文将于稍后发布",
+]);
 
 const seenHubDescriptions = new Map();
 for (const locale of locales) {
@@ -736,6 +762,8 @@ for (const unavailableGameUrl of [`${siteUrl}/en/game`, `${siteUrl}/game`]) {
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index/confucius`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-read-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zai-wo-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
@@ -754,6 +782,22 @@ function sitemapLastmodFor(loc) {
   const escaped = loc.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const match = sitemap.match(new RegExp(`<loc>${escaped}</loc>\\s*<lastmod>([^<]+)</lastmod>`));
   return match?.[1] ?? "";
+}
+for (const locale of locales) {
+  const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
+  if (!lastmod.includes("2026-09-14")) {
+    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+  }
+}
+const rssBodyFile = exists(".next/server/app/rss.xml.body")
+  ? ".next/server/app/rss.xml.body"
+  : exists(".next/server/app/rss.xml/route.body")
+    ? ".next/server/app/rss.xml/route.body"
+    : "";
+if (!rssBodyFile) {
+  fail("rss.xml: static build body missing");
+} else {
+  assertIncludes(read(rssBodyFile), "14 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;

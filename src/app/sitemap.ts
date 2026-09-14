@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales, type Locale } from "@/lib/analects";
 import { blogEntities } from "@/lib/blogs";
 import { contentCoverage } from "@/lib/content-coverage";
-import { editorialPosts } from "@/lib/editorial-posts";
+import { editorialPosts, latestEditorialModifiedDate } from "@/lib/editorial-posts";
 import { indexEntryModifiedDate } from "@/lib/featured-index";
 import { hubModifiedDate, intentHubSlugs } from "@/lib/intent-hubs";
 import { contentModifiedDate, localizedUrl, siteUrl } from "@/lib/site";
@@ -34,12 +34,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       ? "monthly"
       : "weekly";
   const listenFrequency = contentCoverage.audio.complete ? "monthly" : "weekly";
+  const blogsHubModified = latestEditorialModifiedDate(contentModifiedDate);
 
   for (const locale of localeList) {
     addLocalized(entries, locale, "");
 
     for (const path of hubPages) {
-      addLocalized(entries, locale, path, contentModifiedDate, editorialFrequency);
+      addLocalized(
+        entries,
+        locale,
+        path,
+        path === "/blogs" ? blogsHubModified : contentModifiedDate,
+        editorialFrequency
+      );
     }
 
     if (contentCoverage.audio.available > 0) {
