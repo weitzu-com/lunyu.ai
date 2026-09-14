@@ -845,15 +845,21 @@ const junziEnAnchors = [
   } else {
     const next = postSource.indexOf('slug: "', start + 1);
     const block = postSource.slice(start, next === -1 ? undefined : next);
-    const links = [...block.matchAll(/\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
-      (match) => [match[1], match[2]]
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
     );
-    if (links.length !== junziEnAnchors.length) {
-      fail(`what-is-a-junzi: expected ${junziEnAnchors.length} markdown hrefs, got ${links.length}`);
+    const expectedHrefs = junziEnAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(`what-is-a-junzi: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`);
     }
-    junziEnAnchors.forEach(([label, href], index) => {
-      if (links[index]?.[0] !== label || links[index]?.[1] !== href) {
-        fail(`what-is-a-junzi: markdown href ${index + 1} should be [${label}](${href})`);
+    junziEnAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`what-is-a-junzi: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(`what-is-a-junzi: markdown href ${index + 1} should be ${expectedHrefs[index]}`);
       }
     });
   }
