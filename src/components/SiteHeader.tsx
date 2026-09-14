@@ -38,7 +38,7 @@ export function SiteHeader({ locale, path = "", availableLocales }: { locale: Lo
           <Link href={`/${locale}`} className="group inline-flex items-center gap-3">
             <Image
               src="/logo-seal-solid.svg"
-              alt=""
+              alt={siteName}
               width={32}
               height={32}
               priority

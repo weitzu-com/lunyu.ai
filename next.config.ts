@@ -18,6 +18,28 @@ const nextConfig: NextConfig = {
         destination: "/zh-Hans/game",
         permanent: false,
       },
+      // English biographies/geography remain Chinese-only. Send locale-guessing
+      // crawlers to the bilingual knowledge index instead of a 404.
+      {
+        source: "/en/people",
+        destination: "/en/index#people",
+        permanent: true,
+      },
+      {
+        source: "/en/people/:path*",
+        destination: "/en/index#people",
+        permanent: true,
+      },
+      {
+        source: "/en/places",
+        destination: "/en/index#places",
+        permanent: true,
+      },
+      {
+        source: "/en/places/:path*",
+        destination: "/en/index#places",
+        permanent: true,
+      },
     ];
   },
   turbopack: {

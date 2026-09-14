@@ -139,7 +139,13 @@ export default async function AnalectsBookPage({
           </Link>
         </div>
 
-        <section className="mt-10 border-y border-rule bg-surface px-4 py-2 sm:px-6">
+        <section
+          className="mt-10 border-y border-rule bg-surface px-4 py-2 sm:px-6"
+          aria-labelledby="book-passages"
+        >
+          <h2 id="book-passages" className="label pt-5">
+            {t(locale, "本篇章句", "Passages in this book")}
+          </h2>
           {sentences.map((sentence) => (
             <SentenceCard key={sentence.id} locale={locale} sentence={sentence} />
           ))}

@@ -53,6 +53,16 @@ export function localize(locale: Locale, text: LocalizedText) {
 /** Editorial date for featured index pages (仁 + the deepened entries). */
 export const featuredIndexModifiedDate = "2026-08-24";
 
+/** Entity index pages whose lead copy was refreshed for GSC query matching. */
+export const entityIndexRefreshDate = "2026-09-14";
+export const refreshedEntityIndexSlugs = new Set([
+  "zai-wo",
+  "duke-ai",
+  "duke-ding",
+  "yao-shun-yu",
+  "wei-ling-gong-person",
+]);
+
 const featuredIndexBySlug: Record<string, FeaturedIndexContent> = {
   ren: {
     slug: "ren",
@@ -292,6 +302,7 @@ export function getFeaturedIndex(slug: string) {
 }
 
 export function indexEntryModifiedDate(slug: string) {
+  if (refreshedEntityIndexSlugs.has(slug)) return entityIndexRefreshDate;
   return getFeaturedIndex(slug) ? featuredIndexModifiedDate : undefined;
 }
 
