@@ -684,14 +684,53 @@ checkHtml("/en/blogs/zai-wo-in-the-analects", [
   "Ink sketch of spoken words beside a quiet practice path — speech tested by conduct",
   "Calendar cycle of one year beside a longer care span — three years’ mourning question",
   `property="og:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.jpg"`,
+  `property="og:image:alt" content="Quiet study desk with open Analects and empty second seat — who was Zai Wo"`,
   `name="twitter:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.jpg"`,
+  `name="twitter:image:alt" content="Quiet study desk with open Analects and empty second seat — who was Zai Wo"`,
 ]);
 checkHtml("/zh-Hans/blogs/zai-wo-in-the-analects", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects"`,
   '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-14"',
+  '"dateModified":"2026-09-14"',
   "《论语》里的宰我是谁？",
-  "中文全文将于稍后发布",
+  "你搜「宰我」时，多半是想在一串弟子名里把他安顿下来",
+  "先按篇章认人，不靠履历表",
+  ">宰我</a>",
+  ">论语 · 阳货 17.21</a>",
+  'href="/zh-Hans/index/zai-wo"',
+  'href="/zh-Hans/analects/yang-huo/yang-huo-021"',
+  "/images/blogs/zai-wo-in-the-analects/cover.jpg",
+  "/images/blogs/zai-wo-in-the-analects/speech-and-conduct.jpg",
+  "/images/blogs/zai-wo-in-the-analects/mourning-three-years.jpg",
+  "安静书案上摊开的《论语》与空出的第二席——宰我是谁",
+  "墨色勾出的言语涟漪与静默践行之路——言语要经得起行为检验",
+  "一年节令循环旁更长的照护弧线——三年之丧的追问",
+  `property="og:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.jpg"`,
+  `property="og:image:alt" content="安静书案上摊开的《论语》与空出的第二席——宰我是谁"`,
+  `name="twitter:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.jpg"`,
+  `name="twitter:image:alt" content="安静书案上摊开的《论语》与空出的第二席——宰我是谁"`,
 ]);
+{
+  const zhZaiWoFile = htmlPath("/zh-Hans/blogs/zai-wo-in-the-analects");
+  if (exists(zhZaiWoFile)) {
+    const zhZaiWoHtml = read(zhZaiWoFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZaiWoHtml.includes(stub)) fail(`/zh-Hans/blogs/zai-wo-in-the-analects: leftover stub ${stub}`);
+    }
+    if (zhZaiWoHtml.includes("Quiet study desk with open Analects and empty second seat")) {
+      fail("/zh-Hans/blogs/zai-wo-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+  }
+  const enZaiWoFile = htmlPath("/en/blogs/zai-wo-in-the-analects");
+  if (exists(enZaiWoFile)) {
+    const enZaiWoHtml = read(enZaiWoFile);
+    if (enZaiWoHtml.includes("安静书案上摊开的《论语》与空出的第二席")) {
+      fail("/en/blogs/zai-wo-in-the-analects: Chinese cover alt leaked onto en");
+    }
+  }
+}
 
 const seenHubDescriptions = new Map();
 for (const locale of locales) {

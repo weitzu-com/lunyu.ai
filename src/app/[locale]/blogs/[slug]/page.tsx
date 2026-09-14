@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Locale, locales, t } from "@/lib/analects";
 import {
+  editorialImageAlt,
   editorialImageUrl,
   editorialPosts,
   getEditorialPost,
@@ -48,7 +49,7 @@ export async function generateMetadata({
       ? undefined
       : {
           url: editorialImageUrl(post.cover),
-          alt: post.cover.alt,
+          alt: editorialImageAlt(locale, post.cover),
           width: post.cover.width,
           height: post.cover.height,
         };
@@ -171,7 +172,9 @@ export default async function BlogPostPage({
         <h1 className="mt-4 font-serif text-[2.5rem] leading-tight sm:text-5xl">
           {postTitle(locale, post)}
         </h1>
-        {post.cover ? <EditorialFigure className="mt-5" image={post.cover} priority /> : null}
+        {post.cover ? (
+          <EditorialFigure className="mt-5" image={post.cover} locale={locale} priority />
+        ) : null}
         <p className="mt-5 max-w-3xl text-base leading-8 text-ink-soft sm:text-lg">
           {postDek(locale, post)}
         </p>
@@ -225,7 +228,9 @@ function EditorialSectionList({
         return (
           <section key={section.headingEn} className="reading-panel">
             <h2 className="label">{t(locale, section.headingZh, section.headingEn)}</h2>
-            {inlineImage ? <EditorialFigure className="mt-4" image={inlineImage} /> : null}
+            {inlineImage ? (
+              <EditorialFigure className="mt-4" image={inlineImage} locale={locale} />
+            ) : null}
             <div className="mt-4 space-y-4 text-base leading-8 text-ink">
               {(locale === "zh-Hans" ? section.bodyZh : section.bodyEn).map((paragraph) => (
                 <EditorialParagraph key={paragraph} text={paragraph} />
