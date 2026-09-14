@@ -1,12 +1,15 @@
 import Image from "next/image";
-import type { EditorialImage } from "@/lib/editorial-posts";
+import type { Locale } from "@/lib/analects";
+import { editorialImageAlt, type EditorialImage } from "@/lib/editorial-posts";
 
 export function EditorialFigure({
   image,
+  locale,
   priority = false,
   className,
 }: {
   image: EditorialImage;
+  locale: Locale;
   priority?: boolean;
   className?: string;
 }) {
@@ -14,7 +17,7 @@ export function EditorialFigure({
     <figure className={className}>
       <Image
         src={image.src}
-        alt={image.alt}
+        alt={editorialImageAlt(locale, image)}
         width={image.width}
         height={image.height}
         sizes="(min-width: 1152px) 72rem, calc(100vw - 2rem)"
