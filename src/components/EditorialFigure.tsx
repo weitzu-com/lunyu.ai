@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Locale } from "@/lib/analects";
+import type { Locale } from "@/lib/analects";
 import { editorialImageAlt, type EditorialImage } from "@/lib/editorial-posts";
 
 export function EditorialFigure({
