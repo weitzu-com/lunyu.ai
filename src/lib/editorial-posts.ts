@@ -422,6 +422,13 @@ export function postTags(locale: Locale, post: EditorialPost) {
   return locale === "zh-Hans" ? post.tagsZh : post.tagsEn;
 }
 
+export function latestEditorialModifiedDate(fallback = "") {
+  return editorialPosts.reduce(
+    (latest, post) => (post.dateModified > latest ? post.dateModified : latest),
+    fallback
+  );
+}
+
 export function parseEditorialLinks(text: string): EditorialTextPart[] {
   const parts: EditorialTextPart[] = [];
   let lastIndex = 0;

@@ -783,6 +783,22 @@ function sitemapLastmodFor(loc) {
   const match = sitemap.match(new RegExp(`<loc>${escaped}</loc>\\s*<lastmod>([^<]+)</lastmod>`));
   return match?.[1] ?? "";
 }
+for (const locale of locales) {
+  const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
+  if (!lastmod.includes("2026-09-14")) {
+    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+  }
+}
+const rssBodyFile = exists(".next/server/app/rss.xml.body")
+  ? ".next/server/app/rss.xml.body"
+  : exists(".next/server/app/rss.xml/route.body")
+    ? ".next/server/app/rss.xml/route.body"
+    : "";
+if (!rssBodyFile) {
+  fail("rss.xml: static build body missing");
+} else {
+  assertIncludes(read(rssBodyFile), "14 Sep 2026", "rss lastBuildDate");
+}
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
 for (const slug of ["ren", "li", "zhongshu", "junzi", "xue", "confucius", "yan-yuan", "zi-gong"]) {

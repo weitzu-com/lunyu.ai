@@ -1,6 +1,6 @@
 import { getAllSentences } from "@/lib/analects";
 import { contentCoverageSummary } from "@/lib/content-coverage";
-import { editorialPosts, postDek, postTitle } from "@/lib/editorial-posts";
+import { editorialPosts, latestEditorialModifiedDate, postDek, postTitle } from "@/lib/editorial-posts";
 import { localizedUrl, siteName, siteUrl } from "@/lib/site";
 import { contentModifiedDate } from "@/lib/site";
 
@@ -29,6 +29,7 @@ function toRfc2822(dateString: string) {
 
 export function GET() {
   const sentences = getAllSentences().slice(0, 45);
+  const lastBuildDate = latestEditorialModifiedDate(contentModifiedDate);
   const items: FeedItem[] = [
     ...sentences.map((sentence) => ({
       title: `${sentence.bookNumber}.${sentence.sentenceNumber} · ${sentence.classicalChinese.slice(0, 24)}`,
@@ -53,7 +54,7 @@ export function GET() {
     <link>${siteUrl}/en</link>
     <description>${escapeXml(`Recent editorial posts and Analects passage updates from lunyu.ai. ${contentCoverageSummary("en")}`)}</description>
     <language>en-US</language>
-    <lastBuildDate>${toRfc2822(contentModifiedDate)}</lastBuildDate>
+    <lastBuildDate>${toRfc2822(lastBuildDate)}</lastBuildDate>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
     ${items
       .map(
