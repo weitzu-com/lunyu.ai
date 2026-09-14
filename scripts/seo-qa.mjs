@@ -661,11 +661,99 @@ for (const locale of locales) {
 
 checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, "知识索引"]);
 checkHtml("/zh-Hans/blogs", [`rel="canonical" href="${siteUrl}/zh-Hans/blogs"`, '"@type":"CollectionPage"', "论语阅读札记"]);
-checkHtml("/zh-Hans/blogs/how-to-read-the-analects", [
-  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/how-to-read-the-analects"`,
-  '"@type":"Article"',
-  '"datePublished":"2026-07-08"',
-]);
+const notesBackfillPosts = [
+  {
+    slug: "how-to-read-the-analects",
+    cover: "/images/blogs/how-to-read-the-analects/cover.jpg",
+    inline1: "/images/blogs/how-to-read-the-analects/inline-1.jpg",
+    inline2: "/images/blogs/how-to-read-the-analects/inline-2.jpg",
+    coverEn: "Quiet study desk with open Analects and one empty sentence line — how to read the Analects",
+    coverZh: "安静书案上摊开的《论语》与一行留白——如何读《论语》",
+    inline1En: "Three blank layered paper strips — original, guide, and translation as strata",
+    inline1Zh: "三层空白纸条叠放——原文、导读与英译的分层阅读",
+    inline2En: "Three quiet stones beside an open book — three reusable questions",
+    inline2Zh: "翻开书册旁三颗安静的卵石——可复用的三问",
+  },
+  {
+    slug: "ren-junzi-and-everyday-conduct",
+    cover: "/images/blogs/ren-junzi-and-everyday-conduct/cover.jpg",
+    inline1: "/images/blogs/ren-junzi-and-everyday-conduct/inline-1.jpg",
+    inline2: "/images/blogs/ren-junzi-and-everyday-conduct/inline-2.jpg",
+    coverEn: "Two empty tea cups on wood — everyday kindness and conduct",
+    coverZh: "木案上两只空茶杯——日常待人中的仁",
+    inline1En: "Overlapping ink circles — ren lived in relationships",
+    inline1Zh: "交叠的水墨圆圈——关系中的仁",
+    inline2En: "Forked quiet path through mist — junzi and xiaoren diverge",
+    inline2Zh: "雾中分岔小径——君子与小人的分岔",
+  },
+  {
+    slug: "learning-practice-and-review",
+    cover: "/images/blogs/learning-practice-and-review/cover.jpg",
+    inline1: "/images/blogs/learning-practice-and-review/inline-1.jpg",
+    inline2: "/images/blogs/learning-practice-and-review/inline-2.jpg",
+    coverEn: "Open book with soft ink enso — learning and timely practice",
+    coverZh: "翻开书册与淡墨圆圈——学而时习",
+    inline1En: "Footprints on a path beside an open notebook — practice tests learning",
+    inline1Zh: "翻开笔记旁小径上的足迹——行为检验所学",
+    inline2En: "Soft ink loop returning to a quiet mark — revisiting one sentence",
+    inline2Zh: "淡墨回环落回一处墨迹——反复回访同一句",
+  },
+  {
+    slug: "filial-conduct-ritual-and-care",
+    cover: "/images/blogs/filial-conduct-ritual-and-care/cover.jpg",
+    inline1: "/images/blogs/filial-conduct-ritual-and-care/inline-1.jpg",
+    inline2: "/images/blogs/filial-conduct-ritual-and-care/inline-2.jpg",
+    coverEn: "Incense bowl and folded cloth on parchment — filial care and ritual",
+    coverZh: "宣纸上香炉与叠好的布巾——孝与礼",
+    inline1En: "Two ink hands offering care without kneeling drama — respect is not blind obedience",
+    inline1Zh: "两只水墨手势的递送——敬意而非盲从",
+    inline2En: "Empty bowl and folded cloth placed with care — form makes care visible",
+    inline2Zh: "空碗与叠好的布巾安静摆放——形式使关怀可见",
+  },
+  {
+    slug: "ai-boundaries-for-classic-texts",
+    cover: "/images/blogs/ai-boundaries-for-classic-texts/cover.jpg",
+    inline1: "/images/blogs/ai-boundaries-for-classic-texts/inline-1.jpg",
+    inline2: "/images/blogs/ai-boundaries-for-classic-texts/inline-2.jpg",
+    coverEn: "Open classic book beside an empty framed margin — classics and AI boundaries",
+    coverZh: "翻开的经典与空白边框——经典文本与边界",
+    inline1En: "Three blank paper layers over mist landscape — source, translation, and guide",
+    inline1Zh: "雾中三层空白纸条——源文、译文与导读分层",
+    inline2En: "Open classic page with bookmark and quiet citation space — quotable passages",
+    inline2Zh: "带书签的翻开书页与引文留白——可引用的章句页",
+  },
+];
+
+for (const post of notesBackfillPosts) {
+  for (const src of [post.cover, post.inline1, post.inline2]) {
+    if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+  }
+  checkHtml(`/en/blogs/${post.slug}`, [
+    `rel="canonical" href="${siteUrl}/en/blogs/${post.slug}"`,
+    '"@type":"Article"',
+    post.cover,
+    post.inline1,
+    post.inline2,
+    post.coverEn,
+    post.inline1En,
+    post.inline2En,
+    `property="og:image" content="${siteUrl}${post.cover}"`,
+    `name="twitter:image" content="${siteUrl}${post.cover}"`,
+  ]);
+  checkHtml(`/zh-Hans/blogs/${post.slug}`, [
+    `rel="canonical" href="${siteUrl}/zh-Hans/blogs/${post.slug}"`,
+    '"@type":"Article"',
+    '"datePublished":"2026-07-08"',
+    post.cover,
+    post.inline1,
+    post.inline2,
+    post.coverZh,
+    post.inline1Zh,
+    post.inline2Zh,
+    `property="og:image" content="${siteUrl}${post.cover}"`,
+    `name="twitter:image" content="${siteUrl}${post.cover}"`,
+  ]);
+}
 checkHtml("/en/blogs/zai-wo-in-the-analects", [
   `rel="canonical" href="${siteUrl}/en/blogs/zai-wo-in-the-analects"`,
   '"@type":"Article"',
