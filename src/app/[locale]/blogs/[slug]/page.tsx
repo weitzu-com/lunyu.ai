@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditorialParagraph } from "@/components/EditorialParagraph";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Locale, locales, t } from "@/lib/analects";
-import { editorialPosts, getEditorialPost, postDek, postTags, postTitle } from "@/lib/editorial-posts";
+import {
+  editorialPosts,
+  getEditorialPost,
+  postDek,
+  postTags,
+  postTitle,
+  type EditorialPost,
+  type EditorialSection,
+} from "@/lib/editorial-posts";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import {
   breadcrumbJsonLd,
-  contentModifiedDate,
   jsonLd,
   localizedUrl,
   organizationId,
@@ -72,6 +80,24 @@ export default async function BlogPostPage({
         isPartOf: { "@id": `${localizedUrl(locale, "")}#website` },
         mainEntityOfPage: pageUrl,
       },
+      ...(post.faqs?.length
+        ? [
+            {
+              "@type": "FAQPage",
+              "@id": `${pageUrl}#faq`,
+              url: `${pageUrl}#faq`,
+              inLanguage: locale,
+              mainEntity: post.faqs.map((item) => ({
+                "@type": "Question",
+                name: t(locale, item.questionZh, item.questionEn),
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: t(locale, item.answerZh, item.answerEn),
+                },
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "Organization",
         "@id": editorialDeskId,
@@ -140,16 +166,11 @@ export default async function BlogPostPage({
         </div>
 
         <section className="mt-10 border-y border-rule bg-surface px-4 py-2 sm:px-6">
-          {post.sections.map((section) => (
-            <section key={section.headingZh} className="reading-panel">
-              <h2 className="label">{t(locale, section.headingZh, section.headingEn)}</h2>
-              <div className="mt-4 space-y-4 text-base leading-8 text-ink">
-                {(locale === "zh-Hans" ? section.bodyZh : section.bodyEn).map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            </section>
-          ))}
+          <EditorialSectionList locale={locale} sections={post.sections} />
+          {post.faqs && post.faqs.length > 0 ? <EditorialFaqList locale={locale} post={post} /> : null}
+          {post.afterFaqSections && post.afterFaqSections.length > 0 ? (
+            <EditorialSectionList locale={locale} sections={post.afterFaqSections} />
+          ) : null}
         </section>
 
         <section className="mt-8 border-y border-rule bg-surface px-4 py-5 sm:px-6">
@@ -165,5 +186,52 @@ export default async function BlogPostPage({
       </article>
       <SiteFooter locale={locale} />
     </main>
+  );
+}
+
+function EditorialSectionList({
+  locale,
+  sections,
+}: {
+  locale: Locale;
+  sections: EditorialSection[];
+}) {
+  return (
+    <>
+      {sections.map((section) => (
+        <section key={section.headingEn} className="reading-panel">
+          <h2 className="label">{t(locale, section.headingZh, section.headingEn)}</h2>
+          <div className="mt-4 space-y-4 text-base leading-8 text-ink">
+            {(locale === "zh-Hans" ? section.bodyZh : section.bodyEn).map((paragraph) => (
+              <EditorialParagraph key={paragraph} text={paragraph} />
+            ))}
+          </div>
+        </section>
+      ))}
+    </>
+  );
+}
+
+function EditorialFaqList({ locale, post }: { locale: Locale; post: EditorialPost }) {
+  const faqs = post.faqs ?? [];
+  return (
+    <section className="reading-panel" aria-labelledby="notes-faq">
+      <h2 id="notes-faq" className="label">
+        {t(locale, "常见问题", "FAQ")}
+      </h2>
+      <div className="mt-4 space-y-5">
+        {faqs.map((item) => (
+          <div key={item.questionEn} className="border-b border-rule pb-5 last:border-b-0">
+            <h3 className="font-serif text-2xl leading-snug text-ink">
+              {t(locale, item.questionZh, item.questionEn)}
+            </h3>
+            <EditorialParagraph
+              className="mt-2 text-sm leading-7 text-ink-soft"
+              text={t(locale, item.answerZh, item.answerEn)}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

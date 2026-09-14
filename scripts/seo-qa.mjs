@@ -666,6 +666,24 @@ checkHtml("/zh-Hans/blogs/how-to-read-the-analects", [
   '"@type":"Article"',
   '"datePublished":"2026-07-08"',
 ]);
+checkHtml("/en/blogs/zai-wo-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zai-wo-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-14"',
+  '"dateModified":"2026-09-14"',
+  "Who Was Zai Wo in the Analects?",
+  ">Zai Wo</a>",
+  ">The Analects · Yang Ho 17.21</a>",
+  'href="/en/index/zai-wo"',
+  'href="/en/analects/yang-huo/yang-huo-021"',
+]);
+checkHtml("/zh-Hans/blogs/zai-wo-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects"`,
+  '"@type":"Article"',
+  "《论语》里的宰我是谁？",
+  "中文全文将于稍后发布",
+]);
 
 const seenHubDescriptions = new Map();
 for (const locale of locales) {
@@ -736,6 +754,8 @@ for (const unavailableGameUrl of [`${siteUrl}/en/game`, `${siteUrl}/game`]) {
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/index/confucius`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-read-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zai-wo-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");

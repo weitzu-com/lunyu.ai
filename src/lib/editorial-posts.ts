@@ -1,4 +1,19 @@
 import { Locale, t } from "@/lib/analects";
+import { siteUrl } from "@/lib/site";
+
+export type EditorialSection = {
+  headingZh: string;
+  headingEn: string;
+  bodyZh: string[];
+  bodyEn: string[];
+};
+
+export type EditorialFaq = {
+  questionZh: string;
+  questionEn: string;
+  answerZh: string;
+  answerEn: string;
+};
 
 export type EditorialPost = {
   slug: string;
@@ -11,15 +26,133 @@ export type EditorialPost = {
   tagsZh: string[];
   tagsEn: string[];
   related: string[];
-  sections: Array<{
-    headingZh: string;
-    headingEn: string;
-    bodyZh: string[];
-    bodyEn: string[];
-  }>;
+  sections: EditorialSection[];
+  faqs?: EditorialFaq[];
+  afterFaqSections?: EditorialSection[];
 };
 
+export type EditorialTextPart =
+  | { type: "text"; value: string }
+  | { type: "link"; label: string; href: string };
+
+const EDITORIAL_MARKDOWN_LINK = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g;
+const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
+
+const zhArticleLater =
+  "中文全文将于稍后发布。此页目前只保留英文札记；下面的简体文字是预告，不是已完稿的完整文章。";
+const zhFaqLater = "中文解答将随全文于稍后发布。请先阅读本页英文问答，不要把这句预告当成已完成的简体札记。";
+
 export const editorialPosts: EditorialPost[] = [
+  {
+    slug: "zai-wo-in-the-analects",
+    titleZh: "《论语》里的宰我是谁？",
+    titleEn: "Who Was Zai Wo in the Analects?",
+    dekZh: zhArticleLater,
+    dekEn:
+      'When you search "zai wo," you are usually trying to place one disciple among many names. On this site you meet him as a speaker whose questions draw sharp replies—on mourning, altars, benevolence, and whether words match deeds. You do not need a full biography first; you can read the passages where he appears and notice how the Master answers him.',
+    datePublished: "2026-09-14",
+    dateModified: "2026-09-14",
+    tagsZh: ["宰我", "弟子", "阳货"],
+    tagsEn: ["zai wo", "disciple", "Yang Ho"],
+    related: ["/analects/yang-huo/yang-huo-021", "/index/zai-wo"],
+    sections: [
+      {
+        headingZh: "先从章句里认出他，而不是简历",
+        headingEn: "Place him by the passages, not by a résumé",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          'If you want a compact entry point before you open each chapter page, the people index labels him simply as [Zai Wo](https://www.lunyu.ai/en/index/zai-wo)—a disciple whose questions often provoke sharp teaching on ritual and conduct. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show.',
+        ],
+      },
+      {
+        headingZh: "以言语得名，也以行为受检验",
+        headingEn: "Named for speech—and tested by conduct",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "In one grouping of disciples, you see Zai Wo listed with Zigong under speech. Legge's English on that page says that for ability in speech there were Tsai Wo and Tsze-kung, beside other pairs for virtue, administration, and literary acquirements. You can take that as a map of strengths the tradition remembered—not as a grade sheet that cancels the harder scenes. When you read him next to those other names, ask what your own \"speech strength\" costs when conduct lags.",
+          'The daytime-sleep passage presses that gap. Legge has the Master say of Tsai Yu asleep by day: "Rotten wood cannot be carved; a wall of dirty earth will not receive the trowel," then: at first he heard people\'s words and trusted their conduct; now he hears their words and looks at their conduct—"It is from Yu that I have learned to make this change." You are not asked to mock a student; you are asked to stop letting fluent talk settle the question of practice.',
+        ],
+      },
+      {
+        headingZh: "逼出界线的提问",
+        headingEn: "Questions that force a line",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          'Elsewhere Zai Wo answers Duke Ai about the altars of the land-spirits, naming pine, cypress, and chestnut, and tying the Zhou choice to making the people "in awe." When the Master hears it, Legge gives: things done need no more talk; things that have had their course need no remonstrance; things past need no blame. You can hear restraint after a risky gloss—useful when your own clever etymology has already left your mouth.',
+          'He also presses benevolence toward a trap: if told "there is a man in the well," will the benevolent go in? The reply you meet in Legge is that a superior man may be made to go to the well but cannot be made to go down into it; he may be imposed upon, but he cannot be fooled. When you debate duty online, that line keeps you from equating ren with blind plunge.',
+        ],
+      },
+      {
+        headingZh: "应当慢慢读的守丧问答",
+        headingEn: "The mourning exchange you should read slowly",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "The longest Zai Wo scene is his argument that one year of mourning for parents is enough—rites and music would collapse if a superior man paused three years; grain and fire-wood cycles already turn in a year. The Master asks whether, after a year, eating good rice and wearing embroidered clothes would leave him at ease; Wo says yes. Then: if you feel at ease, do it—but a superior man in mourning does not enjoy pleasant food or music or easy lodging. After Wo leaves, the Master speaks of want of virtue, the three years a child stays in parents' arms, and the three years' mourning as universally observed—asking whether Yu enjoyed that three years' love. You should read that exchange as one drama of ease versus love, not as a slogan you paste onto every family quarrel.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的宰我是谁？",
+        questionEn: "Who was Zai Wo in the Analects?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You meet Zai Wo (also Tsai Wo / Tsai Yu in Legge) as a disciple remembered for speech and for questions that provoke hard teaching. Your best answer is the scenes themselves: altars, the well, daytime sleep, the disciple grouping, and the three-year mourning debate—not a modern résumé invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人会搜索 “zai wo”？",
+        questionEn: 'Why do people search "zai wo"?',
+        answerZh: zhFaqLater,
+        answerEn:
+          "You often want a clear identity: which disciple, which famous rebuke, which mourning argument. Search that phrase, then open the live passages rather than a summary that invents chapter numbers or softens the Master's words. Your reading stays honest when you keep source, vernacular guide, and English in separate layers.",
+      },
+      {
+        questionZh: "他只是反面教材吗？",
+        questionEn: "Was he only a negative example?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You will see sharp blame—rotten wood, want of virtue—yet you also see him listed for ability in speech beside Zigong. Hold both without flattening him into a cartoon villain. Your task is to notice when fluent argument outruns ease of conscience, not to collect villains from the Analects.",
+      },
+      {
+        questionZh: "关于他，你应该先读哪一章？",
+        questionEn: "What should you read first about him?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "If you want one scene that shows his voice and the Master's reply at full length, start with the mourning dialogue, then compare the shorter tests on sleep, altars, and the well. You can return to the people-index note anytime you lose the thread of who is speaking in the room.",
+      },
+      {
+        questionZh: "如何同时使用 Legge 英译与中文原文？",
+        questionEn: "How should you use Legge's English with the Chinese source?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You can quote Legge as the site's public-domain English layer while you keep the Chinese source visible on the same page. Do not pretend the translation is the only wording, and do not invent a saying because a paraphrase feels smoother. Your citation should name which layer you used.",
+      },
+      {
+        questionZh: "这篇文章不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You will not find here a full disciple biography, a filial-ritual how-to, or a general primer on ren and the junzi. Those themes appear only where Zai Wo's questions force them. Your next step is the passage page, not a second overview that repeats other reading notes on this site.",
+      },
+      {
+        questionZh: "如何避免人工智能编造宰我的引文？",
+        questionEn: "How do you keep AI from inventing Zai Wo quotes?",
+        answerZh: zhFaqLater,
+        answerEn:
+          'If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for "what Confucius must have meant" without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.',
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读守丧那一章",
+        headingEn: "Read the mourning page next",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "When you are ready to sit with the longest exchange, open [The Analects · Yang Ho 17.21](https://www.lunyu.ai/en/analects/yang-huo/yang-huo-021) and read source, guide, and Legge side by side. Ask yourself where ease ends and love begins in your own speech—then stop, and return to the text rather than to a summary of Zai Wo.",
+        ],
+      },
+    ],
+  },
   {
     slug: "how-to-read-the-analects",
     titleZh: "如何从第一句开始读《论语》",
@@ -253,4 +386,33 @@ export function postDek(locale: Locale, post: EditorialPost) {
 
 export function postTags(locale: Locale, post: EditorialPost) {
   return locale === "zh-Hans" ? post.tagsZh : post.tagsEn;
+}
+
+export function parseEditorialLinks(text: string): EditorialTextPart[] {
+  const parts: EditorialTextPart[] = [];
+  let lastIndex = 0;
+  for (const match of text.matchAll(EDITORIAL_MARKDOWN_LINK)) {
+    const index = match.index ?? 0;
+    if (index > lastIndex) {
+      parts.push({ type: "text", value: text.slice(lastIndex, index) });
+    }
+    parts.push({ type: "link", label: match[1], href: match[2] });
+    lastIndex = index + match[0].length;
+  }
+  if (lastIndex < text.length) {
+    parts.push({ type: "text", value: text.slice(lastIndex) });
+  }
+  return parts.length > 0 ? parts : [{ type: "text", value: text }];
+}
+
+export function toEditorialHref(href: string): string {
+  try {
+    const url = new URL(href, `${siteUrl}/`);
+    if (SITE_HOSTS.has(url.hostname)) {
+      return `${url.pathname}${url.search}${url.hash}` || "/";
+    }
+  } catch {
+    return href;
+  }
+  return href;
 }
