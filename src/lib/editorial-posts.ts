@@ -3,12 +3,60 @@ import { siteUrl } from "@/lib/site";
 
 export type EditorialImage = {
   src: string;
-  alt: string;
+  alt?: string;
+  altEn?: string;
+  altZh?: string;
   width: number;
   height: number;
 };
 
-export type EditorialInlineImageSlot = "speech-and-conduct" | "mourning-three-years";
+export type EditorialInlineImageSlot =
+  | "speech-and-conduct"
+  | "mourning-three-years"
+  | "inline-1"
+  | "inline-2";
+
+const NOTES_COVER_SIZE = { width: 1600, height: 900 };
+const NOTES_INLINE_SIZE = { width: 1200, height: 900 };
+
+function notesBlogImage(
+  slug: string,
+  file: "cover.jpg" | "inline-1.jpg" | "inline-2.jpg",
+  altEn: string,
+  altZh: string,
+  size: { width: number; height: number }
+): EditorialImage {
+  return {
+    src: `/images/blogs/${slug}/${file}`,
+    altEn,
+    altZh,
+    width: size.width,
+    height: size.height,
+  };
+}
+
+function notesCoverAndInlines(
+  slug: string,
+  cover: { altEn: string; altZh: string },
+  inline1: { altEn: string; altZh: string },
+  inline2: { altEn: string; altZh: string }
+): Pick<EditorialPost, "cover" | "inlineImages"> {
+  return {
+    cover: notesBlogImage(slug, "cover.jpg", cover.altEn, cover.altZh, NOTES_COVER_SIZE),
+    inlineImages: {
+      "inline-1": notesBlogImage(slug, "inline-1.jpg", inline1.altEn, inline1.altZh, NOTES_INLINE_SIZE),
+      "inline-2": notesBlogImage(slug, "inline-2.jpg", inline2.altEn, inline2.altZh, NOTES_INLINE_SIZE),
+    },
+  };
+}
+
+export function editorialImageAlt(locale: Locale, image: EditorialImage): string {
+  return t(
+    locale,
+    image.altZh ?? image.alt ?? image.altEn ?? "",
+    image.altEn ?? image.alt ?? image.altZh ?? ""
+  );
+}
 
 export type EditorialSection = {
   headingZh: string;
@@ -205,6 +253,21 @@ export const editorialPosts: EditorialPost[] = [
       "/index/xue",
       "/method",
     ],
+    ...notesCoverAndInlines(
+      "how-to-read-the-analects",
+      {
+        altEn: "Quiet study desk with open Analects and one empty sentence line — how to read the Analects",
+        altZh: "安静书案上摊开的《论语》与一行留白——如何读《论语》",
+      },
+      {
+        altEn: "Three blank layered paper strips — original, guide, and translation as strata",
+        altZh: "三层空白纸条叠放——原文、导读与英译的分层阅读",
+      },
+      {
+        altEn: "Three quiet stones beside an open book — three reusable questions",
+        altZh: "翻开书册旁三颗安静的卵石——可复用的三问",
+      }
+    ),
     sections: [
       {
         headingZh: "先把单位缩小到一句",
@@ -221,6 +284,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "分层阅读，不混合来源",
         headingEn: "Read in layers, not as a blur",
+        imageSlot: "inline-1",
         bodyZh: [
           "先看简体原文，确认这一句说了什么；再读白话导读，获得现代汉语解释；最后对照 James Legge 英译，观察另一种表达路径。",
           "这三层各有边界。原文不是解释，解释不是原文，英文公版译文也不是现代改写。",
@@ -233,6 +297,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "从可复用的问题开始",
         headingEn: "Ask reusable questions",
+        imageSlot: "inline-2",
         bodyZh: [
           "读《学而》第一章时，不妨问三个问题：我正在学习什么，我如何复习和实践，别人不了解我时我如何反应。",
           "这样的读法会把经典从抽象赞美带回日常选择，也更容易形成可持续的阅读习惯。",
@@ -257,10 +322,26 @@ export const editorialPosts: EditorialPost[] = [
     tagsZh: ["仁", "君子", "修身"],
     tagsEn: ["ren", "junzi", "self-cultivation"],
     related: ["/index/ren", "/index/junzi", "/index/xiaoren", "/analects/yan-yuan"],
+    ...notesCoverAndInlines(
+      "ren-junzi-and-everyday-conduct",
+      {
+        altEn: "Two empty tea cups on wood — everyday kindness and conduct",
+        altZh: "木案上两只空茶杯——日常待人中的仁",
+      },
+      {
+        altEn: "Overlapping ink circles — ren lived in relationships",
+        altZh: "交叠的水墨圆圈——关系中的仁",
+      },
+      {
+        altEn: "Forked quiet path through mist — junzi and xiaoren diverge",
+        altZh: "雾中分岔小径——君子与小人的分岔",
+      }
+    ),
     sections: [
       {
         headingZh: "仁从关系里显现",
         headingEn: "Ren appears in relationships",
+        imageSlot: "inline-1",
         bodyZh: [
           "《论语》谈仁，很少把它处理成抽象定义。仁常常出现在具体关系里：对人是否诚恳，临事是否能克己，言行是否顾及他人。",
           "因此，读仁要同时看章句里的对象、场景和行动要求。",
@@ -273,6 +354,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "君子是持续练习的方向",
         headingEn: "Junzi is a direction of practice",
+        imageSlot: "inline-2",
         bodyZh: [
           "君子不是天生身份，而是一种不断修正自己的方向。它要求人在利害、荣辱、言语和朋友关系中作出更稳的选择。",
           "这也解释了为什么《论语》常把君子和小人并列：不是为了贴标签，而是为了帮助读者辨认选择的分岔口。",
@@ -297,10 +379,26 @@ export const editorialPosts: EditorialPost[] = [
     tagsZh: ["学习", "实践", "复习"],
     tagsEn: ["learning", "practice", "review"],
     related: ["/analects/xue-er/xue-er-001", "/index/xue", "/index/li"],
+    ...notesCoverAndInlines(
+      "learning-practice-and-review",
+      {
+        altEn: "Open book with soft ink enso — learning and timely practice",
+        altZh: "翻开书册与淡墨圆圈——学而时习",
+      },
+      {
+        altEn: "Footprints on a path beside an open notebook — practice tests learning",
+        altZh: "翻开笔记旁小径上的足迹——行为检验所学",
+      },
+      {
+        altEn: "Soft ink loop returning to a quiet mark — revisiting one sentence",
+        altZh: "淡墨回环落回一处墨迹——反复回访同一句",
+      }
+    ),
     sections: [
       {
         headingZh: "学习的检验在行为",
         headingEn: "Learning is tested in conduct",
+        imageSlot: "inline-1",
         bodyZh: [
           "如果学习只停留在记忆和谈论，它很快会变成装饰。《论语》把学和习连在一起，是提醒读者把所学放回生活现场。",
           "习不是机械重复，而是在合适的时机重新练习、校正和确认。",
@@ -313,6 +411,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "复习让人保持方向",
         headingEn: "Review keeps direction visible",
+        imageSlot: "inline-2",
         bodyZh: [
           "经典阅读的价值常常不是第一次读到的惊奇，而是反复回到同一句时发现自己已经不同。",
           "稳定 URL、阅读记录和相关索引的意义，就在于支持这种长期回访。",
@@ -337,10 +436,26 @@ export const editorialPosts: EditorialPost[] = [
     tagsZh: ["孝", "礼", "家庭"],
     tagsEn: ["filial conduct", "ritual", "family"],
     related: ["/index/xiao", "/index/li", "/analects/wei-zheng/wei-zheng-005"],
+    ...notesCoverAndInlines(
+      "filial-conduct-ritual-and-care",
+      {
+        altEn: "Incense bowl and folded cloth on parchment — filial care and ritual",
+        altZh: "宣纸上香炉与叠好的布巾——孝与礼",
+      },
+      {
+        altEn: "Two ink hands offering care without kneeling drama — respect is not blind obedience",
+        altZh: "两只水墨手势的递送——敬意而非盲从",
+      },
+      {
+        altEn: "Empty bowl and folded cloth placed with care — form makes care visible",
+        altZh: "空碗与叠好的布巾安静摆放——形式使关怀可见",
+      }
+    ),
     sections: [
       {
         headingZh: "孝不是单纯顺从",
         headingEn: "Filial conduct is not mere obedience",
+        imageSlot: "inline-1",
         bodyZh: [
           "《论语》中的孝，包含敬、养、礼和长期的自我约束。它不是把亲情简化为服从，而是要求人在亲近关系里仍保持敬意。",
           "这也使孝和仁相通：亲亲之情是人学习关怀他人的起点。",
@@ -353,6 +468,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "礼让关怀可被看见",
         headingEn: "Ritual makes care visible",
+        imageSlot: "inline-2",
         bodyZh: [
           "礼给关怀一个可见的形状。它避免感情只在心里自我确认，也避免关系只剩下临时情绪。",
           "当然，礼若失去敬意就会空洞；敬意若没有形式，也容易散失。",
@@ -377,10 +493,26 @@ export const editorialPosts: EditorialPost[] = [
     tagsZh: ["AI", "GEO", "编辑边界"],
     tagsEn: ["AI", "GEO", "editorial boundaries"],
     related: ["/method", "/sources", "/faq", "/analects/xue-er/xue-er-001"],
+    ...notesCoverAndInlines(
+      "ai-boundaries-for-classic-texts",
+      {
+        altEn: "Open classic book beside an empty framed margin — classics and AI boundaries",
+        altZh: "翻开的经典与空白边框——经典文本与边界",
+      },
+      {
+        altEn: "Three blank paper layers over mist landscape — source, translation, and guide",
+        altZh: "雾中三层空白纸条——源文、译文与导读分层",
+      },
+      {
+        altEn: "Open classic page with bookmark and quiet citation space — quotable passages",
+        altZh: "带书签的翻开书页与引文留白——可引用的章句页",
+      }
+    ),
     sections: [
       {
         headingZh: "先保护文本边界",
         headingEn: "Protect textual boundaries first",
+        imageSlot: "inline-1",
         bodyZh: [
           "在经典阅读中，最重要的不是让 AI 说得更多，而是让读者知道哪些是原文，哪些是译文，哪些是编辑导读，哪些只是启发性反思。",
           "lunyu.ai 的静态 RAG 设计就是为了降低混淆风险：回答必须回到具体章句和来源层级。",
@@ -393,6 +525,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "GEO 的关键是可引用",
         headingEn: "GEO depends on citability",
+        imageSlot: "inline-2",
         bodyZh: [
           "AI 搜索和问答系统需要稳定、结构化、可引用的页面。单个章句 URL、FAQ、底本说明和 llms.txt 都服务于这个目标。",
           "如果一个回答不能指向具体章句，它就不应该替代读者对原文的判断。",
