@@ -1,11 +1,21 @@
 import { Locale, t } from "@/lib/analects";
 import { siteUrl } from "@/lib/site";
 
+export type EditorialImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
+export type EditorialInlineImageSlot = "rotten-wood-metaphor" | "mourning-and-ease";
+
 export type EditorialSection = {
   headingZh: string;
   headingEn: string;
   bodyZh: string[];
   bodyEn: string[];
+  imageSlot?: EditorialInlineImageSlot;
 };
 
 export type EditorialFaq = {
@@ -26,6 +36,8 @@ export type EditorialPost = {
   tagsZh: string[];
   tagsEn: string[];
   related: string[];
+  cover?: EditorialImage;
+  inlineImages?: Partial<Record<EditorialInlineImageSlot, EditorialImage>>;
   sections: EditorialSection[];
   faqs?: EditorialFaq[];
   afterFaqSections?: EditorialSection[];
@@ -55,6 +67,26 @@ export const editorialPosts: EditorialPost[] = [
     tagsZh: ["宰我", "弟子", "阳货"],
     tagsEn: ["zai wo", "disciple", "Yang Ho"],
     related: ["/analects/yang-huo/yang-huo-021", "/index/zai-wo"],
+    cover: {
+      src: "/images/blogs/zai-wo-in-the-analects/cover.png",
+      alt: "Two scholars in quiet dialogue at a low desk with inkstone, restrained Analects mood.",
+      width: 1400,
+      height: 788,
+    },
+    inlineImages: {
+      "rotten-wood-metaphor": {
+        src: "/images/blogs/zai-wo-in-the-analects/rotten-wood-metaphor.png",
+        alt: "Still life of weathered wood and crumbling earthen wall, metaphor for uncarvable material.",
+        width: 1400,
+        height: 788,
+      },
+      "mourning-and-ease": {
+        src: "/images/blogs/zai-wo-in-the-analects/mourning-and-ease.png",
+        alt: "Plain undyed cloth and hourglass on cream paper, suggesting mourning time and ease.",
+        width: 1400,
+        height: 788,
+      },
+    },
     sections: [
       {
         headingZh: "先从章句里认出他，而不是简历",
@@ -67,6 +99,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "以言语得名，也以行为受检验",
         headingEn: "Named for speech—and tested by conduct",
+        imageSlot: "rotten-wood-metaphor",
         bodyZh: [zhArticleLater],
         bodyEn: [
           "In one grouping of disciples, you see Zai Wo listed with Zigong under speech. Legge's English on that page says that for ability in speech there were Tsai Wo and Tsze-kung, beside other pairs for virtue, administration, and literary acquirements. You can take that as a map of strengths the tradition remembered—not as a grade sheet that cancels the harder scenes. When you read him next to those other names, ask what your own \"speech strength\" costs when conduct lags.",
@@ -85,6 +118,7 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "应当慢慢读的守丧问答",
         headingEn: "The mourning exchange you should read slowly",
+        imageSlot: "mourning-and-ease",
         bodyZh: [zhArticleLater],
         bodyEn: [
           "The longest Zai Wo scene is his argument that one year of mourning for parents is enough—rites and music would collapse if a superior man paused three years; grain and fire-wood cycles already turn in a year. The Master asks whether, after a year, eating good rice and wearing embroidered clothes would leave him at ease; Wo says yes. Then: if you feel at ease, do it—but a superior man in mourning does not enjoy pleasant food or music or easy lodging. After Wo leaves, the Master speaks of want of virtue, the three years a child stays in parents' arms, and the three years' mourning as universally observed—asking whether Yu enjoyed that three years' love. You should read that exchange as one drama of ease versus love, not as a slogan you paste onto every family quarrel.",
@@ -415,4 +449,9 @@ export function toEditorialHref(href: string): string {
     return href;
   }
   return href;
+}
+
+export function editorialImageUrl(image: EditorialImage) {
+  if (image.src.startsWith("http://") || image.src.startsWith("https://")) return image.src;
+  return `${siteUrl}${image.src.startsWith("/") ? image.src : `/${image.src}`}`;
 }

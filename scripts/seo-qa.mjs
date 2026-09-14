@@ -677,6 +677,14 @@ checkHtml("/en/blogs/zai-wo-in-the-analects", [
   ">The Analects · Yang Ho 17.21</a>",
   'href="/en/index/zai-wo"',
   'href="/en/analects/yang-huo/yang-huo-021"',
+  "/images/blogs/zai-wo-in-the-analects/cover.png",
+  "/images/blogs/zai-wo-in-the-analects/rotten-wood-metaphor.png",
+  "/images/blogs/zai-wo-in-the-analects/mourning-and-ease.png",
+  "Two scholars in quiet dialogue at a low desk with inkstone, restrained Analects mood.",
+  "Still life of weathered wood and crumbling earthen wall, metaphor for uncarvable material.",
+  "Plain undyed cloth and hourglass on cream paper, suggesting mourning time and ease.",
+  `property="og:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.png"`,
+  `name="twitter:image" content="${siteUrl}/images/blogs/zai-wo-in-the-analects/cover.png"`,
 ]);
 checkHtml("/zh-Hans/blogs/zai-wo-in-the-analects", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects"`,

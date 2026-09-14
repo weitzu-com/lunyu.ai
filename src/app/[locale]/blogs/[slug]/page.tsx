@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditorialFigure } from "@/components/EditorialFigure";
 import { EditorialParagraph } from "@/components/EditorialParagraph";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Locale, locales, t } from "@/lib/analects";
 import {
+  editorialImageUrl,
   editorialPosts,
   getEditorialPost,
   postDek,
@@ -40,12 +42,25 @@ export async function generateMetadata({
   if (!post) return {};
   const title = postTitle(locale, post);
   const description = postDek(locale, post);
+  const path = `/blogs/${post.slug}`;
+  const og = openGraph(locale, path, `${title} · lunyu.ai`, description);
+  const twitter = twitterCard(locale, path, `${title} · lunyu.ai`, description);
+  if (post.cover) {
+    const cover = {
+      url: editorialImageUrl(post.cover),
+      alt: post.cover.alt,
+      width: post.cover.width,
+      height: post.cover.height,
+    };
+    og.images = [cover];
+    twitter.images = [{ url: cover.url, alt: cover.alt }];
+  }
   return {
     title,
     description,
-    alternates: alternates(locale, `/blogs/${post.slug}`),
-    openGraph: openGraph(locale, `/blogs/${post.slug}`, `${title} · lunyu.ai`, description),
-    twitter: twitterCard(locale, `/blogs/${post.slug}`, `${title} · lunyu.ai`, description),
+    alternates: alternates(locale, path),
+    openGraph: og,
+    twitter,
   };
 }
 
@@ -73,6 +88,7 @@ export default async function BlogPostPage({
         datePublished: post.datePublished,
         dateModified: post.dateModified,
         inLanguage: locale,
+        ...(post.cover ? { image: [editorialImageUrl(post.cover)] } : {}),
         author: { "@type": "Organization", "@id": editorialDeskId, name: byline },
         editor: { "@type": "Organization", "@id": editorialDeskId, name: byline },
         reviewedBy: { "@type": "Organization", "@id": editorialDeskId, name: byline },
@@ -152,6 +168,7 @@ export default async function BlogPostPage({
         <h1 className="mt-4 font-serif text-[2.5rem] leading-tight sm:text-5xl">
           {postTitle(locale, post)}
         </h1>
+        {post.cover ? <EditorialFigure className="mt-5" image={post.cover} priority /> : null}
         <p className="mt-5 max-w-3xl text-base leading-8 text-ink-soft sm:text-lg">
           {postDek(locale, post)}
         </p>
@@ -166,10 +183,10 @@ export default async function BlogPostPage({
         </div>
 
         <section className="mt-10 border-y border-rule bg-surface px-4 py-2 sm:px-6">
-          <EditorialSectionList locale={locale} sections={post.sections} />
+          <EditorialSectionList locale={locale} post={post} sections={post.sections} />
           {post.faqs && post.faqs.length > 0 ? <EditorialFaqList locale={locale} post={post} /> : null}
           {post.afterFaqSections && post.afterFaqSections.length > 0 ? (
-            <EditorialSectionList locale={locale} sections={post.afterFaqSections} />
+            <EditorialSectionList locale={locale} post={post} sections={post.afterFaqSections} />
           ) : null}
         </section>
 
@@ -191,23 +208,29 @@ export default async function BlogPostPage({
 
 function EditorialSectionList({
   locale,
+  post,
   sections,
 }: {
   locale: Locale;
+  post: EditorialPost;
   sections: EditorialSection[];
 }) {
   return (
     <>
-      {sections.map((section) => (
-        <section key={section.headingEn} className="reading-panel">
-          <h2 className="label">{t(locale, section.headingZh, section.headingEn)}</h2>
-          <div className="mt-4 space-y-4 text-base leading-8 text-ink">
-            {(locale === "zh-Hans" ? section.bodyZh : section.bodyEn).map((paragraph) => (
-              <EditorialParagraph key={paragraph} text={paragraph} />
-            ))}
-          </div>
-        </section>
-      ))}
+      {sections.map((section) => {
+        const inlineImage = section.imageSlot ? post.inlineImages?.[section.imageSlot] : undefined;
+        return (
+          <section key={section.headingEn} className="reading-panel">
+            <h2 className="label">{t(locale, section.headingZh, section.headingEn)}</h2>
+            {inlineImage ? <EditorialFigure className="mt-4" image={inlineImage} /> : null}
+            <div className="mt-4 space-y-4 text-base leading-8 text-ink">
+              {(locale === "zh-Hans" ? section.bodyZh : section.bodyEn).map((paragraph) => (
+                <EditorialParagraph key={paragraph} text={paragraph} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
     </>
   );
 }
