@@ -879,6 +879,139 @@ checkHtml("/zh-Hans/blogs/zai-wo-in-the-analects", [
   }
 }
 
+const junziCover = "/images/blogs/what-is-a-junzi/cover.jpg";
+const junziInline1 = "/images/blogs/what-is-a-junzi/inline-1.jpg";
+const junziInline2 = "/images/blogs/what-is-a-junzi/inline-2.jpg";
+const junziCoverEn =
+  "Empty vessel outline beside a quiet study desk — junzi as not a fixed vessel (Analects 2.12)";
+const junziCoverZh = "空器轮廓与素净书案——君子「不器」（《论语》为政 2.12）";
+const junziInline1En =
+  "Soft paper slips with competing English glosses (gentleman, superior man, exemplary person) around an empty vessel — translation tension, not a ranking";
+const junziInline1Zh =
+  "淡墨纸签上互相拉扯的英译标签（gentleman / superior man / exemplary person）环绕空器——译词张力，非排行";
+const junziInline2En =
+  "Misty fork in a path — restrained junzi / xiaoren contrast without cartoon villainy";
+const junziInline2Zh = "雾中分岔小路——克制的君子/小人对照，非卡通善恶脸谱";
+const junziEnAnchors = [
+  ["Junzi", "https://www.lunyu.ai/en/index/junzi"],
+  ["Ren, Junzi, and Everyday Conduct", "https://www.lunyu.ai/en/blogs/ren-junzi-and-everyday-conduct"],
+  ["The Analects · Wei Chang 2.12", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-012"],
+];
+{
+  const start = postSource.indexOf('slug: "what-is-a-junzi"');
+  if (start === -1) {
+    fail("editorial-posts: missing what-is-a-junzi");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = junziEnAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(`what-is-a-junzi: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`);
+    }
+    junziEnAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`what-is-a-junzi: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(`what-is-a-junzi: markdown href ${index + 1} should be ${expectedHrefs[index]}`);
+      }
+    });
+  }
+}
+for (const src of [junziCover, junziInline1, junziInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/what-is-a-junzi", [
+  `rel="canonical" href="${siteUrl}/en/blogs/what-is-a-junzi"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-14"',
+  '"dateModified":"2026-09-14"',
+  "What Is a Junzi in the Analects?",
+  "Junzi is not a status label. A short Analects definition, translation map, and passage doors you can open on this site.",
+  "A short answer you can quote",
+  "Why the English glosses fight each other",
+  "Three doors in the text",
+  "Not a vessel",
+  "Unmoved when unknown",
+  "Right vs profit",
+  "Junzi and xiaoren (contrast only)",
+  "Open the line, then the index",
+  "What does junzi mean in the Analects?",
+  ">Junzi</a>",
+  ">Ren, Junzi, and Everyday Conduct</a>",
+  ">The Analects · Wei Chang 2.12</a>",
+  'href="/en/index/junzi"',
+  'href="/en/blogs/ren-junzi-and-everyday-conduct"',
+  'href="/en/analects/wei-zheng/wei-zheng-012"',
+  junziCover,
+  junziInline1,
+  junziInline2,
+  junziCoverEn,
+  junziInline1En,
+  junziInline2En,
+  `property="og:image" content="${siteUrl}${junziCover}"`,
+  `property="og:image:alt" content="${junziCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${junziCover}"`,
+  `name="twitter:image:alt" content="${junziCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/what-is-a-junzi", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/what-is-a-junzi"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-14"',
+  '"dateModified":"2026-09-14"',
+  "《论语》里的「君子」是什么意思？",
+  "中文全文将于稍后发布",
+  "中文解答将随全文于稍后发布",
+  "一句可以引用的短答",
+  "英译为什么互相拉扯",
+  "君子与小人（只作对照）",
+  junziCover,
+  junziInline1,
+  junziInline2,
+  junziCoverZh,
+  junziInline1Zh,
+  junziInline2Zh,
+  `property="og:image" content="${siteUrl}${junziCover}"`,
+  `property="og:image:alt" content="${junziCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${junziCover}"`,
+  `name="twitter:image:alt" content="${junziCoverZh}"`,
+]);
+{
+  const zhJunziFile = htmlPath("/zh-Hans/blogs/what-is-a-junzi");
+  if (exists(zhJunziFile)) {
+    const zhJunziHtml = read(zhJunziFile);
+    if (zhJunziHtml.includes(junziCoverEn)) {
+      fail("/zh-Hans/blogs/what-is-a-junzi: English cover alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhJunziHtml, />Junzi<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/what-is-a-junzi: English Junzi body link should not appear on zh-Hans");
+    }
+  }
+  const enJunziFile = htmlPath("/en/blogs/what-is-a-junzi");
+  if (exists(enJunziFile)) {
+    const enJunziHtml = read(enJunziFile);
+    if (enJunziHtml.includes(junziCoverZh)) {
+      fail("/en/blogs/what-is-a-junzi: Chinese cover alt leaked onto en");
+    }
+    if (countRegex(enJunziHtml, />Junzi<\/a>/g) !== 1) {
+      fail("/en/blogs/what-is-a-junzi: Junzi body link should appear once");
+    }
+    if (countRegex(enJunziHtml, />Ren, Junzi, and Everyday Conduct<\/a>/g) !== 1) {
+      fail("/en/blogs/what-is-a-junzi: everyday-conduct body link should appear once");
+    }
+    if (countRegex(enJunziHtml, />The Analects · Wei Chang 2\.12<\/a>/g) !== 1) {
+      fail("/en/blogs/what-is-a-junzi: Wei Chang 2.12 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -993,6 +1126,8 @@ assertIncludes(sitemap, `${siteUrl}/zh-Hans/index/confucius`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-read-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zai-wo-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zai-wo-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/what-is-a-junzi`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/what-is-a-junzi`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");

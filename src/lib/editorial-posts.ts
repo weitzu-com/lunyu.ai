@@ -79,6 +79,8 @@ export type EditorialPost = {
   titleEn: string;
   dekZh: string;
   dekEn: string;
+  descriptionZh?: string;
+  descriptionEn?: string;
   datePublished: string;
   dateModified: string;
   tagsZh: string[];
@@ -97,6 +99,11 @@ export type EditorialTextPart =
 
 const EDITORIAL_MARKDOWN_LINK = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g;
 const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
+
+const zhArticleLater =
+  "中文全文将于稍后发布。此页目前只保留英文札记；下面的简体文字是预告，不是已完稿的完整文章。";
+const zhFaqLater =
+  "中文解答将随全文于稍后发布。请先阅读本页英文问答，不要把这句预告当成已完成的简体札记。";
 
 export const editorialPosts: EditorialPost[] = [
   {
@@ -250,6 +257,163 @@ export const editorialPosts: EditorialPost[] = [
         ],
         bodyEn: [
           "When you are ready to sit with the longest exchange, open [The Analects · Yang Ho 17.21](https://www.lunyu.ai/en/analects/yang-huo/yang-huo-021) and read source, guide, and Legge side by side. Ask yourself where ease ends and love begins in your own speech—then stop, and return to the text rather than to a summary of Zai Wo.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "what-is-a-junzi",
+    titleZh: "《论语》里的「君子」是什么意思？",
+    titleEn: "What Is a Junzi in the Analects?",
+    dekZh: zhArticleLater,
+    dekEn:
+      'When you search "what is a junzi," you usually want a checkable name, not a success slogan. In the Analects the junzi is a role of conduct and judgment—someone measured by learning, rightness, and how they hold themselves when unrecognized—not by office or pedigree. You can quote a short definition here, then open the lines themselves on this site and keep source, guide, and Legge\'s English in their layers.',
+    descriptionEn:
+      "Junzi is not a status label. A short Analects definition, translation map, and passage doors you can open on this site.",
+    datePublished: "2026-09-14",
+    dateModified: "2026-09-14",
+    tagsZh: ["君子", "定义", "论语"],
+    tagsEn: ["junzi", "definition", "Analects"],
+    related: ["/analects/wei-zheng/wei-zheng-012", "/index/junzi", "/blogs/ren-junzi-and-everyday-conduct"],
+    cover: notesBlogImage(
+      "what-is-a-junzi",
+      "cover.jpg",
+      "Empty vessel outline beside a quiet study desk — junzi as not a fixed vessel (Analects 2.12)",
+      "空器轮廓与素净书案——君子「不器」（《论语》为政 2.12）",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "what-is-a-junzi",
+        "inline-1.jpg",
+        "Soft paper slips with competing English glosses (gentleman, superior man, exemplary person) around an empty vessel — translation tension, not a ranking",
+        "淡墨纸签上互相拉扯的英译标签（gentleman / superior man / exemplary person）环绕空器——译词张力，非排行",
+        NOTES_INLINE_SIZE
+      ),
+      "inline-2": notesBlogImage(
+        "what-is-a-junzi",
+        "inline-2.jpg",
+        "Misty fork in a path — restrained junzi / xiaoren contrast without cartoon villainy",
+        "雾中分岔小路——克制的君子/小人对照，非卡通善恶脸谱",
+        NOTES_INLINE_SIZE
+      ),
+    },
+    sections: [
+      {
+        headingZh: "一句可以引用的短答",
+        headingEn: "A short answer you can quote",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "You can say it this way: a junzi is the person the book measures by conduct and judgment, not by rank. The name points to how you learn, how you weigh rightness against gain, and whether you stay steady when others take no note of you. It does not mean \"successful person,\" celebrity, or a badge of birth. On this site the entity hub [Junzi](https://www.lunyu.ai/en/index/junzi) states the same spine in one line: a junzi may go unnamed and may be poor; what the name will not trade away is rightness for profit. You should treat that as a door into passages, not as a personality brand you wear.",
+        ],
+      },
+      {
+        headingZh: "英译为什么互相拉扯",
+        headingEn: "Why the English glosses fight each other",
+        imageSlot: "inline-1",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          'When you meet "gentleman," you inherit class manners and social polish the Chinese name does not require. When you meet Legge\'s "superior man," you easily hear social rank, even though many of his lines are about rightness, learning, and restraint. "Exemplary person" tries to dodge pedigree, yet it can sound like a modern role model poster. You do best to keep the romanization junzi in view, then read each English layer as a gloss—not as a replacement that settles the word once. Your check is always the live passage: source Chinese, modern guide, and public-domain Legge on the same page.',
+        ],
+      },
+      {
+        headingZh: "文本里的三道门",
+        headingEn: "Three doors in the text",
+        bodyZh: [],
+        bodyEn: [],
+      },
+      {
+        headingZh: "不器",
+        headingEn: "Not a vessel",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          'One short line you should open first is Wei Chang 2.12. Legge gives: "The accomplished scholar is not a utensil." A vessel is a tool with one assigned use; the junzi is not stored as one office, one talent, or one function you hire and shelve. You can let that sentence stop a habit of reducing people—including yourself—to a single skill label. When you are ready to sit with the Chinese and the English together, that chapter is the main door on this Note.',
+        ],
+      },
+      {
+        headingZh: "人不知而不愠",
+        headingEn: "Unmoved when unknown",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          'The book\'s opening chapter, Hsio R. 1.1, places the junzi after "men take no note of him." Legge asks whether he is not "a man of complete virtue, who feels no discomposure though men may take no note of him." You are not given a how-to for fame management; you are given a first condition of the name: recognition is not the price of the title. Hold that lightly here—this Note only points the door; it does not rewrite a how-to-read essay. Your next move, if the line catches you, is the live chapter page, not a summary that invents extra numbers.',
+        ],
+      },
+      {
+        headingZh: "义与利",
+        headingEn: "Right vs profit",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          'Le Jin 4.16 sets the contrast on the measure you use, not on pedigree. Legge: "The mind of the superior man is conversant with righteousness; the mind of the mean man is conversant with gain." You can hear yi (rightness) against li (profit) as two ways of weighing a choice. When you ask what a junzi "is," this door answers by what the mind stays conversant with—not by wealth, office, or a villain cartoon of everyone else. Cite the live Le Jin page when you quote; do not float the number alone as if it were a slogan.',
+        ],
+      },
+      {
+        headingZh: "君子与小人（只作对照）",
+        headingEn: "Junzi and xiaoren (contrast only)",
+        imageSlot: "inline-2",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "You will often meet xiaoren paired with junzi. On this site that pairing marks a measure: profit, partiality, sameness without harmony, overflow in poverty—before it names a class insult or a cartoon villain. You should read the paired line first and refuse to turn \"small person\" into a social slur you throw at strangers. This section stops at contrast; it does not become a daily-habits handbook. If you want everyday ren and junzi conduct as practice, that is another Note on this site, not a rewrite of the definition question you brought here.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的君子是什么意思？",
+        questionEn: "What does junzi mean in the Analects?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You can quote this: a junzi is a role of conduct and judgment—learning, rightness, steadiness when unrecognized—not a status badge or a synonym for success. The book tests the name in scenes, not in a single dictionary box. Your shortest honest answer still sends you back to a passage URL on this site rather than to a motivational paraphrase.",
+      },
+      {
+        questionZh: "哪个英译最不误导？",
+        questionEn: "Which English word is least misleading?",
+        answerZh: zhFaqLater,
+        answerEn:
+          'You should treat none as final. "Gentleman" smuggles class manners; "superior man" is easily heard as rank; "exemplary person" can sound like a poster. Keep junzi in the title of your question, then use Legge as one public-domain layer beside the Chinese. Your least-misleading move is the layered page, not a single English winner.',
+      },
+      {
+        questionZh: "有没有一句能定义君子？",
+        questionEn: "Is there one sentence that defines junzi?",
+        answerZh: zhFaqLater,
+        answerEn:
+          'You will not find one line that closes the name for every asker. Different disciples hear different items—act before speaking, be without anxiety or fear, cultivate with reverence—and the book opens by tying the junzi to learning and to being unmoved when unknown. Your "definition" is a cluster of doors, not a slogan you paste onto every career talk.',
+      },
+      {
+        questionZh: "君子可以贫穷或默默无闻吗？",
+        questionEn: "Can a junzi be poor or unknown?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "Yes. The opening chapter already places the name after going unrecognized, and elsewhere the book allows firmness in want without canceling the title. You should not equate junzi with visibility, office, or comfort. Poverty or anonymity can still leave rightness untraded; that is part of what the name refuses to sell.",
+      },
+      {
+        questionZh: "这和「做更好的人」建议页有何不同？",
+        questionEn: 'How is this different from "be a better person" advice pages?',
+        answerZh: zhFaqLater,
+        answerEn:
+          "You are reading a definition and passage-door Note, not a habit coach. This page maps the word, the fighting English glosses, and a few live Analects doors you can open. Everyday ren and junzi conduct belongs to [Ren, Junzi, and Everyday Conduct](https://www.lunyu.ai/en/blogs/ren-junzi-and-everyday-conduct)—link once, do not rewrite it here. Your next check stays on source text, not on a second self-help outline.",
+      },
+      {
+        questionZh: "小人只是反派吗？",
+        questionEn: "Is the xiaoren simply a villain?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You should not flatten the pair that way. Xiaoren usually marks a contrast of measure—profit, partiality, conformity without harmony—before it names a villain. Read the paired line on the live pages; refuse a cartoon that turns half the book into insults. Your task is to notice which measure you are using, not to collect enemies from the Analects.",
+      },
+      {
+        questionZh: "接下来该去本站哪里？",
+        questionEn: "Where should you go next on this site?",
+        answerZh: zhFaqLater,
+        answerEn:
+          'Open the short "not a vessel" chapter as your first sitting text, then browse more junzi lines from the entity index when you want the wider map. You keep source, guide, and Legge visible together and refuse any newly minted Confucius quote. Your verification path is always a published URL on lunyu.ai.',
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "先打开这一句，再回索引",
+        headingEn: "Open the line, then the index",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "When you are ready to test the name against one short sentence, open [The Analects · Wei Chang 2.12](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-012) and read source, guide, and Legge side by side. Ask whether you have been treating yourself—or someone else—as a single-use vessel. Then return to the Junzi index for more doors, and keep this definition Note separate from the everyday-conduct sister page.",
         ],
       },
     ],
@@ -574,6 +738,14 @@ export function postTitle(locale: Locale, post: EditorialPost) {
 
 export function postDek(locale: Locale, post: EditorialPost) {
   return t(locale, post.dekZh, post.dekEn);
+}
+
+export function postDescription(locale: Locale, post: EditorialPost) {
+  return t(
+    locale,
+    post.descriptionZh ?? post.dekZh,
+    post.descriptionEn ?? post.dekEn
+  );
 }
 
 export function postTags(locale: Locale, post: EditorialPost) {

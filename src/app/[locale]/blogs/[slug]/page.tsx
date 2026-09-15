@@ -12,6 +12,7 @@ import {
   editorialPosts,
   getEditorialPost,
   postDek,
+  postDescription,
   postTags,
   postTitle,
   type EditorialPost,
@@ -42,7 +43,7 @@ export async function generateMetadata({
   const post = getEditorialPost(slug);
   if (!post) return {};
   const title = postTitle(locale, post);
-  const description = postDek(locale, post);
+  const description = postDescription(locale, post);
   const path = `/blogs/${post.slug}`;
   const cover =
     post.cover == null
@@ -88,7 +89,7 @@ export default async function BlogPostPage({
         "@id": `${pageUrl}#article`,
         url: pageUrl,
         headline: postTitle(locale, post),
-        description: postDek(locale, post),
+        description: postDescription(locale, post),
         datePublished: post.datePublished,
         dateModified: post.dateModified,
         inLanguage: locale,
