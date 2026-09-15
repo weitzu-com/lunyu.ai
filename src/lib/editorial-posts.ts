@@ -107,6 +107,173 @@ const zhFaqLater =
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zhongshu-reciprocity-in-the-analects",
+    titleZh: "《论语》的忠恕：不是愚忠，也不是英文 Golden Rule",
+    titleEn: "Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not",
+    dekZh: zhArticleLater,
+    dekEn:
+      "When you meet zhongshu (忠恕) on a quote card or in a search snippet, you usually want a checkable pair, not a soft slogan. In the Analects the name holds two moves together: finishing what a matter asks of you, and stopping before you impose what you yourself would refuse. You can quote a short split here, then open the live passages on this site and keep source, guide, and Legge's English in their layers.",
+    descriptionEn:
+      "Zhongshu is a paired Analects teaching—not blind loyalty and not a soft Golden Rule. Open the passages on this site.",
+    datePublished: "2026-09-15",
+    dateModified: "2026-09-15",
+    tagsZh: ["忠恕", "恕", "论语"],
+    tagsEn: ["zhongshu", "reciprocity", "Analects"],
+    related: [
+      "/analects/li-ren/li-ren-015",
+      "/index/zhongshu",
+      "/analects/wei-ling-gong/wei-ling-gong-023",
+    ],
+    cover: notesBlogImage(
+      "zhongshu-reciprocity-in-the-analects",
+      "cover.jpg",
+      "Two symmetrical empty seats across quiet blank space — zhong and shu as a paired teaching, not a slogan poster",
+      "对称空席与双向留白——忠与恕作为成对之教，而非口号海报",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zhongshu-reciprocity-in-the-analects",
+        "inline-1.jpg",
+        "Empty bowl beside a soft boundary line — shu as a restrained “do not unto others” limit, not a threat",
+        "空碗与淡墨边界——恕作为「己所不欲」的克制边界，而非恐吓",
+        NOTES_INLINE_SIZE
+      ),
+      "inline-2": notesBlogImage(
+        "zhongshu-reciprocity-in-the-analects",
+        "inline-2.jpg",
+        "Misty fork between an upright measured path and a bent following trail — zhong is not blind loyalty",
+        "雾中分岔：直立有度之路与盲从弯道——忠不等于愚忠",
+        NOTES_INLINE_SIZE
+      ),
+    },
+    sections: [
+      {
+        headingZh: "一句可以引用的短答",
+        headingEn: "A short answer you can quote",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "You can say it this way: zhongshu is a paired Analects teaching—not blind loyalty, and not a Golden Rule sticker that tells you to give others whatever you want. On this site the entity hub [Loyalty and reciprocity](https://www.lunyu.ai/en/index/zhongshu) states the same spine in two lines: zhong is finishing what the matter asks of you; shu is stopping before you impose what you yourself would refuse. You should treat that as a door into passages, not as a personality brand or a one-word morality app.",
+        ],
+      },
+      {
+        headingZh: "把这一对拆开",
+        headingEn: "Split the pair",
+        bodyZh: [],
+        bodyEn: [],
+      },
+      {
+        headingZh: "恕：先是禁令",
+        headingEn: "Shu: a prohibition first",
+        imageSlot: "inline-1",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "When you hear shu, you often hear the lifelong word Confucius grants when asked for one practice for life: what you do not want done to yourself, do not do to others. That door is a restraint—you stop before you impose—not a positive order to hand others your preferred gifts. You do best to keep the prohibition in view, then refuse to collapse shu into a modern “be nice” poster. Your check is the live chapter, not a paraphrase that flips the direction of the rule.",
+        ],
+      },
+      {
+        headingZh: "忠：不是「服从在上者」",
+        headingEn: "Zhong: not “obey whoever is above you”",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "When you meet English “loyalty,” you easily hear unconditional obedience to a person or office. In the book zhong shows up in planning for others, in speech, and in conducting affairs—doing fully what was entrusted—not as a blank check for whoever sits higher. You should not trade the word for “blind loyalty”; that reading breaks a pair the book keeps with li (ritual propriety) and with shu. Hold the romanization zhong beside the English gloss, and read each scene before you settle the word once.",
+        ],
+      },
+      {
+        headingZh: "两道章句之门",
+        headingEn: "Two passage doors",
+        bodyZh: [],
+        bodyEn: [],
+      },
+      {
+        headingZh: "曾子的概括：「忠恕而已矣」",
+        headingEn: "Zengzi’s summary: “zhong and shu, and that is all”",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "One door you should open first is Le Jin 4.15. Confucius tells Zengzi his way is threaded on one strand; after the Master leaves, Zengzi restates it for the other disciples: the Master’s way is zhong and shu, and that is all. You are hearing a disciple’s summary, not a definition Confucius posted on the wall. Legge’s public-domain English on that page paraphrases the pair rather than printing the Chinese syllables—zhongshu stays visible in the source line. When you are ready to sit with Chinese, guide, and Legge together, that chapter is the main door on this Note.",
+        ],
+      },
+      {
+        headingZh: "终身之言：「其恕乎」",
+        headingEn: "The lifelong word: “is it not shu?”",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "A second door is Wei Ling Kung 15.23. Zi Gong asks whether one word can serve as a rule of practice for all one’s life; Confucius answers shu, then states the prohibition: what you do not want done to yourself, do not do to others. You can open [The Analects · Wei Ling Kung 15.23](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-023) when you want that daily restraint in full. Hold it as a doorway into shu—not as proof that zhongshu collapses into one English Golden Rule. Your next move, if the line catches you, is the live chapter page, not a summary that invents extra numbers.",
+        ],
+      },
+      {
+        headingZh: "三种常见的塌缩",
+        headingEn: "Common collapses to refuse",
+        imageSlot: "inline-2",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "You will meet three easy collapses. First, reading zhong as blind loyalty to whoever is above you—refuse that; the book pairs minister’s zhong with the ruler’s li, and elsewhere tests zhong as finishing what was entrusted. Second, treating “what you do not want…” as the whole of zhongshu or as identical to the usual Golden Rule that tells you to give others what you want—the direction is not the same. Third, name confusion: zhongshu the teaching is not the disciple Zhong Gong; if you meant the person, open [Zhong Gong](https://www.lunyu.ai/en/index/zhong-gong) once and leave this concept Note. You should also keep zhongshu separate from a full rewrite of ren or junzi everyday-conduct essays—this page only splits the pair and opens doors.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的忠恕是什么？",
+        questionEn: "What is zhongshu in the Analects?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You can quote this: zhongshu is a paired teaching—zhong as finishing what the matter asks of you, shu as stopping before you impose what you yourself would refuse. It is not blind loyalty, not a soft “be nice” slogan, and not a single English Golden Rule. Your shortest honest answer still sends you back to a passage URL on this site rather than to a motivational paraphrase.",
+      },
+      {
+        questionZh: "「忠恕而已矣」是孔子说的吗？",
+        questionEn: "Did Confucius say “zhong and shu, and that is all”?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You should credit Zengzi’s restatement in Le Jin 4.15, not invent a wall slogan from Confucius’s own mouth in that scene. The Master speaks of an all-pervading unity; Zengzi names the pair for the other disciples after the Master leaves. Your check is the live chapter—source Chinese, guide, and Legge—rather than a floating meme that erases who said which line.",
+      },
+      {
+        questionZh: "「己所不欲…」就是恕的全部吗？",
+        questionEn: "Is “what you do not want done to yourself…” the whole of shu?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You meet that prohibition as the lifelong word in Wei Ling Kung 15.23, and it is the daily door for shu—a restraint, not a positive gift list. You should not treat it as the entire pair zhongshu, nor flip it into “give others what you want.” Your honest reading keeps the prohibition’s direction and leaves zhong as the other half of the teaching.",
+      },
+      {
+        questionZh: "忠该译成 loyalty 吗？",
+        questionEn: "Should zhong be translated “loyalty”?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You can use “loyalty” as one English gloss if you keep the scenes in view—planning for others, speech, affairs entrusted—but you should refuse “blind loyalty” as the meaning. Legge and other layers often say “faithful” or similar; none settles the Chinese once. Your least-misleading move is the layered page beside the romanization zhong, not a single English winner.",
+      },
+      {
+        questionZh: "忠恕就是仁吗？",
+        questionEn: "Is zhongshu the same as ren?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You should not collapse them. Ren is a wider name of virtue the book tests in many doors; zhongshu is a paired teaching that can thread a way without becoming a synonym for every use of ren. This Note does not rewrite everyday ren and junzi conduct pages. Your next check stays on the zhongshu passages and the entity index, not on a second self-help outline.",
+      },
+      {
+        questionZh: "忠恕就是 Golden Rule 吗？",
+        questionEn: "Is zhongshu the Golden Rule?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "You should refuse a simple yes. The Analects door for shu forbids imposing what you would refuse; the usual Golden Rule tells you to treat others as you want to be treated—the direction is not the same. Zi Gong’s fuller positive sentence is precisely what Confucius, elsewhere, says is not yet his. Your careful answer keeps that split instead of pasting one English slogan onto the pair.",
+      },
+      {
+        questionZh: "接下来该去本站哪里？",
+        questionEn: "Where should you go next on this site?",
+        answerZh: zhFaqLater,
+        answerEn:
+          "Open Le Jin 4.15 as your first sitting text for the paired summary, then Wei Ling Kung 15.23 when you want the lifelong shu prohibition alone. You keep source, guide, and Legge visible together and refuse any newly minted Confucius quote. Your verification path is always a published URL on lunyu.ai, starting with the main chapter door below.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "先打开这一句，再回索引",
+        headingEn: "Open the line, then the index",
+        bodyZh: [zhArticleLater],
+        bodyEn: [
+          "When you are ready to test the pair against one live chapter, open [The Analects · Le Jin 4.15](https://www.lunyu.ai/en/analects/li-ren/li-ren-015) and read source, guide, and Legge side by side. Ask whether you have been collapsing zhong into blind obedience—or shu into a soft Golden Rule. Then return to the Loyalty and reciprocity index for more doors, and keep this concept Note separate from disciple biographies.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zai-wo-in-the-analects",
     titleZh: "《论语》里的宰我是谁？",
     titleEn: "Who Was Zai Wo in the Analects?",
