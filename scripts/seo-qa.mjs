@@ -1024,10 +1024,14 @@ const zhongshuInline1Zh = "空碗与淡墨边界——恕作为「己所不欲�
 const zhongshuInline2En =
   "Misty fork between an upright measured path and a bent following trail — zhong is not blind loyalty";
 const zhongshuInline2Zh = "雾中分岔：直立有度之路与盲从弯道——忠不等于愚忠";
-const zhongshuEnAnchors = [
+const zhongshuAnchors = [
+  ["忠恕", "https://www.lunyu.ai/zh-Hans/index/zhongshu"],
   ["Loyalty and reciprocity", "https://www.lunyu.ai/en/index/zhongshu"],
+  ["论语 · 卫灵公 15.23", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023"],
   ["The Analects · Wei Ling Kung 15.23", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-023"],
+  ["仲弓", "https://www.lunyu.ai/zh-Hans/index/zhong-gong"],
   ["Zhong Gong", "https://www.lunyu.ai/en/index/zhong-gong"],
+  ["论语 · 里仁 4.15", "https://www.lunyu.ai/zh-Hans/analects/li-ren/li-ren-015"],
   ["The Analects · Le Jin 4.15", "https://www.lunyu.ai/en/analects/li-ren/li-ren-015"],
 ];
 {
@@ -1040,13 +1044,13 @@ const zhongshuEnAnchors = [
     const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
       (match) => match[1]
     );
-    const expectedHrefs = zhongshuEnAnchors.map(([, href]) => href);
+    const expectedHrefs = zhongshuAnchors.map(([, href]) => href);
     if (markdownHrefs.length !== expectedHrefs.length) {
       fail(
         `zhongshu-reciprocity-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
       );
     }
-    zhongshuEnAnchors.forEach(([label, href]) => {
+    zhongshuAnchors.forEach(([label, href]) => {
       if (!block.includes(`[${label}](${href})`)) {
         fail(`zhongshu-reciprocity-in-the-analects: missing [${label}](${href})`);
       }
@@ -1068,7 +1072,7 @@ checkHtml("/en/blogs/zhongshu-reciprocity-in-the-analects", [
   '"@type":"Article"',
   '"@type":"FAQPage"',
   '"datePublished":"2026-09-15"',
-  '"dateModified":"2026-09-15"',
+  '"dateModified":"2026-09-16"',
   "Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not",
   "Zhongshu is a paired Analects teaching—not blind loyalty and not a soft Golden Rule. Open the passages on this site.",
   "A short answer you can quote",
@@ -1105,14 +1109,23 @@ checkHtml("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects", [
   '"@type":"Article"',
   '"@type":"FAQPage"',
   '"datePublished":"2026-09-15"',
-  '"dateModified":"2026-09-15"',
+  '"dateModified":"2026-09-16"',
   "《论语》的忠恕：不是愚忠，也不是英文 Golden Rule",
-  "中文全文将于稍后发布",
-  "中文解答将随全文于稍后发布",
+  "忠恕不是愚忠，也不等于一句「己所不欲」贴纸。拆开忠与恕，并链回可核对的原文。",
+  "你在金句卡或搜索摘要里碰到「忠恕」时，多半想要一对可核对的说法",
   "一句可以引用的短答",
   "把这一对拆开",
   "恕：先是禁令",
   "三种常见的塌缩",
+  "《论语》里的忠恕是什么？",
+  ">忠恕</a>",
+  ">论语 · 卫灵公 15.23</a>",
+  ">仲弓</a>",
+  ">论语 · 里仁 4.15</a>",
+  'href="/zh-Hans/index/zhongshu"',
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023"',
+  'href="/zh-Hans/index/zhong-gong"',
+  'href="/zh-Hans/analects/li-ren/li-ren-015"',
   zhongshuCover,
   zhongshuInline1,
   zhongshuInline2,
@@ -1128,6 +1141,11 @@ checkHtml("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects", [
   const zhZhongshuFile = htmlPath("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects");
   if (exists(zhZhongshuFile)) {
     const zhZhongshuHtml = read(zhZhongshuFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZhongshuHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: leftover stub ${stub}`);
+      }
+    }
     if (zhZhongshuHtml.includes(zhongshuCoverEn)) {
       fail("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: English cover alt leaked onto zh-Hans");
     }
@@ -1135,6 +1153,18 @@ checkHtml("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects", [
       fail(
         "/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: English Loyalty and reciprocity body link should not appear on zh-Hans"
       );
+    }
+    if (countRegex(zhZhongshuHtml, />忠恕<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: 忠恕 body link should appear once");
+    }
+    if (countRegex(zhZhongshuHtml, />论语 · 卫灵公 15\.23<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: 卫灵公 15.23 body link should appear once");
+    }
+    if (countRegex(zhZhongshuHtml, />仲弓<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: 仲弓 body link should appear once");
+    }
+    if (countRegex(zhZhongshuHtml, />论语 · 里仁 4\.15<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects: 里仁 4.15 body link should appear once");
     }
   }
   const enZhongshuFile = htmlPath("/en/blogs/zhongshu-reciprocity-in-the-analects");
@@ -1302,7 +1332,7 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-  if (!lastmod.includes("2026-09-15")) {
+  if (!lastmod.includes("2026-09-16")) {
     fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
   }
   for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
@@ -1340,7 +1370,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-15";
+const newestEditorialLastmod = "2026-09-16";
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
