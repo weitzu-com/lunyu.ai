@@ -892,9 +892,12 @@ const junziInline1Zh =
 const junziInline2En =
   "Misty fork in a path — restrained junzi / xiaoren contrast without cartoon villainy";
 const junziInline2Zh = "雾中分岔小路——克制的君子/小人对照，非卡通善恶脸谱";
-const junziEnAnchors = [
+const junziAnchors = [
+  ["君子", "https://www.lunyu.ai/zh-Hans/index/junzi"],
   ["Junzi", "https://www.lunyu.ai/en/index/junzi"],
+  ["仁、君子与日常行为", "https://www.lunyu.ai/zh-Hans/blogs/ren-junzi-and-everyday-conduct"],
   ["Ren, Junzi, and Everyday Conduct", "https://www.lunyu.ai/en/blogs/ren-junzi-and-everyday-conduct"],
+  ["论语 · 为政 2.12", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-012"],
   ["The Analects · Wei Chang 2.12", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-012"],
 ];
 {
@@ -907,11 +910,11 @@ const junziEnAnchors = [
     const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
       (match) => match[1]
     );
-    const expectedHrefs = junziEnAnchors.map(([, href]) => href);
+    const expectedHrefs = junziAnchors.map(([, href]) => href);
     if (markdownHrefs.length !== expectedHrefs.length) {
       fail(`what-is-a-junzi: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`);
     }
-    junziEnAnchors.forEach(([label, href]) => {
+    junziAnchors.forEach(([label, href]) => {
       if (!block.includes(`[${label}](${href})`)) {
         fail(`what-is-a-junzi: missing [${label}](${href})`);
       }
@@ -931,7 +934,7 @@ checkHtml("/en/blogs/what-is-a-junzi", [
   '"@type":"Article"',
   '"@type":"FAQPage"',
   '"datePublished":"2026-09-14"',
-  '"dateModified":"2026-09-14"',
+  '"dateModified":"2026-09-16"',
   "What Is a Junzi in the Analects?",
   "Junzi is not a status label. A short Analects definition, translation map, and passage doors you can open on this site.",
   "A short answer you can quote",
@@ -965,13 +968,25 @@ checkHtml("/zh-Hans/blogs/what-is-a-junzi", [
   '"@type":"Article"',
   '"@type":"FAQPage"',
   '"datePublished":"2026-09-14"',
-  '"dateModified":"2026-09-14"',
+  '"dateModified":"2026-09-16"',
   "《论语》里的「君子」是什么意思？",
-  "中文全文将于稍后发布",
-  "中文解答将随全文于稍后发布",
+  "君子不是成功学标签。一句可引用的定义、常见英译误区，以及可打开的原文入口。",
+  "你在搜索「君子是什么意思」时，多半想要可核对的名字",
   "一句可以引用的短答",
   "英译为什么互相拉扯",
+  "文本里的三道门",
+  "不器",
+  "人不知而不愠",
+  "义与利",
   "君子与小人（只作对照）",
+  "先打开这一句，再回索引",
+  "《论语》里的君子是什么意思？",
+  ">君子</a>",
+  ">仁、君子与日常行为</a>",
+  ">论语 · 为政 2.12</a>",
+  'href="/zh-Hans/index/junzi"',
+  'href="/zh-Hans/blogs/ren-junzi-and-everyday-conduct"',
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-012"',
   junziCover,
   junziInline1,
   junziInline2,
@@ -987,11 +1002,23 @@ checkHtml("/zh-Hans/blogs/what-is-a-junzi", [
   const zhJunziFile = htmlPath("/zh-Hans/blogs/what-is-a-junzi");
   if (exists(zhJunziFile)) {
     const zhJunziHtml = read(zhJunziFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhJunziHtml.includes(stub)) fail(`/zh-Hans/blogs/what-is-a-junzi: leftover stub ${stub}`);
+    }
     if (zhJunziHtml.includes(junziCoverEn)) {
       fail("/zh-Hans/blogs/what-is-a-junzi: English cover alt leaked onto zh-Hans");
     }
     if (countRegex(zhJunziHtml, />Junzi<\/a>/g) !== 0) {
       fail("/zh-Hans/blogs/what-is-a-junzi: English Junzi body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhJunziHtml, />君子<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-is-a-junzi: 君子 body link should appear once");
+    }
+    if (countRegex(zhJunziHtml, />仁、君子与日常行为<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-is-a-junzi: 仁、君子与日常行为 body link should appear once");
+    }
+    if (countRegex(zhJunziHtml, />论语 · 为政 2\.12<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-is-a-junzi: 为政 2.12 body link should appear once");
     }
   }
   const enJunziFile = htmlPath("/en/blogs/what-is-a-junzi");
