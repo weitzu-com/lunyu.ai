@@ -1043,14 +1043,14 @@ const zhongshuCover = "/images/blogs/zhongshu-reciprocity-in-the-analects/cover.
 const zhongshuInline1 = "/images/blogs/zhongshu-reciprocity-in-the-analects/inline-1.jpg";
 const zhongshuInline2 = "/images/blogs/zhongshu-reciprocity-in-the-analects/inline-2.jpg";
 const zhongshuCoverEn =
-  "Two symmetrical empty seats across quiet blank space — zhong and shu as a paired teaching, not a slogan poster";
-const zhongshuCoverZh = "对称空席与双向留白——忠与恕作为成对之教，而非口号海报";
+  "Two complementary halves of one teaching — zhong and shu as a paired Analects door, not a Zen poster";
+const zhongshuCoverZh = "同一教诲的两半并置——忠与恕作为《论语》成对之门，而非禅意海报";
 const zhongshuInline1En =
-  "Empty bowl beside a soft boundary line — shu as a restrained “do not unto others” limit, not a threat";
-const zhongshuInline1Zh = "空碗与淡墨边界——恕作为「己所不欲」的克制边界，而非恐吓";
+  "A gift held back at the table’s midline — shu as “do not impose what you refuse,” not an empty bowl";
+const zhongshuInline1Zh = "礼物停在桌线己侧——恕为「己所不欲勿施」，而非空碗静物";
 const zhongshuInline2En =
-  "Misty fork between an upright measured path and a bent following trail — zhong is not blind loyalty";
-const zhongshuInline2Zh = "雾中分岔：直立有度之路与盲从弯道——忠不等于愚忠";
+  "Finishing an entrusted scroll versus trailing a raised seat — zhong is not blind loyalty";
+const zhongshuInline2Zh = "办妥受托文书对照盲随高座——忠不等于愚忠";
 const zhongshuAnchors = [
   ["忠恕", "https://www.lunyu.ai/zh-Hans/index/zhongshu"],
   ["Loyalty and reciprocity", "https://www.lunyu.ai/en/index/zhongshu"],
