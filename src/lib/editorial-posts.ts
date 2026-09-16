@@ -110,13 +110,16 @@ export const editorialPosts: EditorialPost[] = [
     slug: "zhongshu-reciprocity-in-the-analects",
     titleZh: "《论语》的忠恕：不是愚忠，也不是英文 Golden Rule",
     titleEn: "Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not",
-    dekZh: zhArticleLater,
+    dekZh:
+      "你在金句卡或搜索摘要里碰到「忠恕」时，多半想要一对可核对的说法，而不是软口号。在《论语》里，这个名字把两步放在一起：把该尽的做尽，并在把你不愿承受的加给别人之前先停住。你可以先记住这个短拆，再打开本站活页，把原文、白话导读与英译分层来读。",
     dekEn:
       "When you meet zhongshu (忠恕) on a quote card or in a search snippet, you usually want a checkable pair, not a soft slogan. In the Analects the name holds two moves together: finishing what a matter asks of you, and stopping before you impose what you yourself would refuse. You can quote a short split here, then open the live passages on this site and keep source, guide, and Legge's English in their layers.",
+    descriptionZh:
+      "忠恕不是愚忠，也不等于一句「己所不欲」贴纸。拆开忠与恕，并链回可核对的原文。",
     descriptionEn:
       "Zhongshu is a paired Analects teaching—not blind loyalty and not a soft Golden Rule. Open the passages on this site.",
     datePublished: "2026-09-15",
-    dateModified: "2026-09-15",
+    dateModified: "2026-09-16",
     tagsZh: ["忠恕", "恕", "论语"],
     tagsEn: ["zhongshu", "reciprocity", "Analects"],
     related: [
@@ -151,7 +154,9 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "一句可以引用的短答",
         headingEn: "A short answer you can quote",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "你可以这样说：忠恕是《论语》里成对的教诲——不是愚忠，也不是一张告诉你「自己想要什么就给别人什么」的 Golden Rule 贴纸。本站实体索引[忠恕](https://www.lunyu.ai/zh-Hans/index/zhongshu)用两行写出同一条脊骨：忠是把这件事做尽；恕是先停住你不愿承受的那一下。你该把它当作走进篇章的门，而不是人格品牌或一键道德应用。",
+        ],
         bodyEn: [
           "You can say it this way: zhongshu is a paired Analects teaching—not blind loyalty, and not a Golden Rule sticker that tells you to give others whatever you want. On this site the entity hub [Loyalty and reciprocity](https://www.lunyu.ai/en/index/zhongshu) states the same spine in two lines: zhong is finishing what the matter asks of you; shu is stopping before you impose what you yourself would refuse. You should treat that as a door into passages, not as a personality brand or a one-word morality app.",
         ],
@@ -166,7 +171,9 @@ export const editorialPosts: EditorialPost[] = [
         headingZh: "恕：先是禁令",
         headingEn: "Shu: a prohibition first",
         imageSlot: "inline-1",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "当你听见「恕」，常常会听见孔子答应子贡可以终身行之的那一言：己所不欲，勿施于人。那扇门是克制——你先停住，别把不愿承受的加给别人——不是一份「把你喜欢的礼物推给别人」的正面清单。你最好把禁令的方向看清楚，再拒绝把恕塌缩成现代「对人好一点」的海报。你的核对点是活页篇章，而不是把规则方向偷偷翻转的改写。",
+        ],
         bodyEn: [
           "When you hear shu, you often hear the lifelong word Confucius grants when asked for one practice for life: what you do not want done to yourself, do not do to others. That door is a restraint—you stop before you impose—not a positive order to hand others your preferred gifts. You do best to keep the prohibition in view, then refuse to collapse shu into a modern “be nice” poster. Your check is the live chapter, not a paraphrase that flips the direction of the rule.",
         ],
@@ -174,7 +181,9 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "忠：不是「服从在上者」",
         headingEn: "Zhong: not “obey whoever is above you”",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "当你把忠读成英文里的 loyalty，很容易听成对某人或某职位的无条件服从。书里的忠出现在为人谋、言语与行事——把受托的事做尽——而不是谁坐得更高就给他一张空白支票。你不该拿「愚忠」去换这个字；那样读会拆掉书中与礼、与恕成对的条件。你把场景读完再定译名，比先选定一个英文赢家更稳。",
+        ],
         bodyEn: [
           "When you meet English “loyalty,” you easily hear unconditional obedience to a person or office. In the book zhong shows up in planning for others, in speech, and in conducting affairs—doing fully what was entrusted—not as a blank check for whoever sits higher. You should not trade the word for “blind loyalty”; that reading breaks a pair the book keeps with li (ritual propriety) and with shu. Hold the romanization zhong beside the English gloss, and read each scene before you settle the word once.",
         ],
@@ -188,7 +197,9 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "曾子的概括：「忠恕而已矣」",
         headingEn: "Zengzi’s summary: “zhong and shu, and that is all”",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "你该先打开的一扇门，是里仁 4.15。孔子告诉曾子「吾道一以贯之」；夫子出去后，曾子对门人转述：夫子之道，忠恕而已矣。你听见的是弟子的归纳，不是孔子当场贴在墙上的定义。活页把原文、白话导读与公版英译分层摆着；忠恕二字仍在源文一行里可见。当你准备坐下来并排对照时，这一章就是本篇笔记的主门。",
+        ],
         bodyEn: [
           "One door you should open first is Le Jin 4.15. Confucius tells Zengzi his way is threaded on one strand; after the Master leaves, Zengzi restates it for the other disciples: the Master’s way is zhong and shu, and that is all. You are hearing a disciple’s summary, not a definition Confucius posted on the wall. Legge’s public-domain English on that page paraphrases the pair rather than printing the Chinese syllables—zhongshu stays visible in the source line. When you are ready to sit with Chinese, guide, and Legge together, that chapter is the main door on this Note.",
         ],
@@ -196,7 +207,9 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "终身之言：「其恕乎」",
         headingEn: "The lifelong word: “is it not shu?”",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "第二扇门是卫灵公 15.23。子贡问有一言可以终身行之者乎；孔子答「其恕乎」，再说出那道禁令：己所不欲，勿施于人。你若要单独看这日常克制的全文，可打开[论语 · 卫灵公 15.23](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023)。你把它当作走进恕的入口——而不是证明忠恕可以塌缩成一句英文 Golden Rule。若这句话抓住你，下一步仍是活页篇章，而不是另编章号的摘要。",
+        ],
         bodyEn: [
           "A second door is Wei Ling Kung 15.23. Zi Gong asks whether one word can serve as a rule of practice for all one’s life; Confucius answers shu, then states the prohibition: what you do not want done to yourself, do not do to others. You can open [The Analects · Wei Ling Kung 15.23](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-023) when you want that daily restraint in full. Hold it as a doorway into shu—not as proof that zhongshu collapses into one English Golden Rule. Your next move, if the line catches you, is the live chapter page, not a summary that invents extra numbers.",
         ],
@@ -205,7 +218,9 @@ export const editorialPosts: EditorialPost[] = [
         headingZh: "三种常见的塌缩",
         headingEn: "Common collapses to refuse",
         imageSlot: "inline-2",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "你会遇见三种容易的塌缩。第一，把忠读成对上位者的愚忠——请拒绝；书里臣事君以忠，前面还有君使臣以礼，别处也把忠测成把受托的事做尽。第二，把「己所不欲……」当成忠恕的全部，或当成常见 Golden Rule 那句「己所欲，施于人」——方向并不相同。第三，名字混淆：忠恕这组成对之教，不是弟子[仲弓](https://www.lunyu.ai/zh-Hans/index/zhong-gong)；若你找的是人，打开人物索引一次，然后离开这篇概念笔记。你也该把忠恕与仁、君子日常行为的通论笔记分开——本页只拆这一对，并打开门。",
+        ],
         bodyEn: [
           "You will meet three easy collapses. First, reading zhong as blind loyalty to whoever is above you—refuse that; the book pairs minister’s zhong with the ruler’s li, and elsewhere tests zhong as finishing what was entrusted. Second, treating “what you do not want…” as the whole of zhongshu or as identical to the usual Golden Rule that tells you to give others what you want—the direction is not the same. Third, name confusion: zhongshu the teaching is not the disciple Zhong Gong; if you meant the person, open [Zhong Gong](https://www.lunyu.ai/en/index/zhong-gong) once and leave this concept Note. You should also keep zhongshu separate from a full rewrite of ren or junzi everyday-conduct essays—this page only splits the pair and opens doors.",
         ],
@@ -215,49 +230,56 @@ export const editorialPosts: EditorialPost[] = [
       {
         questionZh: "《论语》里的忠恕是什么？",
         questionEn: "What is zhongshu in the Analects?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "你可以这样引用：忠恕是成对的教诲——忠是把这件事做尽，恕是先停住你不愿承受的那一下。它不是愚忠，不是软软的「对人好」口号，也不是一句英文 Golden Rule。你最短的诚实答案，仍应把你送回本站可核对的篇章地址，而不是一句励志改写。",
         answerEn:
           "You can quote this: zhongshu is a paired teaching—zhong as finishing what the matter asks of you, shu as stopping before you impose what you yourself would refuse. It is not blind loyalty, not a soft “be nice” slogan, and not a single English Golden Rule. Your shortest honest answer still sends you back to a passage URL on this site rather than to a motivational paraphrase.",
       },
       {
         questionZh: "「忠恕而已矣」是孔子说的吗？",
         questionEn: "Did Confucius say “zhong and shu, and that is all”?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "你该把这句话记在曾子对门人的转述上（里仁 4.15），而不是假装孔子在当场贴出墙标。夫子说的是一以贯之；曾子在夫子出去后，才为门人点出忠与恕这一对。你的核对点是活页——原文、白话导读与英译——而不是抹掉谁说了哪一句的漂浮金句。",
         answerEn:
           "You should credit Zengzi’s restatement in Le Jin 4.15, not invent a wall slogan from Confucius’s own mouth in that scene. The Master speaks of an all-pervading unity; Zengzi names the pair for the other disciples after the Master leaves. Your check is the live chapter—source Chinese, guide, and Legge—rather than a floating meme that erases who said which line.",
       },
       {
         questionZh: "「己所不欲…」就是恕的全部吗？",
         questionEn: "Is “what you do not want done to yourself…” the whole of shu?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "你在卫灵公 15.23 遇见这道禁令，作为终身一言，它是恕的日常入口——克制，不是正面礼物清单。你不该把它当成忠恕整对的全部，也不该把它翻成「自己想要的就给别人」。你诚实的读法，是守住禁令的方向，并把忠留作这一对的另一半。",
         answerEn:
           "You meet that prohibition as the lifelong word in Wei Ling Kung 15.23, and it is the daily door for shu—a restraint, not a positive gift list. You should not treat it as the entire pair zhongshu, nor flip it into “give others what you want.” Your honest reading keeps the prohibition’s direction and leaves zhong as the other half of the teaching.",
       },
       {
         questionZh: "忠该译成 loyalty 吗？",
         questionEn: "Should zhong be translated “loyalty”?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "你可以用「忠诚」一类说法当 gloss，只要场景仍在眼前——为人谋、言语、受托之事——但你必须拒绝「愚忠」当本义。英译层常写 faithful 之类，没有一层能一次钉死汉字。你最少误导的做法，是把分层活页放在汉字旁边，而不是先选定一个英文赢家。",
         answerEn:
           "You can use “loyalty” as one English gloss if you keep the scenes in view—planning for others, speech, affairs entrusted—but you should refuse “blind loyalty” as the meaning. Legge and other layers often say “faithful” or similar; none settles the Chinese once. Your least-misleading move is the layered page beside the romanization zhong, not a single English winner.",
       },
       {
         questionZh: "忠恕就是仁吗？",
         questionEn: "Is zhongshu the same as ren?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "你不该把它们并成一个词。仁是书中更宽的德之名，在许多门里被检验；忠恕是可以贯穿其道的成对教诲，却不是仁每一次出现的同义词。本篇笔记不重写仁与君子的日常行为通论。你的下一步仍停在忠恕篇章与实体索引，而不是另一份自助提纲。",
         answerEn:
           "You should not collapse them. Ren is a wider name of virtue the book tests in many doors; zhongshu is a paired teaching that can thread a way without becoming a synonym for every use of ren. This Note does not rewrite everyday ren and junzi conduct pages. Your next check stays on the zhongshu passages and the entity index, not on a second self-help outline.",
       },
       {
         questionZh: "忠恕就是 Golden Rule 吗？",
         questionEn: "Is zhongshu the Golden Rule?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "你该拒绝简单的「是」。书中恕的门，禁止把你不愿承受的加给别人；常见 Golden Rule 却说「你想怎样被对待，就怎样对待别人」——方向不同。子贡那句更满的正面表述，正是孔子别处说「非尔所及」的。你应守住这个拆分，别把英文口号贴到这一对上。",
         answerEn:
           "You should refuse a simple yes. The Analects door for shu forbids imposing what you would refuse; the usual Golden Rule tells you to treat others as you want to be treated—the direction is not the same. Zi Gong’s fuller positive sentence is precisely what Confucius, elsewhere, says is not yet his. Your careful answer keeps that split instead of pasting one English slogan onto the pair.",
       },
       {
         questionZh: "接下来该去本站哪里？",
         questionEn: "Where should you go next on this site?",
-        answerZh: zhFaqLater,
+        answerZh:
+          "请先打开里仁 4.15，坐下来读成对归纳；若你想单独看终身一言的恕之禁令，再打开卫灵公 15.23。你把原文、白话导读与英译并排可见，并拒绝任何新捏造的「孔子说过」。你的核验路径始终是 lunyu.ai 已发布的地址，从下方主篇章门开始。",
         answerEn:
           "Open Le Jin 4.15 as your first sitting text for the paired summary, then Wei Ling Kung 15.23 when you want the lifelong shu prohibition alone. You keep source, guide, and Legge visible together and refuse any newly minted Confucius quote. Your verification path is always a published URL on lunyu.ai, starting with the main chapter door below.",
       },
@@ -266,7 +288,9 @@ export const editorialPosts: EditorialPost[] = [
       {
         headingZh: "先打开这一句，再回索引",
         headingEn: "Open the line, then the index",
-        bodyZh: [zhArticleLater],
+        bodyZh: [
+          "当你准备用一页活页检验这一对，请打开[论语 · 里仁 4.15](https://www.lunyu.ai/zh-Hans/analects/li-ren/li-ren-015)，把原文、白话导读与英译并排来读。你问问自己：是否把忠塌成了盲从，或把恕塌成了软软的 Golden Rule。然后再回忠恕索引找更多门，并让这篇概念笔记与弟子传记分开。",
+        ],
         bodyEn: [
           "When you are ready to test the pair against one live chapter, open [The Analects · Le Jin 4.15](https://www.lunyu.ai/en/analects/li-ren/li-ren-015) and read source, guide, and Legge side by side. Ask whether you have been collapsing zhong into blind obedience—or shu into a soft Golden Rule. Then return to the Loyalty and reciprocity index for more doors, and keep this concept Note separate from disciple biographies.",
         ],
