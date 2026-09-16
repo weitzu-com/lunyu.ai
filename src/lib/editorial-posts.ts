@@ -130,23 +130,23 @@ export const editorialPosts: EditorialPost[] = [
     cover: notesBlogImage(
       "zhongshu-reciprocity-in-the-analects",
       "cover.jpg",
-      "Two symmetrical empty seats across quiet blank space — zhong and shu as a paired teaching, not a slogan poster",
-      "对称空席与双向留白——忠与恕作为成对之教，而非口号海报",
+      "Two complementary halves of one teaching — zhong and shu as a paired Analects door, not a Zen poster",
+      "同一教诲的两半并置——忠与恕作为《论语》成对之门，而非禅意海报",
       { width: 1200, height: 630 }
     ),
     inlineImages: {
       "inline-1": notesBlogImage(
         "zhongshu-reciprocity-in-the-analects",
         "inline-1.jpg",
-        "Empty bowl beside a soft boundary line — shu as a restrained “do not unto others” limit, not a threat",
-        "空碗与淡墨边界——恕作为「己所不欲」的克制边界，而非恐吓",
+        "A gift held back at the table’s midline — shu as “do not impose what you refuse,” not an empty bowl",
+        "礼物停在桌线己侧——恕为「己所不欲勿施」，而非空碗静物",
         NOTES_INLINE_SIZE
       ),
       "inline-2": notesBlogImage(
         "zhongshu-reciprocity-in-the-analects",
         "inline-2.jpg",
-        "Misty fork between an upright measured path and a bent following trail — zhong is not blind loyalty",
-        "雾中分岔：直立有度之路与盲从弯道——忠不等于愚忠",
+        "Finishing an entrusted scroll versus trailing a raised seat — zhong is not blind loyalty",
+        "办妥受托文书对照盲随高座——忠不等于愚忠",
         NOTES_INLINE_SIZE
       ),
     },
