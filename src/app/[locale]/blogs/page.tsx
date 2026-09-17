@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Locale, locales, t } from "@/lib/analects";
-import { editorialPosts, postDek, postTags, postTitle } from "@/lib/editorial-posts";
+import { editorialPosts, postDek, postTags, postTitle } from "@/lib/all-editorial-posts";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { breadcrumbJsonLd, jsonLd, localizedUrl, organizationId, siteName } from "@/lib/site";
 

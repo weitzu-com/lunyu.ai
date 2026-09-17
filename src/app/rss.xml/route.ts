@@ -1,6 +1,6 @@
 import { getAllSentences } from "@/lib/analects";
 import { contentCoverageSummary } from "@/lib/content-coverage";
-import { editorialPosts, latestEditorialModifiedDate, postDek, postTitle } from "@/lib/editorial-posts";
+import { editorialPosts, latestEditorialModifiedDate, postDek, postTitle } from "@/lib/all-editorial-posts";
 import { localizedUrl, siteName, siteUrl } from "@/lib/site";
 import { contentModifiedDate } from "@/lib/site";
 

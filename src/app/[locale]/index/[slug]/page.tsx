@@ -19,7 +19,7 @@ import {
   sentenceBookLabel,
   sentenceHref,
 } from "@/lib/blogs";
-import { editorialPostsForIndexSlug, postTitle } from "@/lib/editorial-posts";
+import { editorialPostsForIndexSlug, postTitle } from "@/lib/all-editorial-posts";
 import {
   getFeaturedIndex,
   indexEntryModifiedDate,

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales, type Locale } from "@/lib/analects";
 import { blogEntities } from "@/lib/blogs";
 import { contentCoverage } from "@/lib/content-coverage";
-import { editorialPosts, latestEditorialModifiedDate } from "@/lib/editorial-posts";
+import { editorialPosts, latestEditorialModifiedDate } from "@/lib/all-editorial-posts";
 import { indexEntryModifiedDate } from "@/lib/featured-index";
 import { hubModifiedDate, intentHubSlugs } from "@/lib/intent-hubs";
 import { contentModifiedDate, localizedUrl, siteUrl } from "@/lib/site";
