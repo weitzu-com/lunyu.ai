@@ -17,7 +17,7 @@ import {
   postTitle,
   type EditorialPost,
   type EditorialSection,
-} from "@/lib/editorial-posts";
+} from "@/lib/all-editorial-posts";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import {
   breadcrumbJsonLd,
