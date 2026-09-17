@@ -1,5 +1,10 @@
 name: decode-blog-note-images
 on:
+  push:
+    branches:
+      - editorial/verify-quotes-twelve-leizi-2026-09-17
+    paths:
+      - "public/images/blogs/**/*.jpg.b64"
   workflow_dispatch:
 jobs:
   decode:
@@ -16,7 +21,7 @@ jobs:
           shopt -s nullglob
           files=(public/images/blogs/*/*.jpg.b64)
           if [ ${#files[@]} -eq 0 ]; then
-            echo "No .jpg.b64 files found"; exit 1
+            echo "No .jpg.b64 files found"; exit 0
           fi
           for f in "${files[@]}"; do
             out="${f%.b64}"
@@ -32,4 +37,4 @@ jobs:
             echo "Nothing to commit"; exit 0
           fi
           git commit -m "feat(editorial): add cover/inline images for verify, twelve, duke Notes"
-          git push origin HEAD:editorial/verify-quotes-twelve-leizi-2026-09-17
+          git push
