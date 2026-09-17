@@ -1,4 +1,5 @@
 import { post as twelveChaptersPost } from "@/lib/editorial-notes/analects-twelve-chapters";
+import { post as dukeLingPost } from "@/lib/editorial-notes/duke-ling-of-wei-in-the-analects";
 import { post as verifyQuotesPost } from "@/lib/editorial-notes/how-to-verify-confucius-quotes";
 import {
   editorialPosts as baseEditorialPosts,
@@ -11,6 +12,7 @@ export * from "@/lib/editorial-posts";
 const _seoNoteSlugMarkers = [
   { slug: "how-to-verify-confucius-quotes" },
   { slug: "analects-twelve-chapters" },
+  { slug: "duke-ling-of-wei-in-the-analects" },
 ];
 void _seoNoteSlugMarkers;
 
@@ -18,6 +20,7 @@ export const editorialPosts: EditorialPost[] = [
   ...baseEditorialPosts,
   verifyQuotesPost,
   twelveChaptersPost,
+  dukeLingPost,
 ];
 
 export function getEditorialPost(slug: string) {
