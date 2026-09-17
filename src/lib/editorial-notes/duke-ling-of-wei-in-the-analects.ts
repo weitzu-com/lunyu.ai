@@ -1,11 +1,12 @@
 import type { EditorialPost } from "@/lib/editorial-posts";
-import { s as a } from "./duke-ling-of-wei-in-the-analects.sa";
-import { s as b } from "./duke-ling-of-wei-in-the-analects.sb";
-import { s as c } from "./duke-ling-of-wei-in-the-analects.sc";
-import { s as d } from "./duke-ling-of-wei-in-the-analects.sd";
-import { s as e } from "./duke-ling-of-wei-in-the-analects.se";
-import { s as f } from "./duke-ling-of-wei-in-the-analects.sf";
-import { s as g } from "./duke-ling-of-wei-in-the-analects.sg";
-import { s as h } from "./duke-ling-of-wei-in-the-analects.sh";
+import { p as a } from "./duke-ling-of-wei-in-the-analects.pa";
+import { p as b } from "./duke-ling-of-wei-in-the-analects.pb";
+import { p as c } from "./duke-ling-of-wei-in-the-analects.pc";
+import { p as d } from "./duke-ling-of-wei-in-the-analects.pd";
+import { p as e } from "./duke-ling-of-wei-in-the-analects.pe";
+import { p as f } from "./duke-ling-of-wei-in-the-analects.pf";
+import { p as g } from "./duke-ling-of-wei-in-the-analects.pg";
 
-export const post: EditorialPost = JSON.parse(a + b + c + d + e + f + g + h) as EditorialPost;
+export const post: EditorialPost = JSON.parse(
+  Buffer.from(a + b + c + d + e + f + g, "base64").toString("utf8")
+) as EditorialPost;
