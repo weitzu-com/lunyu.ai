@@ -26,7 +26,7 @@ const replacements = [
   ],
   [
     "assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, \"sitemap\");\nfor (const slug of intentHubSlugs)",
-    "assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/how-to-verify-confucius-quotes`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-verify-confucius-quotes`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/analects-twelve-chapters`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/analects-twelve-chapters`, \"sitemap\");\nfor (const slug of intentHubSlugs)",
+    "assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/how-to-verify-confucius-quotes`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-verify-confucius-quotes`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/analects-twelve-chapters`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/analects-twelve-chapters`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, \"sitemap\");\nfor (const slug of intentHubSlugs)",
   ],
   [
     "if (!lastmod.includes(\"2026-09-16\")) {\n    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || \"missing\"}`);",
