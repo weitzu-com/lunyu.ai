@@ -29,9 +29,9 @@ export function editorialPostsForIndexSlug(slug: string) {
   return editorialPosts.filter((post) => post.related.includes(path));
 }
 
-export function latestEditorialModifiedDate() {
+export function latestEditorialModifiedDate(fallback = "") {
   return editorialPosts.reduce(
     (latest, post) => (post.dateModified > latest ? post.dateModified : latest),
-    "1970-01-01"
+    fallback
   );
 }
