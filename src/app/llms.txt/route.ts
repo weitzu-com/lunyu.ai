@@ -1,7 +1,7 @@
 import { books } from "@/lib/analects";
 import { blogEntities } from "@/lib/blogs";
 import { contentCoverage } from "@/lib/content-coverage";
-import { editorialPosts } from "@/lib/editorial-posts";
+import { editorialPosts } from "@/lib/all-editorial-posts";
 import { intentHubs, intentHubSlugs } from "@/lib/intent-hubs";
 import { siteUrl } from "@/lib/seo";
 import { contentModifiedDate, sourceUrls } from "@/lib/site";
