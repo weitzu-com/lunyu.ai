@@ -1,0 +1,35 @@
+name: decode-blog-note-images
+on:
+  workflow_dispatch:
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: editorial/verify-quotes-twelve-leizi-2026-09-17
+      - name: Decode b64 to jpg and commit
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(public/images/blogs/*/*.jpg.b64)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No .jpg.b64 files found"; exit 1
+          fi
+          for f in "${files[@]}"; do
+            out="${f%.b64}"
+            base64 -d "$f" > "$out"
+            python3 -c "import pathlib,sys; p=pathlib.Path(sys.argv[1]); assert p.read_bytes()[:2]==bytes([255,216]), p" "$out"
+            rm "$f"
+            echo "decoded $out ($(wc -c < "$out") bytes)"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/images/blogs
+          if git diff --cached --quiet; then
+            echo "Nothing to commit"; exit 0
+          fi
+          git commit -m "feat(editorial): add cover/inline images for verify, twelve, duke Notes"
+          git push origin HEAD:editorial/verify-quotes-twelve-leizi-2026-09-17
