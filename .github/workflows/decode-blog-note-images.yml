@@ -4,6 +4,7 @@ on:
     branches:
       - editorial/verify-quotes-twelve-leizi-2026-09-17
     paths:
+      - "public/images/blogs/**/*.b64.part*"
       - "public/images/blogs/**/*.jpg.b64"
   workflow_dispatch:
 jobs:
@@ -15,21 +16,39 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: editorial/verify-quotes-twelve-leizi-2026-09-17
-      - name: Decode b64 to jpg and commit
+      - name: Assemble b64 parts, decode to jpg, commit
         run: |
           set -euo pipefail
           shopt -s nullglob
-          files=(public/images/blogs/*/*.jpg.b64)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo "No .jpg.b64 files found"; exit 0
-          fi
-          for f in "${files[@]}"; do
-            out="${f%.b64}"
-            base64 -d "$f" > "$out"
-            python3 -c "import pathlib,sys; p=pathlib.Path(sys.argv[1]); assert p.read_bytes()[:2]==bytes([255,216]), p" "$out"
-            rm "$f"
-            echo "decoded $out ($(wc -c < "$out") bytes)"
-          done
+          python3 <<'PY'
+          import pathlib, base64, subprocess, os
+          root = pathlib.Path('public/images/blogs')
+          # assemble parts
+          parts = sorted(root.glob('*/*.b64.part*'))
+          by_prefix = {}
+          for p in parts:
+              # name like cover.jpg.b64.part00
+              key = p.name.rsplit('.part', 1)[0]  # cover.jpg.b64
+              by_prefix.setdefault((p.parent, key), []).append(p)
+          for (parent, key), plist in by_prefix.items():
+              plist = sorted(plist, key=lambda x: x.name)
+              text = ''.join(x.read_text().strip() for x in plist)
+              out_b64 = parent / key
+              out_b64.write_text(text)
+              for x in plist:
+                  x.unlink()
+              print('assembled', out_b64, 'chars', len(text))
+          # decode jpg.b64
+          for b64path in sorted(root.glob('*/*.jpg.b64')):
+              raw = base64.b64decode(b64path.read_text().strip())
+              assert raw[:2] == bytes([255, 216]), b64path
+              out = b64path.with_suffix('')  # drops .b64 -> .jpg? Path.with_suffix replaces last suffix only
+              # b64path is cover.jpg.b64; with_suffix('') -> cover.jpg.
+              out = pathlib.Path(str(b64path)[:-4])  # strip .b64
+              out.write_bytes(raw)
+              b64path.unlink()
+              print('decoded', out, 'bytes', len(raw))
+          PY
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A public/images/blogs
