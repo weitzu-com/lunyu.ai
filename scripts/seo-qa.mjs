@@ -25,18 +25,12 @@ const replacements = [
     'const postSource = read("src/lib/editorial-posts.ts") + read("src/lib/all-editorial-posts.ts");',
   ],
   [
-    `assertIncludes(sitemap, \`\${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects\`, "sitemap");
-for (const slug of intentHubSlugs)`,
-    `assertIncludes(sitemap, \`\${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects\`, "sitemap");
-assertIncludes(sitemap, \`\${siteUrl}/en/blogs/how-to-verify-confucius-quotes\`, "sitemap");
-assertIncludes(sitemap, \`\${siteUrl}/zh-Hans/blogs/how-to-verify-confucius-quotes\`, "sitemap");
-assertIncludes(sitemap, \`\${siteUrl}/en/blogs/analects-twelve-chapters\`, "sitemap");
-assertIncludes(sitemap, \`\${siteUrl}/zh-Hans/blogs/analects-twelve-chapters\`, "sitemap");
-for (const slug of intentHubSlugs)`,
+    "assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, \"sitemap\");\nfor (const slug of intentHubSlugs)",
+    "assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/how-to-verify-confucius-quotes`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/how-to-verify-confucius-quotes`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/en/blogs/analects-twelve-chapters`, \"sitemap\");\nassertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/analects-twelve-chapters`, \"sitemap\");\nfor (const slug of intentHubSlugs)",
   ],
   [
-    'if (!lastmod.includes("2026-09-16")) {\n    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);',
-    'if (!lastmod.includes("2026-09-17")) {\n    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);',
+    "if (!lastmod.includes(\"2026-09-16\")) {\n    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || \"missing\"}`);",
+    "if (!lastmod.includes(\"2026-09-17\")) {\n    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || \"missing\"}`);",
   ],
   [
     'const newestEditorialLastmod = "2026-09-16";',
