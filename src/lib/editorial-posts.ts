@@ -102,6 +102,191 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "duke-ai-of-lu-in-the-analects",
+    titleZh: "《论语》里的鲁哀公是谁？",
+    titleEn: "Who Was Duke Ai of Lu in the Analects?",
+    dekZh:
+      "你搜「鲁哀公」或 Duke Ai of Lu 时，多半是想在《论语》一串国君名里把他安顿下来。在本站，你遇见他，是因为他的提问常打开几扇门——何为则民服、年饥用不足、以及问社。你不必先读完整王侯传；你可以直接打开他发问的篇章，看孔子与其门人怎样回答。",
+    dekEn:
+      'When you search "duke ai of lu," you usually want to place one Lu ruler among many names in the Analects. On this site you meet him as the late Lu duke whose questions open doors—how the people submit, what to do in a year of scarcity, and the land altars. You do not need a Wikipedia résumé first; you can read the scenes where he asks and notice how Confucius and his circle answer.',
+    descriptionZh: "《论语》里的鲁哀公：用提问打开的门——何为则民服、年饥用不足、问社。链回可核对的原文。",
+    descriptionEn:
+      "Duke Ai of Lu in the Analects: the ruler whose questions open doors—how the people submit, a year of scarcity, and the land altars.",
+    datePublished: "2026-09-20",
+    dateModified: "2026-09-20",
+    tagsZh: ["鲁哀公", "哀公", "为政"],
+    tagsEn: ["duke ai", "Duke Ai of Lu", "Wei Chang"],
+    related: [
+      "/analects/wei-zheng/wei-zheng-019",
+      "/index/duke-ai",
+      "/analects/yan-yuan/yan-yuan-009",
+      "/blogs/zai-wo-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "duke-ai-of-lu-in-the-analects",
+      "cover.jpg",
+      "A Lu court audience — Duke Ai’s question to Confucius about how the people will submit",
+      "鲁廷对问之席——哀公问孔子「何为则民服」",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "duke-ai-of-lu-in-the-analects",
+        "inline-1.jpg",
+        "Upright appointments set above the crooked — “raise the straight, set aside the crooked”",
+        "直者举于枉者之上——「举直错诸枉」的用人意象",
+        NOTES_INLINE_SIZE
+      ),
+      "inline-2": notesBlogImage(
+        "duke-ai-of-lu-in-the-analects",
+        "inline-2.jpg",
+        "An empty grain measure at a quiet court table — scarcity-year counsel, not spectacle",
+        "空量器置于素净廷案——年饥问计，而非灾异奇观",
+        NOTES_INLINE_SIZE
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠王侯履历",
+        headingEn: "Place him by the passages, not by a royal résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[鲁哀公](https://www.lunyu.ai/zh-Hans/index/duke-ai)——《论语》中向孔子及其圈子发问的鲁国国君。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him as [Duke Ai of Lu](https://www.lunyu.ai/en/index/duke-ai)—the Lu ruler who questions Confucius and his circle in the Analects. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading.",
+        ],
+      },
+      {
+        headingZh: "他的提问打开的三扇门",
+        headingEn: "Three doors his questions open",
+        bodyZh: [],
+        bodyEn: [],
+      },
+      {
+        headingZh: "何为则民服",
+        headingEn: "How the people submit",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "有一场问答里，他问怎样做百姓才会服从。活页里孔子对曰：举直错诸枉，则民服；举枉错诸直，则民不服。你可以把这扇门读成「你举谁、你错谁」的用人判断，而不是逼人服从的口号。",
+        ],
+        bodyEn: [
+          "In one exchange he asks what should be done to secure the submission of the people. Legge has Confucius reply: advance the upright and set aside the crooked, then the people will submit; advance the crooked and set aside the upright, then they will not. You can take that as a door about whom you raise and whom you set aside—not as a slogan for forcing obedience. When you cite it later, keep the Chinese source visible beside the English layer on the same live page.",
+        ],
+      },
+      {
+        headingZh: "年饥用不足",
+        headingEn: "A year of scarcity",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "别处，他问有若：年饥、用不足，如之何。在活页[论语 · 颜渊 12.9](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-009)里，有若把他拉回到百姓是否足用——百姓足，君孰与不足。你该把这番劝告读成共足，而不是文本外编造的现代税表。",
+        ],
+        bodyEn: [
+          "Elsewhere he asks You Ruo what to do when the year is scarce and expenditure falls short. On the live page [The Analects · Yen Yuan 12.9](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-009), You Ruo points him back toward the people having enough—if the people have plenty, their prince will not want alone. You should read that counsel as shared sufficiency, not as a modern tax spreadsheet invented outside the text.",
+        ],
+      },
+      {
+        headingZh: "问社",
+        headingEn: "The land altars",
+        bodyZh: [
+          "他还向宰我问社；那一场属于弟子冒险的解释，以及夫子闻之以后的克制。若你想读弟子一侧的哀公问社，可打开一次[《论语》里的宰我是谁？](https://www.lunyu.ai/zh-Hans/blogs/zai-wo-in-the-analects)，再回到这里看发问的国君。你不是在读第二篇传记；你是在追问：是谁把门打开。",
+        ],
+        bodyEn: [
+          "He also asks Zai Wo about the land altars; that scene belongs with the disciple’s risky gloss—pine, cypress, chestnut, and “awe”—and the Master’s restraint afterward. If you want the disciple-side reading of 哀公问社, open [Who Was Zai Wo in the Analects?](https://www.lunyu.ai/en/blogs/zai-wo-in-the-analects) once—then return here for the ruler who asked. You are not reading a second biography; you are tracing who opened the door, then verifying the wording on the published chapter pages.",
+        ],
+      },
+      {
+        headingZh: "不是鲁定公，也不是卫灵公",
+        headingEn: "Not Duke Ding, not Duke Ling",
+        bodyZh: [
+          "书中别处你还会遇见鲁定公或卫灵公——不同的国君，不同的问法。这篇笔记只停在鲁哀公。你不该把他们并成一篇「《论语》诸公合传」；需要时，请把每个名字扣回各自的活页章句。",
+        ],
+        bodyEn: [
+          "Elsewhere in the book you may meet Duke Ding of Lu or Duke Ling of Wei—different rulers, different questions. This Note stays with Duke Ai alone; it is not a multi-duke biography and it does not retell their separate scenes. You should not merge them into one “dukes of the Analects” résumé; keep each name tied to its own live passages when you need them.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用哀公的提问，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明 brief 没有给出的展示次数或历史年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Duke Ai’s questions, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or history dates the brief did not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的鲁哀公是谁？",
+        questionEn: "Who was Duke Ai of Lu in the Analects?",
+        answerZh:
+          "你在《论语》里遇见的鲁哀公（亦称哀公、Duke Ai of Lu、Ai Gong），是向孔子及其圈子发问的鲁国国君。你最好的答案是他提问打开的门：何为则民服、经有若的年饥问计、向宰我问社，以及人物索引上的相关章句——而不是文本外编造的现代王侯履历。",
+        answerEn:
+          "You meet Duke Ai (鲁哀公; also Ai Gong) as the Lu ruler who questions Confucius and his circle in these published scenes. Your best answer is the doors his questions open: how the people submit, scarcity-year counsel through You Ruo, the land-altar exchange with Zai Wo, and related scenes on the people index—not a modern royal biography invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「鲁哀公」或 duke ai of lu？",
+        questionEn: 'Why do people search "duke ai of lu"?',
+        answerZh:
+          "你往往想先弄清身份：是哪一位公、哪次著名发问、哪扇篇章的门。搜到这个词之后，请打开活页章句，而不要依赖一篇会捏造章号或软化答语的摘要。你把原文、白话导读与英译分层来读，阅读才站得住。",
+        answerEn:
+          "You often want a clear identity: which duke, which famous question, which chapter door. Search that phrase, then open the live passages rather than a summary that invents chapter numbers or softens the answers. Your reading stays honest when you keep source, vernacular guide, and English translation in separate layers.",
+      },
+      {
+        questionZh: "「民服」那一场在说什么？",
+        questionEn: "What is the “民服” exchange about?",
+        answerZh:
+          "你听到哀公问怎样使民服，孔子以举直错诸枉作答。你要把这读成用人与判断的教诲，而不是胁迫的许可。你的下一步是为政那章活页，对照原文与白话导读，而不是贴到每场职场争执上的口号。",
+        answerEn:
+          "You hear Duke Ai ask how to secure the people’s submission, and Confucius answer by advancing the upright and setting aside the crooked. Hold that as a staffing-and-judgment teaching, not as permission to coerce. Your next step is the live Wei Chang page, not a slogan you paste onto every workplace dispute.",
+      },
+      {
+        questionZh: "年饥那一场呢？",
+        questionEn: "What about the year of scarcity?",
+        answerZh:
+          "你看见他问有若：年成饥荒、用度不足怎么办；答复把他转向百姓是否足用。你按《论语》里的共足来读即可，并回到活页核对原文措辞。你不该发明活页没有写出的比例或财政图表。",
+        answerEn:
+          "You see him ask You Ruo what to do when the year is scarce and funds fall short; the reply turns him toward whether the people have enough. Read that as shared sufficiency in the Analects sense. You should not invent percentages or fiscal charts the live page does not show.",
+      },
+      {
+        questionZh: "怎样避免把他和其他公混在一起？",
+        questionEn: "How do you keep from mixing him with other dukes?",
+        answerZh:
+          "你在别处还可能遇见鲁定公或卫灵公——这里只点名消歧，不开新传。当章句只写「公」时，请到人物索引核对是哪一位。你的习惯应是：一个名字，一组可链篇章，而不是合并的宫廷编年。",
+        answerEn:
+          "You may also meet Duke Ding of Lu or Duke Ling of Wei elsewhere—light names only here, not new biographies. When a passage says “the duke,” check the people index for which ruler it is. Your habit should be one name, one set of linked chapters, not a merged court chronicle.",
+      },
+      {
+        questionZh: "这篇笔记不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh:
+          "你在这里找不到诸公合传、君子/忠恕/仁的通论重写，或第二篇宰我总览。那些主题只在哀公的提问碰到它们时才出现。你的下一步是篇章页或人物索引，而不是另一篇重复本站其他札记的总览。",
+        answerEn:
+          "You will not find here a multi-duke biography, a rewrite of junzi / zhongshu / ren, or a second Zai Wo overview meant to replace that Note. Those themes appear only where Duke Ai’s questions touch them. Your next step is a passage page or the entity index, not another overview that repeats other Notes on this site.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造哀公语录？",
+        questionEn: "How do you keep AI from inventing Duke Ai quotes?",
+        answerZh:
+          "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子一定对哀公说过什么」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai。",
+        answerEn:
+          "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have told the duke” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读「民服」那一章",
+        headingEn: "Read the “民服” page next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「民服与用人」之门，请打开[论语 · 为政 2.19](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-019)，把原文、白话导读与英译并排对照。你问问自己：当你希望别人跟从时，你举的是谁——然后停住，回到文本，而不是回到一篇哀公摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest submission-and-appointment door, open [The Analects · Wei Chang 2.19](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-019) and read source, guide, and Legge side by side. Ask yourself whom you advance when you want people to follow—then stop, and return to the live text rather than to a summary of Duke Ai.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zhongshu-reciprocity-in-the-analects",
     titleZh: "《论语》的忠恕：不是愚忠，也不是英文 Golden Rule",
     titleEn: "Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not",

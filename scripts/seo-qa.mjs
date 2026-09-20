@@ -1220,6 +1220,182 @@ for (const locale of locales) {
   ]);
 }
 
+const dukeAiCover = "/images/blogs/duke-ai-of-lu-in-the-analects/cover.jpg";
+const dukeAiInline1 = "/images/blogs/duke-ai-of-lu-in-the-analects/inline-1.jpg";
+const dukeAiInline2 = "/images/blogs/duke-ai-of-lu-in-the-analects/inline-2.jpg";
+const dukeAiCoverEn =
+  "A Lu court audience — Duke Ai’s question to Confucius about how the people will submit";
+const dukeAiCoverZh = "鲁廷对问之席——哀公问孔子「何为则民服」";
+const dukeAiInline1En =
+  "Upright appointments set above the crooked — “raise the straight, set aside the crooked”";
+const dukeAiInline1Zh = "直者举于枉者之上——「举直错诸枉」的用人意象";
+const dukeAiInline2En =
+  "An empty grain measure at a quiet court table — scarcity-year counsel, not spectacle";
+const dukeAiInline2Zh = "空量器置于素净廷案——年饥问计，而非灾异奇观";
+const dukeAiAnchors = [
+  ["鲁哀公", "https://www.lunyu.ai/zh-Hans/index/duke-ai"],
+  ["Duke Ai of Lu", "https://www.lunyu.ai/en/index/duke-ai"],
+  ["论语 · 颜渊 12.9", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-009"],
+  ["The Analects · Yen Yuan 12.9", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-009"],
+  ["《论语》里的宰我是谁？", "https://www.lunyu.ai/zh-Hans/blogs/zai-wo-in-the-analects"],
+  ["Who Was Zai Wo in the Analects?", "https://www.lunyu.ai/en/blogs/zai-wo-in-the-analects"],
+  ["论语 · 为政 2.19", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-019"],
+  ["The Analects · Wei Chang 2.19", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-019"],
+];
+{
+  const start = postSource.indexOf('slug: "duke-ai-of-lu-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing duke-ai-of-lu-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = dukeAiAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `duke-ai-of-lu-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    dukeAiAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`duke-ai-of-lu-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `duke-ai-of-lu-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [dukeAiCover, dukeAiInline1, dukeAiInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/duke-ai-of-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/duke-ai-of-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-20"',
+  '"dateModified":"2026-09-20"',
+  "Who Was Duke Ai of Lu in the Analects?",
+  "Duke Ai of Lu in the Analects: the ruler whose questions open doors—how the people submit, a year of scarcity, and the land altars.",
+  "Place him by the passages, not by a royal résumé",
+  "Three doors his questions open",
+  "How the people submit",
+  "A year of scarcity",
+  "The land altars",
+  "Not Duke Ding, not Duke Ling",
+  "How you should cite him",
+  "Read the “民服” page next",
+  "Who was Duke Ai of Lu in the Analects?",
+  ">Duke Ai of Lu</a>",
+  ">The Analects · Yen Yuan 12.9</a>",
+  ">Who Was Zai Wo in the Analects?</a>",
+  ">The Analects · Wei Chang 2.19</a>",
+  'href="/en/index/duke-ai"',
+  'href="/en/analects/yan-yuan/yan-yuan-009"',
+  'href="/en/blogs/zai-wo-in-the-analects"',
+  'href="/en/analects/wei-zheng/wei-zheng-019"',
+  dukeAiCover,
+  dukeAiInline1,
+  dukeAiInline2,
+  dukeAiCoverEn,
+  dukeAiInline1En,
+  dukeAiInline2En,
+  `property="og:image" content="${siteUrl}${dukeAiCover}"`,
+  `property="og:image:alt" content="${dukeAiCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${dukeAiCover}"`,
+  `name="twitter:image:alt" content="${dukeAiCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-20"',
+  '"dateModified":"2026-09-20"',
+  "《论语》里的鲁哀公是谁？",
+  "《论语》里的鲁哀公：用提问打开的门——何为则民服、年饥用不足、问社。链回可核对的原文。",
+  "你搜「鲁哀公」或 Duke Ai of Lu 时，多半是想在《论语》一串国君名里把他安顿下来",
+  "先按篇章认人，不靠王侯履历",
+  "他的提问打开的三扇门",
+  "何为则民服",
+  "年饥用不足",
+  "问社",
+  "不是鲁定公，也不是卫灵公",
+  "你该怎样引用他",
+  "接下来读「民服」那一章",
+  ">鲁哀公</a>",
+  ">论语 · 颜渊 12.9</a>",
+  ">《论语》里的宰我是谁？</a>",
+  ">论语 · 为政 2.19</a>",
+  'href="/zh-Hans/index/duke-ai"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-009"',
+  'href="/zh-Hans/blogs/zai-wo-in-the-analects"',
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-019"',
+  dukeAiCover,
+  dukeAiInline1,
+  dukeAiInline2,
+  dukeAiCoverZh,
+  dukeAiInline1Zh,
+  dukeAiInline2Zh,
+  `property="og:image" content="${siteUrl}${dukeAiCover}"`,
+  `property="og:image:alt" content="${dukeAiCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${dukeAiCover}"`,
+  `name="twitter:image:alt" content="${dukeAiCoverZh}"`,
+]);
+{
+  const zhDukeAiFile = htmlPath("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects");
+  if (exists(zhDukeAiFile)) {
+    const zhDukeAiHtml = read(zhDukeAiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhDukeAiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhDukeAiHtml.includes(dukeAiCoverEn)) {
+      fail("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhDukeAiHtml, />Duke Ai of Lu<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: English Duke Ai of Lu body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhDukeAiHtml, />鲁哀公<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: 鲁哀公 body link should appear once");
+    }
+    if (countRegex(zhDukeAiHtml, />论语 · 颜渊 12\.9<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: 颜渊 12.9 body link should appear once");
+    }
+    if (countRegex(zhDukeAiHtml, />《论语》里的宰我是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: 宰我 Note body link should appear once");
+    }
+    if (countRegex(zhDukeAiHtml, />论语 · 为政 2\.19<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects: 为政 2.19 body link should appear once");
+    }
+  }
+  const enDukeAiFile = htmlPath("/en/blogs/duke-ai-of-lu-in-the-analects");
+  if (exists(enDukeAiFile)) {
+    const enDukeAiHtml = read(enDukeAiFile);
+    if (enDukeAiHtml.includes(dukeAiCoverZh)) {
+      fail("/en/blogs/duke-ai-of-lu-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (countRegex(enDukeAiHtml, />Duke Ai of Lu<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ai-of-lu-in-the-analects: Duke Ai of Lu body link should appear once");
+    }
+    if (countRegex(enDukeAiHtml, />The Analects · Yen Yuan 12\.9<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ai-of-lu-in-the-analects: Yen Yuan 12.9 body link should appear once");
+    }
+    if (countRegex(enDukeAiHtml, />Who Was Zai Wo in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ai-of-lu-in-the-analects: Zai Wo Note body link should appear once");
+    }
+    if (countRegex(enDukeAiHtml, />The Analects · Wei Chang 2\.19<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ai-of-lu-in-the-analects: Wei Chang 2.19 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -1232,6 +1408,7 @@ for (const locale of locales) {
   checkHtml(`/${locale}/index/duke-ai`, [
     locale === "en" ? "Duke Ai of Lu" : "鲁哀公",
     "Ai Gong",
+    `href="/${locale}/blogs/duke-ai-of-lu-in-the-analects"`,
     `/${locale}/analects/wei-zheng/wei-zheng-019`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
@@ -1338,6 +1515,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/what-is-a-junzi`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/what-is-a-junzi`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zhongshu-reciprocity-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ai-of-lu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ai-of-lu-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
@@ -1359,7 +1538,7 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-  if (!lastmod.includes("2026-09-16")) {
+  if (!lastmod.includes("2026-09-20")) {
     fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
   }
   for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
@@ -1377,7 +1556,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "15 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "20 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -1397,13 +1576,15 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-16";
+const newestEditorialLastmod = "2026-09-20";
+const previousEditorialLastmod = "2026-09-16";
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }
