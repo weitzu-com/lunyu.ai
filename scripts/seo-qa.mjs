@@ -1396,6 +1396,178 @@ checkHtml("/zh-Hans/blogs/duke-ai-of-lu-in-the-analects", [
   }
 }
 
+const yaoShunYuCover = "/images/blogs/yao-shun-yu-in-the-analects/cover.jpg";
+const yaoShunYuInline1 = "/images/blogs/yao-shun-yu-in-the-analects/inline-1.jpg";
+const yaoShunYuInline2 = "/images/blogs/yao-shun-yu-in-the-analects/inline-2.jpg";
+const yaoShunYuCoverEn =
+  "Three quiet markers under open sky — Yao, Shun, and Yu as the Analects’ measure of rule";
+const yaoShunYuCoverZh = "苍穹下三处素净记号——尧、舜、禹作为《论语》里的治道标尺";
+const yaoShunYuInline1En =
+  "Vast sky wash above a quiet seat of rule — Yao praised as matching Heaven (Analects 8.19)";
+const yaoShunYuInline1Zh = "苍穹淡墨下素净治席——泰伯 8.19 赞尧「唯天为大」的意象";
+const yaoShunYuInline2En =
+  "Calm desk and a guided water line — Shun’s ease and Yu’s tireless care, without spectacle";
+const yaoShunYuInline2Zh = "素案与理水细线——舜之无为与禹之无间然，而非灾异奇观";
+const yaoShunYuAnchors = [
+  ["尧、舜、禹", "https://www.lunyu.ai/zh-Hans/index/yao-shun-yu"],
+  ["Yao, Shun, and Yu", "https://www.lunyu.ai/en/index/yao-shun-yu"],
+  ["论语 · 泰伯 8.21", "https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-021"],
+  ["The Analects · T'ai-po 8.21", "https://www.lunyu.ai/en/analects/tai-bo/tai-bo-021"],
+  ["《论语》里的鲁哀公是谁？", "https://www.lunyu.ai/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"],
+  ["Who Was Duke Ai of Lu in the Analects?", "https://www.lunyu.ai/en/blogs/duke-ai-of-lu-in-the-analects"],
+  ["论语 · 泰伯 8.19", "https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-019"],
+  ["The Analects · T'ai-po 8.19", "https://www.lunyu.ai/en/analects/tai-bo/tai-bo-019"],
+];
+{
+  const start = postSource.indexOf('slug: "yao-shun-yu-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing yao-shun-yu-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = yaoShunYuAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `yao-shun-yu-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    yaoShunYuAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`yao-shun-yu-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `yao-shun-yu-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [yaoShunYuCover, yaoShunYuInline1, yaoShunYuInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/yao-shun-yu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/yao-shun-yu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-21"',
+  '"dateModified":"2026-09-21"',
+  "Who Are Yao, Shun, and Yu in the Analects?",
+  "Yao, Shun, and Yu in the Analects: sage kings used as a measure of rule—Yao matching Heaven, Shun and Yu holding the empire lightly, Yu without flaw.",
+  "Place them by the passages, not by a sage-king dump",
+  "How the book uses them as a measure of rule",
+  "Yu without flaw",
+  "Not a junzi treatise, not a multi-ruler bio",
+  "How you should cite them",
+  "Read the Yao praise page next",
+  "Who are Yao, Shun, and Yu in the Analects?",
+  ">Yao, Shun, and Yu</a>",
+  ">The Analects · T&#x27;ai-po 8.21</a>",
+  ">Who Was Duke Ai of Lu in the Analects?</a>",
+  ">The Analects · T&#x27;ai-po 8.19</a>",
+  'href="/en/index/yao-shun-yu"',
+  'href="/en/analects/tai-bo/tai-bo-021"',
+  'href="/en/blogs/duke-ai-of-lu-in-the-analects"',
+  'href="/en/analects/tai-bo/tai-bo-019"',
+  yaoShunYuCover,
+  yaoShunYuInline1,
+  yaoShunYuInline2,
+  yaoShunYuCoverEn,
+  yaoShunYuInline1En,
+  yaoShunYuInline2En,
+  `property="og:image" content="${siteUrl}${yaoShunYuCover}"`,
+  `property="og:image:alt" content="${yaoShunYuCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${yaoShunYuCover}"`,
+  `name="twitter:image:alt" content="${yaoShunYuCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/yao-shun-yu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-21"',
+  '"dateModified":"2026-09-21"',
+  "《论语》里的尧、舜、禹是谁？",
+  "《论语》里的尧、舜、禹：治道标尺——尧则天、舜禹不与、禹无间然。链回可核对的原文。",
+  "你搜「尧舜禹」或「yao shun yu」时，多半是想把《论语》一再指向的三个圣王名安顿下来",
+  "先按篇章认人，不靠圣王履历",
+  "书怎样用他们作治道标尺",
+  "禹无间然",
+  "不是君子通论，也不是诸公合传",
+  "你该怎样引用他们",
+  "接下来读赞尧那一章",
+  ">尧、舜、禹</a>",
+  ">论语 · 泰伯 8.21</a>",
+  ">《论语》里的鲁哀公是谁？</a>",
+  ">论语 · 泰伯 8.19</a>",
+  'href="/zh-Hans/index/yao-shun-yu"',
+  'href="/zh-Hans/analects/tai-bo/tai-bo-021"',
+  'href="/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"',
+  'href="/zh-Hans/analects/tai-bo/tai-bo-019"',
+  yaoShunYuCover,
+  yaoShunYuInline1,
+  yaoShunYuInline2,
+  yaoShunYuCoverZh,
+  yaoShunYuInline1Zh,
+  yaoShunYuInline2Zh,
+  `property="og:image" content="${siteUrl}${yaoShunYuCover}"`,
+  `property="og:image:alt" content="${yaoShunYuCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${yaoShunYuCover}"`,
+  `name="twitter:image:alt" content="${yaoShunYuCoverZh}"`,
+]);
+{
+  const zhYaoShunYuFile = htmlPath("/zh-Hans/blogs/yao-shun-yu-in-the-analects");
+  if (exists(zhYaoShunYuFile)) {
+    const zhYaoShunYuHtml = read(zhYaoShunYuFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhYaoShunYuHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/yao-shun-yu-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhYaoShunYuHtml.includes(yaoShunYuCoverEn)) {
+      fail("/zh-Hans/blogs/yao-shun-yu-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhYaoShunYuHtml, />Yao, Shun, and Yu<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/yao-shun-yu-in-the-analects: English Yao, Shun, and Yu body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhYaoShunYuHtml, />尧、舜、禹<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yao-shun-yu-in-the-analects: 尧、舜、禹 body link should appear once");
+    }
+    if (countRegex(zhYaoShunYuHtml, />论语 · 泰伯 8\.21<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yao-shun-yu-in-the-analects: 泰伯 8.21 body link should appear once");
+    }
+    if (countRegex(zhYaoShunYuHtml, />《论语》里的鲁哀公是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yao-shun-yu-in-the-analects: Duke Ai Note body link should appear once");
+    }
+    if (countRegex(zhYaoShunYuHtml, />论语 · 泰伯 8\.19<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yao-shun-yu-in-the-analects: 泰伯 8.19 body link should appear once");
+    }
+  }
+  const enYaoShunYuFile = htmlPath("/en/blogs/yao-shun-yu-in-the-analects");
+  if (exists(enYaoShunYuFile)) {
+    const enYaoShunYuHtml = read(enYaoShunYuFile);
+    if (enYaoShunYuHtml.includes(yaoShunYuCoverZh)) {
+      fail("/en/blogs/yao-shun-yu-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (countRegex(enYaoShunYuHtml, />Yao, Shun, and Yu<\/a>/g) !== 1) {
+      fail("/en/blogs/yao-shun-yu-in-the-analects: Yao, Shun, and Yu body link should appear once");
+    }
+    if (countRegex(enYaoShunYuHtml, />The Analects · T&#x27;ai-po 8\.21<\/a>/g) !== 1) {
+      fail("/en/blogs/yao-shun-yu-in-the-analects: T'ai-po 8.21 body link should appear once");
+    }
+    if (countRegex(enYaoShunYuHtml, />Who Was Duke Ai of Lu in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/yao-shun-yu-in-the-analects: Duke Ai Note body link should appear once");
+    }
+    if (countRegex(enYaoShunYuHtml, />The Analects · T&#x27;ai-po 8\.19<\/a>/g) !== 1) {
+      fail("/en/blogs/yao-shun-yu-in-the-analects: T'ai-po 8.19 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -1421,6 +1593,7 @@ for (const locale of locales) {
   checkHtml(`/${locale}/index/yao-shun-yu`, [
     "yao shun yu",
     "yaoshun",
+    `href="/${locale}/blogs/yao-shun-yu-in-the-analects"`,
     `/${locale}/analects/yao-yue/yao-yue-001`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
@@ -1517,6 +1690,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/zhongshu-reciprocity-in-the-analect
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ai-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ai-of-lu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
@@ -1538,9 +1713,9 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-  if (!lastmod.includes("2026-09-20")) {
-    fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
-  }
+    if (!lastmod.includes("2026-09-21")) {
+      fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
   for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
     const entityLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/index/${slug}`);
     if (!entityLastmod.includes(entityIndexRefreshLastmod)) {
@@ -1556,7 +1731,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "20 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "21 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -1576,15 +1751,17 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-20";
-const previousEditorialLastmod = "2026-09-16";
+const newestEditorialLastmod = "2026-09-21";
+const previousEditorialLastmod = "2026-09-20";
+const olderEditorialLastmod = "2026-09-16";
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${olderEditorialLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }

@@ -102,6 +102,177 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "yao-shun-yu-in-the-analects",
+    titleZh: "《论语》里的尧、舜、禹是谁？",
+    titleEn: "Who Are Yao, Shun, and Yu in the Analects?",
+    dekZh:
+      "你搜「尧舜禹」或「yao shun yu」时，多半是想把《论语》一再指向的三个圣王名安顿下来。在本站，你遇见尧、舜、禹，是把他们当作治道的标尺——尧则天、舜禹不与、禹无间然——而不是先读通史圣王传。你可从书打开的门读起，再回活页核对措辞。",
+    dekEn:
+      "When you search “yao shun yu,” “yao shun,” or “yaoshun,” you usually want to place three sage-king names the Analects keeps pointing to. On this site you meet Yao, Shun, and Yu as a measure of rule—Yao matching Heaven, Shun holding the empire as if it were nothing, Yu without flaw—not as a Wikipedia résumé of prehistoric kings. You can start from the doors the book opens, then verify every wording on the live chapter pages.",
+    descriptionZh: "《论语》里的尧、舜、禹：治道标尺——尧则天、舜禹不与、禹无间然。链回可核对的原文。",
+    descriptionEn:
+      "Yao, Shun, and Yu in the Analects: sage kings used as a measure of rule—Yao matching Heaven, Shun and Yu holding the empire lightly, Yu without flaw.",
+    datePublished: "2026-09-21",
+    dateModified: "2026-09-21",
+    tagsZh: ["尧舜禹", "尧", "泰伯"],
+    tagsEn: ["yao shun yu", "yaoshun", "T'ai-po"],
+    related: [
+      "/analects/tai-bo/tai-bo-019",
+      "/index/yao-shun-yu",
+      "/analects/tai-bo/tai-bo-021",
+      "/blogs/duke-ai-of-lu-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "yao-shun-yu-in-the-analects",
+      "cover.jpg",
+      "Three quiet markers under open sky — Yao, Shun, and Yu as the Analects’ measure of rule",
+      "苍穹下三处素净记号——尧、舜、禹作为《论语》里的治道标尺",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "yao-shun-yu-in-the-analects",
+        "inline-1.jpg",
+        "Vast sky wash above a quiet seat of rule — Yao praised as matching Heaven (Analects 8.19)",
+        "苍穹淡墨下素净治席——泰伯 8.19 赞尧「唯天为大」的意象",
+        NOTES_INLINE_SIZE
+      ),
+      "inline-2": notesBlogImage(
+        "yao-shun-yu-in-the-analects",
+        "inline-2.jpg",
+        "Calm desk and a guided water line — Shun’s ease and Yu’s tireless care, without spectacle",
+        "素案与理水细线——舜之无为与禹之无间然，而非灾异奇观",
+        NOTES_INLINE_SIZE
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠圣王履历",
+        headingEn: "Place them by the passages, not by a sage-king dump",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他们标为[尧、舜、禹](https://www.lunyu.ai/zh-Hans/index/yao-shun-yu)——《论语》用作治道标尺的上古圣王。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。你要把索引当成门的地图，而不是一篇可以代替阅读的完成传记。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter, the people index labels them as [Yao, Shun, and Yu](https://www.lunyu.ai/en/index/yao-shun-yu)—the ancient sage kings the Analects uses as a measure of rule. That line is enough for you to start: follow the linked scenes, keep source text, modern guide, and Legge’s English in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished biography that replaces reading.",
+        ],
+      },
+      {
+        headingZh: "书怎样用他们作治道标尺",
+        headingEn: "How the book uses them as a measure of rule",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "在《泰伯》里，夫子赞尧之为君：唯天为大，唯尧则之；荡荡乎，民无能名焉，而其成功与文章巍巍焕然。你该把这读成治道的天花板——则天——而不是给某位史前国君写戏服传记。你以后引用时，请把同一活页上的原文与英译对照着看。",
+          "邻近处，舜禹又以「有天下也不与」的巍巍姿态出现。书中别处还可以举舜为无为而治——恭己正南面而已；也可以称禹「吾无间然矣」：菲饮食、恶衣服、卑宫室，却尽力于沟恤。你读到的是轻松与尽心成对的标尺，而不是文本外编造的治水奇观传。",
+        ],
+        bodyEn: [
+          "In T’ai-po the Master praises Yao as sovereign: only Heaven is grand, and only Yao corresponded to it; the people could find no name for that vastness, yet the works and elegant regulations stand majestic. You should hear that as a ceiling for rule—matching Heaven—not as a costume drama about a named prehistoric court. When you cite it later, keep the Chinese source visible beside the English layer on the same live page.",
+          "Nearby, Shun and Yu appear as those who held the empire as if it were nothing to them. Elsewhere the book can instance Shun as governing without exertion—gravely occupying the royal seat—and can praise Yu as without flaw: coarse food, poor garments, a low house, yet strength poured into ditches and water-channels. You are reading a paired measure of ease and tireless care, not a flood-spectacle biography invented outside the text.",
+        ],
+      },
+      {
+        headingZh: "禹无间然",
+        headingEn: "Yu without flaw",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "在活页[论语 · 泰伯 8.21](https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-021)上，你可以径直核对「禹吾无间然矣」的原文、白话导读与 Legge 英译。你不该发明活页没有写出的水利图表或英雄年表；你的诚实落在已发布的篇章地址上。",
+        ],
+        bodyEn: [
+          "On the live page [The Analects · T'ai-po 8.21](https://www.lunyu.ai/en/analects/tai-bo/tai-bo-021), you can verify the “no flaw in Yu” wording directly—source, guide, and Legge side by side. You should not invent irrigation charts or hero dates the page does not show; your honesty is the published chapter URL.",
+        ],
+      },
+      {
+        headingZh: "不是君子通论，也不是诸公合传",
+        headingEn: "Not a junzi treatise, not a multi-ruler bio",
+        bodyZh: [
+          "书中别处你还会遇见「尧舜其犹病诸」这一上限，或遇见发问的晚鲁国君。这篇笔记只停在尧、舜、禹作为治道标尺；它不是君子、忠恕或仁的通论重写，也不是诸公合传。若你想轻开一次晚鲁的门，可打开[《论语》里的鲁哀公是谁？](https://www.lunyu.ai/zh-Hans/blogs/duke-ai-of-lu-in-the-analects)，再回到这里看圣王标尺——两篇不要并成一篇。",
+        ],
+        bodyEn: [
+          "Elsewhere you may meet “尧舜其犹病诸” as a limit even for Yao and Shun, or meet late Lu rulers who ask practical questions. This Note stays with Yao, Shun, and Yu as the book’s measure of rule; it is not a rewrite of junzi, zhongshu, or ren, and it is not a merged duke biography. If you want one late Lu door once, open [Who Was Duke Ai of Lu in the Analects?](https://www.lunyu.ai/en/blogs/duke-ai-of-lu-in-the-analects)—then return here for the sage-king measure, without blending the two essays.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他们",
+        headingEn: "How you should cite them",
+        bodyZh: [
+          "当你引用尧、舜、禹，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明 brief 没有给出的展示次数或历史年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Yao, Shun, or Yu, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or history dates the brief did not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的尧、舜、禹是谁？",
+        questionEn: "Who are Yao, Shun, and Yu in the Analects?",
+        answerZh:
+          "你在《论语》里遇见的尧、舜、禹（亦检索为 yao shun yu、yaoshun），是书用作治道标尺的上古圣王。你最好的答案是书打开的门：尧则天、舜禹不与、禹无间然，以及人物索引上的相关章句——而不是文本外的圣王百科。",
+        answerEn:
+          "You meet Yao, Shun, and Yu (尧、舜、禹; also searched as yao shun yu, yao shun, or yaoshun) as the ancient sage kings the Analects uses as a measure of rule. Your best answer is the doors the book opens: Yao matching Heaven, Shun and Yu holding the empire lightly, Yu without flaw, and related scenes on the people index—not a modern sage-king encyclopedia outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「尧舜禹」或 yaoshun？",
+        questionEn: "Why do people search “yao shun yu” or “yaoshun”?",
+        answerZh:
+          "你往往想先弄清身份：是哪三个名字、哪次著名赞辞、哪扇篇章的门。搜到这些词之后，请打开活页章句，而不要依赖一篇会捏造章号或软化措辞的摘要。你把原文、白话导读与英译分层来读，阅读才站得住。",
+        answerEn:
+          "You often want a clear identity: which three names, which famous praise, which chapter door. Search those phrases, then open the live passages rather than a summary that invents chapter numbers or softens the wording. Your reading stays honest when you keep source, vernacular guide, and English translation in separate layers.",
+      },
+      {
+        questionZh: "《泰伯》赞尧强调什么？",
+        questionEn: "What does the T’ai-po praise of Yao emphasize?",
+        answerZh:
+          "你听到夫子称尧之为君大哉：唯天为大，唯尧则之；百姓简直找不到合适的名字来称颂那浩荡之德。你要把这读成对着「天」的治道标尺，而不是许可你去编宫廷轶事。你的下一步是泰伯那章活页，对照原文与白话导读，而不是贴到每场领导力演说上的口号。",
+        answerEn:
+          "You hear the Master call Yao great as a sovereign: only Heaven is grand, and only Yao corresponded to it; the people could find no name for that vast virtue. Hold that as a measure of rule against Heaven, not as permission to invent court anecdotes. Your next step is the live T’ai-po page, not a slogan you paste onto every leadership talk.",
+      },
+      {
+        questionZh: "舜与禹怎样成对出现？",
+        questionEn: "How do Shun and Yu appear as a paired measure?",
+        answerZh:
+          "你看见舜禹因有天下而不与受到赞叹，也可以在各自活页上读到禹「无间然」——菲食恶衣卑室，却尽心于鬼神与沟恤。你按《论语》里轻松与尽心成对的意思来读即可。你不该发明活页没有写出的洪水地图或职官履历。",
+        answerEn:
+          "You see Shun and Yu praised for holding the empire as if it were nothing, and you can read Yu’s “no flaw” scene—coarse living, care for spirits and water-channels—on its own live page. Read that as ease paired with tireless care in the Analects sense. You should not invent flood maps or ministry résumés the pages do not show.",
+      },
+      {
+        questionZh: "怎样避免写成通史圣王传？",
+        questionEn: "How do you keep this from becoming a Wikipedia dump?",
+        answerZh:
+          "你在别处还可能遇见尧舜授命之辞或「尧舜其犹病诸」——这里只点名消歧，不开万神殿长文。当句子只点到其中一位，请到人物索引核对可链篇章。你的习惯应是：三个名字，一组活页之门，而不是合并的史前编年。",
+        answerEn:
+          "You may also meet Yao–Shun succession language or “尧舜其犹病诸” elsewhere—light names only here, not a full pantheon essay. When a sentence only names one of them, check the people index for the linked chapters. Your habit should be three names, one set of live doors, not a merged prehistoric chronicle.",
+      },
+      {
+        questionZh: "这篇笔记不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh:
+          "你在这里找不到君子/忠恕/仁的通论重写、诸公合传，或第二篇鲁哀公总览。那些主题只在圣王标尺轻轻碰到它们时才出现。你的下一步是篇章页或人物索引，而不是另一篇重复本站其他札记的总览。",
+        answerEn:
+          "You will not find here a junzi / zhongshu / ren treatise, a multi-duke biography, or a second Duke Ai overview meant to replace that Note. Those themes appear only where the sage-king measure lightly touches them. Your next step is a passage page or the entity index, not another overview that repeats other Notes on this site.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造尧舜禹语录？",
+        questionEn: "How do you keep AI from inventing Yao–Shun–Yu quotes?",
+        answerZh:
+          "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子一定怎样说尧」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai。",
+        answerEn:
+          "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have said about Yao” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读赞尧那一章",
+        headingEn: "Read the Yao praise page next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「尧作为标尺」之门，请打开[论语 · 泰伯 8.19](https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-019)，把原文、白话导读与英译并排对照。你问问自己：若「则天」要检查你的用人，你会先看什么——然后停住，回到文本，而不是回到一篇尧舜禹摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest Yao-as-measure door, open [The Analects · T'ai-po 8.19](https://www.lunyu.ai/en/analects/tai-bo/tai-bo-019) and read source, guide, and Legge side by side. Ask yourself what “matching Heaven” would check in your own appointments—then stop, and return to the live text rather than to a summary of Yao, Shun, and Yu.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "duke-ai-of-lu-in-the-analects",
     titleZh: "《论语》里的鲁哀公是谁？",
     titleEn: "Who Was Duke Ai of Lu in the Analects?",
