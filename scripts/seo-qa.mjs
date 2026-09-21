@@ -1467,9 +1467,9 @@ checkHtml("/en/blogs/yao-shun-yu-in-the-analects", [
   "Read the Yao praise page next",
   "Who are Yao, Shun, and Yu in the Analects?",
   ">Yao, Shun, and Yu</a>",
-  ">The Analects · T'ai-po 8.21</a>",
+  ">The Analects · T&#x27;ai-po 8.21</a>",
   ">Who Was Duke Ai of Lu in the Analects?</a>",
-  ">The Analects · T'ai-po 8.19</a>",
+  ">The Analects · T&#x27;ai-po 8.19</a>",
   'href="/en/index/yao-shun-yu"',
   'href="/en/analects/tai-bo/tai-bo-021"',
   'href="/en/blogs/duke-ai-of-lu-in-the-analects"',
@@ -1556,13 +1556,13 @@ checkHtml("/zh-Hans/blogs/yao-shun-yu-in-the-analects", [
     if (countRegex(enYaoShunYuHtml, />Yao, Shun, and Yu<\/a>/g) !== 1) {
       fail("/en/blogs/yao-shun-yu-in-the-analects: Yao, Shun, and Yu body link should appear once");
     }
-    if (countRegex(enYaoShunYuHtml, />The Analects · T'ai-po 8\.21<\/a>/g) !== 1) {
+    if (countRegex(enYaoShunYuHtml, />The Analects · T&#x27;ai-po 8\.21<\/a>/g) !== 1) {
       fail("/en/blogs/yao-shun-yu-in-the-analects: T'ai-po 8.21 body link should appear once");
     }
     if (countRegex(enYaoShunYuHtml, />Who Was Duke Ai of Lu in the Analects\?<\/a>/g) !== 1) {
       fail("/en/blogs/yao-shun-yu-in-the-analects: Duke Ai Note body link should appear once");
     }
-    if (countRegex(enYaoShunYuHtml, />The Analects · T'ai-po 8\.19<\/a>/g) !== 1) {
+    if (countRegex(enYaoShunYuHtml, />The Analects · T&#x27;ai-po 8\.19<\/a>/g) !== 1) {
       fail("/en/blogs/yao-shun-yu-in-the-analects: T'ai-po 8.19 body link should appear once");
     }
   }
