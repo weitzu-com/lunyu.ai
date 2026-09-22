@@ -1568,6 +1568,179 @@ checkHtml("/zh-Hans/blogs/yao-shun-yu-in-the-analects", [
   }
 }
 
+const dukeLingCover = "/images/blogs/duke-ling-of-wei-in-the-analects/cover.jpg";
+const dukeLingInline1 = "/images/blogs/duke-ling-of-wei-in-the-analects/inline-1.jpg";
+const dukeLingInline2 = "/images/blogs/duke-ling-of-wei-in-the-analects/inline-2.jpg";
+const dukeLingCoverEn =
+  "A Wei court seat facing quiet officer posts — Duke Ling named where the state holds by capable men";
+const dukeLingCoverZh = "卫廷空席对向素净职守——宪问点名卫灵公，国不丧于能臣分守";
+const dukeLingInline1En =
+  "A dim ruler’s seat beside three upright posts of office — “no Way,” yet the state does not fall";
+const dukeLingInline1Zh = "昏暗君席旁三根直立职守之柱——「无道」而国不丧";
+const dukeLingInline2En =
+  "A closed volume beside a separate name seal — Book 15’s title words vs the person Duke Ling";
+const dukeLingInline2Zh = "合上的线装册旁另置名印空白——第十五篇书名与人物卫灵公之别";
+const dukeLingAnchors = [
+  ["卫灵公", "https://www.lunyu.ai/zh-Hans/index/wei-ling-gong-person"],
+  ["Duke Ling of Wei", "https://www.lunyu.ai/en/index/wei-ling-gong-person"],
+  ["论语 · 卫灵公 15.1", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-001"],
+  ["The Analects · Wei Ling Kung 15.1", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-001"],
+  ["《论语》里的鲁哀公是谁？", "https://www.lunyu.ai/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"],
+  ["Who Was Duke Ai of Lu in the Analects?", "https://www.lunyu.ai/en/blogs/duke-ai-of-lu-in-the-analects"],
+  ["论语 · 宪问 14.20", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-020"],
+  ["The Analects · Hsien Wan 14.20", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-020"],
+];
+{
+  const start = postSource.indexOf('slug: "duke-ling-of-wei-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing duke-ling-of-wei-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = dukeLingAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `duke-ling-of-wei-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    dukeLingAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`duke-ling-of-wei-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `duke-ling-of-wei-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [dukeLingCover, dukeLingInline1, dukeLingInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/duke-ling-of-wei-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-22"',
+  '"dateModified":"2026-09-22"',
+  "Who Was Duke Ling of Wei in the Analects?",
+  "Duke Ling of Wei in the Analects: Confucius names an unprincipled course—yet Wei does not fall, because officers hold guest rites, the ancestral temple, and the army.",
+  "you usually want one Wei ruler placed among many names in the Analects",
+  "Place him by the passage, not by a royal résumé",
+  "Unprincipled course—yet the state does not fall",
+  "Book title vs the person",
+  "Not Duke Ai, not Duke Ding",
+  "How you should cite him",
+  "Read Hsien Wan 14.20 next",
+  "Who was Duke Ling of Wei in the Analects?",
+  ">Duke Ling of Wei</a>",
+  ">The Analects · Wei Ling Kung 15.1</a>",
+  ">Who Was Duke Ai of Lu in the Analects?</a>",
+  ">The Analects · Hsien Wan 14.20</a>",
+  'href="/en/index/wei-ling-gong-person"',
+  'href="/en/analects/wei-ling-gong/wei-ling-gong-001"',
+  'href="/en/blogs/duke-ai-of-lu-in-the-analects"',
+  'href="/en/analects/xian-wen/xian-wen-020"',
+  dukeLingCover,
+  dukeLingInline1,
+  dukeLingInline2,
+  dukeLingCoverEn,
+  dukeLingInline1En,
+  dukeLingInline2En,
+  `property="og:image" content="${siteUrl}${dukeLingCover}"`,
+  `property="og:image:alt" content="${dukeLingCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${dukeLingCover}"`,
+  `name="twitter:image:alt" content="${dukeLingCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-22"',
+  '"dateModified":"2026-09-22"',
+  "《论语》里的卫灵公是谁？",
+  "《论语》里的卫灵公：孔子点出他的无道——卫却不丧，只因宾客、宗庙、军旅各有能臣分守。链回可核对的原文。",
+  "你搜「卫灵公」或 Duke Ling of Wei 时，多半是想在《论语》一串国君名里把他安顿下来",
+  "先按篇章认人，不靠王侯履历",
+  "「无道」却不丧",
+  "书名与人物",
+  "不是鲁哀公，也不是鲁定公",
+  "你该怎样引用他",
+  "接下来读宪问 14.20",
+  ">卫灵公</a>",
+  ">论语 · 卫灵公 15.1</a>",
+  ">《论语》里的鲁哀公是谁？</a>",
+  ">论语 · 宪问 14.20</a>",
+  'href="/zh-Hans/index/wei-ling-gong-person"',
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-001"',
+  'href="/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"',
+  'href="/zh-Hans/analects/xian-wen/xian-wen-020"',
+  dukeLingCover,
+  dukeLingInline1,
+  dukeLingInline2,
+  dukeLingCoverZh,
+  dukeLingInline1Zh,
+  dukeLingInline2Zh,
+  `property="og:image" content="${siteUrl}${dukeLingCover}"`,
+  `property="og:image:alt" content="${dukeLingCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${dukeLingCover}"`,
+  `name="twitter:image:alt" content="${dukeLingCoverZh}"`,
+]);
+{
+  const zhDukeLingFile = htmlPath("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects");
+  if (exists(zhDukeLingFile)) {
+    const zhDukeLingHtml = read(zhDukeLingFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhDukeLingHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhDukeLingHtml.includes(dukeLingCoverEn)) {
+      fail("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhDukeLingHtml, />Duke Ling of Wei<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: English Duke Ling of Wei body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhDukeLingHtml, />卫灵公<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: 卫灵公 body link should appear once");
+    }
+    if (countRegex(zhDukeLingHtml, />论语 · 卫灵公 15\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: 卫灵公 15.1 body link should appear once");
+    }
+    if (countRegex(zhDukeLingHtml, />《论语》里的鲁哀公是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: Duke Ai Note body link should appear once");
+    }
+    if (countRegex(zhDukeLingHtml, />论语 · 宪问 14\.20<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects: 宪问 14.20 body link should appear once");
+    }
+  }
+  const enDukeLingFile = htmlPath("/en/blogs/duke-ling-of-wei-in-the-analects");
+  if (exists(enDukeLingFile)) {
+    const enDukeLingHtml = read(enDukeLingFile);
+    if (enDukeLingHtml.includes(dukeLingCoverZh)) {
+      fail("/en/blogs/duke-ling-of-wei-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (countRegex(enDukeLingHtml, />Duke Ling of Wei<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ling-of-wei-in-the-analects: Duke Ling of Wei body link should appear once");
+    }
+    if (countRegex(enDukeLingHtml, />The Analects · Wei Ling Kung 15\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ling-of-wei-in-the-analects: Wei Ling Kung 15.1 body link should appear once");
+    }
+    if (countRegex(enDukeLingHtml, />Who Was Duke Ai of Lu in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ling-of-wei-in-the-analects: Duke Ai Note body link should appear once");
+    }
+    if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -1600,6 +1773,7 @@ for (const locale of locales) {
   checkHtml(`/${locale}/index/wei-ling-gong-person`, [
     "Wei Ling Gong",
     "Wei Ling",
+    `href="/${locale}/blogs/duke-ling-of-wei-in-the-analects"`,
     `/${locale}/analects/xian-wen/xian-wen-020`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
@@ -1692,6 +1866,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ai-of-lu-in-the-analects`, "si
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ai-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
@@ -1713,7 +1889,7 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-09-21")) {
+    if (!lastmod.includes("2026-09-22")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
     }
   for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
@@ -1731,7 +1907,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "21 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "22 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -1751,8 +1927,9 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-21";
-const previousEditorialLastmod = "2026-09-20";
+const newestEditorialLastmod = "2026-09-22";
+const previousEditorialLastmod = "2026-09-21";
+const priorEditorialLastmod = "2026-09-20";
 const olderEditorialLastmod = "2026-09-16";
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
@@ -1761,6 +1938,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${priorEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${olderEditorialLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
