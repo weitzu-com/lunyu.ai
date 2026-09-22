@@ -102,6 +102,176 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "duke-ling-of-wei-in-the-analects",
+    titleZh: "《论语》里的卫灵公是谁？",
+    titleEn: "Who Was Duke Ling of Wei in the Analects?",
+    dekZh:
+      "你搜「卫灵公」或 Duke Ling of Wei 时，多半是想在《论语》一串国君名里把他安顿下来。在本站，你遇见他，是因为孔子点出他的无道——卫却不丧，只因宾客、宗庙、军旅各有能臣分守。你不必先读王侯传；你可以直接读宪问 14.20，看职守如何托国。",
+    dekEn:
+      'When you search "duke ling of wei," you usually want one Wei ruler placed among many names in the Analects. On this site you meet him where Confucius names his unprincipled course (无道)—yet Wei does not fall, because officers hold guest rites, the ancestral temple, and the army. You do not need a Wikipedia résumé first; you can read Hsien Wan 14.20 and notice how capable posts keep a state standing.',
+    descriptionZh: "《论语》里的卫灵公：孔子点出他的无道——卫却不丧，只因宾客、宗庙、军旅各有能臣分守。链回可核对的原文。",
+    descriptionEn:
+      "Duke Ling of Wei in the Analects: Confucius names an unprincipled course—yet Wei does not fall, because officers hold guest rites, the ancestral temple, and the army.",
+    datePublished: "2026-09-22",
+    dateModified: "2026-09-22",
+    tagsZh: ["卫灵公", "宪问", "无道"],
+    tagsEn: ["duke ling of wei", "Duke Ling of Wei", "Hsien Wan"],
+    related: [
+      "/analects/xian-wen/xian-wen-020",
+      "/index/wei-ling-gong-person",
+      "/analects/wei-ling-gong/wei-ling-gong-001",
+      "/blogs/duke-ai-of-lu-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "duke-ling-of-wei-in-the-analects",
+      "cover.jpg",
+      "A Wei court seat facing quiet officer posts — Duke Ling named where the state holds by capable men",
+      "卫廷空席对向素净职守——宪问点名卫灵公，国不丧于能臣分守",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "duke-ling-of-wei-in-the-analects",
+        "inline-1.jpg",
+        "A dim ruler’s seat beside three upright posts of office — “no Way,” yet the state does not fall",
+        "昏暗君席旁三根直立职守之柱——「无道」而国不丧",
+        { width: 1280, height: 720 }
+      ),
+      "inline-2": notesBlogImage(
+        "duke-ling-of-wei-in-the-analects",
+        "inline-2.jpg",
+        "A closed volume beside a separate name seal — Book 15’s title words vs the person Duke Ling",
+        "合上的线装册旁另置名印空白——第十五篇书名与人物卫灵公之别",
+        { width: 1280, height: 720 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠王侯履历",
+        headingEn: "Place him by the passage, not by a royal résumé",
+        bodyZh: [
+          "若你想在打开篇章之前先有一个入口，人物索引把他标为[卫灵公](https://www.lunyu.ai/zh-Hans/index/wei-ling-gong-person)——《论语》中因无道被点名、却因能臣分守而不丧的卫国国君。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open the chapter page, the people index labels him as [Duke Ling of Wei](https://www.lunyu.ai/en/index/wei-ling-gong-person)—the Wei ruler named in the Analects for an unprincipled course that still does not topple the state. That line is enough for you to start: follow the linked scene, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading.",
+        ],
+      },
+      {
+        headingZh: "「无道」却不丧",
+        headingEn: "Unprincipled course—yet the state does not fall",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "宪问 14.20 里，子言卫灵公之无道。康子问：夫如是，奚而不丧。孔子答：仲叔圉治宾客，祝𬶍治宗庙，王孙贾治军旅——夫如是，奚其丧。活页导读写：孔子谈到卫灵公的昏庸无道；有仲叔圉负责宾客，祝鮀负责宗庙，王孙贾统率军队，故不丧。你可以把这扇门读成「职守是否有人」，而不是替昏君辩解，也不是文本外编造的现代编制表。引用时，请把原文与导读里的祝𬶍／祝鮀按活页所见分层标明，不要另造第三种写法。",
+        ],
+        bodyEn: [
+          "In Hsien Wan 14.20 the Master speaks of Duke Ling’s unprincipled course. Ji Kangzi asks: if he is like that, why has he not lost the state? Confucius answers by naming three officers: Zhongshu Yu (仲叔圉) manages guests and strangers; the litanist Tuo (祝𬶍 on the live source; the guide writes 祝鮀) manages the ancestral temple; Wangsun Jia (王孙贾) manages the army. With posts filled like that, Confucius asks, how could the state fall? You can take that as a door about roles that hold a polity—not as praise of a bad ruler, and not as a modern org-chart invented outside the text.",
+          "Legge’s public-domain English matches the same frame: the unprincipled course of duke Ling of Wei; Chung-shu Yu over guests; the litanist T’o over the temple; Wang-sun Chia over the army. When you cite the scene later, keep the Chinese source visible beside the English layer on the same live page. Your honesty is the published wording, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+      {
+        headingZh: "书名与人物",
+        headingEn: "Book title vs the person",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "别处你还会打开第十五篇，传统书名以「卫灵公」起首——那是篇首字，不是人物传。若你只要一次轻消歧，可看一眼[论语 · 卫灵公 15.1](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-001)，再回到这里读宪问里的人。你不是在读第二篇履历；你是在把书名用字与人物索引分开，免得搜到一锅粥。",
+        ],
+        bodyEn: [
+          "Elsewhere you may open Book 15, whose traditional title begins with Wei Ling Kung—the opening words of that book, not a biography of the duke. If you only need that light disambiguation, glance once at [The Analects · Wei Ling Kung 15.1](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-001), then return here for the person named in 14.20. You are not reading a second résumé; you are keeping book-title words and the person index from collapsing into one search blob.",
+        ],
+      },
+      {
+        headingZh: "不是鲁哀公，也不是鲁定公",
+        headingEn: "Not Duke Ai, not Duke Ding",
+        bodyZh: [
+          "书中别处你还会遇见鲁哀公或鲁定公——不同的国君，不同的问法。这篇笔记只停在卫灵公。若你只要一次鲁侧轻门，可打开一次[《论语》里的鲁哀公是谁？](https://www.lunyu.ai/zh-Hans/blogs/duke-ai-of-lu-in-the-analects)，再回到这里。你不该把他们并成一篇「《论语》诸公合传」；需要时，请把每个名字扣回各自的活页章句。",
+        ],
+        bodyEn: [
+          "Elsewhere in the book you may meet Duke Ai of Lu or Duke Ding of Lu—different rulers, different questions. This Note stays with Duke Ling of Wei alone; it is not a multi-duke biography and it does not retell their separate scenes. If you only need a light Lu-side door, open [Who Was Duke Ai of Lu in the Analects?](https://www.lunyu.ai/en/blogs/duke-ai-of-lu-in-the-analects) once—then come back. You should not merge them into one “dukes of the Analects” résumé; keep each name tied to its own live passages when you need them.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用孔子论卫灵公，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明 brief 没有给出的展示次数或历史年份。你的诚实落在篇章页上，而不在更顺口却无出处的王侯履历改写里。",
+        ],
+        bodyEn: [
+          "When you quote Confucius on Duke Ling, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or history dates the brief did not give. Your honesty is the passage page, not a résumé that invents court years outside the published text.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的卫灵公是谁？",
+        questionEn: "Who was Duke Ling of Wei in the Analects?",
+        answerZh:
+          "你在《论语》里遇见的卫灵公（亦称 Duke Ling of Wei、Wei Ling Gong），是孔子点出无道、却因宾客／宗庙／军旅有能臣而不丧的卫国国君。你最好的答案是宪问那场与人物索引，而不是文本外编造的现代王侯履历。",
+        answerEn:
+          "You meet Duke Ling (卫灵公; also Wei Ling Gong) as the Wei ruler Confucius names for an unprincipled course—yet the state does not fall while Zhongshu Yu, the temple officer, and Wangsun Jia hold their posts. Your best answer is that 宪问 scene and the people index, not a modern royal biography invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「卫灵公」或 duke ling of wei？",
+        questionEn: 'Why do people search "duke ling of wei"?',
+        answerZh:
+          "你往往想先弄清身份：是哪一位公、哪次著名判断、哪扇篇章的门。搜到这个词之后，请打开宪问 14.20 活页，而不要依赖一篇会捏造章号或软化「无道」的摘要。你把原文、白话导读与英译分层来读，阅读才站得住。",
+        answerEn:
+          "You often want a clear identity: which duke, which famous judgment, which chapter door. Search that phrase, then open the live 14.20 page rather than a summary that invents chapter numbers or softens “无道.” Your reading stays honest when you keep source, vernacular guide, and English translation in separate layers.",
+      },
+      {
+        questionZh: "「无道」却「不丧」在说什么？",
+        questionEn: "What does “无道” yet “不丧” mean here?",
+        answerZh:
+          "你听到孔子点名无道之君，又说明国何以不丧：宾客、宗庙、军旅仍有能者分守。你要把这读成职守是否落实的教诲，而不是替恶德找借口。你的下一步是宪问那章活页，而不是贴到每个「上司昏庸」故事上的口号。",
+        answerEn:
+          "You hear Confucius name a ruler without the Way, then explain why the state still stands: guests, ancestral temple, and army remain in capable hands. Hold that as a teaching about filled offices, not as praise of vice. Your next step is the live Hsien Wan page, not a slogan you paste onto every weak-boss story.",
+      },
+      {
+        questionZh: "14.20 里的三位官员是谁？",
+        questionEn: "Who are the three officers in 14.20?",
+        answerZh:
+          "你遇见治宾客的仲叔圉、治宗庙的祝官（原文祝𬶍，导读作祝鮀）、治军旅的王孙贾——与活页导读及 Legge 层所指同一三人。你按职守来读即可。你不该发明活页没有写出的第四人或第三种拼写。",
+        answerEn:
+          "You meet Zhongshu Yu over guest rites, the litanist (祝𬶍 / guide 祝鮀) over the ancestral temple, and Wangsun Jia over the army—the same three names the live guide and Legge layers point to. Read them as posts that hold the state. You should not invent a fourth officer or a third spelling the published pages do not use.",
+      },
+      {
+        questionZh: "第十五篇是在写同一个人吗？",
+        questionEn: "Is Book 15 about the same person?",
+        answerZh:
+          "你看到的「卫灵公」也可能是书名——篇首字，不是卫灵公传。只用 15.1 把书名与人物分开，再回到 14.20 读无道与三职。你的习惯应是：一个意图一页——这里是人物笔记，那里是书名之门。",
+        answerEn:
+          "You may see “Wei Ling Kung” as a book title—opening words, not a bio of Duke Ling. Use 15.1 only to keep title and person apart, then return to 14.20 for the judgment about 无道 and the three posts. Your habit should be one intent per page: person Note here, book door there.",
+      },
+      {
+        questionZh: "怎样避免把他和其他公混在一起？",
+        questionEn: "How do you keep from mixing him with other dukes?",
+        answerZh:
+          "你在别处还可能遇见鲁哀公或鲁定公——这里只点名消歧，不开新传。当章句只写「公」时，请到人物索引核对是哪一位。你的习惯应是：一个名字，一组可链篇章，而不是合并的宫廷编年。",
+        answerEn:
+          "You may also meet Duke Ai of Lu or Duke Ding of Lu elsewhere—light names only here, not new biographies. When a passage says “the duke,” check the people index for which ruler it is. Your habit should be one name, one set of linked chapters, not a merged court chronicle.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造卫灵公语录？",
+        questionEn: "How do you keep AI from inventing Duke Ling quotes?",
+        answerZh:
+          "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子一定还对卫说过什么」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai。",
+        answerEn:
+          "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have added about Wei” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读宪问 14.20",
+        headingEn: "Read Hsien Wan 14.20 next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「无道与能臣分守」之门，请打开[论语 · 宪问 14.20](https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-020)，把原文、白话导读与英译并排对照。你问问自己：当主位不稳时，你托付的是哪些职守——然后停住，回到文本，而不是回到一篇卫灵公摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Duke Ling’s unprincipled course and the officers who held Wei, open [The Analects · Hsien Wan 14.20](https://www.lunyu.ai/en/analects/xian-wen/xian-wen-020) and read source, guide, and Legge side by side. Ask yourself which posts you trust to hold a house when the head falters—then stop, and return to the live text rather than to a summary of the duke.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "yao-shun-yu-in-the-analects",
     titleZh: "《论语》里的尧、舜、禹是谁？",
     titleEn: "Who Are Yao, Shun, and Yu in the Analects?",
