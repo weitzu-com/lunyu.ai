@@ -102,6 +102,169 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zhong-gong-in-the-analects",
+    titleZh: "《论语》里的仲弓是谁？",
+    titleEn: "Who Was Zhong Gong in the Analects?",
+    dekZh: "你搜「仲弓」或 zhong gong 时，多半是想在一串弟子名里把他安顿下来。在本站，你遇见他，是冉雍（仲弓）——夫子说雍也可使南面，他又追问居敬而行简，并在别处问仁。你不必先读弟子传；你可以直接打开他出现的篇章，看夫子怎样回答他。",
+    dekEn: "When you search \"zhong gong,\" you are usually trying to place one disciple among many names. On this site you meet him as Ran Yong (仲弓 / Chung-kung)—the student Confucius says might face south as a prince, who asks about simplicity in rule and later about ren. You do not need a Wikipedia résumé first; you can read the passages where he speaks and notice how the Master answers him.",
+    descriptionZh: "《论语》里的仲弓：夫子说雍也可使南面，他又追问居敬而行简，并在别处问仁。链回可核对的原文。",
+    descriptionEn:
+      "Zhong Gong in the Analects: the disciple Confucius says might face south as a prince, who argues for reverence with simplicity and later asks about ren.",
+    datePublished: "2026-09-23",
+    dateModified: "2026-09-23",
+    tagsZh: ["仲弓", "冉雍", "雍也"],
+    tagsEn: ["zhong gong", "Zhong Gong", "Yung Yey"],
+    related: [
+      "/analects/yong-ye/yong-ye-001",
+      "/index/zhong-gong",
+      "/analects/yan-yuan/yan-yuan-002",
+      "/blogs/zhongshu-reciprocity-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "zhong-gong-in-the-analects",
+      "cover.jpg",
+      "An empty south-facing seat open to misted hills — Zhong Gong, who might face south as a prince",
+      "空置南面之席临向雾山——仲弓，雍也可使南面",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zhong-gong-in-the-analects",
+        "inline-1.jpg",
+        "Incense and a spare desk with brush and paper — reverence within, simplicity in practice",
+        "一炷清香与素净书案笔纸——居敬而行简",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "zhong-gong-in-the-analects",
+        "inline-2.jpg",
+        "An open doorway and a ready mat — go out as if receiving a great guest",
+        "门开向晓与待客之席——出门如见大宾",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠履历表",
+        headingEn: "Place him by the passages, not by a résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[仲弓](https://www.lunyu.ai/zh-Hans/index/zhong-gong)——孔门弟子，围绕仁、政、德性受孔子称许。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him simply as [Zhong Gong](https://www.lunyu.ai/en/index/zhong-gong)—a disciple praised in discussions of ren, government, and character. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading.",
+        ],
+      },
+      {
+        headingZh: "可使南面——也争「居敬而行简」",
+        headingEn: "Facing south—and arguing for reverence with simplicity",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "雍也 6.1 里，夫子先称许：子曰，雍也可使南面。活页白话导读写：冉雍这个人，可以让他去做诸侯，面向南治理百姓。接着仲弓问子桑伯子；子曰，可也，简。仲弓把你该握住的分际说清楚：居敬而行简，以临其民，不亦可乎，居简而行简，无乃大简乎。子曰，雍之言然。你可以把这场读成「内里敬慎、行事简约」的门，而不是文本外编造的现代减负口号。",
+        ],
+        bodyEn: [
+          "In Yung Yey 6.1 the Master opens with praise. Legge’s public-domain English on the live page says: there is Yung—he might occupy the place of a prince. Then Chung-kung asks about Tsze-sang Po-tsze; the Master says he may pass—he does not mind small matters. Chung-kung presses the distinction you should keep: if a man cherishes in himself a reverential feeling of the necessity of attention to business, though he may be easy in small matters in his government of the people, that may be allowed—but if he cherishes that easy feeling and also carries it out in practice, is not such an easy mode of procedure excessive? The Master answers that Yung’s words are right. You can take that exchange as a door about 居敬而行简—reverence held inside, brevity held in action—not as a modern management slogan invented outside the text.",
+        ],
+      },
+      {
+        headingZh: "列在德行一科",
+        headingEn: "Listed under virtuous practice",
+        bodyZh: [
+          "别处，先进 11.2 里，你看见仲弓与颜渊、闵子骞、冉伯牛同列德行，旁边另有言语、政事、文学诸科。你可以把这当作传统记住的长项地图，而不是一张成绩单，好把后面更难的场面一笔勾销。当你把他和那些名字并读时，不妨问：你自己的「德行标签」，在敬与简拆开时要付什么代价。",
+        ],
+        bodyEn: [
+          "Elsewhere, in Hsien Tsin 11.2, you see Zhong Gong named with Yen Yuan, Min Tsze-ch’ien, and Zan Po-niu under virtuous principles and practice, beside other pairs for speech, administration, and literary acquirements. You may hold that as a map of strengths the tradition remembered—not as a grade sheet that cancels harder scenes. When you set him next to those names, ask what your own “virtue label” costs when reverence and simplicity fall apart.",
+        ],
+      },
+      {
+        headingZh: "他问仁的那一场",
+        headingEn: "When he asks about ren",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "若你想给同一位弟子再开一扇活页门，可打开一次[论语 · 颜渊 12.2](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-002)。那里仲弓问仁。夫子说：出门如见大宾，使民如承大祭，己所不欲，勿施于人，在邦无怨，在家无怨。仲弓答：雍虽不敏，请事斯语矣。活页导读写：出门办事要像接待贵宾一样恭敬，役使百姓要像承办重大祭祀一样慎重；自己不愿意要的，不要强加给别人。你该把这读成可操练的行止，而不是一张贴纸，好把同页原文换掉。",
+        ],
+        bodyEn: [
+          "If you want a second live door on the same disciple, open [The Analects · Yen Yuan 12.2](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-002) once. There Chung-kung asks about perfect virtue. Legge on the live page gives the Master’s reply: when you go abroad, behave to every one as if you were receiving a great guest; employ the people as if you were assisting at a great sacrifice; not to do to others as you would not wish done to yourself; have no murmuring against you in the country, and none in the family. Chung-kung answers that though deficient in intelligence and vigour, he will make it his business to practise this lesson. You should read that as conduct you can rehearse, not as a sticker that replaces the Chinese source on the same page.",
+        ],
+      },
+      {
+        headingZh: "不是忠恕——音近，门不同",
+        headingEn: "Not zhongshu—same sound, different door",
+        bodyZh: [
+          "检索时你也可能撞上忠恕／zhongshu——本站已另有笔记专讲这对方法词。拉丁字母里它和「zhong gong」音近，却不是这位弟子。你应把人物索引与忠恕专文分开：一边是房间里的冉雍，一边是忠与恕的拆读。你不要把它们并成一篇履历。",
+        ],
+        bodyEn: [
+          "Search may also surface 忠恕 / zhongshu—loyalty-and-reciprocity as a paired teaching already covered in its own Note on this site. That cluster sounds near “zhong gong” in Latin letters, but it is not this disciple. You should keep the person index and the zhongshu essay apart: one names Ran Yong in the room; the other unpacks a method-word pair. Do not merge them into one résumé.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用孔子论仲弓，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明活页没有给出的展示次数或传记年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Confucius on Zhong Gong, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or biography dates the live pages do not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的仲弓是谁？",
+        questionEn: "Who was Zhong Gong in the Analects?",
+        answerZh: "你在《论语》里遇见的仲弓（冉雍；Legge 亦作 Chung-kung），是夫子说可使南面、又争居敬而行简、并在别处问仁的弟子。你最好的答案是这些场景与人物索引，而不是文本外编造的现代履历。你先把人扣回活页章句，再谈别的。",
+        answerEn: "You meet Zhong Gong (仲弓; also Ran Yong / Chung-kung in Legge) as the disciple Confucius says might occupy a prince’s place, who argues for reverence with simplicity, and who later asks about ren. Your best answer is those scenes and the people index, not a modern résumé invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「仲弓」或 zhong gong？",
+        questionEn: "Why do people search \"zhong gong\" or \"zhonggong\"?",
+        answerZh: "你往往想先弄清身份：是哪位弟子、哪次「南面」称许、哪场问仁。搜到这些写法之后，请打开活页章句，而不要依赖一篇会捏造章号或软化夫子原话的摘要。你把原文、白话导读与英译分层来读，阅读才站得住。",
+        answerEn: "You often want a clear identity: which disciple, which “face south” praise, which ren dialogue. Search those spellings, then open the live passages rather than a summary that invents chapter numbers or softens the Master’s words. Your reading stays honest when you keep source, vernacular guide, and English in separate layers.",
+      },
+      {
+        questionZh: "「雍也可使南面」在这里指什么？",
+        questionEn: "What does 雍也可使南面 mean here?",
+        answerZh: "你听见夫子点名雍可使南面——活页导读写他可以去做诸侯、面向南治理百姓。你把它握住为夫子所见的器局，而不是你替他编造的官衔。你的下一步是雍也那一章活页，而不是贴到每场领导力演讲上的口号。",
+        answerEn: "You hear Confucius name Yung as someone who might face south—Legge’s layer says he might occupy the place of a prince. Hold that as capacity the Master saw, not as a job title you invent for him. Your next step is the live Yung Yey page, not a slogan you paste onto every leadership talk.",
+      },
+      {
+        questionZh: "他那场对话里的「居敬而行简」是什么？",
+        questionEn: "What is 居敬而行简 in his exchange?",
+        answerZh: "你听见仲弓把内里的敬慎，与「心里随便又行事简约」拆开；夫子肯定他的说法。你把它读成对忘掉敬的「简」的校正。你不该把对话压扁成一句「砍流程」，却丢掉活页仍保留的敬那一半。请回到雍也原文核对措辞。",
+        answerEn: "You hear Chung-kung split reverence held inside from careless ease that also drives practice; the Master affirms his wording. Read that as a check on “simple” that forgot respect. You should not flatten the dialogue into “cut red tape” without the reverence half the live Yung Yey page keeps visible beside Legge.",
+      },
+      {
+        questionZh: "他问仁的那章怎样扣回来？",
+        questionEn: "How does his ren question fit?",
+        answerZh: "你又在颜渊篇遇见他问仁；答复走的是见大宾、承大祭、己所不欲勿施于人，以及邦家无怨。请把这份清单贴着原文来练。你不是在读第二篇弟子传——你是在听同一位学生追问可实行的规矩，并说请事斯语。",
+        answerEn: "You meet him again asking about perfect virtue; the reply walks guest-rite gravity, careful use of the people, and not doing to others as you would not wish done to yourself. Practise that list beside the Chinese source. You are not reading a second disciple biography—you are hearing the same student press for a workable rule.",
+      },
+      {
+        questionZh: "他和忠恕是一回事吗？",
+        questionEn: "Is he the same as zhongshu?",
+        answerZh: "你用相近拉丁字母检索时，可能落到忠恕专文——那是本站别处已覆盖的另一词簇。请把仲弓留在雍也与颜渊里被点名的人。你的习惯应是一页一意图：这边是弟子人物笔记，那边是忠恕拆读，不要并稿。",
+        answerEn: "You may land on 忠恕 notes when you type similar Latin letters—that is a different concept cluster already covered elsewhere on this site. Keep Zhong Gong as the person named in Yung Yey and Yen Yuan. Your habit should be one intent per page: disciple Note here, reciprocity essay there.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造仲弓语录？",
+        questionEn: "How do you keep AI from inventing Zhong Gong quotes?",
+        answerZh: "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子一定还对冉雍说过什么」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai，而不是摘要改写。",
+        answerEn: "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have added about Ran Yong” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读雍也 6.1",
+        headingEn: "Read Yung Yey 6.1 next",
+        bodyZh: [
+          "当你准备读仲弓「可使南面」与「居敬而行简」最清楚的一扇门，请打开[论语 · 雍也 6.1](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-001)，把原文、白话导读与英译并排对照。你问问自己：在你自己的简省里，敬还托在哪里——然后停住，回到活页文本，而不是回到一篇仲弓摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Zhong Gong’s south-facing praise and the dialogue on reverence with simplicity, open [The Analects · Yung Yey 6.1](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-001) and read source, guide, and Legge side by side. Ask yourself where ease in your own practice still rests on reverence—then stop, and return to the live text rather than to a summary of the disciple.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "duke-ling-of-wei-in-the-analects",
     titleZh: "《论语》里的卫灵公是谁？",
     titleEn: "Who Was Duke Ling of Wei in the Analects?",
