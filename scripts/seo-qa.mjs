@@ -1741,6 +1741,175 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
   }
 }
 
+const zhongGongCover = "/images/blogs/zhong-gong-in-the-analects/cover.jpg";
+const zhongGongInline1 = "/images/blogs/zhong-gong-in-the-analects/inline-1.jpg";
+const zhongGongInline2 = "/images/blogs/zhong-gong-in-the-analects/inline-2.jpg";
+const zhongGongCoverEn =
+  "An empty south-facing seat open to misted hills — Zhong Gong, who might face south as a prince";
+const zhongGongCoverZh = "空置南面之席临向雾山——仲弓，雍也可使南面";
+const zhongGongInline1En =
+  "Incense and a spare desk with brush and paper — reverence within, simplicity in practice";
+const zhongGongInline1Zh = "一炷清香与素净书案笔纸——居敬而行简";
+const zhongGongInline2En =
+  "An open doorway and a ready mat — go out as if receiving a great guest";
+const zhongGongInline2Zh = "门开向晓与待客之席——出门如见大宾";
+const zhongGongAnchors = [
+  ["仲弓", "https://www.lunyu.ai/zh-Hans/index/zhong-gong"],
+  ["Zhong Gong", "https://www.lunyu.ai/en/index/zhong-gong"],
+  ["论语 · 颜渊 12.2", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-002"],
+  ["The Analects · Yen Yuan 12.2", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-002"],
+  ["论语 · 雍也 6.1", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-001"],
+  ["The Analects · Yung Yey 6.1", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-001"],
+];
+{
+  const start = postSource.indexOf('slug: "zhong-gong-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing zhong-gong-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = zhongGongAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `zhong-gong-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    zhongGongAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`zhong-gong-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `zhong-gong-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [zhongGongCover, zhongGongInline1, zhongGongInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/zhong-gong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zhong-gong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-23"',
+  '"dateModified":"2026-09-23"',
+  "Who Was Zhong Gong in the Analects?",
+  "Zhong Gong in the Analects: the disciple Confucius says might face south as a prince, who argues for reverence with simplicity and later asks about ren.",
+  "you are usually trying to place one disciple among many names",
+  "Place him by the passages, not by a résumé",
+  "Facing south—and arguing for reverence with simplicity",
+  "Listed under virtuous practice",
+  "When he asks about ren",
+  "Not zhongshu—same sound, different door",
+  "How you should cite him",
+  "Read Yung Yey 6.1 next",
+  "Who was Zhong Gong in the Analects?",
+  ">Zhong Gong</a>",
+  ">The Analects · Yen Yuan 12.2</a>",
+  ">The Analects · Yung Yey 6.1</a>",
+  'href="/en/index/zhong-gong"',
+  'href="/en/analects/yan-yuan/yan-yuan-002"',
+  'href="/en/analects/yong-ye/yong-ye-001"',
+  zhongGongCover,
+  zhongGongInline1,
+  zhongGongInline2,
+  zhongGongCoverEn,
+  zhongGongInline1En,
+  zhongGongInline2En,
+  `property="og:image" content="${siteUrl}${zhongGongCover}"`,
+  `property="og:image:alt" content="${zhongGongCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${zhongGongCover}"`,
+  `name="twitter:image:alt" content="${zhongGongCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/zhong-gong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zhong-gong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-23"',
+  '"dateModified":"2026-09-23"',
+  "《论语》里的仲弓是谁？",
+  "《论语》里的仲弓：夫子说雍也可使南面，他又追问居敬而行简，并在别处问仁。链回可核对的原文。",
+  "你搜「仲弓」或 zhong gong 时，多半是想在一串弟子名里把他安顿下来",
+  "先按篇章认人，不靠履历表",
+  "可使南面——也争「居敬而行简」",
+  "列在德行一科",
+  "他问仁的那一场",
+  "不是忠恕——音近，门不同",
+  "你该怎样引用他",
+  "接下来读雍也 6.1",
+  ">仲弓</a>",
+  ">论语 · 颜渊 12.2</a>",
+  ">论语 · 雍也 6.1</a>",
+  'href="/zh-Hans/index/zhong-gong"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-002"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-001"',
+  zhongGongCover,
+  zhongGongInline1,
+  zhongGongInline2,
+  zhongGongCoverZh,
+  zhongGongInline1Zh,
+  zhongGongInline2Zh,
+  `property="og:image" content="${siteUrl}${zhongGongCover}"`,
+  `property="og:image:alt" content="${zhongGongCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${zhongGongCover}"`,
+  `name="twitter:image:alt" content="${zhongGongCoverZh}"`,
+]);
+{
+  const zhZhongGongFile = htmlPath("/zh-Hans/blogs/zhong-gong-in-the-analects");
+  if (exists(zhZhongGongFile)) {
+    const zhZhongGongHtml = read(zhZhongGongFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZhongGongHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/zhong-gong-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (!/<h1\b[^>]*>《论语》里的仲弓是谁？<\/h1>/.test(zhZhongGongHtml)) {
+      fail("/zh-Hans/blogs/zhong-gong-in-the-analects: H1 missing");
+    }
+    if (zhZhongGongHtml.includes(zhongGongCoverEn)) {
+      fail("/zh-Hans/blogs/zhong-gong-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhZhongGongHtml, />Zhong Gong<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zhong-gong-in-the-analects: English Zhong Gong body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhZhongGongHtml, />仲弓<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhong-gong-in-the-analects: 仲弓 body link should appear once");
+    }
+    if (countRegex(zhZhongGongHtml, />论语 · 颜渊 12\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhong-gong-in-the-analects: 颜渊 12.2 body link should appear once");
+    }
+    if (countRegex(zhZhongGongHtml, />论语 · 雍也 6\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zhong-gong-in-the-analects: 雍也 6.1 body link should appear once");
+    }
+  }
+  const enZhongGongFile = htmlPath("/en/blogs/zhong-gong-in-the-analects");
+  if (exists(enZhongGongFile)) {
+    const enZhongGongHtml = read(enZhongGongFile);
+    if (!/<h1\b[^>]*>Who Was Zhong Gong in the Analects\?<\/h1>/.test(enZhongGongHtml)) {
+      fail("/en/blogs/zhong-gong-in-the-analects: H1 missing");
+    }
+    if (enZhongGongHtml.includes(zhongGongCoverZh)) {
+      fail("/en/blogs/zhong-gong-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (countRegex(enZhongGongHtml, />Zhong Gong<\/a>/g) !== 1) {
+      fail("/en/blogs/zhong-gong-in-the-analects: Zhong Gong body link should appear once");
+    }
+    if (countRegex(enZhongGongHtml, />The Analects · Yen Yuan 12\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/zhong-gong-in-the-analects: Yen Yuan 12.2 body link should appear once");
+    }
+    if (countRegex(enZhongGongHtml, />The Analects · Yung Yey 6\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/zhong-gong-in-the-analects: Yung Yey 6.1 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -1776,6 +1945,11 @@ for (const locale of locales) {
     `href="/${locale}/blogs/duke-ling-of-wei-in-the-analects"`,
     `/${locale}/analects/xian-wen/xian-wen-020`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
+  ]);
+  checkHtml(`/${locale}/index/zhong-gong`, [
+    locale === "en" ? "Zhong Gong" : "仲弓",
+    `href="/${locale}/blogs/zhong-gong-in-the-analects"`,
+    `/${locale}/analects/yong-ye/yong-ye-001`,
   ]);
 }
 
@@ -1868,6 +2042,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zhong-gong-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhong-gong-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
@@ -1889,8 +2065,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-09-22")) {
+    if (!lastmod.includes("2026-09-23")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const zhongGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zhong-gong-in-the-analects`);
+    if (!zhongGongLastmod.includes("2026-09-23")) {
+      fail(
+        `sitemap: /${locale}/blogs/zhong-gong-in-the-analects lastmod should be 2026-09-23, got ${zhongGongLastmod || "missing"}`
+      );
     }
   for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
     const entityLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/index/${slug}`);
@@ -1907,7 +2089,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "22 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "23 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -1927,10 +2109,11 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-22";
-const previousEditorialLastmod = "2026-09-21";
-const priorEditorialLastmod = "2026-09-20";
-const olderEditorialLastmod = "2026-09-16";
+const newestEditorialLastmod = "2026-09-23";
+const previousEditorialLastmod = "2026-09-22";
+const priorEditorialLastmod = "2026-09-21";
+const olderEditorialLastmod = "2026-09-20";
+const earliestEditorialLastmod = "2026-09-16";
 const sitemapWithoutStableDates = sitemap
   .replaceAll(`${stableLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
@@ -1939,7 +2122,8 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${priorEditorialLastmod}T00:00:00.000Z`, "")
-  .replaceAll(`${olderEditorialLastmod}T00:00:00.000Z`, "");
+  .replaceAll(`${olderEditorialLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${earliestEditorialLastmod}T00:00:00.000Z`, "");
 if (/20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\dZ/.test(sitemapWithoutStableDates)) {
   fail("sitemap: contains unexpected build-time timestamp");
 }
