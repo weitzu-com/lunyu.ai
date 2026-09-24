@@ -102,6 +102,169 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zi-xia-in-the-analects",
+    titleZh: "《论语》里的子夏是谁？",
+    titleEn: "Who Was Zi Xia in the Analects?",
+    dekZh: "你搜「子夏」或 zi xia 时，多半是想在一串弟子名里把他安顿下来。在本站，你遇见他，是子夏（卜商）——先进篇列在文学一科的弟子，又以事贤、事亲、事君与交友界定何谓学。你不必先读弟子传；你可以直接打开他出现的篇章，看夫子怎样回答他。",
+    dekEn: "When you search \"zi xia\" or \"zixia,\" you usually want one disciple placed among many names. On this site you meet him as Zi Xia (子夏 / Bu Shang / Tsze-hsia)—the student listed under literary study, who defines learning by conduct toward the worthy, parents, prince, and friends. You do not need a Wikipedia résumé first; you can read the passages where he speaks and notice how the Master answers him.",
+    descriptionZh: "《论语》里的子夏：先进篇列在文学一科的弟子，又以事贤、事亲、事君与交友界定何谓学。链回可核对的原文。",
+    descriptionEn:
+      "Zi Xia in the Analects: the disciple listed under literary study, who defines learning by conduct toward the worthy, parents, prince, and friends.",
+    datePublished: "2026-09-24",
+    dateModified: "2026-09-24",
+    tagsZh: ["子夏", "卜商", "学而"],
+    tagsEn: ["zi xia", "Zi Xia", "Hsio R"],
+    related: [
+      "/analects/xue-er/xue-er-007",
+      "/index/zi-xia",
+      "/analects/yong-ye/yong-ye-011",
+      "/blogs/learning-practice-and-review",
+    ],
+    cover: notesBlogImage(
+      "zi-xia-in-the-analects",
+      "cover.jpg",
+      "Open scrolls and a quiet reading desk — Zi Xia, the literary disciple who ties learning to conduct",
+      "展开的简册与安静书案——子夏，以文学见称并以行止界定何谓学",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zi-xia-in-the-analects",
+        "inline-1.jpg",
+        "A spare desk with a sealed letter and a plain cup — honor the worthy, serve parents and prince, keep friends' words sincere",
+        "素净书案上的信函与素杯——贤贤易色，事亲事君，交友有信",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "zi-xia-in-the-analects",
+        "inline-2.jpg",
+        "Morning light on a scholar's mat and open book — be a junzi scholar, not a petty one",
+        "晨光落在书席与展开的册页——女为君子儒，无为小人儒",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠履历表",
+        headingEn: "Place him by the passages, not by a résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[子夏](https://www.lunyu.ai/zh-Hans/index/zi-xia)——孔门弟子，重视文学、礼学与学习次第。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him simply as [Zi Xia](https://www.lunyu.ai/en/index/zi-xia)—a disciple remembered for literary study, ritual order, and the sequence of learning. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading.",
+        ],
+      },
+      {
+        headingZh: "用怎样待人，来衡量你是否已学",
+        headingEn: "Learning measured by how you treat people",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "学而 1.7 里，你听见子夏自己界定何谓已学。原文是：贤贤易色，事父母，能竭其力，事君，能致其身，与朋友交，言而有信，虽曰未学，吾必谓之学矣。活页白话导读写：尊重贤德而不只看重容貌；侍奉父母能竭尽自己的力量；侍奉君主能献出自己的身心；和朋友交往说话守信用——这样的人，即使说没有学过，我也一定说他已经学过了。你可以把这份清单读成「贤贤易色」与忠信践履的门，而不是一句口号，好把同页原文换掉。当你问自己「学了没有」，先核对这些关系，再核对自己的书单。",
+        ],
+        bodyEn: [
+          "In Hsio R. 1.7 you hear Tsze-hsia himself define what counts as having learned. Legge’s public-domain English on the live page says: if a man withdraws his mind from the love of beauty, and applies it as sincerely to the love of the virtuous; if, in serving his parents, he can exert his utmost strength; if, in serving his prince, he can devote his life; if, in his intercourse with his friends, his words are sincere—although men say that he has not learned, I will certainly say that he has. You can take that list as a door about 贤贤易色 and loyal practice—not as a slogan that lets you skip the Chinese source on the same page. When you ask whether you have “learned,” check these relations before you check a reading list alone.",
+        ],
+      },
+      {
+        headingZh: "列在文学一科——也轻提绘事后素",
+        headingEn: "Listed under literary study—and opening the Odes",
+        bodyZh: [
+          "别处，先进 11.2 里，你看见子夏与子游同列文学，旁边另有德行、言语、政事诸科。你可以把这当作传统记住的长项地图，而不是一张成绩单，好把后面更难的场面一笔勾销。轻轻提一句：八佾 3.8 里，他也与夫子由「绘事后素」打开诗礼的对谈——先有素地，后施文采——你不必在这篇人物笔记里重写整部《诗》。当你把他和那些名字并读时，不妨问：你自己的「文学」标签，在待贤与事亲拆开时要付什么代价。",
+        ],
+        bodyEn: [
+          "Elsewhere, in Hsien Tsin 11.2, you see Zi Xia named with Zi You under literary acquirements, beside other pairs for virtuous practice, speech, and administration. You may hold that as a map of strengths the tradition remembered—not as a grade sheet that cancels harder scenes. Lightly, in Ba Yi 3.8, you also meet him opening the Odes with Confucius through the 绘事后素 exchange—illustration after the plain ground—without needing a separate essay that rewrites every poem line here. When you set him next to those names, ask what your own “literary” label costs when conduct toward the worthy and the household falls apart.",
+        ],
+      },
+      {
+        headingZh: "女为君子儒，无为小人儒",
+        headingEn: "Be a junzi scholar, not a petty one",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "若你想给同一位弟子再开一扇活页门，可打开一次[论语 · 雍也 6.11](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-011)。那里子曰：女为君子儒，无为小人儒。活页导读写：你要做君子式的儒者，不要做小人式的儒者。你该把这读成对「怎么学」的校正，而不是把本站另篇「君子是什么」的专文整篇搬进来。把人物场景与概念专文分开：一边是房间里被点名的子夏，一边是跨章拆读的「君子」一词。",
+        ],
+        bodyEn: [
+          "If you want a second live door on the same disciple, open [The Analects · Yung Yey 6.11](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-011) once. There the Master says to Tsze-hsia: do you be a scholar after the style of the superior man, and not after that of the mean man. The live Chinese guide puts it as 女为君子儒，无为小人儒. You should read that as a check on how you study—not as a rewrite of this site’s separate Note on what a junzi is. Keep the person scene and the concept essay apart: one names Zi Xia in the room; the other unpacks the junzi word across many chapters.",
+        ],
+      },
+      {
+        headingZh: "不是学而时习重写——也不是曾子那扇门",
+        headingEn: "Not a learning-method rewrite—and not Zengzi’s door",
+        bodyZh: [
+          "检索时你也可能撞上「学而时习」方法笔记，或曾子／忠恕专文。那些词簇可以在「学习」或别的弟子名字旁出现，却不是本篇的任务。你应把子夏是谁、以及学而 1.7 怎样算「已学」，留作主意图。你不要把他并进方法文，也不要并进另一位弟子的忠恕拆读。",
+        ],
+        bodyEn: [
+          "Search may also surface notes on practice-and-review or on Zengzi / zhongshu. Those clusters can sit near “learning” or near other disciples in Latin letters, but they are not this Note’s job. You should keep Zi Xia’s identity and Hsio R. 1.7 as the main intent: who he is, and how he counts someone as already learned. Do not merge him into a method essay or into another disciple’s reciprocity teaching.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用子夏，或夫子对子夏说话，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提「zi xia」一类检索意图，但不要发明活页没有给出的展示次数或传记年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Zi Xia or Confucius addressing him, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest for “zi xia” lightly if needed, but you should never invent impression counts or biography dates the live pages do not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的子夏是谁？",
+        questionEn: "Who was Zi Xia in the Analects?",
+        answerZh: "你在《论语》里遇见的子夏（卜商；Legge 亦作 Tsze-hsia），是先进篇列在文学、又以事贤事亲事君交友界定何谓学、并被告诫要做君子儒的弟子。你最好的答案是这些场景与人物索引，而不是文本外编造的履历。你先把人扣回活页章句。",
+        answerEn: "You meet Zi Xia (子夏; Bu Shang; Tsze-hsia in Legge) as the disciple listed under literary study, who defines learning by honor for the virtuous, filial strength, devoted service, and sincere friendship, and who is told to be a junzi scholar. Your best answer is those scenes and the people index, not a modern résumé invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「子夏」或 zi xia？",
+        questionEn: "Why do people search \"zi xia\" or \"zixia\"?",
+        answerZh: "你往往想先弄清身份：是哪位弟子、哪次文学分科、哪句「虽曰未学，吾必谓之学矣」。搜到这些写法之后，请打开活页章句，而不要依赖一篇会捏造章号或软化原话的摘要。你把原文、白话导读与英译分层来读，阅读才站得住。",
+        answerEn: "You often want a clear identity: which disciple, which literary placement, which line that says someone has already learned. Search those spellings, then open the live passages rather than a summary that invents chapter numbers or softens the wording. Your reading stays honest when you keep source, vernacular guide, and English in separate layers.",
+      },
+      {
+        questionZh: "「贤贤易色」在他这句话里指什么？",
+        questionEn: "What does 贤贤易色 mean in his saying?",
+        answerZh: "你听见子夏说：把心思从好色转向尊贤，再以竭力事亲、致身事君、交友有信来衡量。你把它握住为对「已学」的行止检验，而不是现代恋爱技巧。你的下一步是学而那一章活页，而不是贴到每份鸡汤清单上的口号。",
+        answerEn: "You hear Tsze-hsia urge sincere honor for the virtuous over love of beauty, then serving parents, prince, and friends with strength and sincerity. Hold that as a conduct test of learning, not as a modern dating tip. Your next step is the live Hsio R. page, not a slogan on every self-help list.",
+      },
+      {
+        questionZh: "为什么先进 11.2 把他放在文学一科？",
+        questionEn: "Why is he linked with literary study in 先进 11.2?",
+        answerZh: "你看见他与子游同列文学，旁边另有德行、言语、政事诸科。请把这当作传统记住的长项地图，而不是一张可勾销难章的成绩单。你也可轻记八佾 3.8「绘事后素」的诗礼对谈，却不必把本篇写成整部《诗》的疏解。",
+        answerEn: "You see him named with Zi You under literary acquirements beside other disciple pairs. Treat that as a remembered strength map, not a score that cancels harder scenes. You may also recall the light Odes exchange of 绘事后素 in Ba Yi 3.8 without turning this Note into a full Book of Songs commentary.",
+      },
+      {
+        questionZh: "雍也 6.11 的「君子儒」是什么？",
+        questionEn: "What is 君子儒 in Yung Yey 6.11?",
+        answerZh: "你听见夫子要子夏做君子式的儒者，不要做小人式的儒者。请贴着原文与导读，把它读成对学者姿态的校正。你不是在重写本站「君子」定义专文——你是在听针对这位弟子的一句嘱咐，并回到活页核对措辞。",
+        answerEn: "You hear the Master tell Tsze-hsia to be a scholar after the superior man’s style, not the mean man’s. Read that as a check on scholarly posture beside the Chinese source. You are not rewriting the site’s junzi definition Note—you are hearing one instruction aimed at this disciple.",
+      },
+      {
+        questionZh: "这和「学而时习」那篇是一回事吗？",
+        questionEn: "Is this the same as the learning-practice Note?",
+        answerZh: "你想到《论语》里的「学」时，可能落到学而时习方法笔记——那是本站别处已覆盖的另一意图。请把子夏留在学而 1.7 发言、雍也 6.11 被嘱咐的人。你的习惯应是一页一意图：这边是弟子人物笔记，那边是方法文，不要并稿。",
+        answerEn: "You may land on practice-and-review essays when you think about “learning” in the Analects—that is a different intent already covered elsewhere. Keep Zi Xia as the person who speaks in Hsio R. 1.7 and is addressed in Yung Yey 6.11. Your habit should be one intent per page: disciple Note here, method essay there.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造子夏语录？",
+        questionEn: "How do you keep AI from inventing Zi Xia quotes?",
+        answerZh: "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「子夏一定还说过什么」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai，而不是任何摘要改写。",
+        answerEn: "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Zi Xia must have added” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读学而 1.7",
+        headingEn: "Read Hsio R. 1.7 next",
+        bodyZh: [
+          "当你准备读子夏怎样把「已学」扣回尊贤、事亲、事君与交友最清楚的一扇门，请打开[论语 · 学而 1.7](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-007)，把原文、白话导读与英译并排对照。你问问自己：在你自己的「学」里，这些关系还叫得出名字吗——然后停住，回到活页文本，而不是回到一篇子夏摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on how Zi Xia counts someone as already learned, open [The Analects · Hsio R. 1.7](https://www.lunyu.ai/en/analects/xue-er/xue-er-007) and read source, guide, and Legge side by side. Ask yourself which relations—worthy, parents, prince, friends—still name your own “learning”—then stop, and return to the live text rather than to a summary of the disciple.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zhong-gong-in-the-analects",
     titleZh: "《论语》里的仲弓是谁？",
     titleEn: "Who Was Zhong Gong in the Analects?",
