@@ -1910,6 +1910,176 @@ checkHtml("/zh-Hans/blogs/zhong-gong-in-the-analects", [
   }
 }
 
+const ziXiaCover = "/images/blogs/zi-xia-in-the-analects/cover.jpg";
+const ziXiaInline1 = "/images/blogs/zi-xia-in-the-analects/inline-1.jpg";
+const ziXiaInline2 = "/images/blogs/zi-xia-in-the-analects/inline-2.jpg";
+const ziXiaCoverEn =
+  "Open scrolls and a quiet reading desk — Zi Xia, the literary disciple who ties learning to conduct";
+const ziXiaCoverZh = "展开的简册与安静书案——子夏，以文学见称并以行止界定何谓学";
+const ziXiaInline1En =
+  "A spare desk with a sealed letter and a plain cup — honor the worthy, serve parents and prince, keep friends' words sincere";
+const ziXiaInline1Zh = "素净书案上的信函与素杯——贤贤易色，事亲事君，交友有信";
+const ziXiaInline2En =
+  "Morning light on a scholar's mat and open book — be a junzi scholar, not a petty one";
+const ziXiaInline2Zh = "晨光落在书席与展开的册页——女为君子儒，无为小人儒";
+const ziXiaAnchors = [
+  ["子夏", "https://www.lunyu.ai/zh-Hans/index/zi-xia"],
+  ["Zi Xia", "https://www.lunyu.ai/en/index/zi-xia"],
+  ["论语 · 雍也 6.11", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-011"],
+  ["The Analects · Yung Yey 6.11", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-011"],
+  ["论语 · 学而 1.7", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-007"],
+  ["The Analects · Hsio R. 1.7", "https://www.lunyu.ai/en/analects/xue-er/xue-er-007"],
+];
+{
+  const start = postSource.indexOf('slug: "zi-xia-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing zi-xia-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = ziXiaAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `zi-xia-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    ziXiaAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`zi-xia-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(`zi-xia-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`);
+      }
+    });
+    for (const alt of [ziXiaCoverEn, ziXiaCoverZh, ziXiaInline1En, ziXiaInline1Zh, ziXiaInline2En, ziXiaInline2Zh]) {
+      if (!block.includes(alt)) fail(`zi-xia-in-the-analects: editorial alt missing ${alt}`);
+    }
+  }
+}
+for (const src of [ziXiaCover, ziXiaInline1, ziXiaInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/zi-xia-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zi-xia-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-24"',
+  '"dateModified":"2026-09-24"',
+  "Who Was Zi Xia in the Analects?",
+  "Zi Xia in the Analects: the disciple listed under literary study, who defines learning by conduct toward the worthy, parents, prince, and friends.",
+  "you usually want one disciple placed among many names",
+  "Place him by the passages, not by a résumé",
+  "Learning measured by how you treat people",
+  "Listed under literary study—and opening the Odes",
+  "Be a junzi scholar, not a petty one",
+  "Not a learning-method rewrite—and not Zengzi’s door",
+  "How you should cite him",
+  "Read Hsio R. 1.7 next",
+  "Who was Zi Xia in the Analects?",
+  ">Zi Xia</a>",
+  ">The Analects · Yung Yey 6.11</a>",
+  ">The Analects · Hsio R. 1.7</a>",
+  'href="/en/index/zi-xia"',
+  'href="/en/analects/yong-ye/yong-ye-011"',
+  'href="/en/analects/xue-er/xue-er-007"',
+  ziXiaCover,
+  ziXiaInline1,
+  ziXiaInline2,
+  ziXiaCoverEn,
+  ziXiaInline1En,
+  ziXiaInline2En,
+  `property="og:image" content="${siteUrl}${ziXiaCover}"`,
+  `property="og:image:alt" content="${ziXiaCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${ziXiaCover}"`,
+  `name="twitter:image:alt" content="${ziXiaCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/zi-xia-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zi-xia-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-24"',
+  '"dateModified":"2026-09-24"',
+  "《论语》里的子夏是谁？",
+  "《论语》里的子夏：先进篇列在文学一科的弟子，又以事贤、事亲、事君与交友界定何谓学。链回可核对的原文。",
+  "你搜「子夏」或 zi xia 时，多半是想在一串弟子名里把他安顿下来",
+  "先按篇章认人，不靠履历表",
+  "用怎样待人，来衡量你是否已学",
+  "列在文学一科——也轻提绘事后素",
+  "女为君子儒，无为小人儒",
+  "不是学而时习重写——也不是曾子那扇门",
+  "你该怎样引用他",
+  "接下来读学而 1.7",
+  ">子夏</a>",
+  ">论语 · 雍也 6.11</a>",
+  ">论语 · 学而 1.7</a>",
+  'href="/zh-Hans/index/zi-xia"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-011"',
+  'href="/zh-Hans/analects/xue-er/xue-er-007"',
+  ziXiaCover,
+  ziXiaInline1,
+  ziXiaInline2,
+  ziXiaCoverZh,
+  ziXiaInline1Zh,
+  ziXiaInline2Zh,
+  `property="og:image" content="${siteUrl}${ziXiaCover}"`,
+  `property="og:image:alt" content="${ziXiaCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${ziXiaCover}"`,
+  `name="twitter:image:alt" content="${ziXiaCoverZh}"`,
+]);
+{
+  const zhZiXiaFile = htmlPath("/zh-Hans/blogs/zi-xia-in-the-analects");
+  if (exists(zhZiXiaFile)) {
+    const zhZiXiaHtml = read(zhZiXiaFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZiXiaHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/zi-xia-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (!/<h1\b[^>]*>《论语》里的子夏是谁？<\/h1>/.test(zhZiXiaHtml)) {
+      fail("/zh-Hans/blogs/zi-xia-in-the-analects: H1 missing");
+    }
+    if (zhZiXiaHtml.includes(ziXiaCoverEn)) {
+      fail("/zh-Hans/blogs/zi-xia-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhZiXiaHtml, />Zi Xia<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zi-xia-in-the-analects: English Zi Xia body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhZiXiaHtml, />子夏<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-xia-in-the-analects: 子夏 body link should appear once");
+    }
+    if (countRegex(zhZiXiaHtml, />论语 · 雍也 6\.11<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-xia-in-the-analects: 雍也 6.11 body link should appear once");
+    }
+    if (countRegex(zhZiXiaHtml, />论语 · 学而 1\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-xia-in-the-analects: 学而 1.7 body link should appear once");
+    }
+  }
+  const enZiXiaFile = htmlPath("/en/blogs/zi-xia-in-the-analects");
+  if (exists(enZiXiaFile)) {
+    const enZiXiaHtml = read(enZiXiaFile);
+    if (!/<h1\b[^>]*>Who Was Zi Xia in the Analects\?<\/h1>/.test(enZiXiaHtml)) {
+      fail("/en/blogs/zi-xia-in-the-analects: H1 missing");
+    }
+    if (enZiXiaHtml.includes(ziXiaCoverZh)) {
+      fail("/en/blogs/zi-xia-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (countRegex(enZiXiaHtml, />Zi Xia<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-xia-in-the-analects: Zi Xia body link should appear once");
+    }
+    if (countRegex(enZiXiaHtml, />The Analects · Yung Yey 6\.11<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-xia-in-the-analects: Yung Yey 6.11 body link should appear once");
+    }
+    if (countRegex(enZiXiaHtml, />The Analects · Hsio R\. 1\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-xia-in-the-analects: Hsio R. 1.7 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -1950,6 +2120,11 @@ for (const locale of locales) {
     locale === "en" ? "Zhong Gong" : "仲弓",
     `href="/${locale}/blogs/zhong-gong-in-the-analects"`,
     `/${locale}/analects/yong-ye/yong-ye-001`,
+  ]);
+  checkHtml(`/${locale}/index/zi-xia`, [
+    locale === "en" ? "Zi Xia" : "子夏",
+    `href="/${locale}/blogs/zi-xia-in-the-analects"`,
+    `/${locale}/analects/xue-er/xue-er-007`,
   ]);
 }
 
@@ -2044,6 +2219,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, 
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zhong-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhong-gong-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-xia-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-xia-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
   assertIncludes(sitemap, `${siteUrl}/zh-Hans/topics/${slug}`, "sitemap");
   assertIncludes(sitemap, `${siteUrl}/en/topics/${slug}`, "sitemap");
@@ -2065,13 +2242,19 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-09-23")) {
+    if (!lastmod.includes("2026-09-24")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
     }
     const zhongGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zhong-gong-in-the-analects`);
     if (!zhongGongLastmod.includes("2026-09-23")) {
       fail(
         `sitemap: /${locale}/blogs/zhong-gong-in-the-analects lastmod should be 2026-09-23, got ${zhongGongLastmod || "missing"}`
+      );
+    }
+    const ziXiaLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-xia-in-the-analects`);
+    if (!ziXiaLastmod.includes("2026-09-24")) {
+      fail(
+        `sitemap: /${locale}/blogs/zi-xia-in-the-analects lastmod should be 2026-09-24, got ${ziXiaLastmod || "missing"}`
       );
     }
   for (const slug of ["zai-wo", "duke-ai", "duke-ding", "yao-shun-yu", "wei-ling-gong-person"]) {
@@ -2089,7 +2272,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "23 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "24 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -2109,8 +2292,9 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-23";
-const previousEditorialLastmod = "2026-09-22";
+const newestEditorialLastmod = "2026-09-24";
+const previousEditorialLastmod = "2026-09-23";
+const dukeLingEditorialLastmod = "2026-09-22";
 const priorEditorialLastmod = "2026-09-21";
 const olderEditorialLastmod = "2026-09-20";
 const earliestEditorialLastmod = "2026-09-16";
@@ -2121,6 +2305,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${dukeLingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${priorEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${olderEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${earliestEditorialLastmod}T00:00:00.000Z`, "");
