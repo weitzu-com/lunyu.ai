@@ -2080,6 +2080,182 @@ checkHtml("/zh-Hans/blogs/zi-xia-in-the-analects", [
   }
 }
 
+const zengZiCover = "/images/blogs/zeng-zi-in-the-analects/cover.jpg";
+const zengZiInline1 = "/images/blogs/zeng-zi-in-the-analects/inline-1.jpg";
+const zengZiInline2 = "/images/blogs/zeng-zi-in-the-analects/inline-2.jpg";
+const zengZiCoverEn =
+  "A quiet study desk and a scholar at the window — Zeng Zi, daily self-examination";
+const zengZiCoverZh = "安静书案与临窗静思的学者——曾子，日三省吾身";
+const zengZiInline1En =
+  "Spare offering table and distant memorial tablets in soft incense mist — careful endings, lasting remembrance";
+const zengZiInline1Zh = "素案、远方牌位与轻烟——慎终追远（庄重克制，非丧葬写实）";
+const zengZiInline2En =
+  "A scholar on a long misted mountain path with a modest scroll bundle — heavy burden and long road";
+const zengZiInline2Zh = "学者负卷行于雾中山径——士不可以不弘毅，任重而道远";
+const zengZiAnchors = [
+  ["曾子", "https://www.lunyu.ai/zh-Hans/index/zeng-zi"],
+  ["Zeng Zi", "https://www.lunyu.ai/en/index/zeng-zi"],
+  ["论语 · 泰伯 8.7", "https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-007"],
+  ["The Analects · T'ai-po 8.7", "https://www.lunyu.ai/en/analects/tai-bo/tai-bo-007"],
+  ["论语 · 学而 1.4", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-004"],
+  ["The Analects · Hsio R. 1.4", "https://www.lunyu.ai/en/analects/xue-er/xue-er-004"],
+];
+{
+  const start = postSource.indexOf('slug: "zeng-zi-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing zeng-zi-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = zengZiAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `zeng-zi-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    zengZiAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`zeng-zi-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(`zeng-zi-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`);
+      }
+    });
+    for (const alt of [zengZiCoverEn, zengZiCoverZh, zengZiInline1En, zengZiInline1Zh, zengZiInline2En, zengZiInline2Zh]) {
+      if (!block.includes(alt)) fail(`zeng-zi-in-the-analects: editorial alt missing ${alt}`);
+    }
+  }
+}
+for (const src of [zengZiCover, zengZiInline1, zengZiInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/zeng-zi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zeng-zi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-25"',
+  '"dateModified":"2026-09-25"',
+  "Who Was Zeng Zi in the Analects?",
+  "Zeng Zi in the Analects: the disciple known for daily self-examination, careful funerals and distant remembrance, and for transmitting the Master’s one-thread teaching.",
+  "you usually want one disciple placed among many names",
+  "Place him by the passages, not by a résumé",
+  "Daily three examinations—loyalty, sincerity, practice",
+  "Careful funerals, distant remembrance—once, lightly",
+  "Heavy burden, long road—T&#x27;ai-po 8.7",
+  "Not a zhongshu rewrite—and not the filial essay",
+  "How you should cite him",
+  "Read Hsio R. 1.4 next",
+  "Who was Zeng Zi in the Analects?",
+  ">Zeng Zi</a>",
+  ">The Analects · T&#x27;ai-po 8.7</a>",
+  ">The Analects · Hsio R. 1.4</a>",
+  'href="/en/index/zeng-zi"',
+  'href="/en/analects/tai-bo/tai-bo-007"',
+  'href="/en/analects/xue-er/xue-er-004"',
+  zengZiCover,
+  zengZiInline1,
+  zengZiInline2,
+  zengZiCoverEn,
+  zengZiInline1En,
+  zengZiInline2En,
+  `property="og:image" content="${siteUrl}${zengZiCover}"`,
+  `property="og:image:alt" content="${zengZiCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${zengZiCover}"`,
+  `name="twitter:image:alt" content="${zengZiCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/zeng-zi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zeng-zi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-25"',
+  '"dateModified":"2026-09-25"',
+  "《论语》里的曾子是谁？",
+  "《论语》里的曾子：以每日三省、慎终追远与传述夫子一贯之道见称的弟子。链回可核对的原文。",
+  "你搜「曾子」「曾参」或 zengzi / zeng zi 时，多半是想在一串弟子名里把他安顿下来",
+  "先按篇章认人，不靠履历表",
+  "每日三省——为人谋忠、交友信、传习",
+  "慎终追远——轻提一次",
+  "任重道远——泰伯 8.7",
+  "不是忠恕重写——也不是孝行通论",
+  "你该怎样引用他",
+  "接下来读学而 1.4",
+  ">曾子</a>",
+  ">论语 · 泰伯 8.7</a>",
+  ">论语 · 学而 1.4</a>",
+  'href="/zh-Hans/index/zeng-zi"',
+  'href="/zh-Hans/analects/tai-bo/tai-bo-007"',
+  'href="/zh-Hans/analects/xue-er/xue-er-004"',
+  zengZiCover,
+  zengZiInline1,
+  zengZiInline2,
+  zengZiCoverZh,
+  zengZiInline1Zh,
+  zengZiInline2Zh,
+  `property="og:image" content="${siteUrl}${zengZiCover}"`,
+  `property="og:image:alt" content="${zengZiCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${zengZiCover}"`,
+  `name="twitter:image:alt" content="${zengZiCoverZh}"`,
+]);
+{
+  const zhZengZiFile = htmlPath("/zh-Hans/blogs/zeng-zi-in-the-analects");
+  if (exists(zhZengZiFile)) {
+    const zhZengZiHtml = read(zhZengZiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZengZiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/zeng-zi-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (!/<h1\b[^>]*>《论语》里的曾子是谁？<\/h1>/.test(zhZengZiHtml)) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: H1 missing");
+    }
+    if (zhZengZiHtml.includes(zengZiCoverEn)) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhZengZiHtml.includes(zengZiInline1En) || zhZengZiHtml.includes(zengZiInline2En)) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhZengZiHtml, />Zeng Zi<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: English Zeng Zi body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhZengZiHtml, />曾子<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: 曾子 body link should appear once");
+    }
+    if (countRegex(zhZengZiHtml, />论语 · 泰伯 8\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: 泰伯 8.7 body link should appear once");
+    }
+    if (countRegex(zhZengZiHtml, />论语 · 学而 1\.4<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zeng-zi-in-the-analects: 学而 1.4 body link should appear once");
+    }
+  }
+  const enZengZiFile = htmlPath("/en/blogs/zeng-zi-in-the-analects");
+  if (exists(enZengZiFile)) {
+    const enZengZiHtml = read(enZengZiFile);
+    if (!/<h1\b[^>]*>Who Was Zeng Zi in the Analects\?<\/h1>/.test(enZengZiHtml)) {
+      fail("/en/blogs/zeng-zi-in-the-analects: H1 missing");
+    }
+    if (enZengZiHtml.includes(zengZiCoverZh)) {
+      fail("/en/blogs/zeng-zi-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enZengZiHtml.includes(zengZiInline1Zh) || enZengZiHtml.includes(zengZiInline2Zh)) {
+      fail("/en/blogs/zeng-zi-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enZengZiHtml, />Zeng Zi<\/a>/g) !== 1) {
+      fail("/en/blogs/zeng-zi-in-the-analects: Zeng Zi body link should appear once");
+    }
+    if (countRegex(enZengZiHtml, />The Analects · T&#x27;ai-po 8\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/zeng-zi-in-the-analects: T'ai-po 8.7 body link should appear once");
+    }
+    if (countRegex(enZengZiHtml, />The Analects · Hsio R\. 1\.4<\/a>/g) !== 1) {
+      fail("/en/blogs/zeng-zi-in-the-analects: Hsio R. 1.4 body link should appear once");
+    }
+  }
+}
+
 for (const locale of locales) {
   checkHtml(`/${locale}/index/zai-wo`, [
     "Zaiwo",
@@ -2125,6 +2301,11 @@ for (const locale of locales) {
     locale === "en" ? "Zi Xia" : "子夏",
     `href="/${locale}/blogs/zi-xia-in-the-analects"`,
     `/${locale}/analects/xue-er/xue-er-007`,
+  ]);
+  checkHtml(`/${locale}/index/zeng-zi`, [
+    locale === "en" ? "Zeng Zi" : "曾子",
+    `href="/${locale}/blogs/zeng-zi-in-the-analects"`,
+    `/${locale}/analects/xue-er/xue-er-004`,
   ]);
 }
 
@@ -2219,6 +2400,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, 
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zhong-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhong-gong-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zeng-zi-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zeng-zi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-xia-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-xia-in-the-analects`, "sitemap");
 for (const slug of intentHubSlugs) {
@@ -2242,8 +2425,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-09-24")) {
+    if (!lastmod.includes("2026-09-25")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const zengZiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zeng-zi-in-the-analects`);
+    if (!zengZiLastmod.includes("2026-09-25")) {
+      fail(
+        `sitemap: /${locale}/blogs/zeng-zi-in-the-analects lastmod should be 2026-09-25, got ${zengZiLastmod || "missing"}`
+      );
     }
     const zhongGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zhong-gong-in-the-analects`);
     if (!zhongGongLastmod.includes("2026-09-23")) {
@@ -2272,7 +2461,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "24 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "25 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -2292,7 +2481,8 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const newestEditorialLastmod = "2026-09-24";
+const newestEditorialLastmod = "2026-09-25";
+const ziXiaEditorialLastmod = "2026-09-24";
 const previousEditorialLastmod = "2026-09-23";
 const dukeLingEditorialLastmod = "2026-09-22";
 const priorEditorialLastmod = "2026-09-21";
@@ -2304,6 +2494,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${ziXiaEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${previousEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeLingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${priorEditorialLastmod}T00:00:00.000Z`, "")

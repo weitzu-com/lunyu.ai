@@ -102,6 +102,169 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zeng-zi-in-the-analects",
+    titleZh: "《论语》里的曾子是谁？",
+    titleEn: "Who Was Zeng Zi in the Analects?",
+    dekZh: "你搜「曾子」「曾参」或 zengzi / zeng zi 时，多半是想在一串弟子名里把他安顿下来。在本站，你遇见他，是曾子（曾参；Legge 作 Tsang）——以每日三省、慎终追远与传述夫子一贯之道见称的弟子。你不必先读弟子传；你可以直接打开他出现的篇章，看他怎样把所闻说给人听。",
+    dekEn: "When you search \"zengzi,\" \"zeng zi,\" or 曾子, you usually want one disciple placed among many names. On this site you meet him as Zeng Zi (曾子 / Zeng Shen / Tsang)—the student known for daily self-examination, careful funerals and distant remembrance, and for transmitting the Master's one-thread teaching. You do not need a Wikipedia résumé first; you can read the passages where he speaks and notice how he restates what he received.",
+    descriptionZh: "《论语》里的曾子：以每日三省、慎终追远与传述夫子一贯之道见称的弟子。链回可核对的原文。",
+    descriptionEn:
+      "Zeng Zi in the Analects: the disciple known for daily self-examination, careful funerals and distant remembrance, and for transmitting the Master’s one-thread teaching.",
+    datePublished: "2026-09-25",
+    dateModified: "2026-09-25",
+    tagsZh: ["曾子", "曾参", "学而"],
+    tagsEn: ["zeng zi", "Zeng Zi", "Hsio R"],
+    related: [
+      "/analects/xue-er/xue-er-004",
+      "/index/zeng-zi",
+      "/analects/tai-bo/tai-bo-007",
+      "/blogs/zhongshu-reciprocity-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "zeng-zi-in-the-analects",
+      "cover.jpg",
+      "A quiet study desk and a scholar at the window — Zeng Zi, daily self-examination",
+      "安静书案与临窗静思的学者——曾子，日三省吾身",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zeng-zi-in-the-analects",
+        "inline-1.jpg",
+        "Spare offering table and distant memorial tablets in soft incense mist — careful endings, lasting remembrance",
+        "素案、远方牌位与轻烟——慎终追远（庄重克制，非丧葬写实）",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "zeng-zi-in-the-analects",
+        "inline-2.jpg",
+        "A scholar on a long misted mountain path with a modest scroll bundle — heavy burden and long road",
+        "学者负卷行于雾中山径——士不可以不弘毅，任重而道远",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠履历表",
+        headingEn: "Place him by the passages, not by a résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[曾子](https://www.lunyu.ai/zh-Hans/index/zeng-zi)——以自省、孝行与传述见称的弟子。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him simply as [Zeng Zi](https://www.lunyu.ai/en/index/zeng-zi)—a disciple known for self-examination, filial conduct, and transmission. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading.",
+        ],
+      },
+      {
+        headingZh: "每日三省——为人谋忠、交友信、传习",
+        headingEn: "Daily three examinations—loyalty, sincerity, practice",
+        bodyZh: [
+          "学而 1.4 里，你听见曾子自己点出检索常引的「吾日三省吾身」。活页白话导读写：曾子说：我每天多次反省自己：替别人办事有没有不尽心？和朋友交往有没有不诚信？老师传授的道理有没有认真温习实践？Legge 英译则分三点：为人谋是否不忠，交友是否不信，对师传是否未习。你可以把这份清单读成自省的门，而不是一句口号，好把同页原文换掉。当你问自己「省了没有」，先核这三处关系，再核对自己的书单。",
+        ],
+        bodyEn: [
+          "In Hsio R. 1.4 you hear Tsang himself name the habit that searchers often quote as 吾日三省吾身. Legge’s public-domain English on the live page says: The philosopher Tsang said, \"I daily examine myself on three points:—whether, in transacting business for others, I may have been not faithful;—whether, in intercourse with friends, I may have been not sincere;—whether I may have not mastered and practised the instructions of my teacher.\" The live Chinese guide puts it as daily self-checks on whether you have been wholehearted for others, trustworthy with friends, and serious about reviewing and practising what your teacher transmitted. You can take that list as a door about how you examine yourself—not as a slogan that lets you skip the Chinese source on the same page. When you ask whether you have “examined,” check these three relations before you check a reading list alone.",
+        ],
+      },
+      {
+        headingZh: "慎终追远——轻提一次",
+        headingEn: "Careful funerals, distant remembrance—once, lightly",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "别处，学而 1.9 里，你也听见曾子说：谨慎办理父母的丧事，追念祭祀远代祖先，民风自然会归向厚道。你可以把「慎终追远」握住为与这位弟子相关的孝行与礼制一线，而不是把本站另篇「孝行、礼仪与照料」专文整篇搬进来。当你把他和这句话并读时，不妨问：你自己的追念，在日日忠信拆开时要付什么代价。",
+        ],
+        bodyEn: [
+          "Elsewhere, in Hsio R. 1.9, you also hear Zeng Zi say that careful funerals for parents and distant remembrance of ancestors naturally thicken a people’s manners toward kindness. The live guide renders that mood as 慎终追远—handle the end of life with care, and keep far generations in ritual memory. You may hold that as one more line of filial conduct tied to this disciple—not as a rewrite of this site’s separate essay on filial ritual and care. When you set him next to that saying, ask what your own remembrance costs when daily loyalty and sincerity fall apart.",
+        ],
+      },
+      {
+        headingZh: "任重道远——泰伯 8.7",
+        headingEn: "Heavy burden, long road—T'ai-po 8.7",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "若你想给同一位弟子再开一扇活页门，可打开一次[论语 · 泰伯 8.7](https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-007)。那里曾子曰：士不可以不弘毅，任重而道远。活页导读写：读书人不可以不心胸宽广、意志坚毅，因为他担子沉重而路途遥远。把实现仁德作为自己的责任，这担子不是很沉重吗？直到死了才停止，这路途不是很遥远吗？你该把这读成对「担子扛多远」的校正，而不是商战口号，也不是把另一篇概念专文整篇搬进来。把人物场景与成语母题分开：一边是房间里发言的曾子，一边是你别处还会遇见的「任重道远」。",
+        ],
+        bodyEn: [
+          "If you want a second live door on the same disciple, open [The Analects · T'ai-po 8.7](https://www.lunyu.ai/en/analects/tai-bo/tai-bo-007) once. There Tsang says the officer may not be without breadth of mind and vigorous endurance; his burden is heavy and his course is long. Legge continues that to take Perfect virtue as one’s own burden is heavy, and only death ends the road—so the course is long. The live Chinese guide names 士不可以不弘毅 and 任重道远: the scholar-officer needs a wide chest and firm will because the task of ren is heavy and stops only at death. You should read that as a check on how far you carry responsibility—not as a CEO slogan or a rewrite of another concept Note. Keep the person scene and the motif apart: one names Zeng Zi in the room; the other is a proverb you meet again elsewhere.",
+        ],
+      },
+      {
+        headingZh: "不是忠恕重写——也不是孝行通论",
+        headingEn: "Not a zhongshu rewrite—and not the filial essay",
+        bodyZh: [
+          "检索时你也可能撞上本站「忠恕／reciprocity」专文，或「孝行、礼仪与照料」通论。那些词簇可以在「曾子」或忠恕旁出现，却不是本篇的任务。你应知道：里仁 4.15 里，曾子接过夫子一贯之教，复述为「夫子之道，忠恕而已矣」——Legge 作 loyalty and reciprocity——而概念专文已跨章拆读该词。你应把曾子是谁、以及学而 1.4 三省怎么读，留作主意图。你不要把他并进忠恕专文，也不要并进孝礼长论；此处只轻提慎终追远与忠恕，免得门与门撞在一起。",
+        ],
+        bodyEn: [
+          "Search may also surface the site’s Note on zhongshu / reciprocity, or the essay on filial conduct, ritual, and care. Those clusters can sit near “曾子” or near 忠恕 in Latin letters, but they are not this Note’s job. You should know that in Li Ren 4.15 Zeng Zi receives the Master’s one-thread teaching and restates it as 夫子之道，忠恕而已矣—Legge’s loyalty and reciprocity—yet the concept Note already unpacks that word across chapters. Keep Zeng Zi’s identity and Hsio R. 1.4 as the main intent: who he is, and how you read the three daily examinations. Do not merge him into a reciprocity essay or into a full filial-ritual treatise here; mention 慎终追远 and 忠恕 only to keep the doors from colliding.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用曾子，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提「zengzi」「zeng zi」「曾子」「曾参」或 Tsang 一类检索意图，但不要发明活页没有给出的展示次数或传记年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Zeng Zi, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest for “zengzi,” “zeng zi,” 曾子, 曾参, or Tsang lightly if needed, but you should never invent impression counts or biography dates the live pages do not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的曾子是谁？",
+        questionEn: "Who was Zeng Zi in the Analects?",
+        answerZh: "你在《论语》里遇见的曾子（曾参；Legge 亦作 Tsang），是每日三省、慎终追远、传述夫子忠恕、并说出士弘毅任重道远的弟子。你最好的答案是这些场景与人物索引，而不是文本外编造的履历。你先把人扣回活页章句来读。",
+        answerEn: "You meet Zeng Zi (曾子; Zeng Shen; Tsang in Legge) as the disciple of daily self-examination, careful funerals and distant remembrance, transmission of the Master’s one-thread as zhongshu, and the officer’s heavy burden and long road. Your best answer is those scenes and the people index, not a modern résumé invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「曾子」、曾参或 zengzi / zeng zi？",
+        questionEn: "Why do people search \"zengzi,\" \"zeng zi,\" or 曾子?",
+        answerZh: "你往往想先弄清身份：是哪位弟子、哪句三省吾身、曾参与 Tsang 怎样对应。搜到这些写法之后，请打开活页章句，而不要依赖一篇会捏造章号或软化原话的摘要。你把原文、白话导读与英译分层来读，阅读才站得住。",
+        answerEn: "You often want a clear identity: which disciple, which self-examination line, which spelling of Zeng Shen or Tsang. Search those forms, then open the live passages rather than a summary that invents chapter numbers or softens the wording. Your reading stays honest when you keep source, vernacular guide, and English in separate layers.",
+      },
+      {
+        questionZh: "「吾日三省吾身」三点指什么？",
+        questionEn: "What is 吾日三省吾身 / the three points?",
+        answerZh: "你听见曾子每日自省：为人谋是否不尽心，交友是否不诚信，师传是否未认真温习实践。你把它握住为如今仍可做的行止检点，而不是贴到每份效率清单上的口号。你的下一步是学而那一章活页，而不是多造出第四点的改写。",
+        answerEn: "You hear Tsang examine himself daily on faithfulness in business for others, sincerity with friends, and whether he has mastered and practised his teacher’s instructions. Hold that as a conduct check you can still run, not as a slogan on every productivity list. Your next step is the live Hsio R. page, not a paraphrase that invents a fourth point.",
+      },
+      {
+        questionZh: "「慎终追远」呢？",
+        questionEn: "What about 慎终追远?",
+        answerZh: "你听见曾子把谨慎办丧与追念远祖，和民风归厚连在一起。请把这当作与这位弟子相关的孝行礼制轻场景，而不是本站孝行专文的整篇重写。你可以在此记一次，再回到活页章句，而不必展开每一项丧祭细则。",
+        answerEn: "You hear Zeng Zi link careful funerals and distant ancestral remembrance with a people’s turn toward thick manners. Treat that as one light scene of filial and ritual care tied to this disciple—not as a full rewrite of the site’s filial conduct essay. You may recall the line once here, then return to the live chapter rather than expanding every funeral rite.",
+      },
+      {
+        questionZh: "泰伯 8.7 的「任重道远」是什么？",
+        questionEn: "What is 任重道远 in T'ai-po 8.7?",
+        answerZh: "你听见曾子说士须弘毅，因为以仁为己任，担子重，死而后已，路途远。请贴着原文与导读，把它读成书生的长路，而不是商战口号。你是在听这位弟子的一句，而不是重写后世借用这四字的每一条谚语。",
+        answerEn: "You hear Tsang say the officer needs breadth and vigorous endurance because the burden of ren is heavy and the road ends only at death. Read that as a scholar’s long path beside the Chinese source—not as a business-war motto. You are hearing one saying from this disciple, not rewriting every later proverb that borrowed the four characters.",
+      },
+      {
+        questionZh: "这和忠恕那篇是一回事吗？",
+        questionEn: "Is this the same as the zhongshu Note?",
+        answerZh: "你想到曾子在里仁 4.15 复述「夫子之道，忠恕而已矣」时，可能落到忠恕／reciprocity 专文——那是本站别处已覆盖的另一意图。请把曾子留在学而 1.4 发言、泰伯 8.7 说任重道远的人。你的习惯应是一页一意图：这边是弟子人物笔记，那边是概念专文，不要并稿。",
+        answerEn: "You may land on reciprocity / 忠恕 essays when you think about Zeng Zi restating 夫子之道，忠恕而已矣 in Li Ren 4.15—that is a different intent already covered elsewhere. Keep Zeng Zi as the person who speaks in Hsio R. 1.4 and T'ai-po 8.7. Your habit should be one intent per page: disciple Note here, concept essay there.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造曾子语录？",
+        questionEn: "How do you keep AI from inventing Zeng Zi quotes?",
+        answerZh: "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「曾子一定还说过什么」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai，而不是任何摘要改写。",
+        answerEn: "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Zeng Zi must have added” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读学而 1.4",
+        headingEn: "Read Hsio R. 1.4 next",
+        bodyZh: [
+          "当你准备读曾子每日三省最清楚的一扇门，请打开[论语 · 学而 1.4](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-004)，把原文、白话导读与英译并排对照。你问问自己：为人谋忠、交友信、传习实践——这三点里，哪一点还叫得出你自己的一天——然后停住，回到活页文本，而不是回到一篇曾子摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Zeng Zi’s daily self-examination, open [The Analects · Hsio R. 1.4](https://www.lunyu.ai/en/analects/xue-er/xue-er-004) and read source, guide, and Legge side by side. Ask yourself which of the three points—loyalty for others, sincerity with friends, practised teaching—still name your own day—then stop, and return to the live text rather than to a summary of the disciple.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zi-xia-in-the-analects",
     titleZh: "《论语》里的子夏是谁？",
     titleEn: "Who Was Zi Xia in the Analects?",
