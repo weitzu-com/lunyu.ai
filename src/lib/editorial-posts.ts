@@ -123,8 +123,8 @@ export const editorialPosts: EditorialPost[] = [
     cover: notesBlogImage(
       "zeng-zi-in-the-analects",
       "cover.jpg",
-      "A quiet study desk and a scholar at the window — Zeng Zi, daily self-examination",
-      "安静书案与临窗静思的学者——曾子，日三省吾身",
+      "A quiet study desk by the window with blank paper, brush, and inkstone — Zeng Zi, daily self-examination",
+      "临窗书案、空白纸与笔砚——曾子，日三省吾身",
       { width: 1200, height: 630 }
     ),
     inlineImages: {

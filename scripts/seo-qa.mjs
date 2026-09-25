@@ -2084,8 +2084,8 @@ const zengZiCover = "/images/blogs/zeng-zi-in-the-analects/cover.jpg";
 const zengZiInline1 = "/images/blogs/zeng-zi-in-the-analects/inline-1.jpg";
 const zengZiInline2 = "/images/blogs/zeng-zi-in-the-analects/inline-2.jpg";
 const zengZiCoverEn =
-  "A quiet study desk and a scholar at the window — Zeng Zi, daily self-examination";
-const zengZiCoverZh = "安静书案与临窗静思的学者——曾子，日三省吾身";
+  "A quiet study desk by the window with blank paper, brush, and inkstone — Zeng Zi, daily self-examination";
+const zengZiCoverZh = "临窗书案、空白纸与笔砚——曾子，日三省吾身";
 const zengZiInline1En =
   "Spare offering table and distant memorial tablets in soft incense mist — careful endings, lasting remembrance";
 const zengZiInline1Zh = "素案、远方牌位与轻烟——慎终追远（庄重克制，非丧葬写实）";
