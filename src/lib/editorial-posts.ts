@@ -342,10 +342,10 @@ export const editorialPosts: EditorialPost[] = [
         headingZh: "忠恕之复述——里仁 4.15（轻提）",
         headingEn: "忠恕 restated — Li Ren 4.15 (mention-light)",
         bodyZh: [
-          "你也可能在里仁 4.15 听见曾子：夫子告参，吾道一以贯之；曾子曰「唯」；稍后对门人复述为「夫子之道，忠恕而已矣」——Legge 作 loyalty and reciprocity。此处只作目录式轻提复述场景，不作概念专文。另篇已跨章拆读忠恕之义；本页不重写，也不把里仁 4.15 做成钱页 CTA。你把「复述之人」与「拥有该词的概念页」分开。",
+          "你也可能在里仁 4.15 听见曾子：夫子告参，吾道一以贯之；曾子曰「唯」；稍后对门人复述为「夫子之道，忠恕而已矣」。Legge 在活页上写的是 “to be true to the principles of our nature and the benevolent exercise of them to others”。更短的 “loyalty and reciprocity”，以及任何把忠恕收短的中文说法，都是常见编辑短注，不是 Legge。此处只作目录式轻提复述场景，不作概念专文。另篇已跨章拆读忠恕之义；本页不重写，也不把里仁 4.15 做成钱页 CTA。你把「复述之人」与「拥有该词的概念页」分开。",
         ],
         bodyEn: [
-          "You may also hear Zeng Zi in Li Ren 4.15: the Master tells Shan that his doctrine is an all-pervading unity; Tsang answers “Yes,” and later restates to other disciples that the Master’s way is loyalty and reciprocity—忠恕而已矣. Treat that here as a catalog mention of a restatement scene, not as a concept essay. A separate Note already unpacks what 忠恕 means across chapters; this page does not rewrite it and does not make Li Ren 4.15 a money CTA. You keep the person who restates apart from the concept page that owns the word.",
+          "You may also hear Zeng Zi in Li Ren 4.15: the Master tells Shan that his doctrine is an all-pervading unity; Tsang answers “Yes,” and later restates to other disciples the line 夫子之道，忠恕而已矣. Legge’s wording on the live page is “to be true to the principles of our nature and the benevolent exercise of them to others.” “loyalty and reciprocity,” like any short Chinese gloss of 忠恕, is an editorial gloss, not Legge. Treat that here as a catalog mention of a restatement scene, not as a concept essay. A separate Note already unpacks what 忠恕 means across chapters; this page does not rewrite it and does not make Li Ren 4.15 a money CTA. You keep the person who restates apart from the concept page that owns the word.",
         ],
       },
       {
@@ -391,8 +391,8 @@ export const editorialPosts: EditorialPost[] = [
       {
         questionZh: "忠恕是曾子自己发明的吗？",
         questionEn: "Did Zeng Zi teach 忠恕 as his own invention?",
-        answerZh: "你不应这么说。里仁 4.15 里，他接过夫子一贯之教，复述为忠恕——Legge 作 loyalty and reciprocity。在本目录里，请把它当传述用语来读，而不是声称他发明了该概念本身。概念拆读应留在专文；你在此处只轻提场景，也不把它做成该章的钱页 CTA。",
-        answerEn: "You should not. In Li Ren 4.15 he receives the Master’s one-thread and restates it as 忠恕—Legge’s loyalty and reciprocity. Treat that as transmission language on this catalog, not as a claim that he invented the concept. Concept unpacking stays on its own Note; you keep mention-light here without a money CTA to that scene.",
+        answerZh: "你不应这么说。里仁 4.15 里，他接过夫子一贯之教，复述为忠恕。Legge 写的是 “to be true to the principles of our nature and the benevolent exercise of them to others”；“loyalty and reciprocity” 以及任何把忠恕收短的中文说法，都是常见编辑短注，不是 Legge。在本目录里，请把它当传述用语来读，而不是声称他发明了该概念本身。概念拆读应留在专文；你在此处只轻提场景，也不把它做成该章的钱页 CTA。",
+        answerEn: "You should not. In Li Ren 4.15 he receives the Master’s one-thread and restates it as 忠恕. Legge writes “to be true to the principles of our nature and the benevolent exercise of them to others”; “loyalty and reciprocity,” like any short Chinese gloss of 忠恕, is an editorial gloss, not Legge. Treat that as transmission language on this catalog, not as a claim that he invented the concept. Concept unpacking stays on its own Note; you keep mention-light here without a money CTA to that scene.",
       },
       {
         questionZh: "这和「曾子是谁」那篇是一回事吗？",
@@ -644,10 +644,10 @@ export const editorialPosts: EditorialPost[] = [
         headingEn: "In the Analects: receiving the one-thread (Li Ren 4.15)",
         imageSlot: "inline-1",
         bodyZh: [
-          "你在里仁 4.15 听见最清楚的传述场景。夫子曰：参乎，吾道一以贯之。曾子曰：「唯。」夫子出，门人问；曾子复述：夫子之道，忠恕而已矣。活页白话导读同写这一承接—复述弧线。Legge 把复述标为 loyalty and reciprocity。此处的忠恕只作复述标签：另篇已跨章拆读该概念，本页不重写那篇专文，也不链过去。你的工作是看清谁承接、谁复述——而不是把场景写成 reciprocal 通论。",
+          "你在里仁 4.15 听见最清楚的传述场景。夫子曰：参乎，吾道一以贯之。曾子曰：「唯。」夫子出，门人问；曾子复述：夫子之道，忠恕而已矣。活页白话导读同写这一承接—复述弧线。Legge 把复述写成 “to be true to the principles of our nature and the benevolent exercise of them to others”。常见短注 “loyalty and reciprocity”，以及任何把忠恕收短的中文说法，都是编辑用语，不是 Legge。此处的忠恕只作复述标签：另篇已跨章拆读该概念，本页不重写那篇专文，也不链过去。你的工作是看清谁承接、谁复述——而不是把场景写成 reciprocal 通论。",
         ],
         bodyEn: [
-          "You hear the clearest transmission scene in Li Ren 4.15. The Master says: Shan, my doctrine is that of an all-pervading unity—参乎，吾道一以贯之. Tsang answers “Yes.” After the Master leaves, other disciples ask; Zeng Zi restates that the Master’s way is loyalty and reciprocity—夫子之道，忠恕而已矣. The live Chinese guide narrates the same receive-and-restate arc. Legge labels the restatement as loyalty and reciprocity. Treat 忠恕 here as a restatement label only: a separate Note already unpacks the concept across chapters, and this page does not rewrite that essay or link it. Your job is to see who receives and who restates—not to turn the scene into a reciprocity treatise.",
+          "You hear the clearest transmission scene in Li Ren 4.15. The Master says: Shan, my doctrine is that of an all-pervading unity—参乎，吾道一以贯之. Tsang answers “Yes.” After the Master leaves, other disciples ask; Zeng Zi restates the line 夫子之道，忠恕而已矣. The live Chinese guide narrates the same receive-and-restate arc. Legge renders that restatement as “to be true to the principles of our nature and the benevolent exercise of them to others.” “loyalty and reciprocity,” like any short Chinese gloss of 忠恕, is an editorial gloss, not Legge. Treat 忠恕 here as a restatement label only: a separate Note already unpacks the concept across chapters, and this page does not rewrite that essay or link it. Your job is to see who receives and who restates—not to turn the scene into a reciprocity treatise.",
         ],
       },
       {
@@ -702,14 +702,14 @@ export const editorialPosts: EditorialPost[] = [
       {
         questionZh: "里仁 4.15／Le Jin 4.15 发生了什么？",
         questionEn: "What happens in Li Ren 4.15 / 里仁 4.15?",
-        answerZh: "你听见夫子告参：吾道一以贯之；曾子曰「唯」；随后对门人复述夫子之道，忠恕而已矣——Legge 作 loyalty and reciprocity。请你把原文、白话导读与 Legge 分层标注来读。本页焦点是承接—复述这一角色本身，而不是去跨章拆读 reciprocal 那一篇概念专文。",
-        answerEn: "You hear the Master tell Shan that his doctrine is an all-pervading unity; Tsang answers “Yes,” then restates to others that the Master’s way is loyalty and reciprocity—忠恕而已矣. Hold source, guide, and Legge apart as labeled layers. Your focus on this page is the receive-and-restate role, not a full concept essay that unpacks reciprocity across chapters.",
+        answerZh: "你听见夫子告参：吾道一以贯之；曾子曰「唯」；随后对门人复述夫子之道，忠恕而已矣。Legge 写的是 “to be true to the principles of our nature and the benevolent exercise of them to others”；“loyalty and reciprocity” 以及任何把忠恕收短的中文说法，都是常见短注，不是 Legge。请你把原文、白话导读与 Legge 分层标注来读。本页焦点是承接—复述这一角色本身，而不是去跨章拆读 reciprocal 那一篇概念专文。",
+        answerEn: "You hear the Master tell Shan that his doctrine is an all-pervading unity; Tsang answers “Yes,” then restates to others the line 夫子之道，忠恕而已矣. Legge writes “to be true to the principles of our nature and the benevolent exercise of them to others”; “loyalty and reciprocity,” like any short Chinese gloss of 忠恕, is a common short gloss, not Legge. Hold source, guide, and Legge apart as labeled layers. Your focus on this page is the receive-and-restate role, not a full concept essay that unpacks reciprocity across chapters.",
       },
       {
         questionZh: "忠恕是曾子自己的教导吗？",
         questionEn: "Is 忠恕 Zeng Zi’s own teaching?",
-        answerZh: "你不应把它当成他本人的发明。他只是复述所闻而已；Legge 的 loyalty and reciprocity 只是该复述场景的译名标签。概念拆读应留在专文的别处。你在此处只轻提一句，好让本页守住传述角色，而不是把 reciprocal 整篇重写成第二篇长论。",
-        answerEn: "You should not treat it as his invention. He restates what he received; Legge’s loyalty and reciprocity is only a translation label for that restatement scene. Concept unpacking stays on its own Note elsewhere. You keep mention-light here so this page stays about transmission role, not about rewriting reciprocity as a second essay.",
+        answerZh: "你不应把它当成他本人的发明。他只是复述所闻而已。Legge 的句子是 “to be true to the principles of our nature and the benevolent exercise of them to others”；“loyalty and reciprocity” 以及任何把忠恕收短的中文说法，只是该复述场景的编辑短注，不是 Legge。概念拆读应留在专文的别处。你在此处只轻提一句，好让本页守住传述角色，而不是把 reciprocal 整篇重写成第二篇长论。",
+        answerEn: "You should not treat it as his invention. He restates what he received. Legge’s sentence is “to be true to the principles of our nature and the benevolent exercise of them to others”; “loyalty and reciprocity,” like any short Chinese gloss of 忠恕, is only an editorial short gloss for that restatement scene, not Legge. Concept unpacking stays on its own Note elsewhere. You keep mention-light here so this page stays about transmission role, not about rewriting reciprocity as a second essay.",
       },
       {
         questionZh: "《论语》能证明完整的宋明道统图吗？",
