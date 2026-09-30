@@ -102,6 +102,177 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "duke-jing-of-qi-in-the-analects",
+    titleZh: "《论语》里的齐景公是谁？",
+    titleEn: "Who Was Duke Jing of Qi in the Analects?",
+    dekZh:
+      "你搜「齐景公」或 Duke Jing of Qi 时，多半想在《论语》一串国君名里把他安顿下来。在本站，你遇见他，是因为他在颜渊 12.11 问政，听闻君君、臣臣、父父、子子——名分各安其位。你不必先读王侯传；你可以直接打开那场问答，看名分如何成为答语。",
+    dekEn:
+      "When you search \"duke jing of qi,\" you usually want one Qi ruler placed among many names in the Analects. On this site you meet him as the duke who asks about government in Yen Yuan 12.11 and hears 君君、臣臣、父父、子子—roles held in place. You do not need a Wikipedia résumé first; you can read that scene and notice how proper names for roles become the answer.",
+    descriptionZh: "《论语》里的齐景公：问政，听闻君君、臣臣、父父、子子——名分各安其位。链回可核对的原文。",
+    descriptionEn:
+      "Duke Jing of Qi in the Analects: the Qi ruler who asks about government and hears that roles must hold—prince, minister, father, and son.",
+    datePublished: "2026-09-30",
+    dateModified: "2026-09-30",
+    tagsZh: ["齐景公", "景公", "颜渊"],
+    tagsEn: ["duke jing of qi", "Duke Jing of Qi", "Yen Yuan"],
+    related: [
+      "/analects/yan-yuan/yan-yuan-011",
+      "/index/duke-jing-of-qi",
+      "/blogs/duke-ling-of-wei-in-the-analects",
+      "/blogs/duke-ai-of-lu-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "duke-jing-of-qi-in-the-analects",
+      "cover.jpg",
+      "A Qi court audience — Duke Jing asking Confucius about government",
+      "齐廷对问之席——景公问孔子「问政」",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "duke-jing-of-qi-in-the-analects",
+        "inline-1.jpg",
+        "Four quiet name-places in order — prince, minister, father, son held each in place",
+        "四席名分安位——君臣父子各安其位的阅读意象",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "duke-jing-of-qi-in-the-analects",
+        "inline-2.jpg",
+        "A quiet court table with empty cups in place — roles settled, no spectacle",
+        "素净廷案空杯各安其位——名分安顿，不作奇观",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠王侯履历",
+        headingEn: "Place him by the passages, not by a royal résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[齐景公](https://www.lunyu.ai/zh-Hans/index/duke-jing-of-qi)——问政、并触及名分各安其位的齐国国君。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。英译 Legge 或作 Duke Ching of Ch'i；本站同一人写作齐景公／Duke Jing of Qi。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him as [Duke Jing of Qi](https://www.lunyu.ai/en/index/duke-jing-of-qi)—a ruler of Qi who asks about government and proper roles. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading. In Legge you may also see “Duke Ching of Ch'i”; on this site the same person is Duke Jing of Qi.",
+        ],
+      },
+      {
+        headingZh: "问政——听闻名分各安其位",
+        headingEn: "Ask about government—hear roles held in place",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "颜渊 12.11 里，齐景公问政于孔子。孔子对曰：君君，臣臣，父父，子子。公曰善哉；信如君不君、臣不臣、父不父、子不子，虽有粟，吾得而食诸。你可以把这扇门读成「名分是否安位」，而不是逼人服从的口号，也不是文本外编造的现代编制表。引用时，请把原文与英译按同一活页所见分层标明。",
+        ],
+        bodyEn: [
+          "In Yen Yuan 12.11 Duke Jing of Qi asks Confucius about government. Confucius answers: there is government when the prince is prince, the minister minister, the father father, and the son son—君君、臣臣、父父、子子. The duke says “Good!” and adds that if those names fail, even with grain he could not enjoy it. You can take that as a door about roles held in place—not as a slogan for forcing obedience, and not as a modern org chart invented outside the text. When you cite it later, keep the Chinese source visible beside the English layer on the same live page.",
+        ],
+      },
+      {
+        headingZh: "两扇轻门——千驷，与「吾老矣」",
+        headingEn: "Two lighter doors—horses, and “I am old”",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "别处你可轻开一次[论语 · 季氏 16.12](https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-012)：齐景公有马千驷，死之日民无德而称焉；伯夷、叔齐饿于首阳之下，民到于今称之。你只把这读成景公一侧「德与显」的对照，而不要在这里写成伯夷叔齐专稿。",
+          "另一扇轻门是[论语 · 微子 18.3](https://www.lunyu.ai/zh-Hans/analects/wei-zi/wei-zi-003)：齐以介于季、孟之间待孔子，又曰吾老矣，不能用也，孔子行。你可看一眼再回来——这篇笔记停在「景公是谁、问政怎么读」，而不是齐廷去留编年。",
+        ],
+        bodyEn: [
+          "Elsewhere you may lightly open [The Analects · Ke She 16.12](https://www.lunyu.ai/en/analects/ji-shi/ji-shi-012): Duke Jing had a thousand teams of horses, yet on the day of his death the people did not praise him for a single virtue—set beside Bo Yi and Shu Qi, who starved yet are still praised. Hold that only as a virtue-versus-display contrast about Jing; you are not reading a Bo Yi–Shu Qi Note here.",
+          "Another light door is [The Analects · Wei Tsze 18.3](https://www.lunyu.ai/en/analects/wei-zi/wei-zi-003): how Qi would rank Confucius between the Chi and Mang houses, then “I am old; I cannot use his doctrines,” and Confucius leaves. You can glance once, then return—this Note stays with who Jing is and how you read the 问政 answer, not with a full Qi-court exit chronicle.",
+        ],
+      },
+      {
+        headingZh: "不是鲁哀公，不是卫灵公，也不是鲁定公",
+        headingEn: "Not Duke Ai, not Duke Ling, not Duke Ding",
+        bodyZh: [
+          "书中别处你还会遇见鲁哀公、卫灵公或鲁定公——不同的国君，不同的问法。这篇笔记只停在齐景公；它不是诸公合传，也不重述他们各自的场景。你不该把他们并成一篇「《论语》诸公合传」，也不该把本页当成曾子簇、君子或忠恕通论的重写。需要时，请把每个名字扣回各自的活页章句。",
+        ],
+        bodyEn: [
+          "Elsewhere in the book you may meet Duke Ai of Lu, Duke Ling of Wei, or Duke Ding of Lu—different rulers, different questions. This Note stays with Duke Jing of Qi alone; it is not a multi-duke biography and it does not retell their separate scenes. You should not merge them into one “dukes of the Analects” résumé, and you should not treat this page as a Zeng Zi, junzi, or zhongshu rewrite. Keep each name tied to its own live passages when you need them.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用景公的提问或孔子的答语，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明 brief 没有给出的展示次数或历史年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Duke Jing’s question or Confucius’s answer, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or history dates the brief did not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的齐景公是谁？",
+        questionEn: "Who was Duke Jing of Qi in the Analects?",
+        answerZh:
+          "你在《论语》里遇见的齐景公（亦称景公、Duke Jing of Qi；Legge 作 Duke Ching of Ch'i），是问政并听闻君臣父子各安其位的齐国国君。你最好的答案是颜渊 12.11 与人物索引；16.12、18.3 只作轻门——不是编造的履历。",
+        answerEn:
+          "You meet Duke Jing (齐景公; also Jing Gong; Legge “Duke Ching of Ch'i”) as the Qi ruler who asks about government and hears that roles must hold—prince, minister, father, son. Your best answer is Yen Yuan 12.11 plus the people index, with 16.12 and 18.3 only as light side doors—not a modern royal biography invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「齐景公」或 duke jing of qi？",
+        questionEn: "Why do people search \"duke jing of qi\"?",
+        answerZh:
+          "你往往想先弄清身份：哪一位公、哪次答语、哪扇篇章的门。搜到这个词（或 Legge 的 Duke Ching of Ch'i）后，请打开颜渊 12.11 活页，而不要依赖会捏造章号或软化「君君臣臣」的摘要。你把原文、白话与英译分层来读，阅读才站得住。",
+        answerEn:
+          "You often want a clear identity: which duke, which famous answer, which chapter door. Search that phrase (or Legge’s “Duke Ching of Ch'i”), then open the live 12.11 page rather than a summary that invents chapter numbers or softens 君君臣臣. Your reading stays honest when you keep source, vernacular guide, and English translation in separate layers.",
+      },
+      {
+        questionZh: "「君君、臣臣、父父、子子」在这里说什么？",
+        questionEn: "What does 君君、臣臣、父父、子子 mean here?",
+        answerZh:
+          "你听到孔子以名分各安其位回答问政：君要像君，臣要像臣，父要像父，子要像子。你要把这读成名与行相称的教诲，而不是胁迫的许可。你的下一步是颜渊那章活页，对照原文与白话导读，而不是贴到每场职场争执上的口号。",
+        answerEn:
+          "You hear Confucius answer a question about government by naming roles held in place: the prince as prince, the minister as minister, the father as father, the son as son. Hold that as a teaching about names that fit conduct, not as permission to coerce. Your next step is the live Yen Yuan page, not a slogan you paste onto every workplace dispute.",
+      },
+      {
+        questionZh: "季氏 16.12 的千驷呢？",
+        questionEn: "What about the thousand teams of horses in 16.12?",
+        answerZh:
+          "你看见景公的富与伯夷叔齐并置：马多，死之日民无德可称；饿于首阳，民到于今称之。你只轻读为景公一侧的德与显对照，而不要写成伯夷专稿。你不该发明活页没有写出的额外褒贬。",
+        answerEn:
+          "You see Jing’s wealth set beside Bo Yi and Shu Qi: many horses, yet no virtue the people praise at his death; hunger, yet praise that lasts. Read that lightly as a contrast about Jing—not as a full Bo Yi Note. You should not invent extra blame or praise lines the live page does not show.",
+      },
+      {
+        questionZh: "微子 18.3「吾老矣」呢？",
+        questionEn: "What about “I am old” in 18.3?",
+        answerZh:
+          "你听见齐以介于季、孟之间待孔子，又以年老为由不能用其道，孔子于是离开。你只用它作景公一侧的轻门，再回到问政答语。你的习惯应是：一页一意图——人物笔记在此，去齐之景在彼。",
+        answerEn:
+          "You hear Qi rank Confucius between the Chi and Mang houses, then refuse to use his doctrines because the duke is old; Confucius leaves. Use that only as a light door on Jing’s court, then return here for the 问政 answer. Your habit should be one intent per page: person Note here, exit scene there.",
+      },
+      {
+        questionZh: "怎样避免把他和其他公混在一起？",
+        questionEn: "How do you keep from mixing him with other dukes?",
+        answerZh:
+          "你在别处还可能遇见鲁哀公、卫灵公或鲁定公——这里只点名消歧，不开新传。当章句只写「公」时，请到人物索引核对是哪一位。你的习惯应是：一个名字，一组可链篇章，而不是合并的宫廷编年。",
+        answerEn:
+          "You may also meet Duke Ai of Lu, Duke Ling of Wei, or Duke Ding of Lu elsewhere—light names only here, not new biographies. When a passage says “the duke,” check the people index for which ruler it is. Your habit should be one name, one set of linked chapters, not a merged court chronicle.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造齐景公语录？",
+        questionEn: "How do you keep AI from inventing Duke Jing quotes?",
+        answerZh:
+          "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子在齐一定还说过什么」。你应一律拒绝新捏造的《论语》句子。你的核验路径始终是本站已发布的篇章地址，lunyu.ai。",
+        answerEn:
+          "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have added in Qi” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读颜渊 12.11",
+        headingEn: "Read Yen Yuan 12.11 next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「问政与名分安位」之门，请打开[论语 · 颜渊 12.11](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-011)，把原文、白话导读与英译并排对照。你问问自己：还有哪些名分你仍该安住——然后停住，回到文本，而不是回到一篇景公摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Duke Jing’s question about government and the answer of roles held in place, open [The Analects · Yen Yuan 12.11](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-011) and read source, guide, and Legge side by side. Ask yourself which names you still owe to hold—then stop, and return to the live text rather than to a summary of the duke.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zeng-zi-in-the-analects",
     titleZh: "《论语》里的曾子是谁？",
     titleEn: "Who Was Zeng Zi in the Analects?",

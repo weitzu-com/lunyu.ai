@@ -1741,6 +1741,183 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
   }
 }
 
+const dukeJingCover = "/images/blogs/duke-jing-of-qi-in-the-analects/cover.jpg";
+const dukeJingInline1 = "/images/blogs/duke-jing-of-qi-in-the-analects/inline-1.jpg";
+const dukeJingInline2 = "/images/blogs/duke-jing-of-qi-in-the-analects/inline-2.jpg";
+const dukeJingCoverEn = "A Qi court audience — Duke Jing asking Confucius about government";
+const dukeJingCoverZh = "齐廷对问之席——景公问孔子「问政」";
+const dukeJingInline1En =
+  "Four quiet name-places in order — prince, minister, father, son held each in place";
+const dukeJingInline1Zh = "四席名分安位——君臣父子各安其位的阅读意象";
+const dukeJingInline2En = "A quiet court table with empty cups in place — roles settled, no spectacle";
+const dukeJingInline2Zh = "素净廷案空杯各安其位——名分安顿，不作奇观";
+const dukeJingAnchors = [
+  ["齐景公", "https://www.lunyu.ai/zh-Hans/index/duke-jing-of-qi"],
+  ["Duke Jing of Qi", "https://www.lunyu.ai/en/index/duke-jing-of-qi"],
+  ["论语 · 季氏 16.12", "https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-012"],
+  ["论语 · 微子 18.3", "https://www.lunyu.ai/zh-Hans/analects/wei-zi/wei-zi-003"],
+  ["The Analects · Ke She 16.12", "https://www.lunyu.ai/en/analects/ji-shi/ji-shi-012"],
+  ["The Analects · Wei Tsze 18.3", "https://www.lunyu.ai/en/analects/wei-zi/wei-zi-003"],
+  ["论语 · 颜渊 12.11", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-011"],
+  ["The Analects · Yen Yuan 12.11", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-011"],
+];
+{
+  const start = postSource.indexOf('slug: "duke-jing-of-qi-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing duke-jing-of-qi-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = dukeJingAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `duke-jing-of-qi-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    dukeJingAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`duke-jing-of-qi-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `duke-jing-of-qi-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [dukeJingCover, dukeJingInline1, dukeJingInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/duke-jing-of-qi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/duke-jing-of-qi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-30"',
+  '"dateModified":"2026-09-30"',
+  "Who Was Duke Jing of Qi in the Analects?",
+  "Duke Jing of Qi in the Analects: the Qi ruler who asks about government and hears that roles must hold—prince, minister, father, and son.",
+  "you usually want one Qi ruler placed among many names in the Analects",
+  "Place him by the passages, not by a royal résumé",
+  "Ask about government—hear roles held in place",
+  "Two lighter doors—horses, and “I am old”",
+  "Not Duke Ai, not Duke Ling, not Duke Ding",
+  "How you should cite him",
+  "Read Yen Yuan 12.11 next",
+  "Who was Duke Jing of Qi in the Analects?",
+  ">Duke Jing of Qi</a>",
+  ">The Analects · Ke She 16.12</a>",
+  ">The Analects · Wei Tsze 18.3</a>",
+  ">The Analects · Yen Yuan 12.11</a>",
+  'href="/en/index/duke-jing-of-qi"',
+  'href="/en/analects/ji-shi/ji-shi-012"',
+  'href="/en/analects/wei-zi/wei-zi-003"',
+  'href="/en/analects/yan-yuan/yan-yuan-011"',
+  dukeJingCover,
+  dukeJingInline1,
+  dukeJingInline2,
+  dukeJingCoverEn,
+  dukeJingInline1En,
+  dukeJingInline2En,
+  `property="og:image" content="${siteUrl}${dukeJingCover}"`,
+  `property="og:image:alt" content="${dukeJingCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${dukeJingCover}"`,
+  `name="twitter:image:alt" content="${dukeJingCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/duke-jing-of-qi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-09-30"',
+  '"dateModified":"2026-09-30"',
+  "《论语》里的齐景公是谁？",
+  "《论语》里的齐景公：问政，听闻君君、臣臣、父父、子子——名分各安其位。链回可核对的原文。",
+  "你搜「齐景公」或 Duke Jing of Qi 时，多半想在《论语》一串国君名里把他安顿下来",
+  "先按篇章认人，不靠王侯履历",
+  "问政——听闻名分各安其位",
+  "两扇轻门——千驷，与「吾老矣」",
+  "不是鲁哀公，不是卫灵公，也不是鲁定公",
+  "你该怎样引用他",
+  "接下来读颜渊 12.11",
+  ">齐景公</a>",
+  ">论语 · 季氏 16.12</a>",
+  ">论语 · 微子 18.3</a>",
+  ">论语 · 颜渊 12.11</a>",
+  'href="/zh-Hans/index/duke-jing-of-qi"',
+  'href="/zh-Hans/analects/ji-shi/ji-shi-012"',
+  'href="/zh-Hans/analects/wei-zi/wei-zi-003"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-011"',
+  dukeJingCover,
+  dukeJingInline1,
+  dukeJingInline2,
+  dukeJingCoverZh,
+  dukeJingInline1Zh,
+  dukeJingInline2Zh,
+  `property="og:image" content="${siteUrl}${dukeJingCover}"`,
+  `property="og:image:alt" content="${dukeJingCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${dukeJingCover}"`,
+  `name="twitter:image:alt" content="${dukeJingCoverZh}"`,
+]);
+{
+  const zhDukeJingFile = htmlPath("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects");
+  if (exists(zhDukeJingFile)) {
+    const zhDukeJingHtml = read(zhDukeJingFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhDukeJingHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhDukeJingHtml.includes(dukeJingCoverEn)) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhDukeJingHtml.includes(dukeJingInline1En) || zhDukeJingHtml.includes(dukeJingInline2En)) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhDukeJingHtml, />Duke Jing of Qi<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: English Duke Jing of Qi body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhDukeJingHtml, />齐景公<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: 齐景公 body link should appear once");
+    }
+    if (countRegex(zhDukeJingHtml, />论语 · 季氏 16\.12<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: 季氏 16.12 body link should appear once");
+    }
+    if (countRegex(zhDukeJingHtml, />论语 · 微子 18\.3<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: 微子 18.3 body link should appear once");
+    }
+    if (countRegex(zhDukeJingHtml, />论语 · 颜渊 12\.11<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-jing-of-qi-in-the-analects: 颜渊 12.11 body link should appear once");
+    }
+  }
+  const enDukeJingFile = htmlPath("/en/blogs/duke-jing-of-qi-in-the-analects");
+  if (exists(enDukeJingFile)) {
+    const enDukeJingHtml = read(enDukeJingFile);
+    if (enDukeJingHtml.includes(dukeJingCoverZh)) {
+      fail("/en/blogs/duke-jing-of-qi-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enDukeJingHtml.includes(dukeJingInline1Zh) || enDukeJingHtml.includes(dukeJingInline2Zh)) {
+      fail("/en/blogs/duke-jing-of-qi-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enDukeJingHtml, />Duke Jing of Qi<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-jing-of-qi-in-the-analects: Duke Jing of Qi body link should appear once");
+    }
+    if (countRegex(enDukeJingHtml, />The Analects · Ke She 16\.12<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-jing-of-qi-in-the-analects: Ke She 16.12 body link should appear once");
+    }
+    if (countRegex(enDukeJingHtml, />The Analects · Wei Tsze 18\.3<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-jing-of-qi-in-the-analects: Wei Tsze 18.3 body link should appear once");
+    }
+    if (countRegex(enDukeJingHtml, />The Analects · Yen Yuan 12\.11<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-jing-of-qi-in-the-analects: Yen Yuan 12.11 body link should appear once");
+    }
+  }
+}
+
 const zhongGongCover = "/images/blogs/zhong-gong-in-the-analects/cover.jpg";
 const zhongGongInline1 = "/images/blogs/zhong-gong-in-the-analects/inline-1.jpg";
 const zhongGongInline2 = "/images/blogs/zhong-gong-in-the-analects/inline-2.jpg";
@@ -2898,6 +3075,11 @@ for (const locale of locales) {
     `/${locale}/analects/xian-wen/xian-wen-020`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
+  checkHtml(`/${locale}/index/duke-jing-of-qi`, [
+    locale === "en" ? "Duke Jing of Qi" : "齐景公",
+    `href="/${locale}/blogs/duke-jing-of-qi-in-the-analects"`,
+    `/${locale}/analects/yan-yuan/yan-yuan-011`,
+  ]);
   checkHtml(`/${locale}/index/zhong-gong`, [
     locale === "en" ? "Zhong Gong" : "仲弓",
     `href="/${locale}/blogs/zhong-gong-in-the-analects"`,
@@ -3004,6 +3186,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-jing-of-qi-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-jing-of-qi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zhong-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zhong-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zeng-zi-in-the-analects`, "sitemap");
@@ -3039,8 +3223,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-09-27")) {
+    if (!lastmod.includes("2026-09-30")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const dukeJingLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/duke-jing-of-qi-in-the-analects`);
+    if (!dukeJingLastmod.includes("2026-09-30")) {
+      fail(
+        `sitemap: /${locale}/blogs/duke-jing-of-qi-in-the-analects lastmod should be 2026-09-30, got ${dukeJingLastmod || "missing"}`
+      );
     }
     const zengZiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zeng-zi-in-the-analects`);
     if (!zengZiLastmod.includes("2026-09-25")) {
@@ -3087,7 +3277,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "27 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "30 Sep 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -3107,6 +3297,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const dukeJingEditorialLastmod = "2026-09-30";
 const newestEditorialLastmod = "2026-09-27";
 const zengZiHubEditorialLastmod = "2026-09-25";
 const ziXiaEditorialLastmod = "2026-09-24";
@@ -3120,6 +3311,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${dukeJingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${zengZiHubEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziXiaEditorialLastmod}T00:00:00.000Z`, "")
