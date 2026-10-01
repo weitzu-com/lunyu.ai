@@ -102,6 +102,176 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "duke-ding-of-lu-in-the-analects",
+    titleZh: "《论语》里的鲁定公是谁？",
+    titleEn: "Who Was Duke Ding of Lu in the Analects?",
+    dekZh:
+      "你搜「鲁定公」或 Duke Ding of Lu 时，多半想在《论语》一串国君名里把他安顿下来。在本站，你遇见他，是因为他在子路 13.15 问：是否有一言可以兴邦或丧邦；也轻及八佾 3.19 问君使臣、臣事君当如何。你不必先读王侯传；你可以直接打开这两场问答，看慎言与礼·忠如何成为答语。",
+    dekEn:
+      "When you search \"duke ding of lu,\" you usually want one Lu ruler placed among many names in the Analects. On this site you meet him as the duke who asks whether a single sentence can prosper or ruin a state in Tsze-lu 13.15—and, lightly, how prince and minister should treat each other in Pa Yih 3.19. You do not need a Wikipedia résumé first; you can read those scenes and notice how careful speech and 礼·忠 become the answer.",
+    descriptionZh: "《论语》里的鲁定公：问一言能否兴邦或丧邦，并轻及君使臣以礼、臣事君以忠。链回可核对的原文。",
+    descriptionEn:
+      "Duke Ding of Lu in the Analects: the Lu ruler who asks whether one sentence can prosper or ruin a state, and how prince and minister should treat each other.",
+    datePublished: "2026-10-01",
+    dateModified: "2026-10-01",
+    tagsZh: ["鲁定公", "定公", "子路"],
+    tagsEn: ["duke ding of lu", "Duke Ding of Lu", "Tsze-lu"],
+    related: [
+      "/analects/zi-lu/zi-lu-015",
+      "/index/duke-ding",
+      "/blogs/duke-jing-of-qi-in-the-analects",
+      "/blogs/duke-ling-of-wei-in-the-analects",
+      "/blogs/duke-ai-of-lu-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "duke-ding-of-lu-in-the-analects",
+      "cover.jpg",
+      "A Lu court audience — Duke Ding asking whether one sentence can prosper or ruin a state",
+      "鲁廷对问之席——定公问「一言而可以兴邦／丧邦」",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "duke-ding-of-lu-in-the-analects",
+        "inline-1.jpg",
+        "One quiet spoken line held in balance — near to prospering a state, near to ruining it",
+        "一句话安顿在天平两端——近于兴邦，也近于丧邦",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "duke-ding-of-lu-in-the-analects",
+        "inline-2.jpg",
+        "Two quiet places facing each other — propriety toward ministers, faithfulness toward the prince",
+        "两席相对——君以礼使臣，臣以忠事君",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠王侯履历",
+        headingEn: "Place him by the passages, not by a royal résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[鲁定公](https://www.lunyu.ai/zh-Hans/index/duke-ding)——《论语》中直接发问两章的鲁国国君：君使臣、臣事君当如何，以及是否有一言可以兴邦或丧邦。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。英译 Legge 或作 Duke Ting；本站同一人写作鲁定公／Duke Ding of Lu。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him as [Duke Ding of Lu](https://www.lunyu.ai/en/index/duke-ding)—the Lu ruler named in two Analects passages, asking about employing ministers and about one sentence that can prosper or ruin a state. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading. In Legge you may also see “Duke Ting”; on this site the same person is Duke Ding of Lu.",
+        ],
+      },
+      {
+        headingZh: "问一言——听闻近于兴邦，也近于丧邦",
+        headingEn: "Ask about one sentence—hear near-prosperity and near-ruin",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "子路 13.15 里，鲁定公问：一言而可以兴邦，有诸。孔子对曰：言不可以若是其几也；然人之言曰，为君难，为臣不易。如知为君之难也，不几乎一言而兴邦乎。定公又问：一言而丧邦，有诸。孔子仍拒绝说得太绝对，再引人之言：予无乐乎为君，唯其言而莫予违也。如其善而莫之违，不亦善乎；如不善而莫之违，不几乎一言而丧邦乎。你可以把这扇门读成「权位之下，言语的分量」，而不是禁人口舌的口号，也不是文本外编造的现代领导金句。引用时，请把原文与英译按同一活页所见分层标明。",
+        ],
+        bodyEn: [
+          "In Tsze-lu 13.15 Duke Ding of Lu asks whether there is a single sentence that can make a country prosperous. Confucius answers that such an effect cannot be expected from one sentence—yet there is a saying: to be a prince is difficult; to be a minister is not easy. If a ruler knows the difficulty of being a prince, may there not be expected from this one sentence the prosperity of his country? The duke then asks whether a single sentence can ruin a country. Confucius again refuses absolute wording, then cites the saying: “I have no pleasure in being a prince, but only in that no one can offer any opposition to what I say.” If the words are good and none oppose them, that is also good; if they are not good and none oppose them, may there not be expected from this one sentence the ruin of his country? You can take that as a door about the weight of speech under power—not as a slogan for silencing dissent, and not as a modern leadership tweet invented outside the text. When you cite it later, keep the Chinese source visible beside the English layer on the same live page.",
+        ],
+      },
+      {
+        headingZh: "一扇轻门——君以礼，臣以忠",
+        headingEn: "One lighter door—礼 for the prince, 忠 for the minister",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "别处你可轻开一次[论语 · 八佾 3.19](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-019)：定公问君使臣、臣事君如之何。孔子对曰：君使臣以礼，臣事君以忠。你只把这读成君臣相待尺度的轻门，而不要在这里写成忠恕专稿，也不要把它当成这篇的主钱门。你可看一眼再回来——这篇笔记停在「定公是谁、一言兴邦／丧邦怎么读」。",
+        ],
+        bodyEn: [
+          "Elsewhere you may lightly open [The Analects · Pa Yih 3.19](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-019): Duke Ding asks how a prince should employ his ministers, and how ministers should serve their prince. Confucius replies that a prince should employ his minister according to the rules of propriety (礼), and ministers should serve their prince with faithfulness (忠). Hold that only as a light side door about mutual measure—not as a rewrite of the site’s zhongshu Note, and not as the money door of this page. You can glance once, then return; this Note stays with who Ding is and how you read the 一言兴邦／丧邦 exchange.",
+        ],
+      },
+      {
+        headingZh: "不是鲁哀公，不是卫灵公，也不是齐景公",
+        headingEn: "Not Duke Ai, not Duke Ling, not Duke Jing",
+        bodyZh: [
+          "书中别处你还会遇见鲁哀公、卫灵公或齐景公——不同的国君，不同的问法。这篇笔记只停在鲁定公；它不是诸公合传，也不重述他们各自的场景。你不该把他们并成一篇「《论语》诸公合传」，也不该把本页当成曾子簇、君子或忠恕通论的重写。需要时，请把每个名字扣回各自的活页章句。",
+        ],
+        bodyEn: [
+          "Elsewhere in the book you may meet Duke Ai of Lu, Duke Ling of Wei, or Duke Jing of Qi—different rulers, different questions. This Note stays with Duke Ding of Lu alone; it is not a multi-duke biography and it does not retell their separate scenes. You should not merge them into one “dukes of the Analects” résumé, and you should not treat this page as a Zeng Zi, junzi, or zhongshu rewrite. Keep each name tied to its own live passages when you need them.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用定公的提问或孔子的答语，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明 brief 没有给出的展示次数或历史年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Duke Ding’s questions or Confucius’s answers, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or history dates the brief did not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的鲁定公是谁？",
+        questionEn: "Who was Duke Ding of Lu in the Analects?",
+        answerZh:
+          "你在《论语》里遇见的鲁定公（亦称定公、Duke Ding of Lu；Legge 作 Duke Ting），是直接发问两章的鲁国国君：八佾 3.19 论君以礼、臣以忠，子路 13.15 问一言能否兴邦或丧邦。你最好的答案是这两扇门与人物索引；3.19 只作轻门——不是文本外编造的王侯履历。",
+        answerEn:
+          "You meet Duke Ding (鲁定公; also Ding Gong; Legge “Duke Ting”) as the Lu ruler named in two published scenes: Pa Yih 3.19 on 礼 and 忠 between prince and minister, and Tsze-lu 13.15 on whether one sentence can prosper or ruin a state. Your best answer is those two doors plus the people index—not a modern royal biography invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「鲁定公」或 duke ding of lu？",
+        questionEn: "Why do people search \"duke ding of lu\"?",
+        answerZh:
+          "你往往想先弄清身份：哪一位公、哪次问答、哪扇篇章的门。搜到这个词（或 Legge 的 Duke Ting）后，请打开子路 13.15 活页，而不要依赖会捏造章号或软化「一言丧邦」的摘要。你把原文、白话导读与英译分层来读，阅读才站得住脚。",
+        answerEn:
+          "You often want a clear identity: which duke, which famous question, which chapter door. Search that phrase (or Legge’s “Duke Ting”), then open the live 13.15 page rather than a summary that invents chapter numbers or softens 一言丧邦. Your reading stays honest when you keep source, vernacular guide, and English translation in separate layers.",
+      },
+      {
+        questionZh: "「一言兴邦／一言丧邦」在这里说什么？",
+        questionEn: "What does 一言兴邦 / 一言丧邦 mean here?",
+        answerZh:
+          "你听到定公问是否有一言可使国家兴盛或衰亡，孔子拒绝说得太绝对，却指向近于兴邦与近于丧邦：知为君之难，以及不善之言无人敢违。你要把这读成权位之下言语分量的教诲，而不是禁人口舌的许可。你的下一步是子路那章活页，而不是贴到每场争执上的口号。",
+        answerEn:
+          "You hear Duke Ding ask whether one sentence can prosper or ruin a state, and Confucius refuse absolute wording while pointing to near-effects: knowing how hard it is to be a prince, and unchecked speech when no one dares oppose what is not good. Hold that as a teaching about the weight of words under power, not as a slogan for silencing dissent. Your next step is the live Tsze-lu page, not a tweet-sized paraphrase pasted onto every dispute.",
+      },
+      {
+        questionZh: "八佾 3.19「君使臣以礼、臣事君以忠」呢？",
+        questionEn: "What about 君使臣以礼、臣事君以忠 in 3.19?",
+        answerZh:
+          "你看见定公问君臣当如何相待，孔子以礼使臣、以忠事君作答。你只轻读为君臣相待尺度的轻门，而不要写成忠恕专稿，也不要把它当成这篇的主钱门。你不该发明活页没有写出的额外职分，读完请回到子路 13.15。",
+        answerEn:
+          "You see Ding ask how prince and minister should treat each other, and Confucius answer with propriety toward ministers and faithfulness toward the prince. Read that lightly as a side door about mutual measure—not as a full zhongshu Note. You should not invent extra duties the live page does not show.",
+      },
+      {
+        questionZh: "怎样避免把他和其他公混在一起？",
+        questionEn: "How do you keep from mixing him with other dukes?",
+        answerZh:
+          "你在别处还可能遇见鲁哀公、卫灵公或齐景公——这里只点名消歧，不开新传。当章句只写「公」时，请到人物索引核对是哪一位。你的习惯应是：一个名字，一组可链的活页篇章，而不是合并成一篇宫廷编年。",
+        answerEn:
+          "You may also meet Duke Ai of Lu, Duke Ling of Wei, or Duke Jing of Qi elsewhere—light names only here, not new biographies. When a passage says “the duke,” check the people index for which ruler it is. Your habit should be one name, one set of linked chapters, not a merged court chronicle.",
+      },
+      {
+        questionZh: "这篇笔记不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh:
+          "你在这里找不到诸公合传，也找不到君子／忠恕／仁的通论重写，更找不到用来取代哀公、景公、灵公笔记的第二篇概览。那些主题只在定公的提问碰到时轻轻出现。你的下一步是篇章页或人物索引，而不是重复本站其他札记的又一则总论。",
+        answerEn:
+          "You will not find here a multi-duke biography, a rewrite of junzi / zhongshu / ren, or a second Duke Ai / Jing / Ling overview meant to replace those Notes. Those themes appear only where Duke Ding’s questions touch them. Your next step is a passage page or the entity index, not another overview that repeats other Notes on this site.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造鲁定公语录？",
+        questionEn: "How do you keep AI from inventing Duke Ding quotes?",
+        answerZh:
+          "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子在鲁一定还说过什么」。你应一律拒绝新捏造出来的《论语》句子。你的核验路径始终是本站已经发布的篇章活页网址，见 lunyu.ai。",
+        answerEn:
+          "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have added in Lu” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读子路 13.15",
+        headingEn: "Read Tsze-lu 13.15 next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「一言兴邦／丧邦」之门，请打开[论语 · 子路 13.15](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-015)，把原文、白话导读与英译并排对照。你问问自己：在权位之下，还有哪些话你仍该掂量——然后停住，回到文本，而不是回到一篇定公摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Duke Ding’s question about one sentence that can prosper or ruin a state, open [The Analects · Tsze-lu 13.15](https://www.lunyu.ai/en/analects/zi-lu/zi-lu-015) and read source, guide, and Legge side by side. Ask yourself which words you still owe to weigh carefully under power—then stop, and return to the live text rather than to a summary of the duke.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "duke-jing-of-qi-in-the-analects",
     titleZh: "《论语》里的齐景公是谁？",
     titleEn: "Who Was Duke Jing of Qi in the Analects?",

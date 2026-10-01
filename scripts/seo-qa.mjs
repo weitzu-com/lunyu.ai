@@ -719,7 +719,19 @@ for (const locale of locales) {
 }
 
 checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, "知识索引"]);
-checkHtml("/zh-Hans/blogs", [`rel="canonical" href="${siteUrl}/zh-Hans/blogs"`, '"@type":"CollectionPage"', "论语阅读札记"]);
+checkHtml("/en/blogs", [
+  `rel="canonical" href="${siteUrl}/en/blogs"`,
+  '"@type":"CollectionPage"',
+  "Who Was Duke Ding of Lu in the Analects?",
+  "2026-10-01",
+]);
+checkHtml("/zh-Hans/blogs", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
+  '"@type":"CollectionPage"',
+  "论语阅读札记",
+  "《论语》里的鲁定公是谁？",
+  "2026-10-01",
+]);
 const notesBackfillPosts = [
   {
     slug: "how-to-read-the-analects",
@@ -1737,6 +1749,173 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
     }
     if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
       fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
+const dukeDingCover = "/images/blogs/duke-ding-of-lu-in-the-analects/cover.jpg";
+const dukeDingInline1 = "/images/blogs/duke-ding-of-lu-in-the-analects/inline-1.jpg";
+const dukeDingInline2 = "/images/blogs/duke-ding-of-lu-in-the-analects/inline-2.jpg";
+const dukeDingCoverEn =
+  "A Lu court audience — Duke Ding asking whether one sentence can prosper or ruin a state";
+const dukeDingCoverZh = "鲁廷对问之席——定公问「一言而可以兴邦／丧邦」";
+const dukeDingInline1En =
+  "One quiet spoken line held in balance — near to prospering a state, near to ruining it";
+const dukeDingInline1Zh = "一句话安顿在天平两端——近于兴邦，也近于丧邦";
+const dukeDingInline2En =
+  "Two quiet places facing each other — propriety toward ministers, faithfulness toward the prince";
+const dukeDingInline2Zh = "两席相对——君以礼使臣，臣以忠事君";
+const dukeDingAnchors = [
+  ["鲁定公", "https://www.lunyu.ai/zh-Hans/index/duke-ding"],
+  ["Duke Ding of Lu", "https://www.lunyu.ai/en/index/duke-ding"],
+  ["论语 · 八佾 3.19", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-019"],
+  ["The Analects · Pa Yih 3.19", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-019"],
+  ["论语 · 子路 13.15", "https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-015"],
+  ["The Analects · Tsze-lu 13.15", "https://www.lunyu.ai/en/analects/zi-lu/zi-lu-015"],
+];
+{
+  const start = postSource.indexOf('slug: "duke-ding-of-lu-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing duke-ding-of-lu-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = dukeDingAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `duke-ding-of-lu-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    dukeDingAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`duke-ding-of-lu-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `duke-ding-of-lu-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [dukeDingCover, dukeDingInline1, dukeDingInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/duke-ding-of-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/duke-ding-of-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-01"',
+  '"dateModified":"2026-10-01"',
+  "Who Was Duke Ding of Lu in the Analects?",
+  "Duke Ding of Lu in the Analects: the Lu ruler who asks whether one sentence can prosper or ruin a state, and how prince and minister should treat each other.",
+  "you usually want one Lu ruler placed among many names in the Analects",
+  "Place him by the passages, not by a royal résumé",
+  "Ask about one sentence—hear near-prosperity and near-ruin",
+  "One lighter door—礼 for the prince, 忠 for the minister",
+  "Not Duke Ai, not Duke Ling, not Duke Jing",
+  "How you should cite him",
+  "Read Tsze-lu 13.15 next",
+  "Who was Duke Ding of Lu in the Analects?",
+  ">Duke Ding of Lu</a>",
+  ">The Analects · Pa Yih 3.19</a>",
+  ">The Analects · Tsze-lu 13.15</a>",
+  'href="/en/index/duke-ding"',
+  'href="/en/analects/ba-yi/ba-yi-019"',
+  'href="/en/analects/zi-lu/zi-lu-015"',
+  dukeDingCover,
+  dukeDingInline1,
+  dukeDingInline2,
+  dukeDingCoverEn,
+  dukeDingInline1En,
+  dukeDingInline2En,
+  `property="og:image" content="${siteUrl}${dukeDingCover}"`,
+  `property="og:image:alt" content="${dukeDingCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${dukeDingCover}"`,
+  `name="twitter:image:alt" content="${dukeDingCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/duke-ding-of-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-01"',
+  '"dateModified":"2026-10-01"',
+  "《论语》里的鲁定公是谁？",
+  "《论语》里的鲁定公：问一言能否兴邦或丧邦，并轻及君使臣以礼、臣事君以忠。链回可核对的原文。",
+  "你搜「鲁定公」或 Duke Ding of Lu 时，多半想在《论语》一串国君名里把他安顿下来",
+  "先按篇章认人，不靠王侯履历",
+  "问一言——听闻近于兴邦，也近于丧邦",
+  "一扇轻门——君以礼，臣以忠",
+  "不是鲁哀公，不是卫灵公，也不是齐景公",
+  "你该怎样引用他",
+  "接下来读子路 13.15",
+  ">鲁定公</a>",
+  ">论语 · 八佾 3.19</a>",
+  ">论语 · 子路 13.15</a>",
+  'href="/zh-Hans/index/duke-ding"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-019"',
+  'href="/zh-Hans/analects/zi-lu/zi-lu-015"',
+  dukeDingCover,
+  dukeDingInline1,
+  dukeDingInline2,
+  dukeDingCoverZh,
+  dukeDingInline1Zh,
+  dukeDingInline2Zh,
+  `property="og:image" content="${siteUrl}${dukeDingCover}"`,
+  `property="og:image:alt" content="${dukeDingCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${dukeDingCover}"`,
+  `name="twitter:image:alt" content="${dukeDingCoverZh}"`,
+]);
+{
+  const zhDukeDingFile = htmlPath("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects");
+  if (exists(zhDukeDingFile)) {
+    const zhDukeDingHtml = read(zhDukeDingFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhDukeDingHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhDukeDingHtml.includes(dukeDingCoverEn)) {
+      fail("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhDukeDingHtml.includes(dukeDingInline1En) || zhDukeDingHtml.includes(dukeDingInline2En)) {
+      fail("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhDukeDingHtml, />Duke Ding of Lu<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: English Duke Ding of Lu body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhDukeDingHtml, />鲁定公<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: 鲁定公 body link should appear once");
+    }
+    if (countRegex(zhDukeDingHtml, />论语 · 八佾 3\.19<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: 八佾 3.19 body link should appear once");
+    }
+    if (countRegex(zhDukeDingHtml, />论语 · 子路 13\.15<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/duke-ding-of-lu-in-the-analects: 子路 13.15 body link should appear once");
+    }
+  }
+  const enDukeDingFile = htmlPath("/en/blogs/duke-ding-of-lu-in-the-analects");
+  if (exists(enDukeDingFile)) {
+    const enDukeDingHtml = read(enDukeDingFile);
+    if (enDukeDingHtml.includes(dukeDingCoverZh)) {
+      fail("/en/blogs/duke-ding-of-lu-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enDukeDingHtml.includes(dukeDingInline1Zh) || enDukeDingHtml.includes(dukeDingInline2Zh)) {
+      fail("/en/blogs/duke-ding-of-lu-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enDukeDingHtml, />Duke Ding of Lu<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ding-of-lu-in-the-analects: Duke Ding of Lu body link should appear once");
+    }
+    if (countRegex(enDukeDingHtml, />The Analects · Pa Yih 3\.19<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ding-of-lu-in-the-analects: Pa Yih 3.19 body link should appear once");
+    }
+    if (countRegex(enDukeDingHtml, />The Analects · Tsze-lu 13\.15<\/a>/g) !== 1) {
+      fail("/en/blogs/duke-ding-of-lu-in-the-analects: Tsze-lu 13.15 body link should appear once");
     }
   }
 }
@@ -3058,6 +3237,7 @@ for (const locale of locales) {
   checkHtml(`/${locale}/index/duke-ding`, [
     locale === "en" ? "Duke Ding of Lu" : "鲁定公",
     "Ding Gong",
+    `href="/${locale}/blogs/duke-ding-of-lu-in-the-analects"`,
     `/${locale}/analects/ba-yi/ba-yi-019`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
@@ -3186,6 +3366,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ding-of-lu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ding-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-jing-of-qi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-jing-of-qi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zhong-gong-in-the-analects`, "sitemap");
@@ -3223,8 +3405,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-09-30")) {
+    if (!lastmod.includes("2026-10-01")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const dukeDingLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/duke-ding-of-lu-in-the-analects`);
+    if (!dukeDingLastmod.includes("2026-10-01")) {
+      fail(
+        `sitemap: /${locale}/blogs/duke-ding-of-lu-in-the-analects lastmod should be 2026-10-01, got ${dukeDingLastmod || "missing"}`
+      );
     }
     const dukeJingLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/duke-jing-of-qi-in-the-analects`);
     if (!dukeJingLastmod.includes("2026-09-30")) {
@@ -3277,7 +3465,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "30 Sep 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "01 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -3297,6 +3485,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const dukeDingEditorialLastmod = "2026-10-01";
 const dukeJingEditorialLastmod = "2026-09-30";
 const newestEditorialLastmod = "2026-09-27";
 const zengZiHubEditorialLastmod = "2026-09-25";
@@ -3311,6 +3500,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${dukeDingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeJingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${zengZiHubEditorialLastmod}T00:00:00.000Z`, "")
