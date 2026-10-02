@@ -102,6 +102,174 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "bo-yi-shu-qi-in-the-analects",
+    titleZh: "《论语》里的伯夷、叔齐是谁？",
+    titleEn: "Who Were Bo Yi and Shu Qi in the Analects?",
+    dekZh:
+      "你搜「伯夷叔齐」或 bo yi and shu qi 时，多半想在《论语》一串人名里把这一对安顿下来。在本站，你遇见他们，是因为孔子在述而 7.14 称他们为古之贤人——求仁而得仁，又何怨；也轻及季氏 16.12，把饿于首阳、民到于今称之的兄弟，与齐景公千驷无称并读。你不必先读英雄传；你可以直接打开这些场景，看清节与不怨如何成为答语。",
+    dekEn:
+      "When you search \"bo yi and shu qi,\" you usually want one pair of ancient worthies placed in the Analects. On this site you meet them in Shu Er 7.14 as brothers Confucius calls ancient worthies—they sought ren and got ren, so what resentment remains?—and, lightly, as the hungry pair still praised beside unused horses in Ke She 16.12. You can read those scenes first and notice how integrity without grievance becomes the answer.",
+    descriptionZh: "《论语》里的伯夷、叔齐：古之贤人，求仁而得仁，又何怨；并轻及称颂长过千驷。链回可核对的原文。",
+    descriptionEn:
+      "Bo Yi and Shu Qi in the Analects: the ancient worthies who sought ren and got ren, so what resentment remains, with a light door on praise that outlasts horses.",
+    datePublished: "2026-10-02",
+    dateModified: "2026-10-02",
+    tagsZh: ["伯夷叔齐", "伯夷", "述而"],
+    tagsEn: ["bo yi and shu qi", "Bo Yi and Shu Qi", "Shu Er"],
+    related: [
+      "/analects/shu-er/shu-er-014",
+      "/index/bo-yi-shu-qi",
+      "/blogs/duke-ding-of-lu-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "bo-yi-shu-qi-in-the-analects",
+      "cover.jpg",
+      "Two quiet figures at a yielding threshold — integrity without launching a fight",
+      "两影止于让国之门——清节在前，不启争战",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "bo-yi-shu-qi-in-the-analects",
+        "inline-1.jpg",
+        "A quiet balance of seeking ren and finding ren — no leftover grievance",
+        "求仁与得仁安于一处——无余怨可挂",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "bo-yi-shu-qi-in-the-analects",
+        "inline-2.jpg",
+        "Empty praise beside unused wealth — hunger remembered longer than horses",
+        "空名与未用的富厚并置——饥饿的称颂长过千驷",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认人，不靠英雄履历",
+        headingEn: "Place them by the passages, not by a hero résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他们标为[伯夷叔齐](https://www.lunyu.ai/zh-Hans/index/bo-yi-shu-qi)——古代贤者，象征清节、让国与不怨。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与英译分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。英译 Legge 或作 Po-i、Shu-ch'i；本站同一对写作伯夷叔齐／Bo Yi and Shu Qi。为便于定向，你可在叙述中点到公冶长 5.22、述而 7.14、季氏 16.12、微子 18.8——本稿真正下链的门更少。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels them as [Bo Yi and Shu Qi](https://www.lunyu.ai/en/index/bo-yi-shu-qi)—ancient worthies associated with integrity, yielding power, and freedom from resentment. That line is enough for you to start: follow the linked scenes, keep source text, guide, and English translation in their layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading. In Legge you may also see “Po-i” and “Shu-ch'i”; on this site the same pair is Bo Yi and Shu Qi. For orientation you may name Gong Ye Chang 5.22, Shu Er 7.14, Ji Shi 16.12, and Wei Zi 18.8 in prose—this Note’s live doors stay fewer.",
+        ],
+      },
+      {
+        headingZh: "问伯夷叔齐——听闻求仁而得仁，又何怨",
+        headingEn: "Ask about Bo Yi and Shu Qi—hear 求仁而得仁 without resentment",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "述而 7.14 里，冉有问：老师会帮助卫国的国君吗。子贡说他去问，入而问：伯夷、叔齐是什么样的人。孔子说：古之贤人也。子贡又问：怨乎。孔子说：求仁而得仁，又何怨（白话导读：求仁德而得到了仁德，又有什么可怨恨的呢；Legge 英译层作 sought to act virtuously… what was there for them to repine about）。子贡出来说：夫子不为也——老师不会帮助卫君了。你可以把这扇门读成「清节不留余怨」，以及「借古贤之名，安静回答一桩政治问」——而不是教人逢官就辞的口号，也不是文本外编造的现代职场金句。引用时，请把原文与英译按同一活页所见分层标明。",
+        ],
+        bodyEn: [
+          "In Shu Er 7.14 Ran You wonders whether the Master supports the ruler of Wei. Zi Gong says he will ask, goes in, and asks what sort of men Bo Yi and Shu Qi were. The Master answers: ancient worthies. Zi Gong asks whether they had any repinings because of their course. The Master replies that they sought to act virtuously and they did so—what was there for them to repine about? (On the same live page, the Chinese source and modern guide give 求仁而得仁，又何怨—they sought ren and obtained ren, so what resentment?) Zi Gong goes out and concludes that the Master is not for the Wei ruler. You can take that as a door about integrity without leftover grievance—and about how naming worthies can quietly answer a political question—not as a slogan for quitting every office, and not as a career tip invented outside the text. When you cite it later, keep Chinese and English layers visible on that live page.",
+        ],
+      },
+      {
+        headingZh: "一扇轻门——称颂长过千驷",
+        headingEn: "One lighter door—praise that outlasts horses",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "别处你可轻开一次[论语 · 季氏 16.12](https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-012)：齐景公有马千驷，死之日，民无德而称焉；伯夷叔齐饿于首阳之下，民到于今称之。你只把这读成「称颂对未用的富厚」的轻门，而不要在这里写成齐景公专稿（那篇停在颜渊 12.11 的君君臣臣），也不要把它当成这篇的主钱门。你可看一眼再回来——这篇笔记停在「伯夷叔齐是谁、述而 7.14 求仁而得仁怎么读」。",
+        ],
+        bodyEn: [
+          "Elsewhere you may lightly open [The Analects · Ke She 16.12](https://www.lunyu.ai/en/analects/ji-shi/ji-shi-012): Duke Jing of Qi had a thousand teams of four horses, yet on the day of his death the people did not praise him for a single virtue—set beside Bo Yi and Shu Qi, who starved at the foot of Shau-yang mountain and whom people still praise. Hold that only as a light side door about praise versus unused display—not as a Duke Jing of Qi Note (that Note stays with 君君、臣臣 in Yen Yuan 12.11), and not as the money door of this page. You can glance once, then return; this Note stays with who Bo Yi and Shu Qi are and how you read 求仁而得仁 in Shu Er 7.14.",
+        ],
+      },
+      {
+        headingZh: "不是齐景公的名分篇，不是尧舜禹，也不是卫灵公的无道",
+        headingEn: "Not Duke Jing’s roles page, not Yao–Shun–Yu, not Wei Ling’s 无道",
+        bodyZh: [
+          "书中别处你还会遇见齐景公问政与名分、尧舜禹的圣王线，或卫灵公与无道——不同的门，不同的问法。这篇笔记只停在伯夷、叔齐这一对；它不是诸公合传，也不重述那些场景。你不该把他们并成一篇「贤者与国君合传」，也不该把本页当成 12.11、尧舜禹总论或卫灵公无道笔记的重写。需要时，请把每个名字扣回各自的活页章句。",
+        ],
+        bodyEn: [
+          "Elsewhere in the book you may meet Duke Jing of Qi on roles, Yao–Shun–Yu on sage kings, or Duke Ling of Wei on disorder—different doors, different questions. This Note stays with Bo Yi and Shu Qi as one pair; it is not a multi-ruler biography and it does not retell those separate scenes. You should not merge them into one “worthies and dukes” résumé, and you should not treat this page as a rewrite of 12.11, a Yao–Shun–Yu overview, or a Wei Ling 无道 Note. Keep each name tied to its own live passages when you need them.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他们",
+        headingEn: "How you should cite them",
+        bodyZh: [
+          "当你引用孔子对伯夷叔齐的答语，或子贡关于卫君的判断，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。你可以轻提检索意图，但不要发明 brief 没有给出的展示次数或历史年份。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote the Master’s answer on Bo Yi and Shu Qi, or Zi Gong’s conclusion about the Wei ruler, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. You can mention search interest lightly if needed, but you should never invent impression counts or history dates the brief did not give. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的伯夷、叔齐是谁？",
+        questionEn: "Who were Bo Yi and Shu Qi in the Analects?",
+        answerZh:
+          "你在《论语》里遇见的伯夷、叔齐（亦称 Bo Yi and Shu Qi；Legge 作 Po-i、Shu-ch'i），是多章点名的古之贤人——尤以述而 7.14 论求仁与不怨为主门，并轻及季氏 16.12 称颂长过富厚。你最好的答案是这些活页门与人物索引；16.12 只作轻门——不是文本外编造的双雄传。",
+        answerEn:
+          "You meet Bo Yi and Shu Qi (伯夷、叔齐; Legge “Po-i” and “Shu-ch'i”) as ancient worthies named across published scenes—above all Shu Er 7.14 on seeking ren and freedom from resentment, with light doors such as Ji Shi 16.12 on praise that outlasts wealth. Your best answer is those live doors plus the people index—not a modern twin biography invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「伯夷叔齐」或 bo yi and shu qi？",
+        questionEn: "Why do people search \"bo yi and shu qi\" or boyi and shuqi?",
+        answerZh:
+          "你往往想先弄清身份：哪一对、哪句著名答语、哪扇篇章的门。搜到这些词（或 Legge 的 Po-i / Shu-ch'i）后，请打开述而 7.14 活页，而不要依赖会捏造章号或软化「求仁而得仁」的摘要。你把原文、白话导读与英译分层来读，阅读才站得住脚。",
+        answerEn:
+          "You often want a clear identity: which pair, which famous answer, which chapter door. Search those phrases (or Legge’s Po-i / Shu-ch'i), then open the live 7.14 page rather than a summary that invents chapter numbers or softens 求仁而得仁. Your reading stays honest when you keep source, vernacular guide, and English translation in separate layers.",
+      },
+      {
+        questionZh: "「求仁而得仁／又何怨」在 7.14 说什么？",
+        questionEn: "What does 求仁而得仁 / “no resentment” mean in 7.14?",
+        answerZh:
+          "你听到子贡问伯夷叔齐是否有怨，孔子答：求仁而得仁，又何怨（导读：求仁德而得到了仁德；英译层作 sought to act virtuously… what to repine）。你要把这读成清节不留余怨的教诲，而不是逢难就退的许可证。你的下一步是述而那章活页，而不是贴到每次离职上的口号。",
+        answerEn:
+          "You hear Zi Gong ask whether Bo Yi and Shu Qi had repinings, and the Master answer that they sought ren (Legge: sought to act virtuously) and obtained it—so what was there to resent? Hold that as a teaching about integrity that does not leave a grievance hanging, not as a license to quit every hard post. Your next step is the live Shu Er page, not a slogan pasted onto every career exit.",
+      },
+      {
+        questionZh: "述而 7.14 怎样间接回答「为卫君乎」？",
+        questionEn: "How does Shu Er 7.14 answer the Wei-ruler question?",
+        answerZh:
+          "你看见冉有问老师是否帮助卫君；子贡借问伯夷叔齐试探；听闻「古之贤人」与「求仁而得仁」后，子贡断定夫子不为也。你要把这场问答读成「借古贤之名安静作答」，而不是卫廷编年，更不是卫灵公无道专稿的重写。你不该发明活页没有写出的额外动机。",
+        answerEn:
+          "You see Ran You wonder whether the Master supports the ruler of Wei; Zi Gong probes by asking about Bo Yi and Shu Qi; after “ancient worthies” and “sought ren and got ren,” Zi Gong concludes the Master is not for that ruler. Read it as a quiet political answer through naming worthies—not as a Wei-court chronicle or a Duke Ling 无道 rewrite. You should not invent motives the live page does not show.",
+      },
+      {
+        questionZh: "季氏 16.12 与齐景公的千驷呢？",
+        questionEn: "What about Ke She 16.12 and Duke Jing’s horses?",
+        answerZh:
+          "你可以轻开一次 16.12：景公千驷，死而无称；伯夷叔齐饿于首阳，民到于今称之。你只把这读成称颂对富厚的轻对比——这篇不是齐景公专稿，16.12 也不是你的主钱门。读完请回到述而 7.14，那才是这一对求仁而不怨的主读法。",
+        answerEn:
+          "You may lightly open 16.12 once: Jing’s thousand teams left no praise; Bo Yi and Shu Qi starved yet are still praised. Hold that only as a praise-versus-display contrast—this Note is not a Duke Jing of Qi rewrite, and 16.12 is not your money door. You should return to Shu Er 7.14 for the main reading of the pair.",
+      },
+      {
+        questionZh: "这篇笔记不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh:
+          "你在这里找不到齐景公 12.11 名分专稿，也找不到尧舜禹圣王总论，更找不到卫灵公无道笔记的第二篇，或用来取代诸公札记的合传。那些主题只在兄弟场景轻轻碰到时出现。你的下一步是篇章页或人物索引，而不是重复本站其他札记的又一则总论。",
+        answerEn:
+          "You will not find here a Duke Jing 12.11 roles Note, a Yao–Shun–Yu sage-king overview, a Wei Ling 无道 rewrite, or a multi-ruler résumé meant to replace those pages. Those themes appear only where the brothers’ scenes touch them lightly. Your next step is a passage page or the entity index, not another overview that repeats other Notes on this site.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造伯夷叔齐语录？",
+        questionEn: "How do you keep AI from inventing Bo Yi and Shu Qi quotes?",
+        answerZh:
+          "若你用模型当阅读助手，应粘贴活页原文再追问，而不是在没有出处时问「孔子关于首阳一定还说过什么」。你应一律拒绝新捏造出来的《论语》句子。你的核验路径始终是本站已经发布的篇章活页网址，见 lunyu.ai。",
+        answerEn:
+          "If you use a model as a reading aid, you should paste the live passage text and ask for questions, not for “what Confucius must have added about Shau-yang” without a source. Always refuse any newly minted Analects line. Your verification path is always the published chapter URL on this site, lunyu.ai.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读述而 7.14",
+        headingEn: "Read Shu Er 7.14 next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「古之贤人／求仁而得仁／又何怨」之门，请打开[论语 · 述而 7.14](https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-014)，把原文、白话导读与英译并排对照。你问问自己：求其所当求之后，还有哪一桩怨你仍该放下——然后停住，回到文本，而不是回到一篇伯夷叔齐摘要。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Bo Yi and Shu Qi—ancient worthies who sought ren and got ren, without leftover resentment—open [The Analects · Shu R. 7.14](https://www.lunyu.ai/en/analects/shu-er/shu-er-014) and read source, guide, and Legge side by side. Ask yourself which grievance you still owe to drop—then stop, and return to the live text rather than to a summary of the brothers.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "duke-ding-of-lu-in-the-analects",
     titleZh: "《论语》里的鲁定公是谁？",
     titleEn: "Who Was Duke Ding of Lu in the Analects?",
