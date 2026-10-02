@@ -722,15 +722,15 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
-  "Who Was Duke Ding of Lu in the Analects?",
-  "2026-10-01",
+  "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-02",
 ]);
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
-  "《论语》里的鲁定公是谁？",
-  "2026-10-01",
+  "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-02",
 ]);
 const notesBackfillPosts = [
   {
@@ -1749,6 +1749,173 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
     }
     if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
       fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
+const boYiCover = "/images/blogs/bo-yi-shu-qi-in-the-analects/cover.jpg";
+const boYiInline1 = "/images/blogs/bo-yi-shu-qi-in-the-analects/inline-1.jpg";
+const boYiInline2 = "/images/blogs/bo-yi-shu-qi-in-the-analects/inline-2.jpg";
+const boYiCoverEn =
+  "Two quiet figures at a yielding threshold — integrity without launching a fight";
+const boYiCoverZh = "两影止于让国之门——清节在前，不启争战";
+const boYiInline1En =
+  "A quiet balance of seeking ren and finding ren — no leftover grievance";
+const boYiInline1Zh = "求仁与得仁安于一处——无余怨可挂";
+const boYiInline2En =
+  "Empty praise beside unused wealth — hunger remembered longer than horses";
+const boYiInline2Zh = "空名与未用的富厚并置——饥饿的称颂长过千驷";
+const boYiAnchors = [
+  ["伯夷叔齐", "https://www.lunyu.ai/zh-Hans/index/bo-yi-shu-qi"],
+  ["Bo Yi and Shu Qi", "https://www.lunyu.ai/en/index/bo-yi-shu-qi"],
+  ["论语 · 季氏 16.12", "https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-012"],
+  ["The Analects · Ke She 16.12", "https://www.lunyu.ai/en/analects/ji-shi/ji-shi-012"],
+  ["论语 · 述而 7.14", "https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-014"],
+  ["The Analects · Shu R. 7.14", "https://www.lunyu.ai/en/analects/shu-er/shu-er-014"],
+];
+{
+  const start = postSource.indexOf('slug: "bo-yi-shu-qi-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing bo-yi-shu-qi-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = boYiAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `bo-yi-shu-qi-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    boYiAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`bo-yi-shu-qi-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `bo-yi-shu-qi-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+  }
+}
+for (const src of [boYiCover, boYiInline1, boYiInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/bo-yi-shu-qi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/bo-yi-shu-qi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-02"',
+  '"dateModified":"2026-10-02"',
+  "Who Were Bo Yi and Shu Qi in the Analects?",
+  "Bo Yi and Shu Qi in the Analects: the ancient worthies who sought ren and got ren, so what resentment remains, with a light door on praise that outlasts horses.",
+  "you usually want one pair of ancient worthies placed in the Analects",
+  "Place them by the passages, not by a hero résumé",
+  "Ask about Bo Yi and Shu Qi—hear 求仁而得仁 without resentment",
+  "One lighter door—praise that outlasts horses",
+  "Not Duke Jing’s roles page, not Yao–Shun–Yu, not Wei Ling’s 无道",
+  "How you should cite them",
+  "Read Shu Er 7.14 next",
+  "Who were Bo Yi and Shu Qi in the Analects?",
+  ">Bo Yi and Shu Qi</a>",
+  ">The Analects · Ke She 16.12</a>",
+  ">The Analects · Shu R. 7.14</a>",
+  'href="/en/index/bo-yi-shu-qi"',
+  'href="/en/analects/ji-shi/ji-shi-012"',
+  'href="/en/analects/shu-er/shu-er-014"',
+  boYiCover,
+  boYiInline1,
+  boYiInline2,
+  boYiCoverEn,
+  boYiInline1En,
+  boYiInline2En,
+  `property="og:image" content="${siteUrl}${boYiCover}"`,
+  `property="og:image:alt" content="${boYiCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${boYiCover}"`,
+  `name="twitter:image:alt" content="${boYiCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-02"',
+  '"dateModified":"2026-10-02"',
+  "《论语》里的伯夷、叔齐是谁？",
+  "《论语》里的伯夷、叔齐：古之贤人，求仁而得仁，又何怨；并轻及称颂长过千驷。链回可核对的原文。",
+  "你搜「伯夷叔齐」或 bo yi and shu qi 时，多半想在《论语》一串人名里把这一对安顿下来",
+  "先按篇章认人，不靠英雄履历",
+  "问伯夷叔齐——听闻求仁而得仁，又何怨",
+  "一扇轻门——称颂长过千驷",
+  "不是齐景公的名分篇，不是尧舜禹，也不是卫灵公的无道",
+  "你该怎样引用他们",
+  "接下来读述而 7.14",
+  ">伯夷叔齐</a>",
+  ">论语 · 季氏 16.12</a>",
+  ">论语 · 述而 7.14</a>",
+  'href="/zh-Hans/index/bo-yi-shu-qi"',
+  'href="/zh-Hans/analects/ji-shi/ji-shi-012"',
+  'href="/zh-Hans/analects/shu-er/shu-er-014"',
+  boYiCover,
+  boYiInline1,
+  boYiInline2,
+  boYiCoverZh,
+  boYiInline1Zh,
+  boYiInline2Zh,
+  `property="og:image" content="${siteUrl}${boYiCover}"`,
+  `property="og:image:alt" content="${boYiCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${boYiCover}"`,
+  `name="twitter:image:alt" content="${boYiCoverZh}"`,
+]);
+{
+  const zhBoYiFile = htmlPath("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects");
+  if (exists(zhBoYiFile)) {
+    const zhBoYiHtml = read(zhBoYiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhBoYiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhBoYiHtml.includes(boYiCoverEn)) {
+      fail("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhBoYiHtml.includes(boYiInline1En) || zhBoYiHtml.includes(boYiInline2En)) {
+      fail("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhBoYiHtml, />Bo Yi and Shu Qi<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: English Bo Yi and Shu Qi body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhBoYiHtml, />伯夷叔齐<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: 伯夷叔齐 body link should appear once");
+    }
+    if (countRegex(zhBoYiHtml, />论语 · 季氏 16\.12<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: 季氏 16.12 body link should appear once");
+    }
+    if (countRegex(zhBoYiHtml, />论语 · 述而 7\.14<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects: 述而 7.14 body link should appear once");
+    }
+  }
+  const enBoYiFile = htmlPath("/en/blogs/bo-yi-shu-qi-in-the-analects");
+  if (exists(enBoYiFile)) {
+    const enBoYiHtml = read(enBoYiFile);
+    if (enBoYiHtml.includes(boYiCoverZh)) {
+      fail("/en/blogs/bo-yi-shu-qi-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enBoYiHtml.includes(boYiInline1Zh) || enBoYiHtml.includes(boYiInline2Zh)) {
+      fail("/en/blogs/bo-yi-shu-qi-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enBoYiHtml, />Bo Yi and Shu Qi<\/a>/g) !== 1) {
+      fail("/en/blogs/bo-yi-shu-qi-in-the-analects: Bo Yi and Shu Qi body link should appear once");
+    }
+    if (countRegex(enBoYiHtml, />The Analects · Ke She 16\.12<\/a>/g) !== 1) {
+      fail("/en/blogs/bo-yi-shu-qi-in-the-analects: Ke She 16.12 body link should appear once");
+    }
+    if (countRegex(enBoYiHtml, />The Analects · Shu R\. 7\.14<\/a>/g) !== 1) {
+      fail("/en/blogs/bo-yi-shu-qi-in-the-analects: Shu R. 7.14 body link should appear once");
     }
   }
 }
@@ -3241,6 +3408,11 @@ for (const locale of locales) {
     `/${locale}/analects/ba-yi/ba-yi-019`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
+  checkHtml(`/${locale}/index/bo-yi-shu-qi`, [
+    locale === "en" ? "Bo Yi and Shu Qi" : "伯夷叔齐",
+    `href="/${locale}/blogs/bo-yi-shu-qi-in-the-analects"`,
+    `/${locale}/analects/shu-er/shu-er-014`,
+  ]);
   checkHtml(`/${locale}/index/yao-shun-yu`, [
     "yao shun yu",
     "yaoshun",
@@ -3366,6 +3538,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/bo-yi-shu-qi-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ding-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ding-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-jing-of-qi-in-the-analects`, "sitemap");
@@ -3405,8 +3579,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-01")) {
+    if (!lastmod.includes("2026-10-02")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const boYiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/bo-yi-shu-qi-in-the-analects`);
+    if (!boYiLastmod.includes("2026-10-02")) {
+      fail(
+        `sitemap: /${locale}/blogs/bo-yi-shu-qi-in-the-analects lastmod should be 2026-10-02, got ${boYiLastmod || "missing"}`
+      );
     }
     const dukeDingLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/duke-ding-of-lu-in-the-analects`);
     if (!dukeDingLastmod.includes("2026-10-01")) {
@@ -3465,7 +3645,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "01 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "02 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -3485,6 +3665,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const boYiEditorialLastmod = "2026-10-02";
 const dukeDingEditorialLastmod = "2026-10-01";
 const dukeJingEditorialLastmod = "2026-09-30";
 const newestEditorialLastmod = "2026-09-27";
@@ -3500,6 +3681,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${boYiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeDingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeJingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${newestEditorialLastmod}T00:00:00.000Z`, "")
