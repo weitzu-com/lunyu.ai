@@ -722,14 +722,18 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-04",
   "2026-10-02",
 ]);
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-04",
   "2026-10-02",
 ]);
 const notesBackfillPosts = [
@@ -1749,6 +1753,188 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
     }
     if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
       fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
+const ziLuCover = "/images/blogs/zi-lu-in-the-analects/cover.jpg";
+const ziLuInline1 = "/images/blogs/zi-lu-in-the-analects/inline-1.jpg";
+const ziLuInline2 = "/images/blogs/zi-lu-in-the-analects/inline-2.jpg";
+const ziLuCoverEn =
+  "A direct disciple pausing before a question — courage, with no claimed historical portrait";
+const ziLuCoverZh = "勇直弟子在发问前稍停——不冒充历史肖像";
+const ziLuInline1En =
+  "An abstract question about spirits and death — life still unlearned, no fake inscription";
+const ziLuInline1Zh = "抽象一问：鬼神与死——生尚未明，无伪刻铭文";
+const ziLuInline2En =
+  "Hearing held until practice catches up — action before another lesson";
+const ziLuInline2Zh = "听闻停在实行之前——先做，再听下一条";
+const ziLuAnchors = [
+  ["子路", "https://www.lunyu.ai/zh-Hans/index/zi-lu"],
+  ["Zi Lu", "https://www.lunyu.ai/en/index/zi-lu"],
+  ["论语 · 公冶长 5.13", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-013"],
+  ["The Analects · Kung-ye Ch'ang 5.13", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-013"],
+  ["论语 · 先进 11.11", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-011"],
+  ["The Analects · Hsien Tsin 11.11", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-011"],
+];
+{
+  const start = postSource.indexOf('slug: "zi-lu-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing zi-lu-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = ziLuAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `zi-lu-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    ziLuAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`zi-lu-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `zi-lu-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    if (block.includes("](") && /13\.3[^\n]*\]\(/.test(block)) {
+      fail("zi-lu-in-the-analects: 13.3 must not be an href");
+    }
+    if ((block.match(/13\.3/g) || []).length < 1 || !block.includes("正名")) {
+      fail("zi-lu-in-the-analects: 13.3 / 正名 should be named without a link");
+    }
+  }
+}
+for (const src of [ziLuCover, ziLuInline1, ziLuInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/zi-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zi-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-04"',
+  '"dateModified":"2026-10-04"',
+  "Who Was Zi Lu in the Analects?",
+  "Zi Lu in the Analects: the disciple who asks about spirits and death—the living come before spirits, life before death—with a light door on practice before the next lesson.",
+  "you usually want one disciple placed among many names in the Analects",
+  "Place Zi Lu by the passages, not by a life of Zhong You",
+  "Ask about spirits—hear 未能事人，焉能事鬼 before death",
+  "One lighter door—hear a line, then carry it out",
+  "Not Ran You, not the other disciple Notes, not a 正名 essay",
+  "How you should cite him",
+  "Read Hsien Tsin 11.11 next",
+  "Who was Zi Lu in the Analects?",
+  ">Zi Lu</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.13</a>",
+  ">The Analects · Hsien Tsin 11.11</a>",
+  'href="/en/index/zi-lu"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-013"',
+  'href="/en/analects/xian-jin/xian-jin-011"',
+  ziLuCover,
+  ziLuInline1,
+  ziLuInline2,
+  ziLuCoverEn,
+  ziLuInline1En,
+  ziLuInline2En,
+  `property="og:image" content="${siteUrl}${ziLuCover}"`,
+  `property="og:image:alt" content="${ziLuCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${ziLuCover}"`,
+  `name="twitter:image:alt" content="${ziLuCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/zi-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zi-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-04"',
+  '"dateModified":"2026-10-04"',
+  "《论语》里的子路是谁？",
+  "《论语》里的子路：季路问鬼神与死，听到未能事人、焉能事鬼，以及未知生、焉知死；并轻及听到了就先去实行。链回可核对的原文。",
+  "你搜「子路」、zi lu 或 zilu 时，多半想在《论语》一串弟子名里先把这个人认出来",
+  "先按篇章认子路，不靠仲由的书外履历",
+  "问鬼神——先听未能事人，焉能事鬼",
+  "一扇轻门——听到了，就先去实行",
+  "不是冉有，不是其他弟子专稿，也不是正名专论",
+  "你该怎样引用他",
+  "接下来读先进 11.11",
+  ">子路</a>",
+  ">论语 · 公冶长 5.13</a>",
+  ">论语 · 先进 11.11</a>",
+  'href="/zh-Hans/index/zi-lu"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-013"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-011"',
+  ziLuCover,
+  ziLuInline1,
+  ziLuInline2,
+  ziLuCoverZh,
+  ziLuInline1Zh,
+  ziLuInline2Zh,
+  `property="og:image" content="${siteUrl}${ziLuCover}"`,
+  `property="og:image:alt" content="${ziLuCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${ziLuCover}"`,
+  `name="twitter:image:alt" content="${ziLuCoverZh}"`,
+]);
+{
+  const zhZiLuFile = htmlPath("/zh-Hans/blogs/zi-lu-in-the-analects");
+  if (exists(zhZiLuFile)) {
+    const zhZiLuHtml = read(zhZiLuFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZiLuHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/zi-lu-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhZiLuHtml.includes(ziLuCoverEn)) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhZiLuHtml.includes(ziLuInline1En) || zhZiLuHtml.includes(ziLuInline2En)) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhZiLuHtml, />Zi Lu<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: English Zi Lu body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhZiLuHtml, />子路<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: 子路 body link should appear once");
+    }
+    if (countRegex(zhZiLuHtml, />论语 · 公冶长 5\.13<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: 公冶长 5.13 body link should appear once");
+    }
+    if (countRegex(zhZiLuHtml, />论语 · 先进 11\.11<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: 先进 11.11 body link should appear once");
+    }
+    if (zhZiLuHtml.includes("/analects/zi-lu/zi-lu-003")) {
+      fail("/zh-Hans/blogs/zi-lu-in-the-analects: 13.3 must not be linked");
+    }
+  }
+  const enZiLuFile = htmlPath("/en/blogs/zi-lu-in-the-analects");
+  if (exists(enZiLuFile)) {
+    const enZiLuHtml = read(enZiLuFile);
+    if (enZiLuHtml.includes(ziLuCoverZh)) {
+      fail("/en/blogs/zi-lu-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enZiLuHtml.includes(ziLuInline1Zh) || enZiLuHtml.includes(ziLuInline2Zh)) {
+      fail("/en/blogs/zi-lu-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enZiLuHtml, />Zi Lu<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-lu-in-the-analects: Zi Lu body link should appear once");
+    }
+    if (countRegex(enZiLuHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.13<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-lu-in-the-analects: Kung-ye Ch'ang 5.13 body link should appear once");
+    }
+    if (countRegex(enZiLuHtml, />The Analects · Hsien Tsin 11\.11<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-lu-in-the-analects: Hsien Tsin 11.11 body link should appear once");
+    }
+    if (countRegex(enZiLuHtml, />子路<\/a>/g) !== 0) {
+      fail("/en/blogs/zi-lu-in-the-analects: Chinese 子路 body link should not appear on en");
+    }
+    if (enZiLuHtml.includes("/analects/zi-lu/zi-lu-003")) {
+      fail("/en/blogs/zi-lu-in-the-analects: 13.3 must not be linked");
     }
   }
 }
@@ -3408,6 +3594,11 @@ for (const locale of locales) {
     `/${locale}/analects/ba-yi/ba-yi-019`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
+  checkHtml(`/${locale}/index/zi-lu`, [
+    locale === "en" ? "Zi Lu" : "子路",
+    `href="/${locale}/blogs/zi-lu-in-the-analects"`,
+    `/${locale}/analects/xian-jin/xian-jin-011`,
+  ]);
   checkHtml(`/${locale}/index/bo-yi-shu-qi`, [
     locale === "en" ? "Bo Yi and Shu Qi" : "伯夷叔齐",
     `href="/${locale}/blogs/bo-yi-shu-qi-in-the-analects"`,
@@ -3538,6 +3729,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-lu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/bo-yi-shu-qi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/bo-yi-shu-qi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ding-of-lu-in-the-analects`, "sitemap");
@@ -3579,8 +3772,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-02")) {
+    if (!lastmod.includes("2026-10-04")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const ziLuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-lu-in-the-analects`);
+    if (!ziLuLastmod.includes("2026-10-04")) {
+      fail(
+        `sitemap: /${locale}/blogs/zi-lu-in-the-analects lastmod should be 2026-10-04, got ${ziLuLastmod || "missing"}`
+      );
     }
     const boYiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/bo-yi-shu-qi-in-the-analects`);
     if (!boYiLastmod.includes("2026-10-02")) {
@@ -3645,7 +3844,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "02 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "04 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -3665,6 +3864,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const ziLuEditorialLastmod = "2026-10-04";
 const boYiEditorialLastmod = "2026-10-02";
 const dukeDingEditorialLastmod = "2026-10-01";
 const dukeJingEditorialLastmod = "2026-09-30";
@@ -3681,6 +3881,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${ziLuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${boYiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeDingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeJingEditorialLastmod}T00:00:00.000Z`, "")
