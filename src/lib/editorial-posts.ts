@@ -102,6 +102,158 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zi-lu-in-the-analects",
+    titleZh: "《论语》里的子路是谁？",
+    titleEn: "Who Was Zi Lu in the Analects?",
+    dekZh: "你搜「子路」、zi lu 或 zilu 时，多半想在《论语》一串弟子名里先把这个人认出来。在本站，你遇见他，首先是先进 11.11 里的季路：他问侍奉鬼神，又问死，听到的是未能事人、焉能事鬼，以及未知生、焉知死。你可以从这一章读起，不必先找一份书外的生平。",
+    dekEn: "When you search \"zi lu\" or zilu, you usually want one disciple placed among many names in the Analects. On this site you meet him as Chi Lu in Hsien Tsin 11.11: he asks about serving spirits and about death, and you hear that the living come before spirits, and life before death. You can start with that scene and skip any life story the pages do not give.",
+    descriptionZh: "《论语》里的子路：季路问鬼神与死，听到未能事人、焉能事鬼，以及未知生、焉知死；并轻及听到了就先去实行。链回可核对的原文。",
+    descriptionEn:
+      "Zi Lu in the Analects: the disciple who asks about spirits and death—the living come before spirits, life before death—with a light door on practice before the next lesson.",
+    datePublished: "2026-10-04",
+    dateModified: "2026-10-04",
+    tagsZh: ["子路", "季路", "先进"],
+    tagsEn: ["zi lu", "Zi Lu", "Hsien Tsin"],
+    related: [
+      "/analects/xian-jin/xian-jin-011",
+      "/index/zi-lu",
+      "/blogs/bo-yi-shu-qi-in-the-analects",
+    ],
+    cover: notesBlogImage(
+      "zi-lu-in-the-analects",
+      "cover.jpg",
+      "A direct disciple pausing before a question — courage, with no claimed historical portrait",
+      "勇直弟子在发问前稍停——不冒充历史肖像",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zi-lu-in-the-analects",
+        "inline-1.jpg",
+        "An abstract question about spirits and death — life still unlearned, no fake inscription",
+        "抽象一问：鬼神与死——生尚未明，无伪刻铭文",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "zi-lu-in-the-analects",
+        "inline-2.jpg",
+        "Hearing held until practice catches up — action before another lesson",
+        "听闻停在实行之前——先做，再听下一条",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认子路，不靠仲由的书外履历",
+        headingEn: "Place Zi Lu by the passages, not by a life of Zhong You",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，人物索引把他标为[子路](https://www.lunyu.ai/zh-Hans/index/zi-lu)——孔门弟子，勇直好问，常在政事与行动中被孔子点拨。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与本地启发分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。同一人在原文里又称仲由、季路；检索里的 Zhong You、zilu 不是另一个学生。英译 Legge 在活页上印作 Tsze-lu、Chi Lu、Yu 或 Chung Yu。索引上相关章句很多，这篇笔记只守住两扇门。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the people index labels him as [Zi Lu](https://www.lunyu.ai/en/index/zi-lu)—a direct and courageous disciple, often taught through questions of action and government. That line is enough for you to start: follow the linked scenes, keep source, guide, and reflection in separate layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading. On the English pages Legge prints Tsze-lu, Chi Lu, Yu, and Chung Yu for this same person; zilu and Zhong You are search forms, not extra disciples. Chinese lines on that index also print 子路, 仲由, and 季路. The index card for this chapter says Xian Jin 11.11; the live short title you should cite is Hsien Tsin 11.11. Many other doors sit on the index—this Note keeps two.",
+        ],
+      },
+      {
+        headingZh: "问鬼神——先听未能事人，焉能事鬼",
+        headingEn: "Ask about spirits—hear 未能事人，焉能事鬼 before death",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "先进 11.11 的原文是：季路问事鬼神。子曰，未能事人，焉能事鬼。敢问死。曰，未知生，焉知死。同一活页的白话导读说：季路问怎样侍奉鬼神。孔子说：连活人都还不能侍奉好，怎么谈得上侍奉鬼神？季路又说：我大胆地问一问死是怎么回事。孔子说：连生的道理都还不明白，又怎么能明白死呢？同页 Legge 1893 年英译写道：Chi Lu asked about serving the spirits of the dead. The Master said, \"While you are not able to serve men, how can you serve their spirits?\" Chi Lu added, \"I venture to ask about death?\" He was answered, \"While you do not know life, how can you know about death?\" 你可以把这扇门读成先面对活人与此生，而不是子路如何死去的故事。引用时，请把原文、导读与英译分层标明。页上的本地启发框与这三层分开；你不该把启发写回原文。",
+        ],
+        bodyEn: [
+          "In Hsien Tsin 11.11 the source line is 季路问事鬼神。子曰，未能事人，焉能事鬼。敢问死。曰，未知生，焉知死。 The modern Chinese guide on that live page says: 季路问怎样侍奉鬼神。孔子说：连活人都还不能侍奉好，怎么谈得上侍奉鬼神？季路又说：我大胆地问一问死是怎么回事。孔子说：连生的道理都还不明白，又怎么能明白死呢？ Legge’s 1893 English on the same page reads: Chi Lu asked about serving the spirits of the dead. The Master said, \"While you are not able to serve men, how can you serve their spirits?\" Chi Lu added, \"I venture to ask about death?\" He was answered, \"While you do not know life, how can you know about death?\" You can take that as a door about the living task in front of you, not as a story of how Zi Lu died. When you cite it, keep source Chinese, the guide, and Legge’s English as separate layers. The page’s local reflection box stays apart from those layers; you should not paste a reflection back into the source line.",
+        ],
+      },
+      {
+        headingZh: "一扇轻门——听到了，就先去实行",
+        headingEn: "One lighter door—hear a line, then carry it out",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "别处你可以轻开一次[论语 · 公冶长 5.13](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-013)。原文是：子路有闻，未之能行，唯恐有闻。该页导读说：子路听到一个道理，还没能付诸实行，就唯恐又听到新的道理。同页 Legge 写道：When Tsze-lu heard anything, if he had not yet succeeded in carrying it into practice, he was only afraid lest he should hear something else. 你只把这读成先实行、再听下一条的轻门，不要把它当成这篇的主门，也不要写成政事手册。你看一眼就回来——这篇笔记停在子路是谁，以及未知生焉知死怎么读。",
+        ],
+        bodyEn: [
+          "Elsewhere you may lightly open [The Analects · Kung-ye Ch'ang 5.13](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-013). The source says 子路有闻，未之能行，唯恐有闻。 The guide on that page says: 子路听到一个道理，还没能付诸实行，就唯恐又听到新的道理。 Legge writes: \"When Tsze-lu heard anything, if he had not yet succeeded in carrying it into practice, he was only afraid lest he should hear something else.\" The index card labels this door Gong Ye Chang 5.13; the live short title is Kung-ye Ch'ang 5.13. Hold it only as a side door about action before the next lesson—not as the primary door of this page, and not as a government manual. You can glance once, then return; this Note stays with who Zi Lu is and how you read 未知生，焉知死.",
+        ],
+      },
+      {
+        headingZh: "不是冉有，不是其他弟子专稿，也不是正名专论",
+        headingEn: "Not Ran You, not the other disciple Notes, not a 正名 essay",
+        bodyZh: [
+          "索引里你还会看见冉有与季路同在先进 11.2 的政事一类；仲弓、子夏、曾子也各有自己的人物笔记。鲁定公那篇札记的主语是定公，即使章名里出现「子路」，你也不该在这里重写它。同一索引列有子路 13.3，活页确实把一个政事之问转向正名——你应把那一串留在原页，不要让它变成这篇的主题。你不该把这些名字并成一篇弟子合传，也不该把本页写成尧舜禹札记。需要时，请把每个名字扣回各自的活页。",
+        ],
+        bodyEn: [
+          "Elsewhere you may see Ran You named beside 季路 on the Zi Lu index under Xian Jin 11.2, or you may already have Who Notes for Zhong Gong, Zi Xia, and Zeng Zi. The live Duke Ding of Lu Note is about that duke, even where its chapter title says Tsze-lu; you should not retell it here. The same index lists Zi Lu 13.3, and the live chapter page does turn a government question toward 正名—you should leave that chain alone so it does not become the subject. You should not merge these names into a single résumé of disciples, and you should not treat this page as a Yao–Shun–Yu note or a rewrite of those Who Notes. Keep each name on its own live page when you need it.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用他",
+        headingEn: "How you should cite him",
+        bodyZh: [
+          "当你引用季路的提问或孔子的答语，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。原文、导读与启发（source, guide, and reflection）必须分开：你可以用页上的本地启发框讨一个今天的行动，但不得把启发当成新的《论语》句子。你可以轻提检索意图，但不要发明展示次数、死亡年份，或你所引那一句里没有印出的卫国故事。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote Chi Lu’s questions or the Master’s answers, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. Source, guide, and reflection stay separate: you may use the local reflection box for one practical action, but you must not treat that reflection as a new Analects line. You can mention search interest lightly, but you should never invent impression counts, death dates, or Wei stories that the sentence you cite does not print. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的子路是谁？",
+        questionEn: "Who was Zi Lu in the Analects?",
+        answerZh: "你在《论语》里遇见的子路，又作仲由、季路；检索里还有 zi lu、zilu 与 Zhong You。人物索引称他是勇直好问的孔门弟子，常在政事与行动里被点拨。先进 11.11 里他以季路发问，听到未能事人焉能事鬼，以及未知生焉知死。活页英译称 Chi Lu，别处亦作 Tsze-lu。你最好的答案是这扇门加上索引，而不是书外编出来的仲由传。",
+        answerEn: "You meet Zi Lu (子路; also 仲由 and 季路; search forms zilu and Zhong You) as the direct, courageous disciple on the people index, often taught through action and government. In Hsien Tsin 11.11 the English page calls him Chi Lu: serving the living comes before spirits, and life before death. Your best answer is that door plus the index—not a life of Zhong You invented outside the text.",
+      },
+      {
+        questionZh: "为什么有人搜「子路」、zi lu 或 zilu？",
+        questionEn: "Why do people search \"zi lu,\" zilu, or 子路?",
+        answerZh: "你往往想先弄清身份：哪一位弟子、哪一次发问、哪一扇篇章的门。搜到这些词，或 Legge 的 Tsze-lu、Chi Lu 之后，请打开先进 11.11 活页，而不要依赖会捏造章号或跳过「未能事人焉能事鬼」的摘要。你把原文、白话导读与启发分层来读，阅读才站得住脚。你不必在读到原句之前先要一句更顺口的口号。",
+        answerEn: "You often want a clear identity: which disciple, which question, which chapter door. Search those phrases, or Legge’s Tsze-lu and Chi Lu, then open the live 11.11 page rather than a summary that invents chapter numbers or skips 未能事人焉能事鬼. Your reading stays honest when source, vernacular guide, and reflection stay in separate layers. You do not need a smoother slogan before you have read the line.",
+      },
+      {
+        questionZh: "「未能事人，焉能事鬼」在 11.11 说什么？",
+        questionEn: "What does 未能事人，焉能事鬼 mean in 11.11?",
+        answerZh: "你听到季路问怎样侍奉鬼神，孔子却不从鬼神说起，因为活人还没有侍奉好。同一场问答接着问死：生的道理尚未明白，就不能明白死，原文作未知生，焉知死。你要把这读成眼前该做的事，而不是禁止哀伤，也不是子路之死的叙事。你的下一步是先进那章活页，而不是贴到每场丧礼上的句子。",
+        answerEn: "You hear Chi Lu ask about serving spirits, and the Master refuse to begin there while living people are not yet served. The same exchange then turns to death, and the source line is 未知生，焉知死. Hold that as the task in front of you, not as a death narrative. Your next step is the live Hsien Tsin page, not a slogan you paste onto every funeral.",
+      },
+      {
+        questionZh: "季路、仲由、Chi Lu、Tsze-lu 是同一个人吗？",
+        questionEn: "Are Chi Lu, Tsze-lu, 季路, and 仲由 the same person?",
+        answerZh: "你看到的是同一位弟子。11.11 原文称他季路，同页英译印作 Chi Lu。索引所引其他章句又作子路、仲由，英译则有 Tsze-lu、Yu、Chung Yu。Zhong You 与 zilu 只是你可能用来检索的写法，不是该拆出去的第二个学生。你不该发明英译页上没有印出的 Legge 拼法。",
+        answerEn: "You are looking at one disciple. The 11.11 source names him 季路, and Legge on that page prints Chi Lu. Other lines fetched with the index print Tsze-lu, Yu, or Chung Yu, and the Chinese prints 子路 and 仲由. Zhong You and zilu are ways you may search that same name, not a second student you should split off. You should not invent a Legge spelling the English page does not print.",
+      },
+      {
+        questionZh: "公冶长 5.13「子路有闻，未之能行」呢？",
+        questionEn: "What about 子路有闻，未之能行 in 5.13?",
+        answerZh: "你可以轻开公冶长 5.13 一次：子路听到道理，还没实行，就担心又听到新的。你只把它读成行动先于下一条道理。它不是政事手册，也不是这篇的主门。你应回到先进 11.11，去读他是谁。导读的原句留在活页上，你不要用更短的替身换掉它。",
+        answerEn: "You may open Kung-ye Ch'ang 5.13 once: Tsze-lu hears something and, until he has carried it into practice, fears hearing something else. Read that only as action before the next theory. It is not a manual of government, and it is not the primary door of this Note. You should return to Hsien Tsin 11.11 for the main reading of who he is. Keep the guide’s wording on the live page rather than a shortened substitute.",
+      },
+      {
+        questionZh: "这篇笔记不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh: "你在这里找不到冉有专稿，也找不到仲弓、子夏或曾子的人物笔记重写，更找不到鲁定公概览、尧舜禹札记，或用子路 13.3 搭成的正名专论。这些名字出现，只为免得你把门认错。你的下一步是 11.11 或子路索引，而不是重复本站其他札记的又一则总论。你应让每个题目留在它自己的网址上。",
+        answerEn: "You will not find here a Ran You Note, a Zhong Gong, Zi Xia, or Zeng Zi Who Note, a Duke Ding of Lu overview, a Yao–Shun–Yu page, or a 正名 essay built on Zi Lu 13.3. Those names appear only so you do not confuse the doors. Your next step is the 11.11 page or the Zi Lu index, not another overview that repeats other Notes on this site.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造子路语录？",
+        questionEn: "How do you keep AI from inventing Zi Lu quotes?",
+        answerZh: "若你用模型当阅读助手，应粘贴活页原文再追问，而不是索要卫国冒险，或索要页面上没有的句子。你应一律拒绝新捏造出来的《论语》文句。你的核验路径始终是本站已经发布的篇章活页，见 lunyu.ai。原文、导读与启发仍然分开，即使工具想把它们揉成一段你可能误当成经文的流畅文字。",
+        answerEn: "If you use a model as a reading aid, you should paste the live passage and ask questions, not for a Wei adventure or a saying the page does not show. Always refuse any newly minted Analects line. Your verification path is the published chapter URL on this site, lunyu.ai. Source, guide, and reflection stay separate even when a tool offers to blend them into one fluent paragraph you might mistake for the text.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读先进 11.11",
+        headingEn: "Read Hsien Tsin 11.11 next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「问鬼神、问死」之门，请打开[论语 · 先进 11.11](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-011)，把原文、白话导读与英译并排对照。你问问自己：活人当中，还有谁是你仍该去侍奉的——然后停住，回到文本，而不是回到一篇子路摘要。启发留在它自己的框里；你不该让它改写未知生，焉知死。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on Zi Lu’s question about spirits and death, open [The Analects · Hsien Tsin 11.11](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-011) and read source, guide, and Legge side by side. Ask yourself whom you still owe service among the living—then stop, and return to the live text rather than to a summary of the disciple. Keep reflection in its own box; you should not let it rewrite 未知生，焉知死.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "bo-yi-shu-qi-in-the-analects",
     titleZh: "《论语》里的伯夷、叔齐是谁？",
     titleEn: "Who Were Bo Yi and Shu Qi in the Analects?",
