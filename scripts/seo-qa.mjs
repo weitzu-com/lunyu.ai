@@ -722,8 +722,10 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Governing by Virtue in the Analects: What Confucius Meant by 政",
   "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-08",
   "2026-10-04",
   "2026-10-02",
 ]);
@@ -731,8 +733,10 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的为政以德：孔子说的「政」是什么",
   "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-08",
   "2026-10-04",
   "2026-10-02",
 ]);
@@ -1753,6 +1757,216 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
     }
     if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
       fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
+const virtueCover = "/images/blogs/governing-by-virtue-in-the-analects/cover.jpg";
+const virtueInline1 = "/images/blogs/governing-by-virtue-in-the-analects/inline-1.jpg";
+const virtueInline2 = "/images/blogs/governing-by-virtue-in-the-analects/inline-2.jpg";
+const virtueCoverEn =
+  "Quiet court under a pole-star night sky — virtue at the center, no claimed likeness";
+const virtueCoverZh = "静夜宫廷与北辰——德居中心，无伪肖像";
+const virtueInline1En =
+  "A ruler setting an example in stillness — governing by presence, not force";
+const virtueInline1Zh = "主位以身作则的静场——以德临政，非以力";
+const virtueInline2En = "Stars turning around a still center — order without coercion";
+const virtueInline2Zh = "众星环绕不动的中心——不靠强制的秩序";
+const virtueAnchors = [
+  ["政", "https://www.lunyu.ai/zh-Hans/index/zheng"],
+  ["Government", "https://www.lunyu.ai/en/index/zheng"],
+  ["论语 · 为政 2.3", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-003"],
+  ["The Analects · Wei Chang 2.3", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-003"],
+  ["论语 · 颜渊 12.17", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-017"],
+  ["The Analects · Yen Yuan 12.17", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-017"],
+  ["论语 · 为政 2.1", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-001"],
+  ["The Analects · Wei Chang 2.1", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-001"],
+];
+{
+  const start = postSource.indexOf('slug: "governing-by-virtue-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing governing-by-virtue-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = virtueAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `governing-by-virtue-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    virtueAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`governing-by-virtue-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `governing-by-virtue-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/analects/yan-yuan/yan-yuan-007",
+      "/analects/zi-lu/zi-lu-001",
+      "/analects/zi-lu/zi-lu-003",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`governing-by-virtue-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (
+      !/12\.7(?!\d)/.test(block) ||
+      !/13\.1(?!\d)/.test(block) ||
+      !/13\.3(?!\d)/.test(block) ||
+      !block.includes("正名")
+    ) {
+      fail("governing-by-virtue-in-the-analects: 12.7, 13.1, and 13.3 / 正名 should be named without a link");
+    }
+  }
+}
+for (const src of [virtueCover, virtueInline1, virtueInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/governing-by-virtue-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/governing-by-virtue-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-08"',
+  '"dateModified":"2026-10-08"',
+  "Governing by Virtue in the Analects: What Confucius Meant by 政",
+  "Governing by virtue in the Analects: Wei Chang 2.1 likens government by virtue to the pole star, and 政 means to rectify.",
+  "you usually want one idea placed among many rulers",
+  "Place 政 by the passages, not by a ruler",
+  "Lead with 为政以德—hear the pole star before a policy list",
+  "One contrast door—laws and punishments are not the same as 德",
+  "政者正也—rectify yourself before you rename the office",
+  "Not Duke Notes, not Zi Lu",
+  "How you should cite 政",
+  "Read Wei Chang 2.1 next",
+  "What does 政 mean in the Analects?",
+  ">Government</a>",
+  ">The Analects · Wei Chang 2.3</a>",
+  ">The Analects · Yen Yuan 12.17</a>",
+  ">The Analects · Wei Chang 2.1</a>",
+  'href="/en/index/zheng"',
+  'href="/en/analects/wei-zheng/wei-zheng-003"',
+  'href="/en/analects/yan-yuan/yan-yuan-017"',
+  'href="/en/analects/wei-zheng/wei-zheng-001"',
+  virtueCover,
+  virtueInline1,
+  virtueInline2,
+  virtueCoverEn,
+  virtueInline1En,
+  virtueInline2En,
+  `property="og:image" content="${siteUrl}${virtueCover}"`,
+  `property="og:image:alt" content="${virtueCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${virtueCover}"`,
+  `name="twitter:image:alt" content="${virtueCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/governing-by-virtue-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/governing-by-virtue-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-08"',
+  '"dateModified":"2026-10-08"',
+  "《论语》里的为政以德：孔子说的「政」是什么",
+  "《论语》里的为政以德：为政 2.1 以北辰说德治，颜渊 12.17 说政者正也，并对照政令与刑罚。链回可核对的原文。",
+  "你搜「为政以德」、governing by virtue，或想弄清《论语》里「政」是什么意思时",
+  "先按篇章认「政」，不靠某一位国君的传记",
+  "先听为政以德——北辰在政策清单之前",
+  "一扇对照门——政令刑罚并不等于德",
+  "政者正也——先正己，再谈改称谓",
+  "不是国君专稿，不是子路传，也不是正名重写",
+  "你该怎样引用「政」",
+  "接下来读为政 2.1",
+  ">政</a>",
+  ">论语 · 为政 2.3</a>",
+  ">论语 · 颜渊 12.17</a>",
+  ">论语 · 为政 2.1</a>",
+  'href="/zh-Hans/index/zheng"',
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-003"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-017"',
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-001"',
+  virtueCover,
+  virtueInline1,
+  virtueInline2,
+  virtueCoverZh,
+  virtueInline1Zh,
+  virtueInline2Zh,
+  `property="og:image" content="${siteUrl}${virtueCover}"`,
+  `property="og:image:alt" content="${virtueCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${virtueCover}"`,
+  `name="twitter:image:alt" content="${virtueCoverZh}"`,
+]);
+{
+  const zhVirtueFile = htmlPath("/zh-Hans/blogs/governing-by-virtue-in-the-analects");
+  if (exists(zhVirtueFile)) {
+    const zhVirtueHtml = read(zhVirtueFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhVirtueHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/governing-by-virtue-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhVirtueHtml.includes(virtueCoverEn)) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhVirtueHtml.includes(virtueInline1En) || zhVirtueHtml.includes(virtueInline2En)) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhVirtueHtml, />Government<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: English Government body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhVirtueHtml, />政<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: 政 body link should appear once");
+    }
+    if (countRegex(zhVirtueHtml, />论语 · 为政 2\.3<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: 为政 2.3 body link should appear once");
+    }
+    if (countRegex(zhVirtueHtml, />论语 · 颜渊 12\.17<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: 颜渊 12.17 body link should appear once");
+    }
+    if (countRegex(zhVirtueHtml, />论语 · 为政 2\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/governing-by-virtue-in-the-analects: 为政 2.1 body link should appear once");
+    }
+    for (const forbidden of ["yan-yuan-007", "zi-lu-001", "zi-lu-003"]) {
+      if (zhVirtueHtml.includes(`/analects/${forbidden}`)) {
+        fail(`/zh-Hans/blogs/governing-by-virtue-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enVirtueFile = htmlPath("/en/blogs/governing-by-virtue-in-the-analects");
+  if (exists(enVirtueFile)) {
+    const enVirtueHtml = read(enVirtueFile);
+    if (enVirtueHtml.includes(virtueCoverZh)) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enVirtueHtml.includes(virtueInline1Zh) || enVirtueHtml.includes(virtueInline2Zh)) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enVirtueHtml, />Government<\/a>/g) !== 1) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Government body link should appear once");
+    }
+    if (countRegex(enVirtueHtml, />The Analects · Wei Chang 2\.3<\/a>/g) !== 1) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Wei Chang 2.3 body link should appear once");
+    }
+    if (countRegex(enVirtueHtml, />The Analects · Yen Yuan 12\.17<\/a>/g) !== 1) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Yen Yuan 12.17 body link should appear once");
+    }
+    if (countRegex(enVirtueHtml, />The Analects · Wei Chang 2\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Wei Chang 2.1 body link should appear once");
+    }
+    if (countRegex(enVirtueHtml, />政<\/a>/g) !== 0) {
+      fail("/en/blogs/governing-by-virtue-in-the-analects: Chinese 政 body link should not appear on en");
+    }
+    for (const forbidden of ["yan-yuan-007", "zi-lu-001", "zi-lu-003"]) {
+      if (enVirtueHtml.includes(`/analects/${forbidden}`)) {
+        fail(`/en/blogs/governing-by-virtue-in-the-analects: ${forbidden} must not be linked`);
+      }
     }
   }
 }
@@ -3594,6 +3808,11 @@ for (const locale of locales) {
     `/${locale}/analects/ba-yi/ba-yi-019`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
+  checkHtml(`/${locale}/index/zheng`, [
+    locale === "en" ? "Government" : "政",
+    `href="/${locale}/blogs/governing-by-virtue-in-the-analects"`,
+    `/${locale}/analects/wei-zheng/wei-zheng-001`,
+  ]);
   checkHtml(`/${locale}/index/zi-lu`, [
     locale === "en" ? "Zi Lu" : "子路",
     `href="/${locale}/blogs/zi-lu-in-the-analects"`,
@@ -3729,6 +3948,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/governing-by-virtue-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/governing-by-virtue-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/bo-yi-shu-qi-in-the-analects`, "sitemap");
@@ -3772,8 +3993,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-04")) {
+    if (!lastmod.includes("2026-10-08")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const virtueLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/governing-by-virtue-in-the-analects`);
+    if (!virtueLastmod.includes("2026-10-08")) {
+      fail(
+        `sitemap: /${locale}/blogs/governing-by-virtue-in-the-analects lastmod should be 2026-10-08, got ${virtueLastmod || "missing"}`
+      );
     }
     const ziLuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-lu-in-the-analects`);
     if (!ziLuLastmod.includes("2026-10-04")) {
@@ -3844,7 +4071,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "04 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "08 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -3864,6 +4091,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const governingEditorialLastmod = "2026-10-08";
 const ziLuEditorialLastmod = "2026-10-04";
 const boYiEditorialLastmod = "2026-10-02";
 const dukeDingEditorialLastmod = "2026-10-01";
@@ -3881,6 +4109,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${governingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziLuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${boYiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${dukeDingEditorialLastmod}T00:00:00.000Z`, "")
