@@ -773,6 +773,7 @@ export const editorialPosts: EditorialPost[] = [
       "/index/duke-jing-of-qi",
       "/blogs/duke-ling-of-wei-in-the-analects",
       "/blogs/duke-ai-of-lu-in-the-analects",
+      "/blogs/duke-ding-of-lu-in-the-analects",
     ],
     cover: notesBlogImage(
       "duke-jing-of-qi-in-the-analects",
@@ -942,6 +943,7 @@ export const editorialPosts: EditorialPost[] = [
       "/index/zeng-zi",
       "/analects/tai-bo/tai-bo-007",
       "/blogs/zhongshu-reciprocity-in-the-analects",
+      "/blogs/zeng-zi-sayings-in-the-analects",
     ],
     cover: notesBlogImage(
       "zeng-zi-in-the-analects",
@@ -1918,6 +1920,7 @@ export const editorialPosts: EditorialPost[] = [
       "/index/wei-ling-gong-person",
       "/analects/wei-ling-gong/wei-ling-gong-001",
       "/blogs/duke-ai-of-lu-in-the-analects",
+      "/blogs/duke-ding-of-lu-in-the-analects",
     ],
     cover: notesBlogImage(
       "duke-ling-of-wei-in-the-analects",
@@ -2259,6 +2262,7 @@ export const editorialPosts: EditorialPost[] = [
       "/index/duke-ai",
       "/analects/yan-yuan/yan-yuan-009",
       "/blogs/zai-wo-in-the-analects",
+      "/blogs/duke-ding-of-lu-in-the-analects",
     ],
     cover: notesBlogImage(
       "duke-ai-of-lu-in-the-analects",
@@ -2968,6 +2972,8 @@ export const editorialPosts: EditorialPost[] = [
       "/analects/xue-er",
       "/index/xue",
       "/method",
+      "/blogs/learning-practice-and-review",
+      "/blogs/ai-boundaries-for-classic-texts",
     ],
     ...notesCoverAndInlines(
       "how-to-read-the-analects",
@@ -3259,10 +3265,89 @@ export function getEditorialPost(slug: string) {
   return editorialPosts.find((post) => post.slug === slug);
 }
 
+const PASSAGE_PATH = /\/analects\/([a-z0-9-]+)\/([a-z0-9-]+)(?![a-z0-9-])/g;
+
+function editorialPlainTexts(post: EditorialPost, locale: Locale) {
+  const sections = post.sections.flatMap((section) =>
+    locale === "zh-Hans" ? section.bodyZh : section.bodyEn
+  );
+  const faqs = (post.faqs ?? []).flatMap((faq) =>
+    locale === "zh-Hans"
+      ? [faq.questionZh, faq.answerZh]
+      : [faq.questionEn, faq.answerEn]
+  );
+  const after = (post.afterFaqSections ?? []).flatMap((section) =>
+    locale === "zh-Hans" ? section.bodyZh : section.bodyEn
+  );
+  return [locale === "zh-Hans" ? post.dekZh : post.dekEn, ...sections, ...faqs, ...after];
+}
+
+/** Passage paths a Note already cites in `related` or in an approved body link. */
+function citedPassagePaths(post: EditorialPost) {
+  const paths = new Set<string>();
+  for (const relatedPath of post.related) {
+    if (/^\/analects\/[a-z0-9-]+\/[a-z0-9-]+$/.test(relatedPath)) paths.add(relatedPath);
+  }
+  const blobs = [
+    post.dekZh,
+    post.dekEn,
+    post.descriptionZh ?? "",
+    post.descriptionEn ?? "",
+    ...post.sections.flatMap((section) => [...section.bodyZh, ...section.bodyEn]),
+    ...(post.faqs ?? []).flatMap((faq) => [
+      faq.questionZh,
+      faq.questionEn,
+      faq.answerZh,
+      faq.answerEn,
+    ]),
+    ...(post.afterFaqSections ?? []).flatMap((section) => [...section.bodyZh, ...section.bodyEn]),
+  ];
+  for (const blob of blobs) {
+    for (const match of blob.matchAll(PASSAGE_PATH)) {
+      paths.add(`/analects/${match[1]}/${match[2]}`);
+    }
+  }
+  return [...paths];
+}
+
+const postsByPassage = new Map<string, EditorialPost[]>();
+for (const post of editorialPosts) {
+  for (const passagePath of citedPassagePaths(post)) {
+    const list = postsByPassage.get(passagePath);
+    if (list) list.push(post);
+    else postsByPassage.set(passagePath, [post]);
+  }
+}
+
+/** Notes that already list this path in `related`. */
+export function editorialPostsForPath(path: string) {
+  return editorialPosts.filter((post) => post.related.includes(path));
+}
+
 /** Notes that already list an index entry in `related` — used for the reverse index → Note link. */
 export function editorialPostsForIndexSlug(slug: string) {
-  const path = `/index/${slug}`;
-  return editorialPosts.filter((post) => post.related.includes(path));
+  return editorialPostsForPath(`/index/${slug}`);
+}
+
+/** Notes that cite this passage, for the reverse passage → Note link. */
+export function editorialPostsForPassage(path: string) {
+  return postsByPassage.get(path) ?? [];
+}
+
+/**
+ * Label for a Note's related chip.
+ * Body links that already use the target Note's title stay on the path label,
+ * so the editorial "body link once" check is not doubled by the nav chip.
+ */
+export function relatedLinkLabel(locale: Locale, post: EditorialPost, relatedPath: string) {
+  if (!relatedPath.startsWith("/blogs/")) return relatedPath;
+  const target = getEditorialPost(relatedPath.slice("/blogs/".length));
+  if (!target) return relatedPath;
+  const title = postTitle(locale, target);
+  const alreadyInBody = editorialPlainTexts(post, locale).some((text) =>
+    text.includes(`[${title}](`)
+  );
+  return alreadyInBody ? relatedPath : title;
 }
 
 export function postTitle(locale: Locale, post: EditorialPost) {

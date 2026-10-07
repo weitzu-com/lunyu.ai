@@ -6,8 +6,10 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { MarkOpened } from "@/components/ReadingCircle";
 import { LocalConfuciusChat } from "@/components/LocalConfuciusChat";
+import { RelatedNotes } from "@/components/RelatedNotes";
 import { blogTitle, blogUrl, categoryLabel, getBlogsForSentence } from "@/lib/blogs";
 import { getPassageContentCoverage } from "@/lib/content-coverage";
+import { editorialPostsForPassage } from "@/lib/editorial-posts";
 import { listenUrl } from "@/lib/listen";
 import {
   getAllSentences,
@@ -162,6 +164,7 @@ export default async function SentencePage({
 
   const { prev, next } = getNeighbourSentences(sentence.id);
   const relatedBlogs = getBlogsForSentence(sentence).slice(0, 16);
+  const relatedNotes = editorialPostsForPassage(`/analects/${bookSlug}/${sentence.id}`);
   const coverage = getPassageContentCoverage(sentence.id);
   const listenHref =
     coverage?.audio ? listenUrl(locale, sentence.bookSlug, sentence.id) : undefined;
@@ -285,6 +288,7 @@ export default async function SentencePage({
             </div>
           </section>
         )}
+        <RelatedNotes locale={locale} posts={relatedNotes} />
         <LocalConfuciusChat locale={locale} sentence={sentence} />
         <section className="mt-6 border-y border-rule bg-surface px-4 py-5 sm:px-6" aria-labelledby="h-trust-links">
           <h2 id="h-trust-links" className="label">
