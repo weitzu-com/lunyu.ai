@@ -102,6 +102,168 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "governing-by-virtue-in-the-analects",
+    titleZh: "《论语》里的为政以德：孔子说的「政」是什么",
+    titleEn: "Governing by Virtue in the Analects: What Confucius Meant by 政",
+    dekZh: "你搜「为政以德」、governing by virtue，或想弄清《论语》里「政」是什么意思时，多半想在一串国君名字里先抓住一个观念。在本站，你遇见它，首先是为政 2.1：为政以德，譬如北辰，居其所，而众星共之。你可以从这幅北辰图读起，不必先找一份书外的宫廷履历。",
+    dekEn: "When you search “governing by virtue,” 为政以德, or what 政 means in the Analects, you usually want one idea placed among many rulers’ names. On this site you meet it first as Wei Chang 2.1: government by virtue is like the north polar star that keeps its place while the stars turn toward it. You can start with that image and skip any court biography the pages do not give.",
+    descriptionZh: "《论语》里的为政以德：为政 2.1 以北辰说德治，颜渊 12.17 说政者正也，并对照政令与刑罚。链回可核对的原文。",
+    descriptionEn: "Governing by virtue in the Analects: Wei Chang 2.1 likens government by virtue to the pole star, and 政 means to rectify.",
+    datePublished: "2026-10-08",
+    dateModified: "2026-10-08",
+    tagsZh: ["为政以德", "政", "为政"],
+    tagsEn: ["governing by virtue", "Government", "Wei Chang"],
+    related: [
+      "/analects/wei-zheng/wei-zheng-001",
+      "/index/zheng",
+      "/analects/wei-zheng/wei-zheng-003",
+      "/analects/yan-yuan/yan-yuan-017",
+    ],
+    cover: notesBlogImage(
+      "governing-by-virtue-in-the-analects",
+      "cover.jpg",
+      "Quiet court under a pole-star night sky — virtue at the center, no claimed likeness",
+      "静夜宫廷与北辰——德居中心，无伪肖像",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "governing-by-virtue-in-the-analects",
+        "inline-1.jpg",
+        "A ruler setting an example in stillness — governing by presence, not force",
+        "主位以身作则的静场——以德临政，非以力",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "governing-by-virtue-in-the-analects",
+        "inline-2.jpg",
+        "Stars turning around a still center — order without coercion",
+        "众星环绕不动的中心——不靠强制的秩序",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先按篇章认「政」，不靠某一位国君的传记",
+        headingEn: "Place 政 by the passages, not by a ruler’s résumé",
+        bodyZh: [
+          "若你想在逐章展开之前先有一个入口，主题索引把它标为[政](https://www.lunyu.ai/zh-Hans/index/zheng)——政在《论语》中首先关乎正己、德化与用人，而不仅是制度技术。这一行就够你起步：顺着相关章句读下去，把原文、白话导读与本地启发分开放，拒绝发明活页上没有的句子。把索引当门牌，而不是替你读完的终稿。检索里的「孔子论政」、为政无方、北辰，只是你可能用来抵达的写法，不是另立一套学说。索引上相关章句很多，这篇札记只守住几扇门。",
+        ],
+        bodyEn: [
+          "If you want a compact entry before you open each chapter page, the theme index labels it as [Government](https://www.lunyu.ai/en/index/zheng)—government as moral rectification, virtue, and selecting the worthy. That line is enough for you to start: follow the linked scenes, keep source, guide, and reflection in separate layers, and refuse to invent sayings the live pages do not show. Treat the index as a map of doors, not as a finished essay that replaces reading. Search forms such as “Confucius on government,” 为政无方, and 北辰 are ways you may arrive; they are not extra doctrines. Many other doors sit on the index—this Note keeps a few.",
+        ],
+      },
+      {
+        headingZh: "先听为政以德——北辰在政策清单之前",
+        headingEn: "Lead with 为政以德—hear the pole star before a policy list",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "为政 2.1 的原文是：子曰，为政以德，譬如北辰，居其所，而众星共之。同一活页的白话导读说：孔子说：用德行来治理政事，就像北极星安居在自己的位置上，众星都会围绕着它运行。同页 Legge 1893 年英译写道：The Master said, \"He who exercises government by means of his virtue may be compared to the north polar star, which keeps its place and all the stars turn towards it.\" 你可以把这扇门读成以在场与德行形成秩序，而不是一句现代管理口号。引用时，请把原文、导读与英译分层标明。页上的本地启发框与这三层分开；你不该把启发写回原文。",
+        ],
+        bodyEn: [
+          "In Wei Chang 2.1 the source line is 子曰，为政以德，譬如北辰，居其所，而众星共之。 The modern Chinese guide on that live page says: 孔子说：用德行来治理政事，就像北极星安居在自己的位置上，众星都会围绕着它运行。 Legge’s 1893 English on the same page reads: The Master said, \"He who exercises government by means of his virtue may be compared to the north polar star, which keeps its place and all the stars turn towards it.\" You can take that as a door about presence and order without coercion, not as a modern management slogan. When you cite it, keep source Chinese, the guide, and Legge’s English as separate layers. The page’s local reflection box stays apart from those layers; you should not paste a reflection back into the source line.",
+        ],
+      },
+      {
+        headingZh: "一扇对照门——政令刑罚并不等于德",
+        headingEn: "One contrast door—laws and punishments are not the same as 德",
+        bodyZh: [
+          "别处你可以打开一次[论语 · 为政 2.3](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-003)。原文是：子曰，道之以政，齐之以刑，民免而无耻。道之以德，齐之以礼，有耻且格。该页导读说：孔子说：用政令引导百姓，用刑罚整齐百姓，百姓只会求免于处罚，却不会有羞耻心。用德行引导百姓，用礼来整齐百姓，百姓就会有羞耻心，并且归向正道。同页 Legge 先写：The Master said, \"If the people be led by laws, and uniformity sought to be given them by punishments, they will try to avoid the punishment, but have no sense of shame.\" 接着写： \"If they be led by virtue, and uniformity sought to be given them by the rules of propriety, they will have the sense of shame, and moreover will become good.\" 你只把这读成与「为政以德」并立的对照，不要把它当成第二扇主门，也不要据此发明一整套法学体系。",
+        ],
+        bodyEn: [
+          "Elsewhere you may open [The Analects · Wei Chang 2.3](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-003) once. The source says 子曰，道之以政，齐之以刑，民免而无耻。道之以德，齐之以礼，有耻且格。 The guide on that page says: 孔子说：用政令引导百姓，用刑罚整齐百姓，百姓只会求免于处罚，却不会有羞耻心。用德行引导百姓，用礼来整齐百姓，百姓就会有羞耻心，并且归向正道。 Legge writes: The Master said, \"If the people be led by laws, and uniformity sought to be given them by punishments, they will try to avoid the punishment, but have no sense of shame.\" Then: \"If they be led by virtue, and uniformity sought to be given them by the rules of propriety, they will have the sense of shame, and moreover will become good.\" Hold that only as a contrast beside 为政以德—not as a second main door, and not as a license to invent a full legal theory.",
+        ],
+      },
+      {
+        headingZh: "政者正也——先正己，再谈改称谓",
+        headingEn: "政者正也—rectify yourself before you rename the office",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "当你需要一句更短的定义，也可以打开一次[论语 · 颜渊 12.17](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-017)。原文是：季康子问政于孔子。孔子对曰，政者正也，子帅以正，孰敢不正。导读说：季康子向孔子请教怎样治理政事。孔子回答说：政的意思就是端正。您自己带头端正，谁还敢不端正呢？同页 Legge 写道：Chi K'ang asked Confucius about government. Confucius replied, \"To govern means to rectify. If you lead on the people with correctness, who will dare not to be correct?\" 同一索引上，你还可以轻提颜渊 12.7（足食、足兵、民信）与子路 13.1（先之，劳之）——你不该在这里把它们写成完整复述。子路 13.3 / 正名只作边界：这篇札记不是正名专论。",
+        ],
+        bodyEn: [
+          "You can also open [The Analects · Yen Yuan 12.17](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-017) once when you need the short definition. The source is 季康子问政于孔子。孔子对曰，政者正也，子帅以正，孰敢不正。 The guide says: 季康子向孔子请教怎样治理政事。孔子回答说：政的意思就是端正。您自己带头端正，谁还敢不端正呢？ Legge replies: Chi K'ang asked Confucius about government. Confucius replied, \"To govern means to rectify. If you lead on the people with correctness, who will dare not to be correct?\" Elsewhere on the same index you may lightly notice Yen Yuan 12.7 (food, arms, and trust) and Tsze-lu 13.1 (go before the people with your example)—you should not turn those notices into full retellings here. Name Tsze-lu 13.3 / 正名 only as a boundary: this Note is not a rectifying-names essay.",
+        ],
+      },
+      {
+        headingZh: "不是国君专稿，不是子路传，也不是正名重写",
+        headingEn: "Not Duke Notes, not Zi Lu’s biography, not a 正名 rewrite",
+        bodyZh: [
+          "别处你可能已有鲁哀公、齐景公、鲁定公、卫灵公或子路的人物笔记。那些页面各自拥有人物与问答；你不该在这里重写它们。这篇概念札记拥有的是「政 / 为政以德」这一观念，以及你上面打开的政索引之门。你不该把国君名字并成一篇宫廷小说，也不该把本页当成那些专稿的替身。需要时，请把每个名字扣回各自的活页。",
+        ],
+        bodyEn: [
+          "Elsewhere you may already have Who Notes for Duke Ai, Duke Jing, Duke Ding, Duke Ling, or Zi Lu. Those pages own the persons and their exchanges; you should not retell them here. This Concept Note owns the idea of 政 / governing by virtue across the zheng index doors you opened above. You should not merge ruler names into a single court novel, and you should not treat this page as a substitute for those Who Notes. Keep each name on its own live page when you need it.",
+        ],
+      },
+      {
+        headingZh: "你该怎样引用「政」",
+        headingEn: "How you should cite 政",
+        bodyZh: [
+          "当你引用「为政以德」或「政者正也」，应标明活页篇章地址，并说明用的是原文、白话导读还是英译。原文、导读与启发（source, guide, and reflection）必须分开：你可以用页上的本地启发框讨一个今天的行动，但不得把启发当成新的《论语》句子。你可以轻提检索意图，但不要发明展示次数、政策手册，或你所引那一句里没有印出的宫廷故事。你的诚实落在篇章页上，而不在更顺口却无出处的改写里。",
+        ],
+        bodyEn: [
+          "When you quote 为政以德 or 政者正也, you should name the live chapter URL and say whether you used source Chinese, the modern guide, or Legge’s English. Source, guide, and reflection stay separate: you may use the local reflection box for one practical action, but you must not treat that reflection as a new Analects line. You can mention search interest lightly, but you should never invent impression counts, policy manuals, or court stories that the sentence you cite does not print. Your honesty is the passage page, not a smoother paraphrase that invents a saying.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的「政」是什么？",
+        questionEn: "What does 政 mean in the Analects?",
+        answerZh: "你在《论语》里遇见的「政」，常常被试成正己与德化，而不只是官职技术。为政 2.1 把为政以德放在北辰之旁；颜渊 12.17 说政者正也。你最好的短答，仍是把读者送回本站活页篇章地址，而不是一句漂浮的口号。你的诚实落在可核验的章句上，而不是更顺口的改写。",
+        answerEn: "You meet 政 as governing—often tested as moral rectification and virtue, not only as office technique. Wei Chang 2.1 places government by virtue beside the pole star; Yen Yuan 12.17 says to govern is to rectify. Your best short answer still sends you to a live chapter URL on this site, not to a floating slogan.",
+      },
+      {
+        questionZh: "「为政以德」是什么意思？",
+        questionEn: "What does 为政以德 mean?",
+        answerZh: "你听到：用德行来治理政事，就像北极星安居其位，众星环绕。为政 2.1 活页把原文、导读与 Legge 英译放在一起。你要把这读成以在场与德行形成不靠强制的秩序，而不是贴到每场会议的现代领导品牌。你下一步应打开那章活页，而不是停在口号上。",
+        answerEn: "You hear that government by means of virtue is like the north polar star that keeps its place while the stars turn toward it. The live Wei Chang 2.1 page carries source, guide, and Legge together. Hold that as presence and order without coercion—not as a modern leadership brand you paste onto every meeting.",
+      },
+      {
+        questionZh: "用政令刑罚治理，等于以德为政吗？",
+        questionEn: "Is governing by laws the same as governing by virtue?",
+        answerZh: "你应拒绝简单的「是」。为政 2.3 对照两路：以政令与刑罚引导，人会求免、却无羞耻；以德与礼引导，人有耻且归向正道。你的细读应守住这组对照，而不要把两者都塌成一句含糊的「政策」。你可以把 2.3 当作侧门，主门仍是为政以德。",
+        answerEn: "You should refuse a simple yes. Wei Chang 2.3 contrasts leading by laws and punishments—where people avoid the penalty but lack shame—with leading by virtue and propriety, where shame appears and people turn toward the good. Your careful reading keeps that contrast instead of collapsing both into one vague “policy” word.",
+      },
+      {
+        questionZh: "为什么有人搜「为政以德」或 governing by virtue？",
+        questionEn: "Why do people search “governing by virtue” or 为政以德?",
+        answerZh: "你往往想先弄清一件事：孔子说的「政」指什么、该开哪一扇篇章门、北辰怎样入题。搜到这些词之后，请打开为政 2.1 活页，而不要依赖会捏造章号的摘要。你把原文、白话导读与启发分层来读，阅读才站得住脚。",
+        answerEn: "You often want one clear idea: what Confucius meant by 政, which chapter door to open, and how 北辰 fits. Search those phrases, then open the live 2.1 page rather than a summary that invents chapter numbers. Your reading stays honest when source, vernacular guide, and reflection stay in separate layers.",
+      },
+      {
+        questionZh: "足食、足兵、民信呢？",
+        questionEn: "What about food, arms, and the people’s trust?",
+        answerZh: "你可以在「政」索引上轻提颜渊 12.7：粮食充足、军备充足、百姓信任。那扇门是真的，但不是这篇札记的主门。你应回到为政 2.1，去读为政以德的主图。你若需要展开那三件，请打开该章活页，而不是在这里写成第二篇专论。",
+        answerEn: "You may lightly notice Yen Yuan 12.7 on the Government index: sufficiency of food, of military equipment, and the people’s confidence. That door is real, but it is not the primary door of this Note. You should return to Wei Chang 2.1 for the main image of governing by virtue.",
+      },
+      {
+        questionZh: "这篇札记不是什么？",
+        questionEn: "What is not this essay?",
+        answerZh: "你在这里找不到鲁哀公、齐景公、鲁定公或卫灵公的人物专稿，也找不到子路传记，更找不到用子路 13.3 搭成的正名专论。这些名字出现，只为免得你把门认错。你的下一步是 2.1 或「政」索引，而不是重复本站其他札记的又一则总论。",
+        answerEn: "You will not find here a Duke Ai, Duke Jing, Duke Ding, or Duke Ling Who Note, a Zi Lu biography, or a 正名 essay built on Tsze-lu 13.3. Those names appear only so you do not confuse the doors. Your next step is the 2.1 page or the Government index, not another overview that repeats other Notes on this site.",
+      },
+      {
+        questionZh: "怎样避免 AI 编造「孔子论政」语录？",
+        questionEn: "How do you keep AI from inventing Confucius quotes on government?",
+        answerZh: "若你用模型当阅读助手，应粘贴活页原文再追问，而不是索要宫廷冒险，或索要页面上没有的句子。你应一律拒绝新捏造出来的《论语》文句。你的核验路径始终是本站已经发布的篇章活页，见 lunyu.ai。原文、导读与启发仍然分开，即使工具想把它们揉成一段你可能误当成经文的流畅文字。",
+        answerEn: "If you use a model as a reading aid, you should paste the live passage and ask questions, not for a court adventure or a saying the page does not show. Always refuse any newly minted Analects line. Your verification path is the published chapter URL on this site, lunyu.ai. Source, guide, and reflection stay separate even when a tool offers to blend them into one fluent paragraph you might mistake for the text.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来读为政 2.1",
+        headingEn: "Read Wei Chang 2.1 next",
+        bodyZh: [
+          "当你准备打开最清楚的那扇「为政以德」之门，请打开[论语 · 为政 2.1](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-001)，把原文、白话导读与英译并排对照。你问问自己：你是否只把「政」听成技术——然后停住，回到文本，而不是回到一篇国君摘要。启发留在它自己的框里；你不该让它改写为政以德。",
+        ],
+        bodyEn: [
+          "When you are ready for the clearest door on governing by virtue, open [The Analects · Wei Chang 2.1](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-001) and read source, guide, and Legge side by side. Ask yourself whether you have been hearing 政 only as technique—then stop, and return to the live text rather than to a summary of rulers. Keep reflection in its own box; you should not let it rewrite 为政以德.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zi-lu-in-the-analects",
     titleZh: "《论语》里的子路是谁？",
     titleEn: "Who Was Zi Lu in the Analects?",
