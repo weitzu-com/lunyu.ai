@@ -693,6 +693,104 @@ for (const locale of locales) {
   }
 }
 
+// Reverse links from indexed passages, trust pages, and Notes onto Notes that
+// GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
+const unindexedNoteLinks = [
+  {
+    slug: "governing-by-virtue-in-the-analects",
+    titleZh: "《论语》里的为政以德：孔子说的「政」是什么",
+    titleEn: "Governing by Virtue in the Analects: What Confucius Meant by 政",
+    passages: [
+      "wei-zheng/wei-zheng-001",
+      "wei-zheng/wei-zheng-003",
+      "yan-yuan/yan-yuan-017",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
+    slug: "zi-lu-in-the-analects",
+    titleZh: "《论语》里的子路是谁？",
+    titleEn: "Who Was Zi Lu in the Analects?",
+    passages: ["xian-jin/xian-jin-011", "gong-ye-chang/gong-ye-chang-013"],
+    notes: [],
+    trust: [],
+  },
+  {
+    slug: "bo-yi-shu-qi-in-the-analects",
+    titleZh: "《论语》里的伯夷、叔齐是谁？",
+    titleEn: "Who Were Bo Yi and Shu Qi in the Analects?",
+    passages: ["shu-er/shu-er-014", "ji-shi/ji-shi-012"],
+    notes: [],
+    trust: [],
+  },
+  {
+    slug: "duke-ding-of-lu-in-the-analects",
+    titleZh: "《论语》里的鲁定公是谁？",
+    titleEn: "Who Was Duke Ding of Lu in the Analects?",
+    passages: ["zi-lu/zi-lu-015", "ba-yi/ba-yi-019"],
+    notes: [
+      "duke-jing-of-qi-in-the-analects",
+      "duke-ling-of-wei-in-the-analects",
+      "duke-ai-of-lu-in-the-analects",
+    ],
+    trust: [],
+  },
+  {
+    slug: "zeng-zi-sayings-in-the-analects",
+    titleZh: "《论语》里曾子的经典语录及含义",
+    titleEn: "Zeng Zi’s Famous Sayings in the Analects",
+    passages: ["xue-er/xue-er-004", "tai-bo/tai-bo-007"],
+    notes: ["zeng-zi-in-the-analects"],
+    trust: [],
+  },
+  {
+    slug: "learning-practice-and-review",
+    titleZh: "学而时习：学习为什么要回到实践",
+    titleEn: "Learning, Practice, and Review",
+    passages: ["xue-er/xue-er-001"],
+    notes: ["zi-xia-in-the-analects", "how-to-read-the-analects"],
+    trust: [],
+  },
+  {
+    slug: "ai-boundaries-for-classic-texts",
+    titleZh: "AI 可以怎样辅助读经典",
+    titleEn: "How AI Can Help Read Classics",
+    passages: ["xue-er/xue-er-001"],
+    notes: ["how-to-read-the-analects"],
+    trust: ["method", "sources", "faq"],
+  },
+];
+for (const locale of locales) {
+  const titleKey = locale === "zh-Hans" ? "titleZh" : "titleEn";
+  for (const note of unindexedNoteLinks) {
+    const href = `/${locale}/blogs/${note.slug}`;
+    const title = note[titleKey];
+    const expectLink = (route, hrefNeedle) => {
+      const file = htmlPath(route);
+      if (!exists(file)) {
+        fail(`${route}: build HTML missing at ${file}`);
+        return;
+      }
+      const html = read(file);
+      if (!html.includes(hrefNeedle)) fail(`${route}: missing link ${hrefNeedle}`);
+      if (!html.includes(`>${title}</a>`)) fail(`${route}: missing title anchor ${title}`);
+      if (html.includes(`href="${href}/"`) || html.includes(`href="${siteUrl}${href}/"`)) {
+        fail(`${route}: trailing-slash variant of ${href}`);
+      }
+    };
+    for (const passage of note.passages) {
+      expectLink(`/${locale}/analects/${passage}`, `href="${href}"`);
+    }
+    for (const source of note.notes) {
+      expectLink(`/${locale}/blogs/${source}`, `href="${siteUrl}${href}"`);
+    }
+    for (const trust of note.trust) {
+      expectLink(`/${locale}/${trust}`, `href="${href}"`);
+    }
+  }
+}
+
 checkHtml("/en/index/zi-zhang", ["/en/analects/xian-jin/xian-jin-015"]);
 checkHtml("/en/index/zi-xia", ["/en/analects/xian-jin/xian-jin-015"]);
 

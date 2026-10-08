@@ -15,6 +15,7 @@ import {
   postDescription,
   postTags,
   postTitle,
+  relatedLinkLabel,
   type EditorialPost,
   type EditorialSection,
 } from "@/lib/editorial-posts";
@@ -200,13 +201,31 @@ export default async function BlogPostPage({
         <section className="mt-8 border-y border-rule bg-surface px-4 py-5 sm:px-6">
           <h2 className="label">{t(locale, "相关章句", "Related passages")}</h2>
           <div className="mt-4 flex flex-wrap gap-2">
-            {post.related.map((relatedPath) => (
-              <Link key={relatedPath} href={localizedUrl(locale, relatedPath)} className="chip">
-                {relatedPath}
-              </Link>
-            ))}
+            {post.related
+              .filter((relatedPath) => !relatedPath.startsWith("/blogs/"))
+              .map((relatedPath) => (
+                <Link key={relatedPath} href={localizedUrl(locale, relatedPath)} className="chip">
+                  {relatedPath}
+                </Link>
+              ))}
           </div>
         </section>
+        {post.related.some((relatedPath) => relatedPath.startsWith("/blogs/")) ? (
+          <section className="mt-6 border-y border-rule bg-surface px-4 py-5 sm:px-6" aria-labelledby="h-related-notes">
+            <h2 id="h-related-notes" className="label">
+              {t(locale, "相关札记", "Related notes")}
+            </h2>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {post.related
+                .filter((relatedPath) => relatedPath.startsWith("/blogs/"))
+                .map((relatedPath) => (
+                  <Link key={relatedPath} href={localizedUrl(locale, relatedPath)} className="chip">
+                    {relatedLinkLabel(locale, post, relatedPath)}
+                  </Link>
+                ))}
+            </div>
+          </section>
+        ) : null}
       </article>
       <SiteFooter locale={locale} />
     </main>

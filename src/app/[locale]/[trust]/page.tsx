@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Locale, locales, t } from "@/lib/analects";
+import { editorialPostsForPath, postTitle } from "@/lib/editorial-posts";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { jsonLd, trustPageLabel } from "@/lib/site";
 import {
@@ -125,6 +126,11 @@ export default async function TrustPage({
                 {trustPageLabel(locale, item)}
               </Link>
             ))}
+          {editorialPostsForPath(`/${slug}`).map((post) => (
+            <Link key={post.slug} href={`/${locale}/blogs/${post.slug}`} className="chip">
+              {postTitle(locale, post)}
+            </Link>
+          ))}
           <Link href={`/${locale}/analects/xue-er/xue-er-001`} className="chip">
             {t(locale, "引用示例", "Citation example")}
           </Link>
