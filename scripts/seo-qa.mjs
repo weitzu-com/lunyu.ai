@@ -1952,7 +1952,7 @@ checkHtml("/en/blogs/nan-gong-kuo-in-the-analects", [
   '"datePublished":"2026-10-14"',
   '"dateModified":"2026-10-14"',
   "Who Was Nan Gong Kuo in the Analects?",
-  "Nan Gong Kuo in the Analects: three passages, two names, and one index entry—the unanswered question in Hsien Wan 14.6, the white-jade lines in 11.5, and the judgment of conduct under good and bad government in 5.1.",
+  "Nan Gong Kuo in the Analects: three passages, two names, one index entry—14.6's unanswered question, 11.5's white-jade lines, and 5.1.",
   "If you searched his name, in short",
   "Three passages, two names, one index entry",
   "Hsien Wan 14.6: the question Confucius did not answer",

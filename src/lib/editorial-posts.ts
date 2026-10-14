@@ -108,7 +108,7 @@ export const editorialPosts: EditorialPost[] = [
     dekZh: "你搜「南宫适」，多半想先知道他是谁。本站人物索引为他列出三章，其中两章称他南容。简短答案是：他在宪问 14.6 问孔子，善射的羿、能陆地行舟的奡都没能善终，亲自耕种的禹和稷却得到了天下；孔子当面没有回答，等他出去才说，这个人真是君子，真崇尚德行。下面每一句，你都可以回活页核对。",
     dekEn: "Nan Gong Kuo (南宫适) is a figure the site's people index ties to three passages; two of them call him Nan Rong (南容). If you searched his name, in short: he asks Confucius why a great archer and a man who moved a boat over land both died unnatural deaths while two farmers came to possess the kingdom. The Master says nothing, then praises him once he has left. You can check every line below on its passage page.",
     descriptionZh: "《论语》里的南宫适：三章、两个名字、一个索引条目。宪问 14.6 问而未答，先进 11.5 反复诵读白圭，公冶长 5.1 记下治世与乱世中的立身。链回可核对的原文。",
-    descriptionEn: "Nan Gong Kuo in the Analects: three passages, two names, and one index entry—the unanswered question in Hsien Wan 14.6, the white-jade lines in 11.5, and the judgment of conduct under good and bad government in 5.1.",
+    descriptionEn: "Nan Gong Kuo in the Analects: three passages, two names, one index entry—14.6's unanswered question, 11.5's white-jade lines, and 5.1.",
     datePublished: "2026-10-14",
     dateModified: "2026-10-14",
     tagsZh: ["南宫适", "南容", "宪问"],
