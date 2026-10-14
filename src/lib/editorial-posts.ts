@@ -102,6 +102,166 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "nan-gong-kuo-in-the-analects",
+    titleZh: "《论语》里的南宫适是谁？",
+    titleEn: "Who Was Nan Gong Kuo in the Analects?",
+    dekZh: "你搜「南宫适」，多半想先知道他是谁。本站人物索引为他列出三章，其中两章称他南容。简短答案是：他在宪问 14.6 问孔子，善射的羿、能陆地行舟的奡都没能善终，亲自耕种的禹和稷却得到了天下；孔子当面没有回答，等他出去才说，这个人真是君子，真崇尚德行。下面每一句，你都可以回活页核对。",
+    dekEn: "Nan Gong Kuo (南宫适) is a figure the site's people index ties to three passages; two of them call him Nan Rong (南容). If you searched his name, in short: he asks Confucius why a great archer and a man who moved a boat over land both died unnatural deaths while two farmers came to possess the kingdom. The Master says nothing, then praises him once he has left. You can check every line below on its passage page.",
+    descriptionZh: "《论语》里的南宫适：三章、两个名字、一个索引条目。宪问 14.6 问而未答，先进 11.5 反复诵读白圭，公冶长 5.1 记下治世与乱世中的立身。链回可核对的原文。",
+    descriptionEn: "Nan Gong Kuo in the Analects: three passages, two names, one index entry—14.6's unanswered question, 11.5's white-jade lines, and 5.1.",
+    datePublished: "2026-10-14",
+    dateModified: "2026-10-14",
+    tagsZh: ["南宫适", "南容", "宪问"],
+    tagsEn: ["nan gong kuo", "Nan Gong Kuo", "Hsien Wan"],
+    related: [
+      "/analects/xian-wen/xian-wen-006",
+      "/index/nan-gong-kuo",
+      "/analects/xian-jin/xian-jin-005",
+      "/analects/gong-ye-chang/gong-ye-chang-001",
+    ],
+    cover: notesBlogImage(
+      "nan-gong-kuo-in-the-analects",
+      "cover.jpg",
+      "A bow and a boat left on dry land beside a freshly tilled field — the comparison in Nan Gong Kuo's question",
+      "搁在旱地上的弓与船，旁边是新耕的田——南宫适那一问里的对照",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "nan-gong-kuo-in-the-analects",
+        "inline-1.jpg",
+        "A plain white jade tablet with three faint echoes of itself — lines recited again and again",
+        "一块素白玉圭与三道淡淡回影——一再诵读的诗句",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "nan-gong-kuo-in-the-analects",
+        "inline-2.jpg",
+        "One footbridge in calm light and in a storm, the same small figure unharmed in both — conduct under good and bad government",
+        "同一座小桥，晴时与风雨时，同一个小小身影都安然无恙——治世与乱世中的立身",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "三章、两个名字、一个索引条目",
+        headingEn: "Three passages, two names, one index entry",
+        bodyZh: [
+          "本站人物索引把这三章归在同一个条目「南宫适」之下，描述是：孔门相关人物，涉及德行、尚贤与历史人物评价。这一归并对你很要紧，因为原文本身用了两个名字：公冶长 5.1 与先进 11.5 写作南容，Legge 印作 Nan Yung；宪问 14.6 写作南宫适，Legge 印作 Nan-kung Kwo。14.6 活页的拼音把「适」注作 kuò，与英文索引里的 Kuo 对得上。",
+          "中文索引还会把你引向第三种写法的人物页：南宫括。那一页的简介说，《史记》以南宫括、字子容立传，把《论语》中南容、南宫适的相关言行合载；同页也说明，不进一步把他与南宫敬叔的身份关系写作已证事实，生卒年也标为不详。你引用时，就停在它停下的地方。",
+        ],
+        bodyEn: [
+          "The people index files all three passages under one heading, Nan Gong Kuo, and describes him as \"a figure linked with virtue, worthiness, and judgments of historical models.\" That grouping matters to you, because the Chinese text itself uses two names. Kung-ye Ch'ang 5.1 and Hsien Tsin 11.5 say 南容, which Legge prints as Nan Yung; Hsien Wan 14.6 says 南宫适, which Legge prints as Nan-kung Kwo. The pinyin on the 14.6 page reads 适 as kuò, matching the Kuo in the index name.",
+          "The Chinese index also points you to a profile filed under a third form, 南宫括. Its summary says the Shiji gives him a biography as 南宫括, courtesy name 子容, and records the Nan Rong and Nan Gong Kuo material together. The same profile declines to treat his link to 南宫敬叔 as an established fact and lists his birth and death years as unknown. You should stop where it stops.",
+        ],
+      },
+      {
+        headingZh: "宪问 14.6——孔子没有回答的那一问",
+        headingEn: "Hsien Wan 14.6: the question Confucius did not answer",
+        bodyZh: [
+          "三章里只有这一章是他开口说话，你应该先读它。请打开[论语 · 宪问 14.6](https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-006)。原文是：南宫适问于孔子曰，羿善射，奡荡舟，俱不得其死然，禹稷躬稼，而有天下。夫子不答。南宫适出。子曰，君子哉若人，尙德哉若人。同页白话导读说：南宫适问孔子说：羿善于射箭，奡能陆地行舟，都没能得到善终；禹和稷亲自耕种庄稼，却得到了天下。孔子没有回答。南宫适出去后，孔子说：这个人真是君子啊！这个人真崇尚德行啊！",
+          "同页 Legge 1893 年英译写道：Nan-kung Kwo, submitting an inquiry to Confucius, said, \"I was skillful at archery, and Ao could move a boat along upon the land, but neither of them died a natural death. Yu and Chi personally wrought at the toils of husbandry, and they became possessors of the kingdom.\" The Master made no reply; but when Nan-kung Kwo went out, he said, \"A superior man indeed is this! An esteemer of virtue indeed is this!\" 句首的 I 是 Legge 对羿的拼写，你不要把它读成发问者在自夸。",
+          "请你留意页面给出的先后：先是拿射艺、陆地行舟的本事与亲身耕作相比，接着是发问者在场时的沉默，最后是他出去之后的称赞。原文没有交代孔子为什么不答。你对这份沉默的体会，应写成自己的启发并标明，不要写进经文里。",
+        ],
+        bodyEn: [
+          "Of the three, this is the only passage where he speaks, so it is the one you should read first. Open [The Analects · Hsien Wan 14.6](https://www.lunyu.ai/en/analects/xian-wen/xian-wen-006). The source line is 南宫适问于孔子曰，羿善射，奡荡舟，俱不得其死然，禹稷躬稼，而有天下。夫子不答。南宫适出。子曰，君子哉若人，尙德哉若人。 The modern Chinese guide on that page says: 南宫适问孔子说：羿善于射箭，奡能陆地行舟，都没能得到善终；禹和稷亲自耕种庄稼，却得到了天下。孔子没有回答。南宫适出去后，孔子说：这个人真是君子啊！这个人真崇尚德行啊！",
+          "Legge's 1893 English on the same page reads: Nan-kung Kwo, submitting an inquiry to Confucius, said, \"I was skillful at archery, and Ao could move a boat along upon the land, but neither of them died a natural death. Yu and Chi personally wrought at the toils of husbandry, and they became possessors of the kingdom.\" The Master made no reply; but when Nan-kung Kwo went out, he said, \"A superior man indeed is this! An esteemer of virtue indeed is this!\" In that sentence \"I\" is Legge's spelling of the archer 羿, so you should not read it as the speaker boasting.",
+          "Notice the order the page gives you: a comparison of archery and boat-moving prowess against labor in the fields, silence while the questioner is in the room, and praise only after he goes out. The text does not say why Confucius stayed silent. Whatever you make of that silence belongs in your own reflection, marked as yours, not in the passage.",
+        ],
+      },
+      {
+        headingZh: "先进 11.5——反复诵读白圭",
+        headingEn: "Hsien Tsin 11.5: repeating the white-jade lines",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "[论语 · 先进 11.5](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-005)只有一句：南容三复白圭，孔子以其兄之子妻之。导读说：南容反复诵读《诗经》中关于白圭的诗句，孔子便把自己哥哥的女儿嫁给了他。Legge 写道：Nan Yung was frequently repeating the lines about a white scepter stone. Confucius gave him the daughter of his elder brother to wife. 导读告诉你诗句出自《诗经》、讲的是白圭，但活页没有印出那段诗。你不要把一段诗文贴进来，当成这一章的内容。页上给你的，是一个习惯——反复诵读——以及随后的一桩婚事。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.5](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-005) is a single sentence: 南容三复白圭，孔子以其兄之子妻之。 The guide says: 南容反复诵读《诗经》中关于白圭的诗句，孔子便把自己哥哥的女儿嫁给了他。 Legge writes: Nan Yung was frequently repeating the lines about a white scepter stone. Confucius gave him the daughter of his elder brother to wife. The guide tells you the lines come from the Shijing and concern a white jade tablet, but the page does not print the poem. You should not paste a stanza in and present it as part of this passage. What the page does give you is a habit, repetition, and the family decision that followed it.",
+        ],
+      },
+      {
+        headingZh: "公冶长 5.1——有道不废，无道免于刑戮",
+        headingEn: "Kung-ye Ch'ang 5.1: kept in office, kept from punishment",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 公冶长 5.1](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-001)把两桩婚事写在同一章。原文是：子谓公冶长，可妻也，虽在缧绁之中，非其罪也。以其子妻之。子谓南容，邦有道，不废，邦无道，免于刑戮。以其兄之子妻之。关于他的那一半，导读说：孔子谈到南容，说：国家政治清明时，他不会被废弃不用；国家政治黑暗时，他也能免于刑罚杀戮。于是把自己哥哥的女儿嫁给了他。Legge 译这一半为：Of Nan Yung he said that if the country were well governed he would not be out of office, and if it were ill-governed, he would escape punishment and disgrace. He gave him the daughter of his own elder brother to wife. 前一半写的是公冶长，那是另一个人，娶的是孔子自己的女儿；你应把两桩婚事分开读。",
+        ],
+        bodyEn: [
+          "[The Analects · Kung-ye Ch'ang 5.1](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-001) puts two marriages in one passage. The source is 子谓公冶长，可妻也，虽在缧绁之中，非其罪也。以其子妻之。子谓南容，邦有道，不废，邦无道，免于刑戮。以其兄之子妻之。 For his half, the guide says: 孔子谈到南容，说：国家政治清明时，他不会被废弃不用；国家政治黑暗时，他也能免于刑罚杀戮。于是把自己哥哥的女儿嫁给了他。 Legge's second clause reads: \"Of Nan Yung he said that if the country were well governed he would not be out of office, and if it were ill-governed, he would escape punishment and disgrace. He gave him the daughter of his own elder brother to wife.\" The first half is about Kung-ye Ch'ang, a different man, who received Confucius's own daughter. You should keep the two marriages apart.",
+        ],
+      },
+      {
+        headingZh: "三章合起来说了什么，又没说什么",
+        headingEn: "What the three passages add up to, and what they leave out",
+        bodyZh: [
+          "合读三章，你看到的是一个人被这样评价：看他怎样衡量历史人物，看他反复诵读的一段诗句，看他在治世与乱世里如何自处。5.1 与 11.5 都以同一件事收束：孔子把哥哥的女儿嫁给了他。这是活页上写着的，你可以直说。他担任过什么职务、那一问发生在哪一年，这三章都没有写，你就应留空，而不是借别处的说法补齐。",
+          "禹在本站另有尧舜禹札记，子路、仲弓也各有自己的人物笔记；这一篇只写发问的那个人。引用上面任何一句时，请你标明篇章网址，并说明用的是原文、白话导读还是 Legge 英译。每一页都把这几层和本地启发框分开放，你的引用也应分开。",
+        ],
+        bodyEn: [
+          "Read together, the pages show you a man judged by how he weighs historical examples, by a line he kept reciting, and by how he would fare under good and bad government. Both 5.1 and 11.5 end in the same family decision: Confucius married his elder brother's daughter to him. That repetition is on the pages, so you may state it plainly. Offices held and the date of the archer question are not in these passages, so you should leave them out rather than borrow them.",
+          "Yu has his own place in the site's Yao–Shun–Yu Note, and Zi Lu and Zhong Gong have their own Who Notes; this page stays with the man who asked. When you quote any line above, name the passage URL and say whether you used the source, the modern Chinese guide, or Legge. Each page keeps those layers and its local reflection box apart, and your citation should too.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的南宫适是谁？",
+        questionEn: "Who was Nan Gong Kuo in the Analects?",
+        answerZh: "你在本站见到的南宫适，出现在三章里，人物索引把它们归为同一个条目。宪问 14.6 里，他拿善射的羿、陆地行舟的奡与亲自耕种的禹、稷相比发问，孔子当面不答，等他出去后称他是君子、是崇尚德行的人。公冶长 5.1 与先进 11.5 称他南容，孔子把哥哥的女儿嫁给了他。你在这里能核对到的记载，就是这些。",
+        answerEn: "You meet Nan Gong Kuo (南宫适) in three passages that the site's index groups under one name. In Hsien Wan 14.6 he asks about the archer 羿, the boat-mover 奡, and the farmers 禹 and 稷; after he leaves, Confucius calls him a superior man who esteems virtue. In 5.1 and 11.5 he appears as 南容, and Confucius gives him his elder brother's daughter in marriage. That is the record you can verify here.",
+      },
+      {
+        questionZh: "南容和南宫适是同一个人吗？",
+        questionEn: "Is Nan Rong (南容) the same person as Nan Gong Kuo?",
+        answerZh: "本站把二者当作一人，你可以看到依据在哪里。南宫适索引把两章「南容」与一章「南宫适」并列；中文人物页以南宫括、字子容为名，说《史记》把南容、南宫适的言行合载为一传。同一页对其他身份关联保持保留。所以你引用时，应说这是本站索引与《史记》的归并，而不是《论语》原文自己写明的事实。",
+        answerEn: "The site treats them as one, and you can see how. Its Nan Gong Kuo index lists the two 南容 passages beside the 南宫适 passage, and its Chinese profile, filed under 南宫括 with the courtesy name 子容, says the Shiji records both names in one biography. That profile stops short of further identifications, so you should cite the grouping as the site's and the Shiji's, not as something the Analects states.",
+      },
+      {
+        questionZh: "14.6 里孔子为什么不回答？",
+        questionEn: "Why did Confucius not answer him in 14.6?",
+        answerZh: "你在活页上找不到理由。原文只写「夫子不答」，导读写「孔子没有回答」，Legge 写 The Master made no reply。称赞是在发问者出去之后才说的。你可以留意这个先后，也可以把自己的体会写下来并标成启发，但不应替孔子补一个动机、一层隐义，或一段原章并没有印出的事后解释。",
+        answerEn: "You will not find a reason on the page. The source says only 夫子不答, the guide says 孔子没有回答, and Legge says the Master made no reply. The praise comes once the questioner has gone out. You may notice that sequence and think about it, but you should not supply a motive, a hidden lesson, or a later explanation that the passage itself does not print.",
+      },
+      {
+        questionZh: "「南容三复白圭」是什么意思？",
+        questionEn: "What does 南容三复白圭 mean?",
+        answerZh: "你可以照导读来读：南容反复诵读《诗经》中关于白圭的诗句，孔子便把自己哥哥的女儿嫁给了他。Legge 把白圭译作 a white scepter stone。活页没有引出那段诗的原文，所以如果你另外引用诗句，应注明出自别的来源，并把它放在章句之外，不要写成先进 11.5 本身的文字。",
+        answerEn: "You can rely on the guide: Nan Rong repeatedly recited the Shijing lines about a white jade tablet, 白圭, and Confucius then gave him his elder brother's daughter in marriage. Legge renders the object as \"a white scepter stone.\" The page does not quote the poem itself, so if you bring in its words, label them as coming from another source and keep them outside the passage.",
+      },
+      {
+        questionZh: "「邦有道，不废，邦无道，免于刑戮」说他什么？",
+        questionEn: "What does 邦有道，不废，邦无道，免于刑戮 say about him?",
+        answerZh: "你读到的是孔子对南容的判断：国家政治清明时，他不会被废弃不用；国家政治黑暗时，他也能免于刑罚杀戮。这是导读的说法，Legge 则译作 punishment and disgrace。你应把它当作公冶长 5.1 记下的一句评价，看他在两种世道里如何立身，而不是扩写成一份他担任过哪些官职的履历。",
+        answerEn: "You are reading Confucius's judgment that in a well-governed state Nan Rong would not be cast aside, and in a badly governed one he would escape punishment and execution. Those are the guide's terms; Legge has \"punishment and disgrace.\" Treat it as a judgment of his conduct under two kinds of government, recorded in 5.1, not as a list of offices he held.",
+      },
+      {
+        questionZh: "他的名字在英文里怎么拼？",
+        questionEn: "How do you spell his name in English?",
+        answerZh: "你会遇到好几种写法。本站英文索引作 Nan Gong Kuo；Legge 在 14.6 印作 Nan-kung Kwo，在 5.1 与 11.5 印作 Nan Yung。活页拼音把南容注作 nán róng，把「适」注作 kuò；中文人物页另用南宫括，网址写作 nangong-kuo。这些写法都指向同一个索引条目，你不该把它们拆成几位不同的弟子，也不要自己再造一种新拼法。",
+        answerEn: "You will meet several forms. The site's index uses Nan Gong Kuo. Legge prints Nan-kung Kwo in 14.6 and Nan Yung in 5.1 and 11.5. The page pinyin gives nán róng for 南容 and kuò for 适, and the Chinese profile adds 南宫括, under the slug nangong-kuo. These are labels for one index entry, so you should not split them into separate disciples.",
+      },
+      {
+        questionZh: "他问题里的羿、奡、禹、稷是谁？",
+        questionEn: "Who are 羿, 奡, 禹 and 稷 in his question?",
+        answerZh: "你只取活页给出的部分：导读说羿善于射箭，奡能陆地行舟，两人都没能得到善终；禹和稷亲自耕种庄稼，却得到了天下。Legge 把他们拼作 I、Ao、Yu、Chi。想多读禹，你可以去本站的尧舜禹札记；在这一篇里，四人只是南宫适那一问中的四个例子，不另写他们的生平。",
+        answerEn: "You get only what the page gives. In the guide, 羿 was skilled at archery and 奡 could move a boat over land, and neither died a natural death, while 禹 and 稷 farmed with their own hands and came to hold the realm. Legge spells them I, Ao, Yu and Chi. For Yu you may turn to the Yao–Shun–Yu Note; here the four stay examples inside his question.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来打开南宫适索引",
+        headingEn: "Open the Nan Gong Kuo index next",
+        bodyZh: [
+          "当你想把三章放在同一屏上读，请打开[南宫适](https://www.lunyu.ai/zh-Hans/index/nan-gong-kuo)，按索引列出的顺序读下去，宪问 14.6 正好排在最后。你问问自己：在孔子的沉默之前，你会更看重善射的羿，还是亲自耕种的禹和稷？然后停住，让原文、导读与英译各守一层，而不是让你的摘要替它们说话。",
+        ],
+        bodyEn: [
+          "When you want all three passages on one screen, open [Nan Gong Kuo](https://www.lunyu.ai/en/index/nan-gong-kuo) and read them in the order the index lists them, which leaves 14.6 for last. Ask yourself which example you would have weighed more heavily, the archer or the farmers, before the Master's silence. Then stop, and let the source, the guide, and Legge each speak in its own layer rather than through your summary.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "governing-by-virtue-in-the-analects",
     titleZh: "《论语》里的为政以德：孔子说的「政」是什么",
     titleEn: "Governing by Virtue in the Analects: What Confucius Meant by 政",

@@ -697,6 +697,18 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "nan-gong-kuo-in-the-analects",
+    titleZh: "《论语》里的南宫适是谁？",
+    titleEn: "Who Was Nan Gong Kuo in the Analects?",
+    passages: [
+      "xian-wen/xian-wen-006",
+      "xian-jin/xian-jin-005",
+      "gong-ye-chang/gong-ye-chang-001",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "governing-by-virtue-in-the-analects",
     titleZh: "《论语》里的为政以德：孔子说的「政」是什么",
     titleEn: "Governing by Virtue in the Analects: What Confucius Meant by 政",
@@ -820,9 +832,11 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Nan Gong Kuo in the Analects?",
   "Governing by Virtue in the Analects: What Confucius Meant by 政",
   "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-14",
   "2026-10-08",
   "2026-10-04",
   "2026-10-02",
@@ -831,9 +845,11 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的南宫适是谁？",
   "《论语》里的为政以德：孔子说的「政」是什么",
   "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-14",
   "2026-10-08",
   "2026-10-04",
   "2026-10-02",
@@ -1855,6 +1871,223 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
     }
     if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
       fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
+const nanGongCover = "/images/blogs/nan-gong-kuo-in-the-analects/cover.jpg";
+const nanGongInline1 = "/images/blogs/nan-gong-kuo-in-the-analects/inline-1.jpg";
+const nanGongInline2 = "/images/blogs/nan-gong-kuo-in-the-analects/inline-2.jpg";
+const nanGongCoverEn =
+  "A bow and a boat left on dry land beside a freshly tilled field — the comparison in Nan Gong Kuo's question";
+const nanGongCoverEnHtml = nanGongCoverEn.replaceAll("'", "&#x27;");
+const nanGongCoverZh = "搁在旱地上的弓与船，旁边是新耕的田——南宫适那一问里的对照";
+const nanGongInline1En =
+  "A plain white jade tablet with three faint echoes of itself — lines recited again and again";
+const nanGongInline1Zh = "一块素白玉圭与三道淡淡回影——一再诵读的诗句";
+const nanGongInline2En =
+  "One footbridge in calm light and in a storm, the same small figure unharmed in both — conduct under good and bad government";
+const nanGongInline2Zh = "同一座小桥，晴时与风雨时，同一个小小身影都安然无恙——治世与乱世中的立身";
+const nanGongAnchors = [
+  ["论语 · 宪问 14.6", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-006"],
+  ["The Analects · Hsien Wan 14.6", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-006"],
+  ["论语 · 先进 11.5", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-005"],
+  ["The Analects · Hsien Tsin 11.5", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-005"],
+  ["论语 · 公冶长 5.1", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-001"],
+  ["The Analects · Kung-ye Ch'ang 5.1", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-001"],
+  ["南宫适", "https://www.lunyu.ai/zh-Hans/index/nan-gong-kuo"],
+  ["Nan Gong Kuo", "https://www.lunyu.ai/en/index/nan-gong-kuo"],
+];
+{
+  const start = postSource.indexOf('slug: "nan-gong-kuo-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing nan-gong-kuo-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = nanGongAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `nan-gong-kuo-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    nanGongAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`nan-gong-kuo-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `nan-gong-kuo-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/zhong-gong-in-the-analects",
+      "/blogs/yao-shun-yu-in-the-analects",
+      "/blogs/governing-by-virtue-in-the-analects",
+      "/people/nangong-kuo",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`nan-gong-kuo-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (block.includes("pending Gemini")) {
+      fail("nan-gong-kuo-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+  }
+}
+for (const src of [nanGongCover, nanGongInline1, nanGongInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/nan-gong-kuo-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/nan-gong-kuo-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-14"',
+  '"dateModified":"2026-10-14"',
+  "Who Was Nan Gong Kuo in the Analects?",
+  "Nan Gong Kuo in the Analects: three passages, two names, one index entry—14.6's unanswered question, 11.5's white-jade lines, and 5.1.",
+  "If you searched his name, in short",
+  "Three passages, two names, one index entry",
+  "Hsien Wan 14.6: the question Confucius did not answer",
+  "Hsien Tsin 11.5: repeating the white-jade lines",
+  "kept in office, kept from punishment",
+  "What the three passages add up to, and what they leave out",
+  "Open the Nan Gong Kuo index next",
+  "Who was Nan Gong Kuo in the Analects?",
+  ">The Analects · Hsien Wan 14.6</a>",
+  ">The Analects · Hsien Tsin 11.5</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.1</a>",
+  ">Nan Gong Kuo</a>",
+  'href="/en/analects/xian-wen/xian-wen-006"',
+  'href="/en/analects/xian-jin/xian-jin-005"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-001"',
+  'href="/en/index/nan-gong-kuo"',
+  nanGongCover,
+  nanGongInline1,
+  nanGongInline2,
+  nanGongCoverEnHtml,
+  nanGongInline1En,
+  nanGongInline2En,
+  `property="og:image" content="${siteUrl}${nanGongCover}"`,
+  `property="og:image:alt" content="${nanGongCoverEnHtml}"`,
+  `name="twitter:image" content="${siteUrl}${nanGongCover}"`,
+  `name="twitter:image:alt" content="${nanGongCoverEnHtml}"`,
+]);
+checkHtml("/zh-Hans/blogs/nan-gong-kuo-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/nan-gong-kuo-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-14"',
+  '"dateModified":"2026-10-14"',
+  "《论语》里的南宫适是谁？",
+  "《论语》里的南宫适：三章、两个名字、一个索引条目。宪问 14.6 问而未答，先进 11.5 反复诵读白圭，公冶长 5.1 记下治世与乱世中的立身。链回可核对的原文。",
+  "你搜「南宫适」，多半想先知道他是谁",
+  "三章、两个名字、一个索引条目",
+  "宪问 14.6——孔子没有回答的那一问",
+  "先进 11.5——反复诵读白圭",
+  "公冶长 5.1——有道不废，无道免于刑戮",
+  "三章合起来说了什么，又没说什么",
+  "接下来打开南宫适索引",
+  ">论语 · 宪问 14.6</a>",
+  ">论语 · 先进 11.5</a>",
+  ">论语 · 公冶长 5.1</a>",
+  ">南宫适</a>",
+  'href="/zh-Hans/analects/xian-wen/xian-wen-006"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-005"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-001"',
+  'href="/zh-Hans/index/nan-gong-kuo"',
+  nanGongCover,
+  nanGongInline1,
+  nanGongInline2,
+  nanGongCoverZh,
+  nanGongInline1Zh,
+  nanGongInline2Zh,
+  `property="og:image" content="${siteUrl}${nanGongCover}"`,
+  `property="og:image:alt" content="${nanGongCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${nanGongCover}"`,
+  `name="twitter:image:alt" content="${nanGongCoverZh}"`,
+]);
+{
+  const zhNanGongFile = htmlPath("/zh-Hans/blogs/nan-gong-kuo-in-the-analects");
+  if (exists(zhNanGongFile)) {
+    const zhNanGongHtml = read(zhNanGongFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhNanGongHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/nan-gong-kuo-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhNanGongHtml.includes(nanGongCoverEn) || zhNanGongHtml.includes(nanGongCoverEnHtml)) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhNanGongHtml.includes(nanGongInline1En) || zhNanGongHtml.includes(nanGongInline2En)) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhNanGongHtml, />Nan Gong Kuo<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: English Nan Gong Kuo body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhNanGongHtml, />南宫适<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: 南宫适 body link should appear once");
+    }
+    if (countRegex(zhNanGongHtml, />论语 · 宪问 14\.6<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: 宪问 14.6 body link should appear once");
+    }
+    if (countRegex(zhNanGongHtml, />论语 · 先进 11\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: 先进 11.5 body link should appear once");
+    }
+    if (countRegex(zhNanGongHtml, />论语 · 公冶长 5\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/nan-gong-kuo-in-the-analects: 公冶长 5.1 body link should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/zhong-gong-in-the-analects",
+      "/blogs/yao-shun-yu-in-the-analects",
+      "/people/nangong-kuo",
+    ]) {
+      if (zhNanGongHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/nan-gong-kuo-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enNanGongFile = htmlPath("/en/blogs/nan-gong-kuo-in-the-analects");
+  if (exists(enNanGongFile)) {
+    const enNanGongHtml = read(enNanGongFile);
+    if (enNanGongHtml.includes(nanGongCoverZh)) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enNanGongHtml.includes(nanGongInline1Zh) || enNanGongHtml.includes(nanGongInline2Zh)) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enNanGongHtml, />Nan Gong Kuo<\/a>/g) !== 1) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Nan Gong Kuo body link should appear once");
+    }
+    if (countRegex(enNanGongHtml, />The Analects · Hsien Wan 14\.6<\/a>/g) !== 1) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Hsien Wan 14.6 body link should appear once");
+    }
+    if (countRegex(enNanGongHtml, />The Analects · Hsien Tsin 11\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Hsien Tsin 11.5 body link should appear once");
+    }
+    if (countRegex(enNanGongHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Kung-ye Ch'ang 5.1 body link should appear once");
+    }
+    if (countRegex(enNanGongHtml, />南宫适<\/a>/g) !== 0) {
+      fail("/en/blogs/nan-gong-kuo-in-the-analects: Chinese 南宫适 body link should not appear on en");
+    }
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/zhong-gong-in-the-analects",
+      "/blogs/yao-shun-yu-in-the-analects",
+      "/people/nangong-kuo",
+    ]) {
+      if (enNanGongHtml.includes(forbidden)) {
+        fail(`/en/blogs/nan-gong-kuo-in-the-analects: ${forbidden} must not be linked`);
+      }
     }
   }
 }
@@ -3906,6 +4139,13 @@ for (const locale of locales) {
     `/${locale}/analects/ba-yi/ba-yi-019`,
     `"dateModified":"${entityIndexRefreshLastmod}"`,
   ]);
+  checkHtml(`/${locale}/index/nan-gong-kuo`, [
+    locale === "en" ? "Nan Gong Kuo" : "南宫适",
+    `href="/${locale}/blogs/nan-gong-kuo-in-the-analects"`,
+    `/${locale}/analects/xian-wen/xian-wen-006`,
+    `/${locale}/analects/xian-jin/xian-jin-005`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-001`,
+  ]);
   checkHtml(`/${locale}/index/zheng`, [
     locale === "en" ? "Government" : "政",
     `href="/${locale}/blogs/governing-by-virtue-in-the-analects"`,
@@ -4046,6 +4286,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/nan-gong-kuo-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/nan-gong-kuo-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/governing-by-virtue-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/governing-by-virtue-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-lu-in-the-analects`, "sitemap");
@@ -4091,8 +4333,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-08")) {
+    if (!lastmod.includes("2026-10-14")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const nanGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/nan-gong-kuo-in-the-analects`);
+    if (!nanGongLastmod.includes("2026-10-14")) {
+      fail(
+        `sitemap: /${locale}/blogs/nan-gong-kuo-in-the-analects lastmod should be 2026-10-14, got ${nanGongLastmod || "missing"}`
+      );
     }
     const virtueLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/governing-by-virtue-in-the-analects`);
     if (!virtueLastmod.includes("2026-10-08")) {
@@ -4169,7 +4417,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "08 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "14 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -4189,6 +4437,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const nanGongEditorialLastmod = "2026-10-14";
 const governingEditorialLastmod = "2026-10-08";
 const ziLuEditorialLastmod = "2026-10-04";
 const boYiEditorialLastmod = "2026-10-02";
@@ -4207,6 +4456,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${nanGongEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${governingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziLuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${boYiEditorialLastmod}T00:00:00.000Z`, "")
