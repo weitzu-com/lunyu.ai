@@ -102,6 +102,179 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "fan-chi-in-the-analects",
+    titleZh: "《论语》里的樊迟是谁？",
+    titleEn: "Who Was Fan Chi in the Analects?",
+    dekZh: "你搜「樊迟」，多半想先知道他是谁。本站人物索引为他列出六章，描述是：孔门弟子，多问仁、知、孝与农圃等现实问题。简短答案是：他一边驾车一边追问孝是什么意思，一再问知与仁，问怎样崇德修慝辨惑，请求学稼却被拒绝，又听闻仁是居处恭、执事敬、与人忠。下面每一句，你都可以回活页核对。",
+    dekEn: "Fan Chi (樊迟) is the disciple who keeps asking. The site's people index groups six passages around him and calls him \"a disciple who asks practical questions about ren, knowledge, filial conduct, and work.\" He clarifies filial piety while driving, presses wisdom and ren more than once, asks how to repair the heart, requests farming lessons Confucius refuses, and hears how ren travels even among distant tribes. You can check every line below on its passage page.",
+    descriptionZh: "《论语》里的樊迟：六问、一个索引条目。驾车追问孝，一再问知与仁，问怎样崇德修慝辨惑，并听见可随身携带的仁。链回可核对的原文。",
+    descriptionEn: "Fan Chi in the Analects: six questions, one index entry—2.5 on filial piety, 6.20 and 12.22 on wisdom and ren, and 13.19 on conduct you can carry.",
+    datePublished: "2026-10-15",
+    dateModified: "2026-10-15",
+    tagsZh: ["樊迟", "樊须", "为政"],
+    tagsEn: ["fan chi", "Fan Chi", "Wei Chang"],
+    related: [
+      "/analects/wei-zheng/wei-zheng-005",
+      "/index/fan-chi",
+      "/analects/yong-ye/yong-ye-020",
+      "/analects/yan-yuan/yan-yuan-021",
+      "/analects/yan-yuan/yan-yuan-022",
+      "/analects/zi-lu/zi-lu-004",
+      "/analects/zi-lu/zi-lu-019",
+    ],
+    cover: notesBlogImage(
+      "fan-chi-in-the-analects",
+      "cover.jpg",
+      "An empty carriage seat on an open road at dawn — a question waiting beside the reins",
+      "黎明空路上的空车座——缰绳旁还停着一问",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "fan-chi-in-the-analects",
+        "inline-1.jpg",
+        "Two quiet doorways side by side — duties toward people, and the work of knowing people",
+        "两扇并立的静门——对百姓的本分，与知人这一门",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "fan-chi-in-the-analects",
+        "inline-2.jpg",
+        "A tilled field left behind while a clear civic path stays open ahead",
+        "身后是犁过的田，前头仍开着一条礼义的路",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "六问、一个索引条目",
+        headingEn: "Six questions on one index",
+        bodyZh: [
+          "索引顺序列出为政 2.5、雍也 6.20、颜渊 12.21、颜渊 12.22、子路 13.4、子路 13.19。卡片上的「Wei Zheng」「Yong Ye」一类标签只是地图，不是引用锚；你打开章页时，应使用活页短标题：为政、雍也、颜渊、子路。英文页 Legge 多印 Fan Ch'ih，13.4 又印 Fan Hsu 对应「樊须」。原文多数场面写樊迟，只有他出去之后，孔子才称樊须。人物页写在 fan-xu 路径下，说「樊须字子迟，通称樊迟」，并转述《史记》记樊须少孔子三十六岁。你应把年龄差当作出处转述，不要写成确定生年，也不要在《论语》与这一句之外另造履历。",
+        ],
+        bodyEn: [
+          "The index lists six doors: Wei Zheng 2.5, Yong Ye 6.20, Yan Yuan 12.21 and 12.22, Zi Lu 13.4 and 13.19. Card labels are maps, not citation anchors—cite the live short titles Wei Chang, Yung Yey, Yen Yuan, and Tsze-lu. Legge prints Fan Ch'ih, and in 13.4 also Fan Hsu for 樊须; Chinese lines use 樊迟 in most scenes and 樊须 once after he leaves. The people page under fan-xu says 樊须字子迟，通称樊迟, and attributes to the Shiji that Fan Xu was thirty-six years younger than Confucius. Treat that age line as attribution, not a firm birth year.",
+        ],
+      },
+      {
+        headingZh: "为政 2.5——驾车时追问「无违」",
+        headingEn: "Wei Chang 2.5: clarifying filial piety from the driver's seat",
+        bodyZh: [
+          "请你先打开[论语 · 为政 2.5](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-005)，因为索引把它排在第一，也因为你在这里遇见的是正在驾车的樊迟。原文是：孟懿子问孝，子曰，无违。樊迟御，子吿之曰，孟孙问孝于我，我对曰，无违。樊迟曰，何谓也，子曰，生事之以礼，死葬之以礼，祭之以礼。同页白话导读说：孟懿子问什么是孝。孔子说：不要违背礼。后来樊迟为孔子驾车，孔子告诉他说：孟孙问我孝，我回答说不要违背礼。樊迟问这是什么意思。孔子说：父母活着时，要按礼侍奉；父母去世后，要按礼安葬，按礼祭祀。",
+          "同页 Legge 1893 年英译写道：Mang I asked what filial piety was. The Master said, \"It is not being disobedient.\" Soon after, as Fan Ch'ih was driving him, the Master told him, saying, \"Mang-sun asked me what filial piety was, and I answered him,—'not being disobedient.'\" Fan Ch'ih said, \"What did you mean?\" The Master replied, \"That parents, when alive, be served according to propriety; that, when dead, they should be buried according to propriety; and that they should be sacrificed to according to propriety.\" 请你留意先后：先是给孟懿子的短答，接着是樊迟驾车，然后才是他追问后的澄清。你对孔子为何要向驾车者复述那句答语的体会，应写成自己的启发并标明，不要写进原文。活页作「吿」，你引用时也保留这个字形。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Wei Chang 2.5](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-005) first, because the index puts it first and because you meet Fan Chi mid-scene. The source line is 孟懿子问孝，子曰，无违。樊迟御，子吿之曰，孟孙问孝于我，我对曰，无违。樊迟曰，何谓也，子曰，生事之以礼，死葬之以礼，祭之以礼。 The modern Chinese guide on that page says: 孟懿子问什么是孝。孔子说：不要违背礼。后来樊迟为孔子驾车，孔子告诉他说：孟孙问我孝，我回答说不要违背礼。樊迟问这是什么意思。孔子说：父母活着时，要按礼侍奉；父母去世后，要按礼安葬，按礼祭祀。",
+          "Legge's 1893 English on the same page reads: Soon after, as Fan Ch'ih was driving him, the Master told him, saying, \"Mang-sun asked me what filial piety was, and I answered him,—'not being disobedient.'\" Fan Ch'ih said, \"What did you mean?\" The Master replied, \"That parents, when alive, be served according to propriety; that, when dead, they should be buried according to propriety; and that they should be sacrificed to according to propriety.\" Notice the order: a short answer to Mang I, then Fan Chi driving, then the clarification he asks for. Your reflection on that retelling belongs in your own layer, marked as yours. Keep 吿 as the live page prints it.",
+        ],
+      },
+      {
+        headingZh: "雍也 6.20——一问知、一问仁",
+        headingEn: "Yung Yey 6.20: wisdom and ren in one exchange",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "[论语 · 雍也 6.20](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-020)把两问收在同一段短对话里。原文是：樊迟问知。子曰，务民之义，敬鬼神而远之，可谓知矣。问仁。曰，仁者先难而后获，可谓仁矣。导读说：樊迟问怎样才算聪明智慧。孔子说：专心去做对百姓合宜有益的事，敬奉鬼神而又远离它，这就可以算是聪明智慧了。樊迟又问怎样才算仁。孔子说：有仁德的人，凡事先付出艰苦的努力，然后才收获成果，这就可以算是仁了。Legge 写道：Fan Ch'ih asked what constituted wisdom. The Master said, \"To give one's self earnestly to the duties due to men, and, while respecting spiritual beings, to keep aloof from them, may be called wisdom.\" He asked about perfect virtue. The Master said, \"The man of virtue makes the difficulty to be overcome his first business, and success only a subsequent consideration;—this may be called perfect virtue.\" 你应把知与仁读成同一页上的两答，不要改写成现代效率口号。引用时请说明用的是原文、导读还是 Legge。",
+        ],
+        bodyEn: [
+          "[The Analects · Yung Yey 6.20](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-020) keeps two questions in one short exchange. The source is 樊迟问知。子曰，务民之义，敬鬼神而远之，可谓知矣。问仁。曰，仁者先难而后获，可谓仁矣。 The guide says: 樊迟问怎样才算聪明智慧。孔子说：专心去做对百姓合宜有益的事，敬奉鬼神而又远离它，这就可以算是聪明智慧了。樊迟又问怎样才算仁。孔子说：有仁德的人，凡事先付出艰苦的努力，然后才收获成果，这就可以算是仁了。 Legge writes: Fan Ch'ih asked what constituted wisdom. The Master said, \"To give one's self earnestly to the duties due to men, and, while respecting spiritual beings, to keep aloof from them, may be called wisdom.\" He asked about perfect virtue. The Master said, \"The man of virtue makes the difficulty to be overcome his first business, and success only a subsequent consideration;—this may be called perfect virtue.\" Hold the two answers on one page; when you cite them, say whether you used the source, the guide, or Legge.",
+        ],
+      },
+      {
+        headingZh: "颜渊 12.21–12.22——修慝辨惑，再到爱人、知人",
+        headingEn: "Yen Yuan 12.21–12.22: moral repair, then loving and knowing people",
+        bodyZh: [
+          "在舞雩之下，[论语 · 颜渊 12.21](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-021)让你听见三个动词收在一问里。原文起首是：樊迟从游于舞雩之下。曰，敢问崇德，修慝，辨惑。子曰，善哉问。先事后得，非崇德与，攻其恶，无攻人之恶，非修慝与，一朝之忿，忘其身以及其亲，非惑与。导读开头发说：樊迟陪着孔子在舞雩台下游览。他说：请问怎样提高道德、消除内心的邪恶、辨别迷惑？孔子说：问得好啊！你可把这一章当作较轻的一门，关于自我修治，再转入下一章更密的一问。",
+          "[论语 · 颜渊 12.22](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-022)起首是：樊迟问仁。子曰，爱人。问知。子曰，知人。樊迟未达。子曰，擧直错诸枉，能使枉者直。导读开头发说：樊迟请教什么是仁。孔子说：爱人。又问什么是智。孔子说：了解人。樊迟没有领会。Legge 开头发说：Fan Ch'ih asked about benevolence. The Master said, \"It is to love all men.\" He asked about knowledge. The Master said, \"It is to know all men.\" 樊迟尚未领会，孔子遂补「擧直错诸枉，能使枉者直」，樊迟退而见子夏（Legge 作 Tsze-hsia）。活页作「擧」，你引用时也保留。引「爱人」「知人」时，请停在樊迟的场面里，不要把本篇写成另一篇论仁专文。",
+        ],
+        bodyEn: [
+          "Under the rain altars, [The Analects · Yen Yuan 12.21](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-021) gives you three verbs in one ask. The source opens 樊迟从游于舞雩之下。曰，敢问崇德，修慝，辨惑。子曰，善哉问。先事后得，非崇德与，攻其恶，无攻人之恶，非修慝与，一朝之忿，忘其身以及其亲，非惑与。 The guide's opening says: 樊迟陪着孔子在舞雩台下游览。他说：请问怎样提高道德、消除内心的邪恶、辨别迷惑？孔子说：问得好啊！ Read that as a lighter door about repair of the self, then move to the denser Yen Yuan scene.",
+          "[The Analects · Yen Yuan 12.22](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-022) begins 樊迟问仁。子曰，爱人。问知。子曰，知人。樊迟未达。子曰，擧直错诸枉，能使枉者直。 The guide's opening says: 樊迟请教什么是仁。孔子说：爱人。又问什么是智。孔子说：了解人。樊迟没有领会。 Legge's opening reads: Fan Ch'ih asked about benevolence. The Master said, \"It is to love all men.\" He asked about knowledge. The Master said, \"It is to know all men.\" Fan Chi does not yet understand, so Confucius adds 擧直错诸枉，能使枉者直, and Fan Chi takes the line to Zi Xia (子夏; Legge Tsze-hsia). Keep 擧 as the live page prints it. Stay inside Fan Chi's scenes when you quote 爱人 and 知人; do not turn this Note into a separate ren essay.",
+        ],
+      },
+      {
+        headingZh: "子路 13.4——请学稼（六门之一，不是主脊）",
+        headingEn: "Tsze-lu 13.4: the request to learn farming",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 子路 13.4](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-004)是六门之一，不是本篇标题的主脊。原文起首是：樊迟请学稼。子曰，吾不如老农。请学为圃。曰，吾不如老圃。樊迟出。子曰，小人哉，樊须也。导读说：樊迟请求学种庄稼。孔子说：我不如老农。樊迟又请求学种菜。孔子说：我不如老菜农。樊迟出去后，孔子说：樊须真是个器量狭小的人啊！Legge 开头发说：Fan Ch'ih requested to be taught husbandry. The Master said, \"I am not so good for that as an old husbandman.\" He requested also to be taught gardening, and was answered, \"I am not so good for that as an old gardener.\" Fan Ch'ih having gone out, the Master said, \"A small man, indeed, is Fan Hsu! 樊迟出去后，孔子转向礼、义、信，说百姓会襁负其子而来。你不要把这一页改写成农事专论，也不要把那句批评扩成一份完整人物鉴定书。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze-lu 13.4](https://www.lunyu.ai/en/analects/zi-lu/zi-lu-004) is one door among the six, not the title spine of this Note. The source opens 樊迟请学稼。子曰，吾不如老农。请学为圃。曰，吾不如老圃。樊迟出。子曰，小人哉，樊须也。 The guide says: 樊迟请求学种庄稼。孔子说：我不如老农。樊迟又请求学种菜。孔子说：我不如老菜农。樊迟出去后，孔子说：樊须真是个器量狭小的人啊！ Legge's opening reads: Fan Ch'ih requested to be taught husbandry. The Master said, \"I am not so good for that as an old husbandman.\" He requested also to be taught gardening, and was answered, \"I am not so good for that as an old gardener.\" Fan Ch'ih having gone out, the Master said, \"A small man, indeed, is Fan Hsu! After Fan Chi leaves, Confucius turns to ritual, righteousness, and good faith as what draws people. You should not rewrite this page as a farming essay.",
+        ],
+      },
+      {
+        headingZh: "子路 13.19——可随身携带的仁",
+        headingEn: "Tsze-lu 13.19: ren you can carry anywhere",
+        bodyZh: [
+          "[论语 · 子路 13.19](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-019)在本篇里是六门中较轻的一门，却仍见同一发问习惯。原文是：樊迟问仁。子曰，居处恭，执事敬，与人忠，虽之夷狄，不可弃也。导读说：樊迟问怎样才是仁。孔子说：平日居家态度恭敬，办理事务严肃认真，待人忠诚。即使到了没有教化的偏远地方，这些也是不能丢弃的。Legge 写道：Fan Ch'ih asked about perfect virtue. The Master said, \"It is, in retirement, to be sedately grave; in the management of business, to be reverently attentive; in intercourse with others, to be strictly sincere. Though a man go among rude, uncultivated tribes, these qualities may not be neglected.\" 你应把它读成可随身携带的实践，而不是活页之外另造的旅行忠告。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze-lu 13.19](https://www.lunyu.ai/en/analects/zi-lu/zi-lu-019) is the lightest of the six for this Note, yet it still shows the same habit of asking. The source is 樊迟问仁。子曰，居处恭，执事敬，与人忠，虽之夷狄，不可弃也。 The guide says: 樊迟问怎样才是仁。孔子说：平日居家态度恭敬，办理事务严肃认真，待人忠诚。即使到了没有教化的偏远地方，这些也是不能丢弃的。 Legge writes: Fan Ch'ih asked about perfect virtue. The Master said, \"It is, in retirement, to be sedately grave; in the management of business, to be reverently attentive; in intercourse with others, to be strictly sincere. Though a man go among rude, uncultivated tribes, these qualities may not be neglected.\" Hold it as practice you can carry.",
+        ],
+      },
+      {
+        headingZh: "六章合起来说了什么，又没说什么",
+        headingEn: "What the six add up to, and what they leave out",
+        bodyZh: [
+          "合读六章，你看到的是一个不肯放过短答的学生：他在驾车时追问「无违」，把知与仁成对来问，问怎样崇德与辨惑，追问爱人、知人直到子夏来解，请求学稼却听到拒绝，最后又听见仁被说成恭、敬、忠，走到哪里都不能丢。官职、确定生年、战事叙事，这六章都没有写，你就应留空，不要借别处补齐。子路另有人物笔记，仁也另有札记；这一篇只写发问的那个人。引用上面任何一句时，请你标明篇章网址，并说明用的是原文、白话导读还是 Legge。每一页都把这几层和本地启发框分开放，你的引用也应分开。",
+        ],
+        bodyEn: [
+          "Read together, the pages show you a student who will not leave a short answer alone: he clarifies 无违 while holding the reins, pairs wisdom with ren, asks how to repair the heart, presses 爱人 and 知人 until Zi Xia helps, requests farming skill and hears a refusal, and hears ren named as conduct that travels with you. Offices, a firm birth year, and a battle narrative are not what these six print, so you should leave them out. Zi Lu has his own Who Note; this page stays with the asker. When you quote any line above, name the passage URL and say whether you used the source, the modern Chinese guide, or Legge.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的樊迟是谁？",
+        questionEn: "Who was Fan Chi in the Analects?",
+        answerZh: "你在本站见到的樊迟（亦称樊须；Legge 作 Fan Ch'ih、Fan Hsu），出现在人物索引归并的六章里。为政 2.5 里他驾车追问孝；雍也 6.20、颜渊 12.22、子路 13.19 里他问知与仁；颜渊 12.21 里他在舞雩下问崇德修慝辨惑；子路 13.4 里他请学稼。你在这里能核对到的记载，就是这些。",
+        answerEn: "You meet Fan Chi (樊迟; also 樊须; Legge Fan Ch'ih and Fan Hsu) as the disciple the index groups under six related passages. He clarifies filial piety while driving in Wei Chang 2.5, asks about wisdom and ren in Yung Yey 6.20 and again in Yen Yuan 12.22 and Tsze-lu 13.19, asks how to exalt virtue under the rain altars in 12.21, and requests farming lessons in Tsze-lu 13.4. That is the record you can verify here.",
+      },
+      {
+        questionZh: "他为什么一再问仁、问知？",
+        questionEn: "Why does Fan Chi keep asking about ren and knowledge?",
+        answerZh: "你在活页上就能看见这个习惯。6.20 先问知再问仁；12.22 先问仁再问知，却仍未达；13.19 又问仁。问题始终贴着实践：对百姓的本分、爱人、知人、以及可随身携带的立身。你不要把它们压成一句口号，也不要替原文补一份它没有写的心理分析。",
+        answerEn: "You see the habit on the pages themselves. In 6.20 he asks 知 then 仁; in 12.22 he asks 仁 then 知 and still does not yet understand; in 13.19 he asks 仁 once more. The questions stay practical: duties to people, loving people, knowing people, and conduct you can carry. You should not collapse them into one slogan, and you should not invent a psychology the passages do not print.",
+      },
+      {
+        questionZh: "12.22 里的「爱人」「知人」是什么意思？",
+        questionEn: "What does 爱人 and 知人 mean in 12.22?",
+        answerZh: "你可以照导读开头发来读：仁是爱人，智是了解人。Legge 译作 to love all men 与 to know all men。樊迟尚未领会，孔子遂补「擧直错诸枉，能使枉者直」，樊迟又拿去问子夏。请你把场面留在这一章里，不要把它扩写成另一篇论仁专文，也不要脱离樊迟的问答去另写概念史。",
+        answerEn: "You can rely on the guide's opening: ren is to love people, and knowledge is to understand people. Legge renders them \"to love all men\" and \"to know all men.\" Fan Chi has not yet grasped the answers, so Confucius adds the line about employing the upright and setting aside the crooked, and Fan Chi takes that line to Zi Xia. Keep the scene inside this passage; do not turn it into a separate ren treatise.",
+      },
+      {
+        questionZh: "13.4 里孔子为什么不肯教他学稼？",
+        questionEn: "Why did Confucius refuse to teach him farming in 13.4?",
+        answerZh: "你在活页上找到的是拒绝，不是现代职业讲座。樊迟请学稼、学圃；孔子说自己不如老农、老圃；等他出去，孔子称他樊须、说「小人哉」，再转向礼、义、信。你可以留意这个先后，也可以把自己的体会标成启发，但不应把农事写成樊迟是谁的主脊。",
+        answerEn: "You will find the refusal on the page, not a modern career lecture. Fan Chi asks to learn husbandry and gardening; Confucius says he is not as good as an old husbandman or an old gardener; after Fan Chi goes out, Confucius calls him Fan Hsu and a small man, then turns to ritual, righteousness, and good faith. You may notice that sequence and think about it, but you should not make agriculture the spine of who Fan Chi is.",
+      },
+      {
+        questionZh: "樊迟、Fan Ch'ih、樊须是同一个人吗？",
+        questionEn: "Are Fan Chi, Fan Ch'ih, 樊迟, and 樊须 the same person?",
+        answerZh: "你看到的是同一个索引条目。英文索引作 Fan Chi；Legge 多数场面印 Fan Ch'ih，13.4 印 Fan Hsu 对应樊须。原文多数写樊迟，13.4 在他出去后写樊须。人物页补「字子迟」，路径作 fan-xu。这些写法都指向同一个发问者，你不该把它们拆成几位不同的弟子。",
+        answerEn: "You are looking at one index entry. The site's English index uses Fan Chi; Legge prints Fan Ch'ih in most scenes and Fan Hsu in 13.4 for 樊须. The Chinese passages mostly say 樊迟, and 13.4 uses 樊须 when Confucius speaks after he has left. The people page adds 字子迟 under the slug fan-xu. These are labels for one asker, so you should not split them into separate disciples.",
+      },
+      {
+        questionZh: "为政 2.5 驾车那一幕发生了什么？",
+        questionEn: "What happens in the driving scene in Wei Chang 2.5?",
+        answerZh: "你听见孟懿子问孝，得到「无违」。后来樊迟驾车，孔子复述那句答语，樊迟追问什么意思。澄清是：生事之以礼，死葬之以礼，祭之以礼。你的下一步是打开为政活页，而不是用更顺的摘要删掉驾车框架，或替孔子补一个原章没有写的动机。",
+        answerEn: "You hear Mang I ask about filial piety and receive 无违. Later Fan Chi is driving, Confucius retells that answer, and Fan Chi asks what it means. The clarification is ritual service in life, burial, and sacrifice. Your next step is the live Wei Chang page, not a smoother paraphrase that drops the driving frame or invents a motive for the retelling.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来打开樊迟索引",
+        headingEn: "Open the Fan Chi index next",
+        bodyZh: [
+          "当你想把六章放在同一屏上读，请打开[樊迟](https://www.lunyu.ai/zh-Hans/index/fan-chi)，按索引列出的顺序读下去，从为政 2.5 开始。你问问自己：离开页面前，你会先追问哪一问？然后停住，让原文、导读与英译各守一层，而不是让你的摘要替它们说话。",
+        ],
+        bodyEn: [
+          "When you want all six passages on one screen, open [Fan Chi](https://www.lunyu.ai/en/index/fan-chi) and read them in the order the index lists them, beginning with Wei Chang 2.5. Ask yourself which question you would have pressed first before you leave the page. Then stop, and let the source, the guide, and Legge each speak in its own layer rather than through your summary.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "nan-gong-kuo-in-the-analects",
     titleZh: "《论语》里的南宫适是谁？",
     titleEn: "Who Was Nan Gong Kuo in the Analects?",
