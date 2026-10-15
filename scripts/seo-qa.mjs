@@ -832,10 +832,12 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Fan Chi in the Analects?",
   "Who Was Nan Gong Kuo in the Analects?",
   "Governing by Virtue in the Analects: What Confucius Meant by 政",
   "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-15",
   "2026-10-14",
   "2026-10-08",
   "2026-10-04",
@@ -845,10 +847,12 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的樊迟是谁？",
   "《论语》里的南宫适是谁？",
   "《论语》里的为政以德：孔子说的「政」是什么",
   "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-15",
   "2026-10-14",
   "2026-10-08",
   "2026-10-04",
@@ -1871,6 +1875,264 @@ checkHtml("/zh-Hans/blogs/duke-ling-of-wei-in-the-analects", [
     }
     if (countRegex(enDukeLingHtml, />The Analects · Hsien Wan 14\.20<\/a>/g) !== 1) {
       fail("/en/blogs/duke-ling-of-wei-in-the-analects: Hsien Wan 14.20 body link should appear once");
+    }
+  }
+}
+
+const fanChiCover = "/images/blogs/fan-chi-in-the-analects/cover.jpg";
+const fanChiInline1 = "/images/blogs/fan-chi-in-the-analects/inline-1.jpg";
+const fanChiInline2 = "/images/blogs/fan-chi-in-the-analects/inline-2.jpg";
+const fanChiCoverEn =
+  "An empty carriage seat on an open road at dawn — a question waiting beside the reins";
+const fanChiCoverZh = "黎明空路上的空车座——缰绳旁还停着一问";
+const fanChiInline1En =
+  "Two quiet doorways side by side — duties toward people, and the work of knowing people";
+const fanChiInline1Zh = "两扇并立的静门——对百姓的本分，与知人这一门";
+const fanChiInline2En =
+  "A tilled field left behind while a clear civic path stays open ahead";
+const fanChiInline2Zh = "身后是犁过的田，前头仍开着一条礼义的路";
+const fanChiAnchors = [
+  ["论语 · 为政 2.5", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-005"],
+  ["The Analects · Wei Chang 2.5", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-005"],
+  ["论语 · 雍也 6.20", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-020"],
+  ["The Analects · Yung Yey 6.20", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-020"],
+  ["论语 · 颜渊 12.21", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-021"],
+  ["论语 · 颜渊 12.22", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-022"],
+  ["The Analects · Yen Yuan 12.21", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-021"],
+  ["The Analects · Yen Yuan 12.22", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-022"],
+  ["论语 · 子路 13.4", "https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-004"],
+  ["The Analects · Tsze-lu 13.4", "https://www.lunyu.ai/en/analects/zi-lu/zi-lu-004"],
+  ["论语 · 子路 13.19", "https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-019"],
+  ["The Analects · Tsze-lu 13.19", "https://www.lunyu.ai/en/analects/zi-lu/zi-lu-019"],
+  ["樊迟", "https://www.lunyu.ai/zh-Hans/index/fan-chi"],
+  ["Fan Chi", "https://www.lunyu.ai/en/index/fan-chi"],
+];
+{
+  const start = postSource.indexOf('slug: "fan-chi-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing fan-chi-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = fanChiAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `fan-chi-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    fanChiAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`fan-chi-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `fan-chi-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/nan-gong-kuo-in-the-analects",
+      "/blogs/governing-by-virtue-in-the-analects",
+      "/people/fan-xu",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`fan-chi-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (block.includes("pending Gemini")) {
+      fail("fan-chi-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+  }
+}
+for (const src of [fanChiCover, fanChiInline1, fanChiInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/fan-chi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/fan-chi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-15"',
+  '"dateModified":"2026-10-15"',
+  "Who Was Fan Chi in the Analects?",
+  "Fan Chi in the Analects: six questions, one index entry—2.5 on filial piety, 6.20 and 12.22 on wisdom and ren, and 13.19 on conduct you can carry.",
+  "the disciple who keeps asking",
+  "Six questions on one index",
+  "Wei Chang 2.5: clarifying filial piety from the driver's seat",
+  "Yung Yey 6.20: wisdom and ren in one exchange",
+  "Yen Yuan 12.21–12.22: moral repair, then loving and knowing people",
+  "Tsze-lu 13.4: the request to learn farming",
+  "not the title spine of this Note",
+  "Tsze-lu 13.19: ren you can carry anywhere",
+  "What the six add up to, and what they leave out",
+  "Open the Fan Chi index next",
+  "Who was Fan Chi in the Analects?",
+  "you should not make agriculture the spine of who Fan Chi is",
+  ">The Analects · Wei Chang 2.5</a>",
+  ">The Analects · Yung Yey 6.20</a>",
+  ">The Analects · Yen Yuan 12.21</a>",
+  ">The Analects · Yen Yuan 12.22</a>",
+  ">The Analects · Tsze-lu 13.4</a>",
+  ">The Analects · Tsze-lu 13.19</a>",
+  ">Fan Chi</a>",
+  'href="/en/analects/wei-zheng/wei-zheng-005"',
+  'href="/en/analects/yong-ye/yong-ye-020"',
+  'href="/en/analects/yan-yuan/yan-yuan-021"',
+  'href="/en/analects/yan-yuan/yan-yuan-022"',
+  'href="/en/analects/zi-lu/zi-lu-004"',
+  'href="/en/analects/zi-lu/zi-lu-019"',
+  'href="/en/index/fan-chi"',
+  fanChiCover,
+  fanChiInline1,
+  fanChiInline2,
+  fanChiCoverEn,
+  fanChiInline1En,
+  fanChiInline2En,
+  `property="og:image" content="${siteUrl}${fanChiCover}"`,
+  `property="og:image:alt" content="${fanChiCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${fanChiCover}"`,
+  `name="twitter:image:alt" content="${fanChiCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/fan-chi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-15"',
+  '"dateModified":"2026-10-15"',
+  "《论语》里的樊迟是谁？",
+  "《论语》里的樊迟：六问、一个索引条目。驾车追问孝，一再问知与仁，问怎样崇德修慝辨惑，并听见可随身携带的仁。链回可核对的原文。",
+  "你搜「樊迟」，多半想先知道他是谁",
+  "六问、一个索引条目",
+  "为政 2.5——驾车时追问「无违」",
+  "雍也 6.20——一问知、一问仁",
+  "颜渊 12.21–12.22——修慝辨惑，再到爱人、知人",
+  "子路 13.4——请学稼（六门之一，不是主脊）",
+  "子路 13.19——可随身携带的仁",
+  "六章合起来说了什么，又没说什么",
+  "接下来打开樊迟索引",
+  "但不应把农事写成樊迟是谁的主脊",
+  ">论语 · 为政 2.5</a>",
+  ">论语 · 雍也 6.20</a>",
+  ">论语 · 颜渊 12.21</a>",
+  ">论语 · 颜渊 12.22</a>",
+  ">论语 · 子路 13.4</a>",
+  ">论语 · 子路 13.19</a>",
+  ">樊迟</a>",
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-005"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-020"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-021"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-022"',
+  'href="/zh-Hans/analects/zi-lu/zi-lu-004"',
+  'href="/zh-Hans/analects/zi-lu/zi-lu-019"',
+  'href="/zh-Hans/index/fan-chi"',
+  fanChiCover,
+  fanChiInline1,
+  fanChiInline2,
+  fanChiCoverZh,
+  fanChiInline1Zh,
+  fanChiInline2Zh,
+  `property="og:image" content="${siteUrl}${fanChiCover}"`,
+  `property="og:image:alt" content="${fanChiCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${fanChiCover}"`,
+  `name="twitter:image:alt" content="${fanChiCoverZh}"`,
+]);
+{
+  const zhFanChiFile = htmlPath("/zh-Hans/blogs/fan-chi-in-the-analects");
+  if (exists(zhFanChiFile)) {
+    const zhFanChiHtml = read(zhFanChiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhFanChiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/fan-chi-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhFanChiHtml.includes(fanChiCoverEn)) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhFanChiHtml.includes(fanChiInline1En) || zhFanChiHtml.includes(fanChiInline2En)) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhFanChiHtml, />Fan Chi<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: English Fan Chi body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhFanChiHtml, />樊迟<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 樊迟 body link should appear once");
+    }
+    if (countRegex(zhFanChiHtml, />论语 · 为政 2\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 为政 2.5 body link should appear once");
+    }
+    if (countRegex(zhFanChiHtml, />论语 · 雍也 6\.20<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 雍也 6.20 body link should appear once");
+    }
+    if (countRegex(zhFanChiHtml, />论语 · 颜渊 12\.21<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 颜渊 12.21 body link should appear once");
+    }
+    if (countRegex(zhFanChiHtml, />论语 · 颜渊 12\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 颜渊 12.22 body link should appear once");
+    }
+    if (countRegex(zhFanChiHtml, />论语 · 子路 13\.4<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 子路 13.4 body link should appear once");
+    }
+    if (countRegex(zhFanChiHtml, />论语 · 子路 13\.19<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/fan-chi-in-the-analects: 子路 13.19 body link should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/nan-gong-kuo-in-the-analects",
+      "/blogs/governing-by-virtue-in-the-analects",
+      "/people/fan-xu",
+    ]) {
+      if (zhFanChiHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enFanChiFile = htmlPath("/en/blogs/fan-chi-in-the-analects");
+  if (exists(enFanChiFile)) {
+    const enFanChiHtml = read(enFanChiFile);
+    if (enFanChiHtml.includes(fanChiCoverZh)) {
+      fail("/en/blogs/fan-chi-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enFanChiHtml.includes(fanChiInline1Zh) || enFanChiHtml.includes(fanChiInline2Zh)) {
+      fail("/en/blogs/fan-chi-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enFanChiHtml, />Fan Chi<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Fan Chi body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />The Analects · Wei Chang 2\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Wei Chang 2.5 body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />The Analects · Yung Yey 6\.20<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Yung Yey 6.20 body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />The Analects · Yen Yuan 12\.21<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Yen Yuan 12.21 body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />The Analects · Yen Yuan 12\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Yen Yuan 12.22 body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />The Analects · Tsze-lu 13\.4<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Tsze-lu 13.4 body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />The Analects · Tsze-lu 13\.19<\/a>/g) !== 1) {
+      fail("/en/blogs/fan-chi-in-the-analects: Tsze-lu 13.19 body link should appear once");
+    }
+    if (countRegex(enFanChiHtml, />樊迟<\/a>/g) !== 0) {
+      fail("/en/blogs/fan-chi-in-the-analects: Chinese 樊迟 body link should not appear on en");
+    }
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/nan-gong-kuo-in-the-analects",
+      "/blogs/governing-by-virtue-in-the-analects",
+      "/people/fan-xu",
+    ]) {
+      if (enFanChiHtml.includes(forbidden)) {
+        fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
     }
   }
 }
@@ -4146,6 +4408,16 @@ for (const locale of locales) {
     `/${locale}/analects/xian-jin/xian-jin-005`,
     `/${locale}/analects/gong-ye-chang/gong-ye-chang-001`,
   ]);
+  checkHtml(`/${locale}/index/fan-chi`, [
+    locale === "en" ? "Fan Chi" : "樊迟",
+    `href="/${locale}/blogs/fan-chi-in-the-analects"`,
+    `/${locale}/analects/wei-zheng/wei-zheng-005`,
+    `/${locale}/analects/yong-ye/yong-ye-020`,
+    `/${locale}/analects/yan-yuan/yan-yuan-021`,
+    `/${locale}/analects/yan-yuan/yan-yuan-022`,
+    `/${locale}/analects/zi-lu/zi-lu-004`,
+    `/${locale}/analects/zi-lu/zi-lu-019`,
+  ]);
   checkHtml(`/${locale}/index/zheng`, [
     locale === "en" ? "Government" : "政",
     `href="/${locale}/blogs/governing-by-virtue-in-the-analects"`,
@@ -4286,6 +4558,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/fan-chi-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/fan-chi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/nan-gong-kuo-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/nan-gong-kuo-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/governing-by-virtue-in-the-analects`, "sitemap");
@@ -4333,8 +4607,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-14")) {
+    if (!lastmod.includes("2026-10-15")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const fanChiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/fan-chi-in-the-analects`);
+    if (!fanChiLastmod.includes("2026-10-15")) {
+      fail(
+        `sitemap: /${locale}/blogs/fan-chi-in-the-analects lastmod should be 2026-10-15, got ${fanChiLastmod || "missing"}`
+      );
     }
     const nanGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/nan-gong-kuo-in-the-analects`);
     if (!nanGongLastmod.includes("2026-10-14")) {
@@ -4417,7 +4697,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "14 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "15 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -4437,6 +4717,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const fanChiEditorialLastmod = "2026-10-15";
 const nanGongEditorialLastmod = "2026-10-14";
 const governingEditorialLastmod = "2026-10-08";
 const ziLuEditorialLastmod = "2026-10-04";
@@ -4456,6 +4737,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${fanChiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${nanGongEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${governingEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziLuEditorialLastmod}T00:00:00.000Z`, "")
