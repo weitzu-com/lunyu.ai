@@ -202,7 +202,7 @@ export const editorialPosts: EditorialPost[] = [
         ],
         bodyEn: [
           "[The Analects · Hsien Tsin 11.22](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-022) is short: 子畏于匡，颜渊后，子曰，吾以女为死矣。曰，子在，回何敢死。 Legge: \"I thought you had died.\" Hui replied, \"While you were alive, how should I presume to die?\" You hear him answer fear with a sentence about staying alive for his teacher; you should not add a motive the page does not print.",
-          "[The Analects · Wei Ling Kung 15.10](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010) opens 颜渊问为邦。 Legge: \"Yen Yuan asked how the government of a country should be administered.\" Only the question is his; the calendar, carriage, cap and music in the reply are Confucius'. The live English panel currently shows only the start of the answer (\"Follow the seasons of Hsia.\"), so you should quote the source or guide for the rest.",
+          "[The Analects · Wei Ling Kung 15.10](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010) opens 颜渊问为邦。 Legge: \"Yen Yuan asked how the government of a country should be administered.\" Only the question is his; the calendar, carriage, cap, music and songs in the reply are Confucius'. Read the full Legge answer on the live passage page.",
         ],
       },
       {
@@ -367,7 +367,7 @@ export const editorialPosts: EditorialPost[] = [
         headingEn: "Yen Yuan 12.21–12.22: moral repair, then loving and knowing people",
         bodyZh: [
           "在舞雩之下，[论语 · 颜渊 12.21](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-021)让你听见三个动词收在一问里。原文起首是：樊迟从游于舞雩之下。曰，敢问崇德，修慝，辨惑。子曰，善哉问。先事后得，非崇德与，攻其恶，无攻人之恶，非修慝与，一朝之忿，忘其身以及其亲，非惑与。导读开头发说：樊迟陪着孔子在舞雩台下游览。他说：请问怎样提高道德、消除内心的邪恶、辨别迷惑？孔子说：问得好啊！你可把这一章当作较轻的一门，关于自我修治，再转入下一章更密的一问。",
-          "[论语 · 颜渊 12.22](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-022)起首是：樊迟问仁。子曰，爱人。问知。子曰，知人。樊迟未达。子曰，擧直错诸枉，能使枉者直。导读开头发说：樊迟请教什么是仁。孔子说：爱人。又问什么是智。孔子说：了解人。樊迟没有领会。Legge 开头发说：Fan Ch'ih asked about benevolence. The Master said, \"It is to love all men.\" He asked about knowledge. The Master said, \"It is to know all men.\" 樊迟尚未领会，孔子遂补「擧直错诸枉，能使枉者直」，樊迟退而见子夏（Legge 作 Tsze-hsia）。活页作「擧」，你引用时也保留。引「爱人」「知人」时，请停在樊迟的场面里，不要把本篇写成另一篇论仁专文。",
+          "[论语 · 颜渊 12.22](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-022)起首是：樊迟问仁。子曰，爱人。问知。子曰，知人。樊迟未达。子曰，擧直错诸枉，能使枉者直。导读开头发说：樊迟请教什么是仁。孔子说：爱人。又问什么是智。孔子说：了解人。樊迟没有领会。Legge 开头说：Fan Ch'ih asked about benevolence. The Master said, \"It is to love all men.\" He asked about knowledge. The Master said, \"It is to know all men.\" 樊迟尚未领会，孔子遂补「擧直错诸枉，能使枉者直」，樊迟退而见子夏（Legge 作 Tsze-hsia）。活页作「擧」，你引用时也保留。引「爱人」「知人」时，请停在樊迟的场面里，不要把本篇写成另一篇论仁专文。",
         ],
         bodyEn: [
           "Under the rain altars, [The Analects · Yen Yuan 12.21](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-021) gives you three verbs in one ask. The source opens 樊迟从游于舞雩之下。曰，敢问崇德，修慝，辨惑。子曰，善哉问。先事后得，非崇德与，攻其恶，无攻人之恶，非修慝与，一朝之忿，忘其身以及其亲，非惑与。 The guide's opening says: 樊迟陪着孔子在舞雩台下游览。他说：请问怎样提高道德、消除内心的邪恶、辨别迷惑？孔子说：问得好啊！ Read that as a lighter door about repair of the self, then move to the denser Yen Yuan scene.",
@@ -379,7 +379,7 @@ export const editorialPosts: EditorialPost[] = [
         headingEn: "Tsze-lu 13.4: the request to learn farming",
         imageSlot: "inline-2",
         bodyZh: [
-          "[论语 · 子路 13.4](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-004)是六门之一，不是本篇标题的主脊。原文起首是：樊迟请学稼。子曰，吾不如老农。请学为圃。曰，吾不如老圃。樊迟出。子曰，小人哉，樊须也。导读说：樊迟请求学种庄稼。孔子说：我不如老农。樊迟又请求学种菜。孔子说：我不如老菜农。樊迟出去后，孔子说：樊须真是个器量狭小的人啊！Legge 开头发说：Fan Ch'ih requested to be taught husbandry. The Master said, \"I am not so good for that as an old husbandman.\" He requested also to be taught gardening, and was answered, \"I am not so good for that as an old gardener.\" Fan Ch'ih having gone out, the Master said, \"A small man, indeed, is Fan Hsu!\" 樊迟出去后，孔子转向礼、义、信，说百姓会襁负其子而来。你不要把这一页改写成农事专论，也不要把那句批评扩成一份完整人物鉴定书。",
+          "[论语 · 子路 13.4](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-004)是六门之一，不是本篇标题的主脊。原文起首是：樊迟请学稼。子曰，吾不如老农。请学为圃。曰，吾不如老圃。樊迟出。子曰，小人哉，樊须也。导读说：樊迟请求学种庄稼。孔子说：我不如老农。樊迟又请求学种菜。孔子说：我不如老菜农。樊迟出去后，孔子说：樊须真是个器量狭小的人啊！Legge 开头说：Fan Ch'ih requested to be taught husbandry. The Master said, \"I am not so good for that as an old husbandman.\" He requested also to be taught gardening, and was answered, \"I am not so good for that as an old gardener.\" Fan Ch'ih having gone out, the Master said, \"A small man, indeed, is Fan Hsu!\" 樊迟出去后，孔子转向礼、义、信，说百姓会襁负其子而来。你不要把这一页改写成农事专论，也不要把那句批评扩成一份完整人物鉴定书。",
         ],
         bodyEn: [
           "[The Analects · Tsze-lu 13.4](https://www.lunyu.ai/en/analects/zi-lu/zi-lu-004) is one door among the six, not the title spine of this Note. The source opens 樊迟请学稼。子曰，吾不如老农。请学为圃。曰，吾不如老圃。樊迟出。子曰，小人哉，樊须也。 The guide says: 樊迟请求学种庄稼。孔子说：我不如老农。樊迟又请求学种菜。孔子说：我不如老菜农。樊迟出去后，孔子说：樊须真是个器量狭小的人啊！ Legge's opening reads: Fan Ch'ih requested to be taught husbandry. The Master said, \"I am not so good for that as an old husbandman.\" He requested also to be taught gardening, and was answered, \"I am not so good for that as an old gardener.\" Fan Ch'ih having gone out, the Master said, \"A small man, indeed, is Fan Hsu!\" After Fan Chi leaves, Confucius turns to ritual, righteousness, and good faith as what draws people. You should not rewrite this page as a farming essay.",
