@@ -202,7 +202,7 @@ export const editorialPosts: EditorialPost[] = [
         ],
         bodyEn: [
           "[The Analects · Hsien Tsin 11.22](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-022) is short: 子畏于匡，颜渊后，子曰，吾以女为死矣。曰，子在，回何敢死。 Legge: \"I thought you had died.\" Hui replied, \"While you were alive, how should I presume to die?\" You hear him answer fear with a sentence about staying alive for his teacher; you should not add a motive the page does not print.",
-          "[The Analects · Wei Ling Kung 15.10](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010) opens 颜渊问为邦。 Legge: \"Yen Yuan asked how the government of a country should be administered.\" Only the question is his; the calendar, carriage, cap and music in the reply are Confucius'. The live English panel currently shows only the start of the answer (\"Follow the seasons of Hsia.\"), so you should quote the source or guide for the rest.",
+          "[The Analects · Wei Ling Kung 15.10](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010) opens 颜渊问为邦。 Legge: \"Yen Yuan asked how the government of a country should be administered.\" Only the question is his; the calendar, carriage, cap, music and songs in the reply are Confucius'. Read the full Legge answer on the live passage page.",
         ],
       },
       {
