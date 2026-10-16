@@ -832,11 +832,13 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Yan Yuan in the Analects?",
   "Who Was Fan Chi in the Analects?",
   "Who Was Nan Gong Kuo in the Analects?",
   "Governing by Virtue in the Analects: What Confucius Meant by 政",
   "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-16",
   "2026-10-15",
   "2026-10-14",
   "2026-10-08",
@@ -847,11 +849,13 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的颜渊是谁？",
   "《论语》里的樊迟是谁？",
   "《论语》里的南宫适是谁？",
   "《论语》里的为政以德：孔子说的「政」是什么",
   "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-16",
   "2026-10-15",
   "2026-10-14",
   "2026-10-08",
@@ -2132,6 +2136,289 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const yanYuanCover = "/images/blogs/yan-yuan-in-the-analects/cover.jpg";
+const yanYuanInline1 = "/images/blogs/yan-yuan-in-the-analects/inline-1.jpg";
+const yanYuanInline2 = "/images/blogs/yan-yuan-in-the-analects/inline-2.jpg";
+const yanYuanCoverEn =
+  "A narrow lane at dawn with a bamboo food basket and a gourd resting on a worn step";
+const yanYuanCoverZh = "黎明的窄巷里，一只竹食篮与一个瓢放在磨旧的石阶上";
+const yanYuanInline1En =
+  "A stone path climbing into morning mist, its high point always a little further ahead";
+const yanYuanInline1Zh = "石径向晨雾中攀升，高处总在前面再远一点";
+const yanYuanInline2En =
+  "A plain undyed cloth folded in a bare room, an ornate carriage left outside in shadow";
+const yanYuanInline2Zh = "素净的空室里叠着一块无纹的布，华饰的车停在门外阴影中";
+const yanYuanAnchors = [
+  ["论语 · 颜渊 12.1", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-001"],
+  ["The Analects · Yen Yuan 12.1", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-001"],
+  ["论语 · 子罕 9.10", "https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-010"],
+  ["The Analects · Tsze Han 9.10", "https://www.lunyu.ai/en/analects/zi-han/zi-han-010"],
+  ["论语 · 公冶长 5.25", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-025"],
+  ["The Analects · Kung-ye Ch'ang 5.25", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-025"],
+  ["论语 · 先进 11.22", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-022"],
+  ["论语 · 卫灵公 15.10", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-010"],
+  ["The Analects · Hsien Tsin 11.22", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-022"],
+  ["The Analects · Wei Ling Kung 15.10", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010"],
+  ["论语 · 为政 2.9", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-009"],
+  ["论语 · 雍也 6.2", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-002"],
+  ["The Analects · Wei Chang 2.9", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-009"],
+  ["The Analects · Yung Yey 6.2", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-002"],
+  ["论语 · 先进 11.10", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-010"],
+  ["The Analects · Hsien Tsin 11.10", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-010"],
+  ["颜渊", "https://www.lunyu.ai/zh-Hans/index/yan-yuan"],
+  ["Yan Yuan", "https://www.lunyu.ai/en/index/yan-yuan"],
+];
+{
+  const start = postSource.indexOf('slug: "yan-yuan-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing yan-yuan-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = yanYuanAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `yan-yuan-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    yanYuanAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`yan-yuan-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `yan-yuan-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/blogs/fan-chi-in-the-analects",
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/nan-gong-kuo-in-the-analects",
+      "/people/yan-hui",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`yan-yuan-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (block.includes("pending Gemini")) {
+      fail("yan-yuan-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+  }
+}
+for (const src of [yanYuanCover, yanYuanInline1, yanYuanInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/yan-yuan-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/yan-yuan-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-16"',
+  '"dateModified":"2026-10-16"',
+  "Who Was Yan Yuan in the Analects?",
+  "Yan Yuan in the Analects: five lines in his own voice—12.1's vow, 9.10's sigh, 5.25's wish, 11.22 at Kuang, and 15.10 on governing.",
+  "yet you rarely hear him talk",
+  "Five lines in his own voice",
+  "Yen Yuan 12.1: asking for the items, then a vow",
+  "Tsze Han 9.10: a sigh about a teaching that keeps moving",
+  "a wish stated as two refusals",
+  "one sentence at Kuang, one question on the state",
+  "How others describe him: Wei Chang 2.9 and Yung Yey 6.2",
+  "a funeral against the teacher",
+  "What his own words add up to, and what they leave out",
+  "Read the Yan Yuan index next",
+  "Who was Yan Yuan in the Analects?",
+  "I have not been able to treat him as my son.",
+  ">The Analects · Yen Yuan 12.1</a>",
+  ">The Analects · Tsze Han 9.10</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.25</a>",
+  ">The Analects · Hsien Tsin 11.22</a>",
+  ">The Analects · Wei Ling Kung 15.10</a>",
+  ">The Analects · Wei Chang 2.9</a>",
+  ">The Analects · Yung Yey 6.2</a>",
+  ">The Analects · Hsien Tsin 11.10</a>",
+  ">Yan Yuan</a>",
+  'href="/en/analects/yan-yuan/yan-yuan-001"',
+  'href="/en/analects/zi-han/zi-han-010"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-025"',
+  'href="/en/analects/xian-jin/xian-jin-022"',
+  'href="/en/analects/wei-ling-gong/wei-ling-gong-010"',
+  'href="/en/analects/wei-zheng/wei-zheng-009"',
+  'href="/en/analects/yong-ye/yong-ye-002"',
+  'href="/en/analects/xian-jin/xian-jin-010"',
+  'href="/en/index/yan-yuan"',
+  yanYuanCover,
+  yanYuanInline1,
+  yanYuanInline2,
+  yanYuanCoverEn,
+  yanYuanInline1En,
+  yanYuanInline2En,
+  `property="og:image" content="${siteUrl}${yanYuanCover}"`,
+  `property="og:image:alt" content="${yanYuanCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${yanYuanCover}"`,
+  `name="twitter:image:alt" content="${yanYuanCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/yan-yuan-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/yan-yuan-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-16"',
+  '"dateModified":"2026-10-16"',
+  "《论语》里的颜渊是谁？",
+  "《论语》里的颜渊：五处亲口的话、一个索引条目。12.1 应承，9.10 长叹，5.25 言志，11.22 在匡地答话，15.10 问为邦。链回可核对的原文。",
+  "你搜「颜渊」，多半读到的是孔子怎样称许他",
+  "他自己开口的五处",
+  "颜渊 12.1——先问条目，再应承",
+  "子罕 9.10——叹一个总在前面的道",
+  "公冶长 5.25——用两个「不」说出的志愿",
+  "先进 11.22 与卫灵公 15.10——匡地一句，问政一问",
+  "别人怎样描述他——为政 2.9 与雍也 6.2",
+  "先进 11.10——违背师命的厚葬",
+  "他自己的话合起来说了什么，又没说什么",
+  "接下来打开颜渊索引",
+  "「不迁怒，不贰过」是颜渊说的吗？",
+  ">论语 · 颜渊 12.1</a>",
+  ">论语 · 子罕 9.10</a>",
+  ">论语 · 公冶长 5.25</a>",
+  ">论语 · 先进 11.22</a>",
+  ">论语 · 卫灵公 15.10</a>",
+  ">论语 · 为政 2.9</a>",
+  ">论语 · 雍也 6.2</a>",
+  ">论语 · 先进 11.10</a>",
+  ">颜渊</a>",
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-001"',
+  'href="/zh-Hans/analects/zi-han/zi-han-010"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-025"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-022"',
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-010"',
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-009"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-002"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-010"',
+  'href="/zh-Hans/index/yan-yuan"',
+  yanYuanCover,
+  yanYuanInline1,
+  yanYuanInline2,
+  yanYuanCoverZh,
+  yanYuanInline1Zh,
+  yanYuanInline2Zh,
+  `property="og:image" content="${siteUrl}${yanYuanCover}"`,
+  `property="og:image:alt" content="${yanYuanCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${yanYuanCover}"`,
+  `name="twitter:image:alt" content="${yanYuanCoverZh}"`,
+]);
+{
+  const zhYanYuanFile = htmlPath("/zh-Hans/blogs/yan-yuan-in-the-analects");
+  if (exists(zhYanYuanFile)) {
+    const zhYanYuanHtml = read(zhYanYuanFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhYanYuanHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/yan-yuan-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhYanYuanHtml.includes(yanYuanCoverEn)) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhYanYuanHtml.includes(yanYuanInline1En) || zhYanYuanHtml.includes(yanYuanInline2En)) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhYanYuanHtml, />Yan Yuan<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: English Yan Yuan body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhYanYuanHtml, />颜渊<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 颜渊 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 颜渊 12\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 颜渊 12.1 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 子罕 9\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 子罕 9.10 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 公冶长 5\.25<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 公冶长 5.25 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 先进 11\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 先进 11.22 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 卫灵公 15\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 卫灵公 15.10 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 为政 2\.9<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 为政 2.9 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 雍也 6\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 雍也 6.2 body link should appear once");
+    }
+    if (countRegex(zhYanYuanHtml, />论语 · 先进 11\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/yan-yuan-in-the-analects: 先进 11.10 body link should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/fan-chi-in-the-analects",
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/nan-gong-kuo-in-the-analects",
+      "/people/yan-hui",
+    ]) {
+      if (zhYanYuanHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/yan-yuan-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enYanYuanFile = htmlPath("/en/blogs/yan-yuan-in-the-analects");
+  if (exists(enYanYuanFile)) {
+    const enYanYuanHtml = read(enYanYuanFile);
+    if (enYanYuanHtml.includes(yanYuanCoverZh)) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enYanYuanHtml.includes(yanYuanInline1Zh) || enYanYuanHtml.includes(yanYuanInline2Zh)) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enYanYuanHtml, />Yan Yuan<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Yan Yuan body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Yen Yuan 12\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Yen Yuan 12.1 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Tsze Han 9\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Tsze Han 9.10 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.25<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Kung-ye Ch'ang 5.25 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Hsien Tsin 11\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Hsien Tsin 11.22 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Wei Ling Kung 15\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Wei Ling Kung 15.10 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Wei Chang 2\.9<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Wei Chang 2.9 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Yung Yey 6\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Yung Yey 6.2 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />The Analects · Hsien Tsin 11\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Hsien Tsin 11.10 body link should appear once");
+    }
+    if (countRegex(enYanYuanHtml, />颜渊<\/a>/g) !== 0) {
+      fail("/en/blogs/yan-yuan-in-the-analects: Chinese 颜渊 body link should not appear on en");
+    }
+    for (const forbidden of [
+      "/blogs/fan-chi-in-the-analects",
+      "/blogs/zi-lu-in-the-analects",
+      "/blogs/nan-gong-kuo-in-the-analects",
+      "/people/yan-hui",
+    ]) {
+      if (enYanYuanHtml.includes(forbidden)) {
+        fail(`/en/blogs/yan-yuan-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -4418,6 +4705,18 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/yan-yuan`, [
+    locale === "en" ? "Yan Yuan" : "颜渊",
+    `href="/${locale}/blogs/yan-yuan-in-the-analects"`,
+    `/${locale}/analects/yan-yuan/yan-yuan-001`,
+    `/${locale}/analects/zi-han/zi-han-010`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-025`,
+    `/${locale}/analects/xian-jin/xian-jin-022`,
+    `/${locale}/analects/wei-ling-gong/wei-ling-gong-010`,
+    `/${locale}/analects/wei-zheng/wei-zheng-009`,
+    `/${locale}/analects/yong-ye/yong-ye-002`,
+    `/${locale}/analects/xian-jin/xian-jin-010`,
+  ]);
   checkHtml(`/${locale}/index/zheng`, [
     locale === "en" ? "Government" : "政",
     `href="/${locale}/blogs/governing-by-virtue-in-the-analects"`,
@@ -4558,6 +4857,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/yan-yuan-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yan-yuan-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/fan-chi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/fan-chi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/nan-gong-kuo-in-the-analects`, "sitemap");
@@ -4607,8 +4908,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-15")) {
+    if (!lastmod.includes("2026-10-16")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const yanYuanLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/yan-yuan-in-the-analects`);
+    if (!yanYuanLastmod.includes("2026-10-16")) {
+      fail(
+        `sitemap: /${locale}/blogs/yan-yuan-in-the-analects lastmod should be 2026-10-16, got ${yanYuanLastmod || "missing"}`
+      );
     }
     const fanChiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/fan-chi-in-the-analects`);
     if (!fanChiLastmod.includes("2026-10-15")) {
@@ -4697,7 +5004,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "15 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "16 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -4717,6 +5024,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const yanYuanEditorialLastmod = "2026-10-16";
 const fanChiEditorialLastmod = "2026-10-15";
 const nanGongEditorialLastmod = "2026-10-14";
 const governingEditorialLastmod = "2026-10-08";
@@ -4737,6 +5045,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${yanYuanEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${fanChiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${nanGongEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${governingEditorialLastmod}T00:00:00.000Z`, "")

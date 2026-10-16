@@ -102,6 +102,189 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "yan-yuan-in-the-analects",
+    titleZh: "《论语》里的颜渊是谁？",
+    titleEn: "Who Was Yan Yuan in the Analects?",
+    dekZh: "你搜「颜渊」，多半读到的是孔子怎样称许他、怎样哭他。颜渊即颜回，书中也称「回」；Legge 英译作 Yen Yuan、Yen Hui。这一篇换个方向：只听他自己开口的几处——颜渊 12.1 的一句应承，子罕 9.10 的一声长叹，公冶长 5.25 的一个志愿，先进 11.22 在匡地的一句回答，卫灵公 15.10 的一次问政。然后你再把这些话放到为政 2.9、雍也 6.2、先进 11.10 里别人对他的描述旁边。",
+    dekEn: "Yan Yuan (颜渊, also 颜回 or Hui; Legge writes Yen Yuan and Yen Hui) is a disciple Confucius praises again and again, yet you rarely hear him talk. This Note gathers the few lines the Analects gives in his own voice: a vow in 12.1, a sigh in 9.10, a wish in 5.25, one sentence at Kuang in 11.22, and a question on governing in 15.10. Then you set them beside how others describe him in 2.9, 6.2 and 11.10.",
+    descriptionZh: "《论语》里的颜渊：五处亲口的话、一个索引条目。12.1 应承，9.10 长叹，5.25 言志，11.22 在匡地答话，15.10 问为邦。链回可核对的原文。",
+    descriptionEn: "Yan Yuan in the Analects: five lines in his own voice—12.1's vow, 9.10's sigh, 5.25's wish, 11.22 at Kuang, and 15.10 on governing.",
+    datePublished: "2026-10-16",
+    dateModified: "2026-10-16",
+    tagsZh: ["颜渊", "颜回", "先进"],
+    tagsEn: ["yan yuan", "Yan Yuan", "Hsien Tsin"],
+    related: [
+      "/analects/yan-yuan/yan-yuan-001",
+      "/index/yan-yuan",
+      "/analects/zi-han/zi-han-010",
+      "/analects/gong-ye-chang/gong-ye-chang-025",
+      "/analects/xian-jin/xian-jin-022",
+      "/analects/wei-ling-gong/wei-ling-gong-010",
+      "/analects/wei-zheng/wei-zheng-009",
+      "/analects/yong-ye/yong-ye-002",
+      "/analects/xian-jin/xian-jin-010",
+    ],
+    cover: notesBlogImage(
+      "yan-yuan-in-the-analects",
+      "cover.jpg",
+      "A narrow lane at dawn with a bamboo food basket and a gourd resting on a worn step",
+      "黎明的窄巷里，一只竹食篮与一个瓢放在磨旧的石阶上",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "yan-yuan-in-the-analects",
+        "inline-1.jpg",
+        "A stone path climbing into morning mist, its high point always a little further ahead",
+        "石径向晨雾中攀升，高处总在前面再远一点",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "yan-yuan-in-the-analects",
+        "inline-2.jpg",
+        "A plain undyed cloth folded in a bare room, an ornate carriage left outside in shadow",
+        "素净的空室里叠着一块无纹的布，华饰的车停在门外阴影中",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "他自己开口的五处",
+        headingEn: "Five lines in his own voice",
+        bodyZh: [
+          "书里提到他的章句，多半是在说他：孔子看他、评他、哭他。真正让你听见他说话的只有少数几章。叙述者介绍他时写「颜渊」，他自称时写「回」，这个分别你要记住，因为 12.1 与 11.22 里的「回」本身就是他话的一部分。本站人物页补充他字子渊，卒年有争议，你不要替它补一个确定年份。",
+        ],
+        bodyEn: [
+          "Most passages that name him are about him: Confucius watching, judging, mourning. Only a handful let you hear what he says. In the Chinese text he is 颜渊 when the narrator introduces him and 回 when he names himself; Legge follows with Yen Yuan and Hui. Keep that split in mind, because in 12.1 and 11.22 the self-name 回 is part of what he is saying. The site's people page adds that his courtesy name was 子渊; it gives no firm death year, so you should not supply one.",
+        ],
+      },
+      {
+        headingZh: "颜渊 12.1——先问条目，再应承",
+        headingEn: "Yen Yuan 12.1: asking for the items, then a vow",
+        bodyZh: [
+          "请你从[论语 · 颜渊 12.1](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-001)开始，因为这里你能听见他开口两次。原文是：颜渊问仁。子曰，克己复礼为仁，一日克己复礼，天下归仁焉，为仁由己，而由人乎哉。颜渊曰，请问其目。子曰，非礼勿视，非礼勿听，非礼勿言，非礼勿动。颜渊曰，回虽不敏，请事斯语矣。",
+          "你只听他那两句。一是「请问其目」，导读作「请问实行仁德的具体条目」；二是「回虽不敏，请事斯语矣」，导读作「我颜回虽然不够聪敏，也要照这话去做」。你会注意到他没有争辩，也没有追问理由，只要条目，然后应承去做。这是你的读后体会，不是原文，引用时请标明是自己的启发。「克己复礼为仁」是孔子的话，不要算到颜渊名下。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Yen Yuan 12.1](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-001), because here you hear him speak twice. The source reads 颜渊问仁。子曰，克己复礼为仁，一日克己复礼，天下归仁焉，为仁由己，而由人乎哉。颜渊曰，请问其目。子曰，非礼勿视，非礼勿听，非礼勿言，非礼勿动。颜渊曰，回虽不敏，请事斯语矣。",
+          "Listen to his two lines only. First, 请问其目: Legge gives \"I beg to ask the steps of that process.\" Second, 回虽不敏，请事斯语矣, which Legge renders \"Though I am deficient in intelligence and vigour, I will make it my business to practise this lesson.\" The page's modern guide puts it as 我颜回虽然不够聪敏，也要照这话去做。 You will notice he does not debate the answer or ask for a reason; he asks for the concrete items and then commits to them. That reading is your reflection, not the text, so label it as yours when you cite it.",
+        ],
+      },
+      {
+        headingZh: "子罕 9.10——叹一个总在前面的道",
+        headingEn: "Tsze Han 9.10: a sigh about a teaching that keeps moving",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "[论语 · 子罕 9.10](https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-010)给你他最长的一段话。原文是：颜渊喟然叹曰，仰之弥高，钻之弥坚，瞻之在前，忽焉在后。夫子循循然善诱人，博我以文，约我以礼。欲罢不能，既竭吾才，如有所立卓尔，虽欲从之，末由也已。导读开头说：老师的学问道德，越仰望越觉得高，越钻研越觉得深；看着好像在前面，忽然又到了后面。",
+          "你听到的是一个在用力的人，不是一个已经到达的人：想停停不下，才力用尽，那东西仍立在前面。「博我以文，约我以礼」则是他亲口说出的老师的教法。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze Han 9.10](https://www.lunyu.ai/en/analects/zi-han/zi-han-010) gives you the longest speech he has. The source: 颜渊喟然叹曰，仰之弥高，钻之弥坚，瞻之在前，忽焉在后。夫子循循然善诱人，博我以文，约我以礼。欲罢不能，既竭吾才，如有所立卓尔，虽欲从之，末由也已。 Legge opens: \"I looked up to them, and they seemed to become more high; I tried to penetrate them, and they seemed to become more firm; I looked at them before me, and suddenly they seemed to be behind.\" He ends: \"though I wish to follow and lay hold of it, I really find no way to do so.\"",
+          "You hear a student describing effort, not arrival: he cannot stop, he has used up his ability, and the thing still stands ahead. Notice also that 博我以文，约我以礼 names method, learning and ritual restraint, in his own words.",
+        ],
+      },
+      {
+        headingZh: "公冶长 5.25——用两个「不」说出的志愿",
+        headingEn: "Kung-ye Ch'ang 5.25: a wish stated as two refusals",
+        bodyZh: [
+          "在[论语 · 公冶长 5.25](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-025)里，孔子让两位弟子各言其志。子路先答；这里你只需要颜渊那一句：颜渊曰，愿无伐善，无施劳。导读作：我愿意不夸耀自己的长处，不表白自己的功劳。你会看到，他的志愿是用两件「不做」的事说出来的。请把镜头留在他身上，子路另有人物笔记。",
+        ],
+        bodyEn: [
+          "In [The Analects · Kung-ye Ch'ang 5.25](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-025), Confucius asks two disciples for their wishes. Zi Lu speaks first; you only need Yan Yuan's line here: 颜渊曰，愿无伐善，无施劳。 Legge: \"I should like not to boast of my excellence, nor to make a display of my meritorious deeds.\" The guide: 我愿意不夸耀自己的长处，不表白自己的功劳。 You may see that his wish is phrased as two things he will not do. Keep the camera on him; Zi Lu has his own Note.",
+        ],
+      },
+      {
+        headingZh: "先进 11.22 与卫灵公 15.10——匡地一句，问政一问",
+        headingEn: "Hsien Tsin 11.22 and Wei Ling Kung 15.10: one sentence at Kuang, one question on the state",
+        bodyZh: [
+          "[论语 · 先进 11.22](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-022)很短：子畏于匡，颜渊后，子曰，吾以女为死矣。曰，子在，回何敢死。导读作：先生您还活着，我怎么敢轻易去死呢？你听见他用一句关于为老师活着的话回应惊惧；活页没写的动机，你不要替它补。",
+          "[论语 · 卫灵公 15.10](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-010)起首是「颜渊问为邦」。属于他的只有这一问；夏时、殷辂、周冕、韶舞，都是孔子的回答。你引用时请把问与答分开归属。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.22](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-022) is short: 子畏于匡，颜渊后，子曰，吾以女为死矣。曰，子在，回何敢死。 Legge: \"I thought you had died.\" Hui replied, \"While you were alive, how should I presume to die?\" You hear him answer fear with a sentence about staying alive for his teacher; you should not add a motive the page does not print.",
+          "[The Analects · Wei Ling Kung 15.10](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010) opens 颜渊问为邦。 Legge: \"Yen Yuan asked how the government of a country should be administered.\" Only the question is his; the calendar, carriage, cap and music in the reply are Confucius'. The live English panel currently shows only the start of the answer (\"Follow the seasons of Hsia.\"), so you should quote the source or guide for the rest.",
+        ],
+      },
+      {
+        headingZh: "别人怎样描述他——为政 2.9 与雍也 6.2",
+        headingEn: "How others describe him: Wei Chang 2.9 and Yung Yey 6.2",
+        bodyZh: [
+          "把这五处放到两条关于他的评语旁边。[论语 · 为政 2.9](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-009)里孔子说：吾与回言终日，不违，如愚。退而省其私，亦足以发，回也不愚。作为你自己的体会，可以和 12.1 对照：他亲口说话时，也是先问条目，而不是反驳。",
+          "[论语 · 雍也 6.2](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-002)里，哀公问弟子孰为好学，孔子答：有颜回者好学，不迁怒，不贰过，不幸短命死矣，今也则亡，未闻好学者也。你会看到，这些话出自老师之口，而且是在他死后，不是颜渊自述。",
+        ],
+        bodyEn: [
+          "Set those five lines beside two judgments spoken about him. In [The Analects · Wei Chang 2.9](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-009), Confucius says 吾与回言终日，不违，如愚……回也不愚。 Legge: \"he has not made any objection to anything I said;—as if he were stupid.\" As your own reflection, you might connect this with 12.1: in his own voice, too, he asks for steps rather than objecting.",
+          "In [The Analects · Yung Yey 6.2](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-002), Duke Ai asks who loved learning, and Confucius answers 有颜回者好学，不迁怒，不贰过，不幸短命死矣，今也则亡，未闻好学者也。 Legge: \"There was Yen Hui; he loved to learn. He did not transfer his anger; he did not repeat a fault.\" You will see that these words come from his teacher, after his death, not from Yan Yuan.",
+        ],
+      },
+      {
+        headingZh: "先进 11.10——违背师命的厚葬",
+        headingEn: "Hsien Tsin 11.10: a funeral against the teacher's word",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 先进 11.10](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-010)原文是：颜渊死，门人欲厚葬之。子曰，不可。门人厚葬之。子曰，回也，视予犹父也，予不得视犹子也，非我也，夫二三子也。导读后半作：颜回把我当父亲一样看待，我却不能把他当儿子一样对待。这不是我的意思啊，是那几个学生要这样做的。你应把这读成孔子对门人的责备，而不是颜渊留下的话。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.10](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-010) reads 颜渊死，门人欲厚葬之。子曰，不可。门人厚葬之。子曰，回也，视予犹父也，予不得视犹子也，非我也，夫二三子也。 Legge: \"The disciples did bury him in great style.\" Then: The Master said, \"Hui behaved towards me as his father. I have not been able to treat him as my son.\" You should read this as Confucius' complaint about the disciples, not as words Yan Yuan left behind.",
+        ],
+      },
+      {
+        headingZh: "他自己的话合起来说了什么，又没说什么",
+        headingEn: "What his own words add up to, and what they leave out",
+        bodyZh: [
+          "把五处合起来，你得到的是一句应承、一声长叹、一个志愿、一句危难中的回答、一次问政。没有一句是夸自己的。没说的同样重要：这五处里没有他自己的教学、官职，也没有他谈贫穷的话。雍也 6.9 的「一箪食，一瓢飮」是孔子说他的话，你不要当成他的自述来引。",
+        ],
+        bodyEn: [
+          "Put his five lines together and you get a vow, a sigh, a wish, one reply under danger, and one question on governing. None of them praises himself. What they leave out matters as much: in these five lines there is no account of his own teaching, no office, no saying of his on poverty. The famous basket and gourd of 6.9 are Confucius' words about him, so you should not quote them as his.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的颜渊是谁？",
+        questionEn: "Who was Yan Yuan in the Analects?",
+        answerZh: "你在书里遇见的颜渊，也称颜回、回，是孔子屡次称许、早逝后深恸的弟子；Legge 作 Yen Yuan、Yen Hui，本站人物页记他字子渊。他亲口说话的地方不多：12.1 问仁后应承去做，9.10 喟然长叹老师之道，5.25 言志，11.22 在匡地答话，15.10 问为邦。每一句你都可以回活页核对。",
+        answerEn: "You meet him as 颜渊, also 颜回 or Hui, a disciple whom Confucius praises and mourns. Legge writes Yen Yuan and Yen Hui. The site's people page gives his courtesy name as 子渊. In his own voice he asks about ren and vows to practise it, sighs about his teacher's way, states a wish, answers at Kuang, and asks about governing. You can check each line on its passage page.",
+      },
+      {
+        questionZh: "颜渊在 12.1 里自己说了什么？",
+        questionEn: "What does Yan Yuan himself say in 12.1?",
+        answerZh: "你能听到他两句话。一是「请问其目」，在孔子说出「克己复礼为仁」之后追问具体条目；二是在听完非礼勿视、勿听、勿言、勿动之后，说「回虽不敏，请事斯语矣」。导读译作「我颜回虽然不够聪敏，也要照这话去做」。仁的界定属于孔子，你引用时不要把它记成颜渊的话。",
+        answerEn: "You hear two lines from him. He asks for the items of the practice, 请问其目, and after the four 非礼勿 answers (look, listen, speak, move) he says 回虽不敏，请事斯语矣. Legge renders it \"Though I am deficient in intelligence and vigour, I will make it my business to practise this lesson.\" The definition of ren in that passage belongs to Confucius, so you should not quote it as Yan Yuan's.",
+      },
+      {
+        questionZh: "9.10「仰之弥高」说的是什么？",
+        questionEn: "What is the \"looked up to them\" sigh in 9.10?",
+        answerZh: "你读到的是颜渊描述老师之道：越仰望越高，越钻研越坚，看着在前，忽然又在后。他说老师循循善诱，用文献丰富他，用礼约束他；他想停停不下，才力用尽，仍找不到追上去的路。引用时请用活页原文或导读，不要换成更顺口却走样的转述，也不要把它扩写成一篇论学习方法的专文。",
+        answerEn: "You are reading Yan Yuan describing his teacher's way: the higher he looks, the higher it seems; it appears ahead and then behind. He credits Confucius with leading step by step, enlarging him with learning and restraining him with ritual. He ends saying he has used all his ability and still finds no way to follow. Quote the live source or Legge rather than a smoothed paraphrase.",
+      },
+      {
+        questionZh: "「不迁怒，不贰过」是颜渊说的吗？",
+        questionEn: "Is 不迁怒，不贰过 something Yan Yuan said?",
+        answerZh: "不是。你在雍也 6.2 里找到它：哀公问弟子谁好学，孔子回答说有颜回者好学，不迁怒，不贰过，同一句里还说他不幸短命死矣。这是老师回忆中的颜回，不是他的自述。你引用时请归到孔子名下，并写明篇章，不要把评语放进颜渊口中，也不要借它另写一篇修身鸡汤。",
+        answerEn: "No. You find it in 6.2, where Confucius answers Duke Ai's question about who loved learning. The phrase describes Yan Hui as his teacher remembered him: he did not transfer his anger and did not repeat a fault. The same answer says he died young. When you cite it, attribute it to Confucius and name the passage, not to Yan Yuan.",
+      },
+      {
+        questionZh: "颜渊、颜回、「回」是同一个人吗？",
+        questionEn: "Are Yan Yuan, Yan Hui, and 回 the same person?",
+        answerZh: "在本站是同一个人。英文索引作 Yan Yuan；Legge 印 Yen Yuan、Yen Hui、Hui。原文叙述多写颜渊，6.2 写颜回，他自称或孔子直呼时写回。人物页路径是 yan-hui，并补「字子渊」。你不该把这些写法拆成几位不同的弟子，也不要另造本站页面上没有的别名或尊号。",
+        answerEn: "Yes, on this site they are one figure. The English index uses Yan Yuan; Legge prints Yen Yuan, Yen Hui, and Hui. The Chinese text says 颜渊 in narration, 颜回 in 6.2, and 回 when he or Confucius names him directly. The people page sits under the slug yan-hui and adds 字子渊. You should not split these into different people.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来打开颜渊索引",
+        headingEn: "Read the Yan Yuan index next",
+        bodyZh: [
+          "当你想把所有提到他的章句放在同一页读，请打开[颜渊](https://www.lunyu.ai/zh-Hans/index/yan-yuan)。索引按他怎样被问、被看、被哭来分组；这一篇只听了他自己的几句。你回到那里，在上下文里把这几句再读一遍；引用任何一句时，请写明篇章网址，并说明用的是原文、白话导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want every passage that names him on one page, open [Yan Yuan](https://www.lunyu.ai/en/index/yan-yuan). The index groups how he is asked, seen and mourned; this Note only listened to his own lines. Read them again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "fan-chi-in-the-analects",
     titleZh: "《论语》里的樊迟是谁？",
     titleEn: "Who Was Fan Chi in the Analects?",
