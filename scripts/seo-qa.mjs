@@ -832,12 +832,14 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Ran You in the Analects?",
   "Who Was Yan Yuan in the Analects?",
   "Who Was Fan Chi in the Analects?",
   "Who Was Nan Gong Kuo in the Analects?",
   "Governing by Virtue in the Analects: What Confucius Meant by 政",
   "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-17",
   "2026-10-16",
   "2026-10-15",
   "2026-10-14",
@@ -849,12 +851,14 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的冉有是谁？",
   "《论语》里的颜渊是谁？",
   "《论语》里的樊迟是谁？",
   "《论语》里的南宫适是谁？",
   "《论语》里的为政以德：孔子说的「政」是什么",
   "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-17",
   "2026-10-16",
   "2026-10-15",
   "2026-10-14",
@@ -2136,6 +2140,309 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const ranYouCover = "/images/blogs/ran-you-in-the-analects/cover.jpg";
+const ranYouInline1 = "/images/blogs/ran-you-in-the-analects/inline-1.jpg";
+const ranYouInline2 = "/images/blogs/ran-you-in-the-analects/inline-2.jpg";
+const ranYouCoverEn =
+  "A chalk line drawn across a dirt path at dusk — ability paused at a self-set limit";
+const ranYouCoverZh = "黄昏土路上画着一道粉笔线——能力停在自己划下的界限前";
+const ranYouInline1En =
+  "Steward's tally sticks and grain measures on a plain desk beside an unused remonstrance tablet";
+const ranYouInline1EnHtml = ranYouInline1En.replaceAll("'", "&#x27;");
+const ranYouInline1Zh = "素桌上的账筹与量谷器，旁放一块未用的谏板";
+const ranYouInline2En =
+  "A road into a crowded settlement with three quiet milestones suggesting people, wealth, then teaching";
+const ranYouInline2Zh = "通向人口密集聚落的路，三块安静的里程碑暗示庶、富、教";
+const ranYouAnchors = [
+  ["论语 · 雍也 6.10", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-010"],
+  ["The Analects · Yung Yey 6.10", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-010"],
+  ["论语 · 八佾 3.6", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-006"],
+  ["The Analects · Pa Yih 3.6", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-006"],
+  ["论语 · 公冶长 5.7", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007"],
+  ["论语 · 雍也 6.6", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-006"],
+  ["The Analects · Kung-ye Ch'ang 5.7", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-007"],
+  ["The Analects · Yung Yey 6.6", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-006"],
+  ["论语 · 先进 11.16", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-016"],
+  ["The Analects · Hsien Tsin 11.16", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-016"],
+  ["论语 · 先进 11.21", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-021"],
+  ["The Analects · Hsien Tsin 11.21", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-021"],
+  ["论语 · 子路 13.9", "https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-009"],
+  ["The Analects · Tsze-lu 13.9", "https://www.lunyu.ai/en/analects/zi-lu/zi-lu-009"],
+  ["论语 · 季氏 16.1", "https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-001"],
+  ["The Analects · Ke She 16.1", "https://www.lunyu.ai/en/analects/ji-shi/ji-shi-001"],
+  ["冉有", "https://www.lunyu.ai/zh-Hans/index/ran-you"],
+  ["Ran You", "https://www.lunyu.ai/en/index/ran-you"],
+];
+{
+  const start = postSource.indexOf('slug: "ran-you-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing ran-you-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = ranYouAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `ran-you-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    ranYouAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`ran-you-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `ran-you-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/blogs/yan-yuan-in-the-analects",
+      "/blogs/fan-chi-in-the-analects",
+      "/blogs/zi-lu-in-the-analects",
+      "/people/ran-qiu",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`ran-you-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (block.includes("pending Gemini")) {
+      fail("ran-you-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("ran-you-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("ran-you-in-the-analects: unbalanced Chinese quotation marks");
+      }
+    }
+  }
+}
+for (const src of [ranYouCover, ranYouInline1, ranYouInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/ran-you-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/ran-you-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-17"',
+  '"dateModified":"2026-10-17"',
+  "Who Was Ran You in the Analects?",
+  "Ran You in the Analects: ability and a stop-line—6.10's drawn limit, 3.6's I cannot, and the rebuke when ability enlarges the wrong wealth.",
+  "keeps catching at a stop-line",
+  "Ability named, and a line he draws",
+  "force insufficient, or a limit drawn",
+  "fit for office, ren left open",
+  "when ability enlarges the wrong wealth",
+  "retreat that needs a push",
+  "population, wealth, then teaching",
+  "one short Zhuanyu door",
+  "What ability-plus-limit adds up to",
+  "Open the Ran You index next",
+  "Who was Ran You in the Analects?",
+  "What does 今女画 mean in 6.10?",
+  "now you limit yourself.",
+  "beat the drum and assail him.",
+  "Teach them.",
+  ">The Analects · Yung Yey 6.10</a>",
+  ">The Analects · Pa Yih 3.6</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.7</a>",
+  ">The Analects · Yung Yey 6.6</a>",
+  ">The Analects · Hsien Tsin 11.16</a>",
+  ">The Analects · Hsien Tsin 11.21</a>",
+  ">The Analects · Tsze-lu 13.9</a>",
+  ">The Analects · Ke She 16.1</a>",
+  ">Ran You</a>",
+  'href="/en/analects/yong-ye/yong-ye-010"',
+  'href="/en/analects/ba-yi/ba-yi-006"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-007"',
+  'href="/en/analects/yong-ye/yong-ye-006"',
+  'href="/en/analects/xian-jin/xian-jin-016"',
+  'href="/en/analects/xian-jin/xian-jin-021"',
+  'href="/en/analects/zi-lu/zi-lu-009"',
+  'href="/en/analects/ji-shi/ji-shi-001"',
+  'href="/en/index/ran-you"',
+  ranYouCover,
+  ranYouInline1,
+  ranYouInline2,
+  ranYouCoverEn,
+  ranYouInline1EnHtml,
+  ranYouInline2En,
+  `property="og:image" content="${siteUrl}${ranYouCover}"`,
+  `property="og:image:alt" content="${ranYouCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${ranYouCover}"`,
+  `name="twitter:image:alt" content="${ranYouCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/ran-you-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/ran-you-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-17"',
+  '"dateModified":"2026-10-17"',
+  "《论语》里的冉有是谁？",
+  "《论语》里的冉有：能力与停线。6.10 先画的界，3.6 一句不能，聚敛时的重责。八处活页，链回可核对的原文。",
+  "你搜「冉有」，多半读到政事与办事能力",
+  "能力被点名，也有一道他自己划的线",
+  "雍也 6.10——力不足，还是先画了界？",
+  "八佾 3.6——泰山之祭，一句「不能」",
+  "公冶长 5.7 与雍也 6.6——可仕，仁则不知",
+  "先进 11.16——能力用在不该加的富上",
+  "先进 11.21——退，故进之",
+  "子路 13.9——驾车听到的庶、富、教",
+  "季氏 16.1——颛臾，一门短门",
+  "能力加停线，合起来说了什么",
+  "接下来打开冉有索引",
+  "6.10「今女画」是什么意思？",
+  ">论语 · 雍也 6.10</a>",
+  ">论语 · 八佾 3.6</a>",
+  ">论语 · 公冶长 5.7</a>",
+  ">论语 · 雍也 6.6</a>",
+  ">论语 · 先进 11.16</a>",
+  ">论语 · 先进 11.21</a>",
+  ">论语 · 子路 13.9</a>",
+  ">论语 · 季氏 16.1</a>",
+  ">冉有</a>",
+  'href="/zh-Hans/analects/yong-ye/yong-ye-010"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-006"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-006"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-016"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-021"',
+  'href="/zh-Hans/analects/zi-lu/zi-lu-009"',
+  'href="/zh-Hans/analects/ji-shi/ji-shi-001"',
+  'href="/zh-Hans/index/ran-you"',
+  ranYouCover,
+  ranYouInline1,
+  ranYouInline2,
+  ranYouCoverZh,
+  ranYouInline1Zh,
+  ranYouInline2Zh,
+  `property="og:image" content="${siteUrl}${ranYouCover}"`,
+  `property="og:image:alt" content="${ranYouCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${ranYouCover}"`,
+  `name="twitter:image:alt" content="${ranYouCoverZh}"`,
+]);
+{
+  const zhRanYouFile = htmlPath("/zh-Hans/blogs/ran-you-in-the-analects");
+  if (exists(zhRanYouFile)) {
+    const zhRanYouHtml = read(zhRanYouFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhRanYouHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/ran-you-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhRanYouHtml.includes(ranYouCoverEn)) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (
+      zhRanYouHtml.includes(ranYouInline1En) ||
+      zhRanYouHtml.includes(ranYouInline1EnHtml) ||
+      zhRanYouHtml.includes(ranYouInline2En)
+    ) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhRanYouHtml, />Ran You<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: English Ran You body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhRanYouHtml, />冉有<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 冉有 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 雍也 6\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 雍也 6.10 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 八佾 3\.6<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 八佾 3.6 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 公冶长 5\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 公冶长 5.7 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 雍也 6\.6<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 雍也 6.6 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 先进 11\.16<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 先进 11.16 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 先进 11\.21<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 先进 11.21 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 子路 13\.9<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 子路 13.9 body link should appear once");
+    }
+    if (countRegex(zhRanYouHtml, />论语 · 季氏 16\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ran-you-in-the-analects: 季氏 16.1 body link should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/yan-yuan-in-the-analects",
+      "/blogs/fan-chi-in-the-analects",
+      "/blogs/zi-lu-in-the-analects",
+      "/people/ran-qiu",
+    ]) {
+      if (zhRanYouHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/ran-you-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enRanYouFile = htmlPath("/en/blogs/ran-you-in-the-analects");
+  if (exists(enRanYouFile)) {
+    const enRanYouHtml = read(enRanYouFile);
+    if (enRanYouHtml.includes(ranYouCoverZh)) {
+      fail("/en/blogs/ran-you-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enRanYouHtml.includes(ranYouInline1Zh) || enRanYouHtml.includes(ranYouInline2Zh)) {
+      fail("/en/blogs/ran-you-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enRanYouHtml, />Ran You<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Ran You body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Yung Yey 6\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Yung Yey 6.10 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Pa Yih 3\.6<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Pa Yih 3.6 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Kung-ye Ch'ang 5.7 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Yung Yey 6\.6<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Yung Yey 6.6 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Hsien Tsin 11\.16<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Hsien Tsin 11.16 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Hsien Tsin 11\.21<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Hsien Tsin 11.21 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Tsze-lu 13\.9<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Tsze-lu 13.9 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />The Analects · Ke She 16\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/ran-you-in-the-analects: Ke She 16.1 body link should appear once");
+    }
+    if (countRegex(enRanYouHtml, />冉有<\/a>/g) !== 0) {
+      fail("/en/blogs/ran-you-in-the-analects: Chinese 冉有 body link should not appear on en");
+    }
+    for (const forbidden of [
+      "/blogs/yan-yuan-in-the-analects",
+      "/blogs/fan-chi-in-the-analects",
+      "/blogs/zi-lu-in-the-analects",
+      "/people/ran-qiu",
+    ]) {
+      if (enRanYouHtml.includes(forbidden)) {
+        fail(`/en/blogs/ran-you-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -4705,6 +5012,18 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/ran-you`, [
+    locale === "en" ? "Ran You" : "冉有",
+    `href="/${locale}/blogs/ran-you-in-the-analects"`,
+    `/${locale}/analects/yong-ye/yong-ye-010`,
+    `/${locale}/analects/ba-yi/ba-yi-006`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-007`,
+    `/${locale}/analects/yong-ye/yong-ye-006`,
+    `/${locale}/analects/xian-jin/xian-jin-016`,
+    `/${locale}/analects/xian-jin/xian-jin-021`,
+    `/${locale}/analects/zi-lu/zi-lu-009`,
+    `/${locale}/analects/ji-shi/ji-shi-001`,
+  ]);
   checkHtml(`/${locale}/index/yan-yuan`, [
     locale === "en" ? "Yan Yuan" : "颜渊",
     `href="/${locale}/blogs/yan-yuan-in-the-analects"`,
@@ -4857,6 +5176,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/ran-you-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/ran-you-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/yan-yuan-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yan-yuan-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/fan-chi-in-the-analects`, "sitemap");
@@ -4908,8 +5229,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-16")) {
+    if (!lastmod.includes("2026-10-17")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const ranYouLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/ran-you-in-the-analects`);
+    if (!ranYouLastmod.includes("2026-10-17")) {
+      fail(
+        `sitemap: /${locale}/blogs/ran-you-in-the-analects lastmod should be 2026-10-17, got ${ranYouLastmod || "missing"}`
+      );
     }
     const yanYuanLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/yan-yuan-in-the-analects`);
     if (!yanYuanLastmod.includes("2026-10-16")) {
@@ -5004,7 +5331,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "16 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "17 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -5024,6 +5351,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const ranYouEditorialLastmod = "2026-10-17";
 const yanYuanEditorialLastmod = "2026-10-16";
 const fanChiEditorialLastmod = "2026-10-15";
 const nanGongEditorialLastmod = "2026-10-14";
@@ -5045,6 +5373,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${ranYouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${yanYuanEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${fanChiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${nanGongEditorialLastmod}T00:00:00.000Z`, "")

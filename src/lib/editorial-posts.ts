@@ -102,6 +102,203 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "ran-you-in-the-analects",
+    titleZh: "《论语》里的冉有是谁？",
+    titleEn: "Who Was Ran You in the Analects?",
+    dekZh: "你搜「冉有」，多半读到政事与办事能力。冉有即冉求，也称「求」；Legge 作 Zan Yu、Yen Ch'iu、Ch'iu。这一篇只盯一条线：书里称他能做宰、有艺，又在停线处抓住他——力不足、不能，退则进之，聚敛则受责。你跟着八处活页看能力怎样碰到他自己划下的界限。",
+    dekEn: "Ran You (冉有; personal name 冉求 / Ran Qiu; Legge writes Zan Yu, Yen Ch'iu, or Ch'iu) is the disciple the Analects keeps calling capable — and keeps catching at a stop-line. You will hear him claim insufficient force, answer \"I cannot\" at the T'ai mountain, then see his art for office praised and, elsewhere, enrichment rebuked. This Note follows that ability-plus-limit thread across eight live passages, not a Ji Family résumé.",
+    descriptionZh: "《论语》里的冉有：能力与停线。6.10 先画的界，3.6 一句不能，聚敛时的重责。八处活页，链回可核对的原文。",
+    descriptionEn: "Ran You in the Analects: ability and a stop-line—6.10's drawn limit, 3.6's I cannot, and the rebuke when ability enlarges the wrong wealth.",
+    datePublished: "2026-10-17",
+    dateModified: "2026-10-17",
+    tagsZh: ["冉有", "冉求", "雍也"],
+    tagsEn: ["ran you", "Ran You", "Yung Yey"],
+    related: [
+      "/analects/yong-ye/yong-ye-010",
+      "/index/ran-you",
+      "/analects/ba-yi/ba-yi-006",
+      "/analects/gong-ye-chang/gong-ye-chang-007",
+      "/analects/yong-ye/yong-ye-006",
+      "/analects/xian-jin/xian-jin-016",
+      "/analects/xian-jin/xian-jin-021",
+      "/analects/zi-lu/zi-lu-009",
+      "/analects/ji-shi/ji-shi-001",
+    ],
+    cover: notesBlogImage(
+      "ran-you-in-the-analects",
+      "cover.jpg",
+      "A chalk line drawn across a dirt path at dusk — ability paused at a self-set limit",
+      "黄昏土路上画着一道粉笔线——能力停在自己划下的界限前",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "ran-you-in-the-analects",
+        "inline-1.jpg",
+        "Steward's tally sticks and grain measures on a plain desk beside an unused remonstrance tablet",
+        "素桌上的账筹与量谷器，旁放一块未用的谏板",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "ran-you-in-the-analects",
+        "inline-2.jpg",
+        "A road into a crowded settlement with three quiet milestones suggesting people, wealth, then teaching",
+        "通向人口密集聚落的路，三块安静的里程碑暗示庶、富、教",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "能力被点名，也有一道他自己划的线",
+        headingEn: "Ability named, and a line he draws",
+        bodyZh: [
+          "本站英文索引作 Ran You，说明常与政事和实务能力相关；中文索引作冉有。叙述多写「冉有」，孔子直呼时常写「求」；人物页（此处只读、不链）在路径 ran-qiu 下补「字子有」。公开称呼请用冉有，冉求作为私名点一次即可。索引是章句清单，不是这篇的论点；你要看的是能力与停线在他自己的话和老师的纠正里怎样并置。",
+        ],
+        bodyEn: [
+          "The site's English index lists him as Ran You and notes government service and practical ability. Chinese passages often call him 冉有 in narrative and 求 when Confucius names him; the people page (read only here) adds 字子有 under the slug ran-qiu. Prefer Ran You as the public name; treat 冉求 / Ran Qiu as the personal name once. What this Note watches is not every card on the index in order, but where ability meets the line he draws — in his own speech and in the teacher's corrections.",
+        ],
+      },
+      {
+        headingZh: "雍也 6.10——力不足，还是先画了界？",
+        headingEn: "Yung Yey 6.10: force insufficient, or a limit drawn",
+        bodyZh: [
+          "请你从[论语 · 雍也 6.10](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-010)开始，因为这里你能听见冉求自己说出停线。原文是：冉求曰，非不说子之道，力不足也。子曰，力不足者，中道而废，今女画。导读作：冉求说：不是我不喜欢老师的学说，是我能力不够啊。孔子说：能力不够的人，是走到半路才停下来，如今你却是自己先划下界限不肯前进。",
+          "你听到的对照很清楚：他称力不足；老师说真正力不足会走到半路才废，如今却是你先画界。把「画」读成自己划下的界限，已是活页导读的说法；你若再引申，请标明是自己的体会，不要写成经文。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Yung Yey 6.10](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-010), because here you hear Ran Qiu name his own stop. The source reads 冉求曰，非不说子之道，力不足也。子曰，力不足者，中道而废，今女画。 The modern guide on that page says: 冉求说：不是我不喜欢老师的学说，是我能力不够啊。孔子说：能力不够的人，是走到半路才停下来，如今你却是自己先划下界限不肯前进。",
+          "Legge on the same page: Yen Ch'iu said, \"It is not that I do not delight in your doctrines, but my strength is insufficient.\" The Master said, \"Those whose strength is insufficient give over in the middle of the way but now you limit yourself.\" You should hear the split: he claims insufficient force; the teacher calls it a line drawn first. That reading of 画 as a self-set limit is already in the guide; keep your own further reflection labeled as yours.",
+        ],
+      },
+      {
+        headingZh: "八佾 3.6——泰山之祭，一句「不能」",
+        headingEn: "Pa Yih 3.6: \"I cannot\" at the T'ai mountain",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "[论语 · 八佾 3.6](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-006)把他放进一场劝不住的季氏祭祀。原文是：季氏旅于泰山。子谓冉有曰，女弗能救与。对曰，不能。子曰，呜呼，曾谓泰山，不如林放乎。导读作：季氏要去祭祀泰山。孔子对冉有说：你不能劝阻他吗？冉有回答说：不能。孔子说：唉！难道说泰山之神还不如林放懂礼，会接受这种不合礼的祭祀吗？",
+          "请把镜头留在这句短答「不能」上。季氏旅泰山是场景框，不是一篇季氏家史；你引用这一门时，引冉有的「不能」和老师的叹息即可，季氏政治另有计划中的笔记。",
+        ],
+        bodyEn: [
+          "[The Analects · Pa Yih 3.6](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-006) puts him inside a Ji ritual he cannot stop. The source: 季氏旅于泰山。子谓冉有曰，女弗能救与。对曰，不能。子曰，呜呼，曾谓泰山，不如林放乎。 The guide: 季氏要去祭祀泰山。孔子对冉有说：你不能劝阻他吗？冉有回答说：不能。孔子说：唉！难道说泰山之神还不如林放懂礼，会接受这种不合礼的祭祀吗？",
+          "Legge: The Master said to Zan Yu, \"Can you not save him from this?\" He answered, \"I cannot.\" Keep the camera on that short answer. The Ji sacrifice is the scene frame, not a history essay about the family; when you cite this door, quote Ran You's 不能 / \"I cannot\" and the teacher's reply, and leave the broader Ji politics for its own Note.",
+        ],
+      },
+      {
+        headingZh: "公冶长 5.7 与雍也 6.6——可仕，仁则不知",
+        headingEn: "Kung-ye Ch'ang 5.7 and Yung Yey 6.6: fit for office, ren left open",
+        bodyZh: [
+          "能力也从旁人的评语里被点名。[论语 · 公冶长 5.7](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007)里，孟武伯连问几位弟子，落到冉求的一句是：求也，千室之邑，百乘之家，可使为之宰也，不知其仁也。导读作：冉求嘛，一个千户人家的大邑、拥有百辆兵车的大夫封地，可以让他去做总管，至于他是不是仁，我就不知道了。你得到的是可做宰，而不是仁的定论。",
+          "[论语 · 雍也 6.6](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-006)里，季康子问冉求可否从政，原文收在：求也艺，于从政乎何有。导读作：冉求多才多艺，治理政事有什么困难呢？你把 5.7 与 6.6 当作关于才具的判断即可，不要扩写成另一篇论仁或论为政的专文，也不要借「不知其仁」另开一篇。",
+        ],
+        bodyEn: [
+          "Ability is named from outside as well. In [The Analects · Kung-ye Ch'ang 5.7](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-007), after Mang Wu asks about several disciples, the Ran Qiu line is 求也，千室之邑，百乘之家，可使为之宰也，不知其仁也。 Legge: \"In a city of a thousand families, or a clan of a hundred chariots, Ch'iu might be employed as governor, but I do not know whether he is perfectly virtuous.\" You get office-fit without a ren verdict.",
+          "In [The Analects · Yung Yey 6.6](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-006), Chi K'ang asks whether Ch'iu may serve in government. The source closes 求也艺，于从政乎何有。 The guide: 冉求多才多艺，治理政事有什么困难呢？ Legge's panel on the live page ends the Ch'iu reply at \"Ch'iu is a man of various ability.\" Prefer the source or guide when you need the full 于从政乎何有. Hold 5.7 and 6.6 as judgments about capacity, not as a ren treatise — and do not rewrite them into a separate governing essay.",
+        ],
+      },
+      {
+        headingZh: "先进 11.16——能力用在不该加的富上",
+        headingEn: "Hsien Tsin 11.16: when ability enlarges the wrong wealth",
+        bodyZh: [
+          "[论语 · 先进 11.16](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-016)是重责。原文是：季氏富于周公，而求也为之聚敛而附益之。子曰，非吾徒也，小子，鸣鼓而攻之可也。导读作：季氏比周公还要富有，可冉求还替他搜刮聚敛，再增加他的财富。孔子说：冉求不是我的学生了，你们可以大张旗鼓地去声讨他。",
+          "你应把它读成老师点名「能力用错了地方」，而不是季氏赋税全史。一门短门够了；家史留给活页和日后的季氏专篇。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.16](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-016) is the hard rebuke. The source: 季氏富于周公，而求也为之聚敛而附益之。子曰，非吾徒也，小子，鸣鼓而攻之可也。 The guide: 季氏比周公还要富有，可冉求还替他搜刮聚敛，再增加他的财富。孔子说：冉求不是我的学生了，你们可以大张旗鼓地去声讨他。",
+          "Legge: \"He is no disciple of mine. My little children, beat the drum and assail him.\" You should read this as the teacher naming misuse of ability, not as a full chronicle of Ji taxation. One short door is enough; leave the family's wealth history aside.",
+        ],
+      },
+      {
+        headingZh: "先进 11.21——退，故进之",
+        headingEn: "Hsien Tsin 11.21: retreat that needs a push",
+        bodyZh: [
+          "[论语 · 先进 11.21](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-021)与子路同场；你要把镜头留在冉有。两人都问「闻斯行诸」。对冉有，答的是「闻斯行之」；收束的解释是：求也退，故进之，由也兼人，故退之。导读作：冉求平时做事退缩，所以我鼓励他进取；仲由勇气过人，所以我加以约束。",
+          "你可以点一句：同一章里子路得到相反的约束，然后停下——子路另有人物笔记。你要抓住的，是因「退」而「进之」的那一线。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.21](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-021) shares a scene with Zi Lu; keep your focus on Ran You. Both ask whether to act at once on what they hear. To Ran You the answer is 闻斯行之; the closing explanation is 求也退，故进之，由也兼人，故退之。 The guide: 冉求平时做事退缩，所以我鼓励他进取；仲由勇气过人，所以我加以约束。",
+          "Legge: \"Ch'iu is retiring and slow; therefore, I urged him forward. Yu has more than his own share of energy; therefore I kept him back.\" You may note that Zi Lu receives the opposite correction in the same passage, then stop — Zi Lu has his own Who-Note. The line that belongs here is the push given because Ran You retreats.",
+        ],
+      },
+      {
+        headingZh: "子路 13.9——驾车听到的庶、富、教",
+        headingEn: "Tsze-lu 13.9: population, wealth, then teaching",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 子路 13.9](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-009)里你看见他在驾车，不是在争一场战争。原文是：子适衞，冉有仆。子曰，庶矣哉。冉有曰，既庶矣，又何加焉。曰，富之。曰，既富矣，又何加焉。曰，教之。请保留活页上的「衞」字。导读作：孔子到卫国去，冉有替他驾车。孔子说：这里人口真多啊！冉有说：人口已经很多了，还要再做什么呢？孔子说：使他们富裕起来。冉有说：已经富裕了，还要再做什么呢？孔子说：教育他们。",
+          "你听见冉有连问两步「又何加焉」；庶→富→教是老师的答法，引用时请把问与答、原文与导读分开归属。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze-lu 13.9](https://www.lunyu.ai/en/analects/zi-lu/zi-lu-009) shows him driving, not arguing for a war. The source: 子适衞，冉有仆。子曰，庶矣哉。冉有曰，既庶矣，又何加焉。曰，富之。曰，既富矣，又何加焉。曰，教之。 Keep 衞 as the live page prints it. The guide: 孔子到卫国去，冉有替他驾车。孔子说：这里人口真多啊！冉有说：人口已经很多了，还要再做什么呢？孔子说：使他们富裕起来。冉有说：已经富裕了，还要再做什么呢？孔子说：教育他们。",
+          "Legge: Yu said, \"Since they are thus numerous, what more shall be done for them?\" \"Enrich them,\" was the reply. \"And when they have been enriched, what more shall be done?\" The Master said, \"Teach them.\" You hear Ran You ask the next step twice; the ladder 庶→富→教 is the teacher's answer, so label the layers when you cite them.",
+        ],
+      },
+      {
+        headingZh: "季氏 16.1——颛臾，一门短门",
+        headingEn: "Ke She 16.1: one short Zhuanyu door",
+        bodyZh: [
+          "[论语 · 季氏 16.1](https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-001)起首是冉有与季路去报告将伐颛臾：季氏将伐颛臾。冉有季路见于孔子曰，季氏将有事于颛臾。导读作：季氏准备攻打颛臾。冉有、季路去见孔子，说：季氏将要对颛臾用兵了。你把这一门当作关于他职位与报告的短门即可，不要写成整场战事小说；长章后文请你回活页自读。",
+        ],
+        bodyEn: [
+          "[The Analects · Ke She 16.1](https://www.lunyu.ai/en/analects/ji-shi/ji-shi-001) opens with Ran You and Ji-lu reporting a planned attack: 季氏将伐颛臾。冉有季路见于孔子曰，季氏将有事于颛臾。 The guide: 季氏准备攻打颛臾。冉有、季路去见孔子，说：季氏将要对颛臾用兵了。 Legge begins: Zan Yu and Chi-lu had an interview with Confucius, and said, \"Our chief, Chi, is going to commence operations against Chwan-yu.\" Use this as one short door about his position in the report, not as a novel of the campaign. The rest of the long chapter belongs on the passage page.",
+        ],
+      },
+      {
+        headingZh: "能力加停线，合起来说了什么",
+        headingEn: "What ability-plus-limit adds up to",
+        bodyZh: [
+          "把这八处合起来，你得到的是可仕的才具（宰、艺），一句自称力不足而被判为先画界，一句「不能」，因退而进之的纠正，聚敛时的重责，驾车时听见的庶富教，以及一门颛臾报告。没写进这八门的同样重要：不是田赋编年，不是战记，也不是子路人物笔记。你引用上面任何一句，请写明篇章网址，并说明用的是原文、白话导读还是英译。",
+        ],
+        bodyEn: [
+          "Put the doors together and you get capability named for office (宰, 艺), a self-described lack of force that the teacher calls a drawn line, a plain \"I cannot,\" a push against retreat, a hard rebuke when ability enlarges the wrong wealth, a quiet governing ladder heard while driving, and one Zhuanyu report. What they leave out matters too: these eight doors are not a field-tax chronicle, not a battle narrative, and not Zi Lu's Who-Note. When you quote any line above, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的冉有是谁？",
+        questionEn: "Who was Ran You in the Analects?",
+        answerZh: "你在书里遇见的冉有，也称冉求、求，常与政事和办事能力相连；Legge 作 Zan Yu、Yen Ch'iu、Ch'iu。他自己开口处有 6.10 称力不足、3.6 答「不能」；别处老师称他有艺可从政，因退而进之，也因聚敛而责「非吾徒也」。每一句你都可以回活页核对。",
+        answerEn: "You meet him as Ran You (冉有), also 冉求 / Ran Qiu, a disciple tied to practical ability and government service. Legge prints Zan Yu, Yen Ch'iu, and Ch'iu. In his own voice he claims insufficient strength in 6.10 and answers \"I cannot\" in 3.6; elsewhere the teacher names his art for office, pushes his retreat, and rebukes enrichment done for the Chi family. You can check each line on its passage page.",
+      },
+      {
+        questionZh: "6.10「今女画」是什么意思？",
+        questionEn: "What does 今女画 mean in 6.10?",
+        answerZh: "你读到的是老师回答冉求「力不足也」。活页导读把「画」读成先划下界限：真正力不足会走到半路才废，如今却是你自己先画界不肯前进。引用时请用活页原文或导读，不要换成更顺口却去掉「中道而废」对照的转述，也不要扩写成一篇励志短文。",
+        answerEn: "You are reading the teacher's reply to Ran Qiu's \"my strength is insufficient.\" The live guide takes 画 as drawing a limit first: those who truly lack force stop mid-way, but you have already marked a boundary and will not go on. Legge renders the close as \"now you limit yourself.\" Quote the live source or guide rather than a smoother paraphrase that drops the contrast with 中道而废.",
+      },
+      {
+        questionZh: "孔子为什么在 11.16 重责他？",
+        questionEn: "Why does Confucius rebuke him in 11.16?",
+        answerZh: "你在活页上看到的指控是：季氏已富于周公，求还为之聚敛而附益之。老师说「非吾徒也」，并让弟子鸣鼓而攻之。请把它按「这一幕里能力用错了地方」来读，不要扩成季氏家的赋税专史，也不要写成与本章无关的商战教训。",
+        answerEn: "You find the charge on the page: the Chi family is already richer than the duke of Zhou, and Ch'iu still gathers and adds to that wealth. The teacher says 非吾徒也 and tells the disciples they may beat the drum and assail him. Hold it as a rebuke of how ability is used in that scene; do not expand it into a separate tax history of the Ji house.",
+      },
+      {
+        questionZh: "冉有、冉求、「求」、Zan Yu 是同一个人吗？",
+        questionEn: "Are Ran You, Ran Qiu, 求, and Zan Yu the same person?",
+        answerZh: "在本站是同一个人。英文索引作 Ran You；原文叙述多写冉有，孔子直呼时常写求；人物页路径是 ran-qiu，并补「字子有」。Legge 印 Zan Yu、Yen Ch'iu、Ch'iu。你不该把这些写法拆成几位不同的弟子，也不要另造本站没有的别名。",
+        answerEn: "Yes, on this site they are one figure. The English index uses Ran You; passages often say 冉有 in narration and 求 when Confucius addresses him; the people page sits under ran-qiu and adds 字子有. Legge writes Zan Yu, Yen Ch'iu, and Ch'iu. You should not split these labels into different disciples.",
+      },
+      {
+        questionZh: "13.9 的庶→富→教是什么？",
+        questionEn: "What is the 庶→富→教 sequence in 13.9?",
+        answerZh: "你在冉有为孔子驾车时听见它。孔子说卫地「庶矣哉」之后，冉有问「又何加焉」，听到「富之」；再问，听到「教之」。连问是他的；阶梯是老师的。请回子路 13.9 活页核对，并让原文、导读、英译各归一层。",
+        answerEn: "You hear it while Ran You is driving in Wei. After Confucius notes how numerous the people are, Ran You asks what to add next and hears 富之; he asks again and hears 教之. The questions are his; the ladder is the teacher's. Cite the live Tsze-lu page and keep source, guide, and Legge in separate layers.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来打开冉有索引",
+        headingEn: "Open the Ran You index next",
+        bodyZh: [
+          "当你想把提到他的章句放在同一页读，请打开[冉有](https://www.lunyu.ai/zh-Hans/index/ran-you)。索引收束政事与能力；这一篇只跟着停线走。你回到那里再读这八处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want every passage that names him on one screen, open [Ran You](https://www.lunyu.ai/en/index/ran-you). The index groups government service and practical ability; this Note only followed where ability meets the line he draws. Read the eight doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "yan-yuan-in-the-analects",
     titleZh: "《论语》里的颜渊是谁？",
     titleEn: "Who Was Yan Yuan in the Analects?",
