@@ -102,6 +102,202 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "what-ren-means-in-the-analects",
+    titleZh: "《论语》里的「仁」是什么意思？",
+    titleEn: "What Ren Means in the Analects",
+    dekZh: "你要问《论语》里的「仁」是什么，最好先看孔子何时不给这个字、何时又给。他很少谈它。他可以称人忠、清、难、有才，仍说不知其仁。他自己也不敢当。惟颜回能三月不违。他却出人意料地许管仲「如其仁」——因为那功业使人免于兵车。可同时他又说：我欲仁，斯仁至矣。这一篇只跟着「少许、近起步」这条线走。克己复礼、爱人、能近取譬、其恕乎等说法，仁索引页已经收好；你读完这篇再去那里即可。",
+    dekEn: "What ren means in the Analects is clearest when you watch Confucius refuse the word and when he grants it. He seldom speaks of it. He will credit loyalty, purity, restraint, and talent, and still say he does not know whether someone is ren. He will not claim it for himself. Only Hui keeps it for months. He grants it, surprisingly, for what Guan Zhong's work did for people. And yet: if you wish for ren, it is at hand. This Note follows that rare-grant thread. For how the book also defines ren through 克己复礼, loving others, and shu, open the Ren index later — those methods already live there.",
+    descriptionZh: "《论语》里的「仁」少被许下。忠与清可以点名，这个字仍被按下；欲仁，则近。八处活页，链回可核对的原文。",
+    descriptionEn: "What ren means in the Analects: seldom granted, withheld from loyalty and purity, and still near when you wish for it. Eight live doors.",
+    datePublished: "2026-10-18",
+    dateModified: "2026-10-18",
+    tagsZh: ["仁", "定义", "论语"],
+    tagsEn: ["ren", "definition", "Analects"],
+    related: [
+      "/analects/zi-han/zi-han-001",
+      "/index/ren",
+      "/analects/gong-ye-chang/gong-ye-chang-018",
+      "/analects/xian-wen/xian-wen-002",
+      "/analects/gong-ye-chang/gong-ye-chang-004",
+      "/analects/shu-er/shu-er-033",
+      "/analects/yong-ye/yong-ye-005",
+      "/analects/xian-wen/xian-wen-017",
+      "/analects/shu-er/shu-er-029",
+      "/blogs/ren-junzi-and-everyday-conduct",
+    ],
+    cover: notesBlogImage(
+      "what-ren-means-in-the-analects",
+      "cover.jpg",
+      "An empty judgment seat at dawn with a closed seal box — a name withheld until a whole life is measured",
+      "黎明空着的判座旁放着未启的印匣——名字要等整个人生被衡量后才给",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "what-ren-means-in-the-analects",
+        "inline-1.jpg",
+        "Two recognition tablets left on a plain desk, a third place left blank for a heavier name",
+        "素桌上两块空白的赏识牌，第三处留空给更重的名字",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "what-ren-means-in-the-analects",
+        "inline-2.jpg",
+        "Dawn light on a quiet assembly road where banners rest furled — force unused, people gathered",
+        "黎明静路上旗幡收卷——不用兵车，人已来聚",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "他很少谈——两层读法不要并成一句",
+        headingEn: "He seldom spoke of it — and the layers disagree",
+        bodyZh: [
+          "请你从[论语 · 子罕 9.1](https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-001)开始。原文是：子罕言，利，与命，与仁。活页 Legge 作：The subjects of which the Master seldom spoke were—profitableness, and also the appointments of Heaven, and perfect virtue. Legge 常把仁译成 perfect virtue / virtue；本篇仍用「仁」这个字。",
+          "活页白话导读却是：孔子很少谈及利益，只赞许天命和仁德。导读把「与」读成赞许命与仁，Legge 则把利、命、仁三者都读成少言的对象。你不要把两层并成一句定论，也不要另造注家来裁定。本篇只要 9.1 提醒你：这个字在书里被慎重对待，而导读与 Legge 可以分道。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Tsze Han 9.1](https://www.lunyu.ai/en/analects/zi-han/zi-han-001). The source reads 子罕言，利，与命，与仁。 Legge on the same page: \"The subjects of which the Master seldom spoke were—profitableness, and also the appointments of Heaven, and perfect virtue.\" Legge renders 仁 as \"perfect virtue\" here (and as \"virtue\" elsewhere); you should keep the Note's own word ren.",
+          "The live modern guide reads: 孔子很少谈及利益，只赞许天命和仁德。 That reading takes 与 as praise for 命 and 仁, while Legge takes all three as subjects seldom spoken of. You should not merge the two. Quote each layer by name; do not invent a commentator to decide which is right. What this Note needs from 9.1 is the book's own caution around the word — and the reminder that guide and Legge can part ways.",
+        ],
+      },
+      {
+        headingZh: "忠了、清了——仍不是仁",
+        headingEn: "Loyal and clean — still not ren",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "在[论语 · 公冶长 5.18](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-018)里，你看见子张问令尹子文三仕三已、必以旧政吿新令尹，其人何如。原文第一段收在：子曰，忠矣。曰，仁矣乎。曰，未知，焉得仁。导读作：算得上忠了。……不知道，这怎么能算是仁呢？",
+          "子张又问陈文子弃马而去、辗转他邦。原文是：子曰，淸矣。曰，仁矣乎。曰，未知，焉得仁。引用全文时请保留活页上的「吿」「淸」。你看见的是：忠与清可以被点名，仁仍两次被按下。",
+        ],
+        bodyEn: [
+          "In [The Analects · Kung-ye Ch'ang 5.18](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-018), you watch Zi Zhang ask about Ziwen, who took and left the office of ling-yin without joy or anger and handed his work to the next minister. The source closes the first exchange: 子曰，忠矣。曰，仁矣乎。曰，未知，焉得仁。 Legge: The Master replied. \"He was loyal.\" \"Was he perfectly virtuous?\" \"I do not know. How can he be pronounced perfectly virtuous?\"",
+          "Zi Zhang then asks about Chen Wenzi, who abandoned forty horses and left state after state rather than serve beside another like the killer Cui. The source: 子曰，淸矣。曰，仁矣乎。曰，未知，焉得仁。 Keep the live page's 淸 and 吿 when you quote the full source. Legge: \"He was pure.\" Then the same refusal: \"I do not know. How can he be pronounced perfectly virtuous?\" You watch single virtues named — loyalty, purity — and ren withheld twice.",
+        ],
+      },
+      {
+        headingZh: "克伐怨欲不行——只是「难」，不是仁",
+        headingEn: "Restraint that is \"difficult,\" not ren",
+        bodyZh: [
+          "[论语 · 宪问 14.2](https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-002)试了另一种候选定义，请你对照原文。原文是：克，伐，怨，欲，不行焉，可以为仁矣。子曰，可以为难矣，仁则吾不知也。导读作：有人说：好胜、自夸、怨恨、贪欲，这几样都不表现出来，可以算是仁了吧。孔子说：这可以算是难能可贵了，至于是不是仁，我就不知道了。",
+          "你应听出对照：压住四种毛病算难；老师仍不把它改称为仁。不要把「难」与「仁」在转述里并成同一个词。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Wan 14.2](https://www.lunyu.ai/en/analects/xian-wen/xian-wen-002) tests another candidate definition. The source: 克，伐，怨，欲，不行焉，可以为仁矣。子曰，可以为难矣，仁则吾不知也。 The guide: 有人说：好胜、自夸、怨恨、贪欲，这几样都不表现出来，可以算是仁了吧。孔子说：这可以算是难能可贵了，至于是不是仁，我就不知道了。",
+          "Legge: \"When the love of superiority, boasting, resentments, and covetousness are repressed, this may be deemed perfect virtue.\" The Master said, \"This may be regarded as the achievement of what is difficult. But I do not know that it is to be deemed perfect virtue.\" You should hear the split: repression of four vices is hard; the teacher still will not call it ren.",
+        ],
+      },
+      {
+        headingZh: "「不知其仁」",
+        headingEn: "\"I do not know whether he is ren\"",
+        bodyZh: [
+          "才具也结不了案。在[论语 · 公冶长 5.4](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-004)里，你读到有人说雍也仁而不佞。原文是：或曰，雍也仁，而不佞。子曰，焉用佞……不知其仁，焉用佞。导读作：冉雍是不是仁我不知道，但何必要有口才呢？老师推开对口才的称赞，把仁留下——不知其仁。（5.7 对几位弟子的「不知其仁」长串，已是冉有笔记的门；这里不必再作主门。）",
+        ],
+        bodyEn: [
+          "Talent does not finish the case either. In [The Analects · Kung-ye Ch'ang 5.4](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-004), someone praises Zhong Gong (Yung) as ren but not glib. The source: 或曰，雍也仁，而不佞。子曰，焉用佞……不知其仁，焉用佞。 Legge: \"Yung is truly virtuous, but he is not ready with his tongue.\" Then: \"I know not whether he be truly virtuous, but why should he show readiness of the tongue?\" The teacher deflects the praise of eloquence and leaves ren open — 不知其仁. (A longer \"不知其仁\" series for several disciples sits in 5.7; that door already belongs to the Ran You Note, so you do not need it as a main door here.)",
+        ],
+      },
+      {
+        headingZh: "他自己也不敢当",
+        headingEn: "He will not claim it for himself",
+        bodyZh: [
+          "[论语 · 述而 7.33](https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-033)把拒绝转向自己，请你听他怎么说。原文是：子曰，若圣与仁，则吾岂敢，抑为之不厌，诲人不倦，则可谓云尔已矣。公西华曰，正唯弟子不能学也。导读作：说到圣与仁，那我怎么敢当呢？不过是朝着这个方向去做而永不满足，教导别人而不知疲倦，可以说就是这样罢了。",
+          "你听见的是方向与工夫，不是自称。不要把后文「我欲仁」读成他给自己挂上的称号。",
+        ],
+        bodyEn: [
+          "[The Analects · Shu R. 7.33](https://www.lunyu.ai/en/analects/shu-er/shu-er-033) turns the refusal inward. The source: 子曰，若圣与仁，则吾岂敢，抑为之不厌，诲人不倦，则可谓云尔已矣。公西华曰，正唯弟子不能学也。 The guide: 孔子说：说到圣与仁，那我怎么敢当呢？不过是朝着这个方向去做而永不满足，教导别人而不知疲倦，可以说就是这样罢了。",
+          "Legge: \"The sage and the man of perfect virtue;—how dare I rank myself with them? It may simply be said of me, that I strive to become such without satiety, and teach others without weariness.\" You hear practice without self-grant: he points to the direction of effort, not to a title he will wear.",
+        ],
+      },
+      {
+        headingZh: "回也：三月不违仁",
+        headingEn: "Hui: three months without leaving ren",
+        bodyZh: [
+          "[论语 · 雍也 6.5](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-005)是少有的正面尺度；颜渊已有人物笔记，这里只留短门。原文是：子曰，回也，其心三月不违仁，其余，则日月至焉而已矣。导读作：颜回啊，他的心可以长久地不违背仁德；其余的学生，则只是短暂地偶尔达到仁的境界罢了。你要抓住的对照是：三月与日月——仁是心里的持续，不是一天的徽章。",
+        ],
+        bodyEn: [
+          "[The Analects · Yung Yey 6.5](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-005) is the rare positive measure, kept short because Yan Yuan already has his own Note. The source: 子曰，回也，其心三月不违仁，其余，则日月至焉而已矣。 Legge: \"Such was Hui that for three months there would be nothing in his mind contrary to perfect virtue. The others may attain to this on some days or in some months, but nothing more.\" What you need here is the contrast: months for Hui, days or months for others — ren as duration of a mind, not a one-day badge.",
+        ],
+      },
+      {
+        headingZh: "许了：管仲——因功业所及",
+        headingEn: "Granted: Guan Zhong — for what the work did",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 宪问 14.17](https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-017)是出人意料的一许——只写两三句；管仲另有计划中的笔记。子路以不死为未仁。原文答：子曰，桓公九合诸侯，不以兵车，管仲之力也。如其仁。如其仁。导读作：桓公多次会合诸侯，不靠武力，都是管仲的功劳。这就是他的仁德，这就是他的仁德。活页 Legge 面板目前只印到子路之问，许仁本身请你用原文或导读。你看见仁被许在「使人免于兵车的功」上，而不是一张私德核对表。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Wan 14.17](https://www.lunyu.ai/en/analects/xian-wen/xian-wen-017) is the surprising grant — keep it to a few sentences; Guan Zhong will have his own Note. Zi Lu says Guan Zhong failed to die with his lord and asks 未仁乎. The source reply: 子曰，桓公九合诸侯，不以兵车，管仲之力也。如其仁。如其仁。 The guide: 桓公多次会合诸侯，不靠武力，都是管仲的功劳。这就是他的仁德，这就是他的仁德。 The live Legge panel currently prints only Zi Lu's question, so prefer the source or guide for the grant itself. You see ren named for what his force did for the people without war chariots — not for a private virtue checklist.",
+        ],
+      },
+      {
+        headingZh: "近在起步：「我欲仁」",
+        headingEn: "Near to begin: \"I wish for ren\"",
+        bodyZh: [
+          "[论语 · 述而 7.29](https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-029)从另一头合上。原文是：子曰，仁远乎哉，我欲仁，斯仁至矣。导读作：孔子说：仁离我们很远吗？只要我自己想要仁，仁就来到了。少许是对整个人生的判断；近，是你今天可以转过去。把这两面并读，是本篇的读法——请标成你自己的体会，不要写成孔子在一处说过的原句。",
+        ],
+        bodyEn: [
+          "[The Analects · Shu R. 7.29](https://www.lunyu.ai/en/analects/shu-er/shu-er-029) closes the door from the other side. The source: 子曰，仁远乎哉，我欲仁，斯仁至矣。 The guide: 孔子说：仁离我们很远吗？只要我自己想要仁，仁就来到了。 Legge: \"Is virtue a thing remote? I wish to be virtuous, and lo! virtue is at hand.\" Rare to grant as a verdict on a whole life; near when you turn toward it today. That pairing is the thesis of this Note — label the pairing as your reading of these doors together, not as a sentence Confucius spoke in one place.",
+        ],
+      },
+      {
+        headingZh: "少许与近起步，合起来说了什么",
+        headingEn: "What rare grant and near turn add up to",
+        bodyZh: [
+          "把这八处合起来，你得到的是：慎言其字（9.1），忠与清仍不称仁（5.18），难仍不知是仁（14.2），才具留下不知（5.4），自己也不敢当（7.33），回能三月（6.5），管仲因功业而被许（14.17），以及欲仁则至（7.29）。没写进这篇的同样重要：索引上的五条方法门（12.1、12.22、6.28、1.3、15.23）和三条易混，本篇不重讲。若你要「仁在关系里、君子是方向」那一角，旧札[仁、君子与日常行为](https://www.lunyu.ai/zh-Hans/blogs/ren-junzi-and-everyday-conduct)可作一门软链；本篇只看许与不许。",
+          "作为你自己的体会——不是孔子的原话——请留意：你多轻易用一个优点（忠、清、能克己、有才）就说某人「是个好人」。《论语》把「仁」说得更慢。",
+        ],
+        bodyEn: [
+          "Put the doors together and you get a word spoken of with caution (9.1), loyalty and purity refused as ren (5.18), hard restraint still not renamed ren (14.2), talent left open (5.4), self-claim refused (7.33), months of constancy praised in Hui (6.5), one public grant for Guan Zhong's work (14.17), and a turn anyone can begin (7.29). What they leave out matters too: this Note does not retell the index's five method-passages (12.1, 12.22, 6.28, 1.3, 15.23) or re-argue its three confusions. Those already live on the Ren index. If you want the relationships-and-practice angle, the older Note [Ren, Junzi, and Everyday Conduct](https://www.lunyu.ai/en/blogs/ren-junzi-and-everyday-conduct) is one soft door; this one only watched when the word is withheld or given.",
+          "As your own reflection — not as Confucius's words — notice how easily you praise one trait (\"loyal,\" \"clean,\" \"self-controlled,\" \"talented\") and call someone a good person. The Analects is slower to name ren.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的「仁」是什么意思？",
+        questionEn: "What does ren mean in the Analects?",
+        answerZh: "你找不到一句口号就定案。仁索引页从克己复礼、爱人、能近取譬、恕等处回答。本篇另看一条线：孔子可以称单德而仍不称仁，自己也不敢当，称回能三月，许管仲的功业，又说欲仁则至。每一句请回活页核对，并说明用的是原文、导读还是英译。",
+        answerEn: "You will not find one slogan that settles it. On the Ren index the book answers through discipline, loving others, analogy, and shu. This Note watches another pattern: Confucius grants single virtues and still withholds ren, will not claim it for himself, praises Hui's months, grants it for Guan Zhong's public work, and says that if you wish for ren it is near. Check each line on its passage page, and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "5.18 为什么说「未知，焉得仁」？",
+        questionEn: "Why does Confucius say 未知，焉得仁 in 5.18?",
+        answerZh: "你读到的是两次拒绝。子文被称「忠」，陈文子被称「淸」；问是否仁，老师说不知道怎么能算是仁。请用活页原文的「未知，焉得仁」，不要改写成「他们还不够好」这类更顺口的话。",
+        answerEn: "You are reading two refusals. Ziwen is called 忠 (loyal) and Chen Wenzi 淸 (pure); asked whether that is ren, the teacher says he does not know how they can be pronounced ren. Legge renders the refusals with \"perfectly virtuous.\" Quote the live source for 未知，焉得仁 rather than smoothing it into \"they were not good enough.\"",
+      },
+      {
+        questionZh: "14.2 克伐怨欲不行，算不算已经仁了？",
+        questionEn: "Is repressing pride and greed already ren in 14.2?",
+        answerZh: "不算。你听见有人提出定义，老师答「可以为难矣，仁则吾不知也」。请把「难」与「仁」分搁，除非某章自己把它们连在一起；也不要把导读里的白话再压成一句「就是仁」。",
+        answerEn: "No. You hear a proposed definition — 克，伐，怨，欲，不行焉 — and the teacher answers that this may be deemed difficult, 仁则吾不知也. Legge: \"the achievement of what is difficult,\" not yet \"perfect virtue.\" Keep hard self-control and ren on separate shelves unless a passage joins them.",
+      },
+      {
+        questionZh: "孔子有没有自称仁？",
+        questionEn: "Did Confucius claim ren for himself?",
+        answerZh: "在 7.33 你看见他拒绝了。原文是「若圣与仁，则吾岂敢」；他只说为之不厌、诲人不倦。你也不要把 7.29「我欲仁，斯仁至矣」读成他给自己加的封号——那一句说的是转过去就近，不是给自己的判决。",
+        answerEn: "In 7.33 he refuses. The source: 若圣与仁，则吾岂敢; he will only say he works without satiety and teaches without weariness. Legge: \"how dare I rank myself with them?\" You should not treat \"I wish for ren\" in 7.29 as a self-title either — that line is about the nearness of the turn, not a verdict he pins on his own name.",
+      },
+      {
+        questionZh: "仁又少许、又「至矣」，怎么同时成立？",
+        questionEn: "How can ren be rare to grant and still \"at hand\"?",
+        answerZh: "你是把两扇门并排放。不许的那些场景，把仁当作对照民生的整个人生判断；7.29 把转向仁当作此刻可起步的事。活页导读写：只要我自己想要仁，仁就来到了。请不要并成一句教义口号；分层、留网址。",
+        answerEn: "You are holding two doors side by side. The withholding scenes treat ren as a judgment of a whole life measured against people's good; 7.29 treats the turn toward it as something you can begin now. The live guide for 7.29 says: 只要我自己想要仁，仁就来到了. Do not collapse the two into one sentence spoken as doctrine; keep the layers and the URLs.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来打开仁索引",
+        headingEn: "Open the Ren index next",
+        bodyZh: [
+          "当你想把这个字的主要用法放在同一页读——包括本篇只点名、未展开的方法门——请打开[仁](https://www.lunyu.ai/zh-Hans/index/ren)。索引已收「书里怎么用」和易混；本篇只跟着许与不许走。你回到那里再读这八处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want every major use of the word on one screen — including the method-passages this Note only named — open [Ren](https://www.lunyu.ai/en/index/ren). The index already covers how the word is used and the easy confusions; this Note only followed when Confucius withholds the name and when he grants it. Read the eight doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "ran-you-in-the-analects",
     titleZh: "《论语》里的冉有是谁？",
     titleEn: "Who Was Ran You in the Analects?",

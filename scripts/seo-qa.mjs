@@ -472,6 +472,8 @@ checkHtml("/en/index/ren", [
   "/en/analects/xue-er",
   "Golden Rule",
   `"dateModified":"${featuredIndexLastmod}"`,
+  'href="/en/blogs/what-ren-means-in-the-analects"',
+  "What Ren Means in the Analects",
 ]);
 checkHtml("/zh-Hans/index/ren", [
   '"@type":"FAQPage"',
@@ -487,6 +489,8 @@ checkHtml("/zh-Hans/index/ren", [
   "/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023",
   "/zh-Hans/index/li",
   "/zh-Hans/index/zhongshu",
+  'href="/zh-Hans/blogs/what-ren-means-in-the-analects"',
+  "《论语》里的「仁」是什么意思？",
 ]);
 for (const locale of locales) {
   const route = `/${locale}/index/ren`;
@@ -832,6 +836,7 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "What Ren Means in the Analects",
   "Who Was Ran You in the Analects?",
   "Who Was Yan Yuan in the Analects?",
   "Who Was Fan Chi in the Analects?",
@@ -839,6 +844,7 @@ checkHtml("/en/blogs", [
   "Governing by Virtue in the Analects: What Confucius Meant by 政",
   "Who Was Zi Lu in the Analects?",
   "Who Were Bo Yi and Shu Qi in the Analects?",
+  "2026-10-18",
   "2026-10-17",
   "2026-10-16",
   "2026-10-15",
@@ -851,6 +857,7 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "论语阅读札记",
+  "《论语》里的「仁」是什么意思？",
   "《论语》里的冉有是谁？",
   "《论语》里的颜渊是谁？",
   "《论语》里的樊迟是谁？",
@@ -858,6 +865,7 @@ checkHtml("/zh-Hans/blogs", [
   "《论语》里的为政以德：孔子说的「政」是什么",
   "《论语》里的子路是谁？",
   "《论语》里的伯夷、叔齐是谁？",
+  "2026-10-18",
   "2026-10-17",
   "2026-10-16",
   "2026-10-15",
@@ -2140,6 +2148,355 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const renCover = "/images/blogs/what-ren-means-in-the-analects/cover.jpg";
+const renInline1 = "/images/blogs/what-ren-means-in-the-analects/inline-1.jpg";
+const renInline2 = "/images/blogs/what-ren-means-in-the-analects/inline-2.jpg";
+const renCoverEn =
+  "An empty judgment seat at dawn with a closed seal box — a name withheld until a whole life is measured";
+const renCoverZh = "黎明空着的判座旁放着未启的印匣——名字要等整个人生被衡量后才给";
+const renInline1En =
+  "Two recognition tablets left on a plain desk, a third place left blank for a heavier name";
+const renInline1Zh = "素桌上两块空白的赏识牌，第三处留空给更重的名字";
+const renInline2En =
+  "Dawn light on a quiet assembly road where banners rest furled — force unused, people gathered";
+const renInline2Zh = "黎明静路上旗幡收卷——不用兵车，人已来聚";
+const renAnchors = [
+  ["论语 · 子罕 9.1", "https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-001"],
+  ["The Analects · Tsze Han 9.1", "https://www.lunyu.ai/en/analects/zi-han/zi-han-001"],
+  ["论语 · 公冶长 5.18", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-018"],
+  ["The Analects · Kung-ye Ch'ang 5.18", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-018"],
+  ["论语 · 宪问 14.2", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-002"],
+  ["The Analects · Hsien Wan 14.2", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-002"],
+  ["论语 · 公冶长 5.4", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-004"],
+  ["The Analects · Kung-ye Ch'ang 5.4", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-004"],
+  ["论语 · 述而 7.33", "https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-033"],
+  ["The Analects · Shu R. 7.33", "https://www.lunyu.ai/en/analects/shu-er/shu-er-033"],
+  ["论语 · 雍也 6.5", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-005"],
+  ["The Analects · Yung Yey 6.5", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-005"],
+  ["论语 · 宪问 14.17", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-017"],
+  ["The Analects · Hsien Wan 14.17", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-017"],
+  ["论语 · 述而 7.29", "https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-029"],
+  ["The Analects · Shu R. 7.29", "https://www.lunyu.ai/en/analects/shu-er/shu-er-029"],
+  ["仁、君子与日常行为", "https://www.lunyu.ai/zh-Hans/blogs/ren-junzi-and-everyday-conduct"],
+  ["Ren, Junzi, and Everyday Conduct", "https://www.lunyu.ai/en/blogs/ren-junzi-and-everyday-conduct"],
+  ["仁", "https://www.lunyu.ai/zh-Hans/index/ren"],
+  ["Ren", "https://www.lunyu.ai/en/index/ren"],
+];
+{
+  const start = postSource.indexOf('slug: "what-ren-means-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing what-ren-means-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = renAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `what-ren-means-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    renAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`what-ren-means-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `what-ren-means-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/blogs/yan-yuan-in-the-analects",
+      "/blogs/ran-you-in-the-analects",
+      "/blogs/fan-chi-in-the-analects",
+      "/analects/yan-yuan/yan-yuan-001",
+      "/analects/yan-yuan/yan-yuan-022",
+      "/analects/yong-ye/yong-ye-028",
+      "/analects/xue-er/xue-er-003",
+      "/analects/wei-ling-gong/wei-ling-gong-023",
+      "已写",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`what-ren-means-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (!block.includes(renInline1Zh)) {
+      fail("what-ren-means-in-the-analects: ZH inline-1 alt must name blank tablets");
+    }
+    if (block.includes("pending Gemini")) {
+      fail("what-ren-means-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("what-ren-means-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("what-ren-means-in-the-analects: unbalanced Chinese quotation marks");
+      }
+    }
+  }
+}
+for (const src of [renCover, renInline1, renInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/what-ren-means-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/what-ren-means-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-18"',
+  '"dateModified":"2026-10-18"',
+  "What Ren Means in the Analects",
+  "What ren means in the Analects: seldom granted, withheld from loyalty and purity, and still near when you wish for it. Eight live doors.",
+  "This Note follows that rare-grant thread.",
+  "He seldom spoke of it — and the layers disagree",
+  "Loyal and clean — still not ren",
+  "Restraint that is",
+  "I do not know whether he is ren",
+  "He will not claim it for himself",
+  "Hui: three months without leaving ren",
+  "Granted: Guan Zhong — for what the work did",
+  "Near to begin:",
+  "What rare grant and near turn add up to",
+  "Open the Ren index next",
+  "What does ren mean in the Analects?",
+  "Why does Confucius say 未知，焉得仁 in 5.18?",
+  "Is repressing pride and greed already ren in 14.2?",
+  "Did Confucius claim ren for himself?",
+  "How can ren be rare to grant and still",
+  "The subjects of which the Master seldom spoke were—profitableness, and also the appointments of Heaven, and perfect virtue.",
+  "He was loyal.",
+  "He was pure.",
+  "I do not know. How can he be pronounced perfectly virtuous?",
+  "This may be regarded as the achievement of what is difficult. But I do not know that it is to be deemed perfect virtue.",
+  "Yung is truly virtuous, but he is not ready with his tongue.",
+  "how dare I rank myself with them?",
+  "Such was Hui that for three months there would be nothing in his mind contrary to perfect virtue.",
+  "Is virtue a thing remote? I wish to be virtuous, and lo! virtue is at hand.",
+  ">The Analects · Tsze Han 9.1</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.18</a>",
+  ">The Analects · Hsien Wan 14.2</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.4</a>",
+  ">The Analects · Shu R. 7.33</a>",
+  ">The Analects · Yung Yey 6.5</a>",
+  ">The Analects · Hsien Wan 14.17</a>",
+  ">The Analects · Shu R. 7.29</a>",
+  ">Ren, Junzi, and Everyday Conduct</a>",
+  ">Ren</a>",
+  'href="/en/analects/zi-han/zi-han-001"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-018"',
+  'href="/en/analects/xian-wen/xian-wen-002"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-004"',
+  'href="/en/analects/shu-er/shu-er-033"',
+  'href="/en/analects/yong-ye/yong-ye-005"',
+  'href="/en/analects/xian-wen/xian-wen-017"',
+  'href="/en/analects/shu-er/shu-er-029"',
+  'href="/en/blogs/ren-junzi-and-everyday-conduct"',
+  'href="/en/index/ren"',
+  renCover,
+  renInline1,
+  renInline2,
+  renCoverEn,
+  renInline1En,
+  renInline2En,
+  `property="og:image" content="${siteUrl}${renCover}"`,
+  `property="og:image:alt" content="${renCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${renCover}"`,
+  `name="twitter:image:alt" content="${renCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/what-ren-means-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/what-ren-means-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-18"',
+  '"dateModified":"2026-10-18"',
+  "《论语》里的「仁」是什么意思？",
+  "《论语》里的「仁」少被许下。忠与清可以点名，这个字仍被按下；欲仁，则近。八处活页，链回可核对的原文。",
+  "这一篇只跟着「少许、近起步」这条线走。",
+  "他很少谈——两层读法不要并成一句",
+  "忠了、清了——仍不是仁",
+  "克伐怨欲不行——只是「难」，不是仁",
+  "「不知其仁」",
+  "他自己也不敢当",
+  "回也：三月不违仁",
+  "许了：管仲——因功业所及",
+  "近在起步：「我欲仁」",
+  "少许与近起步，合起来说了什么",
+  "接下来打开仁索引",
+  "5.18 为什么说「未知，焉得仁」？",
+  "14.2 克伐怨欲不行，算不算已经仁了？",
+  "孔子有没有自称仁？",
+  "仁又少许、又「至矣」，怎么同时成立？",
+  "未知，焉得仁",
+  "仁则吾不知也",
+  "如其仁。如其仁。",
+  "我欲仁，斯仁至矣",
+  ">论语 · 子罕 9.1</a>",
+  ">论语 · 公冶长 5.18</a>",
+  ">论语 · 宪问 14.2</a>",
+  ">论语 · 公冶长 5.4</a>",
+  ">论语 · 述而 7.33</a>",
+  ">论语 · 雍也 6.5</a>",
+  ">论语 · 宪问 14.17</a>",
+  ">论语 · 述而 7.29</a>",
+  ">仁、君子与日常行为</a>",
+  ">仁</a>",
+  'href="/zh-Hans/analects/zi-han/zi-han-001"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-018"',
+  'href="/zh-Hans/analects/xian-wen/xian-wen-002"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-004"',
+  'href="/zh-Hans/analects/shu-er/shu-er-033"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-005"',
+  'href="/zh-Hans/analects/xian-wen/xian-wen-017"',
+  'href="/zh-Hans/analects/shu-er/shu-er-029"',
+  'href="/zh-Hans/blogs/ren-junzi-and-everyday-conduct"',
+  'href="/zh-Hans/index/ren"',
+  renCover,
+  renInline1,
+  renInline2,
+  renCoverZh,
+  renInline1Zh,
+  renInline2Zh,
+  `property="og:image" content="${siteUrl}${renCover}"`,
+  `property="og:image:alt" content="${renCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${renCover}"`,
+  `name="twitter:image:alt" content="${renCoverZh}"`,
+]);
+{
+  const zhRenFile = htmlPath("/zh-Hans/blogs/what-ren-means-in-the-analects");
+  if (exists(zhRenFile)) {
+    const zhRenHtml = read(zhRenFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhRenHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/what-ren-means-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhRenHtml.includes("已写")) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: inline-1 alt must not say 已写");
+    }
+    if (zhRenHtml.includes(renCoverEn)) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhRenHtml.includes(renInline1En) || zhRenHtml.includes(renInline2En)) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhRenHtml, />Ren<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: English Ren body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhRenHtml, />Ren, Junzi, and Everyday Conduct<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: English everyday-conduct body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhRenHtml, />仁<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 仁 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />仁、君子与日常行为<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 仁、君子与日常行为 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 子罕 9\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 子罕 9.1 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 公冶长 5\.18<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 公冶长 5.18 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 宪问 14\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 宪问 14.2 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 公冶长 5\.4<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 公冶长 5.4 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 述而 7\.33<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 述而 7.33 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 雍也 6\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 雍也 6.5 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 宪问 14\.17<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 宪问 14.17 body link should appear once");
+    }
+    if (countRegex(zhRenHtml, />论语 · 述而 7\.29<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/what-ren-means-in-the-analects: 述而 7.29 body link should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/yan-yuan-in-the-analects",
+      "/blogs/ran-you-in-the-analects",
+      "/blogs/fan-chi-in-the-analects",
+      "/analects/yan-yuan/yan-yuan-001",
+      "/analects/yan-yuan/yan-yuan-022",
+      "/analects/yong-ye/yong-ye-028",
+      "/analects/xue-er/xue-er-003",
+      "/analects/wei-ling-gong/wei-ling-gong-023",
+    ]) {
+      if (zhRenHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/what-ren-means-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enRenFile = htmlPath("/en/blogs/what-ren-means-in-the-analects");
+  if (exists(enRenFile)) {
+    const enRenHtml = read(enRenFile);
+    if (enRenHtml.includes(renCoverZh)) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enRenHtml.includes(renInline1Zh) || enRenHtml.includes(renInline2Zh)) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enRenHtml, />Ren<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Ren body link should appear once");
+    }
+    if (countRegex(enRenHtml, />Ren, Junzi, and Everyday Conduct<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: everyday-conduct body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Tsze Han 9\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Tsze Han 9.1 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.18<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Kung-ye Ch'ang 5.18 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Hsien Wan 14\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Hsien Wan 14.2 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.4<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Kung-ye Ch'ang 5.4 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Shu R\. 7\.33<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Shu R. 7.33 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Yung Yey 6\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Yung Yey 6.5 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Hsien Wan 14\.17<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Hsien Wan 14.17 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />The Analects · Shu R\. 7\.29<\/a>/g) !== 1) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Shu R. 7.29 body link should appear once");
+    }
+    if (countRegex(enRenHtml, />仁<\/a>/g) !== 0) {
+      fail("/en/blogs/what-ren-means-in-the-analects: Chinese 仁 body link should not appear on en");
+    }
+    for (const forbidden of [
+      "/blogs/yan-yuan-in-the-analects",
+      "/blogs/ran-you-in-the-analects",
+      "/blogs/fan-chi-in-the-analects",
+      "/analects/yan-yuan/yan-yuan-001",
+      "/analects/yan-yuan/yan-yuan-022",
+      "/analects/yong-ye/yong-ye-028",
+      "/analects/xue-er/xue-er-003",
+      "/analects/wei-ling-gong/wei-ling-gong-023",
+    ]) {
+      if (enRenHtml.includes(forbidden)) {
+        fail(`/en/blogs/what-ren-means-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -5176,6 +5533,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/what-ren-means-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/what-ren-means-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/ran-you-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/ran-you-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/yan-yuan-in-the-analects`, "sitemap");
@@ -5229,8 +5588,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-17")) {
+    if (!lastmod.includes("2026-10-18")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const renLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/what-ren-means-in-the-analects`);
+    if (!renLastmod.includes("2026-10-18")) {
+      fail(
+        `sitemap: /${locale}/blogs/what-ren-means-in-the-analects lastmod should be 2026-10-18, got ${renLastmod || "missing"}`
+      );
     }
     const ranYouLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/ran-you-in-the-analects`);
     if (!ranYouLastmod.includes("2026-10-17")) {
@@ -5331,7 +5696,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "17 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "18 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -5351,6 +5716,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const renEditorialLastmod = "2026-10-18";
 const ranYouEditorialLastmod = "2026-10-17";
 const yanYuanEditorialLastmod = "2026-10-16";
 const fanChiEditorialLastmod = "2026-10-15";
@@ -5373,6 +5739,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${renEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ranYouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${yanYuanEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${fanChiEditorialLastmod}T00:00:00.000Z`, "")
