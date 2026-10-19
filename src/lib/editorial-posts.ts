@@ -102,6 +102,194 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "state-of-lu-in-the-analects",
+    titleZh: "《论语》里的鲁国：近于道的那一变",
+    titleEn: "The State of Lu in the Analects: The Near Measure",
+    dekZh: "在《论语》里，鲁（State of Lu / 鲁国）不只是地图上的故国。你看见书把鲁当作一把近尺：齐一变可至鲁，鲁一变可至道；鲁卫之政如兄弟；归鲁之后乐才得正。这一篇跟着「近于道的那一变」走七处活页章句。它不是鲁哀公、鲁定公的人物传——那两篇 Who-Notes 已经各自成文。",
+    dekEn: "In the Analects, the State of Lu (鲁) is not only Confucius's home on a map. You watch the book use Lu as a near measure: closer to the Way than Ch'i by one change, kin to Wei in government, and the place the book returns to when music and order must be set right. This Note follows that measure across seven live passages. It is not a biography of Duke Ai or Duke Ding — those Who-Notes already stand alone.",
+    descriptionZh: "《论语》里的鲁国是一把近尺：齐一变至于鲁，鲁一变至于道。七处活页，链回可核对的原文。",
+    descriptionEn: "The State of Lu in the Analects is a near measure: one change short of the Way. Seven live doors.",
+    datePublished: "2026-10-19",
+    dateModified: "2026-10-19",
+    tagsZh: ["鲁", "鲁国", "雍也"],
+    tagsEn: ["lu", "State of Lu", "Yung Yey"],
+    related: [
+      "/analects/yong-ye/yong-ye-022",
+      "/index/lu",
+      "/analects/zi-lu/zi-lu-007",
+      "/analects/zi-han/zi-han-014",
+      "/analects/ba-yi/ba-yi-023",
+      "/analects/gong-ye-chang/gong-ye-chang-002",
+      "/analects/wei-zi/wei-zi-010",
+      "/analects/xian-jin/xian-jin-013",
+    ],
+    cover: notesBlogImage(
+      "state-of-lu-in-the-analects",
+      "cover.jpg",
+      "Three unmarked stepping stones in mist — a nearer measure on the path toward the Way",
+      "雾里三块无字踏石——通向道的近一阶",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "state-of-lu-in-the-analects",
+        "inline-1.jpg",
+        "Travel packs set down beside quiet bells and a music stand — home again, pieces finding their places",
+        "行囊放在静铃与琴架旁——归后，曲各得其所",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "state-of-lu-in-the-analects",
+        "inline-2.jpg",
+        "An old treasury gate left standing while new timber waits unused nearby",
+        "旧库门仍立着，新木料闲置一旁",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "一变：齐至于鲁，鲁至于道",
+        headingEn: "One change: Ch'i to Lu, Lu to the Way",
+        bodyZh: [
+          "请你从[论语 · 雍也 6.22](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-022)开始，因为这里鲁被放在一把尺子上。原文是：子曰，齐一变，至于鲁，鲁一变，至于道。活页白话导读作：孔子说：齐国的政教风俗一加变革，就可以达到鲁国的样子；鲁国一加变革，就可以达到合乎先王之道的境界。",
+          "活页 Legge 作：The Master said, \"Ch'i, by one change, would come to the State of Lu. Lu, by one change, would come to a State where true principles predominated.\" 你应听出层级：齐距鲁一变，鲁距道又一变。这是书自己的近尺——不是鲁廷游记。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Yung Yey 6.22](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-022), because here you hear Lu placed on a scale. The source reads 子曰，齐一变，至于鲁，鲁一变，至于道。 The modern guide on that page says: 孔子说：齐国的政教风俗一加变革，就可以达到鲁国的样子；鲁国一加变革，就可以达到合乎先王之道的境界。",
+          "Legge on the same page: The Master said, \"Ch'i, by one change, would come to the State of Lu. Lu, by one change, would come to a State where true principles predominated.\" You should hear the stack: Ch'i is one change from Lu; Lu is one change from 道. That is the book's own near measure — not a travelogue of the Lu court.",
+        ],
+      },
+      {
+        headingZh: "兄弟之政：鲁与卫",
+        headingEn: "Brothers in government: Lu and Wei",
+        bodyZh: [
+          "[论语 · 子路 13.7](https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-007)请你把鲁与另一国并置来看，而不是单独抬高。原文是：子曰，鲁衞之政，兄弟也。引用时请保留活页上的「衞」。导读作：孔子说：鲁国和卫国的政事，就像兄弟一样相近。",
+          "你得到的是政风上的兄弟关系，不是两国史的合并本。请你把这一门当作尺子上的第二个刻度：鲁不是孤悬的理想，它与卫并肩而立。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze-lu 13.7](https://www.lunyu.ai/en/analects/zi-lu/zi-lu-007) pairs Lu with another state instead of ranking it alone. The source: 子曰，鲁衞之政，兄弟也。 Keep the live page's 衞 when you quote. The guide: 孔子说：鲁国和卫国的政事，就像兄弟一样相近。",
+          "Legge: The Master said, \"The governments of Lu and Wei are brothers.\" You get kinship of polity, not a merged history of two courts. Hold this door as a second mark on the measure: Lu is not an isolated ideal; it stands next to Wei as brothers stand.",
+        ],
+      },
+      {
+        headingZh: "反鲁——然后乐正",
+        headingEn: "Return to Lu — then the music is set right",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "[论语 · 子罕 9.14](https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-014)请你听它怎样把鲁写成归处。原文是：子曰，吾自衞反鲁，然后乐正，雅颂各得其所。导读作：孔子说：我从卫国返回鲁国以后，才把乐曲整理端正，使《雅》《颂》各得其应有的位置。",
+          "请你抓住「反鲁 → 然后乐正」。更完整的「乐」主题笔记另有计划；这里只要鲁作为归后整理落地的地方。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze Han 9.14](https://www.lunyu.ai/en/analects/zi-han/zi-han-014) lets you hear Lu as the place of return — listen for the order of the sentence. The source: 子曰，吾自衞反鲁，然后乐正，雅颂各得其所。 The guide: 孔子说：我从卫国返回鲁国以后，才把乐曲整理端正，使《雅》《颂》各得其应有的位置。",
+          "Legge: The Master said, \"I returned from Wei to Lu, and then the music was reformed, and the pieces in the Royal songs and Praise songs all found their proper places.\" You should keep the camera on return → then music right. A fuller Music (Yue) Note is planned elsewhere; here Lu is the home where reform lands.",
+        ],
+      },
+      {
+        headingZh: "语鲁大师乐",
+        headingEn: "Teaching Lu's music-master",
+        bodyZh: [
+          "[论语 · 八佾 3.23](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-023)仍把你留在鲁的礼乐声里。原文是：子语鲁大师乐曰，乐其可知也，始作，翕如也，从之，纯如也，缴如也，绎如也，以成。导读作：孔子把演奏音乐的道理讲给鲁国的乐官太师听，说：音乐的规律是可以了解的。开始演奏时，各种乐声合起来，气势充盛；接下来，声音纯正和谐，清晰分明，连绵不断，这样一直到乐曲奏完。",
+          "你看见的是教给鲁国太师的开合之法——鲁是把曲子讲清楚的作坊，不是一篇独立的乐论。",
+        ],
+        bodyEn: [
+          "[The Analects · Pa Yih 3.23](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-023) keeps you inside Lu's ritual sound. The source: 子语鲁大师乐曰，乐其可知也，始作，翕如也，从之，纯如也，缴如也，绎如也，以成。 The guide: 孔子把演奏音乐的道理讲给鲁国的乐官太师听，说：音乐的规律是可以了解的。开始演奏时，各种乐声合起来，气势充盛；接下来，声音纯正和谐，清晰分明，连绵不断，这样一直到乐曲奏完。",
+          "Legge: The Master instructing the grand music-master of Lu said, \"How to play music may be known. At the commencement of the piece, all the parts should sound together. As it proceeds, they should be in harmony while severally distinct and flowing without break, and thus on to the conclusion.\" You watch instruction given to Lu's music-master — Lu as the workshop of how a piece should open and resolve, not a general essay on music theory.",
+        ],
+      },
+      {
+        headingZh: "鲁无君子者，斯焉取斯",
+        headingEn: "If Lu had no junzi…",
+        bodyZh: [
+          "[论语 · 公冶长 5.2](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-002)请你用「能否长出君子」来量鲁。原文是：子谓子贱，君子哉若人。鲁无君子者，斯焉取斯。导读作：孔子谈到子贱，说：这个人真是个君子啊。如果鲁国没有君子，他又是从哪里学到这种品德的呢？",
+          "你听见鲁被说成使君子显得可信的土壤——仍不是一部公爵传。",
+        ],
+        bodyEn: [
+          "[The Analects · Kung-ye Ch'ang 5.2](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-002) lets you measure Lu by the people it can grow. The source: 子谓子贱，君子哉若人。鲁无君子者，斯焉取斯。 The guide: 孔子谈到子贱，说：这个人真是个君子啊。如果鲁国没有君子，他又是从哪里学到这种品德的呢？",
+          "Legge: The Master said of Tsze-chien, \"Of superior virtue indeed is such a man! If there were not virtuous men in Lu, how could this man have acquired this character?\" You hear Lu named as the soil that makes a junzi plausible — still not a duke résumé.",
+        ],
+      },
+      {
+        headingZh: "周公谓鲁公",
+        headingEn: "Zhou Gong's charge to the duke of Lu",
+        bodyZh: [
+          "[论语 · 微子 18.10](https://www.lunyu.ai/zh-Hans/analects/wei-zi/wei-zi-010)请你只留短门；周公另有计划中的笔记。原文开篇是：周公谓鲁公曰，君子不施其亲，不使大臣怨乎不以，故旧无大故，则不弃也，无求备于一人。导读作：周公对儿子鲁公说：君子不怠慢自己的亲族，不让大臣抱怨没被任用，老臣旧友没有大的过失，就不要抛弃他们，不要对一个人求全责备。本篇只要对鲁公的叮嘱——亲族、大臣、故旧——不要写成周公列传。",
+        ],
+        bodyEn: [
+          "Keep [The Analects · Wei Tsze 18.10](https://www.lunyu.ai/en/analects/wei-zi/wei-zi-010) short; a Zhou Gong Note is planned elsewhere. The source opens 周公谓鲁公曰，君子不施其亲，不使大臣怨乎不以，故旧无大故，则不弃也，无求备于一人。 The guide: 周公对儿子鲁公说：君子不怠慢自己的亲族，不让大臣抱怨没被任用，老臣旧友没有大的过失，就不要抛弃他们，不要对一个人求全责备。 Legge: The duke of Chau addressed his son, the duke of Lu, saying, \"The virtuous prince does not neglect his relations. He does not cause the great ministers to repine at his not employing them. Without some great cause, he does not dismiss from their offices the members of old families. He does not seek in one man talents for every employment.\" What you need here is the charge to Lu Gong — how a virtuous prince treats kin, ministers, and old families — not a Zhou Gong biography.",
+        ],
+      },
+      {
+        headingZh: "本地一景：长府",
+        headingEn: "A local scene: the Long Treasury",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 先进 11.13](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-013)让你看见鲁作为礼与权落地的现场。原文是：鲁人为长府。闵子骞曰，仍旧贯，如之何，何必改作。子曰，夫人不言，言必有中。导读作：鲁国要翻修长府这座库房。闵子骞说：照老样子用下去，怎么样呢？何必一定要改建呢？孔子说：这个人平时不轻易开口，一开口就必定说到点子上。",
+          "一门短门即可；不要写成闵子骞人物笔记。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.13](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-013) shows you Lu as the place where a ritual-power decision lands. The source: 鲁人为长府。闵子骞曰，仍旧贯，如之何，何必改作。子曰，夫人不言，言必有中。 The guide: 鲁国要翻修长府这座库房。闵子骞说：照老样子用下去，怎么样呢？何必一定要改建呢？孔子说：这个人平时不轻易开口，一开口就必定说到点子上。",
+          "Legge: Some parties in Lu were going to take down and rebuild the Long Treasury. Min Tsze-ch'ien said, \"Suppose it were to be repaired after its old style;—why must it be altered and made anew?\" One short door is enough for you; do not turn this into a Min Zijian Who-Note.",
+        ],
+      },
+      {
+        headingZh: "近尺合起来说了什么",
+        headingEn: "What the near measure adds up to",
+        bodyZh: [
+          "把这七处合起来，你得到的是：一把尺度（6.22），兄弟之政（13.7），归后乐正的故国（9.14），教鲁太师的作坊（3.23），可长君子的土壤（5.2），对鲁公的叮嘱（18.10），以及长府现场（11.13）。没写进这篇的同样重要：本篇不重讲哀公、定公传记。若你要那两扇统治者的门，可各开一次[《论语》里的鲁哀公是谁？](https://www.lunyu.ai/zh-Hans/blogs/duke-ai-of-lu-in-the-analects)或[《论语》里的鲁定公是谁？](https://www.lunyu.ai/zh-Hans/blogs/duke-ding-of-lu-in-the-analects)——只作软链。",
+          "作为你自己的体会——不是孔子的原话——请留意：你多轻易把「鲁国」当成地图标签或史章标题。《论语》更常把鲁当作一把量「距道还有多远」的近尺。",
+        ],
+        bodyEn: [
+          "Put the doors together and you get a scale (6.22), a brother polity (13.7), a home of return where music is set right (9.14), a workshop for teaching Lu's music-master (3.23), a soil that can grow a junzi (5.2), a charge spoken to Lu Gong (18.10), and a local treasury scene (11.13). What they leave out matters too: this Note does not retell Duke Ai or Duke Ding as biographies. If you need those ruler doors, open [Who Was Duke Ai of Lu in the Analects?](https://www.lunyu.ai/en/blogs/duke-ai-of-lu-in-the-analects) or [Who Was Duke Ding of Lu in the Analects?](https://www.lunyu.ai/en/blogs/duke-ding-of-lu-in-the-analects) once each — soft links only.",
+          "As your own reflection — not as Confucius's words — notice how easily you treat \"State of Lu\" as a map label or a history chapter. The Analects keeps treating Lu as a measure of how close a polity stands to 道.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的鲁国是什么？",
+        questionEn: "What is the State of Lu in the Analects?",
+        answerZh: "你会遇见它是孔子故国，但书也把它当作近标准。在 6.22，齐一变至于鲁，鲁一变至于道。别处鲁与卫并称，被写成乐正之归处，也被「有无君子」所检验。每一句请回活页核对，并说明用的是原文、导读还是英译。",
+        answerEn: "You will meet Lu as Confucius's home state, but the book also uses it as a near standard. In 6.22, Ch'i by one change would reach Lu, and Lu by one change would reach the Way. Elsewhere Lu is paired with Wei, named as the place of return for music reform, and tested by whether it can grow junzi. Check each line on its passage page, and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "6.22「齐一变至于鲁」是什么意思？",
+        questionEn: "What does 齐一变至于鲁 mean in 6.22?",
+        answerZh: "你读到的是一把尺子，不是行程表。原文是：齐一变，至于鲁，鲁一变，至于道。活页导读：齐国的政教风俗一加变革，就可以达到鲁国的样子；鲁国一加变革，就可以达到合乎先王之道的境界。Legge 此处用 true principles 译道；本篇谈第三阶时仍用「道」这个字。",
+        answerEn: "You are reading a scale, not a travel plan. The source: 齐一变，至于鲁，鲁一变，至于道. The live guide: 齐国的政教风俗一加变革，就可以达到鲁国的样子；鲁国一加变革，就可以达到合乎先王之道的境界. Legge's \"true principles\" renders 道 here; keep the Note's own word Way / 道 when you talk about the third step.",
+      },
+      {
+        questionZh: "13.7 里鲁和卫是同一个吗？",
+        questionEn: "Are Lu and Wei the same in 13.7?",
+        answerZh: "不是。原文说的是政事如兄弟——鲁衞之政，兄弟也——不是两国等同。请用活页的「衞」。你应听出政风上的亲缘，不是合并编年。",
+        answerEn: "No. The source says their governments are brothers — 鲁衞之政，兄弟也 — not that the states are identical. Quote the live 衞. You should hear kinship of political character, not a merged chronicle.",
+      },
+      {
+        questionZh: "为什么说反鲁之后才乐正？",
+        questionEn: "Why does Confucius say he set music right after returning to Lu?",
+        answerZh: "在 9.14，你听见他把整理与归来绑在一起：吾自衞反鲁，然后乐正，雅颂各得其所。请你盯住「然后」。本篇只看鲁作为落地处；「乐」的专题可另开。",
+        answerEn: "In 9.14 you hear him tie reform to return: 吾自衞反鲁，然后乐正，雅颂各得其所. Legge: \"I returned from Wei to Lu, and then the music was reformed…\" Keep then in view. This Note only watches Lu as the landing place; a separate Music Note can open the Yue thread more fully.",
+      },
+      {
+        questionZh: "这篇是鲁国公爵传吗？",
+        questionEn: "Is this Note a biography of Lu's dukes?",
+        answerZh: "不是。哀公、定公已有各自的 Who-Notes。这里公爵只在章句需要时露面；题旨是书如何用鲁——不是宫廷史。你若需要统治者那扇门，软链即可。",
+        answerEn: "No. Duke Ai and Duke Ding already have their own Who-Notes. Here the dukes appear only if a passage needs them for the measure; the thesis is how the book uses Lu — not a court history. Soft-link those Notes if you need the ruler doors.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接下来打开鲁索引",
+        headingEn: "Open the Lu index next",
+        bodyZh: [
+          "当你想把与鲁相关的章句放在同一页读——包括本篇未作主门的卡片——请打开[鲁](https://www.lunyu.ai/zh-Hans/index/lu)。索引是带引文的地名列表；本篇只跟着「近尺」走。你回到那里再读这七处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want every related Lu passage on one screen — including cards this Note did not open as main doors — open [Lu](https://www.lunyu.ai/en/index/lu). The index is a place list with quotes; this Note only followed Lu as the near measure. Read the seven doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "what-ren-means-in-the-analects",
     titleZh: "《论语》里的「仁」是什么意思？",
     titleEn: "What Ren Means in the Analects",
