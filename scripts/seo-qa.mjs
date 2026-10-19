@@ -2153,6 +2153,354 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
   }
 }
 
+const stateOfLuCover = "/images/blogs/state-of-lu-in-the-analects/cover.jpg";
+const stateOfLuInline1 = "/images/blogs/state-of-lu-in-the-analects/inline-1.jpg";
+const stateOfLuInline2 = "/images/blogs/state-of-lu-in-the-analects/inline-2.jpg";
+const stateOfLuCoverEn =
+  "Three unmarked stepping stones in mist — a nearer measure on the path toward the Way";
+const stateOfLuCoverZh = "雾里三块无字踏石——通向道的近一阶";
+const stateOfLuInline1En =
+  "Travel packs set down beside quiet bells and a music stand — home again, pieces finding their places";
+const stateOfLuInline1Zh = "行囊放在静铃与琴架旁——归后，曲各得其所";
+const stateOfLuInline2En =
+  "An old treasury gate left standing while new timber waits unused nearby";
+const stateOfLuInline2Zh = "旧库门仍立着，新木料闲置一旁";
+const stateOfLuAnchors = [
+  ["论语 · 雍也 6.22", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-022"],
+  ["The Analects · Yung Yey 6.22", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-022"],
+  ["论语 · 子路 13.7", "https://www.lunyu.ai/zh-Hans/analects/zi-lu/zi-lu-007"],
+  ["The Analects · Tsze-lu 13.7", "https://www.lunyu.ai/en/analects/zi-lu/zi-lu-007"],
+  ["论语 · 子罕 9.14", "https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-014"],
+  ["The Analects · Tsze Han 9.14", "https://www.lunyu.ai/en/analects/zi-han/zi-han-014"],
+  ["论语 · 八佾 3.23", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-023"],
+  ["The Analects · Pa Yih 3.23", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-023"],
+  ["论语 · 公冶长 5.2", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-002"],
+  ["The Analects · Kung-ye Ch'ang 5.2", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-002"],
+  ["论语 · 微子 18.10", "https://www.lunyu.ai/zh-Hans/analects/wei-zi/wei-zi-010"],
+  ["The Analects · Wei Tsze 18.10", "https://www.lunyu.ai/en/analects/wei-zi/wei-zi-010"],
+  ["论语 · 先进 11.13", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-013"],
+  ["The Analects · Hsien Tsin 11.13", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-013"],
+  ["《论语》里的鲁哀公是谁？", "https://www.lunyu.ai/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"],
+  ["《论语》里的鲁定公是谁？", "https://www.lunyu.ai/zh-Hans/blogs/duke-ding-of-lu-in-the-analects"],
+  ["Who Was Duke Ai of Lu in the Analects?", "https://www.lunyu.ai/en/blogs/duke-ai-of-lu-in-the-analects"],
+  ["Who Was Duke Ding of Lu in the Analects?", "https://www.lunyu.ai/en/blogs/duke-ding-of-lu-in-the-analects"],
+  ["鲁", "https://www.lunyu.ai/zh-Hans/index/lu"],
+  ["Lu", "https://www.lunyu.ai/en/index/lu"],
+];
+{
+  const start = postSource.indexOf('slug: "state-of-lu-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing state-of-lu-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = stateOfLuAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `state-of-lu-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    stateOfLuAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`state-of-lu-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `state-of-lu-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/analects/xian-jin/xian-jin-017",
+      "/index/min-zijian",
+      "/blogs/min-zijian",
+      "参也鲁",
+      "pending Gemini",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`state-of-lu-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    const dukeAiHrefs = markdownHrefs.filter((href) => href.includes("/blogs/duke-ai-of-lu-in-the-analects"));
+    const dukeDingHrefs = markdownHrefs.filter((href) => href.includes("/blogs/duke-ding-of-lu-in-the-analects"));
+    if (dukeAiHrefs.length !== 2) {
+      fail(`state-of-lu-in-the-analects: duke-ai soft link should appear once per language, got ${dukeAiHrefs.length}`);
+    }
+    if (dukeDingHrefs.length !== 2) {
+      fail(`state-of-lu-in-the-analects: duke-ding soft link should appear once per language, got ${dukeDingHrefs.length}`);
+    }
+    if (block.includes("pending Gemini")) {
+      fail("state-of-lu-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("state-of-lu-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("state-of-lu-in-the-analects: unbalanced Chinese quotation marks");
+      }
+    }
+  }
+}
+for (const src of [stateOfLuCover, stateOfLuInline1, stateOfLuInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/state-of-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/state-of-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-19"',
+  '"dateModified":"2026-10-19"',
+  "The State of Lu in the Analects: The Near Measure",
+  "The State of Lu in the Analects is a near measure: one change short of the Way. Seven live doors.",
+  "This Note follows that measure across seven live passages.",
+  "Lu to the Way",
+  "Brothers in government: Lu and Wei",
+  "Return to Lu",
+  "then the music is set right",
+  "music-master",
+  "If Lu had no junzi",
+  "charge to the duke of Lu",
+  "A local scene: the Long Treasury",
+  "What the near measure adds up to",
+  "Open the Lu index next",
+  "What is the State of Lu in the Analects?",
+  "What does 齐一变至于鲁 mean in 6.22?",
+  "Are Lu and Wei the same in 13.7?",
+  "Why does Confucius say he set music right after returning to Lu?",
+  "Is this Note a biography of",
+  "would come to the State of Lu. Lu, by one change, would come to a State where true principles predominated.",
+  "The governments of Lu and Wei are brothers.",
+  "I returned from Wei to Lu, and then the music was reformed, and the pieces in the Royal songs and Praise songs all found their proper places.",
+  "How to play music may be known.",
+  "Of superior virtue indeed is such a man!",
+  "The virtuous prince does not neglect his relations.",
+  "Suppose it were to be repaired after its old style",
+  ">The Analects · Yung Yey 6.22</a>",
+  ">The Analects · Tsze-lu 13.7</a>",
+  ">The Analects · Tsze Han 9.14</a>",
+  ">The Analects · Pa Yih 3.23</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.2</a>",
+  ">The Analects · Wei Tsze 18.10</a>",
+  ">The Analects · Hsien Tsin 11.13</a>",
+  ">Who Was Duke Ai of Lu in the Analects?</a>",
+  ">Who Was Duke Ding of Lu in the Analects?</a>",
+  ">Lu</a>",
+  'href="/en/analects/yong-ye/yong-ye-022"',
+  'href="/en/analects/zi-lu/zi-lu-007"',
+  'href="/en/analects/zi-han/zi-han-014"',
+  'href="/en/analects/ba-yi/ba-yi-023"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-002"',
+  'href="/en/analects/wei-zi/wei-zi-010"',
+  'href="/en/analects/xian-jin/xian-jin-013"',
+  'href="/en/blogs/duke-ai-of-lu-in-the-analects"',
+  'href="/en/blogs/duke-ding-of-lu-in-the-analects"',
+  'href="/en/index/lu"',
+  stateOfLuCover,
+  stateOfLuInline1,
+  stateOfLuInline2,
+  stateOfLuCoverEn,
+  stateOfLuInline1En,
+  stateOfLuInline2En,
+  `property="og:image" content="${siteUrl}${stateOfLuCover}"`,
+  `property="og:image:alt" content="${stateOfLuCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${stateOfLuCover}"`,
+  `name="twitter:image:alt" content="${stateOfLuCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/state-of-lu-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/state-of-lu-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-19"',
+  '"dateModified":"2026-10-19"',
+  "《论语》里的鲁国：近于道的那一变",
+  "《论语》里的鲁国是一把近尺：齐一变至于鲁，鲁一变至于道。七处活页，链回可核对的原文。",
+  "这一篇跟着「近于道的那一变」走七处活页章句。",
+  "一变：齐至于鲁，鲁至于道",
+  "兄弟之政：鲁与卫",
+  "反鲁——然后乐正",
+  "语鲁大师乐",
+  "鲁无君子者，斯焉取斯",
+  "周公谓鲁公",
+  "本地一景：长府",
+  "近尺合起来说了什么",
+  "接下来打开鲁索引",
+  "《论语》里的鲁国是什么？",
+  "6.22「齐一变至于鲁」是什么意思？",
+  "13.7 里鲁和卫是同一个吗？",
+  "为什么说反鲁之后才乐正？",
+  "这篇是鲁国公爵传吗？",
+  "齐一变，至于鲁，鲁一变，至于道",
+  "鲁衞之政，兄弟也",
+  "吾自衞反鲁，然后乐正",
+  "子语鲁大师乐曰",
+  "鲁无君子者，斯焉取斯",
+  "周公谓鲁公曰",
+  "鲁人为长府",
+  "仍旧贯",
+  ">论语 · 雍也 6.22</a>",
+  ">论语 · 子路 13.7</a>",
+  ">论语 · 子罕 9.14</a>",
+  ">论语 · 八佾 3.23</a>",
+  ">论语 · 公冶长 5.2</a>",
+  ">论语 · 微子 18.10</a>",
+  ">论语 · 先进 11.13</a>",
+  ">《论语》里的鲁哀公是谁？</a>",
+  ">《论语》里的鲁定公是谁？</a>",
+  ">鲁</a>",
+  'href="/zh-Hans/analects/yong-ye/yong-ye-022"',
+  'href="/zh-Hans/analects/zi-lu/zi-lu-007"',
+  'href="/zh-Hans/analects/zi-han/zi-han-014"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-023"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-002"',
+  'href="/zh-Hans/analects/wei-zi/wei-zi-010"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-013"',
+  'href="/zh-Hans/blogs/duke-ai-of-lu-in-the-analects"',
+  'href="/zh-Hans/blogs/duke-ding-of-lu-in-the-analects"',
+  'href="/zh-Hans/index/lu"',
+  stateOfLuCover,
+  stateOfLuInline1,
+  stateOfLuInline2,
+  stateOfLuCoverZh,
+  stateOfLuInline1Zh,
+  stateOfLuInline2Zh,
+  `property="og:image" content="${siteUrl}${stateOfLuCover}"`,
+  `property="og:image:alt" content="${stateOfLuCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${stateOfLuCover}"`,
+  `name="twitter:image:alt" content="${stateOfLuCoverZh}"`,
+]);
+{
+  const zhStateOfLuFile = htmlPath("/zh-Hans/blogs/state-of-lu-in-the-analects");
+  if (exists(zhStateOfLuFile)) {
+    const zhStateOfLuHtml = read(zhStateOfLuFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhStateOfLuHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/state-of-lu-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhStateOfLuHtml.includes(stateOfLuCoverEn)) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhStateOfLuHtml.includes(stateOfLuInline1En) || zhStateOfLuHtml.includes(stateOfLuInline2En)) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhStateOfLuHtml, />Lu<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: English Lu body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhStateOfLuHtml, />Who Was Duke Ai of Lu in the Analects\?<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: English Duke Ai body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhStateOfLuHtml, />Who Was Duke Ding of Lu in the Analects\?<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: English Duke Ding body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhStateOfLuHtml, />鲁<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 鲁 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />《论语》里的鲁哀公是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 鲁哀公 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />《论语》里的鲁定公是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 鲁定公 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 雍也 6\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 雍也 6.22 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 子路 13\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 子路 13.7 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 子罕 9\.14<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 子罕 9.14 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 八佾 3\.23<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 八佾 3.23 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 公冶长 5\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 公冶长 5.2 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 微子 18\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 微子 18.10 body link should appear once");
+    }
+    if (countRegex(zhStateOfLuHtml, />论语 · 先进 11\.13<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/state-of-lu-in-the-analects: 先进 11.13 body link should appear once");
+    }
+    for (const forbidden of [
+      "/analects/xian-jin/xian-jin-017",
+      "/index/min-zijian",
+      "/blogs/min-zijian",
+    ]) {
+      if (zhStateOfLuHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/state-of-lu-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enStateOfLuFile = htmlPath("/en/blogs/state-of-lu-in-the-analects");
+  if (exists(enStateOfLuFile)) {
+    const enStateOfLuHtml = read(enStateOfLuFile);
+    if (enStateOfLuHtml.includes(stateOfLuCoverZh)) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enStateOfLuHtml.includes(stateOfLuInline1Zh) || enStateOfLuHtml.includes(stateOfLuInline2Zh)) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enStateOfLuHtml, />Lu<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Lu body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />Who Was Duke Ai of Lu in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Duke Ai body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />Who Was Duke Ding of Lu in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Duke Ding body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Yung Yey 6\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Yung Yey 6.22 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Tsze-lu 13\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Tsze-lu 13.7 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Tsze Han 9\.14<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Tsze Han 9.14 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Pa Yih 3\.23<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Pa Yih 3.23 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Kung-ye Ch'ang 5.2 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Wei Tsze 18\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Wei Tsze 18.10 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />The Analects · Hsien Tsin 11\.13<\/a>/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Hsien Tsin 11.13 body link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, />鲁<\/a>/g) !== 0) {
+      fail("/en/blogs/state-of-lu-in-the-analects: Chinese 鲁 body link should not appear on en");
+    }
+    if (countRegex(enStateOfLuHtml, /href="\/en\/blogs\/duke-ai-of-lu-in-the-analects"/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: duke-ai soft link should appear once");
+    }
+    if (countRegex(enStateOfLuHtml, /href="\/en\/blogs\/duke-ding-of-lu-in-the-analects"/g) !== 1) {
+      fail("/en/blogs/state-of-lu-in-the-analects: duke-ding soft link should appear once");
+    }
+    for (const forbidden of [
+      "/analects/xian-jin/xian-jin-017",
+      "/index/min-zijian",
+      "/blogs/min-zijian",
+    ]) {
+      if (enStateOfLuHtml.includes(forbidden)) {
+        fail(`/en/blogs/state-of-lu-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
 const renCover = "/images/blogs/what-ren-means-in-the-analects/cover.jpg";
 const renInline1 = "/images/blogs/what-ren-means-in-the-analects/inline-1.jpg";
 const renInline2 = "/images/blogs/what-ren-means-in-the-analects/inline-2.jpg";
@@ -5369,6 +5717,20 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/lu`, [
+    locale === "en" ? ">Lu<" : ">鲁<",
+    `href="/${locale}/blogs/state-of-lu-in-the-analects"`,
+    locale === "en"
+      ? "The State of Lu in the Analects: The Near Measure"
+      : "《论语》里的鲁国：近于道的那一变",
+    `/${locale}/analects/yong-ye/yong-ye-022`,
+    `/${locale}/analects/zi-lu/zi-lu-007`,
+    `/${locale}/analects/zi-han/zi-han-014`,
+    `/${locale}/analects/ba-yi/ba-yi-023`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-002`,
+    `/${locale}/analects/wei-zi/wei-zi-010`,
+    `/${locale}/analects/xian-jin/xian-jin-013`,
+  ]);
   checkHtml(`/${locale}/index/ran-you`, [
     locale === "en" ? "Ran You" : "冉有",
     `href="/${locale}/blogs/ran-you-in-the-analects"`,
@@ -5533,6 +5895,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/state-of-lu-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/state-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/what-ren-means-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/what-ren-means-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/ran-you-in-the-analects`, "sitemap");
@@ -5588,8 +5952,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-18")) {
+    if (!lastmod.includes("2026-10-19")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const stateOfLuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/state-of-lu-in-the-analects`);
+    if (!stateOfLuLastmod.includes("2026-10-19")) {
+      fail(
+        `sitemap: /${locale}/blogs/state-of-lu-in-the-analects lastmod should be 2026-10-19, got ${stateOfLuLastmod || "missing"}`
+      );
     }
     const renLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/what-ren-means-in-the-analects`);
     if (!renLastmod.includes("2026-10-18")) {
@@ -5696,7 +6066,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "18 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "19 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -5716,6 +6086,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const stateOfLuEditorialLastmod = "2026-10-19";
 const renEditorialLastmod = "2026-10-18";
 const ranYouEditorialLastmod = "2026-10-17";
 const yanYuanEditorialLastmod = "2026-10-16";
@@ -5739,6 +6110,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${stateOfLuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${renEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ranYouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${yanYuanEditorialLastmod}T00:00:00.000Z`, "")
