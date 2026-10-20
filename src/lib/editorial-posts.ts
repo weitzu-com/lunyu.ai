@@ -21,7 +21,7 @@ const NOTES_INLINE_SIZE = { width: 1200, height: 900 };
 
 function notesBlogImage(
   slug: string,
-  file: "cover.jpg" | "inline-1.jpg" | "inline-2.jpg",
+  file: "cover.jpg" | "inline-1.jpg" | "inline-2.jpg" | "cover.png" | "inline-1.png" | "inline-2.png",
   altEn: string,
   altZh: string,
   size: { width: number; height: number }
@@ -101,6 +101,187 @@ const EDITORIAL_MARKDOWN_LINK = /\[([^\]]+)\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/
 const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
+  {
+    slug: "tang-wen-wu-zhou-gong-in-the-analects",
+    titleZh: "《论语》里的汤、文、武、周公：斯文在人",
+    titleEn: "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",
+    dekZh: "在《论语》里，汤、文王、武王、周公（Tang, King Wen, King Wu, and the Duke of Zhou）不是一张帝王名单。你遇见的，是孔子自认承接的那一脉「文」，而书说这脉文只活在人身上。可同一部书仍按德行、而不是按权势或才能，给这些先王打分。这一篇跟着这两步走七处活页章句。它不是商周史，也不是周公传。",
+    dekEn: "In the Analects, Tang, King Wen, King Wu, and the Duke of Zhou are not a king list. You meet them as the line of 文 — culture, pattern — that Confucius believes he carries, and that the book says lives on only in people. Yet the same book keeps grading these founders by virtue, not by power or gift. This Note follows that double move through seven live passages. It is not a dynastic history and not a Zhou Gong biography.",
+    descriptionZh: "《论语》里的汤、文、武、周公不是帝王名单：斯文在人，书仍按德行打分。七处活页，链回可核对的原文。",
+    descriptionEn: "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects are not a king list: a culture carried in people, still graded by virtue.",
+    datePublished: "2026-10-20",
+    dateModified: "2026-10-20",
+    tagsZh: ["汤文武周公", "周公", "述而"],
+    tagsEn: ["tang wen wu", "Duke of Zhou", "Shu R."],
+    related: [
+      "/analects/shu-er/shu-er-005",
+      "/index/tang-wen-wu-zhougong",
+      "/analects/zi-han/zi-han-005",
+      "/analects/zi-zhang/zi-zhang-022",
+      "/analects/tai-bo/tai-bo-020",
+      "/analects/ba-yi/ba-yi-025",
+      "/analects/tai-bo/tai-bo-011",
+      "/analects/yan-yuan/yan-yuan-022",
+      "/analects/yao-yue/yao-yue-001",
+    ],
+    cover: notesBlogImage(
+      "tang-wen-wu-zhou-gong-in-the-analects",
+      "cover.png",
+      "A lit lamp passing its flame across a dim threshold to a second lamp — a culture passed from hand to hand",
+      "昏暗门槛间，一盏灯的火正传向另一盏——斯文在人，手手相传",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "tang-wen-wu-zhou-gong-in-the-analects",
+        "inline-1.png",
+        "Many hands of different ages each holding a small piece of the same woven pattern — the way of Wen and Wu kept among people",
+        "老少不同的许多手，各执同一幅织纹的一小段——文武之道，在人",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "tang-wen-wu-zhou-gong-in-the-analects",
+        "inline-2.png",
+        "A finely made bronze vessel set on a balance scale against a small plain bowl, the scale tipping toward the plain bowl",
+        "精美的青铜器与一只朴素小碗同置天平，天平却偏向小碗",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "不复梦见周公",
+        headingEn: "No longer dreaming of the Duke of Zhou",
+        bodyZh: [
+          "请你从[论语 · 述而 7.5](https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-005)开始，因为这里孔子拿周公来量自己。原文是：子曰，甚矣吾衰也，久矣，吾不复梦见周公。活页白话导读作：孔子说：我衰老得多么厉害啊！我已经很久没有再梦见周公了。",
+          "活页 Legge 作：The Master said, \"Extreme is my decay. For a long time, I have not dreamed, as I was wont to do, that I saw the duke of Chau.\"（Legge 的 Chau 即周，下文 Wan 即文。）你应留意衰老拿什么来量：不是失位，不是体力，而是周公不再入梦。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Shu R. 7.5](https://www.lunyu.ai/en/analects/shu-er/shu-er-005), because here you see Confucius measure himself by the Duke of Zhou. The source reads 子曰，甚矣吾衰也，久矣，吾不复梦见周公。 The modern guide on that page says: 孔子说：我衰老得多么厉害啊！我已经很久没有再梦见周公了。",
+          "Legge on the same page: The Master said, \"Extreme is my decay. For a long time, I have not dreamed, as I was wont to do, that I saw the duke of Chau.\" (Legge's \"Chau\" is Zhou; his \"Wan,\" below, is Wen.) You should notice what the decline is measured against: not lost office or lost strength, but a figure who no longer visits him.",
+        ],
+      },
+      {
+        headingZh: "文不在兹乎",
+        headingEn: "\"Was not the culture lodged here?\"",
+        bodyZh: [
+          "[论语 · 子罕 9.5](https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-005)把你带进危境。原文是：子畏于匡。曰，文王既没，文不在兹乎。天之将丧斯文也，后死者不得与于斯文也，天之未丧斯文也，匡人其如予何。导读作：孔子在匡地被围困而感到危惧，他说：周文王去世以后，文化传统不都在我这里吗？上天如果要消灭这种文化，那我这后死的人就不会掌握这文化了；上天既然不消灭这种文化，匡人又能把我怎么样呢？",
+          "你听得很清楚：文王已没，他所代表的「文」如今寄在一个被围的活人身上。先王在这里是可以承接的东西，不是墙上的画像。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze Han 9.5](https://www.lunyu.ai/en/analects/zi-han/zi-han-005) puts you in danger with him. The source: 子畏于匡。曰，文王既没，文不在兹乎。天之将丧斯文也，后死者不得与于斯文也，天之未丧斯文也，匡人其如予何。 The guide: 孔子在匡地被围困而感到危惧，他说：周文王去世以后，文化传统不都在我这里吗？上天如果要消灭这种文化，那我这后死的人就不会掌握这文化了；上天既然不消灭这种文化，匡人又能把我怎么样呢？",
+          "Legge renders the core line as: *After the death of King Wan, was not the cause of truth lodged here in me?* You hear the claim plainly: King Wen is dead, and the 文 he stood for now rests in a living man under siege. The founder matters here as something you can carry, not as a portrait on a wall.",
+        ],
+      },
+      {
+        headingZh: "未坠于地，在人",
+        headingEn: "\"It has not fallen to the ground; it is in people\"",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "[论语 · 子张 19.22](https://www.lunyu.ai/zh-Hans/analects/zi-zhang/zi-zhang-022)让你从旁人口中听同一个答案。原文是：卫公孙朝问于子贡曰，仲尼焉学。子贡曰，文，武之道，未坠于地，在人。贤者识其大者，不贤者识其小者，莫不有文，武之道焉。夫子焉不学。而亦何常师之有。导读作：卫国的公孙朝问子贡说：仲尼的学问是从哪里学来的？子贡说：周文王、周武王之道，并没有失传坠地，还留存在人们中间。",
+          "请你抓住位置：文武之道不藏在宫里，而在寻常人中间，贤者记其大，不贤者记其小。所以在子贡的说法里，孔子何处不学。",
+        ],
+        bodyEn: [
+          "[The Analects · Tsze-chang 19.22](https://www.lunyu.ai/en/analects/zi-zhang/zi-zhang-022) gives you Zi Gong's answer to the same question from outside. The source: 卫公孙朝问于子贡曰，仲尼焉学。子贡曰，文，武之道，未坠于地，在人。贤者识其大者，不贤者识其小者，莫不有文，武之道焉。夫子焉不学。而亦何常师之有。 The guide: 卫国的公孙朝问子贡说：仲尼的学问是从哪里学来的？子贡说：周文王、周武王之道，并没有失传坠地，还留存在人们中间。",
+          "Legge renders Zi Gong's reply as: *The doctrines of Wan and Wu have not yet fallen to the ground. They are to be found among men.* You should keep the location in view: the way of Wen and Wu is not stored in a palace; it is held by ordinary people, greater parts by the worthy and smaller parts by others. That is why, in Zi Gong's telling, Confucius could learn from everyone.",
+        ],
+      },
+      {
+        headingZh: "周之德，至德",
+        headingEn: "Zhou's virtue called the highest",
+        bodyZh: [
+          "[论语 · 泰伯 8.20](https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-020)以舜开篇，但请你只看后半（尧舜禹另有笔记）。原文续作：武王曰，予有乱臣十人。……三分天下有其二，以服事殷，周之德，其可谓至德也已矣。导读作：周武王说：我有十位能治理天下的能臣。……周文王得了天下的三分之二，仍然向殷商称臣事奉。周朝的德行，可以说是最高尚的了。",
+          "你看见「至德」靠的是什么：不是据有三分之二，而是据有之后仍然服事。",
+        ],
+        bodyEn: [
+          "[The Analects · T'ai-po 8.20](https://www.lunyu.ai/en/analects/tai-bo/tai-bo-020) opens with Shun, but keep your eyes on its second half (the Yao–Shun–Yu line has its own Note). The source continues: 武王曰，予有乱臣十人。……三分天下有其二，以服事殷，周之德，其可谓至德也已矣。 The guide: 周武王说：我有十位能治理天下的能臣。……周文王得了天下的三分之二，仍然向殷商称臣事奉。周朝的德行，可以说是最高尚的了。",
+          "Legge: \"King Wan possessed two of the three parts of the empire, and with those he served the dynasty of Yin. The virtue of the house of Chau may be said to have reached the highest point indeed.\" You see what earns the word 至德: not holding two thirds, but holding them and still serving.",
+        ],
+      },
+      {
+        headingZh: "书仍在给先王打分",
+        headingEn: "The book still grades its founders",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "这里《论语》不奉承。[论语 · 八佾 3.25](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-025)原文是：子谓韶，尽美矣，又尽善也，谓武，尽美矣，未尽善也。导读作：孔子谈到《韶》乐，说：美到极点了，又善到极点了。谈到《武》乐，说：美到极点了，却还没有善到极点。请你只停在这句评断上：《武》乐以武王为名，仍未尽善。",
+          "[论语 · 泰伯 8.11](https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-011)把同一把尺放到才能上。原文是：子曰，如有周公之才之美，使骄且吝，其余不足观也已。导读作：孔子说：一个人即使有周公那样美好的才能，如果他骄傲又吝啬，那其余方面也就不值得一看了。你会发现，周公是这句话能举出的最高才能——即便如此，单有才能仍不够。",
+        ],
+        bodyEn: [
+          "Here the Analects refuses to flatter. In [The Analects · Pa Yih 3.25](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-025), the source reads 子谓韶，尽美矣，又尽善也，谓武，尽美矣，未尽善也。 The guide: 孔子谈到《韶》乐，说：美到极点了，又善到极点了。谈到《武》乐，说：美到极点了，却还没有善到极点。 Legge: The Master said of the Shao that it was perfectly beautiful and also perfectly good. He said of the Wu that it was perfectly beautiful but not perfectly good. You should keep this to the judgment itself: the Wu music is named for King Wu, and even it falls short of 尽善.",
+          "[The Analects · T'ai-po 8.11](https://www.lunyu.ai/en/analects/tai-bo/tai-bo-011) applies the same scale to gifts. The source: 子曰，如有周公之才之美，使骄且吝，其余不足观也已。 The guide: 孔子说：一个人即使有周公那样美好的才能，如果他骄傲又吝啬，那其余方面也就不值得一看了。 Legge: The Master said, \"Though a man have abilities as admirable as those of the Duke of Chau, yet if he be proud and niggardly, those other things are really not worth being looked at.\" You notice that the Duke of Zhou is the highest measure of ability the sentence can name — and still ability alone is not enough.",
+        ],
+      },
+      {
+        headingZh: "汤：举贤，担过",
+        headingEn: "Tang: the worthy raised, the fault taken on",
+        bodyZh: [
+          "汤出场很少。在[论语 · 颜渊 12.22](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-022)里，子夏说：汤有天下，选于众，擧伊尹，不仁者远矣——汤从众人中举用伊尹，不仁的人就远离了。",
+          "[论语 · 尧曰 20.1](https://www.lunyu.ai/zh-Hans/analects/yao-yue/yao-yue-001)有一段祷辞，活页导读归于商汤：商汤说：我小子履…… 你该记住的原文是：朕躬有罪，无以万方，万方有罪，罪在朕躬。同章导读还把一句归于武王：周武王说：我虽然有至亲，都不如有仁德的人。百姓如果有过错，都归在我一人身上。你看见先王的位置被写成担过，而不是揽功。",
+          "读索引时请留意一处：16.11「见不善如探汤」的「汤」是滚烫的水，不是商汤。",
+        ],
+        bodyEn: [
+          "Tang appears briefly. In [The Analects · Yen Yuan 12.22](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-022), Zi Xia says 汤有天下，选于众，擧伊尹，不仁者远矣 — Tang raised Yi Yin from the many, and those without ren kept away.",
+          "[The Analects · Yao Yueh 20.1](https://www.lunyu.ai/en/analects/yao-yue/yao-yue-001) gives you a prayer that the live guide assigns to Tang: 商汤说：我小子履…… The source line you should hold is 朕躬有罪，无以万方，万方有罪，罪在朕躬。 Legge renders it: *If, in my person, I commit offences, they are not to be attributed to you, the people of the myriad regions. If you in the myriad regions commit offences, these offences must rest on my person.* The same passage's guide gives a parallel line to King Wu: 周武王说：我虽然有至亲，都不如有仁德的人。百姓如果有过错，都归在我一人身上。 You see the founder's role framed as bearing blame, not claiming credit.",
+          "One caution as you read the index: in 16.11, 见不善如探汤, 汤 means boiling water (Legge: \"thrusting the hand into boiling water\"), not King Tang.",
+        ],
+      },
+      {
+        headingZh: "这一脉合起来说了什么",
+        headingEn: "What the line adds up to",
+        bodyZh: [
+          "把这几扇门合起来：以不复梦见周公量己之衰（7.5），文王既没而文在兹（9.5），文武之道在人（19.22），周之至德在强而仍事殷（8.20），以及仍给武乐（3.25）与周公之才（8.11）打分的一部书。若你要更早的圣王，可开一次[《论语》里的尧、舜、禹是谁？](https://www.lunyu.ai/zh-Hans/blogs/yao-shun-yu-in-the-analects)——只作软链。",
+          "作为你自己的体会——不是孔子的原话——请留意：你多轻易把「圣王」当成一串古人的名字。《论语》却一再把他们变成活人必须承接、也可能辜负的标准。",
+        ],
+        bodyEn: [
+          "Put the doors together: a man who measures his decline by a dream of the Duke of Zhou (7.5), a culture lodged in him after King Wen (9.5), a way of Wen and Wu kept among people (19.22), Zhou's highest virtue in serving while strong (8.20), and a book that still grades King Wu's music (3.25) and the Duke of Zhou's gifts (8.11). If you want the earlier sage kings, open [Who Are Yao, Shun, and Yu in the Analects?](https://www.lunyu.ai/en/blogs/yao-shun-yu-in-the-analects) — one soft link.",
+          "As your own reflection — not as Confucius's words — notice how easily you treat \"sage kings\" as a list of ancient names. The Analects keeps making them a standard that living people must carry, and can fail.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的汤、文、武、周公是谁？",
+        questionEn: "Who are Tang, King Wen, King Wu, and the Duke of Zhou in the Analects?",
+        answerZh: "站内索引的说明是：「三代圣王与周公，是礼乐、德政和制度传承的象征。」在章句里，你遇见他们，与其说是史书里的君王，不如说是孔子自认承接的那一脉文（7.5、9.5），以及书仍在打分的标准（3.25、8.11）。每一句请回活页核对，并说明用的是原文、导读还是英译。",
+        answerEn: "The site's index describes them as \"Sage rulers and the Duke of Zhou, symbols of ritual order, virtue, and institutions.\" In the passages themselves you meet them less as rulers in a chronicle than as the line of 文 Confucius thinks he carries (7.5, 9.5) and as a standard the book still grades (3.25, 8.11). Check each line on its passage page and say whether you quote the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "7.5「吾不复梦见周公」是什么意思？",
+        questionEn: "What does 吾不复梦见周公 mean in 7.5?",
+        answerZh: "你读到的是孔子自己量衰老的尺。原文：甚矣吾衰也，久矣，吾不复梦见周公。活页导读：我衰老得多么厉害啊！我已经很久没有再梦见周公了。Legge 多出 as I was wont to do，你可听出这种梦从前是常有的。导读与英译都是对原句的读法，不是孔子多说的话。",
+        answerEn: "You are reading Confucius's own measure of decline. The source: 甚矣吾衰也，久矣，吾不复梦见周公. The live guide: 我衰老得多么厉害啊！我已经很久没有再梦见周公了. Legge adds \"as I was wont to do,\" so you hear that such dreams were once usual. The guide and Legge are readings of the line, not extra words of Confucius.",
+      },
+      {
+        questionZh: "9.5「文不在兹乎」指什么？",
+        questionEn: "What is 文不在兹乎 in 9.5?",
+        answerZh: "在匡被围时，孔子说文王既没，「文」就在这里。活页导读读作「文化传统不都在我这里吗」；Legge 把「文」译作 the cause of truth。请你守住原文的「文」字，把两种译法都当作解读。",
+        answerEn: "Surrounded in Kuang, Confucius says that after King Wen died, the 文 rests \"here.\" The live guide reads it as 文化传统不都在我这里吗; Legge renders 文 as \"the cause of truth.\" You should keep the source word 文 in view and treat both renderings as interpretations.",
+      },
+      {
+        questionZh: "《论语》对武王是一味称颂吗？",
+        questionEn: "Does the Analects praise King Wu without reservation?",
+        answerZh: "不是。3.25 说《武》乐「尽美矣，未尽善也」，《韶》则尽美又尽善。请把它当作对以武王为名之乐的评断；本篇不展开乐论。",
+        answerEn: "No. In 3.25, the Wu music is 尽美矣，未尽善也 — perfectly beautiful but not perfectly good — while the Shao is both. Treat that as a judgment on the music named for King Wu; this Note does not open a wider music essay.",
+      },
+      {
+        questionZh: "16.11 的「汤」是商汤吗？",
+        questionEn: "Is the 汤 in 16.11 King Tang?",
+        answerZh: "不是。「见不善如探汤」，活页导读解作把手伸进滚烫的水里，Legge 作 boiling water。作为君王的汤见于 12.22，以及按活页导读的归属见于 20.1。",
+        answerEn: "No. In 见不善如探汤, the live guide explains it as reaching into scalding water, and Legge has \"boiling water.\" Tang the king appears in 12.22 and, by the live guide's attribution, in 20.1.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "下一步打开索引",
+        headingEn: "Open the index next",
+        bodyZh: [
+          "想在一屏里看到归在这四个名字下的全部章句，请打开[汤、文、武、周公](https://www.lunyu.ai/zh-Hans/index/tang-wen-wu-zhougong)。索引是带引文的短列表；本篇只跟着「斯文在人」与从不停止的打分走。请你回到那里按上下文重读各门，引用任何一句时，给出章句 URL，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want every passage grouped under these four names on one screen, open [Tang, King Wen, King Wu, and the Duke of Zhou](https://www.lunyu.ai/en/index/tang-wen-wu-zhougong). The index is a short list with quotes; this Note only followed the culture carried in people and the grading that never stops. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
   {
     slug: "state-of-lu-in-the-analects",
     titleZh: "《论语》里的鲁国：近于道的那一变",
