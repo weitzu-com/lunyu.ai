@@ -836,6 +836,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",
+  "2026-10-20",
   "What Ren Means in the Analects",
   "Who Was Ran You in the Analects?",
   "Who Was Yan Yuan in the Analects?",
@@ -856,6 +858,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的汤、文、武、周公：斯文在人",
+  "2026-10-20",
   "论语阅读札记",
   "《论语》里的「仁」是什么意思？",
   "《论语》里的冉有是谁？",
@@ -2149,6 +2153,339 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
       }
+    }
+  }
+}
+
+const tangWenWuCover = "/images/blogs/tang-wen-wu-zhou-gong-in-the-analects/cover.png";
+const tangWenWuInline1 = "/images/blogs/tang-wen-wu-zhou-gong-in-the-analects/inline-1.png";
+const tangWenWuInline2 = "/images/blogs/tang-wen-wu-zhou-gong-in-the-analects/inline-2.png";
+const tangWenWuCoverEn =
+  "A lit lamp passing its flame across a dim threshold to a second lamp — a culture passed from hand to hand";
+const tangWenWuCoverZh = "昏暗门槛间，一盏灯的火正传向另一盏——斯文在人，手手相传";
+const tangWenWuInline1En =
+  "Many hands of different ages each holding a small piece of the same woven pattern — the way of Wen and Wu kept among people";
+const tangWenWuInline1Zh = "老少不同的许多手，各执同一幅织纹的一小段——文武之道，在人";
+const tangWenWuInline2En =
+  "A finely made bronze vessel set on a balance scale against a small plain bowl, the scale tipping toward the plain bowl";
+const tangWenWuInline2Zh = "精美的青铜器与一只朴素小碗同置天平，天平却偏向小碗";
+const tangWenWuAnchors = [
+  ["论语 · 述而 7.5", "https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-005"],
+  ["The Analects · Shu R. 7.5", "https://www.lunyu.ai/en/analects/shu-er/shu-er-005"],
+  ["论语 · 子罕 9.5", "https://www.lunyu.ai/zh-Hans/analects/zi-han/zi-han-005"],
+  ["The Analects · Tsze Han 9.5", "https://www.lunyu.ai/en/analects/zi-han/zi-han-005"],
+  ["论语 · 子张 19.22", "https://www.lunyu.ai/zh-Hans/analects/zi-zhang/zi-zhang-022"],
+  ["The Analects · Tsze-chang 19.22", "https://www.lunyu.ai/en/analects/zi-zhang/zi-zhang-022"],
+  ["论语 · 泰伯 8.20", "https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-020"],
+  ["The Analects · T'ai-po 8.20", "https://www.lunyu.ai/en/analects/tai-bo/tai-bo-020"],
+  ["论语 · 八佾 3.25", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-025"],
+  ["论语 · 泰伯 8.11", "https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-011"],
+  ["The Analects · Pa Yih 3.25", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-025"],
+  ["The Analects · T'ai-po 8.11", "https://www.lunyu.ai/en/analects/tai-bo/tai-bo-011"],
+  ["论语 · 颜渊 12.22", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-022"],
+  ["论语 · 尧曰 20.1", "https://www.lunyu.ai/zh-Hans/analects/yao-yue/yao-yue-001"],
+  ["The Analects · Yen Yuan 12.22", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-022"],
+  ["The Analects · Yao Yueh 20.1", "https://www.lunyu.ai/en/analects/yao-yue/yao-yue-001"],
+  ["《论语》里的尧、舜、禹是谁？", "https://www.lunyu.ai/zh-Hans/blogs/yao-shun-yu-in-the-analects"],
+  ["Who Are Yao, Shun, and Yu in the Analects?", "https://www.lunyu.ai/en/blogs/yao-shun-yu-in-the-analects"],
+  ["汤、文、武、周公", "https://www.lunyu.ai/zh-Hans/index/tang-wen-wu-zhougong"],
+  ["Tang, King Wen, King Wu, and the Duke of Zhou", "https://www.lunyu.ai/en/index/tang-wen-wu-zhougong"],
+];
+{
+  const start = postSource.indexOf('slug: "tang-wen-wu-zhou-gong-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing tang-wen-wu-zhou-gong-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = tangWenWuAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `tang-wen-wu-zhou-gong-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    tangWenWuAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`tang-wen-wu-zhou-gong-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `tang-wen-wu-zhou-gong-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    for (const forbidden of [
+      "/analects/ji-shi/ji-shi-011",
+      "pending Gemini",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`tang-wen-wu-zhou-gong-in-the-analects: ${forbidden} must not be an href`);
+      }
+    }
+    if (!block.includes("见不善如探汤")) {
+      fail("tang-wen-wu-zhou-gong-in-the-analects: 16.11 boiling-water caution missing");
+    }
+    const yaoHrefs = markdownHrefs.filter((href) => href.includes("/blogs/yao-shun-yu-in-the-analects"));
+    if (yaoHrefs.length !== 2) {
+      fail(`tang-wen-wu-zhou-gong-in-the-analects: yao-shun-yu soft link should appear once per language, got ${yaoHrefs.length}`);
+    }
+    if (block.includes("pending Gemini")) {
+      fail("tang-wen-wu-zhou-gong-in-the-analects: pending Gemini image slot comment must be removed");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("tang-wen-wu-zhou-gong-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("tang-wen-wu-zhou-gong-in-the-analects: unbalanced Chinese quotation marks");
+      }
+    }
+  }
+}
+for (const src of [tangWenWuCover, tangWenWuInline1, tangWenWuInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/tang-wen-wu-zhou-gong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-20"',
+  '"dateModified":"2026-10-20"',
+  "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",
+  "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects are not a king list: a culture carried in people, still graded by virtue.",
+  "This Note follows that double move through eight live passages.",
+  "No longer dreaming of the Duke of Zhou",
+  "Was not the culture lodged here?",
+  "It has not fallen to the ground; it is in people",
+  "virtue called the highest",
+  "The book still grades its founders",
+  "Tang: the worthy raised, the fault taken on",
+  "What the line adds up to",
+  "Open the index next",
+  "Who are Tang, King Wen, King Wu, and the Duke of Zhou in the Analects?",
+  "What does 吾不复梦见周公 mean in 7.5?",
+  "What is 文不在兹乎 in 9.5?",
+  "Does the Analects praise King Wu without reservation?",
+  "Is the 汤 in 16.11 King Tang?",
+  "Extreme is my decay. For a long time, I have not dreamed, as I was wont to do, that I saw the duke of Chau.",
+  "After the death of King Wan, was not the cause of truth lodged here in me?",
+  "The doctrines of Wan and Wu have not yet fallen to the ground. They are to be found among men.",
+  "King Wan possessed two of the three parts of the empire, and with those he served the dynasty of Yin.",
+  "perfectly beautiful but not perfectly good",
+  "Though a man have abilities as admirable as those of the Duke of Chau",
+  "If, in my person, I commit offences, they are not to be attributed to you, the people of the myriad regions.",
+  "见不善如探汤",
+  "擧伊尹",
+  "罪在朕躬",
+  ">The Analects · Shu R. 7.5</a>",
+  ">The Analects · Tsze Han 9.5</a>",
+  ">The Analects · Tsze-chang 19.22</a>",
+  ">The Analects · T&#x27;ai-po 8.20</a>",
+  ">The Analects · Pa Yih 3.25</a>",
+  ">The Analects · T&#x27;ai-po 8.11</a>",
+  ">The Analects · Yen Yuan 12.22</a>",
+  ">The Analects · Yao Yueh 20.1</a>",
+  ">Who Are Yao, Shun, and Yu in the Analects?</a>",
+  ">Tang, King Wen, King Wu, and the Duke of Zhou</a>",
+  'href="/en/analects/shu-er/shu-er-005"',
+  'href="/en/analects/zi-han/zi-han-005"',
+  'href="/en/analects/zi-zhang/zi-zhang-022"',
+  'href="/en/analects/tai-bo/tai-bo-020"',
+  'href="/en/analects/ba-yi/ba-yi-025"',
+  'href="/en/analects/tai-bo/tai-bo-011"',
+  'href="/en/analects/yan-yuan/yan-yuan-022"',
+  'href="/en/analects/yao-yue/yao-yue-001"',
+  'href="/en/blogs/yao-shun-yu-in-the-analects"',
+  'href="/en/index/tang-wen-wu-zhougong"',
+  tangWenWuCover,
+  tangWenWuInline1,
+  tangWenWuInline2,
+  tangWenWuCoverEn,
+  tangWenWuInline1En,
+  tangWenWuInline2En,
+  `property="og:image" content="${siteUrl}${tangWenWuCover}"`,
+  `property="og:image:alt" content="${tangWenWuCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${tangWenWuCover}"`,
+  `name="twitter:image:alt" content="${tangWenWuCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-20"',
+  '"dateModified":"2026-10-20"',
+  "《论语》里的汤、文、武、周公：斯文在人",
+  "《论语》里的汤、文、武、周公不是帝王名单：斯文在人，书仍按德行打分。八处活页，链回可核对的原文。",
+  "这一篇跟着这两步走八处活页章句。",
+  "不复梦见周公",
+  "文不在兹乎",
+  "未坠于地，在人",
+  "周之德，至德",
+  "书仍在给先王打分",
+  "汤：举贤，担过",
+  "这一脉合起来说了什么",
+  "下一步打开索引",
+  "《论语》里的汤、文、武、周公是谁？",
+  "7.5「吾不复梦见周公」是什么意思？",
+  "9.5「文不在兹乎」指什么？",
+  "《论语》对武王是一味称颂吗？",
+  "16.11 的「汤」是商汤吗？",
+  "甚矣吾衰也，久矣，吾不复梦见周公",
+  "文王既没，文不在兹乎",
+  "文，武之道，未坠于地，在人",
+  "周之德，其可谓至德也已矣",
+  "尽美矣，未尽善也",
+  "如有周公之才之美",
+  "擧伊尹",
+  "罪在朕躬",
+  "见不善如探汤",
+  ">论语 · 述而 7.5</a>",
+  ">论语 · 子罕 9.5</a>",
+  ">论语 · 子张 19.22</a>",
+  ">论语 · 泰伯 8.20</a>",
+  ">论语 · 八佾 3.25</a>",
+  ">论语 · 泰伯 8.11</a>",
+  ">论语 · 颜渊 12.22</a>",
+  ">论语 · 尧曰 20.1</a>",
+  ">《论语》里的尧、舜、禹是谁？</a>",
+  ">汤、文、武、周公</a>",
+  'href="/zh-Hans/analects/shu-er/shu-er-005"',
+  'href="/zh-Hans/analects/zi-han/zi-han-005"',
+  'href="/zh-Hans/analects/zi-zhang/zi-zhang-022"',
+  'href="/zh-Hans/analects/tai-bo/tai-bo-020"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-025"',
+  'href="/zh-Hans/analects/tai-bo/tai-bo-011"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-022"',
+  'href="/zh-Hans/analects/yao-yue/yao-yue-001"',
+  'href="/zh-Hans/blogs/yao-shun-yu-in-the-analects"',
+  'href="/zh-Hans/index/tang-wen-wu-zhougong"',
+  tangWenWuCover,
+  tangWenWuInline1,
+  tangWenWuInline2,
+  tangWenWuCoverZh,
+  tangWenWuInline1Zh,
+  tangWenWuInline2Zh,
+  `property="og:image" content="${siteUrl}${tangWenWuCover}"`,
+  `property="og:image:alt" content="${tangWenWuCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${tangWenWuCover}"`,
+  `name="twitter:image:alt" content="${tangWenWuCoverZh}"`,
+]);
+{
+  const zhTangFile = htmlPath("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects");
+  if (exists(zhTangFile)) {
+    const zhTangHtml = read(zhTangFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhTangHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhTangHtml.includes(tangWenWuCoverEn)) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhTangHtml.includes(tangWenWuInline1En) || zhTangHtml.includes(tangWenWuInline2En)) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhTangHtml, />The Analects · Shu R\. 7\.5<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: English 7.5 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhTangHtml, />Who Are Yao, Shun, and Yu in the Analects\?<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: English Yao soft link should not appear on zh-Hans");
+    }
+    if (countRegex(zhTangHtml, />Tang, King Wen, King Wu, and the Duke of Zhou<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhTangHtml, />汤、文、武、周公<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 汤、文、武、周公 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />《论语》里的尧、舜、禹是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 尧舜禹 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 述而 7\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 述而 7.5 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 子罕 9\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 子罕 9.5 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 子张 19\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 子张 19.22 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 泰伯 8\.20<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 泰伯 8.20 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 八佾 3\.25<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 八佾 3.25 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 泰伯 8\.11<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 泰伯 8.11 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 颜渊 12\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 颜渊 12.22 body link should appear once");
+    }
+    if (countRegex(zhTangHtml, />论语 · 尧曰 20\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 尧曰 20.1 body link should appear once");
+    }
+    if (zhTangHtml.includes("/analects/ji-shi/ji-shi-011")) {
+      fail("/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects: 16.11 must not be linked as Tang");
+    }
+  }
+  const enTangFile = htmlPath("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects");
+  if (exists(enTangFile)) {
+    const enTangHtml = read(enTangFile);
+    if (enTangHtml.includes(tangWenWuCoverZh)) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enTangHtml.includes(tangWenWuInline1Zh) || enTangHtml.includes(tangWenWuInline2Zh)) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enTangHtml, />Tang, King Wen, King Wu, and the Duke of Zhou<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enTangHtml, />Who Are Yao, Shun, and Yu in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Yao soft link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · Shu R\. 7\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Shu R. 7.5 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · Tsze Han 9\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Tsze Han 9.5 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · Tsze-chang 19\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Tsze-chang 19.22 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · T&#x27;ai-po 8\.20<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: T'ai-po 8.20 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · Pa Yih 3\.25<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Pa Yih 3.25 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · T&#x27;ai-po 8\.11<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: T'ai-po 8.11 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · Yen Yuan 12\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Yen Yuan 12.22 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />The Analects · Yao Yueh 20\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Yao Yueh 20.1 body link should appear once");
+    }
+    if (countRegex(enTangHtml, />汤、文、武、周公<\/a>/g) !== 0) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enTangHtml, />论语 · 述而 7\.5<\/a>/g) !== 0) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: Chinese 7.5 body link should not appear on en");
+    }
+    if (countRegex(enTangHtml, /href="\/en\/blogs\/yao-shun-yu-in-the-analects"/g) !== 1) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: yao-shun-yu soft link should appear once");
+    }
+    if (enTangHtml.includes("/analects/ji-shi/ji-shi-011")) {
+      fail("/en/blogs/tang-wen-wu-zhou-gong-in-the-analects: 16.11 must not be linked as Tang");
     }
   }
 }
@@ -5717,6 +6054,18 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/tang-wen-wu-zhougong`, [
+    locale === "en" ? ">Tang, King Wen, King Wu, and the Duke of Zhou<" : ">汤、文、武、周公<",
+    `href="/${locale}/blogs/tang-wen-wu-zhou-gong-in-the-analects"`,
+    locale === "en"
+      ? "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People"
+      : "《论语》里的汤、文、武、周公：斯文在人",
+    `/${locale}/analects/shu-er/shu-er-005`,
+    `/${locale}/analects/zi-han/zi-han-005`,
+    `/${locale}/analects/tai-bo/tai-bo-020`,
+    `/${locale}/analects/tai-bo/tai-bo-011`,
+    `/${locale}/analects/yan-yuan/yan-yuan-022`,
+  ]);
   checkHtml(`/${locale}/index/lu`, [
     locale === "en" ? ">Lu<" : ">鲁<",
     `href="/${locale}/blogs/state-of-lu-in-the-analects"`,
@@ -5895,6 +6244,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/tang-wen-wu-zhou-gong-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/state-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/state-of-lu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/what-ren-means-in-the-analects`, "sitemap");
@@ -5952,8 +6303,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-19")) {
+    if (!lastmod.includes("2026-10-20")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const tangWenWuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/tang-wen-wu-zhou-gong-in-the-analects`);
+    if (!tangWenWuLastmod.includes("2026-10-20")) {
+      fail(
+        `sitemap: /${locale}/blogs/tang-wen-wu-zhou-gong-in-the-analects lastmod should be 2026-10-20, got ${tangWenWuLastmod || "missing"}`
+      );
     }
     const stateOfLuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/state-of-lu-in-the-analects`);
     if (!stateOfLuLastmod.includes("2026-10-19")) {
@@ -6066,7 +6423,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "19 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "20 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -6086,6 +6443,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const tangWenWuEditorialLastmod = "2026-10-20";
 const stateOfLuEditorialLastmod = "2026-10-19";
 const renEditorialLastmod = "2026-10-18";
 const ranYouEditorialLastmod = "2026-10-17";
@@ -6110,6 +6468,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${tangWenWuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${stateOfLuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${renEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ranYouEditorialLastmod}T00:00:00.000Z`, "")
