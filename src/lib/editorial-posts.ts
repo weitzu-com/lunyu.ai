@@ -102,6 +102,170 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "gongxi-hua-in-the-analects",
+    titleZh: "《论语》里的公西华：善于礼仪，敢于发问",
+    titleEn: "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
+    dekZh: "在《论语》里，公西华（又称赤、子华；Legge 作 Kung-hsi Hwa、Ch'ih、Tsze-hwa）是长于礼仪形式的弟子：可以束带立于朝，与宾客言。你会看见书承认他的这份本事，却不肯把更大的那个字给他。而他最好的时刻并不在典礼上，而在两句准确的话里：他说出弟子学不到的是什么；老师对两个学生给了相反的回答时，他坦白说「赤也惑」。这一篇跟着他走五处活页章句。它不是冉有或子路的笔记；他们只在公西华自己的那一句需要时出现。",
+    dekEn: "In the Analects, Gongxi Hua (公西华; also called 赤, Ch'ih, and 子华, Tsze-hwa) is the disciple of form: a man fit to stand sashed at court and speak with guests. You watch the book grant him that skill and then withhold a larger word from him. Yet his best moments are not ceremonies. They are two exact remarks: he names what disciples cannot learn, and he says \"I am perplexed\" when the Master gives two students opposite answers. This Note follows him through five live passages. It is not a Ran You or Zi Lu Note; they appear here only where Gongxi Hua's own line needs them.",
+    descriptionZh: "《论语》里的公西华善于礼仪，敢于发问。书承认本事，却不称之为仁。五处活页，链回可核对的原文。",
+    descriptionEn: "Gongxi Hua in the Analects: ritual skill at court, an honest question, and five live passages linked back to the source.",
+    datePublished: "2026-10-21",
+    dateModified: "2026-10-21",
+    tagsZh: ["公西华", "公西赤", "公冶长"],
+    tagsEn: ["gongxi hua", "Gongxi Hua", "Kung-ye Ch'ang"],
+    related: [
+      "/analects/gong-ye-chang/gong-ye-chang-007",
+      "/index/gongxi-hua",
+      "/analects/xian-jin/xian-jin-025",
+      "/analects/shu-er/shu-er-033",
+      "/analects/xian-jin/xian-jin-021",
+      "/analects/yong-ye/yong-ye-003",
+    ],
+    cover: notesBlogImage(
+      "gongxi-hua-in-the-analects",
+      "cover.png",
+      "A dark robe and black cap folded on a mat beside quiet temple steps — ready to serve as a small assistant",
+      "黑色礼服与黑冠叠放在庙阶旁的席上——愿为小相",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "gongxi-hua-in-the-analects",
+        "inline-1.png",
+        "A small oil lamp still burning low beside a well-worn study mat before dawn — effort that does not tire",
+        "黎明前，旧席旁一盏小油灯仍低低亮着——为之不厌",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "gongxi-hua-in-the-analects",
+        "inline-2.png",
+        "A footpath splitting in two at a low stone, one way uphill and one way down — two answers for two walkers",
+        "小路在一块矮石前分成两条，一条上坡、一条下坡——两人两答",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "可使与宾客言——「不知其仁也」",
+        headingEn: "Fit for court — and \"I do not know whether he is perfectly virtuous\"",
+        bodyZh: [
+          "请你从[论语 · 公冶长 5.7](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007)开始。孟武伯连问三位弟子，请你只看第三位。原文关于他的一句是：赤也何如。子曰，赤也，束带立于朝，可使与宾客言也，不知其仁也。活页白话导读作：孟武伯又问：公西赤怎么样？孔子说：公西赤嘛，让他穿戴整齐，束好衣带，站在朝廷上，可以让他去接待宾客办理交涉，至于他是不是仁，我就不知道了。",
+          "活页 Legge 作：\"What do you say of Ch'ih?\" The Master replied, \"With his sash girt and standing in a court, Ch'ih might be employed to converse with the visitors and guests, but I do not know whether he is perfectly virtuous.\" 你在一句话里得到两件事：一份真实可用的能力，以及不肯把这份能力称为「仁」。书没有贬低这份本事，只是不让本事顶替那个更大的字。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Kung-ye Ch'ang 5.7](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-007). Meng Wu asks about three disciples; keep your eye on the third. The source line on him reads 赤也何如。子曰，赤也，束带立于朝，可使与宾客言也，不知其仁也。 The modern guide on that page says: 孟武伯又问：公西赤怎么样？孔子说：公西赤嘛，让他穿戴整齐，束好衣带，站在朝廷上，可以让他去接待宾客办理交涉，至于他是不是仁，我就不知道了。",
+          "Legge on the same page: \"What do you say of Ch'ih?\" The Master replied, \"With his sash girt and standing in a court, Ch'ih might be employed to converse with the visitors and guests, but I do not know whether he is perfectly virtuous.\" You get two things in one sentence: a real, usable competence, and a refusal to call that competence 仁. The book does not mock the skill. It simply will not let skill stand in for the larger word.",
+        ],
+      },
+      {
+        headingZh: "他自己的志向：愿为宗庙小相",
+        headingEn: "His own wish: a small assistant at the temple",
+        bodyZh: [
+          "[论语 · 先进 11.25](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-025)是四位弟子侍坐、各言其志的一章。活页上的原文与白话导读只到子路作答为止；公西华的回答只见于该页的 Legge 英译，所以这一篇这里只引 Legge。Legge 作：\"What are your wishes, Ch'ih,\" said the Master next to Kung-hsi Hwa. Ch'ih replied, \"I do not say that my ability extends to these things, but I should wish to learn them. At the services of the ancestral temple, and at the audiences of the princes with the sovereign, I should like, dressed in the dark square-made robe and the black linen cap, to act as a small assistant.\"",
+          "同一章稍后，Legge 译文里孔子评他：\"Yes; who but princes have to do with ancestral temples, and with audiences but the sovereign? If Ch'ih were to be a small assistant in these services, who could be a great one?\" 请你留意：公西华先把自己说低（只说愿意学），孔子却回答，他说的那份事并不小。此章其余部分属于别的笔记。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.25](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-025) is the scene where four disciples sit with the Master and say what they would do if known. On the live page, the source and modern guide stop after Zi Lu's answer; Gongxi Hua's answer appears only in the Legge translation there, so this Note quotes Legge alone for it. Legge: \"What are your wishes, Ch'ih,\" said the Master next to Kung-hsi Hwa. Ch'ih replied, \"I do not say that my ability extends to these things, but I should wish to learn them. At the services of the ancestral temple, and at the audiences of the princes with the sovereign, I should like, dressed in the dark square-made robe and the black linen cap, to act as a small assistant.\"",
+          "Later in the same passage, in Legge, the Master comments on him: \"Yes; who but princes have to do with ancestral temples, and with audiences but the sovereign? If Ch'ih were to be a small assistant in these services, who could be a great one?\" Notice what you are given: Gongxi Hua lowers his own claim (\"I should wish to learn them\"), and the Master answers that the work he names is not small. The rest of the scene belongs to other Notes.",
+        ],
+      },
+      {
+        headingZh: "「正唯弟子不能学也」",
+        headingEn: "\"This is just what we, the disciples, cannot imitate you in\"",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "在[论语 · 述而 7.33](https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-033)里，孔子不敢以圣与仁自居，只说自己一直在做。这里请你看公西华的回答。原文是：子曰，若圣与仁，则吾岂敢，抑为之不厌，诲人不倦，则可谓云尔已矣。公西华曰，正唯弟子不能学也。导读作：孔子说：说到圣与仁，那我怎么敢当呢？不过是朝着这个方向去做而永不满足，教导别人而不知疲倦，可以说就是这样罢了。公西华说：这正是我们弟子学不到的地方啊。",
+          "Legge 作：Kung-hsi Hwa said, \"This is just what we, the disciples, cannot imitate you in.\" 你能听出这句话为什么要紧：孔子把「不厌、不倦」说成谦退的一点，公西华却指出，听来谦退的这一点恰恰最难。",
+        ],
+        bodyEn: [
+          "In [The Analects · Shu R. 7.33](https://www.lunyu.ai/en/analects/shu-er/shu-er-033) the Master declines the names sage and 仁 for himself and claims only that he keeps at it. The camera here is on Gongxi Hua's reply. The source: 子曰，若圣与仁，则吾岂敢，抑为之不厌，诲人不倦，则可谓云尔已矣。公西华曰，正唯弟子不能学也。 The guide: 孔子说：说到圣与仁，那我怎么敢当呢？不过是朝着这个方向去做而永不满足，教导别人而不知疲倦，可以说就是这样罢了。公西华说：这正是我们弟子学不到的地方啊。",
+          "Legge: Kung-hsi Hwa said, \"This is just what we, the disciples, cannot imitate you in.\" You can hear why the line matters. The Master offers \"not tiring\" as the modest part; Gongxi Hua points out that the modest-sounding part is exactly the hard part.",
+        ],
+      },
+      {
+        headingZh: "「赤也惑，敢问」",
+        headingEn: "\"I, Ch'ih, am perplexed\"",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 先进 11.21](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-021)让你看见公西华是那个注意到了的人。子路与冉有问了同一个问题，得到相反的回答。原文中公西华的一段是：公西华曰，由也问闻斯行诸，子曰，有父兄在，求也问闻斯行诸，子曰，闻斯行之，赤也惑，敢问。子曰，求也退，故进之，由也兼人，故退之。导读把他的话译作：我糊涂了，大胆地问一问这是为什么。",
+          "Legge 译公西华问话的末句与孔子的回答作：…\"I, Ch'ih, am perplexed, and venture to ask you for an explanation.\" The Master said, \"Ch'iu is retiring and slow; therefore, I urged him forward. Yu has more than his own share of energy; therefore I kept him back.\" 没有他这一问，你手里只有两句互相矛盾的话；因为他承认了困惑，你才得到理由：回答是按人而给的。",
+        ],
+        bodyEn: [
+          "[The Analects · Hsien Tsin 11.21](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-021) shows you Gongxi Hua as the one who noticed. Zi Lu and Ran You ask the same question and get opposite answers. Gongxi Hua's part of the source: 公西华曰，由也问闻斯行诸，子曰，有父兄在，求也问闻斯行诸，子曰，闻斯行之，赤也惑，敢问。子曰，求也退，故进之，由也兼人，故退之。 The guide renders his words: 我糊涂了，大胆地问一问这是为什么。",
+          "Legge, from the end of Kung-hsi Hwa's question: …\"I, Ch'ih, am perplexed, and venture to ask you for an explanation.\" The Master said, \"Ch'iu is retiring and slow; therefore, I urged him forward. Yu has more than his own share of energy; therefore I kept him back.\" Without his question, you would have two contradictory sayings. Because he admits confusion, you get the reason: the answer was fitted to the person.",
+        ],
+      },
+      {
+        headingZh: "子华使于齐",
+        headingEn: "On a mission to Ch'i",
+        bodyZh: [
+          "[论语 · 雍也 6.3](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-003)不在公西华索引里，但它以「子华」「赤」称他。原文开头是：子华使于齐，冉子为其母请粟。孔子后来说：赤之适齐也，乘肥马，衣轻裘，吾闻之也，君子周急，不继富。导读作：孔子说：公西赤去齐国，乘的是肥壮的马，穿的是轻暖的皮袍。我听说过，君子只周济急需的人，而不去接济富裕的人。",
+          "Legge 作：\"When Ch'ih was proceeding to Ch'i, he had fat horses to his carriage, and wore light furs. I have heard that a superior man helps the distressed, but does not add to the wealth of the rich.\" 从这一门你只取两件事实：他曾出使齐国，出行时颇为充裕。关于周济的教训是孔子的话，针对的是粟该怎么给，不是对公西华的指责。",
+        ],
+        bodyEn: [
+          "[The Analects · Yung Yey 6.3](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-003) is not on the Gongxi Hua index, but it names him as 子华 and 赤. The source opens 子华使于齐，冉子为其母请粟。 and the Master later says 赤之适齐也，乘肥马，衣轻裘，吾闻之也，君子周急，不继富。 The guide: 孔子说：公西赤去齐国，乘的是肥壮的马，穿的是轻暖的皮袍。我听说过，君子只周济急需的人，而不去接济富裕的人。",
+          "Legge: \"When Ch'ih was proceeding to Ch'i, he had fat horses to his carriage, and wore light furs. I have heard that a superior man helps the distressed, but does not add to the wealth of the rich.\" Take two facts from this door: he was sent on a mission to Ch'i, and he travelled well provided. The lesson about giving is the Master's, aimed at how grain was handed out, not a charge against Gongxi Hua.",
+        ],
+      },
+      {
+        headingZh: "五处合起来看",
+        headingEn: "What the five doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：一位可以立于朝、与宾客言的弟子（5.7），只愿在宗庙与会同之事上做小相（11.25），曾出使齐国（6.3），看出「不厌」正是弟子学不到的（7.33），并且敢问为何两答不同（11.21）。书承认他的礼仪才能，却不称之为仁；在实际上被看重的，是他谦逊而准确的发问。如果你想看 5.7 与 11.21 里冉有的那一面，可以打开[《论语》里的冉有是谁？](https://www.lunyu.ai/zh-Hans/blogs/ran-you-in-the-analects)——仅作软链接。",
+          "以下是你自己的反思，不是孔子的话：你也许正是擅长形式的人——议程、礼数、一场会该怎么开。《论语》把这当作真实的能力，但不说它就是德的全部。公西华的另一份长处人人可学：两条指示看似冲突时，直说出来，然后发问。",
+        ],
+        bodyEn: [
+          "Put them together and you have a disciple fit for court and guests (5.7), who wishes only to be a small assistant at temple and audience (11.25), who is sent to Ch'i (6.3), who sees that \"not tiring\" is what disciples cannot learn (7.33), and who asks why two answers differ (11.21). The book grants his ritual skill and does not call it 仁. What it praises in practice is his modest, exact question. If you want Ran You's side of 5.7 and 11.21, open [Who Was Ran You in the Analects?](https://www.lunyu.ai/en/blogs/ran-you-in-the-analects) — a soft link only.",
+          "As your own reflection — not as Confucius's words — you may be the person who is good at forms: agendas, protocol, how a meeting should run. The Analects treats that as real ability and stops short of calling it the whole of virtue. Gongxi Hua's other gift is open to anyone: when two instructions seem to clash, say so plainly and ask.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的公西华是谁？",
+        questionEn: "Who was Gongxi Hua in the Analects?",
+        answerZh: "他是孔子的弟子，书中称公西华、赤、子华。活页章句显示：他可以立于朝、与宾客言（5.7），愿在礼仪之事上做小相（11.25），曾出使齐国（6.3）。请到各篇章页核对，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "He is a disciple of Confucius, named in the book as 公西华, 赤 (Ch'ih), and 子华 (Tsze-hwa). The live passages show him fit to stand at court and speak with guests (5.7), wishing to serve as a small assistant at ritual (11.25), and sent on a mission to Ch'i (6.3). Check each line on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "孔子说过公西华是仁者吗？",
+        questionEn: "Did Confucius call Gongxi Hua ren?",
+        answerZh: "没有。在 5.7 里孔子说赤可以束带立于朝、与宾客言，接着说「不知其仁也」——Legge 作 \"but I do not know whether he is perfectly virtuous.\" 书承认这份本事，却不给出「仁」字。",
+        answerEn: "No. In 5.7 the Master says Ch'ih could converse with visitors and guests at court, then adds 不知其仁也 — in Legge, \"but I do not know whether he is perfectly virtuous.\" The book grants the skill and withholds the word 仁.",
+      },
+      {
+        questionZh: "公西华在 7.33 说了什么？",
+        questionEn: "What did Gongxi Hua say in 7.33?",
+        answerZh: "孔子只说自己为之不厌、诲人不倦，公西华答：「正唯弟子不能学也」——Legge 作 \"This is just what we, the disciples, cannot imitate you in.\" 他指出持久的用功才是难处。",
+        answerEn: "After the Master claims only that he works without tiring and teaches without weariness, Gongxi Hua replies 正唯弟子不能学也 — in Legge, \"This is just what we, the disciples, cannot imitate you in.\" He names the steady effort as the hard part.",
+      },
+      {
+        questionZh: "公西华在 11.21 为什么说自己困惑？",
+        questionEn: "Why did Gongxi Hua say he was perplexed in 11.21?",
+        answerZh: "因为子路和冉有问了同一个问题，却得到相反的回答。他说「赤也惑，敢问」，孔子解释：冉求退缩，所以鼓励他；仲由勇气过人，所以约束他。正是他这一问让理由显现出来。",
+        answerEn: "Because Zi Lu and Ran You asked the same question and got opposite answers. He said 赤也惑，敢问, and the Master explained that he urged Ran You forward and held Zi Lu back. His question is what makes the reason visible.",
+      },
+      {
+        questionZh: "公西华在 11.25 的志向是什么？",
+        questionEn: "What did Gongxi Hua wish for in 11.25?",
+        answerZh: "据活页上的 Legge 英译，他愿意身着礼服，在宗庙之事与诸侯会同时 \"to act as a small assistant\"。该页原文与导读在他作答之前就结束了，所以这一段请引用 Legge。",
+        answerEn: "In Legge's translation on the live page, he says he would like, in ritual dress, \"to act as a small assistant\" at the ancestral temple and at audiences. On that page the source and guide stop before his answer, so quote Legge for this part.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "接着打开公西华索引",
+        headingEn: "Open the Gongxi Hua index next",
+        bodyZh: [
+          "当你想把提到他的章句放在同一页读，请打开[公西华](https://www.lunyu.ai/zh-Hans/index/gongxi-hua)。索引收束志向与礼仪事务；这一篇跟着礼仪才能与诚实的发问走，并在索引之外补了 6.3。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name him on one screen, open [Gongxi Hua](https://www.lunyu.ai/en/index/gongxi-hua). The index groups aspiration and ritual service; this Note followed ritual skill and the honest question, and added 6.3 from outside the index. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "tang-wen-wu-zhou-gong-in-the-analects",
     titleZh: "《论语》里的汤、文、武、周公：斯文在人",
     titleEn: "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",

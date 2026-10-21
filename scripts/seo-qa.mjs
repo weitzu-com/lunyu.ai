@@ -836,6 +836,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
+  "2026-10-21",
   "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",
   "2026-10-20",
   "What Ren Means in the Analects",
@@ -858,6 +860,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的公西华：善于礼仪，敢于发问",
+  "2026-10-21",
   "《论语》里的汤、文、武、周公：斯文在人",
   "2026-10-20",
   "论语阅读札记",
@@ -2153,6 +2157,307 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
       }
+    }
+  }
+}
+
+const gongxiHuaCover = "/images/blogs/gongxi-hua-in-the-analects/cover.png";
+const gongxiHuaInline1 = "/images/blogs/gongxi-hua-in-the-analects/inline-1.png";
+const gongxiHuaInline2 = "/images/blogs/gongxi-hua-in-the-analects/inline-2.png";
+const gongxiHuaCoverEn =
+  "A dark robe and black cap folded on a mat beside quiet temple steps — ready to serve as a small assistant";
+const gongxiHuaCoverZh = "黑色礼服与黑冠叠放在庙阶旁的席上——愿为小相";
+const gongxiHuaInline1En =
+  "A small oil lamp still burning low beside a well-worn study mat before dawn — effort that does not tire";
+const gongxiHuaInline1Zh = "黎明前，旧席旁一盏小油灯仍低低亮着——为之不厌";
+const gongxiHuaInline2En =
+  "A footpath splitting in two at a low stone, one way uphill and one way down — two answers for two walkers";
+const gongxiHuaInline2Zh = "小路在一块矮石前分成两条，一条上坡、一条下坡——两人两答";
+const gongxiHuaAnchors = [
+  ["论语 · 公冶长 5.7", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007"],
+  ["The Analects · Kung-ye Ch'ang 5.7", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-007"],
+  ["论语 · 先进 11.25", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-025"],
+  ["The Analects · Hsien Tsin 11.25", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-025"],
+  ["论语 · 述而 7.33", "https://www.lunyu.ai/zh-Hans/analects/shu-er/shu-er-033"],
+  ["The Analects · Shu R. 7.33", "https://www.lunyu.ai/en/analects/shu-er/shu-er-033"],
+  ["论语 · 先进 11.21", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-021"],
+  ["The Analects · Hsien Tsin 11.21", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-021"],
+  ["论语 · 雍也 6.3", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-003"],
+  ["The Analects · Yung Yey 6.3", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-003"],
+  ["《论语》里的冉有是谁？", "https://www.lunyu.ai/zh-Hans/blogs/ran-you-in-the-analects"],
+  ["Who Was Ran You in the Analects?", "https://www.lunyu.ai/en/blogs/ran-you-in-the-analects"],
+  ["公西华", "https://www.lunyu.ai/zh-Hans/index/gongxi-hua"],
+  ["Gongxi Hua", "https://www.lunyu.ai/en/index/gongxi-hua"],
+];
+{
+  const start = postSource.indexOf('slug: "gongxi-hua-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing gongxi-hua-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = gongxiHuaAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `gongxi-hua-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    gongxiHuaAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`gongxi-hua-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `gongxi-hua-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 10) {
+      fail(
+        `gongxi-hua-in-the-analects: expected five linked passages per language (10 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    for (const forbidden of [
+      "/blogs/zi-lu-in-the-analects",
+      "pending Gemini",
+      "IMAGE SLOT",
+      "*",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`gongxi-hua-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("five live passages")) {
+      fail("gongxi-hua-in-the-analects: dek/description must say five live passages");
+    }
+    if (!block.includes("五处活页")) {
+      fail("gongxi-hua-in-the-analects: dek/description must say 五处活页");
+    }
+    if (block.includes("eight live passages") || block.includes("八处")) {
+      fail("gongxi-hua-in-the-analects: passage count must stay five, not eight");
+    }
+    const ranYouHrefs = markdownHrefs.filter((href) => href.includes("/blogs/ran-you-in-the-analects"));
+    if (ranYouHrefs.length !== 2) {
+      fail(
+        `gongxi-hua-in-the-analects: ran-you soft link should appear once per language, got ${ranYouHrefs.length}`
+      );
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("gongxi-hua-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("gongxi-hua-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("gongxi-hua-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [gongxiHuaCover, gongxiHuaInline1, gongxiHuaInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/gongxi-hua-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/gongxi-hua-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-21"',
+  '"dateModified":"2026-10-21"',
+  "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
+  "Gongxi Hua in the Analects: ritual skill at court, an honest question, and five live passages linked back to the source.",
+  "This Note follows him through five live passages.",
+  "Fit for court",
+  "I do not know whether he is perfectly virtuous",
+  "His own wish: a small assistant at the temple",
+  "cannot imitate you in",
+  "I, Ch&#x27;ih, am perplexed",
+  "On a mission to Ch&#x27;i",
+  "What the five doors add up to",
+  "Open the Gongxi Hua index next",
+  "Who was Gongxi Hua in the Analects?",
+  "Did Confucius call Gongxi Hua ren?",
+  "What did Gongxi Hua say in 7.33?",
+  "Why did Gongxi Hua say he was perplexed in 11.21?",
+  "What did Gongxi Hua wish for in 11.25?",
+  "but I do not know whether he is perfectly virtuous.",
+  "to act as a small assistant",
+  "This is just what we, the disciples, cannot imitate you in.",
+  "I, Ch&#x27;ih, am perplexed, and venture to ask you for an explanation.",
+  "Ch&#x27;iu is retiring and slow; therefore, I urged him forward.",
+  "When Ch&#x27;ih was proceeding to Ch&#x27;i, he had fat horses to his carriage, and wore light furs.",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.7</a>",
+  ">The Analects · Hsien Tsin 11.25</a>",
+  ">The Analects · Shu R. 7.33</a>",
+  ">The Analects · Hsien Tsin 11.21</a>",
+  ">The Analects · Yung Yey 6.3</a>",
+  ">Who Was Ran You in the Analects?</a>",
+  ">Gongxi Hua</a>",
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-007"',
+  'href="/en/analects/xian-jin/xian-jin-025"',
+  'href="/en/analects/shu-er/shu-er-033"',
+  'href="/en/analects/xian-jin/xian-jin-021"',
+  'href="/en/analects/yong-ye/yong-ye-003"',
+  'href="/en/blogs/ran-you-in-the-analects"',
+  'href="/en/index/gongxi-hua"',
+  gongxiHuaCover,
+  gongxiHuaInline1,
+  gongxiHuaInline2,
+  gongxiHuaCoverEn,
+  gongxiHuaInline1En,
+  gongxiHuaInline2En,
+  `property="og:image" content="${siteUrl}${gongxiHuaCover}"`,
+  `property="og:image:alt" content="${gongxiHuaCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${gongxiHuaCover}"`,
+  `name="twitter:image:alt" content="${gongxiHuaCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/gongxi-hua-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/gongxi-hua-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-21"',
+  '"dateModified":"2026-10-21"',
+  "《论语》里的公西华：善于礼仪，敢于发问",
+  "《论语》里的公西华善于礼仪，敢于发问。书承认本事，却不称之为仁。五处活页，链回可核对的原文。",
+  "这一篇跟着他走五处活页章句。",
+  "可使与宾客言",
+  "不知其仁也",
+  "他自己的志向：愿为宗庙小相",
+  "正唯弟子不能学也",
+  "赤也惑，敢问",
+  "子华使于齐",
+  "五处合起来看",
+  "接着打开公西华索引",
+  "《论语》里的公西华是谁？",
+  "孔子说过公西华是仁者吗？",
+  "公西华在 7.33 说了什么？",
+  "公西华在 11.21 为什么说自己困惑？",
+  "公西华在 11.25 的志向是什么？",
+  "束带立于朝，可使与宾客言也，不知其仁也",
+  "正唯弟子不能学也",
+  "赤也惑，敢问",
+  "子华使于齐，冉子为其母请粟",
+  ">论语 · 公冶长 5.7</a>",
+  ">论语 · 先进 11.25</a>",
+  ">论语 · 述而 7.33</a>",
+  ">论语 · 先进 11.21</a>",
+  ">论语 · 雍也 6.3</a>",
+  ">《论语》里的冉有是谁？</a>",
+  ">公西华</a>",
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-025"',
+  'href="/zh-Hans/analects/shu-er/shu-er-033"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-021"',
+  'href="/zh-Hans/analects/yong-ye/yong-ye-003"',
+  'href="/zh-Hans/blogs/ran-you-in-the-analects"',
+  'href="/zh-Hans/index/gongxi-hua"',
+  gongxiHuaCover,
+  gongxiHuaInline1,
+  gongxiHuaInline2,
+  gongxiHuaCoverZh,
+  gongxiHuaInline1Zh,
+  gongxiHuaInline2Zh,
+  `property="og:image" content="${siteUrl}${gongxiHuaCover}"`,
+  `property="og:image:alt" content="${gongxiHuaCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${gongxiHuaCover}"`,
+  `name="twitter:image:alt" content="${gongxiHuaCoverZh}"`,
+]);
+{
+  const zhGongxiFile = htmlPath("/zh-Hans/blogs/gongxi-hua-in-the-analects");
+  if (exists(zhGongxiFile)) {
+    const zhGongxiHtml = read(zhGongxiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhGongxiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/gongxi-hua-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhGongxiHtml.includes(gongxiHuaCoverEn)) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhGongxiHtml.includes(gongxiHuaInline1En) || zhGongxiHtml.includes(gongxiHuaInline2En)) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhGongxiHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.7<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: English 5.7 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhGongxiHtml, />Who Was Ran You in the Analects\?<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: English Ran You soft link should not appear on zh-Hans");
+    }
+    if (countRegex(zhGongxiHtml, />Gongxi Hua<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhGongxiHtml, />公西华<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 公西华 body link should appear once");
+    }
+    if (countRegex(zhGongxiHtml, />《论语》里的冉有是谁？<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 冉有 body link should appear once");
+    }
+    if (countRegex(zhGongxiHtml, />论语 · 公冶长 5\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 公冶长 5.7 body link should appear once");
+    }
+    if (countRegex(zhGongxiHtml, />论语 · 先进 11\.25<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 先进 11.25 body link should appear once");
+    }
+    if (countRegex(zhGongxiHtml, />论语 · 述而 7\.33<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 述而 7.33 body link should appear once");
+    }
+    if (countRegex(zhGongxiHtml, />论语 · 先进 11\.21<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 先进 11.21 body link should appear once");
+    }
+    if (countRegex(zhGongxiHtml, />论语 · 雍也 6\.3<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/gongxi-hua-in-the-analects: 雍也 6.3 body link should appear once");
+    }
+  }
+  const enGongxiFile = htmlPath("/en/blogs/gongxi-hua-in-the-analects");
+  if (exists(enGongxiFile)) {
+    const enGongxiHtml = read(enGongxiFile);
+    if (enGongxiHtml.includes(gongxiHuaCoverZh)) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enGongxiHtml.includes(gongxiHuaInline1Zh) || enGongxiHtml.includes(gongxiHuaInline2Zh)) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enGongxiHtml, />Gongxi Hua<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enGongxiHtml, />Who Was Ran You in the Analects\?<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Ran You soft link should appear once");
+    }
+    if (countRegex(enGongxiHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Kung-ye Ch'ang 5.7 body link should appear once");
+    }
+    if (countRegex(enGongxiHtml, />The Analects · Hsien Tsin 11\.25<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Hsien Tsin 11.25 body link should appear once");
+    }
+    if (countRegex(enGongxiHtml, />The Analects · Shu R\. 7\.33<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Shu R. 7.33 body link should appear once");
+    }
+    if (countRegex(enGongxiHtml, />The Analects · Hsien Tsin 11\.21<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Hsien Tsin 11.21 body link should appear once");
+    }
+    if (countRegex(enGongxiHtml, />The Analects · Yung Yey 6\.3<\/a>/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Yung Yey 6.3 body link should appear once");
+    }
+    if (countRegex(enGongxiHtml, />公西华<\/a>/g) !== 0) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enGongxiHtml, />论语 · 公冶长 5\.7<\/a>/g) !== 0) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Chinese 5.7 body link should not appear on en");
+    }
+    if (countRegex(enGongxiHtml, /href="\/en\/blogs\/ran-you-in-the-analects"/g) !== 1) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: ran-you soft link should appear once");
+    }
+    if (enGongxiHtml.includes("/blogs/zi-lu-in-the-analects")) {
+      fail("/en/blogs/gongxi-hua-in-the-analects: Zi Lu note must not be linked");
     }
   }
 }
@@ -6054,6 +6359,23 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/gongxi-hua`, [
+    locale === "en" ? ">Gongxi Hua<" : ">公西华<",
+    `href="/${locale}/blogs/gongxi-hua-in-the-analects"`,
+    locale === "en"
+      ? "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question"
+      : "《论语》里的公西华：善于礼仪，敢于发问",
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-007`,
+    `/${locale}/analects/shu-er/shu-er-033`,
+    `/${locale}/analects/xian-jin/xian-jin-021`,
+    `/${locale}/analects/xian-jin/xian-jin-025`,
+  ]);
+  {
+    const gongxiIndexFile = htmlPath(`/${locale}/index/gongxi-hua`);
+    if (exists(gongxiIndexFile) && read(gongxiIndexFile).includes("/analects/yong-ye/yong-ye-003")) {
+      fail(`/${locale}/index/gongxi-hua: 6.3 is outside the Gongxi Hua index`);
+    }
+  }
   checkHtml(`/${locale}/index/tang-wen-wu-zhougong`, [
     locale === "en" ? ">Tang, King Wen, King Wu, and the Duke of Zhou<" : ">汤、文、武、周公<",
     `href="/${locale}/blogs/tang-wen-wu-zhou-gong-in-the-analects"`,
@@ -6244,6 +6566,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/gongxi-hua-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/gongxi-hua-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/tang-wen-wu-zhou-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/tang-wen-wu-zhou-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/state-of-lu-in-the-analects`, "sitemap");
@@ -6303,8 +6627,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-20")) {
+    if (!lastmod.includes("2026-10-21")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const gongxiHuaLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/gongxi-hua-in-the-analects`);
+    if (!gongxiHuaLastmod.includes("2026-10-21")) {
+      fail(
+        `sitemap: /${locale}/blogs/gongxi-hua-in-the-analects lastmod should be 2026-10-21, got ${gongxiHuaLastmod || "missing"}`
+      );
     }
     const tangWenWuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/tang-wen-wu-zhou-gong-in-the-analects`);
     if (!tangWenWuLastmod.includes("2026-10-20")) {
@@ -6423,7 +6753,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "20 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "21 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -6443,6 +6773,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const gongxiHuaEditorialLastmod = "2026-10-21";
 const tangWenWuEditorialLastmod = "2026-10-20";
 const stateOfLuEditorialLastmod = "2026-10-19";
 const renEditorialLastmod = "2026-10-18";
@@ -6468,6 +6799,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${gongxiHuaEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${tangWenWuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${stateOfLuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${renEditorialLastmod}T00:00:00.000Z`, "")
