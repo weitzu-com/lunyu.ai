@@ -109,8 +109,8 @@ export const editorialPosts: EditorialPost[] = [
     dekEn: "In the Analects, Gongxi Hua (公西华; also called 赤, Ch'ih, and 子华, Tsze-hwa) is the disciple of form: a man fit to stand sashed at court and speak with guests. You watch the book grant him that skill and then withhold a larger word from him. Yet his best moments are not ceremonies. They are two exact remarks: he names what disciples cannot learn, and he says \"I am perplexed\" when the Master gives two students opposite answers. This Note follows him through five live passages. It is not a Ran You or Zi Lu Note; they appear here only where Gongxi Hua's own line needs them.",
     descriptionZh: "《论语》里的公西华善于礼仪，敢于发问。书承认本事，却不称之为仁。五处活页，链回可核对的原文。",
     descriptionEn: "Gongxi Hua in the Analects: ritual skill at court, an honest question, and five live passages linked back to the source.",
-    datePublished: "2026-10-21",
-    dateModified: "2026-10-21",
+    datePublished: "2026-10-23",
+    dateModified: "2026-10-23",
     tagsZh: ["公西华", "公西赤", "公冶长"],
     tagsEn: ["gongxi hua", "Gongxi Hua", "Kung-ye Ch'ang"],
     related: [
