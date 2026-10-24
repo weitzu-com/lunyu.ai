@@ -837,7 +837,7 @@ checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
   "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
-  "2026-10-23",
+  "2026-10-24",
   "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",
   "2026-10-20",
   "What Ren Means in the Analects",
@@ -861,7 +861,7 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "《论语》里的公西华：善于礼仪，敢于发问",
-  "2026-10-23",
+  "2026-10-24",
   "《论语》里的汤、文、武、周公：斯文在人",
   "2026-10-20",
   "论语阅读札记",
@@ -2271,8 +2271,8 @@ checkHtml("/en/blogs/gongxi-hua-in-the-analects", [
   `rel="canonical" href="${siteUrl}/en/blogs/gongxi-hua-in-the-analects"`,
   '"@type":"Article"',
   '"@type":"FAQPage"',
-  '"datePublished":"2026-10-23"',
-  '"dateModified":"2026-10-23"',
+  '"datePublished":"2026-10-24"',
+  '"dateModified":"2026-10-24"',
   "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
   "Gongxi Hua in the Analects: ritual skill at court, an honest question, and five live passages linked back to the source.",
   "This Note follows him through five live passages.",
@@ -2324,8 +2324,8 @@ checkHtml("/zh-Hans/blogs/gongxi-hua-in-the-analects", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs/gongxi-hua-in-the-analects"`,
   '"@type":"Article"',
   '"@type":"FAQPage"',
-  '"datePublished":"2026-10-23"',
-  '"dateModified":"2026-10-23"',
+  '"datePublished":"2026-10-24"',
+  '"dateModified":"2026-10-24"',
   "《论语》里的公西华：善于礼仪，敢于发问",
   "《论语》里的公西华善于礼仪，敢于发问。书承认本事，却不称之为仁。五处活页，链回可核对的原文。",
   "这一篇跟着他走五处活页章句。",
@@ -6627,13 +6627,13 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-23")) {
+    if (!lastmod.includes("2026-10-24")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
     }
     const gongxiHuaLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/gongxi-hua-in-the-analects`);
-    if (!gongxiHuaLastmod.includes("2026-10-23")) {
+    if (!gongxiHuaLastmod.includes("2026-10-24")) {
       fail(
-        `sitemap: /${locale}/blogs/gongxi-hua-in-the-analects lastmod should be 2026-10-23, got ${gongxiHuaLastmod || "missing"}`
+        `sitemap: /${locale}/blogs/gongxi-hua-in-the-analects lastmod should be 2026-10-24, got ${gongxiHuaLastmod || "missing"}`
       );
     }
     const tangWenWuLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/tang-wen-wu-zhou-gong-in-the-analects`);
@@ -6753,7 +6753,7 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "23 Oct 2026", "rss lastBuildDate");
+  assertIncludes(read(rssBodyFile), "24 Oct 2026", "rss lastBuildDate");
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
@@ -6773,7 +6773,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const gongxiHuaEditorialLastmod = "2026-10-23";
+const gongxiHuaEditorialLastmod = "2026-10-24";
 const tangWenWuEditorialLastmod = "2026-10-20";
 const stateOfLuEditorialLastmod = "2026-10-19";
 const renEditorialLastmod = "2026-10-18";
