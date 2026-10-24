@@ -102,6 +102,165 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zi-gong-in-the-analects",
+    titleZh: "《论语》里的子贡：会说话，却不是佞",
+    titleEn: "Who Was Zi Gong in the Analects? Speech Without Slickness",
+    dekZh: "在《论语》里，子贡（端木赐；Legge 作 Tsze-kung、Ts'ze）是与宰我同列于言语科的弟子。书把这份本事归为一类能力，并不把它压成佞。他最著名的一句，往往不是圆熟的答话，而是一问：他问有没有一个字可以终身奉行，老师答以恕。这一篇跟着他走四条活页章句。它不是仲弓笔记（仲弓是另一位弟子），也不是忠恕通论的重写——若你需要那扇门，至多一次软链。",
+    dekEn: "In the Analects, Zi Gong (子贡; also 端木赐, Duanmu Ci; Legge: Tsze-kung, Ts'ze) is the disciple placed under speech (言语) with Zai Wo. The book groups that ability; it does not fold it into 佞 (slick, flattering talk). His best known line is not a polished answer but a question: he asks for one word that can be practiced for life, and the Master names 恕. This Note follows him through four live passages. It is not a Zhong Gong Note (仲弓 is another disciple), and it is not a rewrite of the Zhongshu essay — at most a soft chip if you need that door.",
+    descriptionZh: "《论语》里的子贡会说话，却不是佞。问出恕，四条活页，链回可核对的原文。",
+    descriptionEn: "Zi Gong in the Analects: speech without slickness, the question that yields shu, and four live passages linked back to the source.",
+    datePublished: "2026-10-24",
+    dateModified: "2026-10-24",
+    tagsZh: ["子贡", "端木赐", "言语", "公冶长"],
+    tagsEn: ["zi gong", "Zi Gong", "Tsze-kung", "子贡"],
+    related: [
+      "/analects/wei-ling-gong/wei-ling-gong-023",
+      "/index/zi-gong",
+      "/analects/xian-jin/xian-jin-002",
+      "/analects/gong-ye-chang/gong-ye-chang-003",
+      "/analects/gong-ye-chang/gong-ye-chang-011",
+    ],
+    cover: notesBlogImage(
+      "zi-gong-in-the-analects",
+      "cover.png",
+      "A quiet study mat and empty cup before a low table — the moment of asking for one word",
+      "席前空杯与矮案——问出终身一字的瞬间",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zi-gong-in-the-analects",
+        "inline-1.png",
+        "A clean brush beside a discarded flourish on a desk — speech without slickness",
+        "案上一支干净的笔与一笔弃置的花哨——会说话，却不是佞",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "zi-gong-in-the-analects",
+        "inline-2.png",
+        "A plain temple vessel shape on a mat — the hu-lian reading image",
+        "席上素净的宗庙器形——瑚琏的阅读意象",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "他问出「恕」",
+        headingEn: "He asks for one word — and is given shu",
+        bodyZh: [
+          "请你从[论语 · 卫灵公 15.23](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023)开始。原文：子贡问曰，有一言，而可以终身行之者乎。子曰，其恕乎，己所不欲，勿施于人。活页白话导读作：子贡问道：有没有一个字可以终身奉行的呢？孔子说：那大概就是恕吧！自己不愿意的，不要施加给别人。",
+          "活页 Legge 作：Tsze-kung asked, saying, \"Is there one word which may serve as a rule of practice for all one's life?\" The Master said, \"Is not reciprocity such a word? What you do not want done to yourself, do not do to others.\"",
+          "你在这一门里得到两件事实：问的人是子贡；答出来的字是恕。没有他这一问，这一页不会落到「其恕乎」。（部分编号作 15.24；本站 slug 为 wei-ling-gong-023 / 15.23。）",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Wei Ling Kung 15.23](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-023). The source: 子贡问曰，有一言，而可以终身行之者乎。子曰，其恕乎，己所不欲，勿施于人。 The modern guide on that page: 子贡问道：有没有一个字可以终身奉行的呢？孔子说：那大概就是恕吧！自己不愿意的，不要施加给别人。",
+          "Legge on the same page: Tsze-kung asked, saying, \"Is there one word which may serve as a rule of practice for all one's life?\" The Master said, \"Is not reciprocity such a word? What you do not want done to yourself, do not do to others.\"",
+          "You get two facts in one door: the question is Zi Gong's; the word 恕 is given in answer. Without his asking, this page does not arrive at that naming. (Some editions number this line 15.24; on this site the slug is wei-ling-gong-023 / 15.23.)",
+        ],
+      },
+      {
+        headingZh: "列在言语——不是定为佞",
+        headingEn: "Placed under speech — not charged with ning",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 先进 11.2](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-002)。原文分四科：德行…言语，宰我，子贡。政事…文学… 导读作：论言辞辩才，有宰我、子贡。Legge 作：\"for their ability in speech, Tsai Wo and Tsze-kung.\"",
+          "请你仔细看这份归类。先进把子贡放在言语下，是弟子才能的分组——旁边是宰我——不是裁定他的话就是佞。书里另有地方给巧言令色另起名字，并要人远远避开；这一篇不会臆造活页上并不存在的「子贡佞」对话。你要守住的分界是：会说话，却不是佞——本事归本事，佞是书留给谄媚巧言的另一类指控。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Hsien Tsin 11.2](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-002). The source lists four groupings: 德行…言语，宰我，子贡。政事…文学… The guide: 论言辞辩才，有宰我、子贡. Legge: \"for their ability in speech, Tsai Wo and Tsze-kung.\"",
+          "Read the placement carefully. Book 11 puts Zi Gong under speech as an ability among disciples who once followed the Master through hardship. That is a grouping of talent — Zai Wo beside him — not a verdict that his talk is 佞. Elsewhere the book has another name for slick, flattering speech and keeps it far off; this Note will not invent a 佞 dialogue about Zi Gong that the live pages do not carry. Speech without slickness is the edge you are asked to hold: skill at words, without collapsing skill into the charge the book reserves for flattery.",
+        ],
+      },
+      {
+        headingZh: "「瑚琏也」",
+        headingEn: "A gemmed sacrificial vessel",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "在[论语 · 公冶长 5.3](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-003)里，子贡问自己怎么样。原文：子贡问曰，赐也何如。子曰，女器也。曰，何器也。曰，瑚琏也。导读作：子贡问道：我这个人怎么样？孔子说：你好比是一件器皿。子贡问：是什么器皿呢？孔子说：是宗庙里盛黍稷的瑚琏。",
+          "Legge 作：Tsze-kung asked, \"What do you say of me, Ts'ze? The Master said, \"You are a utensil.\" \"What utensil?\" \"A gemmed sacrificial utensil.\"",
+          "你看见书给了他一件真实、有名字的器——宗庙里的瑚琏——然后停在那里。器用之誉不是德的全部，也不是嘲讽。意象请按活页来取：一件被看重的器，不是说器就等于仁。",
+        ],
+        bodyEn: [
+          "In [The Analects · Kung-ye Ch'ang 5.3](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-003) Zi Gong asks what he himself is. The source: 子贡问曰，赐也何如。子曰，女器也。曰，何器也。曰，瑚琏也。 The guide: 子贡问道：我这个人怎么样？孔子说：你好比是一件器皿。子贡问：是什么器皿呢？孔子说：是宗庙里盛黍稷的瑚琏。",
+          "Legge: Tsze-kung asked, \"What do you say of me, Ts'ze? The Master said, \"You are a utensil.\" \"What utensil?\" \"A gemmed sacrificial utensil.\"",
+          "You watch the book grant him a real, named vessel — 瑚琏, used in the ancestral temple — and stop there. Praise of use is not the whole of virtue; it is also not a sneer. Take the image as the live page gives it: a valued vessel, not a claim that vessel equals 仁.",
+        ],
+      },
+      {
+        headingZh: "他说出恕的句子——老师说还不到",
+        headingEn: "He states reciprocity — and is told he has not yet attained it",
+        bodyZh: [
+          "[论语 · 公冶长 5.11](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-011)常被记错。活页上不是佞的对答。原文：子贡曰，我不欲人之加诸我也，吾亦欲无加诸人。子曰，赐也，非尔所及也。导读作：子贡说：我不愿意别人把不合理的事强加在我身上，我也不愿意把不合理的事强加在别人身上。孔子说：赐啊，这不是你现在能做得到的。",
+          "Legge 作：Tsze-kung said, \"What I do not wish men to do to me, I also wish not to do to men.\" The Master said, \"Ts'ze, you have not attained to that.\"",
+          "你实际拿到的是：子贡先把恕说成一句双边的话；老师说这句话他还做不到。他是把问题推到边上的人——并听见实践仍在前面。这一门与 15.23（他问出恕）并读即可；不要据此臆造谄媚场景。",
+        ],
+        bodyEn: [
+          "[The Analects · Kung-ye Ch'ang 5.11](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-011) is often misremembered. On the live page it is not a 佞 dialogue. The source: 子贡曰，我不欲人之加诸我也，吾亦欲无加诸人。子曰，赐也，非尔所及也。 The guide: 子贡说：我不愿意别人把不合理的事强加在我身上，我也不愿意把不合理的事强加在别人身上。孔子说：赐啊，这不是你现在能做得到的。",
+          "Legge: Tsze-kung said, \"What I do not wish men to do to me, I also wish not to do to men.\" The Master said, \"Ts'ze, you have not attained to that.\"",
+          "What you actually have: Zi Gong first states reciprocity as a full two-sided sentence; the Master says that sentence is not yet within his reach. He is the disciple who pushes the question to its edge — and is told the practice is still ahead of him. That line sits beside 15.23 (where he asks and is given 恕); it does not license inventing a flattery scene.",
+        ],
+      },
+      {
+        headingZh: "四门合起来看",
+        headingEn: "What the four doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：问出终身一字、答以恕的弟子（15.23）；与宰我同列言语、却未被定为佞（11.2）；被称为瑚琏之器（5.3）；说出完整的恕句、却被告知尚未及（5.11）。这一篇深读这几扇门，不复述索引全文。",
+          "若你需要忠与恕成对的那扇通论门——而不把本篇当成那篇——可一次打开[《论语》的忠恕：不是愚忠，也不是英文 Golden Rule](https://www.lunyu.ai/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects)，仅作软链。子贡不是仲弓；名字请分开。",
+          "以下是你自己的反思，不是孔子的话：你也许正是会说话的人——汇报、交涉、一句能落地的话。《论语》可以把这归在言语之下，却仍不肯把会说的话叫做佞。这几扇门里更硬的边，是问出恕的那一问，以及听见「你能说出的句子，还不等于你已做到」时仍不收回问题。",
+        ],
+        bodyEn: [
+          "Put them together and you have: the disciple who asks for one lifelong word and is answered with 恕 (15.23); who is listed under speech with Zai Wo as ability, not as 佞 (11.2); who is called a 瑚琏 vessel (5.3); who states a full reciprocity sentence and hears that he has not yet attained it (5.11). The Note deepens those doors; it does not retell the index essay.",
+          "If you need the broader door on loyalty and reciprocity as a pair — without treating this Note as that essay — open [Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not](https://www.lunyu.ai/en/blogs/zhongshu-reciprocity-in-the-analects) once, as a soft chip only. Zi Gong (子贡) is not Zhong Gong (仲弓); keep the names apart.",
+          "As your own reflection — not as Confucius's words — you may be good with words: briefings, negotiation, the sentence that lands. The Analects can place that under speech and still refuse to call skilled talk 佞. The harder edge in these doors is the question that yields 恕, and the willingness to hear that a sentence you can say is not yet a practice you have attained.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的子贡是谁？",
+        questionEn: "Who was Zi Gong in the Analects?",
+        answerZh: "他是孔子的弟子，书中称子贡、端木赐（Legge：Tsze-kung、Ts'ze）。活页显示：他问出终身一字而答以恕（15.23），与宰我同列言语（11.2），被称为瑚琏（5.3），说出恕的句子却被告知尚未及（5.11）。请到各篇章页核对，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "He is a disciple of Confucius, named 子贡 and 端木赐 (Duanmu Ci; Legge: Tsze-kung, Ts'ze). Live passages show him asking for one lifelong word and receiving 恕 (15.23), listed under speech with Zai Wo (11.2), called a 瑚琏 vessel (5.3), and stating reciprocity before being told he has not yet attained it (5.11). Check each line on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "《论语》有没有说子贡是佞？",
+        questionEn: "Did the Analects call Zi Gong ning (佞)?",
+        answerZh: "本篇所核活页没有给他定「佞」的指控。先进 11.2 把他放在言语科，与宰我并列，是才能分组。书里另有地方谈巧言令色；请勿臆造活页上不存在的「子贡佞」对话。",
+        answerEn: "No line fetched for this Note charges him with 佞. Book 11 places him under 言语 (speech) as ability beside Zai Wo. Slick, flattering speech has another name in the book elsewhere; do not invent a 佞 dialogue about Zi Gong that the live pages do not carry.",
+      },
+      {
+        questionZh: "子贡在 15.23 问了什么？",
+        questionEn: "What did Zi Gong ask in 15.23?",
+        answerZh: "他问有没有一个字可以终身奉行。老师答以恕——Legge 作 \"Is not reciprocity such a word? What you do not want done to yourself, do not do to others.\" 本站篇章为卫灵公 15.23（wei-ling-gong-023）。",
+        answerEn: "He asked whether there is one word that can be practiced for all one's life. The Master answered with 恕 — in Legge, \"Is not reciprocity such a word? What you do not want done to yourself, do not do to others.\" On this site the passage is Wei Ling Kung 15.23 (wei-ling-gong-023).",
+      },
+      {
+        questionZh: "5.3 的「瑚琏」是什么意思？",
+        questionEn: "What does 瑚琏 mean in 5.3?",
+        answerZh: "子贡问自己何如，老师先说「女器也」，再点名瑚琏——导读：宗庙里盛黍稷的器；Legge：\"a gemmed sacrificial utensil.\" 引用请回到活页，并分清原文、导读与英译。",
+        answerEn: "When Zi Gong asks what he is, the Master first says he is a utensil (器), then names 瑚琏 — in the guide, a temple vessel for millet; in Legge, \"a gemmed sacrificial utensil.\" Quote the live page and keep source, guide, and Legge layered.",
+      },
+      {
+        questionZh: "5.11 发生了什么？",
+        questionEn: "What happens in 5.11?",
+        answerZh: "子贡说：我不欲人之加诸我，吾亦欲无加诸人。老师说：赐也，非尔所及也。这是朝向恕的志向，不是佞的场景。请与 15.23 并读，不要互相改写成另一篇。",
+        answerEn: "Zi Gong states that what he does not want done to himself he also wishes not to do to others. The Master replies that Ts'ze has not attained that. It is an aspiration toward reciprocity, not a 佞 scene. Pair it with 15.23 rather than rewriting either as the other.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开子贡索引",
+        headingEn: "After FAQ — open the Zi Gong index",
+        bodyZh: [
+          "当你想把提到他的章句放在同一页读，请打开[子贡](https://www.lunyu.ai/zh-Hans/index/zi-gong)。索引负责判断与选篇；这一篇跟着问出恕、言语科而不等于佞、瑚琏之器、以及「尚未及」的那一句走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name him on one screen, open [Zi Gong](https://www.lunyu.ai/en/index/zi-gong). The index judges and selects; this Note followed the question that yields 恕, the speech grouping without 佞, the vessel image, and the not-yet-attained sentence. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "gongxi-hua-in-the-analects",
     titleZh: "《论语》里的公西华：善于礼仪，敢于发问",
     titleEn: "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
