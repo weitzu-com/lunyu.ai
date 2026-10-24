@@ -836,6 +836,7 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was Zi Gong in the Analects? Speech Without Slickness",
   "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
   "2026-10-24",
   "Tang, King Wen, King Wu, and the Duke of Zhou in the Analects: A Culture Carried in People",
@@ -860,6 +861,7 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的子贡：会说话，却不是佞",
   "《论语》里的公西华：善于礼仪，敢于发问",
   "2026-10-24",
   "《论语》里的汤、文、武、周公：斯文在人",
@@ -2157,6 +2159,299 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
       }
+    }
+  }
+}
+
+const ziGongCover = "/images/blogs/zi-gong-in-the-analects/cover.png";
+const ziGongInline1 = "/images/blogs/zi-gong-in-the-analects/inline-1.png";
+const ziGongInline2 = "/images/blogs/zi-gong-in-the-analects/inline-2.png";
+const ziGongCoverEn =
+  "A quiet study mat and empty cup before a low table — the moment of asking for one word";
+const ziGongCoverZh = "席前空杯与矮案——问出终身一字的瞬间";
+const ziGongInline1En =
+  "A clean brush beside a discarded flourish on a desk — speech without slickness";
+const ziGongInline1Zh = "案上一支干净的笔与一笔弃置的花哨——会说话，却不是佞";
+const ziGongInline2En = "A plain temple vessel shape on a mat — the hu-lian reading image";
+const ziGongInline2Zh = "席上素净的宗庙器形——瑚琏的阅读意象";
+const ziGongAnchors = [
+  ["论语 · 卫灵公 15.23", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023"],
+  ["The Analects · Wei Ling Kung 15.23", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-023"],
+  ["论语 · 先进 11.2", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-002"],
+  ["The Analects · Hsien Tsin 11.2", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-002"],
+  ["论语 · 公冶长 5.3", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-003"],
+  ["The Analects · Kung-ye Ch'ang 5.3", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-003"],
+  ["论语 · 公冶长 5.11", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-011"],
+  ["The Analects · Kung-ye Ch'ang 5.11", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-011"],
+  ["《论语》的忠恕：不是愚忠，也不是英文 Golden Rule", "https://www.lunyu.ai/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects"],
+  ["Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not", "https://www.lunyu.ai/en/blogs/zhongshu-reciprocity-in-the-analects"],
+  ["子贡", "https://www.lunyu.ai/zh-Hans/index/zi-gong"],
+  ["Zi Gong", "https://www.lunyu.ai/en/index/zi-gong"],
+];
+{
+  const start = postSource.indexOf('slug: "zi-gong-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing zi-gong-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = ziGongAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `zi-gong-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    ziGongAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`zi-gong-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `zi-gong-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 8) {
+      fail(
+        `zi-gong-in-the-analects: expected four linked passages per language (8 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    for (const forbidden of [
+      "/blogs/zhong-gong-in-the-analects",
+      "pending Gemini",
+      "IMAGE SLOT",
+      "*",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`zi-gong-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("four live passages")) {
+      fail("zi-gong-in-the-analects: dek/description must say four live passages");
+    }
+    if (!block.includes("四条活页")) {
+      fail("zi-gong-in-the-analects: dek/description must say 四条活页");
+    }
+    if (block.includes("five live passages") || block.includes("五处活页") || block.includes("eight live passages") || block.includes("八处")) {
+      fail("zi-gong-in-the-analects: passage count must stay four");
+    }
+    const zhongshuHrefs = markdownHrefs.filter((href) =>
+      href.includes("/blogs/zhongshu-reciprocity-in-the-analects")
+    );
+    if (zhongshuHrefs.length !== 2) {
+      fail(
+        `zi-gong-in-the-analects: zhongshu soft link should appear once per language, got ${zhongshuHrefs.length}`
+      );
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const liveLeggeQuirk = value.includes("Ts'ze? The Master said,");
+      if (liveLeggeQuirk) {
+        if ((value.match(/"/g) || []).length !== 7) {
+          fail("zi-gong-in-the-analects: 5.3 Legge quote should keep the live 7-mark quirk");
+        }
+      } else if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("zi-gong-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("zi-gong-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("zi-gong-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [ziGongCover, ziGongInline1, ziGongInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/zi-gong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/zi-gong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-24"',
+  '"dateModified":"2026-10-24"',
+  "Who Was Zi Gong in the Analects? Speech Without Slickness",
+  "Zi Gong in the Analects: speech without slickness, the question that yields shu, and four live passages linked back to the source.",
+  "This Note follows him through four live passages.",
+  "He asks for one word — and is given shu",
+  "Placed under speech — not charged with ning",
+  "A gemmed sacrificial vessel",
+  "He states reciprocity — and is told he has not yet attained it",
+  "What the four doors add up to",
+  "After FAQ — open the Zi Gong index",
+  "Who was Zi Gong in the Analects?",
+  "Did the Analects call Zi Gong ning (佞)?",
+  "What did Zi Gong ask in 15.23?",
+  "What does 瑚琏 mean in 5.3?",
+  "What happens in 5.11?",
+  "Is not reciprocity such a word?",
+  "for their ability in speech, Tsai Wo and Tsze-kung.",
+  "Ts&#x27;ze? The Master said,",
+  "a gemmed sacrificial utensil.",
+  "you have not attained to that.",
+  "It is an aspiration toward reciprocity, not a 佞 scene.",
+  ">The Analects · Wei Ling Kung 15.23</a>",
+  ">The Analects · Hsien Tsin 11.2</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.3</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.11</a>",
+  ">Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not</a>",
+  ">Zi Gong</a>",
+  'href="/en/analects/wei-ling-gong/wei-ling-gong-023"',
+  'href="/en/analects/xian-jin/xian-jin-002"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-003"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-011"',
+  'href="/en/blogs/zhongshu-reciprocity-in-the-analects"',
+  'href="/en/index/zi-gong"',
+  ziGongCover,
+  ziGongInline1,
+  ziGongInline2,
+  ziGongCoverEn,
+  ziGongInline1En,
+  ziGongInline2En,
+  `property="og:image" content="${siteUrl}${ziGongCover}"`,
+  `property="og:image:alt" content="${ziGongCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${ziGongCover}"`,
+  `name="twitter:image:alt" content="${ziGongCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/zi-gong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/zi-gong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-24"',
+  '"dateModified":"2026-10-24"',
+  "《论语》里的子贡：会说话，却不是佞",
+  "《论语》里的子贡会说话，却不是佞。问出恕，四条活页，链回可核对的原文。",
+  "这一篇跟着他走四条活页章句。",
+  "他问出「恕」",
+  "列在言语——不是定为佞",
+  "「瑚琏也」",
+  "他说出恕的句子——老师说还不到",
+  "四门合起来看",
+  "FAQ 之后——接着打开子贡索引",
+  "《论语》里的子贡是谁？",
+  "《论语》有没有说子贡是佞？",
+  "子贡在 15.23 问了什么？",
+  "5.3 的「瑚琏」是什么意思？",
+  "5.11 发生了什么？",
+  "这是朝向恕的志向，不是佞的场景。",
+  "子贡问曰，有一言，而可以终身行之者乎。",
+  "赐也，非尔所及也",
+  ">论语 · 卫灵公 15.23</a>",
+  ">论语 · 先进 11.2</a>",
+  ">论语 · 公冶长 5.3</a>",
+  ">论语 · 公冶长 5.11</a>",
+  ">《论语》的忠恕：不是愚忠，也不是英文 Golden Rule</a>",
+  ">子贡</a>",
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-023"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-002"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-003"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-011"',
+  'href="/zh-Hans/blogs/zhongshu-reciprocity-in-the-analects"',
+  'href="/zh-Hans/index/zi-gong"',
+  ziGongCover,
+  ziGongInline1,
+  ziGongInline2,
+  ziGongCoverZh,
+  ziGongInline1Zh,
+  ziGongInline2Zh,
+  `property="og:image" content="${siteUrl}${ziGongCover}"`,
+  `property="og:image:alt" content="${ziGongCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${ziGongCover}"`,
+  `name="twitter:image:alt" content="${ziGongCoverZh}"`,
+]);
+{
+  const zhZiGongFile = htmlPath("/zh-Hans/blogs/zi-gong-in-the-analects");
+  if (exists(zhZiGongFile)) {
+    const zhZiGongHtml = read(zhZiGongFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhZiGongHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/zi-gong-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhZiGongHtml.includes(ziGongCoverEn)) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhZiGongHtml.includes(ziGongInline1En) || zhZiGongHtml.includes(ziGongInline2En)) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhZiGongHtml, />The Analects · Wei Ling Kung 15\.23<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: English 15.23 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhZiGongHtml, />Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: English zhongshu soft link should not appear on zh-Hans");
+    }
+    if (countRegex(zhZiGongHtml, />Zi Gong<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhZiGongHtml, />子贡<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: 子贡 body link should appear once");
+    }
+    if (countRegex(zhZiGongHtml, />《论语》的忠恕：不是愚忠，也不是英文 Golden Rule<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: 忠恕 body link should appear once");
+    }
+    if (countRegex(zhZiGongHtml, />论语 · 卫灵公 15\.23<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: 卫灵公 15.23 body link should appear once");
+    }
+    if (countRegex(zhZiGongHtml, />论语 · 先进 11\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: 先进 11.2 body link should appear once");
+    }
+    if (countRegex(zhZiGongHtml, />论语 · 公冶长 5\.3<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: 公冶长 5.3 body link should appear once");
+    }
+    if (countRegex(zhZiGongHtml, />论语 · 公冶长 5\.11<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: 公冶长 5.11 body link should appear once");
+    }
+    if (zhZiGongHtml.includes("/blogs/zhong-gong-in-the-analects")) {
+      fail("/zh-Hans/blogs/zi-gong-in-the-analects: Zhong Gong note must not be linked");
+    }
+  }
+  const enZiGongFile = htmlPath("/en/blogs/zi-gong-in-the-analects");
+  if (exists(enZiGongFile)) {
+    const enZiGongHtml = read(enZiGongFile);
+    if (enZiGongHtml.includes(ziGongCoverZh)) {
+      fail("/en/blogs/zi-gong-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enZiGongHtml.includes(ziGongInline1Zh) || enZiGongHtml.includes(ziGongInline2Zh)) {
+      fail("/en/blogs/zi-gong-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enZiGongHtml, />Zi Gong<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enZiGongHtml, />Zhongshu in the Analects: Loyalty, Reciprocity, and What They Are Not<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: zhongshu soft link should appear once");
+    }
+    if (countRegex(enZiGongHtml, />The Analects · Wei Ling Kung 15\.23<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: Wei Ling Kung 15.23 body link should appear once");
+    }
+    if (countRegex(enZiGongHtml, />The Analects · Hsien Tsin 11\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: Hsien Tsin 11.2 body link should appear once");
+    }
+    if (countRegex(enZiGongHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.3<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: Kung-ye Ch'ang 5.3 body link should appear once");
+    }
+    if (countRegex(enZiGongHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.11<\/a>/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: Kung-ye Ch'ang 5.11 body link should appear once");
+    }
+    if (countRegex(enZiGongHtml, />子贡<\/a>/g) !== 0) {
+      fail("/en/blogs/zi-gong-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enZiGongHtml, />论语 · 卫灵公 15\.23<\/a>/g) !== 0) {
+      fail("/en/blogs/zi-gong-in-the-analects: Chinese 15.23 body link should not appear on en");
+    }
+    if (countRegex(enZiGongHtml, /href="\/en\/blogs\/zhongshu-reciprocity-in-the-analects"/g) !== 1) {
+      fail("/en/blogs/zi-gong-in-the-analects: zhongshu soft link should appear once");
+    }
+    if (enZiGongHtml.includes("/blogs/zhong-gong-in-the-analects")) {
+      fail("/en/blogs/zi-gong-in-the-analects: Zhong Gong note must not be linked");
     }
   }
 }
@@ -6359,6 +6654,17 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/zi-gong`, [
+    locale === "en" ? ">Zi Gong<" : ">子贡<",
+    `href="/${locale}/blogs/zi-gong-in-the-analects"`,
+    locale === "en"
+      ? "Who Was Zi Gong in the Analects? Speech Without Slickness"
+      : "《论语》里的子贡：会说话，却不是佞",
+    `/${locale}/analects/wei-ling-gong/wei-ling-gong-023`,
+    `/${locale}/analects/xian-jin/xian-jin-002`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-003`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-011`,
+  ]);
   checkHtml(`/${locale}/index/gongxi-hua`, [
     locale === "en" ? ">Gongxi Hua<" : ">公西华<",
     `href="/${locale}/blogs/gongxi-hua-in-the-analects"`,
@@ -6566,6 +6872,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-gong-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/gongxi-hua-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/gongxi-hua-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/tang-wen-wu-zhou-gong-in-the-analects`, "sitemap");
@@ -6629,6 +6937,12 @@ for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
     if (!lastmod.includes("2026-10-24")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const ziGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-gong-in-the-analects`);
+    if (!ziGongLastmod.includes("2026-10-24")) {
+      fail(
+        `sitemap: /${locale}/blogs/zi-gong-in-the-analects lastmod should be 2026-10-24, got ${ziGongLastmod || "missing"}`
+      );
     }
     const gongxiHuaLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/gongxi-hua-in-the-analects`);
     if (!gongxiHuaLastmod.includes("2026-10-24")) {
@@ -6753,7 +7067,13 @@ const rssBodyFile = exists(".next/server/app/rss.xml.body")
 if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
-  assertIncludes(read(rssBodyFile), "24 Oct 2026", "rss lastBuildDate");
+  const rss = read(rssBodyFile);
+  assertIncludes(rss, "24 Oct 2026", "rss lastBuildDate");
+  const ziGongItem = rss.split("<item>").find((part) => part.includes("/blogs/zi-gong-in-the-analects"));
+  if (!ziGongItem) fail("rss: missing zi-gong-in-the-analects");
+  else if (!ziGongItem.includes("24 Oct 2026")) {
+    fail("rss: zi-gong-in-the-analects pubDate should be 24 Oct 2026");
+  }
 }
 const featuredSitemapDate = `${featuredIndexLastmod}T00:00:00.000Z`;
 const unfeaturedSitemapDate = `${stableLastmod}T00:00:00.000Z`;
