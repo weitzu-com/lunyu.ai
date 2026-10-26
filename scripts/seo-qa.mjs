@@ -701,6 +701,20 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "li-ritual-in-the-analects",
+    titleZh: "《论语》里的「礼」：可核对的形式，不是空仪式",
+    titleEn: "Li (Ritual) in the Analects: Form That Can Be Checked",
+    passages: [
+      "yan-yuan/yan-yuan-001",
+      "xue-er/xue-er-012",
+      "ba-yi/ba-yi-003",
+      "tai-bo/tai-bo-008",
+      "yang-huo/yang-huo-011",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "nan-gong-kuo-in-the-analects",
     titleZh: "《论语》里的南宫适是谁？",
     titleEn: "Who Was Nan Gong Kuo in the Analects?",
@@ -836,6 +850,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Li (Ritual) in the Analects: Form That Can Be Checked",
+  "2026-10-26",
   "Who Was Zi Gong in the Analects? Speech Without Slickness",
   "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
   "2026-10-24",
@@ -861,6 +877,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的「礼」：可核对的形式，不是空仪式",
+  "2026-10-26",
   "《论语》里的子贡：会说话，却不是佞",
   "《论语》里的公西华：善于礼仪，敢于发问",
   "2026-10-24",
@@ -2159,6 +2177,297 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
       }
+    }
+  }
+}
+
+const liRitualCover = "/images/blogs/li-ritual-in-the-analects/cover.png";
+const liRitualInline1 = "/images/blogs/li-ritual-in-the-analects/inline-1.png";
+const liRitualInline2 = "/images/blogs/li-ritual-in-the-analects/inline-2.png";
+const liRitualCoverEn =
+  "A quiet measured edge on a study mat — self-limit that returns to form";
+const liRitualCoverZh = "席上一道安静可量的边界——克己复礼的限度";
+const liRitualInline1En =
+  "An open curve held by a small measured stop — harmony cut by form";
+const liRitualInline1Zh = "一条舒展的弧被一小处可量的停顿托住——和为贵，仍要节";
+const liRitualInline2En =
+  "Plain cloth and a small jade shape set aside — gems and silk are not all that li means";
+const liRitualInline2Zh = "素帛与一小片玉形搁在一边——玉帛不足以尽礼";
+const liRitualAnchors = [
+  ["论语 · 颜渊 12.1", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-001"],
+  ["The Analects · Yen Yuan 12.1", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-001"],
+  ["论语 · 学而 1.12", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-012"],
+  ["The Analects · Hsio R. 1.12", "https://www.lunyu.ai/en/analects/xue-er/xue-er-012"],
+  ["论语 · 八佾 3.3", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-003"],
+  ["The Analects · Pa Yih 3.3", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-003"],
+  ["论语 · 泰伯 8.8", "https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-008"],
+  ["The Analects · T'ai-po 8.8", "https://www.lunyu.ai/en/analects/tai-bo/tai-bo-008"],
+  ["论语 · 阳货 17.11", "https://www.lunyu.ai/zh-Hans/analects/yang-huo/yang-huo-011"],
+  ["The Analects · Yang Ho 17.11", "https://www.lunyu.ai/en/analects/yang-huo/yang-huo-011"],
+  ["礼", "https://www.lunyu.ai/zh-Hans/index/li"],
+  ["Li", "https://www.lunyu.ai/en/index/li"],
+];
+{
+  const start = postSource.indexOf('slug: "li-ritual-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing li-ritual-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = liRitualAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `li-ritual-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    liRitualAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`li-ritual-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `li-ritual-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 10) {
+      fail(
+        `li-ritual-in-the-analects: expected five linked passages per language (10 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/li"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `li-ritual-in-the-analects: Li index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/what-ren-means-in-the-analects",
+      "pending Gemini",
+      "IMAGE SLOT",
+      "*",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`li-ritual-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("five live passages")) {
+      fail("li-ritual-in-the-analects: dek/description must say five live passages");
+    }
+    if (!block.includes("五条活页")) {
+      fail("li-ritual-in-the-analects: dek/description must say 五条活页");
+    }
+    if (block.includes("four live passages") || block.includes("四条活页") || block.includes("eight live passages")) {
+      fail("li-ritual-in-the-analects: passage count must stay five");
+    }
+    if (!block.includes('datePublished: "2026-10-26"') || !block.includes('dateModified: "2026-10-26"')) {
+      fail("li-ritual-in-the-analects: both locales must use 2026-10-26");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("li-ritual-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("li-ritual-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("li-ritual-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [liRitualCover, liRitualInline1, liRitualInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/li-ritual-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/li-ritual-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-26"',
+  '"dateModified":"2026-10-26"',
+  "Li (Ritual) in the Analects: Form That Can Be Checked",
+  "Li in the Analects is reverence given a form that can be checked — five live passages, not jade-and-silk theater.",
+  "This Note opens five live passages:",
+  "Self-limit that returns to form — 克己复礼",
+  "Harmony prized — and still cut by measure",
+  "Without ren, what has form to do?",
+  "Established in li — not a music chapter",
+  "Gems and silk are not all that is meant",
+  "What the five doors add up to",
+  "After FAQ — open the Li index",
+  "What does li mean in the Analects?",
+  "How does 克己复礼 relate to li?",
+  "Why does 1.12 both prize harmony and demand 节?",
+  "Does 3.3 make li useless?",
+  "Is this Note about music or filial care?",
+  "return to propriety, is perfect virtue.",
+  "a natural ease is to be prized.",
+  "what has he to do with the rites of propriety?",
+  "It is by the Rules of Propriety that the character is established.",
+  "Are gems and silk all that is meant by propriety?",
+  ">The Analects · Yen Yuan 12.1</a>",
+  ">The Analects · Hsio R. 1.12</a>",
+  ">The Analects · Pa Yih 3.3</a>",
+  ">The Analects · T&#x27;ai-po 8.8</a>",
+  ">The Analects · Yang Ho 17.11</a>",
+  ">Li</a>",
+  'href="/en/analects/yan-yuan/yan-yuan-001"',
+  'href="/en/analects/xue-er/xue-er-012"',
+  'href="/en/analects/ba-yi/ba-yi-003"',
+  'href="/en/analects/tai-bo/tai-bo-008"',
+  'href="/en/analects/yang-huo/yang-huo-011"',
+  'href="/en/index/li"',
+  liRitualCover,
+  liRitualInline1,
+  liRitualInline2,
+  liRitualCoverEn,
+  liRitualInline1En,
+  liRitualInline2En,
+  `property="og:image" content="${siteUrl}${liRitualCover}"`,
+  `property="og:image:alt" content="${liRitualCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${liRitualCover}"`,
+  `name="twitter:image:alt" content="${liRitualCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/li-ritual-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/li-ritual-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-26"',
+  '"dateModified":"2026-10-26"',
+  "《论语》里的「礼」：可核对的形式，不是空仪式",
+  "《论语》里的礼是带着可核对之形的敬。五条活页，不是玉帛戏台，链回可核对的原文。",
+  "这一篇打开五条活页：",
+  "回到形式的自限——克己复礼",
+  "和为贵——仍要用节来切",
+  "人而不仁，如礼何",
+  "立于礼——不是音乐专章",
+  "玉帛云乎哉",
+  "五门合起来看",
+  "FAQ 之后——接着打开「礼」索引",
+  "《论语》里的「礼」是什么意思？",
+  "「克己复礼」和礼有什么关系？",
+  "为什么 1.12 既贵和、又要节？",
+  "3.3 是不是说礼没用？",
+  "这篇是在写乐，还是在写孝与礼的照护？",
+  "克己复礼为仁，一日克己复礼，天下归仁焉",
+  "礼之用，和为贵",
+  "人而不仁，如礼何",
+  "兴于诗。立于礼。成于乐。",
+  "礼云礼云，玉帛云乎哉",
+  ">论语 · 颜渊 12.1</a>",
+  ">论语 · 学而 1.12</a>",
+  ">论语 · 八佾 3.3</a>",
+  ">论语 · 泰伯 8.8</a>",
+  ">论语 · 阳货 17.11</a>",
+  ">礼</a>",
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-001"',
+  'href="/zh-Hans/analects/xue-er/xue-er-012"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-003"',
+  'href="/zh-Hans/analects/tai-bo/tai-bo-008"',
+  'href="/zh-Hans/analects/yang-huo/yang-huo-011"',
+  'href="/zh-Hans/index/li"',
+  liRitualCover,
+  liRitualInline1,
+  liRitualInline2,
+  liRitualCoverZh,
+  liRitualInline1Zh,
+  liRitualInline2Zh,
+  `property="og:image" content="${siteUrl}${liRitualCover}"`,
+  `property="og:image:alt" content="${liRitualCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${liRitualCover}"`,
+  `name="twitter:image:alt" content="${liRitualCoverZh}"`,
+]);
+{
+  const zhLiFile = htmlPath("/zh-Hans/blogs/li-ritual-in-the-analects");
+  if (exists(zhLiFile)) {
+    const zhLiHtml = read(zhLiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhLiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/li-ritual-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhLiHtml.includes(liRitualCoverEn)) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhLiHtml.includes(liRitualInline1En) || zhLiHtml.includes(liRitualInline2En)) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhLiHtml, />The Analects · Yen Yuan 12\.1<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: English 12.1 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhLiHtml, />Li<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhLiHtml, />礼<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: 礼 body link should appear once");
+    }
+    if (countRegex(zhLiHtml, />论语 · 颜渊 12\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: 颜渊 12.1 body link should appear once");
+    }
+    if (countRegex(zhLiHtml, />论语 · 学而 1\.12<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: 学而 1.12 body link should appear once");
+    }
+    if (countRegex(zhLiHtml, />论语 · 八佾 3\.3<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: 八佾 3.3 body link should appear once");
+    }
+    if (countRegex(zhLiHtml, />论语 · 泰伯 8\.8<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: 泰伯 8.8 body link should appear once");
+    }
+    if (countRegex(zhLiHtml, />论语 · 阳货 17\.11<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: 阳货 17.11 body link should appear once");
+    }
+    if (zhLiHtml.includes("/blogs/filial-conduct-ritual-and-care") || zhLiHtml.includes("/blogs/what-ren-means-in-the-analects")) {
+      fail("/zh-Hans/blogs/li-ritual-in-the-analects: filial or ren Note must not be linked");
+    }
+  }
+  const enLiFile = htmlPath("/en/blogs/li-ritual-in-the-analects");
+  if (exists(enLiFile)) {
+    const enLiHtml = read(enLiFile);
+    if (enLiHtml.includes(liRitualCoverZh)) {
+      fail("/en/blogs/li-ritual-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enLiHtml.includes(liRitualInline1Zh) || enLiHtml.includes(liRitualInline2Zh)) {
+      fail("/en/blogs/li-ritual-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enLiHtml, />Li<\/a>/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enLiHtml, />The Analects · Yen Yuan 12\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: Yen Yuan 12.1 body link should appear once");
+    }
+    if (countRegex(enLiHtml, />The Analects · Hsio R\. 1\.12<\/a>/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: Hsio R. 1.12 body link should appear once");
+    }
+    if (countRegex(enLiHtml, />The Analects · Pa Yih 3\.3<\/a>/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: Pa Yih 3.3 body link should appear once");
+    }
+    if (countRegex(enLiHtml, />The Analects · T&#x27;ai-po 8\.8<\/a>/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: T'ai-po 8.8 body link should appear once");
+    }
+    if (countRegex(enLiHtml, />The Analects · Yang Ho 17\.11<\/a>/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: Yang Ho 17.11 body link should appear once");
+    }
+    if (countRegex(enLiHtml, />礼<\/a>/g) !== 0) {
+      fail("/en/blogs/li-ritual-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enLiHtml, />论语 · 颜渊 12\.1<\/a>/g) !== 0) {
+      fail("/en/blogs/li-ritual-in-the-analects: Chinese 12.1 body link should not appear on en");
+    }
+    if (countRegex(enLiHtml, /href="\/en\/index\/li"/g) !== 1) {
+      fail("/en/blogs/li-ritual-in-the-analects: Li index href should appear once");
+    }
+    if (enLiHtml.includes("/blogs/filial-conduct-ritual-and-care") || enLiHtml.includes("/blogs/what-ren-means-in-the-analects")) {
+      fail("/en/blogs/li-ritual-in-the-analects: filial or ren Note must not be linked");
     }
   }
 }
@@ -6654,6 +6963,18 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/li`, [
+    locale === "en" ? ">Li<" : ">礼<",
+    `href="/${locale}/blogs/li-ritual-in-the-analects"`,
+    locale === "en"
+      ? "Li (Ritual) in the Analects: Form That Can Be Checked"
+      : "《论语》里的「礼」：可核对的形式，不是空仪式",
+    `/${locale}/analects/yan-yuan/yan-yuan-001`,
+    `/${locale}/analects/xue-er/xue-er-012`,
+    `/${locale}/analects/ba-yi/ba-yi-003`,
+    `/${locale}/analects/tai-bo/tai-bo-008`,
+    `/${locale}/analects/yang-huo/yang-huo-011`,
+  ]);
   checkHtml(`/${locale}/index/zi-gong`, [
     locale === "en" ? ">Zi Gong<" : ">子贡<",
     `href="/${locale}/blogs/zi-gong-in-the-analects"`,
@@ -6872,6 +7193,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/li-ritual-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/li-ritual-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-gong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/gongxi-hua-in-the-analects`, "sitemap");
@@ -6935,8 +7258,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-24")) {
+    if (!lastmod.includes("2026-10-26")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const liRitualLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/li-ritual-in-the-analects`);
+    if (!liRitualLastmod.includes("2026-10-26")) {
+      fail(
+        `sitemap: /${locale}/blogs/li-ritual-in-the-analects lastmod should be 2026-10-26, got ${liRitualLastmod || "missing"}`
+      );
     }
     const ziGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-gong-in-the-analects`);
     if (!ziGongLastmod.includes("2026-10-24")) {
@@ -7068,7 +7397,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "24 Oct 2026", "rss lastBuildDate");
+  assertIncludes(rss, "26 Oct 2026", "rss lastBuildDate");
+  const liRitualItem = rss.split("<item>").find((part) => part.includes("/blogs/li-ritual-in-the-analects"));
+  if (!liRitualItem) fail("rss: missing li-ritual-in-the-analects");
+  else if (!liRitualItem.includes("26 Oct 2026")) {
+    fail("rss: li-ritual-in-the-analects pubDate should be 26 Oct 2026");
+  }
   const ziGongItem = rss.split("<item>").find((part) => part.includes("/blogs/zi-gong-in-the-analects"));
   if (!ziGongItem) fail("rss: missing zi-gong-in-the-analects");
   else if (!ziGongItem.includes("24 Oct 2026")) {
@@ -7093,6 +7427,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const liRitualEditorialLastmod = "2026-10-26";
 const gongxiHuaEditorialLastmod = "2026-10-24";
 const tangWenWuEditorialLastmod = "2026-10-20";
 const stateOfLuEditorialLastmod = "2026-10-19";
@@ -7119,6 +7454,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${liRitualEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${gongxiHuaEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${tangWenWuEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${stateOfLuEditorialLastmod}T00:00:00.000Z`, "")

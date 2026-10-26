@@ -102,6 +102,184 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "li-ritual-in-the-analects",
+    titleZh: "《论语》里的「礼」：可核对的形式，不是空仪式",
+    titleEn: "Li (Ritual) in the Analects: Form That Can Be Checked",
+    dekZh: "在《论语》里，礼（Legge 常作 propriety / the rules of propriety）是带着可核对之形的敬——不是玉帛戏台，也不是拿来顶替刑政的口号。这一篇打开五条活页：回到形式的自限（12.1）、以节托住的和（1.12）、无仁则礼何为（3.3）、立于礼（8.8）、以及「玉帛云乎哉」的拒绝（17.11）。它不是孝与礼照护篇的重写，也不是仁通论的重写，更不是音乐专论。索引已经判断礼不是什么；这里深读几扇门。",
+    dekEn: "In the Analects, li (礼; Legge often: propriety, the rules of propriety) is reverence given a form that can be checked — not jade-and-silk theater, and not a slogan that replaces criminal law. This Note opens five live passages: self-limit that returns to form (12.1), harmony held by measure (1.12), form empty without ren (3.3), standing established in li (8.8), and the refusal that gems and silk are all that li means (17.11). It is not a rewrite of the filial Note or the ren Note, and it is not a music essay. The index already judges what li is not; here you deepen the doors.",
+    descriptionZh: "《论语》里的礼是带着可核对之形的敬。五条活页，不是玉帛戏台，链回可核对的原文。",
+    descriptionEn: "Li in the Analects is reverence given a form that can be checked — five live passages, not jade-and-silk theater.",
+    datePublished: "2026-10-26",
+    dateModified: "2026-10-26",
+    tagsZh: ["礼", "克己复礼", "礼之用", "玉帛"],
+    tagsEn: ["li", "ritual", "propriety", "礼", "克己复礼"],
+    related: [
+      "/analects/yan-yuan/yan-yuan-001",
+      "/index/li",
+      "/analects/xue-er/xue-er-012",
+      "/analects/ba-yi/ba-yi-003",
+      "/analects/tai-bo/tai-bo-008",
+      "/analects/yang-huo/yang-huo-011",
+    ],
+    cover: notesBlogImage(
+      "li-ritual-in-the-analects",
+      "cover.png",
+      "A quiet measured edge on a study mat — self-limit that returns to form",
+      "席上一道安静可量的边界——克己复礼的限度",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "li-ritual-in-the-analects",
+        "inline-1.png",
+        "An open curve held by a small measured stop — harmony cut by form",
+        "一条舒展的弧被一小处可量的停顿托住——和为贵，仍要节",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "li-ritual-in-the-analects",
+        "inline-2.png",
+        "Plain cloth and a small jade shape set aside — gems and silk are not all that li means",
+        "素帛与一小片玉形搁在一边——玉帛不足以尽礼",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "回到形式的自限——克己复礼",
+        headingEn: "Self-limit that returns to form — 克己复礼",
+        bodyZh: [
+          "请你从[论语 · 颜渊 12.1](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-001)开始。原文：颜渊问仁。子曰，克己复礼为仁，一日克己复礼，天下归仁焉，为仁由己，而由人乎哉。颜渊曰，请问其目。子曰，非礼勿视，非礼勿听，非礼勿言，非礼勿动。颜渊曰，回虽不敏，请事斯语矣。",
+          "活页白话导读作：颜渊请教什么是仁。孔子说：克制自己的私欲，使言行都回到礼上，就是仁。一旦做到克己复礼，天下的人都会称许你是仁人。实行仁德全靠自己，难道还靠别人吗？颜渊说：请问实行仁德的具体条目。孔子说：不合礼的不看，不合礼的不听，不合礼的不说，不合礼的不做。颜渊说：我颜回虽然不够聪敏，也要照这话去做。",
+          "活页 Legge 作：Yen Yuan asked about perfect virtue. The Master said, \"To subdue one's self and return to propriety, is perfect virtue. … Look not at what is contrary to propriety; listen not to what is contrary to propriety; speak not what is contrary to propriety; make no movement which is contrary to propriety.\"",
+          "你在这一门里得到可核的边：复礼被说成仁的实践，条目是四勿——视、听、言、动——每一项都以礼来量。这一篇把 12.1 当作礼作为自限之形的门，而不是仁通论的全文。问的是仁；答的实践落在礼的形状上。请勿把本节扩成《论语》里的「仁」那一篇的重写。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Yen Yuan 12.1](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-001). The source: 颜渊问仁。子曰，克己复礼为仁，一日克己复礼，天下归仁焉，为仁由己，而由人乎哉。颜渊曰，请问其目。子曰，非礼勿视，非礼勿听，非礼勿言，非礼勿动。颜渊曰，回虽不敏，请事斯语矣。",
+          "The modern guide on that page: 颜渊请教什么是仁。孔子说：克制自己的私欲，使言行都回到礼上，就是仁。一旦做到克己复礼，天下的人都会称许你是仁人。实行仁德全靠自己，难道还靠别人吗？颜渊说：请问实行仁德的具体条目。孔子说：不合礼的不看，不合礼的不听，不合礼的不说，不合礼的不做。颜渊说：我颜回虽然不够聪敏，也要照这话去做。",
+          "Legge on the same page: Yen Yuan asked about perfect virtue. The Master said, \"To subdue one's self and return to propriety, is perfect virtue. … Look not at what is contrary to propriety; listen not to what is contrary to propriety; speak not what is contrary to propriety; make no movement which is contrary to propriety.\"",
+          "You are given a form with a checkable edge: return to li is named as the way of ren, and the steps are four refusals — see, hear, speak, move — each measured against li. This Note takes 12.1 as a door into li as self-limit, not as a full ren essay. Ren is asked; li is the shape of the answer’s practice. Do not expand this section into a rewrite of What Ren Means.",
+        ],
+      },
+      {
+        headingZh: "和为贵——仍要用节来切",
+        headingEn: "Harmony prized — and still cut by measure",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 学而 1.12](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-012)。原文：有子曰，礼之用，和为贵，先王之道，斯为美，小大由之。有所不行，知和而和，不以礼节之，亦不可行也。导读作：有子说：礼的作用，以和谐为可贵。古代圣王的治道，美好之处正在这里；大小事情都由此而行。不过只知道和谐而为和谐，不用礼来节制，也是不行的。",
+          "Legge 作：The philosopher Yu said, \"In practising the rules of propriety, a natural ease is to be prized. … If one, knowing how such ease should be prized, manifests it, without regulating it by the rules of propriety, this likewise is not to be done.\"",
+          "你要同时握住两边：和在礼之用里被看贵——节仍然下刀。知和而和、不以礼节之，被点名为亦不可行。这是「可核对之形」的另一种调：不只是四勿，还有不肯脱离形式而飘走的和。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Hsio R. 1.12](https://www.lunyu.ai/en/analects/xue-er/xue-er-012). The source: 有子曰，礼之用，和为贵，先王之道，斯为美，小大由之。有所不行，知和而和，不以礼节之，亦不可行也。 The guide: 有子说：礼的作用，以和谐为可贵。古代圣王的治道，美好之处正在这里；大小事情都由此而行。不过只知道和谐而为和谐，不用礼来节制，也是不行的。",
+          "Legge: The philosopher Yu said, \"In practising the rules of propriety, a natural ease is to be prized. … If one, knowing how such ease should be prized, manifests it, without regulating it by the rules of propriety, this likewise is not to be done.\"",
+          "You hold two edges at once: 和 is prized in the use of li — and 节 still cuts. Ease without the measure of li is named as also not workable. That is the “checkable form” in a different key: not only four refusals, but a harmony that refuses to float free of form.",
+        ],
+      },
+      {
+        headingZh: "人而不仁，如礼何",
+        headingEn: "Without ren, what has form to do?",
+        bodyZh: [
+          "在[论语 · 八佾 3.3](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-003)里，老师把礼与乐对着仁来问。原文：子曰，人而不仁，如礼何，人而不仁，如乐何。导读作：孔子说：做人如果没有仁德，讲礼又有什么用呢？做人如果没有仁德，奏乐又有什么用呢？",
+          "Legge 作：The Master said, \"If a man be without the virtues proper to humanity, what has he to do with the rites of propriety? If a man be without the virtues proper to humanity, what has he to do with music?\"",
+          "请你仔细看压力落在哪里。这里的礼不是被夸成行头。无仁，则形式被追问「如之何」。这一篇不会复述仁通论；它只要这个铰链：没有人之所当有的德，形式本身已在受问——所以单靠玉帛永远讲不完礼。",
+        ],
+        bodyEn: [
+          "In [The Analects · Pa Yih 3.3](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-003) the Master pairs li and music against ren. The source: 子曰，人而不仁，如礼何，人而不仁，如乐何。 The guide: 孔子说：做人如果没有仁德，讲礼又有什么用呢？做人如果没有仁德，奏乐又有什么用呢？",
+          "Legge: The Master said, \"If a man be without the virtues proper to humanity, what has he to do with the rites of propriety? If a man be without the virtues proper to humanity, what has he to do with music?\"",
+          "Read the pressure carefully. Li here is not praised as costume. Without ren, the form is asked what it is for. This Note will not retell the ren essay; it only needs this hinge: form without the virtue proper to humanity is already under question — which is why jade and silk alone never finish the account.",
+        ],
+      },
+      {
+        headingZh: "立于礼——不是音乐专章",
+        headingEn: "Established in li — not a music chapter",
+        bodyZh: [
+          "[论语 · 泰伯 8.8](https://www.lunyu.ai/zh-Hans/analects/tai-bo/tai-bo-008)把礼放在三步里。原文：子曰，兴于诗。立于礼。成于乐。导读作：孔子说：人的修养从学《诗》开始，因懂礼而立身，由音乐的陶冶而完成。",
+          "Legge 作：The Master said, \"It is by the Odes that the mind is aroused. … It is by the Rules of Propriety that the character is established. … It is from Music that the finish is received.\"",
+          "本篇只取中间一步：立于礼——人因礼而立。诗与乐是框，不是你的音乐专论（那扇门另有排期）。你要的是「立」：礼是把人立起来的地方，不是把这一章写成音乐会节目单。",
+        ],
+        bodyEn: [
+          "[The Analects · T'ai-po 8.8](https://www.lunyu.ai/en/analects/tai-bo/tai-bo-008) places li in a three-step path. The source: 子曰，兴于诗。立于礼。成于乐。 The guide: 孔子说：人的修养从学《诗》开始，因懂礼而立身，由音乐的陶冶而完成。",
+          "Legge: The Master said, \"It is by the Odes that the mind is aroused. … It is by the Rules of Propriety that the character is established. … It is from Music that the finish is received.\"",
+          "Take only the middle step for this Note: 立于礼 — character established in the rules of propriety. Poem and music frame the line; this page is not your music essay (that door is planned elsewhere). You need the standing: li is where the person is set upright, not where the chapter becomes a concert program.",
+        ],
+      },
+      {
+        headingZh: "玉帛云乎哉",
+        headingEn: "Gems and silk are not all that is meant",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "章句门收到[论语 · 阳货 17.11](https://www.lunyu.ai/zh-Hans/analects/yang-huo/yang-huo-011)。原文：子曰，礼云礼云，玉帛云乎哉，乐云乐云，钟鼓云乎哉。导读作：孔子说：礼呀礼呀，难道只是指玉帛这些礼器吗？乐呀乐呀，难道只是指钟鼓这些乐器吗？",
+          "Legge 作：The Master said, \"'It is according to the rules of propriety,' they say.—'It is according to the rules of propriety,' they say. Are gems and silk all that is meant by propriety? 'It is music,' they say.—'It is music,' they say. Are bells and drums all that is meant by music?\"",
+          "书在这里自己拒绝把空仪式当成礼的全部。玉帛出现——又被拒绝当作完整定义。请与 12.1、1.12 并读：可核对之形，不等于可陈列的道具。",
+        ],
+        bodyEn: [
+          "Close the passage doors with [The Analects · Yang Ho 17.11](https://www.lunyu.ai/en/analects/yang-huo/yang-huo-011). The source: 子曰，礼云礼云，玉帛云乎哉，乐云乐云，钟鼓云乎哉。 The guide: 孔子说：礼呀礼呀，难道只是指玉帛这些礼器吗？乐呀乐呀，难道只是指钟鼓这些乐器吗？",
+          "Legge: The Master said, \"'It is according to the rules of propriety,' they say.—'It is according to the rules of propriety,' they say. Are gems and silk all that is meant by propriety? 'It is music,' they say.—'It is music,' they say. Are bells and drums all that is meant by music?\"",
+          "Here the book itself rejects empty ceremony as the whole of li. Jade and silk appear — and are refused as a complete definition. Pair this with 12.1 and 1.12: a form you can check is not the same as props you can display.",
+        ],
+      },
+      {
+        headingZh: "五门合起来看",
+        headingEn: "What the five doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：带着四勿、可核边的自限之礼（12.1）；和为贵却仍要节（1.12）；无仁则礼何为（3.3）；立于礼而不滑成音乐专论（8.8）；玉帛不足以尽礼之名（17.11）。这一篇深读这几扇门，不复述索引里已写明的「礼不是空仪式、也不是刑政」全文。",
+          "这也不是孝与礼的日常照护篇，不是仁通论。若那些意图另行升起，请走它们自己的页面——不要并进本 slug。",
+          "以下是你自己的反思，不是孔子的话：你也许遇见的「礼」正是表演——对的器、对的辞、送礼的合影。《论语》可以看重形式，却仍要问：这形式是把你送回可核的限度，还是只送到桌上的帛。这几扇门里更硬的边，是四勿、仍切开和的那一节，以及让玉帛够不到「礼」之名的那一问。",
+        ],
+        bodyEn: [
+          "Put them together and you have: li as self-limit with four checkable refusals (12.1); harmony prized and still cut by measure (1.12); form questioned when ren is absent (3.3); standing established in li without turning into a music essay (8.8); gems and silk refused as the whole meaning (17.11). The Note deepens those doors; it does not retell the index editorial that already says li is not empty ceremony and not criminal law.",
+          "This is also not the filial Note (孝与礼 in daily care) and not the ren Note (仁 as a whole). If those intents rise later, open their own pages — do not merge them into this slug.",
+          "As your own reflection — not as Confucius’s words — you may meet “ritual” as performance: the right vessel, the right phrase, the photo of the gift. The Analects can prize form and still ask whether the form returns you to a limit you can check, or only to silk on the table. The harder edge in these doors is the four refusals, the measure that still cuts harmony, and the question that leaves jade and silk short of the name.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的「礼」是什么意思？",
+        questionEn: "What does li mean in the Analects?",
+        answerZh: "就本篇所核活页而言，礼是有章法的敬——带着可核对之形。它在 17.11 不被说成只是玉帛陈列；本篇诸门也不把它写成刑政的替代口号。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "On the live pages used here, li (礼) is patterned propriety — reverence with a form that can be checked. It is not defined as jade-and-silk display alone (17.11), and it is not treated as a substitute for criminal law in this Note’s doors. Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "「克己复礼」和礼有什么关系？",
+        questionEn: "How does 克己复礼 relate to li?",
+        answerZh: "在 12.1，复礼出现在答仁的话里，条目是以礼来量的四勿。本篇把它读作礼作为自限的可核边——不是仁的专论全文。",
+        answerEn: "In 12.1, returning to li is named in the answer to a question about ren, and the steps are four refusals measured against li. This Note reads that as li’s checkable edge for self-limit — not as a full ren treatise.",
+      },
+      {
+        questionZh: "为什么 1.12 既贵和、又要节？",
+        questionEn: "Why does 1.12 both prize harmony and demand 节?",
+        answerZh: "有子贵礼之用的和，又说知和而和、不以礼节之亦不可行。无节度和，被点名为行不通——形式仍在下刀。",
+        answerEn: "Youzi prizes 和 in the use of li, then says knowing ease and showing it without regulating it by li is also not to be done. Harmony without measure is named as unworkable — the form still cuts.",
+      },
+      {
+        questionZh: "3.3 是不是说礼没用？",
+        questionEn: "Does 3.3 make li useless?",
+        answerZh: "不是。它问的是：人而不仁，礼（与乐）如之何。无仁则形式受问；这是铰链，不是允许你丢掉一切仪节。",
+        answerEn: "No. It asks what li (and music) are for if a person is without ren. Form without that virtue is under question; that is a hinge, not a license to discard every rite.",
+      },
+      {
+        questionZh: "这篇是在写乐，还是在写孝与礼的照护？",
+        questionEn: "Is this Note about music or filial care?",
+        answerZh: "都不是。8.8 只用到立于礼；乐是框，不是专论。孝与礼的日常照护另有 Notes；请勿把那意图并进这里。",
+        answerEn: "No. 8.8 is used only for 立于礼; music remains a frame, not the essay. Filial ritual care has its own Note; do not merge that intent here.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「礼」索引",
+        headingEn: "After FAQ — open the Li index",
+        bodyZh: [
+          "当你想把谈到礼的章句放在同一页、并看见索引的判断，请打开[礼](https://www.lunyu.ai/zh-Hans/index/li)。索引说明礼不是什么并选篇；这一篇跟着自限、有节的和、无仁之礼、立于礼、以及玉帛不足以尽礼走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name li gathered and judged on one screen, open [Li](https://www.lunyu.ai/en/index/li). The index says what li is not and selects doors; this Note followed self-limit, measured harmony, form without ren, standing in li, and the refusal of jade-and-silk as the whole. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zi-gong-in-the-analects",
     titleZh: "《论语》里的子贡：会说话，却不是佞",
     titleEn: "Who Was Zi Gong in the Analects? Speech Without Slickness",
