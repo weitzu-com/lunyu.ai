@@ -851,7 +851,7 @@ checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
   "Li (Ritual) in the Analects: Form That Can Be Checked",
-  "2026-10-25",
+  "2026-10-26",
   "Who Was Zi Gong in the Analects? Speech Without Slickness",
   "Who Was Gongxi Hua in the Analects? Ritual Skill and an Honest Question",
   "2026-10-24",
@@ -878,7 +878,7 @@ checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
   "《论语》里的「礼」：可核对的形式，不是空仪式",
-  "2026-10-25",
+  "2026-10-26",
   "《论语》里的子贡：会说话，却不是佞",
   "《论语》里的公西华：善于礼仪，敢于发问",
   "2026-10-24",
@@ -2267,8 +2267,8 @@ const liRitualAnchors = [
     if (block.includes("four live passages") || block.includes("四条活页") || block.includes("eight live passages")) {
       fail("li-ritual-in-the-analects: passage count must stay five");
     }
-    if (!block.includes('datePublished: "2026-10-25"') || !block.includes('dateModified: "2026-10-25"')) {
-      fail("li-ritual-in-the-analects: both locales must use 2026-10-25");
+    if (!block.includes('datePublished: "2026-10-26"') || !block.includes('dateModified: "2026-10-26"')) {
+      fail("li-ritual-in-the-analects: both locales must use 2026-10-26");
     }
     const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
       JSON.parse(match[0])
@@ -2293,8 +2293,8 @@ checkHtml("/en/blogs/li-ritual-in-the-analects", [
   `rel="canonical" href="${siteUrl}/en/blogs/li-ritual-in-the-analects"`,
   '"@type":"Article"',
   '"@type":"FAQPage"',
-  '"datePublished":"2026-10-25"',
-  '"dateModified":"2026-10-25"',
+  '"datePublished":"2026-10-26"',
+  '"dateModified":"2026-10-26"',
   "Li (Ritual) in the Analects: Form That Can Be Checked",
   "Li in the Analects is reverence given a form that can be checked — five live passages, not jade-and-silk theater.",
   "This Note opens five live passages:",
@@ -2342,8 +2342,8 @@ checkHtml("/zh-Hans/blogs/li-ritual-in-the-analects", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs/li-ritual-in-the-analects"`,
   '"@type":"Article"',
   '"@type":"FAQPage"',
-  '"datePublished":"2026-10-25"',
-  '"dateModified":"2026-10-25"',
+  '"datePublished":"2026-10-26"',
+  '"dateModified":"2026-10-26"',
   "《论语》里的「礼」：可核对的形式，不是空仪式",
   "《论语》里的礼是带着可核对之形的敬。五条活页，不是玉帛戏台，链回可核对的原文。",
   "这一篇打开五条活页：",
@@ -7258,13 +7258,13 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-25")) {
+    if (!lastmod.includes("2026-10-26")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
     }
     const liRitualLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/li-ritual-in-the-analects`);
-    if (!liRitualLastmod.includes("2026-10-25")) {
+    if (!liRitualLastmod.includes("2026-10-26")) {
       fail(
-        `sitemap: /${locale}/blogs/li-ritual-in-the-analects lastmod should be 2026-10-25, got ${liRitualLastmod || "missing"}`
+        `sitemap: /${locale}/blogs/li-ritual-in-the-analects lastmod should be 2026-10-26, got ${liRitualLastmod || "missing"}`
       );
     }
     const ziGongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-gong-in-the-analects`);
@@ -7397,11 +7397,11 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "25 Oct 2026", "rss lastBuildDate");
+  assertIncludes(rss, "26 Oct 2026", "rss lastBuildDate");
   const liRitualItem = rss.split("<item>").find((part) => part.includes("/blogs/li-ritual-in-the-analects"));
   if (!liRitualItem) fail("rss: missing li-ritual-in-the-analects");
-  else if (!liRitualItem.includes("25 Oct 2026")) {
-    fail("rss: li-ritual-in-the-analects pubDate should be 25 Oct 2026");
+  else if (!liRitualItem.includes("26 Oct 2026")) {
+    fail("rss: li-ritual-in-the-analects pubDate should be 26 Oct 2026");
   }
   const ziGongItem = rss.split("<item>").find((part) => part.includes("/blogs/zi-gong-in-the-analects"));
   if (!ziGongItem) fail("rss: missing zi-gong-in-the-analects");
@@ -7427,7 +7427,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
-const liRitualEditorialLastmod = "2026-10-25";
+const liRitualEditorialLastmod = "2026-10-26";
 const gongxiHuaEditorialLastmod = "2026-10-24";
 const tangWenWuEditorialLastmod = "2026-10-20";
 const stateOfLuEditorialLastmod = "2026-10-19";

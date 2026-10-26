@@ -109,8 +109,8 @@ export const editorialPosts: EditorialPost[] = [
     dekEn: "In the Analects, li (礼; Legge often: propriety, the rules of propriety) is reverence given a form that can be checked — not jade-and-silk theater, and not a slogan that replaces criminal law. This Note opens five live passages: self-limit that returns to form (12.1), harmony held by measure (1.12), form empty without ren (3.3), standing established in li (8.8), and the refusal that gems and silk are all that li means (17.11). It is not a rewrite of the filial Note or the ren Note, and it is not a music essay. The index already judges what li is not; here you deepen the doors.",
     descriptionZh: "《论语》里的礼是带着可核对之形的敬。五条活页，不是玉帛戏台，链回可核对的原文。",
     descriptionEn: "Li in the Analects is reverence given a form that can be checked — five live passages, not jade-and-silk theater.",
-    datePublished: "2026-10-25",
-    dateModified: "2026-10-25",
+    datePublished: "2026-10-26",
+    dateModified: "2026-10-26",
     tagsZh: ["礼", "克己复礼", "礼之用", "玉帛"],
     tagsEn: ["li", "ritual", "propriety", "礼", "克己复礼"],
     related: [
