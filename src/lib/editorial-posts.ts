@@ -102,6 +102,154 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "chen-cai-in-the-analects",
+    titleZh: "《论语》里的陈蔡：困厄里仍守住的那一截",
+    titleEn: "Chen Cai in the Analects: Hardship Without Giving Way",
+    dekZh: "陈、蔡在《论语》里是可核对的困厄坐标——绝粮仍问君子不要失守。地名可以在活页上打开（在陈绝粮；子在陈曰归与；从我于陈蔡者皆不及门）。这一篇不是孔子周游传记小说，不是卫灵公 Note 的重写，也不是四科门下弟子的 Who-Notes。索引已经收拢这一簇；这里深读三扇章句门。",
+    dekEn: "Chen and Cai name a checked hardship in the Analects — want that still asks the junzi not to give way. The place-names are coordinates you can open on live pages (in Chan provisions fail; the Master sighs “return”; those who once followed through Chen and Cai are later said to be no longer at the door). This Note is not a Confucius travel biography, not a rewrite of the Duke Ling of Wei Note, and not a Who-Note for the disciples named under the four categories. The index already gathers the cluster; here you deepen three passage doors.",
+    descriptionZh: "《论语》里的陈、蔡是可核对的困厄坐标。三扇章句门，绝粮仍问君子不要失守。",
+    descriptionEn: "Chen and Cai in the Analects name a checked hardship — three passage doors, want that still asks not to give way.",
+    datePublished: "2026-10-27",
+    dateModified: "2026-10-27",
+    tagsZh: ["陈蔡", "在陈绝粮", "君子固穷", "归与", "从我于陈蔡"],
+    tagsEn: ["Chen Cai", "Ch'an Ts'ai", "陈蔡", "在陈绝粮", "君子固穷", "从我于陈蔡"],
+    related: [
+      "/analects/wei-ling-gong/wei-ling-gong-001",
+      "/index/chen-cai",
+      "/analects/gong-ye-chang/gong-ye-chang-021",
+      "/analects/xian-jin/xian-jin-002",
+    ],
+    cover: notesBlogImage(
+      "chen-cai-in-the-analects",
+      "cover.png",
+      "An empty bowl on a travel mat — want that still asks not to give way",
+      "路席上安静空下的碗——绝粮里仍守住的那一截",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "chen-cai-in-the-analects",
+        "inline-1.png",
+        "An empty threshold turned toward the road home — let me return",
+        "面朝归途的空门槛——归与之叹",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "chen-cai-in-the-analects",
+        "inline-2.png",
+        "An open study doorway with an empty mat — those who followed no longer at the door",
+        "席前敞开的门槛与空处——从者不及门",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "在陈绝粮——君子固穷",
+        headingEn: "Want in Chan — 君子固穷",
+        bodyZh: [
+          "请你从[论语 · 卫灵公 15.1](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-001)开始。原文：衞灵公问陈于孔子。孔子对曰，俎豆之事，则尝闻之矣，军旅之事，未之学也。明日遂行。在陈绝粮，从者病，莫能兴。子路愠见曰，君子亦有穷乎。子曰，君子固穷，小人穷斯滥矣。",
+          "活页白话导读作：卫灵公向孔子询问排兵布阵的方法。孔子回答说：祭祀礼仪方面的事，我还听说过一些；用兵打仗的事，我从来没有学过。第二天孔子便离开了卫国。后来在陈国断了粮食，随行的弟子都饿病了，起不来。子路满脸怨气地来见孔子说：君子也会有走投无路的时候吗？孔子说：君子在困厄时能坚守节操，小人一旦困厄就会胡作非为。",
+          "活页 Legge 作：When he was in Chan, their provisions were exhausted, and his followers became so ill that they were unable to rise. … Tsze-lu, with evident dissatisfaction, said, \"Has the superior man likewise to endure in this way?\" The Master said, \"The superior man may indeed have to endure want, but the mean man, when he is in want, gives way to unbridled license.\"",
+          "请你仔细看压力落在哪里。章前半是卫灵公问阵，老师以未学军旅拒之而后行——本篇不会把这一半扩成卫灵公专论。陈在这里标出的是后景：在陈绝粮，从者病莫能兴，以及答语君子固穷——困厄仍不许滥。Legge 的 endure want / gives way to unbridled license 是同一铰链。你得到的是可核的地名之边，不是游记小说。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Wei Ling Kung 15.1](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-001). The source: 衞灵公问陈于孔子。孔子对曰，俎豆之事，则尝闻之矣，军旅之事，未之学也。明日遂行。在陈绝粮，从者病，莫能兴。子路愠见曰，君子亦有穷乎。子曰，君子固穷，小人穷斯滥矣。",
+          "The modern guide on that page: 卫灵公向孔子询问排兵布阵的方法。孔子回答说：祭祀礼仪方面的事，我还听说过一些；用兵打仗的事，我从来没有学过。第二天孔子便离开了卫国。后来在陈国断了粮食，随行的弟子都饿病了，起不来。子路满脸怨气地来见孔子说：君子也会有走投无路的时候吗？孔子说：君子在困厄时能坚守节操，小人一旦困厄就会胡作非为。",
+          "Legge on the same page: When he was in Chan, their provisions were exhausted, and his followers became so ill that they were unable to rise. … Tsze-lu, with evident dissatisfaction, said, \"Has the superior man likewise to endure in this way?\" The Master said, \"The superior man may indeed have to endure want, but the mean man, when he is in want, gives way to unbridled license.\"",
+          "Take the pressure carefully. The chapter opens with Duke Ling asking about tactics; the Master refuses military matters and leaves — this Note will not expand that half into a Wei Ling essay. What Chen names here is the second scene: 在陈绝粮, followers too ill to rise, and the answer 君子固穷 — want that does not license 滥. Legge’s “endure want” / “gives way to unbridled license” is the same hinge. You are given a place-name as a checkable edge, not a travel novel.",
+        ],
+      },
+      {
+        headingZh: "子在陈——归与归与",
+        headingEn: "From Chen — “Let me return”",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 公冶长 5.21](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-021)。原文：子在陈曰，归与归与，吾党之小子狂简，斐然成章，不知所以裁之。导读作：孔子在陈国时说：回去吧，回去吧！我家乡的那些年轻学生志向高远而行事疏阔，文采斐然，很有可观，只是还不知道怎样来裁正自己。",
+          "Legge 作：When the Master was in Ch'an, he said, \"Let me return! Let me return! The little children of my school are ambitious and too hasty. They are accomplished and complete so far, but they do not know how to restrict and shape themselves.\"",
+          "你再次听见陈——不是作战地图，而是老师说出归与的所在。叹息转向吾党小子：狂简、斐然成章，却还不知所以裁之。困厄簇里不只是空粮，也有朝向「尚未裁正」的回拉力。请停在这一门；不要为活页所无，另造一整条道路行程。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Kung-ye Ch'ang 5.21](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-021). The source: 子在陈曰，归与归与，吾党之小子狂简，斐然成章，不知所以裁之。 The guide: 孔子在陈国时说：回去吧，回去吧！我家乡的那些年轻学生志向高远而行事疏阔，文采斐然，很有可观，只是还不知道怎样来裁正自己。",
+          "Legge: When the Master was in Ch'an, he said, \"Let me return! Let me return! The little children of my school are ambitious and too hasty. They are accomplished and complete so far, but they do not know how to restrict and shape themselves.\"",
+          "You hear Chen again — not as a battle map, but as the place from which the Master names 归与. The sigh turns toward the young of his party: ambitious, hasty, accomplished in pattern, not yet knowing how to 裁 themselves. Hardship in the cluster is not only empty grain; it is also the pull back toward shaping what is still uncut. Stay on this door; do not invent a road itinerary the live page does not give.",
+        ],
+      },
+      {
+        headingZh: "从我于陈蔡者——皆不及门",
+        headingEn: "Those who followed in Chen and Cai — 皆不及门",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "在[论语 · 先进 11.2](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-002)里，老师回头看。原文：子曰，从我于陈蔡者，皆不及门也。德行，颜渊，闵子骞，冉伯牛，仲弓。言语，宰我，子贡。政事，冉有，季路。文学，子游，子夏。导读作：孔子说：当年跟随我在陈国、蔡国之间遭难的学生，如今都不在我门下了。论德行，有颜渊、闵子骞、冉伯牛、仲弓；论言辞辩才，有宰我、子贡；论政事，有冉有、季路；论文献学问，有子游、子夏。",
+          "Legge 作：The Master said, \"Of those who were with me in Ch'an and Ts'ai, there are none to be found to enter my door.\" … Distinguished for their virtuous principles and practice, there were Yen Yuan, Min Tsze-ch'ien, Zan Po-niu, and Chung-kung; for their ability in speech, Tsai Wo and Tsze-kung; for their administrative talents, Zan Yu and Chi Lu; for their literary acquirements, Tsze-yu and Tsze-hsia.",
+          "请读这一边：从我于陈蔡者，皆不及门也——曾经共过那一截困厄的人，被说成如今不在门下。后列四科（德行／言语／政事／文学）只作才具的轻分组；本篇不会改写颜渊、子路、子贡诸人的 Who-Notes。陈蔡在这里标出的是共患之往——以及门下事后的空处。",
+        ],
+        bodyEn: [
+          "In [The Analects · Hsien Tsin 11.2](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-002) the Master looks back. The source: 子曰，从我于陈蔡者，皆不及门也。德行，颜渊，闵子骞，冉伯牛，仲弓。言语，宰我，子贡。政事，冉有，季路。文学，子游，子夏。 The guide: 孔子说：当年跟随我在陈国、蔡国之间遭难的学生，如今都不在我门下了。论德行，有颜渊、闵子骞、冉伯牛、仲弓；论言辞辩才，有宰我、子贡；论政事，有冉有、季路；论文献学问，有子游、子夏。",
+          "Legge: The Master said, \"Of those who were with me in Ch'an and Ts'ai, there are none to be found to enter my door.\" … Distinguished for their virtuous principles and practice, there were Yen Yuan, Min Tsze-ch'ien, Zan Po-niu, and Chung-kung; for their ability in speech, Tsai Wo and Tsze-kung; for their administrative talents, Zan Yu and Chi Lu; for their literary acquirements, Tsze-yu and Tsze-hsia.",
+          "Read the edge: 从我于陈蔡者，皆不及门也 — those who once shared that hardship are named as no longer at the door. The four categories (德行 / 言语 / 政事 / 文学) follow as a light grouping of talent; this Note will not rewrite Who-Notes for Yan Yuan, Zi Lu, Zi Gong, or the others. Chen and Cai here mark a shared past of want — and an empty place at the gate afterward.",
+        ],
+      },
+      {
+        headingZh: "三门合起来看",
+        headingEn: "What the three doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：在陈绝粮仍问君子不要失守（15.1）；在陈说出的归与之叹，对着尚未裁正的小子（5.21）；从我于陈蔡者皆不及门，四科只轻点名（11.2）。这一篇深读这几扇门，不复述索引里「孔子周游困厄之地」的编辑导语全文。",
+          "这也不是孔子周游传记，不是卫灵公 Note（15.1 可作入口；问阵与卫廷停在铰链，不写成专论），不是弟子列传。同簇里的假友——「居蔡」大龟之屋、乐师适蔡——不是本篇主门。",
+          "以下是你自己的反思，不是孔子的话：你也许遇见困厄时，会把空碗当成任何发作的许可证。《论语》可以把你放在陈、从者病莫能兴，却仍拒绝滥。这几扇门里更硬的边，是固穷、仍要裁的归与，以及共患之后门下那一截空。",
+        ],
+        bodyEn: [
+          "Put them together and you have: want in Chan that still asks the junzi not to give way (15.1); a return-sigh spoken in Chen toward the still-uncut young (5.21); those who followed through Chen and Cai later said to be no longer at the door, with four categories named lightly (11.2). The Note deepens those doors; it does not retell the index editorial that already says these are states associated with hardship on the road.",
+          "This is also not a Confucius travel biography, not the Duke Ling of Wei Note (15.1 may open; Wei court and tactics stay at the hinge, not the essay), and not disciple biography. False friends in the same index cluster — a tortoise “house of Cai,” music masters dispersing toward Cai — are not this Note’s main doors.",
+          "As your own reflection — not as Confucius’s words — you may meet want as a license: when the bowl is empty, any outburst feels earned. The Analects can place you in Chan with followers too ill to rise and still refuse 滥. The harder edge in these doors is 固穷, the return that still asks for 裁, and the empty place at the door after shared hardship.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的陈、蔡是什么意思？",
+        questionEn: "What do Chen and Cai mean in the Analects?",
+        answerZh: "就本篇所核活页而言，陈、蔡（Legge：Ch'an / Chan, Ts'ai）是与可核对困厄相连的地名——在陈绝粮（15.1）、子在陈曰归与（5.21）、从我于陈蔡者皆不及门（11.2）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "On the live pages used here, Chen and Cai (陈、蔡; Legge: Ch'an / Chan, Ts'ai) are place-names tied to checked hardship — provisions exhausted in Chan (15.1), a return-sigh spoken in Chen (5.21), and those who once followed through Chen and Cai later said to be no longer at the door (11.2). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "15.1 的「君子固穷」是什么意思？",
+        questionEn: "What does 君子固穷 mean in 15.1?",
+        answerZh: "在陈绝粮、子路愠问之后，老师答：君子固穷，小人穷斯滥矣。导读作：君子在困厄时能坚守节操，小人一旦困厄就会胡作非为。Legge 作 endure want / gives way to unbridled license。本篇把它读作困厄里仍守住的那一截——不是可供小说化的游记段落。",
+        answerEn: "After want in Chan and Zi Lu’s dissatisfied question, the Master answers that the junzi may endure want (固穷) while the mean person in want gives way to license (滥). Legge: \"The superior man may indeed have to endure want, but the mean man, when he is in want, gives way to unbridled license.\" This Note reads that as hardship without giving way — not as a travel episode to novelize.",
+      },
+      {
+        questionZh: "既不是卫灵公篇，为什么开 15.1？",
+        questionEn: "Why open 15.1 if this is not a Duke Ling Note?",
+        answerZh: "15.1 前半是卫灵公问阵，老师以未学军旅拒之而后行。那一半只作进入在陈绝粮的铰链。请勿把本篇扩成卫灵公专论；卫灵公另有自己的意图页。",
+        answerEn: "15.1 begins with Duke Ling asking about tactics; the Master refuses and leaves. That half is only the hinge into 在陈绝粮. Do not expand this Note into a Wei Ling essay; the Duke Ling page has its own intent.",
+      },
+      {
+        questionZh: "5.21 的「归与」是什么？",
+        questionEn: "What is 归与 in 5.21?",
+        answerZh: "子在陈曰归与归与——Legge：\"Let me return! Let me return!\"——并转向吾党小子：斐然成章，不知所以裁之。陈是说话的所在；本篇不为它另造完整行程。",
+        answerEn: "In Chen the Master says 归与归与 — Legge: \"Let me return! Let me return!\" — and turns toward the young of his party, accomplished in pattern but not yet knowing how to restrict and shape themselves. Chen is the place of the saying; the Note does not invent a full itinerary around it.",
+      },
+      {
+        questionZh: "11.2 是不是弟子列传？",
+        questionEn: "Does 11.2 retell disciple biographies?",
+        answerZh: "不是。它说从我于陈蔡者皆不及门，再列四科才具。人名可轻点；各弟子 Who-Notes 仍走各自页面。",
+        answerEn: "No. It names those who followed in Chen and Cai as no longer at the door, then lists four categories of ability. Names may appear lightly; Who-Notes for each disciple stay on their own pages.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「陈、蔡」索引",
+        headingEn: "After FAQ — open the Chen and Cai index",
+        bodyZh: [
+          "当你想把谈到陈、蔡的章句放在同一页，请打开[陈、蔡](https://www.lunyu.ai/zh-Hans/index/chen-cai)。索引标出孔子周游困厄之地并选篇；这一篇跟着固穷、归与、门下之空走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name Chen and Cai gathered on one screen, open [Chen and Cai](https://www.lunyu.ai/en/index/chen-cai). The index marks states associated with hardship during the travels and selects doors; this Note followed want without giving way, the return-sigh, and the empty place at the door. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "li-ritual-in-the-analects",
     titleZh: "《论语》里的「礼」：可核对的形式，不是空仪式",
     titleEn: "Li (Ritual) in the Analects: Form That Can Be Checked",

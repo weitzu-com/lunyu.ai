@@ -701,6 +701,18 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "chen-cai-in-the-analects",
+    titleZh: "《论语》里的陈蔡：困厄里仍守住的那一截",
+    titleEn: "Chen Cai in the Analects: Hardship Without Giving Way",
+    passages: [
+      "wei-ling-gong/wei-ling-gong-001",
+      "gong-ye-chang/gong-ye-chang-021",
+      "xian-jin/xian-jin-002",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "li-ritual-in-the-analects",
     titleZh: "《论语》里的「礼」：可核对的形式，不是空仪式",
     titleEn: "Li (Ritual) in the Analects: Form That Can Be Checked",
@@ -850,6 +862,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Chen Cai in the Analects: Hardship Without Giving Way",
+  "2026-10-27",
   "Li (Ritual) in the Analects: Form That Can Be Checked",
   "2026-10-26",
   "Who Was Zi Gong in the Analects? Speech Without Slickness",
@@ -877,6 +891,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的陈蔡：困厄里仍守住的那一截",
+  "2026-10-27",
   "《论语》里的「礼」：可核对的形式，不是空仪式",
   "2026-10-26",
   "《论语》里的子贡：会说话，却不是佞",
@@ -2176,6 +2192,282 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const chenCaiCover = "/images/blogs/chen-cai-in-the-analects/cover.png";
+const chenCaiInline1 = "/images/blogs/chen-cai-in-the-analects/inline-1.png";
+const chenCaiInline2 = "/images/blogs/chen-cai-in-the-analects/inline-2.png";
+const chenCaiCoverEn = "An empty bowl on a travel mat — want that still asks not to give way";
+const chenCaiCoverZh = "路席上安静空下的碗——绝粮里仍守住的那一截";
+const chenCaiInline1En = "An empty threshold turned toward the road home — let me return";
+const chenCaiInline1Zh = "面朝归途的空门槛——归与之叹";
+const chenCaiInline2En =
+  "An open study doorway with an empty mat — those who followed no longer at the door";
+const chenCaiInline2Zh = "席前敞开的门槛与空处——从者不及门";
+const chenCaiAnchors = [
+  ["论语 · 卫灵公 15.1", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-001"],
+  ["The Analects · Wei Ling Kung 15.1", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-001"],
+  ["论语 · 公冶长 5.21", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-021"],
+  ["The Analects · Kung-ye Ch'ang 5.21", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-021"],
+  ["论语 · 先进 11.2", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-002"],
+  ["The Analects · Hsien Tsin 11.2", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-002"],
+  ["陈、蔡", "https://www.lunyu.ai/zh-Hans/index/chen-cai"],
+  ["Chen and Cai", "https://www.lunyu.ai/en/index/chen-cai"],
+];
+{
+  const start = postSource.indexOf('slug: "chen-cai-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing chen-cai-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = chenCaiAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `chen-cai-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    chenCaiAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`chen-cai-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `chen-cai-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 6) {
+      fail(
+        `chen-cai-in-the-analects: expected three linked passages per language (6 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/chen-cai"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `chen-cai-in-the-analects: Chen and Cai index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/what-ren-means-in-the-analects",
+      "/blogs/duke-ling-of-wei-in-the-analects",
+      "pending Gemini",
+      "IMAGE SLOT",
+      "*",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`chen-cai-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("three passage doors")) {
+      fail("chen-cai-in-the-analects: dek/description must say three passage doors");
+    }
+    if (!block.includes("三扇章句门")) {
+      fail("chen-cai-in-the-analects: dek/description must say 三扇章句门");
+    }
+    if (
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("four live passages") ||
+      block.includes("四条活页")
+    ) {
+      fail("chen-cai-in-the-analects: passage count must stay three");
+    }
+    if (!block.includes('datePublished: "2026-10-27"') || !block.includes('dateModified: "2026-10-27"')) {
+      fail("chen-cai-in-the-analects: both locales must use 2026-10-27");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      if ((value.match(/"/g) || []).length % 2 !== 0) {
+        fail("chen-cai-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("chen-cai-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("chen-cai-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [chenCaiCover, chenCaiInline1, chenCaiInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/chen-cai-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/chen-cai-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-27"',
+  '"dateModified":"2026-10-27"',
+  "Chen Cai in the Analects: Hardship Without Giving Way",
+  "Chen and Cai in the Analects name a checked hardship — three passage doors, want that still asks not to give way.",
+  "here you deepen three passage doors.",
+  "Want in Chan — 君子固穷",
+  "From Chen — “Let me return”",
+  "Those who followed in Chen and Cai — 皆不及门",
+  "What the three doors add up to",
+  "After FAQ — open the Chen and Cai index",
+  "What do Chen and Cai mean in the Analects?",
+  "What does 君子固穷 mean in 15.1?",
+  "Why open 15.1 if this is not a Duke Ling Note?",
+  "What is 归与 in 5.21?",
+  "Does 11.2 retell disciple biographies?",
+  "their provisions were exhausted",
+  "Let me return! Let me return!",
+  "none to be found to enter my door",
+  "gives way to unbridled license",
+  ">The Analects · Wei Ling Kung 15.1</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.21</a>",
+  ">The Analects · Hsien Tsin 11.2</a>",
+  ">Chen and Cai</a>",
+  'href="/en/analects/wei-ling-gong/wei-ling-gong-001"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-021"',
+  'href="/en/analects/xian-jin/xian-jin-002"',
+  'href="/en/index/chen-cai"',
+  chenCaiCover,
+  chenCaiInline1,
+  chenCaiInline2,
+  chenCaiCoverEn,
+  chenCaiInline1En,
+  chenCaiInline2En,
+  `property="og:image" content="${siteUrl}${chenCaiCover}"`,
+  `property="og:image:alt" content="${chenCaiCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${chenCaiCover}"`,
+  `name="twitter:image:alt" content="${chenCaiCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/chen-cai-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/chen-cai-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-27"',
+  '"dateModified":"2026-10-27"',
+  "《论语》里的陈蔡：困厄里仍守住的那一截",
+  "《论语》里的陈、蔡是可核对的困厄坐标。三扇章句门，绝粮仍问君子不要失守。",
+  "这里深读三扇章句门。",
+  "在陈绝粮——君子固穷",
+  "子在陈——归与归与",
+  "从我于陈蔡者——皆不及门",
+  "三门合起来看",
+  "FAQ 之后——接着打开「陈、蔡」索引",
+  "《论语》里的陈、蔡是什么意思？",
+  "15.1 的「君子固穷」是什么意思？",
+  "既不是卫灵公篇，为什么开 15.1？",
+  "5.21 的「归与」是什么？",
+  "11.2 是不是弟子列传？",
+  "在陈绝粮，从者病，莫能兴",
+  "归与归与，吾党之小子狂简",
+  "从我于陈蔡者，皆不及门也",
+  ">论语 · 卫灵公 15.1</a>",
+  ">论语 · 公冶长 5.21</a>",
+  ">论语 · 先进 11.2</a>",
+  ">陈、蔡</a>",
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-001"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-021"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-002"',
+  'href="/zh-Hans/index/chen-cai"',
+  chenCaiCover,
+  chenCaiInline1,
+  chenCaiInline2,
+  chenCaiCoverZh,
+  chenCaiInline1Zh,
+  chenCaiInline2Zh,
+  `property="og:image" content="${siteUrl}${chenCaiCover}"`,
+  `property="og:image:alt" content="${chenCaiCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${chenCaiCover}"`,
+  `name="twitter:image:alt" content="${chenCaiCoverZh}"`,
+]);
+{
+  const zhChenCaiFile = htmlPath("/zh-Hans/blogs/chen-cai-in-the-analects");
+  if (exists(zhChenCaiFile)) {
+    const zhChenCaiHtml = read(zhChenCaiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhChenCaiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/chen-cai-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhChenCaiHtml.includes(chenCaiCoverEn)) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhChenCaiHtml.includes(chenCaiInline1En) || zhChenCaiHtml.includes(chenCaiInline2En)) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhChenCaiHtml, />The Analects · Wei Ling Kung 15\.1<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: English 15.1 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhChenCaiHtml, />Chen and Cai<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhChenCaiHtml, />陈、蔡<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: 陈、蔡 body link should appear once");
+    }
+    if (countRegex(zhChenCaiHtml, />论语 · 卫灵公 15\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: 卫灵公 15.1 body link should appear once");
+    }
+    if (countRegex(zhChenCaiHtml, />论语 · 公冶长 5\.21<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: 公冶长 5.21 body link should appear once");
+    }
+    if (countRegex(zhChenCaiHtml, />论语 · 先进 11\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/chen-cai-in-the-analects: 先进 11.2 body link should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/what-ren-means-in-the-analects",
+      "/blogs/duke-ling-of-wei-in-the-analects",
+    ]) {
+      if (zhChenCaiHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/chen-cai-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enChenCaiFile = htmlPath("/en/blogs/chen-cai-in-the-analects");
+  if (exists(enChenCaiFile)) {
+    const enChenCaiHtml = read(enChenCaiFile);
+    if (enChenCaiHtml.includes(chenCaiCoverZh)) {
+      fail("/en/blogs/chen-cai-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enChenCaiHtml.includes(chenCaiInline1Zh) || enChenCaiHtml.includes(chenCaiInline2Zh)) {
+      fail("/en/blogs/chen-cai-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enChenCaiHtml, />Chen and Cai<\/a>/g) !== 1) {
+      fail("/en/blogs/chen-cai-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enChenCaiHtml, />The Analects · Wei Ling Kung 15\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/chen-cai-in-the-analects: Wei Ling Kung 15.1 body link should appear once");
+    }
+    if (countRegex(enChenCaiHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.21<\/a>/g) !== 1) {
+      fail("/en/blogs/chen-cai-in-the-analects: Kung-ye Ch'ang 5.21 body link should appear once");
+    }
+    if (countRegex(enChenCaiHtml, />The Analects · Hsien Tsin 11\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/chen-cai-in-the-analects: Hsien Tsin 11.2 body link should appear once");
+    }
+    if (countRegex(enChenCaiHtml, />陈、蔡<\/a>/g) !== 0) {
+      fail("/en/blogs/chen-cai-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enChenCaiHtml, />论语 · 卫灵公 15\.1<\/a>/g) !== 0) {
+      fail("/en/blogs/chen-cai-in-the-analects: Chinese 15.1 body link should not appear on en");
+    }
+    if (countRegex(enChenCaiHtml, /href="\/en\/index\/chen-cai"/g) !== 1) {
+      fail("/en/blogs/chen-cai-in-the-analects: Chen and Cai index href should appear once");
+    }
+    for (const forbidden of [
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/what-ren-means-in-the-analects",
+      "/blogs/duke-ling-of-wei-in-the-analects",
+    ]) {
+      if (enChenCaiHtml.includes(forbidden)) {
+        fail(`/en/blogs/chen-cai-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -6963,6 +7255,16 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/chen-cai`, [
+    locale === "en" ? ">Chen and Cai<" : ">陈、蔡<",
+    `href="/${locale}/blogs/chen-cai-in-the-analects"`,
+    locale === "en"
+      ? "Chen Cai in the Analects: Hardship Without Giving Way"
+      : "《论语》里的陈蔡：困厄里仍守住的那一截",
+    `/${locale}/analects/wei-ling-gong/wei-ling-gong-001`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-021`,
+    `/${locale}/analects/xian-jin/xian-jin-002`,
+  ]);
   checkHtml(`/${locale}/index/li`, [
     locale === "en" ? ">Li<" : ">礼<",
     `href="/${locale}/blogs/li-ritual-in-the-analects"`,
@@ -7193,6 +7495,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/chen-cai-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/chen-cai-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/li-ritual-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/li-ritual-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-gong-in-the-analects`, "sitemap");
@@ -7258,8 +7562,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-26")) {
+    if (!lastmod.includes("2026-10-27")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const chenCaiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/chen-cai-in-the-analects`);
+    if (!chenCaiLastmod.includes("2026-10-27")) {
+      fail(
+        `sitemap: /${locale}/blogs/chen-cai-in-the-analects lastmod should be 2026-10-27, got ${chenCaiLastmod || "missing"}`
+      );
     }
     const liRitualLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/li-ritual-in-the-analects`);
     if (!liRitualLastmod.includes("2026-10-26")) {
@@ -7397,7 +7707,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "26 Oct 2026", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Tue, 27 Oct 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const chenCaiItem = rss.split("<item>").find((part) => part.includes("/blogs/chen-cai-in-the-analects"));
+  if (!chenCaiItem) fail("rss: missing chen-cai-in-the-analects");
+  else if (!chenCaiItem.includes("27 Oct 2026")) {
+    fail("rss: chen-cai-in-the-analects pubDate should be 27 Oct 2026");
+  }
   const liRitualItem = rss.split("<item>").find((part) => part.includes("/blogs/li-ritual-in-the-analects"));
   if (!liRitualItem) fail("rss: missing li-ritual-in-the-analects");
   else if (!liRitualItem.includes("26 Oct 2026")) {
@@ -7427,6 +7742,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const chenCaiEditorialLastmod = "2026-10-27";
 const liRitualEditorialLastmod = "2026-10-26";
 const gongxiHuaEditorialLastmod = "2026-10-24";
 const tangWenWuEditorialLastmod = "2026-10-20";
@@ -7454,6 +7770,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${chenCaiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${liRitualEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${gongxiHuaEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${tangWenWuEditorialLastmod}T00:00:00.000Z`, "")
