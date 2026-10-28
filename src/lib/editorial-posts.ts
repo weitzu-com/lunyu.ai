@@ -102,6 +102,169 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "zi-you-in-the-analects",
+    titleZh: "《论语》里的子游：学问落到小城，仍要听见弦歌",
+    titleEn: "Who Was Zi You in the Analects? Learning That Still Sounds in a Small Town",
+    dekZh: "子游是那位把学问落到小城、仍要听见弦歌的弟子——弦歌，不是空有的文饰。在《论语》里他是子游（亦称言偃；Legge：Tsze-yu, Yen）。先进十一把放在文学，与子夏并列；武城诸景则让你看见：所学仍须在人所居处被听见。这一篇不是子夏 Note 的重写，不是孝论 Note 的重写，也不是索引编辑导语的复述。索引已经收拢这一簇；这里深读四扇章句门。",
+    dekEn: "Zi You is the disciple whose learning still has to sound in a small town — stringed song, not empty polish. In the Analects he is 子游 (also 言偃, Yan Yan; Legge: Tsze-yu, Yen). Book 11 places him under 文学 with Zi Xia; the Wu-ch'eng scenes show learning that still has to be heard where people live. This Note is not a rewrite of the Zi Xia Note, not a rewrite of the filial-conduct Note, and not a retell of the index editorial. The index already gathers the cluster; here you deepen four passage doors.",
+    descriptionZh: "《论语》里的子游把学问落到小城，仍要听见弦歌。四扇章句门，不是空有的文饰。",
+    descriptionEn: "Zi You in the Analects is learning that still has to sound in a small town — four passage doors, stringed song, not empty polish.",
+    datePublished: "2026-10-28",
+    dateModified: "2026-10-28",
+    tagsZh: ["子游", "言偃", "武城", "弦歌", "文学"],
+    tagsEn: ["Zi You", "Tsze-yu", "Ziyou", "子游", "言偃", "武城", "弦歌"],
+    related: [
+      "/analects/yang-huo/yang-huo-004",
+      "/index/zi-you",
+      "/analects/xian-jin/xian-jin-002",
+      "/analects/wei-zheng/wei-zheng-007",
+      "/analects/yong-ye/yong-ye-012",
+    ],
+    cover: notesBlogImage(
+      "zi-you-in-the-analects",
+      "cover.png",
+      "Quiet stringed music in a small-town courtyard — learning that still has to sound",
+      "小城庭院里安静的弦歌——学问仍要听见于人所居处",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "zi-you-in-the-analects",
+        "inline-1.png",
+        "A quiet still-life of an oversized blade beside a small task — jest corrected by learning that fits",
+        "过大之刀与小事并置的安静静物——戏言被学道之对纠正",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "zi-you-in-the-analects",
+        "inline-2.png",
+        "Two quiet bowls at a table — support without reverence is not yet enough",
+        "同桌两只安静的碗——能养而无敬仍不够",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "武城——弦歌与牛刀之戏",
+        headingEn: "Wu-ch'eng — stringed song and the ox knife",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "请你从[论语 · 阳货 17.4](https://www.lunyu.ai/zh-Hans/analects/yang-huo/yang-huo-004)开始。原文：子之武城，闻弦歌之声。夫子莞尔而笑曰，割鸡焉用牛刀。子游对曰，昔者偃也，闻诸夫子曰，君子学道则爱人，小人学道则易使也。子曰，二三子，偃之言是也，前言戏之耳。",
+          "活页白话导读作：孔子到了武城，听到弹琴唱歌的声音。孔子微微一笑，说：杀鸡何必用宰牛的刀呢？子游回答说：从前我听老师说过，君子学习了礼乐之道就会爱人，百姓学习了礼乐之道就容易听从指使。孔子说：弟子们，言偃的话是对的，我刚才不过是跟他开个玩笑罢了。",
+          "活页 Legge 作：The Master, having come to Wu-ch'ang, heard there the sound of stringed instruments and singing. … Well pleased and smiling, he said, \"Why use an ox knife to kill a fowl?\" … Tsze-yu replied, \"Formerly, Master, I heard you say,—'When the man of high station is well instructed, he loves men; when the man of low station is well instructed, he is easily ruled.'\" … The Master said, \"My disciples, Yen's words are right. What I said was only in sport.\"",
+          "请你仔细看铰链落在哪里。老师在小城听见弦歌，戏言割鸡焉用牛刀；子游以昔所闻对——学道则爱人、学道则易使——老师承认偃之言是，前言戏之耳。你得到的是学问仍要在人所居处被听见，不是武城人物小说。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Yang Ho 17.4](https://www.lunyu.ai/en/analects/yang-huo/yang-huo-004). The source: 子之武城，闻弦歌之声。夫子莞尔而笑曰，割鸡焉用牛刀。子游对曰，昔者偃也，闻诸夫子曰，君子学道则爱人，小人学道则易使也。子曰，二三子，偃之言是也，前言戏之耳。",
+          "The modern guide on that page: 孔子到了武城，听到弹琴唱歌的声音。孔子微微一笑，说：杀鸡何必用宰牛的刀呢？子游回答说：从前我听老师说过，君子学习了礼乐之道就会爱人，百姓学习了礼乐之道就容易听从指使。孔子说：弟子们，言偃的话是对的，我刚才不过是跟他开个玩笑罢了。",
+          "Legge on the same page: The Master, having come to Wu-ch'ang, heard there the sound of stringed instruments and singing. … Well pleased and smiling, he said, \"Why use an ox knife to kill a fowl?\" … Tsze-yu replied, \"Formerly, Master, I heard you say,—'When the man of high station is well instructed, he loves men; when the man of low station is well instructed, he is easily ruled.'\" … The Master said, \"My disciples, Yen's words are right. What I said was only in sport.\"",
+          "Take the hinge carefully. The Master hears 弦歌 in a small town and jokes that an ox knife is too much for a fowl; Zi You answers with what he once heard — learning the Way so that the high love people and the low are easily ruled — and the Master grants that Yen is right, the jest was only in sport. You are given learning that still has to sound where people live, not a character novel about Wu-ch'eng.",
+        ],
+      },
+      {
+        headingZh: "列在文学——与子夏并列",
+        headingEn: "Placed under 文学 — with Zi Xia",
+        bodyZh: [
+          "打开[论语 · 先进 11.2](https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-002)。原文：子曰，从我于陈蔡者，皆不及门也。德行，颜渊，闵子骞，冉伯牛，仲弓。言语，宰我，子贡。政事，冉有，季路。文学，子游，子夏。导读作：孔子说：当年跟随我在陈国、蔡国之间遭难的学生，如今都不在我门下了。论德行，有颜渊、闵子骞、冉伯牛、仲弓；论言辞辩才，有宰我、子贡；论政事，有冉有、季路；论文献学问，有子游、子夏。",
+          "Legge 作：The Master said, \"Of those who were with me in Ch'an and Ts'ai, there are none to be found to enter my door.\" … Distinguished for their virtuous principles and practice, there were Yen Yuan, Min Tsze-ch'ien, Zan Po-niu, and Chung-kung; for their ability in speech, Tsai Wo and Tsze-kung; for their administrative talents, Zan Yu and Chi Lu; for their literary acquirements, Tsze-yu and Tsze-hsia.",
+          "请只读安置。子游在文学，与子夏并列——才具分组，不是名单上人人的 Who-Note，也不是子夏 Note 或陈蔡 Note 的重写。请停在书把他放在哪里；不要把四科扩成弟子列传。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Hsien Tsin 11.2](https://www.lunyu.ai/en/analects/xian-jin/xian-jin-002). The source: 子曰，从我于陈蔡者，皆不及门也。德行，颜渊，闵子骞，冉伯牛，仲弓。言语，宰我，子贡。政事，冉有，季路。文学，子游，子夏。 The guide: 孔子说：当年跟随我在陈国、蔡国之间遭难的学生，如今都不在我门下了。论德行，有颜渊、闵子骞、冉伯牛、仲弓；论言辞辩才，有宰我、子贡；论政事，有冉有、季路；论文献学问，有子游、子夏。",
+          "Legge: The Master said, \"Of those who were with me in Ch'an and Ts'ai, there are none to be found to enter my door.\" … Distinguished for their virtuous principles and practice, there were Yen Yuan, Min Tsze-ch'ien, Zan Po-niu, and Chung-kung; for their ability in speech, Tsai Wo and Tsze-kung; for their administrative talents, Zan Yu and Chi Lu; for their literary acquirements, Tsze-yu and Tsze-hsia.",
+          "Read the placement only. Zi You sits under 文学 beside Zi Xia as literary acquirements — a talent grouping, not a Who-Note for every name on the list, and not a rewrite of the Zi Xia Note or the Chen Cai Note. Stay on where the book puts him; do not expand the four categories into disciple biography.",
+        ],
+      },
+      {
+        headingZh: "问孝——敬，而不只是能养",
+        headingEn: "He asks about filial piety — reverence, not mere support",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "在[论语 · 为政 2.7](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-007)里，子游问孝。原文：子游问孝，子曰，今之孝者，是谓能养，至于犬马，皆能有养，不敬，何以别乎。导读作：子游问什么是孝。孔子说：现在所谓孝，常被理解为能够供养父母。可是犬马也能得到饲养；如果没有敬意，人与犬马的供养又有什么区别呢？",
+          "Legge 作：Tsze-yu asked what filial piety was. The Master said, \"The filial piety of now-a-days means the support of one's parents. But dogs and horses likewise are able to do something in the way of support;—without reverence, what is there to distinguish the one support given from the other?\"",
+          "你得到的是养与敬之间的一扇门。能养而无敬，便与犬马之养无别。本篇只开这一门，不重写孝论 Note，也不扩成孝专论。",
+        ],
+        bodyEn: [
+          "In [The Analects · Wei Chang 2.7](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-007) Zi You asks what filial piety is. The source: 子游问孝，子曰，今之孝者，是谓能养，至于犬马，皆能有养，不敬，何以别乎。 The guide: 子游问什么是孝。孔子说：现在所谓孝，常被理解为能够供养父母。可是犬马也能得到饲养；如果没有敬意，人与犬马的供养又有什么区别呢？",
+          "Legge: Tsze-yu asked what filial piety was. The Master said, \"The filial piety of now-a-days means the support of one's parents. But dogs and horses likewise are able to do something in the way of support;—without reverence, what is there to distinguish the one support given from the other?\"",
+          "You get one door into the edge between 养 and 敬. Support without reverence collapses into what dogs and horses also receive. This Note opens that door; it does not rewrite the filial-conduct Note or expand into a full essay on 孝.",
+        ],
+      },
+      {
+        headingZh: "武城宰——举正直之人",
+        headingEn: "Governor of Wu-ch'eng — appointing the upright",
+        bodyZh: [
+          "[论语 · 雍也 6.12](https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-012)把你带回他为宰的武城。原文：子游为武城宰，子曰，女得人焉耳乎。曰，有澹台灭明者，行不由径，非公事，未尝至于偃之室也。导读作：子游做武城的长官。孔子说：你在那里得到什么人才了吗？子游说：有个叫澹台灭明的人，走路从不抄小道近路，若不是公事，从来不到我屋里来。",
+          "Legge 作：Tsze-yu being governor of Wu-ch'ang, the Master said to him, \"Have you got good men there?\" He answered, \"There is Tan-t'ai Mieh-ming, who never in walking takes a short cut, and never comes to my office, excepting on public business.\"",
+          "问的是得人与否；答的是澹台灭明——行不由径，非公事不至偃之室。举正直之人，落成可核的习惯，不是人事学离题。请停在这一门；不要为活页所无，另造澹台列传。",
+        ],
+        bodyEn: [
+          "[The Analects · Yung Yey 6.12](https://www.lunyu.ai/en/analects/yong-ye/yong-ye-012) returns you to Wu-ch'eng under his charge. The source: 子游为武城宰，子曰，女得人焉耳乎。曰，有澹台灭明者，行不由径，非公事，未尝至于偃之室也。 The guide: 子游做武城的长官。孔子说：你在那里得到什么人才了吗？子游说：有个叫澹台灭明的人，走路从不抄小道近路，若不是公事，从来不到我屋里来。",
+          "Legge: Tsze-yu being governor of Wu-ch'ang, the Master said to him, \"Have you got good men there?\" He answered, \"There is Tan-t'ai Mieh-ming, who never in walking takes a short cut, and never comes to my office, excepting on public business.\"",
+          "The question is whether he has found good people; the answer names Tan-t'ai Mieh-ming — no short cut, no private visit without public business. Appointing the upright shows up as a checkable habit, not as a digression into personnel theory. Stay on this door; do not invent a biography for Tan-t'ai beyond what the live page gives.",
+        ],
+      },
+      {
+        headingZh: "四门合起来看",
+        headingEn: "What the four doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：武城弦歌，牛刀之戏被纠正，学道被认作是（17.4）；列在文学，与子夏并列（11.2）；问孝，拒绝无敬之养（2.7）；为武城宰，举行不由径、非公事不至者（6.12）。这一篇深读这几扇门，不复述索引里「涉及孝、礼乐和地方治理」的编辑导语全文。",
+          "这也不是子夏 Note 的重写（与子夏本末之争的 19.12 不作主门），不是子贡 Note 的重写（言语同列只轻点），不是孝论或礼 Note 的重写。假友——把武城写成游记小说，或堆言偃关键词——不是本篇的工作。",
+          "以下是你自己的反思，不是孔子的话：你也许把学问当成从不必在你所居处被听见的文饰。《论语》可以把你放在小城弦歌里，仍问道是否显为爱人、显为举正直之人。这几扇门里更硬的边，是仍要听见的学问——以及不能被「能养」替换的敬。",
+        ],
+        bodyEn: [
+          "Put them together and you have: stringed song in Wu-ch'eng, where the ox-knife jest is corrected and learning is granted as right (17.4); placement under 文学 with Zi Xia (11.2); the filial question that refuses support without reverence (2.7); governing Wu-ch'eng by naming someone who will not take a short cut or visit without public business (6.12). The Note deepens those doors; it does not retell the index line that already calls him a disciple associated with filial conduct, ritual, music, and local governance.",
+          "This is also not a rewrite of the Zi Xia Note (literary-school tension with 19.12 stays off the main doors), not a rewrite of the Zi Gong Note when 言语 peers are named lightly, and not a rewrite of the filial or li-ritual Notes. False friends — turning Wu-ch'eng into a travel novel, or stacking keywords around 言偃 — are not this Note's work.",
+          "As your own reflection — not as Confucius's words — you may treat learning as polish that never has to be heard where you live. The Analects can place you in a small town with stringed song and still ask whether the Way shows up as love of people and as appointing the upright. The harder edge in these doors is learning that still has to sound — and reverence that cannot be replaced by mere support.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的子游是谁？",
+        questionEn: "Who was Zi You in the Analects?",
+        answerZh: "他是孔子弟子，名子游、言偃（Legge：Tsze-yu, Yen）。活页可见他列在文学与子夏并列（11.2）、在武城以弦歌对牛刀之戏（17.4）、问孝而使敬与能养分开（2.7）、为武城宰而举澹台灭明（6.12）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "He is a disciple of Confucius, named 子游 and 言偃 (Yan Yan; Legge: Tsze-yu, Yen). Live passages show him under 文学 with Zi Xia (11.2), hearing stringed song defended in Wu-ch'eng (17.4), asking about filial piety so that reverence is kept apart from mere support (2.7), and governing Wu-ch'eng while naming Tan-t'ai Mieh-ming (6.12). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "17.4 的「弦歌」是什么意思？",
+        questionEn: "What does 弦歌 mean in 17.4?",
+        answerZh: "子在武城，闻弦歌之声。Legge：\"the sound of stringed instruments and singing.\" 随后有割鸡焉用牛刀之戏；子游以昔所闻对，老师说偃之言是。本篇把它读作学问仍要在小城被听见——不是空有的文饰。",
+        answerEn: "In Wu-ch'eng the Master hears the sound of stringed instruments and singing (弦歌之声). Legge: \"the sound of stringed instruments and singing.\" The joke about the ox knife and the fowl follows; Zi You answers with what he heard about learning the Way, and the Master says Yen is right. This Note reads that as learning that still has to sound in a small town — not as empty polish.",
+      },
+      {
+        questionZh: "为什么 11.2 把子游放在文学？",
+        questionEn: "Why is Zi You listed under 文学 in 11.2?",
+        answerZh: "先进把子游与子夏放在文献学问（文学）之下，前有从我于陈蔡者皆不及门。那是才具分组。本篇不会改写子夏、子贡或四科其他名字的 Who-Notes。",
+        answerEn: "Book 11 places him under literary acquirements (文学) with Zi Xia, after naming those who followed through Chen and Cai. That is a talent grouping. This Note will not rewrite Who-Notes for Zi Xia, Zi Gong, or the others named in the four categories.",
+      },
+      {
+        questionZh: "2.7 的边在哪里？",
+        questionEn: "What is the edge in 2.7?",
+        answerZh: "子游问孝。老师说：今之孝者，是谓能养；至于犬马，皆能有养；不敬，何以别乎？请开这一门；勿把本篇扩成孝论全文。",
+        answerEn: "Zi You asks what filial piety is. The Master says that today's \"filial\" often means only being able to support parents — yet dogs and horses also receive support; without reverence (不敬), what distinguishes the one from the other? Open the door; do not expand this Note into the full filial-conduct essay.",
+      },
+      {
+        questionZh: "6.12 关于为政显出什么？",
+        questionEn: "What does 6.12 show about governing?",
+        answerZh: "子游为武城宰，被问女得人焉耳乎。他举澹台灭明：行不由径，非公事未尝至于偃之室。举正直之人，落成这一习惯——不是人事离题。",
+        answerEn: "As governor of Wu-ch'eng, Zi You is asked whether he has got good men. He names Tan-t'ai Mieh-ming: no short cut in walking, and no visit to his room except on public business. Appointing the upright appears as that habit — not as a personnel digression.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「子游」索引",
+        headingEn: "After FAQ — open the Zi You index",
+        bodyZh: [
+          "当你想把谈到他的章句放在同一页，请打开[子游](https://www.lunyu.ai/zh-Hans/index/zi-you)。索引标出涉及孝、礼乐和地方治理的弟子并选篇；这一篇跟着弦歌、文学安置、问孝之边、举正直之人走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name him gathered on one screen, open [Zi You](https://www.lunyu.ai/en/index/zi-you). The index marks a disciple associated with filial conduct, ritual, music, and local governance and selects doors; this Note followed stringed song, literary placement, the filial edge, and appointing the upright. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "chen-cai-in-the-analects",
     titleZh: "《论语》里的陈蔡：困厄里仍守住的那一截",
     titleEn: "Chen Cai in the Analects: Hardship Without Giving Way",
