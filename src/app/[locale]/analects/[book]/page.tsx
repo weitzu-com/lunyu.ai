@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SentenceCard } from "@/components/SentenceCard";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { books, getBook, getSentences, locales, type Locale, t } from "@/lib/analects";
+import { bookShortTitle, books, getBook, getSentences, locales, type Locale, t } from "@/lib/analects";
 import { contentCoverageSummary, getBookContentCoverage } from "@/lib/content-coverage";
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { breadcrumbJsonLd, contentModifiedDate, jsonLd, localizedUrl, organizationId, siteName } from "@/lib/site";
@@ -24,7 +24,7 @@ export async function generateMetadata({
   const book = getBook(bookSlug);
   if (!book) return {};
   const coverage = getBookContentCoverage(book.slug)!;
-  const title = t(locale, `《论语》· ${book.zhTitle}`, `The Analects · ${book.pinyin}`);
+  const title = bookShortTitle(locale, book);
   const description = t(
     locale,
     `${book.zhTitle} 共 ${book.chapterCount} 章，逐句可读、可索引、可分享；拼音${coverage.pinyin.complete ? "全量展示" : `覆盖 ${coverage.pinyin.ratio}`}，听读页当前有 ${coverage.audio.ratio} 章可播放。`,

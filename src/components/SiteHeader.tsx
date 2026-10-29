@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { Locale, t } from "@/lib/analects";
@@ -32,17 +31,20 @@ export function SiteHeader({ locale, path = "", availableLocales }: { locale: Lo
   ];
 
   return (
-    <header className="border-b border-rule bg-paper/95 backdrop-blur">
+    <header className="border-b border-rule bg-paper">
       <div className="page-shell flex flex-col gap-4 py-4 sm:py-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link href={`/${locale}`} className="group inline-flex items-center gap-3">
-            <Image
+            {/* 32px seal is not the LCP element. next/image priority preloaded it ahead of note covers. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="/logo-seal-solid.svg"
               alt={siteName}
               width={32}
               height={32}
-              priority
-              className="shrink-0"
+              fetchPriority="low"
+              decoding="async"
+              className="h-8 w-8 shrink-0"
             />
             <div className="min-w-0">
               <div className="font-cjk text-lg leading-none text-ink">{siteName}</div>

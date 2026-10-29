@@ -18,6 +18,7 @@ import {
   getSentence,
   Locale,
   locales,
+  passageShortTitle,
   sentenceUrl,
   Sentence,
   t,
@@ -66,7 +67,7 @@ export async function generateMetadata({
   const sentence = getSentence(sentenceId);
   const book = getBook(bookSlug);
   if (!sentence || !book || sentence.bookSlug !== bookSlug) return {};
-  const title = `${t(locale, "论语", "The Analects")} · ${t(locale, book.zhTitle, book.enTitle)} ${sentence.bookNumber}.${sentence.sentenceNumber}`;
+  const title = passageShortTitle(locale, book, sentence);
   const description = sentenceDescription(locale, sentence, book.zhTitle, book.enTitle);
   const path = `/analects/${bookSlug}/${sentenceId}`;
   return {

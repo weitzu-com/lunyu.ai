@@ -24,6 +24,15 @@ export function alternates(locale: Locale, path = ""): Metadata["alternates"] {
   };
 }
 
+/**
+ * Notes use this short title for `<title>`, `og:title`, and `twitter:title`.
+ * Passage-door anchors already expect that form. The brand stays on
+ * `og:site_name`. Other routes still use the `%s · lunyu.ai` layout template.
+ */
+export function noteDocumentTitle(title: string): Metadata["title"] {
+  return { absolute: title };
+}
+
 /** Shared Open Graph fields for a page (og:image comes from the file-based opengraph-image). */
 export function openGraph(
   locale: Locale,
