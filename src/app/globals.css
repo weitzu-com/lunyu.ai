@@ -25,11 +25,12 @@
   --cinnabar-hover: #9e4133;
   --scrim: rgba(28, 26, 23, 0.28);
 
-  /* Type — 文质彬彬 (families; --font-*-next from next/font in layout) */
-  --font-cjk: var(--font-cjk-next), "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  /* Type — 文质彬彬. --font-*-next is optional. A missing variable must not
+     invalidate the whole stack (that drops the fallbacks and waits on nothing). */
+  --font-cjk: var(--font-cjk-next, "Noto Serif SC"), "Source Han Serif SC", "Songti SC", serif;
   --font-cjk-tc: "Noto Serif TC", "Source Han Serif TC", serif;
-  --font-en: var(--font-en-next), "Source Serif 4", "Spectral", Georgia, "Times New Roman", serif;
-  --font-ui: var(--font-ui-next), "Inter", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  --font-en: var(--font-en-next, "Source Serif 4"), "Spectral", Georgia, "Times New Roman", serif;
+  --font-ui: var(--font-ui-next, "Inter"), "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
 
   /* Modular scale · 1.25 (major third), pinyin 11px → display 59px */
   --text-pinyin: 0.6875rem; /* 11 */
@@ -130,7 +131,8 @@ html {
   color: var(--ink);
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  /* optimizeLegibility kerns long CJK runs and pushed text LCP on mobile. */
+  text-rendering: auto;
 }
 
 body {

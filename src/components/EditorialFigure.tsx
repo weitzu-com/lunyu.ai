@@ -21,8 +21,9 @@ export function EditorialFigure({
         width={image.width}
         height={image.height}
         sizes="(min-width: 1152px) 72rem, calc(100vw - 2rem)"
-        loading={priority ? "eager" : "lazy"}
+        preload={priority}
         fetchPriority={priority ? "high" : "auto"}
+        loading={priority ? "eager" : "lazy"}
         className="h-auto w-full border border-rule bg-surface"
       />
     </figure>

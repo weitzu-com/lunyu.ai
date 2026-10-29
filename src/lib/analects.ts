@@ -121,6 +121,16 @@ export function getSentence(id: string) {
   return sentenceById.get(id);
 }
 
+/** Passage `<title>` / door-anchor short title. Brand is not part of this string. */
+export function passageShortTitle(locale: Locale, book: Book, sentence: Sentence) {
+  return `${t(locale, "论语", "The Analects")} · ${t(locale, book.zhTitle, book.enTitle)} ${sentence.bookNumber}.${sentence.sentenceNumber}`;
+}
+
+/** Book `<title>` short title. Brand is not part of this string. */
+export function bookShortTitle(locale: Locale, book: Book) {
+  return t(locale, `《论语》· ${book.zhTitle}`, `The Analects · ${book.pinyin}`);
+}
+
 export function getNeighbourSentences(id: string) {
   const index = allSentences.findIndex((sentence) => sentence.id === id);
   if (index < 0) {

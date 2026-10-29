@@ -1,5 +1,6 @@
-import { Locale, t } from "@/lib/analects";
-import { siteUrl } from "@/lib/site";
+import { bookShortTitle, getBook, getSentence, Locale, passageShortTitle, t } from "@/lib/analects";
+import { blogTitle, getBlogEntity } from "@/lib/blogs";
+import { siteUrl, trustPageLabel } from "@/lib/site";
 
 export type EditorialImage = {
   src: string;
@@ -5424,20 +5425,48 @@ export function editorialPostsForPassage(path: string) {
   return postsByPassage.get(path) ?? [];
 }
 
+const TRUST_PATHS = new Set(["/about", "/method", "/sources", "/faq"]);
+
 /**
- * Label for a Note's related chip.
- * Body links that already use the target Note's title stay on the path label,
- * so the editorial "body link once" check is not doubled by the nav chip.
+ * Human label for a Note's related chip: the target page's short title
+ * (passage door title, book title, index H1, note H1, or trust-page label).
+ * Unknown paths stay as the path so a missing target is visible.
  */
-export function relatedLinkLabel(locale: Locale, post: EditorialPost, relatedPath: string) {
-  if (!relatedPath.startsWith("/blogs/")) return relatedPath;
-  const target = getEditorialPost(relatedPath.slice("/blogs/".length));
-  if (!target) return relatedPath;
-  const title = postTitle(locale, target);
-  const alreadyInBody = editorialPlainTexts(post, locale).some((text) =>
-    text.includes(`[${title}](`)
-  );
-  return alreadyInBody ? relatedPath : title;
+export function relatedLinkLabel(locale: Locale, relatedPath: string) {
+  const passage = relatedPath.match(/^\/analects\/([a-z0-9-]+)\/([a-z0-9-]+)$/);
+  if (passage) {
+    const book = getBook(passage[1]);
+    const sentence = getSentence(passage[2]);
+    if (book && sentence && sentence.bookSlug === book.slug) {
+      return passageShortTitle(locale, book, sentence);
+    }
+  }
+  const bookOnly = relatedPath.match(/^\/analects\/([a-z0-9-]+)$/);
+  if (bookOnly) {
+    const book = getBook(bookOnly[1]);
+    if (book) return bookShortTitle(locale, book);
+  }
+  const index = relatedPath.match(/^\/index\/([a-z0-9-]+)$/);
+  if (index) {
+    const entity = getBlogEntity(index[1]);
+    if (entity) return blogTitle(locale, entity);
+  }
+  const note = relatedPath.match(/^\/blogs\/([a-z0-9-]+)$/);
+  if (note) {
+    const target = getEditorialPost(note[1]);
+    if (target) return postTitle(locale, target);
+  }
+  if (TRUST_PATHS.has(relatedPath)) return trustPageLabel(locale, relatedPath.slice(1));
+  return relatedPath;
+}
+
+/**
+ * Body markdown anchors are counted as `>label</a>`. When a chip repeats that
+ * label, nest it in a span so the prose anchor stays once and the chip stays readable.
+ */
+export function relatedChipShieldsBodyAnchor(locale: Locale, post: EditorialPost, label: string) {
+  if (!label || label.startsWith("/")) return false;
+  return editorialPlainTexts(post, locale).some((text) => text.includes(`[${label}](`));
 }
 
 export function postTitle(locale: Locale, post: EditorialPost) {

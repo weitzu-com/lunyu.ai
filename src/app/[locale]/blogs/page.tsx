@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Locale, locales, t } from "@/lib/analects";
 import { editorialPosts, postDek, postTags, postTitle } from "@/lib/editorial-posts";
-import { alternates, openGraph, twitterCard } from "@/lib/seo";
+import { alternates, noteDocumentTitle, openGraph, twitterCard } from "@/lib/seo";
 import { breadcrumbJsonLd, jsonLd, localizedUrl, organizationId, siteName } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -24,11 +24,11 @@ export async function generateMetadata({
     "Editorial notes from lunyu.ai on reading methods, concepts, ritual, practice, and AI boundaries."
   );
   return {
-    title,
+    title: noteDocumentTitle(title),
     description,
     alternates: alternates(locale, "/blogs"),
-    openGraph: openGraph(locale, "/blogs", `${title} · lunyu.ai`, description),
-    twitter: twitterCard(locale, "/blogs", `${title} · lunyu.ai`, description),
+    openGraph: openGraph(locale, "/blogs", title, description),
+    twitter: twitterCard(locale, "/blogs", title, description),
   };
 }
 

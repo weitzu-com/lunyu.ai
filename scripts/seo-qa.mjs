@@ -106,6 +106,54 @@ function countRegex(text, regex) {
   return [...text.matchAll(regex)].length;
 }
 
+function metaContent(html, key) {
+  const patterns = [
+    new RegExp(`(?:property|name)="${key}" content="([^"]*)"`),
+    new RegExp(`content="([^"]*)" (?:property|name)="${key}"`),
+  ];
+  for (const pattern of patterns) {
+    const match = html.match(pattern);
+    if (match) return decodeHtmlEntities(match[1]);
+  }
+  return "";
+}
+
+function assertNoteTitleStrategy(html, route, shortTitle) {
+  const title = decodeHtmlEntities(html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "");
+  if (title !== shortTitle) {
+    fail(`${route}: <title> should be the short title without the brand suffix, got ${title}`);
+  }
+  const ogTitle = metaContent(html, "og:title");
+  if (ogTitle !== shortTitle) {
+    fail(`${route}: og:title should match the short title, got ${ogTitle}`);
+  }
+  const twitterTitle = metaContent(html, "twitter:title");
+  if (twitterTitle !== shortTitle) {
+    fail(`${route}: twitter:title should match the short title, got ${twitterTitle}`);
+  }
+}
+
+function assertReadableRelatedChips(html, route) {
+  if (/>\/(?:analects|index|blogs|about|method|sources|faq)\b[^<]*<\/a>/.test(html)) {
+    fail(`${route}: related chip still shows a raw path`);
+  }
+}
+
+for (const locale of locales) {
+  const blogsFile = htmlPath(`/${locale}/blogs`);
+  if (!exists(blogsFile)) continue;
+  const blogsHtml = read(blogsFile);
+  const expected = locale === "zh-Hans" ? "论语阅读札记" : "Analects Reading Notes";
+  assertNoteTitleStrategy(blogsHtml, `/${locale}/blogs`, expected);
+  const notesDir = path.join(root, `.next/server/app/${locale}/blogs`);
+  if (!fs.existsSync(notesDir)) continue;
+  for (const name of fs.readdirSync(notesDir)) {
+    if (!name.endsWith(".html")) continue;
+    const noteHtml = fs.readFileSync(path.join(notesDir, name), "utf8");
+    assertReadableRelatedChips(noteHtml, `/${locale}/blogs/${name.replace(/\.html$/, "")}`);
+  }
+}
+
 function extractJsonLd(html, route) {
   const documents = [];
   const scripts = html.matchAll(
@@ -2454,6 +2502,14 @@ checkHtml("/zh-Hans/blogs/zi-you-in-the-analects", [
     if (countRegex(zhZiYouHtml, />论语 · 雍也 6\.12<\/a>/g) !== 1) {
       fail("/zh-Hans/blogs/zi-you-in-the-analects: 雍也 6.12 body link should appear once");
     }
+    assertNoteTitleStrategy(zhZiYouHtml, "/zh-Hans/blogs/zi-you-in-the-analects", "《论语》里的子游：学问落到小城，仍要听见弦歌");
+    assertReadableRelatedChips(zhZiYouHtml, "/zh-Hans/blogs/zi-you-in-the-analects");
+    if (!zhZiYouHtml.includes(">论语 · 阳货 17.4</span>")) {
+      fail("/zh-Hans/blogs/zi-you-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhZiYouHtml.includes(">子游</span>")) {
+      fail("/zh-Hans/blogs/zi-you-in-the-analects: related chip should show the index short title");
+    }
     for (const forbidden of [
       "/blogs/zi-xia-in-the-analects",
       "/blogs/zi-gong-in-the-analects",
@@ -2498,6 +2554,22 @@ checkHtml("/zh-Hans/blogs/zi-you-in-the-analects", [
     }
     if (countRegex(enZiYouHtml, /href="\/en\/index\/zi-you"/g) !== 1) {
       fail("/en/blogs/zi-you-in-the-analects: Zi You index href should appear once");
+    }
+    assertNoteTitleStrategy(enZiYouHtml, "/en/blogs/zi-you-in-the-analects", "Who Was Zi You in the Analects? Learning That Still Sounds in a Small Town");
+    assertReadableRelatedChips(enZiYouHtml, "/en/blogs/zi-you-in-the-analects");
+    if (!enZiYouHtml.includes(">The Analects · Yang Ho 17.4</span>")) {
+      fail("/en/blogs/zi-you-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enZiYouHtml.includes(">Zi You</span>")) {
+      fail("/en/blogs/zi-you-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enZiYouHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enZiYouHtml);
+    if (!/fetchpriority="high"/i.test(enZiYouHtml) || !coverPreloaded) {
+      fail("/en/blogs/zi-you-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enZiYouHtml)) {
+      fail("/en/blogs/zi-you-in-the-analects: header seal must not take high fetch priority from the cover");
     }
     for (const forbidden of [
       "/blogs/zi-xia-in-the-analects",

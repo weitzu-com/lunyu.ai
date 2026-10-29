@@ -15,11 +15,12 @@ import {
   postDescription,
   postTags,
   postTitle,
+  relatedChipShieldsBodyAnchor,
   relatedLinkLabel,
   type EditorialPost,
   type EditorialSection,
 } from "@/lib/editorial-posts";
-import { alternates, openGraph, twitterCard } from "@/lib/seo";
+import { alternates, noteDocumentTitle, openGraph, twitterCard } from "@/lib/seo";
 import {
   breadcrumbJsonLd,
   jsonLd,
@@ -56,15 +57,15 @@ export async function generateMetadata({
           height: post.cover.height,
         };
   return {
-    title,
+    title: noteDocumentTitle(title),
     description,
     alternates: alternates(locale, path),
     openGraph: {
-      ...openGraph(locale, path, `${title} · lunyu.ai`, description),
+      ...openGraph(locale, path, title, description),
       ...(cover ? { images: [cover] } : {}),
     },
     twitter: {
-      ...twitterCard(locale, path, `${title} · lunyu.ai`, description),
+      ...twitterCard(locale, path, title, description),
       ...(cover ? { images: [{ url: cover.url, alt: cover.alt }] } : {}),
     },
   };
@@ -200,35 +201,51 @@ export default async function BlogPostPage({
 
         <section className="mt-8 border-y border-rule bg-surface px-4 py-5 sm:px-6">
           <h2 className="label">{t(locale, "相关章句", "Related passages")}</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {post.related
-              .filter((relatedPath) => !relatedPath.startsWith("/blogs/"))
-              .map((relatedPath) => (
-                <Link key={relatedPath} href={localizedUrl(locale, relatedPath)} className="chip">
-                  {relatedPath}
-                </Link>
-              ))}
-          </div>
+          <RelatedPathChips
+            locale={locale}
+            post={post}
+            paths={post.related.filter((relatedPath) => !relatedPath.startsWith("/blogs/"))}
+          />
         </section>
         {post.related.some((relatedPath) => relatedPath.startsWith("/blogs/")) ? (
           <section className="mt-6 border-y border-rule bg-surface px-4 py-5 sm:px-6" aria-labelledby="h-related-notes">
             <h2 id="h-related-notes" className="label">
               {t(locale, "相关札记", "Related notes")}
             </h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {post.related
-                .filter((relatedPath) => relatedPath.startsWith("/blogs/"))
-                .map((relatedPath) => (
-                  <Link key={relatedPath} href={localizedUrl(locale, relatedPath)} className="chip">
-                    {relatedLinkLabel(locale, post, relatedPath)}
-                  </Link>
-                ))}
-            </div>
+            <RelatedPathChips
+              locale={locale}
+              post={post}
+              paths={post.related.filter((relatedPath) => relatedPath.startsWith("/blogs/"))}
+            />
           </section>
         ) : null}
       </article>
       <SiteFooter locale={locale} />
     </main>
+  );
+}
+
+function RelatedPathChips({
+  locale,
+  post,
+  paths,
+}: {
+  locale: Locale;
+  post: EditorialPost;
+  paths: string[];
+}) {
+  return (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {paths.map((relatedPath) => {
+        const label = relatedLinkLabel(locale, relatedPath);
+        const shieldBodyAnchor = relatedChipShieldsBodyAnchor(locale, post, label);
+        return (
+          <Link key={relatedPath} href={localizedUrl(locale, relatedPath)} className="chip">
+            {shieldBodyAnchor ? <span>{label}</span> : label}
+          </Link>
+        );
+      })}
+    </div>
   );
 }
 
