@@ -749,6 +749,19 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "you-zi-in-the-analects",
+    titleZh: "《论语》里的有子：先立本，再谈枝叶",
+    titleEn: "Who Was You Zi in the Analects? Roots Before Branches",
+    passages: [
+      "xue-er/xue-er-002",
+      "xue-er/xue-er-012",
+      "xue-er/xue-er-013",
+      "yan-yuan/yan-yuan-009",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "zi-you-in-the-analects",
     titleZh: "《论语》里的子游：学问落到小城，仍要听见弦歌",
     titleEn: "Who Was Zi You in the Analects? Learning That Still Sounds in a Small Town",
@@ -923,6 +936,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Who Was You Zi in the Analects? Roots Before Branches",
+  "2026-10-30",
   "Who Was Zi You in the Analects? Learning That Still Sounds in a Small Town",
   "2026-10-28",
   "Chen Cai in the Analects: Hardship Without Giving Way",
@@ -954,6 +969,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的有子：先立本，再谈枝叶",
+  "2026-10-30",
   "《论语》里的子游：学问落到小城，仍要听见弦歌",
   "2026-10-28",
   "《论语》里的陈蔡：困厄里仍守住的那一截",
@@ -2257,6 +2274,338 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const youZiCover = "/images/blogs/you-zi-in-the-analects/cover.png";
+const youZiInline1 = "/images/blogs/you-zi-in-the-analects/inline-1.png";
+const youZiInline2 = "/images/blogs/you-zi-in-the-analects/inline-2.png";
+const youZiCoverEn = "A quiet trunk with roots set in soil — roots before branches";
+const youZiCoverZh = "土中立住的安静树干——先立本，再谈枝叶";
+const youZiInline1En = "Quiet ease held beside a clear ritual mark — harmony kept by form";
+const youZiInline1Zh = "清晰礼之记号旁的安静和易——和被形式托住";
+const youZiInline2En = "Quiet shared grain jars — if the people have plenty, the ruler is not left to want alone";
+const youZiInline2Zh = "安静共享的仓廪——百姓足，君孰与不足";
+const youZiAnchors = [
+  ["论语 · 学而 1.2", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-002"],
+  ["The Analects · Hsio R. 1.2", "https://www.lunyu.ai/en/analects/xue-er/xue-er-002"],
+  ["论语 · 学而 1.12", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-012"],
+  ["The Analects · Hsio R. 1.12", "https://www.lunyu.ai/en/analects/xue-er/xue-er-012"],
+  ["论语 · 学而 1.13", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-013"],
+  ["The Analects · Hsio R. 1.13", "https://www.lunyu.ai/en/analects/xue-er/xue-er-013"],
+  ["论语 · 颜渊 12.9", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-009"],
+  ["The Analects · Yen Yuan 12.9", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-009"],
+  ["有子", "https://www.lunyu.ai/zh-Hans/index/you-zi"],
+  ["You Zi", "https://www.lunyu.ai/en/index/you-zi"],
+];
+{
+  const start = postSource.indexOf('slug: "you-zi-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing you-zi-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = youZiAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `you-zi-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    youZiAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`you-zi-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `you-zi-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 8) {
+      fail(
+        `you-zi-in-the-analects: expected four linked passages per language (8 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/you-zi"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `you-zi-in-the-analects: You Zi index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [
+      "/blogs/zeng-zi-in-the-analects",
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/li-ritual-in-the-analects",
+      "/blogs/what-ren-means-in-the-analects",
+      "/blogs/zi-you-in-the-analects",
+      "pending Gemini",
+      "IMAGE SLOT",
+      "*",
+    ]) {
+      if (block.includes(forbidden)) {
+        fail(`you-zi-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("four passage doors")) {
+      fail("you-zi-in-the-analects: dek/description must say four passage doors");
+    }
+    if (!block.includes("四扇章句门")) {
+      fail("you-zi-in-the-analects: dek/description must say 四扇章句门");
+    }
+    if (
+      block.includes("three passage doors") ||
+      block.includes("三扇章句门") ||
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("five passage doors") ||
+      block.includes("五扇章句门")
+    ) {
+      fail("you-zi-in-the-analects: passage count must stay four");
+    }
+    if (!block.includes('datePublished: "2026-10-30"') || !block.includes('dateModified: "2026-10-30"')) {
+      fail("you-zi-in-the-analects: both locales must use 2026-10-30");
+    }
+    if (!block.includes("radical.That")) {
+      fail("you-zi-in-the-analects: 1.2 Legge must keep the live radical.That orthography");
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const englishQuotes = (value.match(/"/g) || []).length;
+      const leggeContinuation =
+        value.includes("radical.That") ||
+        value.includes('2. "Yet it is not to be observed') ||
+        value.includes('3. "With two tenths, said the duke');
+      if (englishQuotes % 2 !== 0 && !leggeContinuation) {
+        fail("you-zi-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("you-zi-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("you-zi-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [youZiCover, youZiInline1, youZiInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/you-zi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/you-zi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-30"',
+  '"dateModified":"2026-10-30"',
+  "Who Was You Zi in the Analects? Roots Before Branches",
+  "You Zi in the Analects keeps roots before branches — four passage doors, filial conduct, ritual ease, and plenty for the people.",
+  "here you deepen four passage doors.",
+  "Roots before branches — 孝弟 and 君子务本",
+  "Ritual ease — held by form",
+  "Trust near rightness — speech you can make good",
+  "Scarcity — if the people have plenty",
+  "What the four doors add up to",
+  "After FAQ — open the You Zi index",
+  "Who was You Zi in the Analects?",
+  "What does 君子务本 mean in 1.2?",
+  "Why is 和为贵 not free-floating harmony?",
+  "What is the edge in 1.13?",
+  "What does 12.9 show about scarcity?",
+  "radical.That being established",
+  "a natural ease is to be prized",
+  "what is spoken can be made good",
+  "If the people have plenty, their prince will not be left to want alone",
+  "not as Confucius's words",
+  ">The Analects · Hsio R. 1.2</a>",
+  ">The Analects · Hsio R. 1.12</a>",
+  ">The Analects · Hsio R. 1.13</a>",
+  ">The Analects · Yen Yuan 12.9</a>",
+  ">You Zi</a>",
+  'href="/en/analects/xue-er/xue-er-002"',
+  'href="/en/analects/xue-er/xue-er-012"',
+  'href="/en/analects/xue-er/xue-er-013"',
+  'href="/en/analects/yan-yuan/yan-yuan-009"',
+  'href="/en/index/you-zi"',
+  youZiCover,
+  youZiInline1,
+  youZiInline2,
+  youZiCoverEn,
+  youZiInline1En,
+  youZiInline2En,
+  `property="og:image" content="${siteUrl}${youZiCover}"`,
+  `property="og:image:alt" content="${youZiCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${youZiCover}"`,
+  `name="twitter:image:alt" content="${youZiCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/you-zi-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/you-zi-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-30"',
+  '"dateModified":"2026-10-30"',
+  "《论语》里的有子：先立本，再谈枝叶",
+  "《论语》里的有子要你先立本，再谈枝叶。四扇章句门，孝弟、礼之和与百姓足。",
+  "这里深读四扇章句门。",
+  "先立本——孝弟与君子务本",
+  "礼之用——和，须有节",
+  "信近于义——说出的话可以兑现",
+  "年饥——百姓足，君孰与不足",
+  "四门合起来看",
+  "FAQ 之后——接着打开「有子」索引",
+  "《论语》里的有子是谁？",
+  "1.2 的「君子务本」是什么意思？",
+  "为什么「和为贵」不是悬空的和谐？",
+  "1.13 的边在哪里？",
+  "12.9 关于年饥显出什么？",
+  "有子曰，其为人也孝弟",
+  "礼之用，和为贵",
+  "信近于义，言可复也",
+  "百姓足，君孰与不足",
+  "不是孔子的话",
+  ">论语 · 学而 1.2</a>",
+  ">论语 · 学而 1.12</a>",
+  ">论语 · 学而 1.13</a>",
+  ">论语 · 颜渊 12.9</a>",
+  ">有子</a>",
+  'href="/zh-Hans/analects/xue-er/xue-er-002"',
+  'href="/zh-Hans/analects/xue-er/xue-er-012"',
+  'href="/zh-Hans/analects/xue-er/xue-er-013"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-009"',
+  'href="/zh-Hans/index/you-zi"',
+  youZiCover,
+  youZiInline1,
+  youZiInline2,
+  youZiCoverZh,
+  youZiInline1Zh,
+  youZiInline2Zh,
+  `property="og:image" content="${siteUrl}${youZiCover}"`,
+  `property="og:image:alt" content="${youZiCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${youZiCover}"`,
+  `name="twitter:image:alt" content="${youZiCoverZh}"`,
+]);
+{
+  const zhYouZiFile = htmlPath("/zh-Hans/blogs/you-zi-in-the-analects");
+  if (exists(zhYouZiFile)) {
+    const zhYouZiHtml = read(zhYouZiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhYouZiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/you-zi-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhYouZiHtml.includes(youZiCoverEn)) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhYouZiHtml.includes(youZiInline1En) || zhYouZiHtml.includes(youZiInline2En)) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhYouZiHtml, />The Analects · Hsio R\. 1\.2<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: English 1.2 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhYouZiHtml, />You Zi<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhYouZiHtml, />有子<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: 有子 body link should appear once");
+    }
+    if (countRegex(zhYouZiHtml, />论语 · 学而 1\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: 学而 1.2 body link should appear once");
+    }
+    if (countRegex(zhYouZiHtml, />论语 · 学而 1\.12<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: 学而 1.12 body link should appear once");
+    }
+    if (countRegex(zhYouZiHtml, />论语 · 学而 1\.13<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: 学而 1.13 body link should appear once");
+    }
+    if (countRegex(zhYouZiHtml, />论语 · 颜渊 12\.9<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: 颜渊 12.9 body link should appear once");
+    }
+    assertNoteTitleStrategy(zhYouZiHtml, "/zh-Hans/blogs/you-zi-in-the-analects", "《论语》里的有子：先立本，再谈枝叶");
+    assertReadableRelatedChips(zhYouZiHtml, "/zh-Hans/blogs/you-zi-in-the-analects");
+    if (!zhYouZiHtml.includes(">论语 · 学而 1.2</span>")) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhYouZiHtml.includes(">有子</span>")) {
+      fail("/zh-Hans/blogs/you-zi-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of [
+      "/blogs/zeng-zi-in-the-analects",
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/li-ritual-in-the-analects",
+      "/blogs/what-ren-means-in-the-analects",
+      "/blogs/zi-you-in-the-analects",
+    ]) {
+      if (zhYouZiHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/you-zi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enYouZiFile = htmlPath("/en/blogs/you-zi-in-the-analects");
+  if (exists(enYouZiFile)) {
+    const enYouZiHtml = read(enYouZiFile);
+    if (enYouZiHtml.includes(youZiCoverZh)) {
+      fail("/en/blogs/you-zi-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enYouZiHtml.includes(youZiInline1Zh) || enYouZiHtml.includes(youZiInline2Zh)) {
+      fail("/en/blogs/you-zi-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enYouZiHtml, />You Zi<\/a>/g) !== 1) {
+      fail("/en/blogs/you-zi-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enYouZiHtml, />The Analects · Hsio R\. 1\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/you-zi-in-the-analects: Hsio R. 1.2 body link should appear once");
+    }
+    if (countRegex(enYouZiHtml, />The Analects · Hsio R\. 1\.12<\/a>/g) !== 1) {
+      fail("/en/blogs/you-zi-in-the-analects: Hsio R. 1.12 body link should appear once");
+    }
+    if (countRegex(enYouZiHtml, />The Analects · Hsio R\. 1\.13<\/a>/g) !== 1) {
+      fail("/en/blogs/you-zi-in-the-analects: Hsio R. 1.13 body link should appear once");
+    }
+    if (countRegex(enYouZiHtml, />The Analects · Yen Yuan 12\.9<\/a>/g) !== 1) {
+      fail("/en/blogs/you-zi-in-the-analects: Yen Yuan 12.9 body link should appear once");
+    }
+    if (countRegex(enYouZiHtml, />有子<\/a>/g) !== 0) {
+      fail("/en/blogs/you-zi-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enYouZiHtml, />论语 · 学而 1\.2<\/a>/g) !== 0) {
+      fail("/en/blogs/you-zi-in-the-analects: Chinese 1.2 body link should not appear on en");
+    }
+    if (countRegex(enYouZiHtml, /href="\/en\/index\/you-zi"/g) !== 1) {
+      fail("/en/blogs/you-zi-in-the-analects: You Zi index href should appear once");
+    }
+    assertNoteTitleStrategy(enYouZiHtml, "/en/blogs/you-zi-in-the-analects", "Who Was You Zi in the Analects? Roots Before Branches");
+    assertReadableRelatedChips(enYouZiHtml, "/en/blogs/you-zi-in-the-analects");
+    if (!enYouZiHtml.includes(">The Analects · Hsio R. 1.2</span>")) {
+      fail("/en/blogs/you-zi-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enYouZiHtml.includes(">You Zi</span>")) {
+      fail("/en/blogs/you-zi-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enYouZiHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enYouZiHtml);
+    if (!/fetchpriority="high"/i.test(enYouZiHtml) || !coverPreloaded) {
+      fail("/en/blogs/you-zi-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enYouZiHtml)) {
+      fail("/en/blogs/you-zi-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of [
+      "/blogs/zeng-zi-in-the-analects",
+      "/blogs/filial-conduct-ritual-and-care",
+      "/blogs/li-ritual-in-the-analects",
+      "/blogs/what-ren-means-in-the-analects",
+      "/blogs/zi-you-in-the-analects",
+    ]) {
+      if (enYouZiHtml.includes(forbidden)) {
+        fail(`/en/blogs/you-zi-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -7643,6 +7992,17 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/you-zi`, [
+    locale === "en" ? ">You Zi<" : ">有子<",
+    `href="/${locale}/blogs/you-zi-in-the-analects"`,
+    locale === "en"
+      ? "Who Was You Zi in the Analects? Roots Before Branches"
+      : "《论语》里的有子：先立本，再谈枝叶",
+    `/${locale}/analects/xue-er/xue-er-002`,
+    `/${locale}/analects/xue-er/xue-er-012`,
+    `/${locale}/analects/xue-er/xue-er-013`,
+    `/${locale}/analects/yan-yuan/yan-yuan-009`,
+  ]);
   checkHtml(`/${locale}/index/zi-you`, [
     locale === "en" ? ">Zi You<" : ">子游<",
     `href="/${locale}/blogs/zi-you-in-the-analects"`,
@@ -7894,6 +8254,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/you-zi-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/you-zi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-you-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/zi-you-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/chen-cai-in-the-analects`, "sitemap");
@@ -7963,8 +8325,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-28")) {
+    if (!lastmod.includes("2026-10-30")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const youZiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/you-zi-in-the-analects`);
+    if (!youZiLastmod.includes("2026-10-30")) {
+      fail(
+        `sitemap: /${locale}/blogs/you-zi-in-the-analects lastmod should be 2026-10-30, got ${youZiLastmod || "missing"}`
+      );
     }
     const ziYouLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/zi-you-in-the-analects`);
     if (!ziYouLastmod.includes("2026-10-28")) {
@@ -8114,7 +8482,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Wed, 28 Oct 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Fri, 30 Oct 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const youZiItem = rss.split("<item>").find((part) => part.includes("/blogs/you-zi-in-the-analects"));
+  if (!youZiItem) fail("rss: missing you-zi-in-the-analects");
+  else if (!youZiItem.includes("30 Oct 2026")) {
+    fail("rss: you-zi-in-the-analects pubDate should be 30 Oct 2026");
+  }
   const ziYouItem = rss.split("<item>").find((part) => part.includes("/blogs/zi-you-in-the-analects"));
   if (!ziYouItem) fail("rss: missing zi-you-in-the-analects");
   else if (!ziYouItem.includes("28 Oct 2026")) {
@@ -8154,6 +8527,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const youZiEditorialLastmod = "2026-10-30";
 const ziYouEditorialLastmod = "2026-10-28";
 const chenCaiEditorialLastmod = "2026-10-27";
 const liRitualEditorialLastmod = "2026-10-26";
@@ -8183,6 +8557,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${youZiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziYouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${chenCaiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${liRitualEditorialLastmod}T00:00:00.000Z`, "")
