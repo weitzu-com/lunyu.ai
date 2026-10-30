@@ -103,6 +103,175 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "you-zi-in-the-analects",
+    titleZh: "《论语》里的有子：先立本，再谈枝叶",
+    titleEn: "Who Was You Zi in the Analects? Roots Before Branches",
+    dekZh: "有子要你先立本，再谈枝叶——孝弟，是仁开始站立之处。在《论语》里他是有子（亦称有若；Legge：Yu, Yu Zo）。《学而》以他论孝弟、礼之用和为贵、信近于义开篇；《颜渊》记他对哀公问年饥之对。这一篇不是曾子 Notes 的重写，不是孝论、礼论或仁论 Note 的重写，也不是索引编辑导语的复述。它也不是子游 Note——子游（Legge：Tsze-yu）是另一位弟子。索引已经收拢这一簇；这里深读四扇章句门。",
+    dekEn: "You Zi keeps roots before branches — filial-fraternal conduct as where ren begins to stand. In the Analects he is 有子 (also 有若, You Ruo; Legge: Yu, Yu Zo). Xue Er opens with his sayings on filial-fraternal conduct, ritual ease held by form, and trustworthiness near rightness; Yen Yuan records his answer to Duke Ai on scarcity. This Note is not a rewrite of the Zeng Zi Notes, not a rewrite of the filial-conduct or li-ritual or ren Notes, and not a retell of the index editorial. It is also not the Zi You Note — 子游 (Legge: Tsze-yu) is a different disciple. The index already gathers the cluster; here you deepen four passage doors.",
+    descriptionZh: "《论语》里的有子要你先立本，再谈枝叶。四扇章句门，孝弟是仁开始站立之处。",
+    descriptionEn: "You Zi in the Analects keeps roots before branches — four passage doors, filial-fraternal conduct as where ren begins to stand.",
+    datePublished: "2026-10-30",
+    dateModified: "2026-10-30",
+    tagsZh: ["有子", "有若", "孝弟", "务本", "礼之用和为贵"],
+    tagsEn: ["You Zi", "Youzi", "You Ruo", "Yu Zo", "Yu Ruo", "有子", "有若", "孝弟", "务本"],
+    related: [
+      "/analects/xue-er/xue-er-002",
+      "/index/you-zi",
+      "/analects/xue-er/xue-er-012",
+      "/analects/xue-er/xue-er-013",
+      "/analects/yan-yuan/yan-yuan-009",
+    ],
+    cover: notesBlogImage(
+      "you-zi-in-the-analects",
+      "cover.png",
+      "A quiet trunk with roots set in soil — roots before branches",
+      "土中立住的安静树干——先立本，再谈枝叶",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "you-zi-in-the-analects",
+        "inline-1.png",
+        "Quiet ease held beside a clear ritual mark — harmony kept by form",
+        "清晰礼之记号旁的安静和易——和被形式托住",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "you-zi-in-the-analects",
+        "inline-2.png",
+        "Quiet shared grain jars — if the people have plenty, the ruler is not left to want alone",
+        "安静共享的仓廪——百姓足，君孰与不足",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "先立本——孝弟与君子务本",
+        headingEn: "Roots before branches — 孝弟 and 君子务本",
+        bodyZh: [
+          "请你从[论语 · 学而 1.2](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-002)开始。原文：有子曰，其为人也孝弟，而好犯上者鲜矣，不好犯上，而好作乱者，未之有也。君子务本，本立，而道生，孝弟也者，其为仁之本与。",
+          "活页白话导读作：有子说：一个人孝顺父母、敬爱兄长，却喜欢冒犯上级，这样的人很少；不喜欢冒犯上级，却喜欢作乱的人，是没有的。君子专心抓住根本，根本立住了，道就自然生发出来。孝顺父母、敬爱兄长，大概就是仁的根本吧。",
+          "活页 Legge 作：1. The philosopher Yu said, \"They are few who, being filial and fraternal, are fond of offending against their superiors. There have been none, who, not liking to offend against their superiors, have been fond of stirring up confusion. 2. \"The superior man bends his attention to what is radical.That being established, all practical courses naturally grow up. Filial piety and fraternal submission!—are they not the root of all benevolent actions?\"",
+          "请你仔细看铰链落在哪里。有子先把孝弟放在犯上、作乱之前，再点出君子务本——本立而道生——并问孝弟是否为仁开始站立之处。你得到的是先立本、再谈枝叶，不是弟子列传小说，也不是孝论 Note 或仁论 Note 的重写。请开这一扇主门；勿扩成那些专论。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Hsio R. 1.2](https://www.lunyu.ai/en/analects/xue-er/xue-er-002). The source: 有子曰，其为人也孝弟，而好犯上者鲜矣，不好犯上，而好作乱者，未之有也。君子务本，本立，而道生，孝弟也者，其为仁之本与。",
+          "The modern guide on that page: 有子说：一个人孝顺父母、敬爱兄长，却喜欢冒犯上级，这样的人很少；不喜欢冒犯上级，却喜欢作乱的人，是没有的。君子专心抓住根本，根本立住了，道就自然生发出来。孝顺父母、敬爱兄长，大概就是仁的根本吧。",
+          "Legge on the same page: 1. The philosopher Yu said, \"They are few who, being filial and fraternal, are fond of offending against their superiors. There have been none, who, not liking to offend against their superiors, have been fond of stirring up confusion. 2. \"The superior man bends his attention to what is radical.That being established, all practical courses naturally grow up. Filial piety and fraternal submission!—are they not the root of all benevolent actions?\"",
+          "Take the hinge carefully. You Zi sets 孝弟 before rebellion talk, then names 君子务本 — when the root stands, the Way grows — and asks whether filial-fraternal conduct is where 仁 begins to stand. You are given roots before branches, not a disciple biography novel, and not a rewrite of the filial-conduct Note or the ren Note. Open this lead door; do not expand it into those essays.",
+        ],
+      },
+      {
+        headingZh: "礼之用——和，须有节",
+        headingEn: "Ritual ease — held by form",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 学而 1.12](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-012)。原文：有子曰，礼之用，和为贵，先王之道，斯为美，小大由之。有所不行，知和而和，不以礼节之，亦不可行也。",
+          "导读作：有子说：礼的作用，以和谐为可贵。古代圣王的治道，美好之处正在这里；大小事情都由此而行。不过只知道和谐而为和谐，不用礼来节制，也是不行的。",
+          "Legge 作：1. The philosopher Yu said, \"In practising the rules of propriety, a natural ease is to be prized. In the ways prescribed by the ancient kings, this is the excellent quality, and in things small and great we follow them. 2. \"Yet it is not to be observed in all cases. If one, knowing how such ease should be prized, manifests it, without regulating it by the rules of propriety, this likewise is not to be done.\"",
+          "请只读这一边。和为贵珍视行礼中的自然和易；然而知和而和、不以礼节之，亦不可行。本篇只开「和被形式托住」这一扇门，不复述礼论 Note。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Hsio R. 1.12](https://www.lunyu.ai/en/analects/xue-er/xue-er-012). The source: 有子曰，礼之用，和为贵，先王之道，斯为美，小大由之。有所不行，知和而和，不以礼节之，亦不可行也。",
+          "The guide: 有子说：礼的作用，以和谐为可贵。古代圣王的治道，美好之处正在这里；大小事情都由此而行。不过只知道和谐而为和谐，不用礼来节制，也是不行的。",
+          "Legge: 1. The philosopher Yu said, \"In practising the rules of propriety, a natural ease is to be prized. In the ways prescribed by the ancient kings, this is the excellent quality, and in things small and great we follow them. 2. \"Yet it is not to be observed in all cases. If one, knowing how such ease should be prized, manifests it, without regulating it by the rules of propriety, this likewise is not to be done.\"",
+          "Read the edge only. 和为贵 prizes natural ease in practising the rules of propriety; yet ease without being regulated by 礼 is likewise not to be done. This Note opens one door into ease held by form. It does not retell the li-ritual Note.",
+        ],
+      },
+      {
+        headingZh: "信近于义——说出的话可以兑现",
+        headingEn: "Trust near rightness — speech you can make good",
+        bodyZh: [
+          "在[论语 · 学而 1.13](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-013)里，有子度量信与恭。原文：有子曰，信近于义，言可复也，恭近于礼，远耻辱也，因不失其亲，亦可宗也。",
+          "导读作：有子说：信用接近义，说出的话才可以兑现；恭敬接近礼，才可以远离羞辱；所依靠的人不失为可亲近的人，也就可以以他为宗主。",
+          "Legge 作：The philosopher Yu said, \"When agreements are made according to what is right, what is spoken can be made good. When respect is shown according to what is proper, one keeps far from shame and disgrace. When the parties upon whom a man leans are proper persons to be intimate with, he can make them his guides and masters.\"",
+          "你得到的是信近于义这一扇门——约近于义，言才可复；恭近于礼，才远耻辱。请停在这可核的铰链上。勿把本篇扩成信专论。",
+        ],
+        bodyEn: [
+          "In [The Analects · Hsio R. 1.13](https://www.lunyu.ai/en/analects/xue-er/xue-er-013) You Zi measures trust and respect. The source: 有子曰，信近于义，言可复也，恭近于礼，远耻辱也，因不失其亲，亦可宗也。",
+          "The guide: 有子说：信用接近义，说出的话才可以兑现；恭敬接近礼，才可以远离羞辱；所依靠的人不失为可亲近的人，也就可以以他为宗主。",
+          "Legge: The philosopher Yu said, \"When agreements are made according to what is right, what is spoken can be made good. When respect is shown according to what is proper, one keeps far from shame and disgrace. When the parties upon whom a man leans are proper persons to be intimate with, he can make them his guides and masters.\"",
+          "You get one door into 信近于义 — agreements near what is right, so that what is spoken can be made good — and respect near propriety so shame stays far. Stay on this measured hinge. Do not expand this Note into a xin essay.",
+        ],
+      },
+      {
+        headingZh: "年饥——百姓足，君孰与不足",
+        headingEn: "Scarcity — if the people have plenty",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "[论语 · 颜渊 12.9](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-009)把你带回有若对哀公之问。原文：哀公问于有若曰年饥，用不足，如之何。有若对曰，盍彻乎。曰，二，吾犹不足，如之何其彻也。对曰，百姓足，君孰与不足，百姓不足，君孰与足。",
+          "导读作：鲁哀公问有若说：遇上饥荒年成，国家用度不足，怎么办呢？有若回答说：为什么不实行十分抽一的田税呢？哀公说：抽十分之二，我尚且不够用，怎么能实行十分抽一呢？有若回答说：百姓富足了，国君怎么会不富足呢？百姓不富足，国君又怎么能富足呢？",
+          "Legge 作：1. The Duke Ai inquired of Yu Zo, saying, \"The year is one of scarcity, and the returns for expenditure are not sufficient;—what is to be done?\" 2. Yu Zo replied to him, \"Why not simply tithe the people?\" 3. \"With two tenths, said the duke, \"I find it not enough;—how could I do with that system of one tenth?\" 4. Yu Zo answered, \"If the people have plenty, their prince will not be left to want alone. If the people are in want, their prince cannot enjoy plenty alone.\"",
+          "年成饥，君犹以二为不足。有若以百姓足，君孰与不足对——百姓富足了，国君怎么会单独不足呢。你得到的是饥年下这一铰链，不是哀公列传的重写。",
+        ],
+        bodyEn: [
+          "[The Analects · Yen Yuan 12.9](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-009) returns you to You Ruo answering Duke Ai. The source: 哀公问于有若曰年饥，用不足，如之何。有若对曰，盍彻乎。曰，二，吾犹不足，如之何其彻也。对曰，百姓足，君孰与不足，百姓不足，君孰与足。",
+          "The guide: 鲁哀公问有若说：遇上饥荒年成，国家用度不足，怎么办呢？有若回答说：为什么不实行十分抽一的田税呢？哀公说：抽十分之二，我尚且不够用，怎么能实行十分抽一呢？有若回答说：百姓富足了，国君怎么会不富足呢？百姓不富足，国君又怎么能富足呢？",
+          "Legge: 1. The Duke Ai inquired of Yu Zo, saying, \"The year is one of scarcity, and the returns for expenditure are not sufficient;—what is to be done?\" 2. Yu Zo replied to him, \"Why not simply tithe the people?\" 3. \"With two tenths, said the duke, \"I find it not enough;—how could I do with that system of one tenth?\" 4. Yu Zo answered, \"If the people have plenty, their prince will not be left to want alone. If the people are in want, their prince cannot enjoy plenty alone.\"",
+          "The year is scarce; the duke finds even two tenths not enough. You Ruo answers with 百姓足，君孰与不足 — if the people have plenty, their prince will not be left to want alone. You are given that hinge under scarcity, not a Duke Ai biography rewrite.",
+        ],
+      },
+      {
+        headingZh: "四门合起来看",
+        headingEn: "What the four doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：先立本，孝弟被点为仁开始站立之处（1.2）；和为贵，却须以礼节之（1.12）；信近于义，言可复（1.13）；有若对年饥，不弃百姓之足（12.9）。这一篇深读这几扇门，不复述索引里「在《学而》中论孝弟、务本与礼之和」的编辑导语全文。",
+          "这也不是曾子 Notes 的重写（他处若遇「吾友」最多轻点同门，这里不作主门），不是子游 Note 的重写（子游 / Tsze-yu ≠ 有子 / Yu Zo），不是孝论、礼论或仁论 Note 的重写。假友——把后来传述里「貌似孔子」「继统之争」写成主门，或堆 Youzi / 有若关键词——不是本篇的工作。",
+          "以下是你自己的反思，不是孔子的话：你也许在本尚未立时，就去追枝叶。《论语》可以把有子的声音放在《学而》开篇，仍问和是否被礼托住、言是否可复、百姓是否足。这几扇门里更硬的边，是先立本——以及百姓不足时，君不能独享其足。",
+        ],
+        bodyEn: [
+          "Put them together and you have: roots before branches, where filial-fraternal conduct is named as where ren begins to stand (1.2); ritual ease prized yet held by form (1.12); trust near rightness so speech can be made good (1.13); and You Ruo answering scarcity without abandoning the people (12.9). The Note deepens those doors; it does not retell the index line that already calls him a disciple whose sayings frame filial conduct, roots, and ritual harmony.",
+          "This is also not a rewrite of the Zeng Zi Notes (a soft peer light at most if you later meet「吾友」elsewhere — stay off that as a main door here), not a rewrite of the Zi You Note (子游 / Tsze-yu ≠ 有子 / Yu Zo), and not a rewrite of the filial, li-ritual, or ren Notes. False friends — inventing later tradition stories about resemblance to Confucius or succession debates as main doors, or stacking keywords around Youzi / Yu Ruo — are not this Note's work.",
+          "As your own reflection — not as Confucius's words — you may chase branches while the root is still unset. The Analects can place You Zi's voice at the opening of Xue Er and still ask whether ease is held by form, whether speech can be made good, and whether the people are left with plenty. The harder edge in these doors is roots before branches — and a ruler who cannot enjoy plenty alone when the people are in want.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的有子是谁？",
+        questionEn: "Who was You Zi in the Analects?",
+        answerZh: "他是孔子弟子，名有子、有若（Legge：Yu, Yu Zo）。活页可见他在《学而》论孝弟与务本（1.2）、礼之用和为贵（1.12）、信近于义（1.13），以及在《颜渊》对哀公问年饥（12.9）。他不是子游（Legge：Tsze-yu）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "He is a disciple of Confucius, named 有子 and 有若 (You Ruo; Legge: Yu, Yu Zo). Live passages show his opening sayings in Xue Er on filial-fraternal conduct and roots (1.2), ritual ease held by form (1.12), and trust near rightness (1.13), and his answer to Duke Ai on scarcity (12.9). He is not Zi You (子游; Legge: Tsze-yu). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "1.2 的「君子务本」是什么意思？",
+        questionEn: "What does 君子务本 mean in 1.2?",
+        answerZh: "有子曰：君子务本，本立，而道生。Legge：\"The superior man bends his attention to what is radical. That being established, all practical courses naturally grow up.\" 本篇把它读作先立本、再谈枝叶；不围着其为仁之本与改写仁论 Note。",
+        answerEn: "You Zi says the superior man bends attention to what is radical — 君子务本，本立，而道生. Legge: \"The superior man bends his attention to what is radical. That being established, all practical courses naturally grow up.\" This Note reads that as roots before branches; it does not rewrite the ren Note around 其为仁之本与.",
+      },
+      {
+        questionZh: "为什么「和为贵」不是悬空的和谐？",
+        questionEn: "Why is 和为贵 not free-floating harmony?",
+        answerZh: "1.12 珍视行礼中的和易（和），然而知和而和、不以礼节之，亦不可行。请开这一门；勿把本篇扩成礼论全文。",
+        answerEn: "In 1.12 ease (和) is prized in practising the rules of propriety, yet if one manifests that ease without regulating it by 礼, that likewise is not to be done. Open the door; do not expand this Note into the full li-ritual essay.",
+      },
+      {
+        questionZh: "1.13 的边在哪里？",
+        questionEn: "What is the edge in 1.13?",
+        answerZh: "信近于义，言可复也——约近于义，说出的话才可以兑现；恭近于礼，才远耻辱。有节度的信与言，不是信专论。",
+        answerEn: "信近于义，言可复也 — when agreements are near what is right, what is spoken can be made good; respect near propriety keeps shame far. Measured speech and trust, not a xin monograph.",
+      },
+      {
+        questionZh: "12.9 关于年饥显出什么？",
+        questionEn: "What does 12.9 show about scarcity?",
+        answerZh: "哀公问年饥、用不足如之何。有若对以彻，再对以百姓足，君孰与不足。百姓富足了，国君不会单独不足。请停在这一铰链；勿改写哀公列传。",
+        answerEn: "Duke Ai asks what to do in a year of scarcity when returns are not sufficient. You Ruo answers with the tithe and then with 百姓足，君孰与不足. If the people have plenty, their prince will not be left to want alone. Stay on that hinge; do not rewrite a Duke Ai biography.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「有子」索引",
+        headingEn: "After FAQ — open the You Zi index",
+        bodyZh: [
+          "当你想把谈到他的章句放在同一页，请打开[有子](https://www.lunyu.ai/zh-Hans/index/you-zi)。索引标出在《学而》中论孝弟、务本与礼之和的弟子并选篇；这一篇跟着先立本、和须有节、信近于义、百姓足走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name him gathered on one screen, open [You Zi](https://www.lunyu.ai/en/index/you-zi). The index marks a disciple whose sayings frame filial conduct, roots, and ritual harmony and selects doors; this Note followed roots before branches, ease held by form, trust near rightness, and plenty for the people under scarcity. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "zi-you-in-the-analects",
     titleZh: "《论语》里的子游：学问落到小城，仍要听见弦歌",
     titleEn: "Who Was Zi You in the Analects? Learning That Still Sounds in a Small Town",
