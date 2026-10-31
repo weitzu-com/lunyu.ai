@@ -103,6 +103,158 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "meng-family-in-the-analects",
+    titleZh: "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
+    titleEn: "The Meng Family in the Analects: Asking What Filial Conduct Requires",
+    dekZh: "《论语》里的孟氏，是鲁国那一家不断追问孝要什么——以及才干是否等于仁——的大夫家族。在《论语》里他们是孟氏（孟孙；Legge：Mang-sun）：孟懿子（Legge：Mang I）问孝，听到无违；孟武伯（Legge：Mang Wu）再问，听到父母唯疾之忧；孟武伯又逼问子路——再问到冉求、公西赤——是否仁，遇到一句硬的「不知」。这一篇不是孝论 Note 的重写，不是哀公／定公 Notes 的重写，不是借 5.7 改写子路／冉有／公西华 Who Notes，也不是今天的季氏 Note。索引已经收拢这一簇；这里深读三扇章句门。",
+    dekEn: "The Meng Family in the Analects is the Lu house that keeps asking what filial conduct requires — and whether ability is the same as ren. In the Analects they appear as 孟氏 (Meng-sun; Legge: Mang-sun): Meng Yi (孟懿子; Legge: Mang I) asks about filial piety and hears 无违; Meng Wu (孟武伯; Legge: Mang Wu) asks again and hears parents’ worry over illness; Meng Wu presses once more whether Zi Lu — and then Ran You and Gongxi Hua — is ren, and meets a hard “I do not know.” This Note is not a rewrite of the filial-conduct Note, not a rewrite of the Duke Ai or Duke Ding Notes, not a retell of the Zi Lu / Ran You / Gongxi Hua Who Notes via 5.7, and not the Ji Family Note. The index already gathers the cluster; here you deepen three passage doors.",
+    descriptionZh: "《论语》里的孟氏要你追问孝所要，也问仁是否可轻易许。三扇章句门，才干不等于仁。",
+    descriptionEn: "The Meng Family in the Analects asks what filial conduct requires — three passage doors, and whether ability is the same as ren.",
+    datePublished: "2026-10-31",
+    dateModified: "2026-10-31",
+    tagsZh: ["孟氏", "孟孙", "孟懿子", "孟武伯", "无违", "父母唯其疾之忧"],
+    tagsEn: ["Meng Family", "Meng-sun", "Meng Yi", "Mang I", "Meng Wu", "Mang Wu", "孟氏", "孟孙", "孟懿子", "孟武伯", "无违"],
+    related: [
+      "/analects/wei-zheng/wei-zheng-005",
+      "/index/meng-family",
+      "/analects/wei-zheng/wei-zheng-006",
+      "/analects/gong-ye-chang/gong-ye-chang-007",
+    ],
+    cover: notesBlogImage(
+      "meng-family-in-the-analects",
+      "cover.png",
+      "A quiet ritual mark for serving parents according to propriety — not being disobedient held by form",
+      "安静的礼之记号——无违展开为以礼事亲",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "meng-family-in-the-analects",
+        "inline-1.png",
+        "A quiet care mark — parents’ worry limited to sickness",
+        "安静的疾／护之记号——父母之忧止于疾病",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "meng-family-in-the-analects",
+        "inline-2.png",
+        "A quiet withheld mark — ability named, ren not lightly granted",
+        "按下／未许之记号——才干旁仁不被轻易许",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "孟懿子问——无违，再说生事之以礼",
+        headingEn: "Meng Yi asks — 无违, then 生事之以礼",
+        bodyZh: [
+          "请你从[论语 · 为政 2.5](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-005)开始。原文：孟懿子问孝，子曰，无违。樊迟御，子吿之曰，孟孙问孝于我，我对曰，无违。樊迟曰，何谓也，子曰，生事之以礼，死葬之以礼，祭之以礼。",
+          "活页白话导读作：孟懿子问什么是孝。孔子说：不要违背礼。后来樊迟为孔子驾车，孔子告诉他说：孟孙问我孝，我回答说不要违背礼。樊迟问这是什么意思。孔子说：父母活着时，要按礼侍奉；父母去世后，要按礼安葬，按礼祭祀。",
+          "活页 Legge 作：1. Mang I asked what filial piety was. The Master said, \"It is not being disobedient.\" 2. Soon after, as Fan Ch'ih was driving him, the Master told him, saying, \"Mang-sun asked me what filial piety was, and I answered him,—'not being disobedient.'\" 3. Fan Ch'ih said, \"What did you mean?\" The Master replied, \"That parents, when alive, be served according to propriety; that, when dead, they should be buried according to propriety; and that they should be sacrificed to according to propriety.\"",
+          "请你仔细看铰链落在哪里。孟懿子问什么是孝；夫子答无违——不要违背。等到樊迟追问何谓，才展开为生事之以礼，死葬之以礼，祭之以礼——生事、死葬、祭祀都按礼。你得到的是一扇孟氏具名的孝问门，孝的边界被礼托住；不是孟氏列传小说，也不是孝论 Note 的重写。请开这一扇主门；勿扩成那篇专论。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Wei Chang 2.5](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-005). The source: 孟懿子问孝，子曰，无违。樊迟御，子吿之曰，孟孙问孝于我，我对曰，无违。樊迟曰，何谓也，子曰，生事之以礼，死葬之以礼，祭之以礼。",
+          "The modern guide on that page: 孟懿子问什么是孝。孔子说：不要违背礼。后来樊迟为孔子驾车，孔子告诉他说：孟孙问我孝，我回答说不要违背礼。樊迟问这是什么意思。孔子说：父母活着时，要按礼侍奉；父母去世后，要按礼安葬，按礼祭祀。",
+          "Legge on the same page: 1. Mang I asked what filial piety was. The Master said, \"It is not being disobedient.\" 2. Soon after, as Fan Ch'ih was driving him, the Master told him, saying, \"Mang-sun asked me what filial piety was, and I answered him,—'not being disobedient.'\" 3. Fan Ch'ih said, \"What did you mean?\" The Master replied, \"That parents, when alive, be served according to propriety; that, when dead, they should be buried according to propriety; and that they should be sacrificed to according to propriety.\"",
+          "Take the hinge carefully. Meng Yi (孟懿子) asks what filial piety is; the Master answers 无违 — not being disobedient. Only when Fan Ch'ih asks what that means does the answer open into 生事之以礼，死葬之以礼，祭之以礼 — serve, bury, and sacrifice according to propriety. You are given a Meng-named door into filial clarity held by ritual form, not a Meng biography novel, and not a rewrite of the filial-conduct Note. Open this lead door; do not expand it into that essay.",
+        ],
+      },
+      {
+        headingZh: "孟武伯问——父母唯其疾之忧",
+        headingEn: "Meng Wu asks — parents’ worry over illness",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 为政 2.6](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-006)。原文：孟武伯问孝，子曰，父母唯其疾之忧。",
+          "导读作：孟武伯问什么是孝。孔子说：做子女的，最该让父母只为自己的疾病担忧，而不为其他过失担忧。",
+          "Legge 作：Mang Wu asked what filial piety was. The Master said, \"Parents are anxious lest their children should be sick.\"",
+          "请只读这一边。孟武伯再问同一家族之问——什么是孝——听到父母唯其疾之忧：父母所忧，唯在其疾。活页导读把铰链再推一步：让父母只为自己的疾病担忧，而不为其他过失担忧。本篇只开「有节度的疾忧」这一扇孟氏门，不复述孝论 Note。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Wei Chang 2.6](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-006). The source: 孟武伯问孝，子曰，父母唯其疾之忧。",
+          "The guide: 孟武伯问什么是孝。孔子说：做子女的，最该让父母只为自己的疾病担忧，而不为其他过失担忧。",
+          "Legge: Mang Wu asked what filial piety was. The Master said, \"Parents are anxious lest their children should be sick.\"",
+          "Read the edge only. Meng Wu (孟武伯) asks the same family question — what filial piety is — and hears 父母唯其疾之忧: parents are anxious lest their children should be sick. The guide on that page presses the hinge further: let parents worry only over illness, not over other faults. This Note opens one Meng door into that measured worry. It does not retell the filial-conduct Note.",
+        ],
+      },
+      {
+        headingZh: "孟武伯逼问仁——才干不等于仁",
+        headingEn: "Meng Wu presses ren — ability is not the same as ren",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "在[论语 · 公冶长 5.7](https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007)里，孟武伯又逼问一题。原文：孟武伯问子路仁乎。子曰，不知也。又问。子曰，由也，千乘之国，可使治其赋也，不知其仁也。求也何如。子曰，求也，千室之邑，百乘之家，可使为之宰也，不知其仁也。赤也何如。子曰，赤也，束带立于朝，可使与宾客言也，不知其仁也。",
+          "导读作：孟武伯问：子路做到仁了吗？孔子说：不知道。孟武伯又问。孔子说：仲由嘛，一个拥有千辆兵车的大国，可以让他去管理军政，至于他是不是仁，我就不知道了。孟武伯问：冉求怎么样？孔子说：冉求嘛，一个千户人家的大邑、拥有百辆兵车的大夫封地，可以让他去做总管，至于他是不是仁，我就不知道了。孟武伯又问：公西赤怎么样？孔子说：公西赤嘛，让他穿戴整齐，束好衣带，站在朝廷上，可以让他去接待宾客办理交涉，至于他是不是仁，我就不知道了。",
+          "Legge 作：1. Mang Wu asked about Tsze-lu, whether he was perfectly virtuous. The Master said, \"I do not know.\" 2. He asked again, when the Master replied, \"In a kingdom of a thousand chariots, Yu might be employed to manage the military levies, but I do not know whether he be perfectly virtuous.\" 3. \"And what do you say of Ch'iu?\" The Master replied, \"In a city of a thousand families, or a clan of a hundred chariots, Ch'iu might be employed as governor, but I do not know whether he is perfectly virtuous.\" 4. \"What do you say of Ch'ih?\" The Master replied, \"With his sash girt and standing in a court, Ch'ih might be employed to converse with the visitors and guests, but I do not know whether he is perfectly virtuous.\"",
+          "你得到的是「仁被按下」这一扇门。孟武伯问子路仁乎；夫子先说不知，再许以才干——治赋、为宰、与宾客言——仍答不知其仁也。请停在孟氏发问者这一铰链上：才干被点名，仁却不轻易许。勿借这一门改写子路、冉有或公西华 Who Notes。",
+        ],
+        bodyEn: [
+          "In [The Analects · Kung-ye Ch'ang 5.7](https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-007) Meng Wu presses another question. The source: 孟武伯问子路仁乎。子曰，不知也。又问。子曰，由也，千乘之国，可使治其赋也，不知其仁也。求也何如。子曰，求也，千室之邑，百乘之家，可使为之宰也，不知其仁也。赤也何如。子曰，赤也，束带立于朝，可使与宾客言也，不知其仁也。",
+          "The guide: 孟武伯问：子路做到仁了吗？孔子说：不知道。孟武伯又问。孔子说：仲由嘛，一个拥有千辆兵车的大国，可以让他去管理军政，至于他是不是仁，我就不知道了。孟武伯问：冉求怎么样？孔子说：冉求嘛，一个千户人家的大邑、拥有百辆兵车的大夫封地，可以让他去做总管，至于他是不是仁，我就不知道了。孟武伯又问：公西赤怎么样？孔子说：公西赤嘛，让他穿戴整齐，束好衣带，站在朝廷上，可以让他去接待宾客办理交涉，至于他是不是仁，我就不知道了。",
+          "Legge: 1. Mang Wu asked about Tsze-lu, whether he was perfectly virtuous. The Master said, \"I do not know.\" 2. He asked again, when the Master replied, \"In a kingdom of a thousand chariots, Yu might be employed to manage the military levies, but I do not know whether he be perfectly virtuous.\" 3. \"And what do you say of Ch'iu?\" The Master replied, \"In a city of a thousand families, or a clan of a hundred chariots, Ch'iu might be employed as governor, but I do not know whether he is perfectly virtuous.\" 4. \"What do you say of Ch'ih?\" The Master replied, \"With his sash girt and standing in a court, Ch'ih might be employed to converse with the visitors and guests, but I do not know whether he is perfectly virtuous.\"",
+          "You get one door into ren withheld. Meng Wu asks whether Zi Lu is ren; the Master first says he does not know, then grants ability — military levies, governorship, guest converse — and still answers 不知其仁也. Stay on the Meng asker’s hinge: ability is named, ren is not lightly granted. Do not rewrite the Zi Lu, Ran You, or Gongxi Hua Who Notes through this door.",
+        ],
+      },
+      {
+        headingZh: "三门合起来看",
+        headingEn: "What the three doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：孟懿子闻无违，展开为生事、死葬、祭祀之以礼（2.5）；孟武伯闻父母之忧止于疾（2.6）；孟武伯再逼问可使之才是否即仁，遇到不知其仁也（5.7）。这一篇深读这几扇门，不复述索引里「鲁国大夫家族，常见于孝、礼和政治问答」的编辑导语全文。",
+          "这也不是孝论 Note 的重写（2.5、2.6 在此是孟氏门，不是孝专论），不是哀公／定公 Notes 的重写，不是借 5.7 改写子路／冉有／公西华 Who Notes，也不是今天的季氏 Note。假友——写成「鲁三桓」总览、堆 Meng Yi／Mang I／孟武伯关键词、或把 5.7 扩成弟子列传——不是本篇的工作。",
+          "以下是你自己的反思，不是孔子的话：你也许在才干已经清楚时，仍想要一句软的「是」。《论语》可以把孟氏放在孝问上，仍把无违打开成礼之形式；可以点出父母唯疾之忧，而不许下一篇更长的孝论；也可以让孟武伯三问仁，仍答不知。这几扇门里更硬的边，是孝的边界被礼托住——以及仁被过早声称时，一句硬的「不知」。",
+        ],
+        bodyEn: [
+          "Put them together and you have: Meng Yi hearing 无违 opened into serving, burying, and sacrificing according to propriety (2.5); Meng Wu hearing parents’ worry limited to illness (2.6); and Meng Wu again pressing whether capable ministers are ren, and meeting 不知其仁也 (5.7). The Note deepens those doors; it does not retell the index line that already calls the house a Lu aristocratic family appearing in questions on filial conduct, ritual, and politics.",
+          "This is also not a rewrite of the filial-conduct Note (2.5 and 2.6 are Meng doors here, not a filial essay), not a rewrite of the Duke Ai or Duke Ding Notes, not a rewrite of the Zi Lu / Ran You / Gongxi Hua Who Notes via 5.7, and not today’s Ji Family Note. False friends — inventing a three-houses-of-Lu survey, stacking keywords around Meng Yi / Mang I / Meng Wu / Mang Wu, or turning 5.7 into disciple biographies — are not this Note’s work.",
+          "As your own reflection — not as Confucius’s words — you may want a soft yes when ability is already clear. The Analects can place the Meng house at the filial question and still open 无违 into ritual form; it can name parents’ worry over illness without promising a longer filial treatise; and it can let Meng Wu press ren three times and still answer that he does not know. The harder edge in these doors is filial clarity held by propriety — and a hard “I do not know” when ren is claimed too soon.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的孟氏是谁？",
+        questionEn: "Who is the Meng Family in the Analects?",
+        answerZh: "他们是鲁国大夫家族（孟氏；孟孙；Legge：Mang-sun）。活页可见孟懿子（Legge：Mang I）问孝（2.5）、孟武伯（Legge：Mang Wu）再问（2.6），以及孟武伯逼问子路——再问到冉求、公西赤——是否仁（5.7）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "They are a Lu aristocratic house (孟氏; Meng-sun; Legge: Mang-sun). Live passages show Meng Yi (孟懿子; Mang I) asking about filial piety (2.5), Meng Wu (孟武伯; Mang Wu) asking again (2.6), and Meng Wu pressing whether Zi Lu — then Ran You and Gongxi Hua — is ren (5.7). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "2.5 的「无违」是什么意思？",
+        questionEn: "What does 无违 mean in 2.5?",
+        answerZh: "孟懿子问什么是孝；夫子答无违——Legge：\"It is not being disobedient.\" 樊迟问何谓，才展开为生事、死葬、祭祀之以礼。本篇把它读作孝的边界被礼托住；不改写孝论 Note。",
+        answerEn: "Meng Yi asks what filial piety is; the Master answers 无违 — Legge: \"It is not being disobedient.\" When Fan Ch'ih asks what that means, the answer opens into serving, burying, and sacrificing according to propriety. This Note reads that as filial clarity held by ritual form; it does not rewrite the filial-conduct Note.",
+      },
+      {
+        questionZh: "2.6 的边在哪里？",
+        questionEn: "What is the edge in 2.6?",
+        answerZh: "父母唯其疾之忧——Legge：\"Parents are anxious lest their children should be sick.\" 活页导读再推一步：让父母只为自己的疾病担忧，而不为其他过失担忧。一扇有节度的疾忧之门，不是孝专论。",
+        answerEn: "父母唯其疾之忧 — Legge: \"Parents are anxious lest their children should be sick.\" The guide on that page adds: let parents worry only over illness, not over other faults. One Meng door into measured worry; not a filial monograph.",
+      },
+      {
+        questionZh: "为什么 5.7 不轻易许仁？",
+        questionEn: "Why does 5.7 withhold ren?",
+        answerZh: "孟武伯问子路仁乎；夫子说不知，再点出由、求、赤的可使之才，仍答不知其仁也。才干不被当成仁本身。请停在这一铰链；勿改写子路、冉有或公西华 Who Notes。",
+        answerEn: "Meng Wu asks whether Zi Lu is ren; the Master says he does not know, then names real ability for Yu, Ch'iu, and Ch'ih, and still answers 不知其仁也. Ability is not treated as the same as ren. Stay on that hinge; do not retell the Zi Lu, Ran You, or Gongxi Hua Who Notes.",
+      },
+      {
+        questionZh: "这和季氏 Note 是同一篇吗？",
+        questionEn: "Is this the same as the Ji Family Note?",
+        answerZh: "不是。孟氏索引与季氏索引是相邻的鲁国大夫家族；本篇只打开孟氏索引上活着的三扇门。它不是「三桓」总览，也不是今天的季氏 Note。",
+        answerEn: "No. The Meng Family index and the Ji Family index are neighboring Lu houses; this Note only opens the three Meng doors on the live Meng Family index. It is not a three-houses survey and not today’s Ji Family Note.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「孟氏」索引",
+        headingEn: "After FAQ — open the Meng Family index",
+        bodyZh: [
+          "当你想把谈到这一家的章句放在同一页，请打开[孟氏](https://www.lunyu.ai/zh-Hans/index/meng-family)。索引标出鲁国大夫家族、常见于孝、礼和政治问答并选篇；这一篇跟着孟懿子的无违、孟武伯的父母唯疾之忧、以及孟武伯再问仁而被按下走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name this house gathered on one screen, open [Meng Family](https://www.lunyu.ai/en/index/meng-family). The index marks a Lu aristocratic family appearing in questions on filial conduct, ritual, and politics and selects doors; this Note followed Meng Yi on 无违, Meng Wu on parents’ worry over illness, and Meng Wu again on ren withheld. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "you-zi-in-the-analects",
     titleZh: "《论语》里的有子：先立本，再谈枝叶",
     titleEn: "Who Was You Zi in the Analects? Roots Before Branches",

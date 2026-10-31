@@ -749,6 +749,18 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "meng-family-in-the-analects",
+    titleZh: "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
+    titleEn: "The Meng Family in the Analects: Asking What Filial Conduct Requires",
+    passages: [
+      "wei-zheng/wei-zheng-005",
+      "wei-zheng/wei-zheng-006",
+      "gong-ye-chang/gong-ye-chang-007",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "you-zi-in-the-analects",
     titleZh: "《论语》里的有子：先立本，再谈枝叶",
     titleEn: "Who Was You Zi in the Analects? Roots Before Branches",
@@ -936,6 +948,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "The Meng Family in the Analects: Asking What Filial Conduct Requires",
+  "2026-10-31",
   "Who Was You Zi in the Analects? Roots Before Branches",
   "2026-10-30",
   "Who Was Zi You in the Analects? Learning That Still Sounds in a Small Town",
@@ -969,6 +983,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
+  "2026-10-31",
   "《论语》里的有子：先立本，再谈枝叶",
   "2026-10-30",
   "《论语》里的子游：学问落到小城，仍要听见弦歌",
@@ -2274,6 +2290,317 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const mengFamilyCover = "/images/blogs/meng-family-in-the-analects/cover.png";
+const mengFamilyInline1 = "/images/blogs/meng-family-in-the-analects/inline-1.png";
+const mengFamilyInline2 = "/images/blogs/meng-family-in-the-analects/inline-2.png";
+const mengFamilyCoverEn =
+  "A quiet ritual mark for serving parents according to propriety — not being disobedient held by form";
+const mengFamilyCoverZh = "安静的礼之记号——无违展开为以礼事亲";
+const mengFamilyInline1En = "A quiet care mark — parents\u2019 worry limited to sickness";
+const mengFamilyInline1Zh = "安静的疾／护之记号——父母之忧止于疾病";
+const mengFamilyInline2En = "A quiet withheld mark — ability named, ren not lightly granted";
+const mengFamilyInline2Zh = "按下／未许之记号——才干旁仁不被轻易许";
+const mengFamilyAnchors = [
+  ["论语 · 为政 2.5", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-005"],
+  ["The Analects · Wei Chang 2.5", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-005"],
+  ["论语 · 为政 2.6", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-006"],
+  ["The Analects · Wei Chang 2.6", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-006"],
+  ["论语 · 公冶长 5.7", "https://www.lunyu.ai/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007"],
+  ["The Analects · Kung-ye Ch'ang 5.7", "https://www.lunyu.ai/en/analects/gong-ye-chang/gong-ye-chang-007"],
+  ["孟氏", "https://www.lunyu.ai/zh-Hans/index/meng-family"],
+  ["Meng Family", "https://www.lunyu.ai/en/index/meng-family"],
+];
+const mengFamilyForbidden = [
+  "/blogs/filial-conduct-ritual-and-care",
+  "/blogs/duke-ai-of-lu-in-the-analects",
+  "/blogs/duke-ding-of-lu-in-the-analects",
+  "/blogs/zi-lu-in-the-analects",
+  "/blogs/ran-you-in-the-analects",
+  "/blogs/gongxi-hua-in-the-analects",
+  "/blogs/ji-family-in-the-analects",
+  "/index/ji-family",
+];
+{
+  const start = postSource.indexOf('slug: "meng-family-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing meng-family-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = mengFamilyAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `meng-family-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    mengFamilyAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`meng-family-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `meng-family-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 6) {
+      fail(
+        `meng-family-in-the-analects: expected three linked passages per language (6 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/meng-family"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `meng-family-in-the-analects: Meng Family index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [...mengFamilyForbidden, "pending Gemini", "IMAGE SLOT", "*"]) {
+      if (block.includes(forbidden)) {
+        fail(`meng-family-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("three passage doors")) {
+      fail("meng-family-in-the-analects: dek/description must say three passage doors");
+    }
+    if (!block.includes("三扇章句门")) {
+      fail("meng-family-in-the-analects: dek/description must say 三扇章句门");
+    }
+    if (
+      block.includes("four passage doors") ||
+      block.includes("四扇章句门") ||
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("five passage doors") ||
+      block.includes("五扇章句门")
+    ) {
+      fail("meng-family-in-the-analects: passage count must stay three");
+    }
+    if (!block.includes('datePublished: "2026-10-31"') || !block.includes('dateModified: "2026-10-31"')) {
+      fail("meng-family-in-the-analects: both locales must use 2026-10-31");
+    }
+    const mengFamilyLiveEnglish = [];
+    for (const book of generated.books) {
+      for (const sentence of book.sentences) {
+        if (["wei-zheng-005", "wei-zheng-006", "gong-ye-chang-007"].includes(sentence.id)) {
+          mengFamilyLiveEnglish.push(sentence.english);
+        }
+      }
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const quotes = value.match(/"/g) || [];
+      const liveLegge = mengFamilyLiveEnglish.find((english) => value.includes(english));
+      if (liveLegge) {
+        const extra = quotes.length - (liveLegge.match(/"/g) || []).length;
+        if (extra % 2 !== 0) {
+          fail("meng-family-in-the-analects: unbalanced English quotation marks");
+        }
+      } else if (quotes.length % 2 !== 0) {
+        fail("meng-family-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("meng-family-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("meng-family-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [mengFamilyCover, mengFamilyInline1, mengFamilyInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/meng-family-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/meng-family-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-31"',
+  '"dateModified":"2026-10-31"',
+  "The Meng Family in the Analects: Asking What Filial Conduct Requires",
+  "The Meng Family in the Analects asks what filial conduct requires — three passage doors, and whether ability is the same as ren.",
+  "here you deepen three passage doors.",
+  "Meng Yi asks — 无违, then 生事之以礼",
+  "Meng Wu asks — parents\u2019 worry over illness",
+  "Meng Wu presses ren — ability is not the same as ren",
+  "What the three doors add up to",
+  "After FAQ — open the Meng Family index",
+  "Who is the Meng Family in the Analects?",
+  "What does 无违 mean in 2.5?",
+  "What is the edge in 2.6?",
+  "Why does 5.7 withhold ren?",
+  "Is this the same as the Ji Family Note?",
+  "It is not being disobedient",
+  "Parents are anxious lest their children should be sick",
+  "I do not know whether he is perfectly virtuous",
+  ">The Analects · Wei Chang 2.5</a>",
+  ">The Analects · Wei Chang 2.6</a>",
+  ">The Analects · Kung-ye Ch&#x27;ang 5.7</a>",
+  ">Meng Family</a>",
+  'href="/en/analects/wei-zheng/wei-zheng-005"',
+  'href="/en/analects/wei-zheng/wei-zheng-006"',
+  'href="/en/analects/gong-ye-chang/gong-ye-chang-007"',
+  'href="/en/index/meng-family"',
+  mengFamilyCover,
+  mengFamilyInline1,
+  mengFamilyInline2,
+  mengFamilyCoverEn,
+  mengFamilyInline1En,
+  mengFamilyInline2En,
+  `property="og:image" content="${siteUrl}${mengFamilyCover}"`,
+  `property="og:image:alt" content="${mengFamilyCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${mengFamilyCover}"`,
+  `name="twitter:image:alt" content="${mengFamilyCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/meng-family-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/meng-family-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-10-31"',
+  '"dateModified":"2026-10-31"',
+  "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
+  "《论语》里的孟氏要你追问孝所要，也问仁是否可轻易许。三扇章句门，才干不等于仁。",
+  "这里深读三扇章句门。",
+  "孟懿子问——无违，再说生事之以礼",
+  "孟武伯问——父母唯其疾之忧",
+  "孟武伯逼问仁——才干不等于仁",
+  "三门合起来看",
+  "FAQ 之后——接着打开「孟氏」索引",
+  "《论语》里的孟氏是谁？",
+  "2.5 的「无违」是什么意思？",
+  "2.6 的边在哪里？",
+  "为什么 5.7 不轻易许仁？",
+  "这和季氏 Note 是同一篇吗？",
+  "生事之以礼，死葬之以礼，祭之以礼",
+  "父母唯其疾之忧",
+  "不知其仁也",
+  ">论语 · 为政 2.5</a>",
+  ">论语 · 为政 2.6</a>",
+  ">论语 · 公冶长 5.7</a>",
+  ">孟氏</a>",
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-005"',
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-006"',
+  'href="/zh-Hans/analects/gong-ye-chang/gong-ye-chang-007"',
+  'href="/zh-Hans/index/meng-family"',
+  mengFamilyCover,
+  mengFamilyInline1,
+  mengFamilyInline2,
+  mengFamilyCoverZh,
+  mengFamilyInline1Zh,
+  mengFamilyInline2Zh,
+  `property="og:image" content="${siteUrl}${mengFamilyCover}"`,
+  `property="og:image:alt" content="${mengFamilyCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${mengFamilyCover}"`,
+  `name="twitter:image:alt" content="${mengFamilyCoverZh}"`,
+]);
+{
+  const zhMengFile = htmlPath("/zh-Hans/blogs/meng-family-in-the-analects");
+  if (exists(zhMengFile)) {
+    const zhMengHtml = read(zhMengFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhMengHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/meng-family-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhMengHtml.includes(mengFamilyCoverEn)) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhMengHtml.includes(mengFamilyInline1En) || zhMengHtml.includes(mengFamilyInline2En)) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhMengHtml, />The Analects · Wei Chang 2\.5<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: English 2.5 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhMengHtml, />Meng Family<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhMengHtml, />孟氏<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: 孟氏 body link should appear once");
+    }
+    if (countRegex(zhMengHtml, />论语 · 为政 2\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: 为政 2.5 body link should appear once");
+    }
+    if (countRegex(zhMengHtml, />论语 · 为政 2\.6<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: 为政 2.6 body link should appear once");
+    }
+    if (countRegex(zhMengHtml, />论语 · 公冶长 5\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: 公冶长 5.7 body link should appear once");
+    }
+    assertNoteTitleStrategy(zhMengHtml, "/zh-Hans/blogs/meng-family-in-the-analects", "《论语》里的孟氏：问孝所要，也问仁是否可轻易许");
+    assertReadableRelatedChips(zhMengHtml, "/zh-Hans/blogs/meng-family-in-the-analects");
+    if (!zhMengHtml.includes(">论语 · 为政 2.5</span>")) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhMengHtml.includes(">孟氏</span>")) {
+      fail("/zh-Hans/blogs/meng-family-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of mengFamilyForbidden) {
+      if (zhMengHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/meng-family-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enMengFile = htmlPath("/en/blogs/meng-family-in-the-analects");
+  if (exists(enMengFile)) {
+    const enMengHtml = read(enMengFile);
+    if (enMengHtml.includes(mengFamilyCoverZh)) {
+      fail("/en/blogs/meng-family-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enMengHtml.includes(mengFamilyInline1Zh) || enMengHtml.includes(mengFamilyInline2Zh)) {
+      fail("/en/blogs/meng-family-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enMengHtml, />Meng Family<\/a>/g) !== 1) {
+      fail("/en/blogs/meng-family-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enMengHtml, />The Analects · Wei Chang 2\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/meng-family-in-the-analects: Wei Chang 2.5 body link should appear once");
+    }
+    if (countRegex(enMengHtml, />The Analects · Wei Chang 2\.6<\/a>/g) !== 1) {
+      fail("/en/blogs/meng-family-in-the-analects: Wei Chang 2.6 body link should appear once");
+    }
+    if (countRegex(enMengHtml, />The Analects · Kung-ye Ch&#x27;ang 5\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/meng-family-in-the-analects: Kung-ye Ch'ang 5.7 body link should appear once");
+    }
+    if (countRegex(enMengHtml, />孟氏<\/a>/g) !== 0) {
+      fail("/en/blogs/meng-family-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enMengHtml, />论语 · 为政 2\.5<\/a>/g) !== 0) {
+      fail("/en/blogs/meng-family-in-the-analects: Chinese 2.5 body link should not appear on en");
+    }
+    if (countRegex(enMengHtml, /href="\/en\/index\/meng-family"/g) !== 1) {
+      fail("/en/blogs/meng-family-in-the-analects: Meng Family index href should appear once");
+    }
+    assertNoteTitleStrategy(enMengHtml, "/en/blogs/meng-family-in-the-analects", "The Meng Family in the Analects: Asking What Filial Conduct Requires");
+    assertReadableRelatedChips(enMengHtml, "/en/blogs/meng-family-in-the-analects");
+    if (!enMengHtml.includes(">The Analects · Wei Chang 2.5</span>")) {
+      fail("/en/blogs/meng-family-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enMengHtml.includes(">Meng Family</span>")) {
+      fail("/en/blogs/meng-family-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enMengHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enMengHtml);
+    if (!/fetchpriority="high"/i.test(enMengHtml) || !coverPreloaded) {
+      fail("/en/blogs/meng-family-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enMengHtml)) {
+      fail("/en/blogs/meng-family-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of mengFamilyForbidden) {
+      if (enMengHtml.includes(forbidden)) {
+        fail(`/en/blogs/meng-family-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -8016,6 +8343,16 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/meng-family`, [
+    locale === "en" ? ">Meng Family<" : ">孟氏<",
+    `href="/${locale}/blogs/meng-family-in-the-analects"`,
+    locale === "en"
+      ? "The Meng Family in the Analects: Asking What Filial Conduct Requires"
+      : "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
+    `/${locale}/analects/wei-zheng/wei-zheng-005`,
+    `/${locale}/analects/wei-zheng/wei-zheng-006`,
+    `/${locale}/analects/gong-ye-chang/gong-ye-chang-007`,
+  ]);
   checkHtml(`/${locale}/index/you-zi`, [
     locale === "en" ? ">You Zi<" : ">有子<",
     `href="/${locale}/blogs/you-zi-in-the-analects"`,
@@ -8278,6 +8615,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/meng-family-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/meng-family-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/you-zi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/you-zi-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/zi-you-in-the-analects`, "sitemap");
@@ -8349,8 +8688,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-30")) {
+    if (!lastmod.includes("2026-10-31")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const mengFamilyLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/meng-family-in-the-analects`);
+    if (!mengFamilyLastmod.includes("2026-10-31")) {
+      fail(
+        `sitemap: /${locale}/blogs/meng-family-in-the-analects lastmod should be 2026-10-31, got ${mengFamilyLastmod || "missing"}`
+      );
     }
     const youZiLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/you-zi-in-the-analects`);
     if (!youZiLastmod.includes("2026-10-30")) {
@@ -8506,7 +8851,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Fri, 30 Oct 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Sat, 31 Oct 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const mengFamilyItem = rss.split("<item>").find((part) => part.includes("/blogs/meng-family-in-the-analects"));
+  if (!mengFamilyItem) fail("rss: missing meng-family-in-the-analects");
+  else if (!mengFamilyItem.includes("31 Oct 2026")) {
+    fail("rss: meng-family-in-the-analects pubDate should be 31 Oct 2026");
+  }
   const youZiItem = rss.split("<item>").find((part) => part.includes("/blogs/you-zi-in-the-analects"));
   if (!youZiItem) fail("rss: missing you-zi-in-the-analects");
   else if (!youZiItem.includes("30 Oct 2026")) {
@@ -8551,6 +8901,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const mengFamilyEditorialLastmod = "2026-10-31";
 const youZiEditorialLastmod = "2026-10-30";
 const ziYouEditorialLastmod = "2026-10-28";
 const chenCaiEditorialLastmod = "2026-10-27";
@@ -8581,6 +8932,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${mengFamilyEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${youZiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziYouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${chenCaiEditorialLastmod}T00:00:00.000Z`, "")
