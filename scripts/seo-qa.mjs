@@ -749,6 +749,19 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "ji-family-in-the-analects",
+    titleZh: "《论语》里的季氏：僭礼与权欲相撞之处",
+    titleEn: "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
+    passages: [
+      "ba-yi/ba-yi-001",
+      "ba-yi/ba-yi-006",
+      "yan-yuan/yan-yuan-017",
+      "ji-shi/ji-shi-001",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "meng-family-in-the-analects",
     titleZh: "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
     titleEn: "The Meng Family in the Analects: Asking What Filial Conduct Requires",
@@ -948,6 +961,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
+  "2026-11-01",
   "The Meng Family in the Analects: Asking What Filial Conduct Requires",
   "2026-10-31",
   "Who Was You Zi in the Analects? Roots Before Branches",
@@ -983,6 +998,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的季氏：僭礼与权欲相撞之处",
+  "2026-11-01",
   "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
   "2026-10-31",
   "《论语》里的有子：先立本，再谈枝叶",
@@ -2290,6 +2307,336 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const jiFamilyCover = "/images/blogs/ji-family-in-the-analects/cover.png";
+const jiFamilyInline1 = "/images/blogs/ji-family-in-the-analects/inline-1.png";
+const jiFamilyInline2 = "/images/blogs/ji-family-in-the-analects/inline-2.png";
+const jiFamilyCoverEn = "A quiet courtyard mark for ritual overreach that must not be borne";
+const jiFamilyCoverZh = "安静的庭院／八佾之记号——标出不可忍的僭礼";
+const jiFamilyInline1En = "A quiet mountain mark — a sacrifice that should have been stopped";
+const jiFamilyInline1Zh = "安静的山／劝阻失败之记号——本该被止住的祭祀";
+const jiFamilyInline2En = "A quiet unfinished-campaign mark — a planned attack that draws a hard rebuke";
+const jiFamilyInline2Zh = "安静的未成之役／责备之记号——引来夫子硬答的伐国之谋";
+const jiFamilyAnchors = [
+  ["论语 · 八佾 3.1", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-001"],
+  ["The Analects · Pa Yih 3.1", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-001"],
+  ["论语 · 八佾 3.6", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-006"],
+  ["The Analects · Pa Yih 3.6", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-006"],
+  ["论语 · 颜渊 12.17", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-017"],
+  ["The Analects · Yen Yuan 12.17", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-017"],
+  ["论语 · 季氏 16.1", "https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-001"],
+  ["The Analects · Ke She 16.1", "https://www.lunyu.ai/en/analects/ji-shi/ji-shi-001"],
+  ["季氏", "https://www.lunyu.ai/zh-Hans/index/ji-family"],
+  ["Ji Family", "https://www.lunyu.ai/en/index/ji-family"],
+];
+const jiFamilyForbidden = [
+  "/blogs/li-ritual-in-the-analects",
+  "/blogs/meng-family-in-the-analects",
+  "/blogs/ran-you-in-the-analects",
+  "/blogs/zi-lu-in-the-analects",
+  "/blogs/zhong-gong-in-the-analects",
+  "/blogs/min-zijian-in-the-analects",
+  "/blogs/min-zijian",
+  "/blogs/governing-by-virtue-in-the-analects",
+  "/blogs/duke-ai-of-lu-in-the-analects",
+  "/blogs/duke-ding-of-lu-in-the-analects",
+  "/blogs/duke-jing-of-qi-in-the-analects",
+  "/blogs/state-of-lu-in-the-analects",
+];
+{
+  const start = postSource.indexOf('slug: "ji-family-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing ji-family-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = jiFamilyAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `ji-family-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    jiFamilyAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`ji-family-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `ji-family-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 8) {
+      fail(
+        `ji-family-in-the-analects: expected four linked passages per language (8 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/ji-family"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `ji-family-in-the-analects: Ji Family index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [...jiFamilyForbidden, "pending Gemini", "IMAGE SLOT", "*"]) {
+      if (block.includes(forbidden)) {
+        fail(`ji-family-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("four passage doors")) {
+      fail("ji-family-in-the-analects: dek/description must say four passage doors");
+    }
+    if (!block.includes("四扇章句门")) {
+      fail("ji-family-in-the-analects: dek/description must say 四扇章句门");
+    }
+    if (
+      block.includes("three passage doors") ||
+      block.includes("三扇章句门") ||
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("five passage doors") ||
+      block.includes("五扇章句门")
+    ) {
+      fail("ji-family-in-the-analects: passage count must stay four");
+    }
+    if (!block.includes('datePublished: "2026-11-01"') || !block.includes('dateModified: "2026-11-01"')) {
+      fail("ji-family-in-the-analects: both locales must use 2026-11-01");
+    }
+    const jiFamilyLiveEnglish = [];
+    for (const book of generated.books) {
+      for (const sentence of book.sentences) {
+        if (["ba-yi-001", "ba-yi-006", "yan-yuan-017", "ji-shi-001"].includes(sentence.id)) {
+          jiFamilyLiveEnglish.push(sentence.english);
+        }
+      }
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const quotes = value.match(/"/g) || [];
+      const liveLegge = jiFamilyLiveEnglish.find((english) => value.includes(english));
+      if (liveLegge) {
+        const extra = quotes.length - (liveLegge.match(/"/g) || []).length;
+        if (extra % 2 !== 0) {
+          fail("ji-family-in-the-analects: unbalanced English quotation marks");
+        }
+      } else if (quotes.length % 2 !== 0) {
+        fail("ji-family-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("ji-family-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("ji-family-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [jiFamilyCover, jiFamilyInline1, jiFamilyInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/ji-family-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/ji-family-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-01"',
+  '"dateModified":"2026-11-01"',
+  "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
+  "The Ji Family in the Analects is where ritual overreach meets political power — four passage doors, and what must not be borne.",
+  "here you deepen four passage doors.",
+  "Eight rows in the courtyard — 是可忍也，孰不可忍也",
+  "Sacrifice on Mount Tai — 女弗能救与",
+  "Ji Kang asks about government — 政者正也",
+  "The plan to attack Zhuanyu — 季氏将伐颛臾",
+  "What the four doors add up to",
+  "After FAQ — open the Ji Family index",
+  "Who is the Ji Family in the Analects?",
+  "What does 是可忍也，孰不可忍也 mark in 3.1?",
+  "What is the edge in 3.6?",
+  "What does 政者正也 mean in 12.17?",
+  "Is this the same as the Meng Family Note?",
+  "If he can bear to do this, what may he not bear to do?",
+  "Can you not save him from this?",
+  "To govern means to rectify.",
+  "within the screen of their own court.",
+  ">The Analects · Pa Yih 3.1</a>",
+  ">The Analects · Pa Yih 3.6</a>",
+  ">The Analects · Yen Yuan 12.17</a>",
+  ">The Analects · Ke She 16.1</a>",
+  ">Ji Family</a>",
+  'href="/en/analects/ba-yi/ba-yi-001"',
+  'href="/en/analects/ba-yi/ba-yi-006"',
+  'href="/en/analects/yan-yuan/yan-yuan-017"',
+  'href="/en/analects/ji-shi/ji-shi-001"',
+  'href="/en/index/ji-family"',
+  jiFamilyCover,
+  jiFamilyInline1,
+  jiFamilyInline2,
+  jiFamilyCoverEn,
+  jiFamilyInline1En,
+  jiFamilyInline2En,
+  `property="og:image" content="${siteUrl}${jiFamilyCover}"`,
+  `property="og:image:alt" content="${jiFamilyCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${jiFamilyCover}"`,
+  `name="twitter:image:alt" content="${jiFamilyCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/ji-family-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/ji-family-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-01"',
+  '"dateModified":"2026-11-01"',
+  "《论语》里的季氏：僭礼与权欲相撞之处",
+  "《论语》里的季氏要你看僭礼与权欲相撞之处。四扇章句门，何为不可忍。",
+  "这里深读四扇章句门。",
+  "庭中八佾——是可忍也，孰不可忍也",
+  "旅于泰山——女弗能救与",
+  "季康子问政——政者正也",
+  "将伐颛臾——季氏将伐颛臾",
+  "四门合起来看",
+  "FAQ 之后——接着打开「季氏」索引",
+  "《论语》里的季氏是谁？",
+  "3.1 的「是可忍也，孰不可忍也」标出什么？",
+  "3.6 的边在哪里？",
+  "12.17 的「政者正也」是什么意思？",
+  "这和孟氏 Note 是同一篇吗？",
+  "是可忍也，孰不可忍也",
+  "女弗能救与",
+  "政者正也",
+  "季氏将伐颛臾",
+  ">论语 · 八佾 3.1</a>",
+  ">论语 · 八佾 3.6</a>",
+  ">论语 · 颜渊 12.17</a>",
+  ">论语 · 季氏 16.1</a>",
+  ">季氏</a>",
+  'href="/zh-Hans/analects/ba-yi/ba-yi-001"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-006"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-017"',
+  'href="/zh-Hans/analects/ji-shi/ji-shi-001"',
+  'href="/zh-Hans/index/ji-family"',
+  jiFamilyCover,
+  jiFamilyInline1,
+  jiFamilyInline2,
+  jiFamilyCoverZh,
+  jiFamilyInline1Zh,
+  jiFamilyInline2Zh,
+  `property="og:image" content="${siteUrl}${jiFamilyCover}"`,
+  `property="og:image:alt" content="${jiFamilyCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${jiFamilyCover}"`,
+  `name="twitter:image:alt" content="${jiFamilyCoverZh}"`,
+]);
+{
+  const zhJiFile = htmlPath("/zh-Hans/blogs/ji-family-in-the-analects");
+  if (exists(zhJiFile)) {
+    const zhJiHtml = read(zhJiFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhJiHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/ji-family-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhJiHtml.includes(jiFamilyCoverEn)) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhJiHtml.includes(jiFamilyInline1En) || zhJiHtml.includes(jiFamilyInline2En)) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhJiHtml, />The Analects · Pa Yih 3\.1<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: English 3.1 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhJiHtml, />Ji Family<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhJiHtml, />季氏<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: 季氏 body link should appear once");
+    }
+    if (countRegex(zhJiHtml, />论语 · 八佾 3\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: 八佾 3.1 body link should appear once");
+    }
+    if (countRegex(zhJiHtml, />论语 · 八佾 3\.6<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: 八佾 3.6 body link should appear once");
+    }
+    if (countRegex(zhJiHtml, />论语 · 颜渊 12\.17<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: 颜渊 12.17 body link should appear once");
+    }
+    if (countRegex(zhJiHtml, />论语 · 季氏 16\.1<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: 季氏 16.1 body link should appear once");
+    }
+    assertNoteTitleStrategy(zhJiHtml, "/zh-Hans/blogs/ji-family-in-the-analects", "《论语》里的季氏：僭礼与权欲相撞之处");
+    assertReadableRelatedChips(zhJiHtml, "/zh-Hans/blogs/ji-family-in-the-analects");
+    if (!zhJiHtml.includes(">论语 · 八佾 3.1</span>")) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhJiHtml.includes(">季氏</span>")) {
+      fail("/zh-Hans/blogs/ji-family-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of jiFamilyForbidden) {
+      if (zhJiHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/ji-family-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enJiFile = htmlPath("/en/blogs/ji-family-in-the-analects");
+  if (exists(enJiFile)) {
+    const enJiHtml = read(enJiFile);
+    if (enJiHtml.includes(jiFamilyCoverZh)) {
+      fail("/en/blogs/ji-family-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enJiHtml.includes(jiFamilyInline1Zh) || enJiHtml.includes(jiFamilyInline2Zh)) {
+      fail("/en/blogs/ji-family-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enJiHtml, />Ji Family<\/a>/g) !== 1) {
+      fail("/en/blogs/ji-family-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enJiHtml, />The Analects · Pa Yih 3\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/ji-family-in-the-analects: Pa Yih 3.1 body link should appear once");
+    }
+    if (countRegex(enJiHtml, />The Analects · Pa Yih 3\.6<\/a>/g) !== 1) {
+      fail("/en/blogs/ji-family-in-the-analects: Pa Yih 3.6 body link should appear once");
+    }
+    if (countRegex(enJiHtml, />The Analects · Yen Yuan 12\.17<\/a>/g) !== 1) {
+      fail("/en/blogs/ji-family-in-the-analects: Yen Yuan 12.17 body link should appear once");
+    }
+    if (countRegex(enJiHtml, />The Analects · Ke She 16\.1<\/a>/g) !== 1) {
+      fail("/en/blogs/ji-family-in-the-analects: Ke She 16.1 body link should appear once");
+    }
+    if (countRegex(enJiHtml, />季氏<\/a>/g) !== 0) {
+      fail("/en/blogs/ji-family-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enJiHtml, />论语 · 八佾 3\.1<\/a>/g) !== 0) {
+      fail("/en/blogs/ji-family-in-the-analects: Chinese 3.1 body link should not appear on en");
+    }
+    if (countRegex(enJiHtml, /href="\/en\/index\/ji-family"/g) !== 1) {
+      fail("/en/blogs/ji-family-in-the-analects: Ji Family index href should appear once");
+    }
+    assertNoteTitleStrategy(enJiHtml, "/en/blogs/ji-family-in-the-analects", "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power");
+    assertReadableRelatedChips(enJiHtml, "/en/blogs/ji-family-in-the-analects");
+    if (!enJiHtml.includes(">The Analects · Pa Yih 3.1</span>")) {
+      fail("/en/blogs/ji-family-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enJiHtml.includes(">Ji Family</span>")) {
+      fail("/en/blogs/ji-family-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enJiHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enJiHtml);
+    if (!/fetchpriority="high"/i.test(enJiHtml) || !coverPreloaded) {
+      fail("/en/blogs/ji-family-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enJiHtml)) {
+      fail("/en/blogs/ji-family-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of jiFamilyForbidden) {
+      if (enJiHtml.includes(forbidden)) {
+        fail(`/en/blogs/ji-family-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -8343,6 +8690,17 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/ji-family`, [
+    locale === "en" ? ">Ji Family<" : ">季氏<",
+    `href="/${locale}/blogs/ji-family-in-the-analects"`,
+    locale === "en"
+      ? "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power"
+      : "《论语》里的季氏：僭礼与权欲相撞之处",
+    `/${locale}/analects/ba-yi/ba-yi-001`,
+    `/${locale}/analects/ba-yi/ba-yi-006`,
+    `/${locale}/analects/yan-yuan/yan-yuan-017`,
+    `/${locale}/analects/ji-shi/ji-shi-001`,
+  ]);
   checkHtml(`/${locale}/index/meng-family`, [
     locale === "en" ? ">Meng Family<" : ">孟氏<",
     `href="/${locale}/blogs/meng-family-in-the-analects"`,
@@ -8615,6 +8973,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/ji-family-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/ji-family-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/meng-family-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/meng-family-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/you-zi-in-the-analects`, "sitemap");
@@ -8688,8 +9048,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-10-31")) {
+    if (!lastmod.includes("2026-11-01")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const jiFamilyLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/ji-family-in-the-analects`);
+    if (!jiFamilyLastmod.includes("2026-11-01")) {
+      fail(
+        `sitemap: /${locale}/blogs/ji-family-in-the-analects lastmod should be 2026-11-01, got ${jiFamilyLastmod || "missing"}`
+      );
     }
     const mengFamilyLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/meng-family-in-the-analects`);
     if (!mengFamilyLastmod.includes("2026-10-31")) {
@@ -8851,7 +9217,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Sat, 31 Oct 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Sun, 01 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const jiFamilyItem = rss.split("<item>").find((part) => part.includes("/blogs/ji-family-in-the-analects"));
+  if (!jiFamilyItem) fail("rss: missing ji-family-in-the-analects");
+  else if (!jiFamilyItem.includes("01 Nov 2026")) {
+    fail("rss: ji-family-in-the-analects pubDate should be 01 Nov 2026");
+  }
   const mengFamilyItem = rss.split("<item>").find((part) => part.includes("/blogs/meng-family-in-the-analects"));
   if (!mengFamilyItem) fail("rss: missing meng-family-in-the-analects");
   else if (!mengFamilyItem.includes("31 Oct 2026")) {
@@ -8901,6 +9272,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const jiFamilyEditorialLastmod = "2026-11-01";
 const mengFamilyEditorialLastmod = "2026-10-31";
 const youZiEditorialLastmod = "2026-10-30";
 const ziYouEditorialLastmod = "2026-10-28";
@@ -8932,6 +9304,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${jiFamilyEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${mengFamilyEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${youZiEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${ziYouEditorialLastmod}T00:00:00.000Z`, "")
