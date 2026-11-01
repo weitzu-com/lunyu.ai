@@ -103,6 +103,200 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "ji-family-in-the-analects",
+    titleZh: "《论语》里的季氏：僭礼与权欲相撞之处",
+    titleEn: "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
+    dekZh: "《论语》里的季氏，是鲁国那一家僭礼与权欲不断相撞——而孔子点出何为不可忍——的权臣家族。在《论语》里他们是季氏（季孙；Legge：Chi）：庭中八佾，夫子不肯称之为可忍；旅于泰山，冉有不能救；季康子问政，听到政者正也；将伐颛臾，引出一场硬的责备。这一篇不是礼论 Note 的重写，不是孟氏 Note 或鲁君／鲁国 Notes 的重写，不是借 3.6 或 16.1 改写冉有／子路 Who Notes，也不是借 12.17 改写为政以德 Note。索引已经收拢这一簇；这里深读四扇章句门。",
+    dekEn: "The Ji Family in the Analects is the Lu house where ritual overreach and political power keep meeting — and where Confucius names what must not be borne. In the Analects they appear as 季氏 (Ji-sun; Legge: Chi): eight rows of dancers in a courtyard Confucius will not call bearable; a sacrifice on Mount Tai that Ran You cannot stop; Ji Kang asking about government and hearing that 政 means to rectify; and a plan to attack Zhuanyu that draws a hard rebuke. This Note is not a rewrite of the li-ritual Note, not a rewrite of the Meng Family Note or the Duke / State of Lu Notes, not a retell of the Ran You or Zi Lu Who Notes via 3.6 or 16.1, and not a rewrite of the governing-by-virtue Note via 12.17. The index already gathers the cluster; here you deepen four passage doors.",
+    descriptionZh: "《论语》里的季氏要你看僭礼与权欲相撞之处。四扇章句门，何为不可忍。",
+    descriptionEn: "The Ji Family in the Analects is where ritual overreach meets political power — four passage doors, and what must not be borne.",
+    datePublished: "2026-11-01",
+    dateModified: "2026-11-01",
+    tagsZh: [
+      "季氏",
+      "季孙",
+      "季康子",
+      "季桓子",
+      "八佾",
+      "旅于泰山",
+      "伐颛臾",
+      "政者正也",
+    ],
+    tagsEn: [
+      "Ji Family",
+      "ji family",
+      "Chi family",
+      "Ji Kang",
+      "Chi K'ang",
+      "Ji Huan",
+      "Ji Sun",
+      "季氏",
+      "季孙",
+      "季康子",
+      "季桓子",
+      "八佾",
+      "旅于泰山",
+      "伐颛臾",
+      "政者正也",
+    ],
+    related: [
+      "/analects/ba-yi/ba-yi-001",
+      "/index/ji-family",
+      "/analects/ba-yi/ba-yi-006",
+      "/analects/yan-yuan/yan-yuan-017",
+      "/analects/ji-shi/ji-shi-001",
+    ],
+    cover: notesBlogImage(
+      "ji-family-in-the-analects",
+      "cover.png",
+      "A quiet courtyard mark for ritual overreach that must not be borne",
+      "安静的庭院／八佾之记号——标出不可忍的僭礼",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "ji-family-in-the-analects",
+        "inline-1.png",
+        "A quiet mountain mark — a sacrifice that should have been stopped",
+        "安静的山／劝阻失败之记号——本该被止住的祭祀",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "ji-family-in-the-analects",
+        "inline-2.png",
+        "A quiet unfinished-campaign mark — a planned attack that draws a hard rebuke",
+        "安静的未成之役／责备之记号——引来夫子硬答的伐国之谋",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "庭中八佾——是可忍也，孰不可忍也",
+        headingEn: "Eight rows in the courtyard — 是可忍也，孰不可忍也",
+        bodyZh: [
+          "请你从[论语 · 八佾 3.1](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-001)开始。原文：孔子谓季氏，八佾舞于庭，是可忍也，孰不可忍也。",
+          "活页白话导读作：孔子谈到季氏时说：他用天子才能享用的八佾这套六十四人的乐舞在自家庭院里表演，这样的事他都忍心去做，还有什么事是他不忍心去做的呢？",
+          "活页 Legge 作：Confucius said of the head of the Chi family, who had eight rows of pantomimes in his area, \"If he can bear to do this, what may he not bear to do?\"",
+          "请你仔细看铰链落在哪里。夫子谈季氏（季氏；Legge：the head of the Chi family）在自家庭院用天子之八佾，并以是可忍也，孰不可忍也作答：此若可忍，孰不可忍？你得到的是一扇季氏具名的僭礼门，僭越被点名为不可忍；不是季氏列传小说，也不是礼论 Note 的重写。请开这一扇主门；勿扩成那篇专论。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Pa Yih 3.1](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-001). The source: 孔子谓季氏，八佾舞于庭，是可忍也，孰不可忍也。",
+          "The modern guide on that page: 孔子谈到季氏时说：他用天子才能享用的八佾这套六十四人的乐舞在自家庭院里表演，这样的事他都忍心去做，还有什么事是他不忍心去做的呢？",
+          "Legge on the same page: Confucius said of the head of the Chi family, who had eight rows of pantomimes in his area, \"If he can bear to do this, what may he not bear to do?\"",
+          "Take the hinge carefully. Confucius speaks of the Ji house (季氏; Legge: the head of the Chi family) staging 八佾 — eight rows proper to the Son of Heaven — in a private courtyard, and answers with 是可忍也，孰不可忍也: if this can be borne, what cannot? You are given a Ji-named door into ritual overreach named as unbearable, not a Ji biography novel, and not a rewrite of the li-ritual Note. Open this lead door; do not expand it into that essay.",
+        ],
+      },
+      {
+        headingZh: "旅于泰山——女弗能救与",
+        headingEn: "Sacrifice on Mount Tai — 女弗能救与",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 八佾 3.6](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-006)。原文：季氏旅于泰山。子谓冉有曰，女弗能救与。对曰，不能。子曰，呜呼，曾谓泰山，不如林放乎。",
+          "导读作：季氏要去祭祀泰山。孔子对冉有说：你不能劝阻他吗？冉有回答说：不能。孔子说：唉！难道说泰山之神还不如林放懂礼，会接受这种不合礼的祭祀吗？",
+          "Legge 作：The chief of the Chi family was about to sacrifice to the T'ai mountain. The Master said to Zan Yu, \"Can you not save him from this?\" He answered, \"I cannot.\" Confucius said, \"Alas! will you say that the T'ai mountain is not so discerning as Lin Fang?\"",
+          "请只读这一边。季氏将旅祭泰山；夫子问冉有能否救之，听到不能。责备落到山本身——岂谓泰山不如林放？本篇只开「未能劝阻季氏僭祭」这一扇门，不改写冉有 Who Note。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Pa Yih 3.6](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-006). The source: 季氏旅于泰山。子谓冉有曰，女弗能救与。对曰，不能。子曰，呜呼，曾谓泰山，不如林放乎。",
+          "The guide: 季氏要去祭祀泰山。孔子对冉有说：你不能劝阻他吗？冉有回答说：不能。孔子说：唉！难道说泰山之神还不如林放懂礼，会接受这种不合礼的祭祀吗？",
+          "Legge: The chief of the Chi family was about to sacrifice to the T'ai mountain. The Master said to Zan Yu, \"Can you not save him from this?\" He answered, \"I cannot.\" Confucius said, \"Alas! will you say that the T'ai mountain is not so discerning as Lin Fang?\"",
+          "Read the edge only. The Ji house is about to sacrifice on Mount Tai; the Master asks Ran You whether he can save him from it, and hears 不能. The rebuke turns on the mountain itself — will you say T'ai is less discerning than Lin Fang? This Note opens one door into Ran You's failure to restrain a Ji overreach. It does not retell the Ran You Who Note.",
+        ],
+      },
+      {
+        headingZh: "季康子问政——政者正也",
+        headingEn: "Ji Kang asks about government — 政者正也",
+        bodyZh: [
+          "在[论语 · 颜渊 12.17](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-017)里，季康子问政。原文：季康子问政于孔子。孔子对曰，政者正也，子帅以正，孰敢不正。",
+          "导读作：季康子向孔子请教怎样治理政事。孔子回答说：政的意思就是端正。您自己带头端正，谁还敢不端正呢？",
+          "Legge 作：Chi K'ang asked Confucius about government. Confucius replied, \"To govern means to rectify. If you lead on the people with correctness, who will dare not to be correct?\"",
+          "你得到的是「政即正」这一扇门。季康子（季康子；Legge：Chi K'ang）问政；答案是政者正也——政的意思就是端正——以及子帅以正，孰敢不正。请停在季氏发问者这一铰链上：权力被答以「率先端正」。勿借这一门改写为政以德 Note。",
+        ],
+        bodyEn: [
+          "In [The Analects · Yen Yuan 12.17](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-017) Ji Kang asks about government. The source: 季康子问政于孔子。孔子对曰，政者正也，子帅以正，孰敢不正。",
+          "The guide: 季康子向孔子请教怎样治理政事。孔子回答说：政的意思就是端正。您自己带头端正，谁还敢不端正呢？",
+          "Legge: Chi K'ang asked Confucius about government. Confucius replied, \"To govern means to rectify. If you lead on the people with correctness, who will dare not to be correct?\"",
+          "You get one door into governing-as-rectitude. Ji Kang (季康子; Legge: Chi K'ang) asks about government; the answer is 政者正也 — to govern means to rectify — and 子帅以正，孰敢不正. Stay on the Ji asker’s hinge: power is answered with a demand to lead in correctness. Do not rewrite the governing-by-virtue Note through this door.",
+        ],
+      },
+      {
+        headingZh: "将伐颛臾——季氏将伐颛臾",
+        headingEn: "The plan to attack Zhuanyu — 季氏将伐颛臾",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "打开[论语 · 季氏 16.1](https://www.lunyu.ai/zh-Hans/analects/ji-shi/ji-shi-001)。活页原文作：季氏将伐颛臾。冉有季路见于孔子曰，季氏将有事于颛臾。",
+          "导读作：季氏准备攻打颛臾。冉有、季路去见孔子，说：季氏将要对颛臾用兵了。",
+          "活页 Legge（该页所载更完整的英译责备）作：1. The head of the Chi family was going to attack Chwan-yu. 2. Zan Yu and Chi-lu had an interview with Confucius, and said, \"Our chief, Chi, is going to commence operations against Chwan-yu.\" 3. Confucius said, \"Ch'iu, is it not you who are in fault here? 4. \"Now, in regard to Chwan-yu, long ago, a former king appointed its ruler to preside over the sacrifices to the eastern Mang; moreover, it is in the midst of the territory of our State; and its ruler is a minister in direct connexion with the sovereign:—What has your chief to do with attacking it?\" 5. Zan Yu said, \"Our master wishes the thing; neither of us two ministers wishes it.\" 6. Confucius said, \"Ch'iu, there are the words of Chau Zan,—'When he can put forth his ability, he takes his place in the ranks of office; when he finds himself unable to do so, he retires from it. How can he be used as a guide to a blind man, who does not support him when tottering, nor raise him up when fallen?' 7. \"And further, you speak wrongly. When a tiger or rhinoceros escapes from his cage; when a tortoise or piece of jade is injured in its repository:—whose is the fault?\" 8. Zan Yu said, \"But at present, Chwan-yu is strong and near to Pi; if our chief do not now take it, it will hereafter be a sorrow to his descendants.\" 9. Confucius said. \"Ch'iu, the superior man hates that declining to say—'I want such and such a thing,' and framing explanations for the conduct. 10. \"I have heard that rulers of States and chiefs of families are not troubled lest their people should be few, but are troubled lest they should not keep their several places; that they are not troubled with fears of poverty, but are troubled with fears of a want of contented repose among the people in their several places. For when the people keep their several places, there will be no poverty; when harmony prevails, there will be no scarcity of people; and when there is such a contented repose, there will be no rebellious upsettings. 11. \"So it is.—Therefore, if remoter people are not submissive, all the influences of civil culture and virtue are to be cultivated to attract them to be so; and when they have been so attracted, they must be made contented and tranquil. 12. \"Now, here are you, Yu and Ch'iu, assisting your chief. Remoter people are not submissive, and, with your help, he cannot attract them to him. In his own territory there are divisions and downfalls, leavings and separations, and, with your help, he cannot preserve it. 13. \"And yet he is planning these hostile movements within the State.—I am afraid that the sorrow of the Chi-sun family will not be on account of Chwan-yu, but will be found within the screen of their own court.\"",
+          "请停在季氏僭越的高潮上。活页中文原文以季氏将伐颛臾起笔——这一家将攻颛臾——冉有与子路来报；该页 Legge 载有长篇责备，收束于季孙氏忧在萧墙之内。本篇只开这一扇「权欲用兵」之门，不借报信的弟子改写子路或冉有 Who Notes。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Ke She 16.1](https://www.lunyu.ai/en/analects/ji-shi/ji-shi-001). The source on that page: 季氏将伐颛臾。冉有季路见于孔子曰，季氏将有事于颛臾。",
+          "The guide: 季氏准备攻打颛臾。冉有、季路去见孔子，说：季氏将要对颛臾用兵了。",
+          "Legge on the same page (the fuller English rebuke carried there): 1. The head of the Chi family was going to attack Chwan-yu. 2. Zan Yu and Chi-lu had an interview with Confucius, and said, \"Our chief, Chi, is going to commence operations against Chwan-yu.\" 3. Confucius said, \"Ch'iu, is it not you who are in fault here? 4. \"Now, in regard to Chwan-yu, long ago, a former king appointed its ruler to preside over the sacrifices to the eastern Mang; moreover, it is in the midst of the territory of our State; and its ruler is a minister in direct connexion with the sovereign:—What has your chief to do with attacking it?\" 5. Zan Yu said, \"Our master wishes the thing; neither of us two ministers wishes it.\" 6. Confucius said, \"Ch'iu, there are the words of Chau Zan,—'When he can put forth his ability, he takes his place in the ranks of office; when he finds himself unable to do so, he retires from it. How can he be used as a guide to a blind man, who does not support him when tottering, nor raise him up when fallen?' 7. \"And further, you speak wrongly. When a tiger or rhinoceros escapes from his cage; when a tortoise or piece of jade is injured in its repository:—whose is the fault?\" 8. Zan Yu said, \"But at present, Chwan-yu is strong and near to Pi; if our chief do not now take it, it will hereafter be a sorrow to his descendants.\" 9. Confucius said. \"Ch'iu, the superior man hates that declining to say—'I want such and such a thing,' and framing explanations for the conduct. 10. \"I have heard that rulers of States and chiefs of families are not troubled lest their people should be few, but are troubled lest they should not keep their several places; that they are not troubled with fears of poverty, but are troubled with fears of a want of contented repose among the people in their several places. For when the people keep their several places, there will be no poverty; when harmony prevails, there will be no scarcity of people; and when there is such a contented repose, there will be no rebellious upsettings. 11. \"So it is.—Therefore, if remoter people are not submissive, all the influences of civil culture and virtue are to be cultivated to attract them to be so; and when they have been so attracted, they must be made contented and tranquil. 12. \"Now, here are you, Yu and Ch'iu, assisting your chief. Remoter people are not submissive, and, with your help, he cannot attract them to him. In his own territory there are divisions and downfalls, leavings and separations, and, with your help, he cannot preserve it. 13. \"And yet he is planning these hostile movements within the State.—I am afraid that the sorrow of the Chi-sun family will not be on account of Chwan-yu, but will be found within the screen of their own court.\"",
+          "Stay on the Ji overreach climax. The live Chinese source opens on 季氏将伐颛臾 — the house is about to attack Zhuanyu — and Ran You with Zi Lu report the plan; Legge on that page carries the long rebuke that ends inside the Chi-sun court’s own screen. This Note opens that political-appetite door. It does not rewrite the Zi Lu or Ran You Who Notes through the disciples who bring the news.",
+        ],
+      },
+      {
+        headingZh: "四门合起来看",
+        headingEn: "What the four doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：夫子点名季氏庭中八佾为不可忍（3.1）；冉有不能止季氏旅于泰山（3.6）；季康子闻政者正也、须帅以正（12.17）；将伐颛臾打开一场长责备，在 Legge 的收束里，所忧恐在自家庭屏之内（16.1）。这一篇深读这几扇门，不复述索引里「鲁国权臣家族，是《论语》中讨论礼制、政权与僭越的重要对象」的编辑导语全文。",
+          "这也不是礼论 Note 的重写（3.1、3.6 在此是季氏僭礼门，不是礼专论），不是孟氏 Note 或鲁君／鲁国 Notes 的重写，不是借 3.6 或 16.1 改写冉有／子路 Who Notes，也不是借 12.17 改写为政以德 Note。假友——写成「鲁三桓」总览、堆季康子／Chi K'ang／季桓子／季孙关键词、或把 16.1 扩成弟子列传——不是本篇的工作。",
+          "以下是你自己的反思，不是孔子的话：你也许想把八佾称作风格选择，把旅泰山称作地方习俗，把「政者正也」听成软的劝告，把伐颛臾只看成策略。《论语》可以把季氏放在僭礼上，仍拒绝称之为可忍；可以让冉有说不能救，仍以泰山对照林放；可以答季康子的问政以政者正也；也可以打开一场用兵之谋，仍把所惧之忧指回庭屏之内。这几扇门里更硬的边，是礼与权相撞——以及拒绝把这种相撞改称为平常。",
+        ],
+        bodyEn: [
+          "Put them together and you have: Confucius naming eight rows in the Ji courtyard as what must not be borne (3.1); Ran You unable to stop a Ji sacrifice on Mount Tai (3.6); Ji Kang hearing that government means to rectify and to lead in correctness (12.17); and the plan to attack Zhuanyu opening a long rebuke whose sorrow, in Legge’s close, is feared inside the house’s own court (16.1). The Note deepens those doors; it does not retell the index line that already calls the house a powerful Lu family central to discussions of ritual, power, and overreach.",
+          "This is also not a rewrite of the li-ritual Note (3.1 and 3.6 are Ji overreach doors here, not a li essay), not a rewrite of the Meng Family Note or the Duke / State of Lu Notes, not a rewrite of the Ran You or Zi Lu Who Notes via 3.6 or 16.1, and not a rewrite of the governing-by-virtue Note via 12.17. False friends — inventing a three-houses-of-Lu survey, stacking keywords around Ji Kang / Chi K'ang / Ji Huan / Ji Sun, or turning 16.1 into disciple biographies — are not this Note’s work.",
+          "As your own reflection — not as Confucius’s words — you may want to call the eight rows a style choice, the mountain sacrifice a local custom, the rectitude answer soft advice, and the Zhuanyu plan only strategy. The Analects can place the Ji house at ritual overreach and still refuse to call it bearable; it can let Ran You say he cannot save the sacrifice and still measure the mountain against Lin Fang; it can answer Ji Kang’s ask about government with 政者正也; and it can open a war plan and still point the feared sorrow back inside the court’s own screen. The harder edge in these doors is ritual and power colliding — and a refusal to rename that collision as normal.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的季氏是谁？",
+        questionEn: "Who is the Ji Family in the Analects?",
+        answerZh: "他们是鲁国权臣家族（季氏；季孙；Legge：Chi／Chi-sun）。活页可见夫子点名其庭中八佾（3.1）、冉有不能止的旅泰山（3.6）、季康子（Legge：Chi K'ang）问政（12.17），以及将伐颛臾（16.1）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "They are a powerful Lu house (季氏; Ji-sun; Legge: Chi / Chi-sun). Live passages show Confucius naming eight rows in their courtyard (3.1), a Ji sacrifice on Mount Tai that Ran You cannot stop (3.6), Ji Kang (季康子; Chi K'ang) asking about government (12.17), and a plan to attack Zhuanyu (16.1). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "3.1 的「是可忍也，孰不可忍也」标出什么？",
+        questionEn: "What does 是可忍也，孰不可忍也 mark in 3.1?",
+        answerZh: "夫子谈季氏在自家庭院用天子八佾，并问：此若可忍，还有什么不可忍？本篇把它读作僭礼被点名为不可忍；不改写礼论 Note。",
+        answerEn: "Confucius speaks of the Ji house staging eight rows of dancers proper to the Son of Heaven in a private courtyard, and asks: if he can bear this, what may he not bear? This Note reads that as ritual overreach named as unbearable; it does not rewrite the li-ritual Note.",
+      },
+      {
+        questionZh: "3.6 的边在哪里？",
+        questionEn: "What is the edge in 3.6?",
+        answerZh: "女弗能救与——Legge：\"Can you not save him from this?\" 冉有答不能。夫子再问泰山是否不如林放。一扇未能劝阻季氏僭祭之门，不是冉有 Who 的重写。",
+        answerEn: "女弗能救与 — Legge: \"Can you not save him from this?\" Ran You answers he cannot. The Master then asks whether T'ai mountain is less discerning than Lin Fang. One door into failed restraint of a Ji sacrifice; not a Ran You Who rewrite.",
+      },
+      {
+        questionZh: "12.17 的「政者正也」是什么意思？",
+        questionEn: "What does 政者正也 mean in 12.17?",
+        answerZh: "季康子问政；夫子答政的意思就是端正，您自己带头端正，谁还敢不端正？一扇季氏「政即正」之门，不是为政以德 Note 的重写。",
+        answerEn: "Ji Kang asks about government; Confucius answers that to govern means to rectify, and that if you lead with correctness, who will dare not to be correct? One Ji door into governing-as-rectitude; not a rewrite of the governing-by-virtue Note.",
+      },
+      {
+        questionZh: "这和孟氏 Note 是同一篇吗？",
+        questionEn: "Is this the same as the Meng Family Note?",
+        answerZh: "不是。季氏索引与孟氏索引是相邻的鲁国大夫家族；本篇只打开上文四扇季氏索引上活着的门。它不是「三桓」总览，也不是孟氏 Note。",
+        answerEn: "No. The Ji Family index and the Meng Family index are neighboring Lu houses; this Note only opens the four Ji doors named above on the live Ji Family index. It is not a three-houses survey and not the Meng Family Note.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「季氏」索引",
+        headingEn: "After FAQ — open the Ji Family index",
+        bodyZh: [
+          "当你想把谈到这一家的章句放在同一页，请打开[季氏](https://www.lunyu.ai/zh-Hans/index/ji-family)。索引标出鲁国权臣家族、是《论语》中讨论礼制、政权与僭越的重要对象并选篇；这一篇跟着不可忍的八佾、冉有不能救的旅泰山、季康子所闻的政者正也、以及将伐颛臾走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name this house gathered on one screen, open [Ji Family](https://www.lunyu.ai/en/index/ji-family). The index marks a powerful Lu family central to discussions of ritual, power, and overreach and selects doors; this Note followed the eight rows that must not be borne, the Mount Tai sacrifice Ran You could not stop, Ji Kang’s hearing of 政者正也, and the plan to attack Zhuanyu. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "meng-family-in-the-analects",
     titleZh: "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
     titleEn: "The Meng Family in the Analects: Asking What Filial Conduct Requires",
