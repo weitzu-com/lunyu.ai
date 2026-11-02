@@ -103,6 +103,201 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "xia-shang-zhou-in-the-analects",
+    titleZh: "《论语》里的夏、殷、周：礼制损益的时间框架",
+    titleEn: "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
+    dekZh: "《论语》里的夏、殷、周，是礼制损益的王朝时间框架——仍可知者为何，以及夫子为何从周。在《论语》里他们是夏／殷／周（Legge：Hsia／Yin／Chau）：殷因于夏礼，周因于殷礼，所损益可知，虽百世亦可知；夏礼、殷礼吾能言之，而杞、宋不足征，文献不足故也；周监于二代，郁郁乎文哉，遂曰吾从周；颜渊问为邦，则平静地横取三代之制——行夏之时，乘殷之辂，服周之冕。这一篇不是汤文武周公 Note 的重写，不是尧舜禹 Note 的重写，不是提前写微子箕子比干 Note，也不是借 3.14 或 15.10 改写礼论／乐论 Notes。索引已经收拢这一簇；这里深读四扇章句门。",
+    dekEn: "Xia, Yin, and Zhou in the Analects are the dynastic frame for ritual change — what can still be known, and why Confucius follows Zhou. In the Analects they appear as 夏 / 殷 / 周 (Legge: Hsia / Yin / Chau): Yin following Xia’s regulations with gains and losses that can be known; Zhou following Yin the same way, so that even a hundred ages may be known; Xia and Yin rites Confucius can speak of, while Qi and Song cannot attest them for want of records and wise men; Zhou surveying the two past dynasties until he says 吾从周 — I follow Zhou; and, when Yan Yuan asks how a state should be administered, a calm pick across eras — Xia’s seasons, Yin’s carriage, Zhou’s ceremonial cap. This Note is not a rewrite of the Tang-Wen-Wu / Zhou Gong Note, not a rewrite of the Yao-Shun-Yu Note, not a pre-write of the Weizi-Jizi-Bigan Note, and not a rewrite of the li-ritual or yue-music Notes via 3.14 or 15.10. The index already gathers the cluster; here you deepen four passage doors.",
+    descriptionZh: "《论语》里的夏、殷、周要你看礼制损益的时间框架。四扇章句门，夫子为何从周。",
+    descriptionEn: "Xia, Yin, and Zhou in the Analects are the dynastic frame for ritual change — four passage doors, and why Confucius follows Zhou.",
+    datePublished: "2026-11-02",
+    dateModified: "2026-11-02",
+    tagsZh: [
+      "夏殷周",
+      "夏商周",
+      "三代",
+      "殷因于夏礼",
+      "周监于二代",
+      "吾从周",
+      "文献不足",
+      "行夏之时",
+      "乘殷之辂",
+      "服周之冕",
+    ],
+    tagsEn: [
+      "Xia Yin Zhou",
+      "Xia Shang Zhou",
+      "Hsia Yin Chau",
+      "three dynasties",
+      "夏殷周",
+      "夏商周",
+      "三代",
+      "殷因于夏礼",
+      "周监于二代",
+      "吾从周",
+      "文献不足",
+      "行夏之时",
+      "乘殷之辂",
+      "服周之冕",
+    ],
+    related: [
+      "/analects/wei-zheng/wei-zheng-023",
+      "/index/xia-shang-zhou",
+      "/analects/ba-yi/ba-yi-009",
+      "/analects/ba-yi/ba-yi-014",
+      "/analects/wei-ling-gong/wei-ling-gong-010",
+    ],
+    cover: notesBlogImage(
+      "xia-shang-zhou-in-the-analects",
+      "cover.png",
+      "A quiet three-era mark for ritual change — what can still be known across Xia, Yin, and Zhou",
+      "安静的三代礼制损益之记号——夏、殷、周之间仍可知者",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "xia-shang-zhou-in-the-analects",
+        "inline-1.png",
+        "A quiet unfinished-attestation mark — rites that can be spoken but not verified",
+        "安静的未成之征／典籍稀薄之记号——能言而不能验证的礼",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "xia-shang-zhou-in-the-analects",
+        "inline-2.png",
+        "A quiet surveyed-two-eras mark — a preference settled after looking back to follow Zhou",
+        "安静的监二代／从周之记号——回望之后落定的偏好",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "十世仍可知者——殷因于夏礼，周因于殷礼",
+        headingEn: "What ten ages can still leave knowable — 殷因于夏礼，周因于殷礼",
+        bodyZh: [
+          "请你从[论语 · 为政 2.23](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-023)开始。原文：子张问十世，可知也。子曰，殷因于夏礼，所损益，可知也，周因于殷礼，所损益，可知也，其或继周者，虽百世，可知也。",
+          "活页白话导读作：子张问：十代以后的事，可以预先知道吗？孔子说：殷代沿袭夏代的礼制，它增减了什么，是可以知道的；周代沿袭殷代的礼制，它增减了什么，也是可以知道的。将来如果有继承周代的，即使过了一百代，也可以知道大概。",
+          "活页 Legge 作：1. Tsze-chang asked whether the affairs of ten ages after could be known. 2. Confucius said, \"The Yin dynasty followed the regulations of the Hsia: wherein it took from or added to them may be known. The Chau dynasty has followed the regulations of Yin: wherein it took from or added to them may be known. Some other may follow the Chau, but though it should be at the distance of a hundred ages, its affairs may be known.\"",
+          "请你仔细看铰链落在哪里。子张问十世可知否；答案不是预言游历，而是礼制相因之链——殷因于夏礼／周因于殷礼——并主张所损益仍可知，乃至虽百世。你得到的是一扇三代「仍可知」之门，不是夏殷周通史小说，也不是汤文武或尧舜禹总览。请开这一扇主门；勿扩成那些专论。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Wei Chang 2.23](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-023). The source: 子张问十世，可知也。子曰，殷因于夏礼，所损益，可知也，周因于殷礼，所损益，可知也，其或继周者，虽百世，可知也。",
+          "The modern guide on that page: 子张问：十代以后的事，可以预先知道吗？孔子说：殷代沿袭夏代的礼制，它增减了什么，是可以知道的；周代沿袭殷代的礼制，它增减了什么，也是可以知道的。将来如果有继承周代的，即使过了一百代，也可以知道大概。",
+          "Legge on the same page: 1. Tsze-chang asked whether the affairs of ten ages after could be known. 2. Confucius said, \"The Yin dynasty followed the regulations of the Hsia: wherein it took from or added to them may be known. The Chau dynasty has followed the regulations of Yin: wherein it took from or added to them may be known. Some other may follow the Chau, but though it should be at the distance of a hundred ages, its affairs may be known.\"",
+          "Take the hinge carefully. Zi Zhang asks whether ten ages ahead can be known; the answer is not a prophecy tour but a chain of ritual inheritance — 殷因于夏礼 / 周因于殷礼 — and the claim that gains and losses (所损益) remain knowable, even 虽百世. You are given a three-dynasty door into what ritual change still leaves readable across time, not a Xia–Yin–Zhou history novel, and not a Tang-Wen-Wu or Yao-Shun-Yu survey. Open this lead door; do not expand it into those essays.",
+        ],
+      },
+      {
+        headingZh: "文献不足而不能征——夏礼吾能言之",
+        headingEn: "Where the records fail — 夏礼吾能言之，文献不足",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 八佾 3.9](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-009)。原文：子曰，夏礼吾能言之，杞不足征也，殷礼吾能言之，宋不足征也，文献不足故也，足，则吾能征之矣。",
+          "导读作：孔子说：夏朝的礼制我能讲出来，可惜它的后代杞国不足以验证；殷朝的礼制我能讲出来，可惜它的后代宋国不足以验证。这是因为杞国、宋国留存的典籍和贤人都不够。如果足够，我就能验证这些礼制了。",
+          "Legge 作：The Master said, \"I could describe the ceremonies of the Hsia dynasty, but Chi cannot sufficiently attest my words. I could describe the ceremonies of the Yin dynasty, but Sung cannot sufficiently attest my words. (They cannot do so) because of the insufficiency of their records and wise men. If those were sufficient, I could adduce them in support of my words.\"",
+          "请只读这一边。夫子能言夏礼、殷礼；杞（Legge：Chi）与宋（Sung）不足征——文献不足故也。可知性在此有硬边：典籍与贤人不足，则言而不能证。本篇只开「文献短缺」这一扇门，不改写礼论 Note，也不把杞、宋扩成列国总览。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Pa Yih 3.9](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-009). The source: 子曰，夏礼吾能言之，杞不足征也，殷礼吾能言之，宋不足征也，文献不足故也，足，则吾能征之矣。",
+          "The guide: 孔子说：夏朝的礼制我能讲出来，可惜它的后代杞国不足以验证；殷朝的礼制我能讲出来，可惜它的后代宋国不足以验证。这是因为杞国、宋国留存的典籍和贤人都不够。如果足够，我就能验证这些礼制了。",
+          "Legge: The Master said, \"I could describe the ceremonies of the Hsia dynasty, but Chi cannot sufficiently attest my words. I could describe the ceremonies of the Yin dynasty, but Sung cannot sufficiently attest my words. (They cannot do so) because of the insufficiency of their records and wise men. If those were sufficient, I could adduce them in support of my words.\"",
+          "Read the edge only. Confucius can speak of Xia rites and Yin rites; Qi (杞; Legge: Chi) and Song (宋; Sung) cannot attest them — 文献不足故也. Knowability here has a hard limit: without enough records and wise men, speech cannot be verified. This Note opens one door into that documentary shortfall. It does not rewrite the li-ritual Note, and it does not turn Qi or Song into a state survey.",
+        ],
+      },
+      {
+        headingZh: "仍从周——周监于二代，吾从周",
+        headingEn: "Why he still follows Zhou — 周监于二代，吾从周",
+        bodyZh: [
+          "在[论语 · 八佾 3.14](https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-014)里，三代框架转成一种选择。原文：子曰，周监于二代，郁郁乎文哉，吾从周。",
+          "导读作：孔子说：周朝的礼制借鉴了夏、商两代，是多么丰富完备而有文采啊！我遵从周朝的礼制。",
+          "Legge 作：The Master said, \"Chau had the advantage of viewing the two past dynasties. How complete and elegant are its regulations! I follow Chau.\"",
+          "你得到的是「监二代而后从周」这一扇门。周（周；Legge：Chau）监于夏、殷——周监于二代——答案是吾从周。请停在这一铰链上：三代框架不仅是相因与短缺，也是对周制郁郁乎文的确定偏好。勿借周室改写汤文武周公 Note，勿把这一门扩成礼专论。",
+        ],
+        bodyEn: [
+          "In [The Analects · Pa Yih 3.14](https://www.lunyu.ai/en/analects/ba-yi/ba-yi-014) the three-dynasty frame turns into a choice. The source: 子曰，周监于二代，郁郁乎文哉，吾从周。",
+          "The guide: 孔子说：周朝的礼制借鉴了夏、商两代，是多么丰富完备而有文采啊！我遵从周朝的礼制。",
+          "Legge: The Master said, \"Chau had the advantage of viewing the two past dynasties. How complete and elegant are its regulations! I follow Chau.\"",
+          "You get one door into following Zhou after surveying the two past dynasties. Zhou (周; Legge: Chau) has watched Xia and Yin — 周监于二代 — and the answer is 吾从周. Stay on that hinge: the dynastic frame is not only inheritance and shortage; it is also a settled preference for Zhou’s regulations as complete and elegant. Do not rewrite the Tang-Wen-Wu / Zhou Gong Note through the house of Zhou, and do not expand this door into a li-ritual essay.",
+        ],
+      },
+      {
+        headingZh: "横取三代之制——行夏之时，乘殷之辂，服周之冕",
+        headingEn: "Institutional pick across the three eras — 行夏之时，乘殷之辂，服周之冕",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "打开[论语 · 卫灵公 15.10](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-010)。原文：颜渊问为邦。子曰，行夏之时，乘殷之辂，服周之冕，乐则韶舞。放郑声，远佞人。郑声淫，佞人殆。",
+          "导读作：颜渊问怎样治理国家。孔子说：用夏朝的历法，坐殷朝的车子，戴周朝的礼帽，音乐就用韶乐和舞。摒弃郑国的乐曲，疏远那些花言巧语的小人。因为郑国的乐曲淫靡，花言巧语的小人危险。",
+          "活页 Legge 作：1. Yen Yuan asked how the government of a country should be administered. 2. The Master said, \"Follow the seasons of Hsia. 3. \"Ride in the state carriage of Yin. 4. \"Wear the ceremonial cap of Chau. 5. \"Let the music be the Shao with its pantomimes. 6. Banish the songs of Chang, and keep far from specious talkers. The songs of Chang are licentious; specious talkers are dangerous.\"",
+          "请停在「制度拣选」这一扇门上。颜渊问为邦；答案平静地取夏之时、殷之辂、周之冕——行夏之时，乘殷之辂，服周之冕——然后再说到韶舞，以及放郑声、远佞人。本篇只开这一扇三代制度拣选之门，不借其后乐句改写礼论 Note 或尚在持有的乐论 Note。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Wei Ling Kung 15.10](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010). The source: 颜渊问为邦。子曰，行夏之时，乘殷之辂，服周之冕，乐则韶舞。放郑声，远佞人。郑声淫，佞人殆。",
+          "The guide: 颜渊问怎样治理国家。孔子说：用夏朝的历法，坐殷朝的车子，戴周朝的礼帽，音乐就用韶乐和舞。摒弃郑国的乐曲，疏远那些花言巧语的小人。因为郑国的乐曲淫靡，花言巧语的小人危险。",
+          "Legge on the same page: 1. Yen Yuan asked how the government of a country should be administered. 2. The Master said, \"Follow the seasons of Hsia. 3. \"Ride in the state carriage of Yin. 4. \"Wear the ceremonial cap of Chau. 5. \"Let the music be the Shao with its pantomimes. 6. Banish the songs of Chang, and keep far from specious talkers. The songs of Chang are licentious; specious talkers are dangerous.\"",
+          "Stay on the institutional pick-and-choose door. Yan Yuan asks how to administer a state; the answer calmly takes Xia’s seasons, Yin’s carriage, and Zhou’s ceremonial cap — 行夏之时，乘殷之辂，服周之冕 — before naming Shao music and the refusals of Zheng songs and specious talkers. This Note opens that three-era institutional door. It does not rewrite the li-ritual Note or the held yue-music Note through the music lines that follow.",
+        ],
+      },
+      {
+        headingZh: "四门合起来看",
+        headingEn: "What the four doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：子张闻殷因于夏、周因于殷，所损益乃至百世可知（2.23）；夫子能言夏礼、殷礼，而杞、宋因文献不足不能征（3.9）；周监于二代，遂曰吾从周（3.14）；颜渊闻行夏之时、乘殷之辂、服周之冕的制度拣选（15.10）。这一篇深读这几扇门，不复述索引里「三代是礼制损益、王道传承和历史判断的时间框架」的编辑导语全文。",
+          "这也不是汤文武周公 Note 的重写（3.14 在此是三代框架内的从周门，不是圣王或周公列传），不是尧舜禹 Note 的重写，不是借 18.1 提前写微子箕子比干 Note，也不是借 3.14 或 15.10 改写礼论／乐论 Notes。假友——把 2.14 的君子周而不比当成周代之门、把 6.3 的周急当成周、堆夏商周／Hsia Yin Chau 关键词而无章句铰链、或把本篇写成三代通史游历——不是本篇的工作。",
+          "以下是你自己的反思，不是孔子的话：你也许想把 2.23 听成预测，把 3.9 只看成档案之叹，把吾从周听成文化怀旧，把 15.10 只看成风格菜单。《论语》可以把夏、殷、周放在「礼制损益之后仍可知」的框架上；可以承认言夏礼、殷礼而文献不足则不能征；仍可在监于二代之后落定从周；也可以答为邦之问以横取三代之制，而不把它们揉成一套戏服。这几扇门里更硬的边，是相因与短缺之下的可知性——以及仍说吾从周的偏好。",
+        ],
+        bodyEn: [
+          "Put them together and you have: Zi Zhang hearing that Yin followed Xia and Zhou followed Yin, so gains and losses — and even a hundred ages — may be known (2.23); Confucius able to speak of Xia and Yin rites while Qi and Song cannot attest them for want of records and wise men (3.9); Zhou surveying the two past dynasties until he says he follows Zhou (3.14); and Yan Yuan hearing an institutional pick across Xia’s seasons, Yin’s carriage, and Zhou’s ceremonial cap (15.10). The Note deepens those doors; it does not retell the index line that already calls the three dynasties the frame for ritual change, royal tradition, and historical judgment.",
+          "This is also not a rewrite of the Tang-Wen-Wu / Zhou Gong Note (3.14 here is a follow-Zhou door inside the three-dynasty frame, not a sage-kings or Zhou Gong biography), not a rewrite of the Yao-Shun-Yu Note, not a pre-write of the Weizi-Jizi-Bigan Note via 18.1, and not a rewrite of the li-ritual or yue-music Notes via 3.14 or 15.10. False friends — treating 2.14’s 君子周而不比 as a Zhou-dynasty door, treating 6.3’s 周急 as Zhou, stacking Xia Shang Zhou / Hsia Yin Chau keywords without passage hinges, or turning the Note into a three-dynasties history tour — are not this Note’s work.",
+          "As your own reflection — not as Confucius’s words — you may want to call 2.23 a forecast, 3.9 only archival regret, 吾从周 mere cultural nostalgia, and 15.10 a style menu. The Analects can place Xia, Yin, and Zhou as the frame for what ritual change still leaves knowable; it can admit that speech about Xia and Yin rites fails attestation when records and wise men are insufficient; it can still settle on following Zhou after surveying the two past dynasties; and it can answer a question about administering a state by picking institutions across the three eras without collapsing them into one costume. The harder edge in these doors is knowability under inheritance and shortage — and a preference that still says 吾从周.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的夏、殷、周是什么？",
+        questionEn: "Who are Xia, Yin, and Zhou in the Analects?",
+        answerZh: "他们是三代（夏／殷／周；Legge：Hsia／Yin／Chau），构成礼制损益、验证与偏好的时间框架。活页可见殷因于夏、周因于殷而所损益可知（2.23）；能言夏礼、殷礼而杞宋不足征（3.9）；周监于二代而吾从周（3.14）；以及行夏之时、乘殷之辂、服周之冕的制度拣选（15.10）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "They are the three dynasties (夏 / 殷 / 周; Legge: Hsia / Yin / Chau) that frame ritual change, attestation, and preference. Live passages show Yin following Xia and Zhou following Yin so that gains and losses may be known (2.23); Xia and Yin rites spoken of while Qi and Song cannot attest them (3.9); Zhou surveying the two past dynasties until 吾从周 (3.14); and an institutional pick of Xia’s seasons, Yin’s carriage, and Zhou’s ceremonial cap (15.10). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "2.23 的「虽百世，可知也」标出什么？",
+        questionEn: "What does 虽百世，可知也 mark in 2.23?",
+        answerZh: "子张问十世可知否。夫子以礼制相因作答：殷因于夏礼，周因于殷礼，所损益可知——虽百世亦然。本篇把它读作三代「可知性」的主门；不是预言专论，也不是汤文武的重写。",
+        answerEn: "Zi Zhang asks whether ten ages ahead can be known. Confucius answers through ritual inheritance: Yin followed Xia’s regulations, Zhou followed Yin’s, and what was taken or added may be known — even a hundred ages on. This Note reads that as the lead three-dynasty knowability door; it is not a prophecy essay and not a Tang-Wen-Wu rewrite.",
+      },
+      {
+        questionZh: "3.9 的边在哪里？",
+        questionEn: "What is the edge in 3.9?",
+        answerZh: "文献不足故也——Legge：insufficiency of records and wise men。夫子能描述夏礼、殷礼；杞、宋不能充分验证其言。一扇文献短缺之门，不是礼论的重写，也不是杞宋列国 Note。",
+        answerEn: "文献不足故也 — Legge: insufficiency of records and wise men. Confucius can describe Xia and Yin ceremonies; Qi and Song cannot sufficiently attest his words. One door into documentary shortfall; not a li-ritual rewrite and not a Qi/Song state Note.",
+      },
+      {
+        questionZh: "3.14 的「吾从周」是什么意思？",
+        questionEn: "What does 吾从周 mean in 3.14?",
+        answerZh: "周有监于二代之利；其制郁郁乎文——吾从周，我从周。一扇三代框架内「回望之后的偏好」之门，不是汤文武周公的重写，也不是礼专论。",
+        answerEn: "Zhou had the advantage of viewing the two past dynasties; how complete and elegant are its regulations — 吾从周, I follow Zhou. One door into preference after survey inside the three-dynasty frame; not a Tang-Wen-Wu / Zhou Gong rewrite and not a li essay.",
+      },
+      {
+        questionZh: "15.10 和礼论／乐论 Notes 是同一篇吗？",
+        questionEn: "Is 15.10 the same as the li-ritual or yue-music Notes?",
+        answerZh: "不是。这里的 15.10 只作横取夏、殷、周制度的拣选门。乐句仍留在活页；本篇不把它们扩成礼或乐专论。（活页索引集上相邻的软门是 18.1 殷有三仁——若需要请打开该活页；本篇不因此变成微子箕子比干 Note。）",
+        answerEn: "No. Here 15.10 is only the institutional pick-and-choose door across Xia, Yin, and Zhou. The music lines stay on the live page; this Note does not expand them into a li or yue essay. (A neighboring soft door on the live index set is 18.1’s Yin having three benevolent ones — open that live page if you need it; this Note does not become the Weizi-Jizi-Bigan Note.)",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「夏、殷、周」索引",
+        headingEn: "After FAQ — open the Xia, Yin, and Zhou index",
+        bodyZh: [
+          "当你想把谈及这一三代框架的章句放在同一页，请打开[夏、殷、周](https://www.lunyu.ai/zh-Hans/index/xia-shang-zhou)。索引标出三代是礼制损益、王道传承和历史判断的时间框架并选篇；这一篇跟着十世仍可知、文献不足而不能征、监二代而从周、以及横取三代之制走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name this three-dynasty frame gathered on one screen, open [Xia, Yin, and Zhou](https://www.lunyu.ai/en/index/xia-shang-zhou). The index marks the dynastic frame for ritual change, royal tradition, and historical judgment and selects doors; this Note followed what ten ages can still leave knowable, where records fail attestation, why he still follows Zhou, and the institutional pick across the three eras. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "ji-family-in-the-analects",
     titleZh: "《论语》里的季氏：僭礼与权欲相撞之处",
     titleEn: "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
