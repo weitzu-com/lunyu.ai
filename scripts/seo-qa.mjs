@@ -749,6 +749,19 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "xia-shang-zhou-in-the-analects",
+    titleZh: "《论语》里的夏、殷、周：礼制损益的时间框架",
+    titleEn: "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
+    passages: [
+      "wei-zheng/wei-zheng-023",
+      "ba-yi/ba-yi-009",
+      "ba-yi/ba-yi-014",
+      "wei-ling-gong/wei-ling-gong-010",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "ji-family-in-the-analects",
     titleZh: "《论语》里的季氏：僭礼与权欲相撞之处",
     titleEn: "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
@@ -961,6 +974,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
+  "2026-11-02",
   "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
   "2026-11-01",
   "The Meng Family in the Analects: Asking What Filial Conduct Requires",
@@ -998,6 +1013,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的夏、殷、周：礼制损益的时间框架",
+  "2026-11-02",
   "《论语》里的季氏：僭礼与权欲相撞之处",
   "2026-11-01",
   "《论语》里的孟氏：问孝所要，也问仁是否可轻易许",
@@ -2307,6 +2324,333 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const xiaShangZhouCover = "/images/blogs/xia-shang-zhou-in-the-analects/cover.png";
+const xiaShangZhouInline1 = "/images/blogs/xia-shang-zhou-in-the-analects/inline-1.png";
+const xiaShangZhouInline2 = "/images/blogs/xia-shang-zhou-in-the-analects/inline-2.png";
+const xiaShangZhouCoverEn = "A quiet three-era mark for ritual change — what can still be known across Xia, Yin, and Zhou";
+const xiaShangZhouCoverZh = "安静的三代礼制损益之记号——夏、殷、周之间仍可知者";
+const xiaShangZhouInline1En = "A quiet unfinished-attestation mark — rites that can be spoken but not verified";
+const xiaShangZhouInline1Zh = "安静的未成之征／典籍稀薄之记号——能言而不能验证的礼";
+const xiaShangZhouInline2En = "A quiet surveyed-two-eras mark — a preference settled after looking back to follow Zhou";
+const xiaShangZhouInline2Zh = "安静的监二代／从周之记号——回望之后落定的偏好";
+const xiaShangZhouAnchors = [
+  ["论语 · 为政 2.23", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-023"],
+  ["The Analects · Wei Chang 2.23", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-023"],
+  ["论语 · 八佾 3.9", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-009"],
+  ["The Analects · Pa Yih 3.9", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-009"],
+  ["论语 · 八佾 3.14", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-014"],
+  ["The Analects · Pa Yih 3.14", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-014"],
+  ["论语 · 卫灵公 15.10", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-010"],
+  ["The Analects · Wei Ling Kung 15.10", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-010"],
+  ["夏、殷、周", "https://www.lunyu.ai/zh-Hans/index/xia-shang-zhou"],
+  ["Xia, Yin, and Zhou", "https://www.lunyu.ai/en/index/xia-shang-zhou"],
+];
+const xiaShangZhouForbidden = [
+  "/blogs/tang-wen-wu-zhou-gong-in-the-analects",
+  "/blogs/yao-shun-yu-in-the-analects",
+  "/blogs/li-ritual-in-the-analects",
+  "/blogs/weizi-jizi-bigan-in-the-analects",
+  "/blogs/weizi-jizi-bigan",
+  "/blogs/yue-music-in-the-analects",
+  "/blogs/yue-music",
+  "/index/weizi-jizi-bigan",
+  "/index/yue-music",
+];
+{
+  const start = postSource.indexOf('slug: "xia-shang-zhou-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing xia-shang-zhou-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = xiaShangZhouAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `xia-shang-zhou-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    xiaShangZhouAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`xia-shang-zhou-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `xia-shang-zhou-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 8) {
+      fail(
+        `xia-shang-zhou-in-the-analects: expected four linked passages per language (8 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/xia-shang-zhou"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `xia-shang-zhou-in-the-analects: Xia, Yin, and Zhou index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [...xiaShangZhouForbidden, "pending Gemini", "IMAGE SLOT", "*"]) {
+      if (block.includes(forbidden)) {
+        fail(`xia-shang-zhou-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("four passage doors")) {
+      fail("xia-shang-zhou-in-the-analects: dek/description must say four passage doors");
+    }
+    if (!block.includes("四扇章句门")) {
+      fail("xia-shang-zhou-in-the-analects: dek/description must say 四扇章句门");
+    }
+    if (
+      block.includes("three passage doors") ||
+      block.includes("三扇章句门") ||
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("five passage doors") ||
+      block.includes("五扇章句门")
+    ) {
+      fail("xia-shang-zhou-in-the-analects: passage count must stay four");
+    }
+    if (!block.includes('datePublished: "2026-11-02"') || !block.includes('dateModified: "2026-11-02"')) {
+      fail("xia-shang-zhou-in-the-analects: both locales must use 2026-11-02");
+    }
+    const xiaShangZhouLiveEnglish = [];
+    for (const book of generated.books) {
+      for (const sentence of book.sentences) {
+        if (["wei-zheng-023", "ba-yi-009", "ba-yi-014", "wei-ling-gong-010"].includes(sentence.id)) {
+          xiaShangZhouLiveEnglish.push(sentence.english);
+        }
+      }
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const quotes = value.match(/"/g) || [];
+      const liveLegge = xiaShangZhouLiveEnglish.find((english) => value.includes(english));
+      if (liveLegge) {
+        const extra = quotes.length - (liveLegge.match(/"/g) || []).length;
+        if (extra % 2 !== 0) {
+          fail("xia-shang-zhou-in-the-analects: unbalanced English quotation marks");
+        }
+      } else if (quotes.length % 2 !== 0) {
+        fail("xia-shang-zhou-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("xia-shang-zhou-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("xia-shang-zhou-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [xiaShangZhouCover, xiaShangZhouInline1, xiaShangZhouInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/xia-shang-zhou-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/xia-shang-zhou-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-02"',
+  '"dateModified":"2026-11-02"',
+  "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
+  "Xia, Yin, and Zhou in the Analects are the dynastic frame for ritual change — four passage doors, and why Confucius follows Zhou.",
+  "here you deepen four passage doors.",
+  "What ten ages can still leave knowable — 殷因于夏礼，周因于殷礼",
+  "Where the records fail — 夏礼吾能言之，文献不足",
+  "Why he still follows Zhou — 周监于二代，吾从周",
+  "Institutional pick across the three eras — 行夏之时，乘殷之辂，服周之冕",
+  "What the four doors add up to",
+  "After FAQ — open the Xia, Yin, and Zhou index",
+  "Who are Xia, Yin, and Zhou in the Analects?",
+  "What does 虽百世，可知也 mark in 2.23?",
+  "What is the edge in 3.9?",
+  "What does 吾从周 mean in 3.14?",
+  "Is 15.10 the same as the li-ritual or yue-music Notes?",
+  "wherein it took from or added to them may be known",
+  "because of the insufficiency of their records and wise men",
+  "I follow Chau.",
+  "Follow the seasons of Hsia.",
+  ">The Analects · Wei Chang 2.23</a>",
+  ">The Analects · Pa Yih 3.9</a>",
+  ">The Analects · Pa Yih 3.14</a>",
+  ">The Analects · Wei Ling Kung 15.10</a>",
+  ">Xia, Yin, and Zhou</a>",
+  'href="/en/analects/wei-zheng/wei-zheng-023"',
+  'href="/en/analects/ba-yi/ba-yi-009"',
+  'href="/en/analects/ba-yi/ba-yi-014"',
+  'href="/en/analects/wei-ling-gong/wei-ling-gong-010"',
+  'href="/en/index/xia-shang-zhou"',
+  xiaShangZhouCover,
+  xiaShangZhouInline1,
+  xiaShangZhouInline2,
+  xiaShangZhouCoverEn,
+  xiaShangZhouInline1En,
+  xiaShangZhouInline2En,
+  `property="og:image" content="${siteUrl}${xiaShangZhouCover}"`,
+  `property="og:image:alt" content="${xiaShangZhouCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${xiaShangZhouCover}"`,
+  `name="twitter:image:alt" content="${xiaShangZhouCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/xia-shang-zhou-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/xia-shang-zhou-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-02"',
+  '"dateModified":"2026-11-02"',
+  "《论语》里的夏、殷、周：礼制损益的时间框架",
+  "《论语》里的夏、殷、周要你看礼制损益的时间框架。四扇章句门，夫子为何从周。",
+  "这里深读四扇章句门。",
+  "十世仍可知者——殷因于夏礼，周因于殷礼",
+  "文献不足而不能征——夏礼吾能言之",
+  "仍从周——周监于二代，吾从周",
+  "横取三代之制——行夏之时，乘殷之辂，服周之冕",
+  "四门合起来看",
+  "FAQ 之后——接着打开「夏、殷、周」索引",
+  "《论语》里的夏、殷、周是什么？",
+  "2.23 的「虽百世，可知也」标出什么？",
+  "3.9 的边在哪里？",
+  "3.14 的「吾从周」是什么意思？",
+  "15.10 和礼论／乐论 Notes 是同一篇吗？",
+  "殷因于夏礼",
+  "文献不足故也",
+  "吾从周",
+  "行夏之时，乘殷之辂，服周之冕",
+  ">论语 · 为政 2.23</a>",
+  ">论语 · 八佾 3.9</a>",
+  ">论语 · 八佾 3.14</a>",
+  ">论语 · 卫灵公 15.10</a>",
+  ">夏、殷、周</a>",
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-023"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-009"',
+  'href="/zh-Hans/analects/ba-yi/ba-yi-014"',
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-010"',
+  'href="/zh-Hans/index/xia-shang-zhou"',
+  xiaShangZhouCover,
+  xiaShangZhouInline1,
+  xiaShangZhouInline2,
+  xiaShangZhouCoverZh,
+  xiaShangZhouInline1Zh,
+  xiaShangZhouInline2Zh,
+  `property="og:image" content="${siteUrl}${xiaShangZhouCover}"`,
+  `property="og:image:alt" content="${xiaShangZhouCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${xiaShangZhouCover}"`,
+  `name="twitter:image:alt" content="${xiaShangZhouCoverZh}"`,
+]);
+{
+  const zhXiaFile = htmlPath("/zh-Hans/blogs/xia-shang-zhou-in-the-analects");
+  if (exists(zhXiaFile)) {
+    const zhXiaHtml = read(zhXiaFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhXiaHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/xia-shang-zhou-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhXiaHtml.includes(xiaShangZhouCoverEn)) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhXiaHtml.includes(xiaShangZhouInline1En) || zhXiaHtml.includes(xiaShangZhouInline2En)) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhXiaHtml, />The Analects · Wei Chang 2\.23<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: English 2.23 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhXiaHtml, />Xia, Yin, and Zhou<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhXiaHtml, />夏、殷、周<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: 夏、殷、周 body link should appear once");
+    }
+    if (countRegex(zhXiaHtml, />论语 · 为政 2\.23<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: 为政 2.23 body link should appear once");
+    }
+    if (countRegex(zhXiaHtml, />论语 · 八佾 3\.9<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: 八佾 3.9 body link should appear once");
+    }
+    if (countRegex(zhXiaHtml, />论语 · 八佾 3\.14<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: 八佾 3.14 body link should appear once");
+    }
+    if (countRegex(zhXiaHtml, />论语 · 卫灵公 15\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: 卫灵公 15.10 body link should appear once");
+    }
+    assertNoteTitleStrategy(zhXiaHtml, "/zh-Hans/blogs/xia-shang-zhou-in-the-analects", "《论语》里的夏、殷、周：礼制损益的时间框架");
+    assertReadableRelatedChips(zhXiaHtml, "/zh-Hans/blogs/xia-shang-zhou-in-the-analects");
+    if (!zhXiaHtml.includes(">论语 · 为政 2.23</span>")) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhXiaHtml.includes(">夏、殷、周</span>")) {
+      fail("/zh-Hans/blogs/xia-shang-zhou-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of xiaShangZhouForbidden) {
+      if (zhXiaHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/xia-shang-zhou-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enXiaFile = htmlPath("/en/blogs/xia-shang-zhou-in-the-analects");
+  if (exists(enXiaFile)) {
+    const enXiaHtml = read(enXiaFile);
+    if (enXiaHtml.includes(xiaShangZhouCoverZh)) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enXiaHtml.includes(xiaShangZhouInline1Zh) || enXiaHtml.includes(xiaShangZhouInline2Zh)) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enXiaHtml, />Xia, Yin, and Zhou<\/a>/g) !== 1) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enXiaHtml, />The Analects · Wei Chang 2\.23<\/a>/g) !== 1) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Wei Chang 2.23 body link should appear once");
+    }
+    if (countRegex(enXiaHtml, />The Analects · Pa Yih 3\.9<\/a>/g) !== 1) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Pa Yih 3.9 body link should appear once");
+    }
+    if (countRegex(enXiaHtml, />The Analects · Pa Yih 3\.14<\/a>/g) !== 1) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Pa Yih 3.14 body link should appear once");
+    }
+    if (countRegex(enXiaHtml, />The Analects · Wei Ling Kung 15\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Wei Ling Kung 15.10 body link should appear once");
+    }
+    if (countRegex(enXiaHtml, />夏、殷、周<\/a>/g) !== 0) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enXiaHtml, />论语 · 为政 2\.23<\/a>/g) !== 0) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Chinese 2.23 body link should not appear on en");
+    }
+    if (countRegex(enXiaHtml, /href="\/en\/index\/xia-shang-zhou"/g) !== 1) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: Xia, Yin, and Zhou index href should appear once");
+    }
+    assertNoteTitleStrategy(enXiaHtml, "/en/blogs/xia-shang-zhou-in-the-analects", "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change");
+    assertReadableRelatedChips(enXiaHtml, "/en/blogs/xia-shang-zhou-in-the-analects");
+    if (!enXiaHtml.includes(">The Analects · Wei Chang 2.23</span>")) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enXiaHtml.includes(">Xia, Yin, and Zhou</span>")) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enXiaHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enXiaHtml);
+    if (!/fetchpriority="high"/i.test(enXiaHtml) || !coverPreloaded) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enXiaHtml)) {
+      fail("/en/blogs/xia-shang-zhou-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of xiaShangZhouForbidden) {
+      if (enXiaHtml.includes(forbidden)) {
+        fail(`/en/blogs/xia-shang-zhou-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -8690,6 +9034,17 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/xia-shang-zhou`, [
+    locale === "en" ? ">Xia, Yin, and Zhou<" : ">夏、殷、周<",
+    `href="/${locale}/blogs/xia-shang-zhou-in-the-analects"`,
+    locale === "en"
+      ? "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change"
+      : "《论语》里的夏、殷、周：礼制损益的时间框架",
+    `/${locale}/analects/wei-zheng/wei-zheng-023`,
+    `/${locale}/analects/ba-yi/ba-yi-009`,
+    `/${locale}/analects/ba-yi/ba-yi-014`,
+    `/${locale}/analects/wei-ling-gong/wei-ling-gong-010`,
+  ]);
   checkHtml(`/${locale}/index/ji-family`, [
     locale === "en" ? ">Ji Family<" : ">季氏<",
     `href="/${locale}/blogs/ji-family-in-the-analects"`,
@@ -8973,6 +9328,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/xia-shang-zhou-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/xia-shang-zhou-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/ji-family-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/ji-family-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/meng-family-in-the-analects`, "sitemap");
@@ -9048,8 +9405,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-11-01")) {
+    if (!lastmod.includes("2026-11-02")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const xiaShangZhouLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/xia-shang-zhou-in-the-analects`);
+    if (!xiaShangZhouLastmod.includes("2026-11-02")) {
+      fail(
+        `sitemap: /${locale}/blogs/xia-shang-zhou-in-the-analects lastmod should be 2026-11-02, got ${xiaShangZhouLastmod || "missing"}`
+      );
     }
     const jiFamilyLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/ji-family-in-the-analects`);
     if (!jiFamilyLastmod.includes("2026-11-01")) {
@@ -9217,7 +9580,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Sun, 01 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Mon, 02 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const xiaShangZhouItem = rss.split("<item>").find((part) => part.includes("/blogs/xia-shang-zhou-in-the-analects"));
+  if (!xiaShangZhouItem) fail("rss: missing xia-shang-zhou-in-the-analects");
+  else if (!xiaShangZhouItem.includes("02 Nov 2026")) {
+    fail("rss: xia-shang-zhou-in-the-analects pubDate should be 02 Nov 2026");
+  }
   const jiFamilyItem = rss.split("<item>").find((part) => part.includes("/blogs/ji-family-in-the-analects"));
   if (!jiFamilyItem) fail("rss: missing ji-family-in-the-analects");
   else if (!jiFamilyItem.includes("01 Nov 2026")) {
@@ -9272,6 +9640,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const xiaShangZhouEditorialLastmod = "2026-11-02";
 const jiFamilyEditorialLastmod = "2026-11-01";
 const mengFamilyEditorialLastmod = "2026-10-31";
 const youZiEditorialLastmod = "2026-10-30";
@@ -9304,6 +9673,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${xiaShangZhouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${jiFamilyEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${mengFamilyEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${youZiEditorialLastmod}T00:00:00.000Z`, "")
