@@ -103,6 +103,205 @@ const SITE_HOSTS = new Set(["www.lunyu.ai", "lunyu.ai"]);
 
 export const editorialPosts: EditorialPost[] = [
   {
+    slug: "xin-trustworthiness-in-the-analects",
+    titleZh: "《论语》里的「信」",
+    titleEn: "Xin (Trustworthiness) in the Analects",
+    dekZh: "《论语》里的「信」，是那根横木——没有信，言语、交友与为政都无处可系。在《论语》里，信（Legge 常作 truthfulness、sincerity、faith）是可核对的守信：言可复，友可托，民可立其上——不是一句「做人要诚实」的口号。这一篇打开四扇章句门：人而无信，如车无𫐐无𫐄（2.22）；足食足兵与民信并举，直至民无信不立（12.7）；信近于义，言可复也（1.13）；言忠信、行笃敬，虽蛮貊之邦行矣（15.5）。不是忠恕通论的重写，不是曾子三省／曾子语录 Notes 的重写，不是「仁是什么」的重写，不是「为政以德」的重写，也不是提前写尚在持有的「义」专篇。索引已经收拢这一簇；这里深读四扇章句门。",
+    dekEn: "Xin in the Analects is the cross-bar — without trustworthiness, speech, friendship, and rule have nowhere to hitch. In the Analects, xin (信; Legge often: truthfulness, sincerity, faith) is trustworthiness you can check: speech that can be made good, friendship that can be trusted, and government the people can stand on — not a slogan of “just be honest.” This Note opens four passage doors: a person without xin likened to a cart without its cross-bar (2.22); food and arms set beside the people’s trust until 民无信不立 (12.7); xin near yi so that what is spoken can be made good (1.13); and words sincere and truthful with actions honourable and careful, so that conduct may go even among distant tribes (15.5). It is not a rewrite of the Zhongshu Note, not a rewrite of the Zeng Zi self-exam or sayings Notes, not a rewrite of What Ren Means, not a rewrite of Governing by Virtue, and not a pre-write of the held Yi Note. The index already gathers the cluster; here you deepen four passage doors.",
+    descriptionZh: "《论语》里的「信」要你看言语可系的横木。四扇章句门，民无信不立。",
+    descriptionEn: "Xin (Trustworthiness) in the Analects is the cross-bar of speech — four passage doors, and trust you can check.",
+    datePublished: "2026-11-03",
+    dateModified: "2026-11-03",
+    tagsZh: [
+      "信",
+      "人而无信",
+      "民无信不立",
+      "信近于义",
+      "言可复也",
+      "言忠信",
+      "行笃敬",
+      "好信不好学",
+      "xin",
+      "trustworthiness",
+      "truthfulness",
+      "sincerity",
+      "cross-bar",
+      "faithfulness",
+    ],
+    tagsEn: [
+      "xin",
+      "trustworthiness",
+      "truthfulness",
+      "sincerity",
+      "信",
+      "人而无信",
+      "民无信不立",
+      "信近于义",
+      "言可复也",
+      "言忠信",
+      "行笃敬",
+      "好信不好学",
+      "cross-bar",
+      "faithfulness",
+    ],
+    related: [
+      "/analects/wei-zheng/wei-zheng-022",
+      "/index/xin",
+      "/analects/yan-yuan/yan-yuan-007",
+      "/analects/xue-er/xue-er-013",
+      "/analects/wei-ling-gong/wei-ling-gong-005",
+    ],
+    cover: notesBlogImage(
+      "xin-trustworthiness-in-the-analects",
+      "cover.png",
+      "A quiet cross-bar mark — without trustworthiness the cart of speech has nowhere to hitch",
+      "安静的横木／系轭之记号——无信则言语之车无处可系",
+      { width: 1200, height: 630 }
+    ),
+    inlineImages: {
+      "inline-1": notesBlogImage(
+        "xin-trustworthiness-in-the-analects",
+        "inline-1.png",
+        "A quiet three-requisites ranking mark — food, arms, and trust, with trust last to drop",
+        "安静的三项去取记号——食、兵、信，信是最后才可去者",
+        { width: 1200, height: 1200 }
+      ),
+      "inline-2": notesBlogImage(
+        "xin-trustworthiness-in-the-analects",
+        "inline-2.png",
+        "A quiet standing-and-carriage mark — trustworthiness kept visible ahead and on the cart’s cross-bar",
+        "安静的立／舆之记号——信显于前、倚于衡",
+        { width: 1200, height: 1200 }
+      ),
+    },
+    sections: [
+      {
+        headingZh: "无信则无处可系——人而无信，不知其可也",
+        headingEn: "Without xin, nowhere to hitch — 人而无信，不知其可也",
+        bodyZh: [
+          "请你从[论语 · 为政 2.22](https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-022)开始。原文：子曰，人而无信，不知其可也，大车无𫐐，小车无𫐄，其何以行之哉。",
+          "活页白话导读作：孔子说：一个人如果没有信用，我不知道他怎么能行得通。就像大车没有车轭上的横木，小车没有连接马的关键部件，车怎么能走呢？",
+          "活页 Legge 作：The Master said, \"I do not know how a man without truthfulness is to get on. How can a large carriage be made to go without the cross-bar for yoking the oxen to, or a small carriage without the arrangement for yoking the horses?\"",
+          "请你仔细看铰链落在哪里。人而无信，不是被口号训斥；意象是机械的——大车无𫐐，小车无𫐄——没有横木（𫐐）或系马之件（𫐄），车就不能行。你得到的是「信是言语与行事的系轭」这一扇门，不是诚信鸡汤，也不是忠恕通论的重写。请开这一扇主门；停在横木上。",
+        ],
+        bodyEn: [
+          "Start with [The Analects · Wei Chang 2.22](https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-022). The source: 子曰，人而无信，不知其可也，大车无𫐐，小车无𫐄，其何以行之哉。",
+          "The modern guide on that page: 孔子说：一个人如果没有信用，我不知道他怎么能行得通。就像大车没有车轭上的横木，小车没有连接马的关键部件，车怎么能走呢？",
+          "Legge on the same page: The Master said, \"I do not know how a man without truthfulness is to get on. How can a large carriage be made to go without the cross-bar for yoking the oxen to, or a small carriage without the arrangement for yoking the horses?\"",
+          "Take the hinge carefully. A person without xin is not scolded with a slogan; the image is mechanical — 大车无𫐐，小车无𫐄 — without the cross-bar (𫐐) or the yoking piece (𫐄), the cart cannot move. You are given a door into xin as the hitch of speech and conduct, not a honesty pep talk, and not a Zhongshu rewrite. Open this lead door; stay on the cross-bar.",
+        ],
+      },
+      {
+        headingZh: "为政最后仍守住的——民无信不立",
+        headingEn: "What government can still drop last — 民无信不立",
+        imageSlot: "inline-1",
+        bodyZh: [
+          "打开[论语 · 颜渊 12.7](https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-007)。原文：子贡问政。子曰足食，足兵，民信之矣。子贡曰，必不得已而去，于斯三者何先。曰，去兵。子贡曰，必不得已而去，于斯二者何先。曰，去食，自古皆有死，民无信不立。",
+          "导读作：子贡请教怎样治理政事。孔子说：使粮食充足，使军备充足，使百姓信任政府。子贡说：如果迫不得已一定要去掉一项，这三项中先去掉哪一项呢？孔子说：去掉军备。子贡说：如果迫不得已一定要再去掉一项，这两项中先去掉哪一项呢？孔子说：去掉粮食。自古以来人总免不了一死，但如果百姓对政府失去信任，国家就站不住了。",
+          "Legge 作：1. Tsze-kung asked about government. The Master said, \"The requisites of government are that there be sufficiency of food, sufficiency of military equipment, and the confidence of the people in their ruler.\" 2. Tsze-kung said, \"If it cannot be helped, and one of these must be dispensed with, which of the three should be foregone first?\" \"The military equipment,\" said the Master. 3. Tsze-kung again asked, \"If it cannot be helped, and one of the remaining two must be dispensed with, which of them should be foregone?\" The Master answered, \"Part with the food. From of old, death has been the lot of all men; but if the people have no faith in their rulers, there is no standing for the state.\"",
+          "请只读这一层去取。子贡问政；三者为食、兵、民信——不得已则先去兵，再去食，而民无信不立仍守住。本篇只开「为政之信」这一扇门，不改写「为政以德」Note，也不把 12.7 扩成为政通论。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Yen Yuan 12.7](https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-007). The source: 子贡问政。子曰足食，足兵，民信之矣。子贡曰，必不得已而去，于斯三者何先。曰，去兵。子贡曰，必不得已而去，于斯二者何先。曰，去食，自古皆有死，民无信不立。",
+          "The guide: 子贡请教怎样治理政事。孔子说：使粮食充足，使军备充足，使百姓信任政府。子贡说：如果迫不得已一定要去掉一项，这三项中先去掉哪一项呢？孔子说：去掉军备。子贡说：如果迫不得已一定要再去掉一项，这两项中先去掉哪一项呢？孔子说：去掉粮食。自古以来人总免不了一死，但如果百姓对政府失去信任，国家就站不住了。",
+          "Legge: 1. Tsze-kung asked about government. The Master said, \"The requisites of government are that there be sufficiency of food, sufficiency of military equipment, and the confidence of the people in their ruler.\" 2. Tsze-kung said, \"If it cannot be helped, and one of these must be dispensed with, which of the three should be foregone first?\" \"The military equipment,\" said the Master. 3. Tsze-kung again asked, \"If it cannot be helped, and one of the remaining two must be dispensed with, which of them should be foregone?\" The Master answered, \"Part with the food. From of old, death has been the lot of all men; but if the people have no faith in their rulers, there is no standing for the state.\"",
+          "Read the ranking only. Zi Gong asks about government; the three requisites are food, arms, and the people’s trust — and when forced to drop, arms go first, then food, while 民无信不立 remains. This Note opens one government-trust door. It does not rewrite the Governing by Virtue Note, and it does not turn 12.7 into a full politics essay.",
+        ],
+      },
+      {
+        headingZh: "信近于义——言可复也",
+        headingEn: "Xin near yi — 信近于义，言可复也",
+        bodyZh: [
+          "在[论语 · 学而 1.13](https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-013)里，有子把信放在「可复」之侧。原文：有子曰，信近于义，言可复也，恭近于礼，远耻辱也，因不失其亲，亦可宗也。",
+          "导读作：有子说：信用接近义，说出的话才可以兑现；恭敬接近礼，才可以远离羞辱；所依靠的人不失为可亲近的人，也就可以以他为宗主。",
+          "Legge 作：The philosopher Yu said, \"When agreements are made according to what is right, what is spoken can be made good. When respect is shown according to what is proper, one keeps far from shame and disgrace. When the parties upon whom a man leans are proper persons to be intimate with, he can make them his guides and masters.\"",
+          "你得到的是一扇软铰链：信近于义，言可复也——信贴近义，言才可兑现。请停在这一可核对的边上：这里的信不是对任何许诺的生硬坚持，而是因近于义而可复的言。对尚在持有的「义」专篇只作软提；勿成本篇义论，也勿把「恭近于礼」扩成礼论重写。",
+        ],
+        bodyEn: [
+          "In [The Analects · Hsio R. 1.13](https://www.lunyu.ai/en/analects/xue-er/xue-er-013) Youzi sets xin against what can be made good. The source: 有子曰，信近于义，言可复也，恭近于礼，远耻辱也，因不失其亲，亦可宗也。",
+          "The guide: 有子说：信用接近义，说出的话才可以兑现；恭敬接近礼，才可以远离羞辱；所依靠的人不失为可亲近的人，也就可以以他为宗主。",
+          "Legge: The philosopher Yu said, \"When agreements are made according to what is right, what is spoken can be made good. When respect is shown according to what is proper, one keeps far from shame and disgrace. When the parties upon whom a man leans are proper persons to be intimate with, he can make them his guides and masters.\"",
+          "You get one soft hinge: 信近于义，言可复也 — xin near yi, so that what is spoken can be made good. Stay on that checkable edge: trustworthiness here is not raw insistence on any promise; it is speech that can be fulfilled because it sits near what is right. Soft touch only to the held Yi Note; do not become an yi essay, and do not expand the 恭近于礼 lines into a li rewrite.",
+        ],
+      },
+      {
+        headingZh: "能行得通的言行——言忠信，行笃敬",
+        headingEn: "Words and deeds that can travel — 言忠信，行笃敬",
+        imageSlot: "inline-2",
+        bodyZh: [
+          "打开[论语 · 卫灵公 15.5](https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-005)。原文：子张问行。子曰，言忠信，行笃敬，虽蛮貊之邦行矣。言不忠信，行不笃敬，虽州里行乎哉。立，则见其参于前也，在舆，则见其倚于衡也。夫然后行。子张书诸绅。",
+          "导读作：子张问怎样才能行得通。孔子说：说话忠诚守信，行事笃实恭敬，即使到了偏远的蛮貊之地，也能行得通。说话不忠诚守信，行事不笃实恭敬，即使在本乡本土，又怎能行得通呢？站立时，就仿佛看见忠信笃敬这几个字显现在面前；坐在车上时，就仿佛看见它们靠在车前的横木上。做到这样，然后才能到处行得通。子张把这些话写在腰间的大带上。",
+          "活页 Legge 作：1. Tsze-chang asked how a man should conduct himself, so as to be everywhere appreciated. 2. The Master said, \"Let his words be sincere and truthful, and his actions honourable and careful;—such conduct may be practised among the rude tribes of the South or the North. If his words be",
+          "请停在「能行」这一扇门上。子张问行；答案是言忠信，行笃敬——言真诚可信，行笃实恭敬——虽蛮貊之邦可行，无之则虽州里亦难行。立则见其参于前、在舆则见其倚于衡，把信保持在眼前与车衡上。软避把忠信扩成忠恕通论；本篇铰链停在可核对的言行上。",
+        ],
+        bodyEn: [
+          "Open [The Analects · Wei Ling Kung 15.5](https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-005). The source: 子张问行。子曰，言忠信，行笃敬，虽蛮貊之邦行矣。言不忠信，行不笃敬，虽州里行乎哉。立，则见其参于前也，在舆，则见其倚于衡也。夫然后行。子张书诸绅。",
+          "The guide: 子张问怎样才能行得通。孔子说：说话忠诚守信，行事笃实恭敬，即使到了偏远的蛮貊之地，也能行得通。说话不忠诚守信，行事不笃实恭敬，即使在本乡本土，又怎能行得通呢？站立时，就仿佛看见忠信笃敬这几个字显现在面前；坐在车上时，就仿佛看见它们靠在车前的横木上。做到这样，然后才能到处行得通。子张把这些话写在腰间的大带上。",
+          "Legge on the same page: 1. Tsze-chang asked how a man should conduct himself, so as to be everywhere appreciated. 2. The Master said, \"Let his words be sincere and truthful, and his actions honourable and careful;—such conduct may be practised among the rude tribes of the South or the North. If his words be",
+          "Stay on the travel door. Zi Zhang asks how to conduct himself so as to go through; the answer is 言忠信，行笃敬 — words sincere and truthful, actions honourable and careful — workable even among distant tribes, and without them not workable even in one’s own neighborhood. The standing and carriage images keep xin visible ahead and on the cross-bar of the cart. Soft-avoid expanding 忠信 into a Zhongshu rewrite; this Note keeps the hinge on checkable speech and deed.",
+        ],
+      },
+      {
+        headingZh: "四门合起来看",
+        headingEn: "What the four doors add up to",
+        bodyZh: [
+          "合起来，你看到的是：人而无信如车无𫐐无𫐄（2.22）；足食足兵之下仍守民无信不立（12.7）；信近于义，言可复也（1.13）；言忠信、行笃敬而能行于蛮貊与州里之间（15.5）。这一篇深读这几扇门，不复述索引里「信关乎言行一致、政令可信与朋友相交」的编辑导语全文，也不把索引上的三十二个相关章句做成清单。",
+          "这也不是忠恕通论的重写（主忠信诸章在此不作正文游历），不是曾子三省／曾子语录 Notes 的重写（1.4 不作正文门），不是借 17.6 改写「仁是什么」，不是借 12.7 或 1.5 改写「为政以德」，也不是借 1.13 提前写尚在持有的「义」专篇。假友——把信听成一种心情、堆「做人要诚实」而无章句铰链、或把本篇写成忠恕通论——不是本篇的工作。",
+          "以下是你自己的反思，不是孔子的话：你也许想把 2.22 只听成道德训斥，把 12.7 只看成政治技巧，把言可复也听成合同条款，把 15.5 只看成旅行建议。《论语》可以把信放在「无之则言语之车不能行」的横木上；可以在去兵、去食之后仍守民信；可以让信近于义，使言可复；也可以要求言行显明到足以远行。这几扇门里更硬的边，是可核对的守信——不是感觉，也不是口号。",
+        ],
+        bodyEn: [
+          "Put them together and you have: a person without xin likened to a cart without its cross-bar (2.22); food and arms ranked below the people’s trust until 民无信不立 (12.7); xin near yi so that what is spoken can be made good (1.13); and words and deeds that can travel when they stay sincere, truthful, honourable, and careful (15.5). The Note deepens those doors; it does not retell the index line that already calls xin trustworthiness in speech, government, and friendship, and it does not inventory the thirty-two related passages on that index.",
+          "This is also not a rewrite of Zhongshu reciprocity (主忠信 stacks stay soft-avoided as body tours), not a rewrite of the Zeng Zi three-self-examinations or sayings Notes (1.4 is not a body door here), not a rewrite of What Ren Means via 17.6, not a rewrite of Governing by Virtue via 12.7 or 1.5, and not a pre-write of the held Yi Note via 1.13. False friends — treating xin as a mood, stacking “be honest” slogans without passage hinges, or turning the Note into a full loyalty-and-reciprocity essay — are not this Note’s work.",
+          "As your own reflection — not as Confucius’s words — you may want to call 2.22 only a moral scolding, 12.7 a politics tip, 言可复也 a contract clause, and 15.5 a travel tip. The Analects can place xin as the cross-bar without which speech cannot move; it can rank the people’s trust above food and arms when standing is at stake; it can keep xin near yi so that speech remains fulfillable; and it can ask that words and deeds stay visible enough to travel. The harder edge in these doors is checkable trustworthiness — not a feeling, and not a slogan.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        questionZh: "《论语》里的「信」是什么？",
+        questionEn: "What is xin in the Analects?",
+        answerZh: "信（Legge 常作 truthfulness、sincerity、faith）是可核对的守信——在言语、交友与为政之中。活页可见人而无信如车无横木（2.22）；为政三项中民信最后才可去（12.7）；信近于义而言可复（1.13）；言忠信、行笃敬而能行（15.5）。请到各篇章页核对引文，并说明你用的是原文、导读还是 Legge。",
+        answerEn: "Xin (信; Legge often: truthfulness, sincerity, faith) is trustworthiness you can check — in speech, friendship, and government. Live passages show a person without xin likened to a cart without its cross-bar (2.22); the people’s trust ranked last to drop in government (12.7); xin near yi so that what is spoken can be made good (1.13); and sincere, truthful words with honourable, careful actions that can travel (15.5). Check each quote on its passage page and say whether you used the source, the guide, or Legge.",
+      },
+      {
+        questionZh: "2.22 的「大车无𫐐，小车无𫐄」标出什么？",
+        questionEn: "What does 大车无𫐐，小车无𫐄 mark in 2.22?",
+        answerZh: "没有系牛的横木，或没有系马的机件，车就不能走——人而无信，则言语与行事无处可系。本篇把它读作横木主门；不是诚信鸡汤，也不是忠恕的重写。",
+        answerEn: "Without the cross-bar for yoking oxen, or the arrangement for yoking horses, a cart cannot go — and without xin, a person has nowhere to hitch speech and conduct. This Note reads that as the lead cross-bar door; it is not a honesty pep talk and not a Zhongshu rewrite.",
+      },
+      {
+        questionZh: "为何把「民无信不立」作信门，而不是为政通论？",
+        questionEn: "Why keep 民无信不立 as a xin door, not a governing essay?",
+        answerZh: "这里的 12.7 只作「为政之信」的去取门：食、兵、民信，信是最后才可去者。「为政以德」Note 已有更广的为政以德读法；本篇不重写它。",
+        answerEn: "Here 12.7 is only the government-trust ranking door: food, arms, and the people’s confidence, with trust last to drop. The Governing by Virtue Note already covers broader rule-by-virtue reading; this Note does not rewrite it.",
+      },
+      {
+        questionZh: "1.13 是不是说任何许诺都必须守？",
+        questionEn: "Does 1.13 mean any promise must be kept?",
+        answerZh: "不是。信近于义，言可复也——信贴近义，言才可兑现。可核对的边是近于义的言，而不是对每一句话的生硬坚持。对尚在持有的「义」专篇只软提；本篇不是义论。",
+        answerEn: "No. 信近于义，言可复也 — xin near yi, so that what is spoken can be made good. The checkable edge is speech that sits near what is right, not raw insistence on every utterance. Soft touch only to the held Yi Note; this Note is not an yi essay.",
+      },
+      {
+        questionZh: "好信而不好学，也会出问题吗？",
+        questionEn: "Can loving xin without learning still go wrong?",
+        answerZh: "会——仅作 FAQ 软门，请打开[论语 · 阳货 17.8](https://www.lunyu.ai/zh-Hans/analects/yang-huo/yang-huo-008)：好信不好学，其蔽也贼——爱好诚信却不爱好学习，弊病是容易被人利用而害己。这把「只求诚实」的口号收一收；不是第五扇正文游历，也不是借相邻六言改写仁论。",
+        answerEn: "Yes — as a soft FAQ door only, open [The Analects · Yang Ho 17.8](https://www.lunyu.ai/en/analects/yang-huo/yang-huo-008): 好信不好学，其蔽也贼 — the love of being sincere without the love of learning beclouds into an injurious disregard of consequences. That softens the slogan of “just be honest”; it is not a fifth body tour, and it is not a ren essay via the neighboring six words.",
+      },
+    ],
+    afterFaqSections: [
+      {
+        headingZh: "FAQ 之后——接着打开「信」索引",
+        headingEn: "After FAQ — open the Trustworthiness index",
+        bodyZh: [
+          "当你想把谈及这一可核对之信的章句放在同一页，请打开[信](https://www.lunyu.ai/zh-Hans/index/xin)。索引标出信关乎言行一致、政令可信与朋友相交并选篇；这一篇跟着横木之象、民信之去取、信近于义而言可复、以及言忠信行笃敬之能行走。你回到那里再读这几处；引用时请写明篇章网址，并说明用的是原文、导读还是英译。",
+        ],
+        bodyEn: [
+          "When you want the passages that name this checkable trustworthiness gathered on one screen, open [Trustworthiness](https://www.lunyu.ai/en/index/xin). The index marks trustworthiness in speech, government, and friendship and selects doors; this Note followed the cross-bar image, the ranking that keeps the people’s trust, xin near yi so speech can be made good, and words and deeds that can travel. Read the doors again there in context, and when you quote any of them, give the passage URL and say whether you used the source, the guide, or Legge.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "xia-shang-zhou-in-the-analects",
     titleZh: "《论语》里的夏、殷、周：礼制损益的时间框架",
     titleEn: "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",

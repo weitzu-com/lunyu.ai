@@ -749,6 +749,19 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "xin-trustworthiness-in-the-analects",
+    titleZh: "《论语》里的「信」",
+    titleEn: "Xin (Trustworthiness) in the Analects",
+    passages: [
+      "wei-zheng/wei-zheng-022",
+      "yan-yuan/yan-yuan-007",
+      "xue-er/xue-er-013",
+      "wei-ling-gong/wei-ling-gong-005",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "xia-shang-zhou-in-the-analects",
     titleZh: "《论语》里的夏、殷、周：礼制损益的时间框架",
     titleEn: "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
@@ -974,6 +987,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Xin (Trustworthiness) in the Analects",
+  "2026-11-03",
   "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
   "2026-11-02",
   "The Ji Family in the Analects: Where Ritual Overreach Meets Political Power",
@@ -1013,6 +1028,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的「信」",
+  "2026-11-03",
   "《论语》里的夏、殷、周：礼制损益的时间框架",
   "2026-11-02",
   "《论语》里的季氏：僭礼与权欲相撞之处",
@@ -2324,6 +2341,344 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const xinCover = "/images/blogs/xin-trustworthiness-in-the-analects/cover.png";
+const xinInline1 = "/images/blogs/xin-trustworthiness-in-the-analects/inline-1.png";
+const xinInline2 = "/images/blogs/xin-trustworthiness-in-the-analects/inline-2.png";
+const xinCoverEn = "A quiet cross-bar mark — without trustworthiness the cart of speech has nowhere to hitch";
+const xinCoverZh = "安静的横木／系轭之记号——无信则言语之车无处可系";
+const xinInline1En = "A quiet three-requisites ranking mark — food, arms, and trust, with trust last to drop";
+const xinInline1Zh = "安静的三项去取记号——食、兵、信，信是最后才可去者";
+const xinInline2En = "A quiet standing-and-carriage mark — trustworthiness kept visible ahead and on the cart’s cross-bar";
+const xinInline2Zh = "安静的立／舆之记号——信显于前、倚于衡";
+const xinAnchors = [
+  ["论语 · 为政 2.22", "https://www.lunyu.ai/zh-Hans/analects/wei-zheng/wei-zheng-022"],
+  ["The Analects · Wei Chang 2.22", "https://www.lunyu.ai/en/analects/wei-zheng/wei-zheng-022"],
+  ["论语 · 颜渊 12.7", "https://www.lunyu.ai/zh-Hans/analects/yan-yuan/yan-yuan-007"],
+  ["The Analects · Yen Yuan 12.7", "https://www.lunyu.ai/en/analects/yan-yuan/yan-yuan-007"],
+  ["论语 · 学而 1.13", "https://www.lunyu.ai/zh-Hans/analects/xue-er/xue-er-013"],
+  ["The Analects · Hsio R. 1.13", "https://www.lunyu.ai/en/analects/xue-er/xue-er-013"],
+  ["论语 · 卫灵公 15.5", "https://www.lunyu.ai/zh-Hans/analects/wei-ling-gong/wei-ling-gong-005"],
+  ["The Analects · Wei Ling Kung 15.5", "https://www.lunyu.ai/en/analects/wei-ling-gong/wei-ling-gong-005"],
+  ["论语 · 阳货 17.8", "https://www.lunyu.ai/zh-Hans/analects/yang-huo/yang-huo-008"],
+  ["The Analects · Yang Ho 17.8", "https://www.lunyu.ai/en/analects/yang-huo/yang-huo-008"],
+  ["信", "https://www.lunyu.ai/zh-Hans/index/xin"],
+  ["Trustworthiness", "https://www.lunyu.ai/en/index/xin"],
+];
+const xinForbidden = [
+  "/blogs/zhongshu-reciprocity-in-the-analects",
+  "/blogs/three-self-examinations-in-the-analects",
+  "/blogs/zeng-zi-sayings-in-the-analects",
+  "/blogs/what-ren-means-in-the-analects",
+  "/blogs/governing-by-virtue-in-the-analects",
+  "/blogs/yi-in-the-analects",
+  "/blogs/yi-rightness-in-the-analects",
+  "/index/yi",
+];
+{
+  const start = postSource.indexOf('slug: "xin-trustworthiness-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing xin-trustworthiness-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = xinAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `xin-trustworthiness-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    xinAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`xin-trustworthiness-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `xin-trustworthiness-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 10) {
+      fail(
+        `xin-trustworthiness-in-the-analects: expected four body doors plus soft FAQ 17.8 per language (10 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/xin"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `xin-trustworthiness-in-the-analects: Trustworthiness index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [...xinForbidden, "pending Gemini", "IMAGE SLOT", "*"]) {
+      if (block.includes(forbidden)) {
+        fail(`xin-trustworthiness-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("four passage doors")) {
+      fail("xin-trustworthiness-in-the-analects: dek/description must say four passage doors");
+    }
+    if (!block.includes("四扇章句门")) {
+      fail("xin-trustworthiness-in-the-analects: dek/description must say 四扇章句门");
+    }
+    if (
+      block.includes("three passage doors") ||
+      block.includes("三扇章句门") ||
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("five passage doors") ||
+      block.includes("五扇章句门")
+    ) {
+      fail("xin-trustworthiness-in-the-analects: passage count must stay four");
+    }
+    if (!block.includes('datePublished: "2026-11-03"') || !block.includes('dateModified: "2026-11-03"')) {
+      fail("xin-trustworthiness-in-the-analects: both locales must use 2026-11-03");
+    }
+    const xinLiveEnglish = [];
+    for (const book of generated.books) {
+      for (const sentence of book.sentences) {
+        if (["wei-zheng-022", "yan-yuan-007", "xue-er-013", "wei-ling-gong-005"].includes(sentence.id)) {
+          xinLiveEnglish.push(sentence.english);
+        }
+      }
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const quotes = value.match(/"/g) || [];
+      const liveLegge = xinLiveEnglish.find((english) => value.includes(english));
+      if (liveLegge) {
+        const extra = quotes.length - (liveLegge.match(/"/g) || []).length;
+        if (extra % 2 !== 0) {
+          fail("xin-trustworthiness-in-the-analects: unbalanced English quotation marks");
+        }
+      } else if (quotes.length % 2 !== 0) {
+        fail("xin-trustworthiness-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("xin-trustworthiness-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("xin-trustworthiness-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [xinCover, xinInline1, xinInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+checkHtml("/en/blogs/xin-trustworthiness-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/xin-trustworthiness-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-03"',
+  '"dateModified":"2026-11-03"',
+  "Xin (Trustworthiness) in the Analects",
+  "Xin (Trustworthiness) in the Analects is the cross-bar of speech — four passage doors, and trust you can check.",
+  "here you deepen four passage doors.",
+  "Without xin, nowhere to hitch — 人而无信，不知其可也",
+  "What government can still drop last — 民无信不立",
+  "Xin near yi — 信近于义，言可复也",
+  "Words and deeds that can travel — 言忠信，行笃敬",
+  "What the four doors add up to",
+  "After FAQ — open the Trustworthiness index",
+  "What is xin in the Analects?",
+  "What does 大车无𫐐，小车无𫐄 mark in 2.22?",
+  "Why keep 民无信不立 as a xin door, not a governing essay?",
+  "Does 1.13 mean any promise must be kept?",
+  "Can loving xin without learning still go wrong?",
+  "I do not know how a man without truthfulness is to get on",
+  "there is no standing for the state",
+  "what is spoken can be made good",
+  "Let his words be sincere and truthful",
+  ">The Analects · Wei Chang 2.22</a>",
+  ">The Analects · Yen Yuan 12.7</a>",
+  ">The Analects · Hsio R. 1.13</a>",
+  ">The Analects · Wei Ling Kung 15.5</a>",
+  ">The Analects · Yang Ho 17.8</a>",
+  ">Trustworthiness</a>",
+  'href="/en/analects/wei-zheng/wei-zheng-022"',
+  'href="/en/analects/yan-yuan/yan-yuan-007"',
+  'href="/en/analects/xue-er/xue-er-013"',
+  'href="/en/analects/wei-ling-gong/wei-ling-gong-005"',
+  'href="/en/analects/yang-huo/yang-huo-008"',
+  'href="/en/index/xin"',
+  xinCover,
+  xinInline1,
+  xinInline2,
+  xinCoverEn,
+  xinInline1En,
+  xinInline2En,
+  `property="og:image" content="${siteUrl}${xinCover}"`,
+  `property="og:image:alt" content="${xinCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${xinCover}"`,
+  `name="twitter:image:alt" content="${xinCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/xin-trustworthiness-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/xin-trustworthiness-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-03"',
+  '"dateModified":"2026-11-03"',
+  "《论语》里的「信」",
+  "《论语》里的「信」要你看言语可系的横木。四扇章句门，民无信不立。",
+  "这里深读四扇章句门。",
+  "无信则无处可系——人而无信，不知其可也",
+  "为政最后仍守住的——民无信不立",
+  "信近于义——言可复也",
+  "能行得通的言行——言忠信，行笃敬",
+  "四门合起来看",
+  "FAQ 之后——接着打开「信」索引",
+  "《论语》里的「信」是什么？",
+  "2.22 的「大车无𫐐，小车无𫐄」标出什么？",
+  "为何把「民无信不立」作信门，而不是为政通论？",
+  "1.13 是不是说任何许诺都必须守？",
+  "好信而不好学，也会出问题吗？",
+  "人而无信，不知其可也",
+  "民无信不立",
+  "信近于义，言可复也",
+  "言忠信，行笃敬",
+  ">论语 · 为政 2.22</a>",
+  ">论语 · 颜渊 12.7</a>",
+  ">论语 · 学而 1.13</a>",
+  ">论语 · 卫灵公 15.5</a>",
+  ">论语 · 阳货 17.8</a>",
+  ">信</a>",
+  'href="/zh-Hans/analects/wei-zheng/wei-zheng-022"',
+  'href="/zh-Hans/analects/yan-yuan/yan-yuan-007"',
+  'href="/zh-Hans/analects/xue-er/xue-er-013"',
+  'href="/zh-Hans/analects/wei-ling-gong/wei-ling-gong-005"',
+  'href="/zh-Hans/analects/yang-huo/yang-huo-008"',
+  'href="/zh-Hans/index/xin"',
+  xinCover,
+  xinInline1,
+  xinInline2,
+  xinCoverZh,
+  xinInline1Zh,
+  xinInline2Zh,
+  `property="og:image" content="${siteUrl}${xinCover}"`,
+  `property="og:image:alt" content="${xinCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${xinCover}"`,
+  `name="twitter:image:alt" content="${xinCoverZh}"`,
+]);
+{
+  const zhXinFile = htmlPath("/zh-Hans/blogs/xin-trustworthiness-in-the-analects");
+  if (exists(zhXinFile)) {
+    const zhXinHtml = read(zhXinFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布"]) {
+      if (zhXinHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/xin-trustworthiness-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhXinHtml.includes(xinCoverEn)) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhXinHtml.includes(xinInline1En) || zhXinHtml.includes(xinInline2En)) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhXinHtml, />The Analects · Wei Chang 2\.22<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: English 2.22 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhXinHtml, />Trustworthiness<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhXinHtml, />信<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: 信 body link should appear once");
+    }
+    if (countRegex(zhXinHtml, />论语 · 为政 2\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: 为政 2.22 body link should appear once");
+    }
+    if (countRegex(zhXinHtml, />论语 · 颜渊 12\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: 颜渊 12.7 body link should appear once");
+    }
+    if (countRegex(zhXinHtml, />论语 · 学而 1\.13<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: 学而 1.13 body link should appear once");
+    }
+    if (countRegex(zhXinHtml, />论语 · 卫灵公 15\.5<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: 卫灵公 15.5 body link should appear once");
+    }
+    if (countRegex(zhXinHtml, />论语 · 阳货 17\.8<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: 阳货 17.8 soft FAQ link should appear once");
+    }
+    assertNoteTitleStrategy(zhXinHtml, "/zh-Hans/blogs/xin-trustworthiness-in-the-analects", "《论语》里的「信」");
+    assertReadableRelatedChips(zhXinHtml, "/zh-Hans/blogs/xin-trustworthiness-in-the-analects");
+    if (!zhXinHtml.includes(">论语 · 为政 2.22</span>")) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhXinHtml.includes(">信</span>")) {
+      fail("/zh-Hans/blogs/xin-trustworthiness-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of xinForbidden) {
+      if (zhXinHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/xin-trustworthiness-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enXinFile = htmlPath("/en/blogs/xin-trustworthiness-in-the-analects");
+  if (exists(enXinFile)) {
+    const enXinHtml = read(enXinFile);
+    if (enXinHtml.includes(xinCoverZh)) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enXinHtml.includes(xinInline1Zh) || enXinHtml.includes(xinInline2Zh)) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enXinHtml, />Trustworthiness<\/a>/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enXinHtml, />The Analects · Wei Chang 2\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Wei Chang 2.22 body link should appear once");
+    }
+    if (countRegex(enXinHtml, />The Analects · Yen Yuan 12\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Yen Yuan 12.7 body link should appear once");
+    }
+    if (countRegex(enXinHtml, />The Analects · Hsio R\. 1\.13<\/a>/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Hsio R. 1.13 body link should appear once");
+    }
+    if (countRegex(enXinHtml, />The Analects · Wei Ling Kung 15\.5<\/a>/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Wei Ling Kung 15.5 body link should appear once");
+    }
+    if (countRegex(enXinHtml, />The Analects · Yang Ho 17\.8<\/a>/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Yang Ho 17.8 soft FAQ link should appear once");
+    }
+    if (countRegex(enXinHtml, />信<\/a>/g) !== 0) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enXinHtml, />论语 · 为政 2\.22<\/a>/g) !== 0) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Chinese 2.22 body link should not appear on en");
+    }
+    if (countRegex(enXinHtml, /href="\/en\/index\/xin"/g) !== 1) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: Trustworthiness index href should appear once");
+    }
+    assertNoteTitleStrategy(enXinHtml, "/en/blogs/xin-trustworthiness-in-the-analects", "Xin (Trustworthiness) in the Analects");
+    assertReadableRelatedChips(enXinHtml, "/en/blogs/xin-trustworthiness-in-the-analects");
+    if (!enXinHtml.includes(">The Analects · Wei Chang 2.22</span>")) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enXinHtml.includes(">Trustworthiness</span>")) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enXinHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enXinHtml);
+    if (!/fetchpriority="high"/i.test(enXinHtml) || !coverPreloaded) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enXinHtml)) {
+      fail("/en/blogs/xin-trustworthiness-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of xinForbidden) {
+      if (enXinHtml.includes(forbidden)) {
+        fail(`/en/blogs/xin-trustworthiness-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -9034,6 +9389,17 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/xin`, [
+    locale === "en" ? ">Trustworthiness<" : ">信<",
+    `href="/${locale}/blogs/xin-trustworthiness-in-the-analects"`,
+    locale === "en"
+      ? "Xin (Trustworthiness) in the Analects"
+      : "《论语》里的「信」",
+    `/${locale}/analects/wei-zheng/wei-zheng-022`,
+    `/${locale}/analects/yan-yuan/yan-yuan-007`,
+    `/${locale}/analects/xue-er/xue-er-013`,
+    `/${locale}/analects/wei-ling-gong/wei-ling-gong-005`,
+  ]);
   checkHtml(`/${locale}/index/xia-shang-zhou`, [
     locale === "en" ? ">Xia, Yin, and Zhou<" : ">夏、殷、周<",
     `href="/${locale}/blogs/xia-shang-zhou-in-the-analects"`,
@@ -9328,6 +9694,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/xin-trustworthiness-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/xin-trustworthiness-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/xia-shang-zhou-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/xia-shang-zhou-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/ji-family-in-the-analects`, "sitemap");
@@ -9405,8 +9773,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-11-02")) {
+    if (!lastmod.includes("2026-11-03")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const xinLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/xin-trustworthiness-in-the-analects`);
+    if (!xinLastmod.includes("2026-11-03")) {
+      fail(
+        `sitemap: /${locale}/blogs/xin-trustworthiness-in-the-analects lastmod should be 2026-11-03, got ${xinLastmod || "missing"}`
+      );
     }
     const xiaShangZhouLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/xia-shang-zhou-in-the-analects`);
     if (!xiaShangZhouLastmod.includes("2026-11-02")) {
@@ -9580,7 +9954,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Mon, 02 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const xinItem = rss.split("<item>").find((part) => part.includes("/blogs/xin-trustworthiness-in-the-analects"));
+  if (!xinItem) fail("rss: missing xin-trustworthiness-in-the-analects");
+  else if (!xinItem.includes("03 Nov 2026")) {
+    fail("rss: xin-trustworthiness-in-the-analects pubDate should be 03 Nov 2026");
+  }
   const xiaShangZhouItem = rss.split("<item>").find((part) => part.includes("/blogs/xia-shang-zhou-in-the-analects"));
   if (!xiaShangZhouItem) fail("rss: missing xia-shang-zhou-in-the-analects");
   else if (!xiaShangZhouItem.includes("02 Nov 2026")) {
@@ -9640,6 +10019,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const xinEditorialLastmod = "2026-11-03";
 const xiaShangZhouEditorialLastmod = "2026-11-02";
 const jiFamilyEditorialLastmod = "2026-11-01";
 const mengFamilyEditorialLastmod = "2026-10-31";
@@ -9673,6 +10053,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${xinEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${xiaShangZhouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${jiFamilyEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${mengFamilyEditorialLastmod}T00:00:00.000Z`, "")
