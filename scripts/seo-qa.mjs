@@ -749,6 +749,19 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "guan-zhong-in-the-analects",
+    titleZh: "《论语》里的管仲",
+    titleEn: "Guan Zhong in the Analects",
+    passages: [
+      "ba-yi/ba-yi-022",
+      "xian-wen/xian-wen-010",
+      "xian-wen/xian-wen-017",
+      "xian-wen/xian-wen-018",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "xin-trustworthiness-in-the-analects",
     titleZh: "《论语》里的「信」",
     titleEn: "Xin (Trustworthiness) in the Analects",
@@ -987,6 +1000,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Guan Zhong in the Analects",
+  "2026-11-04",
   "Xin (Trustworthiness) in the Analects",
   "2026-11-03",
   "Xia, Yin, and Zhou in the Analects: The Dynastic Frame for Ritual Change",
@@ -1028,6 +1043,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的管仲",
+  "2026-11-04",
   "《论语》里的「信」",
   "2026-11-03",
   "《论语》里的夏、殷、周：礼制损益的时间框架",
@@ -2341,6 +2358,338 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const guanZhongCover = "/images/blogs/guan-zhong-in-the-analects/cover.png";
+const guanZhongInline1 = "/images/blogs/guan-zhong-in-the-analects/inline-1.png";
+const guanZhongInline2 = "/images/blogs/guan-zhong-in-the-analects/inline-2.png";
+const guanZhongCoverEn = "A quiet paired mark — screens and stands beside a meeting without war-carts";
+const guanZhongCoverZh = "安静的成对记号——屏墙反坫之边，对着不以兵车会合之边";
+const guanZhongInline1En = "A quiet meeting-without-weapons mark — princes gathered, no war-cart edge";
+const guanZhongInline1Zh = "安静的「会合而不以兵车」记号——诸侯相会，无兵车之锋";
+const guanZhongInline2En = "A quiet civilizational-scale mark — hair-bound, right-lapping order kept";
+const guanZhongInline2Zh = "安静的文明尺度记号——发束、衣襟右衽之秩序得以守住";
+const guanZhongAnchors = [
+  ["论语 · 八佾 3.22", "https://www.lunyu.ai/zh-Hans/analects/ba-yi/ba-yi-022"],
+  ["The Analects · Pa Yih 3.22", "https://www.lunyu.ai/en/analects/ba-yi/ba-yi-022"],
+  ["论语 · 宪问 14.10", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-010"],
+  ["The Analects · Hsien Wan 14.10", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-010"],
+  ["论语 · 宪问 14.17", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-017"],
+  ["The Analects · Hsien Wan 14.17", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-017"],
+  ["论语 · 宪问 14.18", "https://www.lunyu.ai/zh-Hans/analects/xian-wen/xian-wen-018"],
+  ["The Analects · Hsien Wan 14.18", "https://www.lunyu.ai/en/analects/xian-wen/xian-wen-018"],
+  ["管仲", "https://www.lunyu.ai/zh-Hans/index/guan-zhong"],
+  ["Guan Zhong", "https://www.lunyu.ai/en/index/guan-zhong"],
+];
+const guanZhongForbidden = [
+  "/blogs/duke-jing-of-qi-in-the-analects",
+  "/blogs/li-ritual-in-the-analects",
+  "/blogs/what-ren-means-in-the-analects",
+  "/blogs/zi-lu-in-the-analects",
+  "/blogs/zi-gong-in-the-analects",
+  "/blogs/bo-yi-shu-qi-in-the-analects",
+];
+{
+  const start = postSource.indexOf('slug: "guan-zhong-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing guan-zhong-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = guanZhongAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `guan-zhong-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    guanZhongAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`guan-zhong-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `guan-zhong-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 8) {
+      fail(
+        `guan-zhong-in-the-analects: expected four body doors per language (8 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/guan-zhong"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `guan-zhong-in-the-analects: Guan Zhong index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [...guanZhongForbidden, "pending Gemini", "IMAGE SLOT", "*"]) {
+      if (block.includes(forbidden)) {
+        fail(`guan-zhong-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("four passage doors")) {
+      fail("guan-zhong-in-the-analects: dek/description must say four passage doors");
+    }
+    if (!block.includes("四扇章句门")) {
+      fail("guan-zhong-in-the-analects: dek/description must say 四扇章句门");
+    }
+    if (
+      block.includes("three passage doors") ||
+      block.includes("三扇章句门") ||
+      block.includes("five live passages") ||
+      block.includes("五条活页") ||
+      block.includes("five passage doors") ||
+      block.includes("五扇章句门")
+    ) {
+      fail("guan-zhong-in-the-analects: passage count must stay four");
+    }
+    if (!block.includes('datePublished: "2026-11-04"') || !block.includes('dateModified: "2026-11-04"')) {
+      fail("guan-zhong-in-the-analects: both locales must use 2026-11-04");
+    }
+    const guanZhongLiveEnglish = [];
+    for (const book of generated.books) {
+      for (const sentence of book.sentences) {
+        if (["ba-yi-022", "xian-wen-010", "xian-wen-017", "xian-wen-018"].includes(sentence.id)) {
+          guanZhongLiveEnglish.push(sentence.english);
+        }
+      }
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const quotes = value.match(/"/g) || [];
+      const liveLegge = guanZhongLiveEnglish.find((english) => value.includes(english));
+      if (liveLegge) {
+        const extra = quotes.length - (liveLegge.match(/"/g) || []).length;
+        if (extra % 2 !== 0) {
+          fail("guan-zhong-in-the-analects: unbalanced English quotation marks");
+        }
+      } else if (quotes.length % 2 !== 0) {
+        fail("guan-zhong-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("guan-zhong-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("guan-zhong-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [guanZhongCover, guanZhongInline1, guanZhongInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+
+checkHtml("/en/blogs/guan-zhong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/guan-zhong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-04"',
+  '"dateModified":"2026-11-04"',
+  "Guan Zhong in the Analects",
+  "Guan Zhong in the Analects is the hard case — four passage doors, ritual overreach and historical gift.",
+  "here you deepen those four doors.",
+  "Small capacity, screens, and stands — 管仲之器小哉",
+  "“A man” — and a silence that lasts — 人也",
+  "Zi Lu’s challenge — 如其仁",
+  "Zi Gong’s challenge — 微管仲",
+  "What the four doors add up to",
+  "After FAQ — open the Guan Zhong index",
+  "Who was Guan Zhong in the Analects?",
+  "What does 管仲之器小哉 mark in 3.22?",
+  "Why keep 如其仁 as a Guan Zhong door, not a ren essay?",
+  "What does 微管仲 open in 14.18?",
+  "Is Guan Zhong a hero to copy or a villain to discard?",
+  "Does 14.10 praise seizure of land?",
+  "Small indeed was the capacity of Kwan Chung",
+  "the city of Pien, with three hundred families",
+  "May not I say that he was wanting in virtue?",
+  "the lappets of our coats buttoning on the left side",
+  ">The Analects · Pa Yih 3.22</a>",
+  ">The Analects · Hsien Wan 14.10</a>",
+  ">The Analects · Hsien Wan 14.17</a>",
+  ">The Analects · Hsien Wan 14.18</a>",
+  ">Guan Zhong</a>",
+  'href="/en/analects/ba-yi/ba-yi-022"',
+  'href="/en/analects/xian-wen/xian-wen-010"',
+  'href="/en/analects/xian-wen/xian-wen-017"',
+  'href="/en/analects/xian-wen/xian-wen-018"',
+  'href="/en/index/guan-zhong"',
+  guanZhongCover,
+  guanZhongInline1,
+  guanZhongInline2,
+  guanZhongCoverEn,
+  guanZhongInline1En,
+  guanZhongInline2En,
+  `property="og:image" content="${siteUrl}${guanZhongCover}"`,
+  `property="og:image:alt" content="${guanZhongCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${guanZhongCover}"`,
+  `name="twitter:image:alt" content="${guanZhongCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/guan-zhong-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/guan-zhong-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-04"',
+  '"dateModified":"2026-11-04"',
+  "《论语》里的管仲",
+  "《论语》里的管仲是那桩硬案。四扇章句门，僭礼与民受其赐。",
+  "这里深读这四扇门。",
+  "器小、塞门与反坫——管仲之器小哉",
+  "「人也」——与一声到老的无怨——人也",
+  "子路之问——如其仁",
+  "子贡之问——微管仲",
+  "四门合起来看",
+  "FAQ 之后——接着打开「管仲」索引",
+  "《论语》里的管仲是谁？",
+  "3.22 的「管仲之器小哉」标出什么？",
+  "为何把「如其仁」作管仲门，而不是仁论？",
+  "14.18 的「微管仲」打开什么？",
+  "管仲是可照抄的英雄，还是可丢弃的恶棍？",
+  "14.10 是在夸夺取采邑吗？",
+  "管仲之器小哉",
+  "人也，夺伯氏騈邑三百",
+  "如其仁。如其仁",
+  "微管仲，吾其被发左衽矣",
+  ">论语 · 八佾 3.22</a>",
+  ">论语 · 宪问 14.10</a>",
+  ">论语 · 宪问 14.17</a>",
+  ">论语 · 宪问 14.18</a>",
+  ">管仲</a>",
+  'href="/zh-Hans/analects/ba-yi/ba-yi-022"',
+  'href="/zh-Hans/analects/xian-wen/xian-wen-010"',
+  'href="/zh-Hans/analects/xian-wen/xian-wen-017"',
+  'href="/zh-Hans/analects/xian-wen/xian-wen-018"',
+  'href="/zh-Hans/index/guan-zhong"',
+  guanZhongCover,
+  guanZhongInline1,
+  guanZhongInline2,
+  guanZhongCoverZh,
+  guanZhongInline1Zh,
+  guanZhongInline2Zh,
+  `property="og:image" content="${siteUrl}${guanZhongCover}"`,
+  `property="og:image:alt" content="${guanZhongCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${guanZhongCover}"`,
+  `name="twitter:image:alt" content="${guanZhongCoverZh}"`,
+]);
+{
+  const zhGuanFile = htmlPath("/zh-Hans/blogs/guan-zhong-in-the-analects");
+  if (exists(zhGuanFile)) {
+    const zhGuanHtml = read(zhGuanFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布", "pending Gemini", "IMAGE SLOT"]) {
+      if (zhGuanHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/guan-zhong-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhGuanHtml.includes(guanZhongCoverEn)) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhGuanHtml.includes(guanZhongInline1En) || zhGuanHtml.includes(guanZhongInline2En)) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhGuanHtml, />The Analects · Pa Yih 3\.22<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: English 3.22 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhGuanHtml, />Guan Zhong<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhGuanHtml, />管仲<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: 管仲 body link should appear once");
+    }
+    if (countRegex(zhGuanHtml, />论语 · 八佾 3\.22<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: 八佾 3.22 body link should appear once");
+    }
+    if (countRegex(zhGuanHtml, />论语 · 宪问 14\.10<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: 宪问 14.10 body link should appear once");
+    }
+    if (countRegex(zhGuanHtml, />论语 · 宪问 14\.17<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: 宪问 14.17 body link should appear once");
+    }
+    if (countRegex(zhGuanHtml, />论语 · 宪问 14\.18<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: 宪问 14.18 body link should appear once");
+    }
+    assertNoteTitleStrategy(zhGuanHtml, "/zh-Hans/blogs/guan-zhong-in-the-analects", "《论语》里的管仲");
+    assertReadableRelatedChips(zhGuanHtml, "/zh-Hans/blogs/guan-zhong-in-the-analects");
+    if (!zhGuanHtml.includes(">论语 · 八佾 3.22</span>")) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhGuanHtml.includes(">管仲</span>")) {
+      fail("/zh-Hans/blogs/guan-zhong-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of guanZhongForbidden) {
+      if (zhGuanHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/guan-zhong-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enGuanFile = htmlPath("/en/blogs/guan-zhong-in-the-analects");
+  if (exists(enGuanFile)) {
+    const enGuanHtml = read(enGuanFile);
+    for (const stub of ["pending Gemini", "IMAGE SLOT"]) {
+      if (enGuanHtml.includes(stub)) {
+        fail(`/en/blogs/guan-zhong-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (enGuanHtml.includes(guanZhongCoverZh)) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enGuanHtml.includes(guanZhongInline1Zh) || enGuanHtml.includes(guanZhongInline2Zh)) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enGuanHtml, />Guan Zhong<\/a>/g) !== 1) {
+      fail("/en/blogs/guan-zhong-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enGuanHtml, />The Analects · Pa Yih 3\.22<\/a>/g) !== 1) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Pa Yih 3.22 body link should appear once");
+    }
+    if (countRegex(enGuanHtml, />The Analects · Hsien Wan 14\.10<\/a>/g) !== 1) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Hsien Wan 14.10 body link should appear once");
+    }
+    if (countRegex(enGuanHtml, />The Analects · Hsien Wan 14\.17<\/a>/g) !== 1) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Hsien Wan 14.17 body link should appear once");
+    }
+    if (countRegex(enGuanHtml, />The Analects · Hsien Wan 14\.18<\/a>/g) !== 1) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Hsien Wan 14.18 body link should appear once");
+    }
+    if (countRegex(enGuanHtml, />管仲<\/a>/g) !== 0) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enGuanHtml, />论语 · 八佾 3\.22<\/a>/g) !== 0) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Chinese 3.22 body link should not appear on en");
+    }
+    if (countRegex(enGuanHtml, /href="\/en\/index\/guan-zhong"/g) !== 1) {
+      fail("/en/blogs/guan-zhong-in-the-analects: Guan Zhong index href should appear once");
+    }
+    assertNoteTitleStrategy(enGuanHtml, "/en/blogs/guan-zhong-in-the-analects", "Guan Zhong in the Analects");
+    assertReadableRelatedChips(enGuanHtml, "/en/blogs/guan-zhong-in-the-analects");
+    if (!enGuanHtml.includes(">The Analects · Pa Yih 3.22</span>")) {
+      fail("/en/blogs/guan-zhong-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enGuanHtml.includes(">Guan Zhong</span>")) {
+      fail("/en/blogs/guan-zhong-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enGuanHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enGuanHtml);
+    if (!/fetchpriority="high"/i.test(enGuanHtml) || !coverPreloaded) {
+      fail("/en/blogs/guan-zhong-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enGuanHtml)) {
+      fail("/en/blogs/guan-zhong-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of guanZhongForbidden) {
+      if (enGuanHtml.includes(forbidden)) {
+        fail(`/en/blogs/guan-zhong-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -9389,6 +9738,15 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/guan-zhong`, [
+    locale === "en" ? ">Guan Zhong<" : ">管仲<",
+    `href="/${locale}/blogs/guan-zhong-in-the-analects"`,
+    locale === "en" ? "Guan Zhong in the Analects" : "《论语》里的管仲",
+    `/${locale}/analects/ba-yi/ba-yi-022`,
+    `/${locale}/analects/xian-wen/xian-wen-010`,
+    `/${locale}/analects/xian-wen/xian-wen-017`,
+    `/${locale}/analects/xian-wen/xian-wen-018`,
+  ]);
   checkHtml(`/${locale}/index/xin`, [
     locale === "en" ? ">Trustworthiness<" : ">信<",
     `href="/${locale}/blogs/xin-trustworthiness-in-the-analects"`,
@@ -9694,6 +10052,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/guan-zhong-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/guan-zhong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/xin-trustworthiness-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/xin-trustworthiness-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/xia-shang-zhou-in-the-analects`, "sitemap");
@@ -9773,8 +10133,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-11-03")) {
+    if (!lastmod.includes("2026-11-04")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const guanZhongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/guan-zhong-in-the-analects`);
+    if (!guanZhongLastmod.includes("2026-11-04")) {
+      fail(
+        `sitemap: /${locale}/blogs/guan-zhong-in-the-analects lastmod should be 2026-11-04, got ${guanZhongLastmod || "missing"}`
+      );
     }
     const xinLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/xin-trustworthiness-in-the-analects`);
     if (!xinLastmod.includes("2026-11-03")) {
@@ -9954,7 +10320,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Tue, 03 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Wed, 04 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const guanZhongItem = rss.split("<item>").find((part) => part.includes("/blogs/guan-zhong-in-the-analects"));
+  if (!guanZhongItem) fail("rss: missing guan-zhong-in-the-analects");
+  else if (!guanZhongItem.includes("04 Nov 2026")) {
+    fail("rss: guan-zhong-in-the-analects pubDate should be 04 Nov 2026");
+  }
   const xinItem = rss.split("<item>").find((part) => part.includes("/blogs/xin-trustworthiness-in-the-analects"));
   if (!xinItem) fail("rss: missing xin-trustworthiness-in-the-analects");
   else if (!xinItem.includes("03 Nov 2026")) {
@@ -10019,6 +10390,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const guanZhongEditorialLastmod = "2026-11-04";
 const xinEditorialLastmod = "2026-11-03";
 const xiaShangZhouEditorialLastmod = "2026-11-02";
 const jiFamilyEditorialLastmod = "2026-11-01";
@@ -10053,6 +10425,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${guanZhongEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${xinEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${xiaShangZhouEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${jiFamilyEditorialLastmod}T00:00:00.000Z`, "")
