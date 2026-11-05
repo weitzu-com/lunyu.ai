@@ -749,6 +749,20 @@ for (const locale of locales) {
 // GSC had not indexed (2026-10-08). Anchor text is the Note title. No trailing slash.
 const unindexedNoteLinks = [
   {
+    slug: "min-zijian-in-the-analects",
+    titleZh: "《论语》里的闵子骞",
+    titleEn: "Min Zijian in the Analects",
+    passages: [
+      "yong-ye/yong-ye-007",
+      "xian-jin/xian-jin-002",
+      "xian-jin/xian-jin-004",
+      "xian-jin/xian-jin-012",
+      "xian-jin/xian-jin-013",
+    ],
+    notes: [],
+    trust: [],
+  },
+  {
     slug: "guan-zhong-in-the-analects",
     titleZh: "《论语》里的管仲",
     titleEn: "Guan Zhong in the Analects",
@@ -1000,6 +1014,8 @@ checkHtml("/zh-Hans/index", [`rel="canonical" href="${siteUrl}/zh-Hans/index"`, 
 checkHtml("/en/blogs", [
   `rel="canonical" href="${siteUrl}/en/blogs"`,
   '"@type":"CollectionPage"',
+  "Min Zijian in the Analects",
+  "2026-11-05",
   "Guan Zhong in the Analects",
   "2026-11-04",
   "Xin (Trustworthiness) in the Analects",
@@ -1043,6 +1059,8 @@ checkHtml("/en/blogs", [
 checkHtml("/zh-Hans/blogs", [
   `rel="canonical" href="${siteUrl}/zh-Hans/blogs"`,
   '"@type":"CollectionPage"',
+  "《论语》里的闵子骞",
+  "2026-11-05",
   "《论语》里的管仲",
   "2026-11-04",
   "《论语》里的「信」",
@@ -2358,6 +2376,363 @@ checkHtml("/zh-Hans/blogs/fan-chi-in-the-analects", [
     ]) {
       if (enFanChiHtml.includes(forbidden)) {
         fail(`/en/blogs/fan-chi-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+}
+
+const minZijianCover = "/images/blogs/min-zijian-in-the-analects/cover.png";
+const minZijianInline1 = "/images/blogs/min-zijian-in-the-analects/inline-1.png";
+const minZijianInline2 = "/images/blogs/min-zijian-in-the-analects/inline-2.png";
+const minZijianCoverEn = "A quiet paired mark — declining the wrong post beside rare speech that hits the point";
+const minZijianCoverZh = "安静的成对记号——辞不当之位之边，对着少言而中之边";
+const minZijianInline1En = "A quiet filial-name mark — praise that outsiders do not contradict";
+const minZijianInline1Zh = "安静的「孝名而人不间」记号——称许旁人无从挑剔";
+const minZijianInline2En = "A quiet presence-and-speech mark — bland and precise, then words that hit the point";
+const minZijianInline2Zh = "安静的侍侧与少言之记号——訚訚如也，言则必中";
+const minZijianAnchors = [
+  ["论语 · 雍也 6.7", "https://www.lunyu.ai/zh-Hans/analects/yong-ye/yong-ye-007"],
+  ["The Analects · Yung Yey 6.7", "https://www.lunyu.ai/en/analects/yong-ye/yong-ye-007"],
+  ["论语 · 先进 11.2", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-002"],
+  ["The Analects · Hsien Tsin 11.2", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-002"],
+  ["论语 · 先进 11.4", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-004"],
+  ["The Analects · Hsien Tsin 11.4", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-004"],
+  ["论语 · 先进 11.12", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-012"],
+  ["The Analects · Hsien Tsin 11.12", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-012"],
+  ["论语 · 先进 11.13", "https://www.lunyu.ai/zh-Hans/analects/xian-jin/xian-jin-013"],
+  ["The Analects · Hsien Tsin 11.13", "https://www.lunyu.ai/en/analects/xian-jin/xian-jin-013"],
+  ["闵子骞", "https://www.lunyu.ai/zh-Hans/index/min-zijian"],
+  ["Min Zijian", "https://www.lunyu.ai/en/index/min-zijian"],
+];
+const minZijianForbidden = [
+  "/blogs/filial-conduct-ritual-and-care",
+  "/blogs/ji-family-in-the-analects",
+  "/blogs/chen-cai-in-the-analects",
+  "/blogs/yan-yuan-in-the-analects",
+  "/blogs/zhong-gong-in-the-analects",
+  "/blogs/ran-you-in-the-analects",
+  "/blogs/zi-lu-in-the-analects",
+  "/blogs/zi-gong-in-the-analects",
+];
+{
+  const start = postSource.indexOf('slug: "min-zijian-in-the-analects"');
+  if (start === -1) {
+    fail("editorial-posts: missing min-zijian-in-the-analects");
+  } else {
+    const next = postSource.indexOf('slug: "', start + 1);
+    const block = postSource.slice(start, next === -1 ? undefined : next);
+    const markdownHrefs = [...block.matchAll(/\]\((https?:\/\/[^)\s]+|\/[^)\s]*)\)/g)].map(
+      (match) => match[1]
+    );
+    const expectedHrefs = minZijianAnchors.map(([, href]) => href);
+    if (markdownHrefs.length !== expectedHrefs.length) {
+      fail(
+        `min-zijian-in-the-analects: expected ${expectedHrefs.length} markdown hrefs, got ${markdownHrefs.length}`
+      );
+    }
+    minZijianAnchors.forEach(([label, href]) => {
+      if (!block.includes(`[${label}](${href})`)) {
+        fail(`min-zijian-in-the-analects: missing [${label}](${href})`);
+      }
+    });
+    markdownHrefs.forEach((href, index) => {
+      if (href !== expectedHrefs[index]) {
+        fail(
+          `min-zijian-in-the-analects: markdown href ${index + 1} should be ${expectedHrefs[index]}`
+        );
+      }
+    });
+    const passageHrefs = markdownHrefs.filter((href) => href.includes("/analects/"));
+    if (passageHrefs.length !== 10) {
+      fail(
+        `min-zijian-in-the-analects: expected five body doors per language (10 hrefs), got ${passageHrefs.length}`
+      );
+    }
+    const indexHrefs = markdownHrefs.filter((href) => href.includes("/index/min-zijian"));
+    if (indexHrefs.length !== 2) {
+      fail(
+        `min-zijian-in-the-analects: Min Zijian index link should appear once per language, got ${indexHrefs.length}`
+      );
+    }
+    for (const forbidden of [...minZijianForbidden, "pending Gemini", "IMAGE SLOT", "*"]) {
+      if (block.includes(forbidden)) {
+        fail(`min-zijian-in-the-analects: ${forbidden} must not appear`);
+      }
+    }
+    if (!block.includes("five passage doors")) {
+      fail("min-zijian-in-the-analects: dek/description must say five passage doors");
+    }
+    if (!block.includes("五扇章句门")) {
+      fail("min-zijian-in-the-analects: dek/description must say 五扇章句门");
+    }
+    if (!block.includes("five live passage doors") || !block.includes("here you deepen those five doors")) {
+      fail("min-zijian-in-the-analects: dek must open five live passage doors");
+    }
+    if (!block.includes("五扇活页章句门") || !block.includes("这里深读这五扇门")) {
+      fail("min-zijian-in-the-analects: dek must open 五扇活页章句门");
+    }
+    if (
+      block.includes("three passage doors") ||
+      block.includes("三扇章句门") ||
+      block.includes("four passage doors") ||
+      block.includes("四扇章句门") ||
+      block.includes("six passage doors") ||
+      block.includes("六扇章句门")
+    ) {
+      fail("min-zijian-in-the-analects: passage count must stay five");
+    }
+    if (!block.includes('datePublished: "2026-11-05"') || !block.includes('dateModified: "2026-11-05"')) {
+      fail("min-zijian-in-the-analects: both locales must use 2026-11-05");
+    }
+    const minZijianLiveEnglish = [];
+    for (const book of generated.books) {
+      for (const sentence of book.sentences) {
+        if (["yong-ye-007", "xian-jin-002", "xian-jin-004", "xian-jin-012", "xian-jin-013"].includes(sentence.id)) {
+          minZijianLiveEnglish.push(sentence.english);
+        }
+      }
+    }
+    const quoteBodies = [...block.matchAll(/"(?:\\.|[^"\\])*"/g)].map((match) =>
+      JSON.parse(match[0])
+    );
+    for (const value of quoteBodies) {
+      const quotes = value.match(/"/g) || [];
+      const liveLegge = minZijianLiveEnglish.find((english) => value.includes(english));
+      if (liveLegge) {
+        const extra = quotes.length - (liveLegge.match(/"/g) || []).length;
+        if (extra % 2 !== 0) {
+          fail("min-zijian-in-the-analects: unbalanced English quotation marks");
+        }
+      } else if (quotes.length % 2 !== 0) {
+        fail("min-zijian-in-the-analects: unbalanced English quotation marks");
+      }
+      if ((value.match(/「/g) || []).length !== (value.match(/」/g) || []).length) {
+        fail("min-zijian-in-the-analects: unbalanced Chinese quotation marks");
+      }
+      if (value.includes("*")) {
+        fail("min-zijian-in-the-analects: literal asterisk in rendered text");
+      }
+    }
+  }
+}
+for (const src of [minZijianCover, minZijianInline1, minZijianInline2]) {
+  if (!exists(`public${src}`)) fail(`missing Notes image public${src}`);
+}
+
+checkHtml("/en/blogs/min-zijian-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/en/blogs/min-zijian-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-05"',
+  '"dateModified":"2026-11-05"',
+  "Min Zijian in the Analects",
+  "Min Zijian in the Analects is the disciple who declines the wrong post — five passage doors, filial name and rare speech.",
+  "here you deepen those five doors.",
+  "Decline the post — 善为我辞焉",
+  "Named in virtue — 德行：颜渊，闵子骞",
+  "A filial name others do not contradict — 孝哉闵子骞",
+  "Presence at the side — 訚訚如也",
+  "Rare speech that hits — 夫人不言，言必有中",
+  "What the five doors add up to",
+  "After FAQ — open the Min Zijian index",
+  "Who was Min Zijian in the Analects?",
+  "Why keep 6.7 as a Min Zijian door, not a Ji Family essay?",
+  "Why not open a reed-coat / stepmother folklore door?",
+  "Decline the offer for me politely",
+  "live on the banks of the Wan",
+  "Filial indeed is Min",
+  "Other people say nothing of him different from the report of his parents and brothers",
+  "looking bland and precise",
+  "he will not die a natural death",
+  "rebuild the Long Treasury",
+  "he is sure to hit the point",
+  "Distinguished for their virtuous principles and practice, there were Yen Yuan",
+  ">The Analects · Yung Yey 6.7</a>",
+  ">The Analects · Hsien Tsin 11.2</a>",
+  ">The Analects · Hsien Tsin 11.4</a>",
+  ">The Analects · Hsien Tsin 11.12</a>",
+  ">The Analects · Hsien Tsin 11.13</a>",
+  ">Min Zijian</a>",
+  'href="/en/analects/yong-ye/yong-ye-007"',
+  'href="/en/analects/xian-jin/xian-jin-002"',
+  'href="/en/analects/xian-jin/xian-jin-004"',
+  'href="/en/analects/xian-jin/xian-jin-012"',
+  'href="/en/analects/xian-jin/xian-jin-013"',
+  'href="/en/index/min-zijian"',
+  minZijianCover,
+  minZijianInline1,
+  minZijianInline2,
+  minZijianCoverEn,
+  minZijianInline1En,
+  minZijianInline2En,
+  `property="og:image" content="${siteUrl}${minZijianCover}"`,
+  `property="og:image:alt" content="${minZijianCoverEn}"`,
+  `name="twitter:image" content="${siteUrl}${minZijianCover}"`,
+  `name="twitter:image:alt" content="${minZijianCoverEn}"`,
+]);
+checkHtml("/zh-Hans/blogs/min-zijian-in-the-analects", [
+  `rel="canonical" href="${siteUrl}/zh-Hans/blogs/min-zijian-in-the-analects"`,
+  '"@type":"Article"',
+  '"@type":"FAQPage"',
+  '"datePublished":"2026-11-05"',
+  '"dateModified":"2026-11-05"',
+  "《论语》里的闵子骞",
+  "《论语》里的闵子骞是推辞不当之位的弟子。五扇章句门，孝名与言必有中。",
+  "这里深读这五扇门。",
+  "推辞不当之位——善为我辞焉",
+  "列于德行——德行：颜渊，闵子骞",
+  "孝名而人不间——孝哉闵子骞",
+  "侍侧气象——訚訚如也",
+  "少言而中——夫人不言，言必有中",
+  "五门合起来看",
+  "FAQ 之后——接着打开「闵子骞」索引",
+  "《论语》里的闵子骞是谁？",
+  "为何把 6.7 作闵子骞门，而不是季氏专篇？",
+  "为何不以芦衣顺母民间故事作门？",
+  "季氏使闵子骞为费宰",
+  "善为我辞焉",
+  "则吾必在汶上矣",
+  "孝哉闵子骞",
+  "人不间于其父母昆弟之言",
+  "闵子侍侧，訚訚如也",
+  "仍旧贯，如之何，何必改作",
+  "夫人不言，言必有中",
+  ">论语 · 雍也 6.7</a>",
+  ">论语 · 先进 11.2</a>",
+  ">论语 · 先进 11.4</a>",
+  ">论语 · 先进 11.12</a>",
+  ">论语 · 先进 11.13</a>",
+  ">闵子骞</a>",
+  'href="/zh-Hans/analects/yong-ye/yong-ye-007"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-002"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-004"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-012"',
+  'href="/zh-Hans/analects/xian-jin/xian-jin-013"',
+  'href="/zh-Hans/index/min-zijian"',
+  minZijianCover,
+  minZijianInline1,
+  minZijianInline2,
+  minZijianCoverZh,
+  minZijianInline1Zh,
+  minZijianInline2Zh,
+  `property="og:image" content="${siteUrl}${minZijianCover}"`,
+  `property="og:image:alt" content="${minZijianCoverZh}"`,
+  `name="twitter:image" content="${siteUrl}${minZijianCover}"`,
+  `name="twitter:image:alt" content="${minZijianCoverZh}"`,
+]);
+{
+  const zhMinFile = htmlPath("/zh-Hans/blogs/min-zijian-in-the-analects");
+  if (exists(zhMinFile)) {
+    const zhMinHtml = read(zhMinFile);
+    for (const stub of ["中文全文将于稍后发布", "中文解答将随全文于稍后发布", "pending Gemini", "IMAGE SLOT"]) {
+      if (zhMinHtml.includes(stub)) {
+        fail(`/zh-Hans/blogs/min-zijian-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (zhMinHtml.includes(minZijianCoverEn)) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: English cover alt leaked onto zh-Hans");
+    }
+    if (zhMinHtml.includes(minZijianInline1En) || zhMinHtml.includes(minZijianInline2En)) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: English inline alt leaked onto zh-Hans");
+    }
+    if (countRegex(zhMinHtml, />The Analects · Yung Yey 6\.7<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: English 6.7 body link should not appear on zh-Hans");
+    }
+    if (countRegex(zhMinHtml, />Min Zijian<\/a>/g) !== 0) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: English index anchor should not appear on zh-Hans");
+    }
+    if (countRegex(zhMinHtml, />闵子骞<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: 闵子骞 body link should appear once");
+    }
+    if (countRegex(zhMinHtml, />论语 · 雍也 6\.7<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: 雍也 6.7 body link should appear once");
+    }
+    if (countRegex(zhMinHtml, />论语 · 先进 11\.2<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: 先进 11.2 body link should appear once");
+    }
+    if (countRegex(zhMinHtml, />论语 · 先进 11\.4<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: 先进 11.4 body link should appear once");
+    }
+    if (countRegex(zhMinHtml, />论语 · 先进 11\.12<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: 先进 11.12 body link should appear once");
+    }
+    if (countRegex(zhMinHtml, />论语 · 先进 11\.13<\/a>/g) !== 1) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: 先进 11.13 body link should appear once");
+    }
+    assertNoteTitleStrategy(zhMinHtml, "/zh-Hans/blogs/min-zijian-in-the-analects", "《论语》里的闵子骞");
+    assertReadableRelatedChips(zhMinHtml, "/zh-Hans/blogs/min-zijian-in-the-analects");
+    if (!zhMinHtml.includes(">论语 · 雍也 6.7</span>")) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: related chip should show the passage short title");
+    }
+    if (!zhMinHtml.includes(">闵子骞</span>")) {
+      fail("/zh-Hans/blogs/min-zijian-in-the-analects: related chip should show the index short title");
+    }
+    for (const forbidden of minZijianForbidden) {
+      if (zhMinHtml.includes(forbidden)) {
+        fail(`/zh-Hans/blogs/min-zijian-in-the-analects: ${forbidden} must not be linked`);
+      }
+    }
+  }
+  const enMinFile = htmlPath("/en/blogs/min-zijian-in-the-analects");
+  if (exists(enMinFile)) {
+    const enMinHtml = read(enMinFile);
+    for (const stub of ["pending Gemini", "IMAGE SLOT"]) {
+      if (enMinHtml.includes(stub)) {
+        fail(`/en/blogs/min-zijian-in-the-analects: leftover stub ${stub}`);
+      }
+    }
+    if (enMinHtml.includes(minZijianCoverZh)) {
+      fail("/en/blogs/min-zijian-in-the-analects: Chinese cover alt leaked onto en");
+    }
+    if (enMinHtml.includes(minZijianInline1Zh) || enMinHtml.includes(minZijianInline2Zh)) {
+      fail("/en/blogs/min-zijian-in-the-analects: Chinese inline alt leaked onto en");
+    }
+    if (countRegex(enMinHtml, />Min Zijian<\/a>/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: index anchor should appear once");
+    }
+    if (countRegex(enMinHtml, />The Analects · Yung Yey 6\.7<\/a>/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: Yung Yey 6.7 body link should appear once");
+    }
+    if (countRegex(enMinHtml, />The Analects · Hsien Tsin 11\.2<\/a>/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: Hsien Tsin 11.2 body link should appear once");
+    }
+    if (countRegex(enMinHtml, />The Analects · Hsien Tsin 11\.4<\/a>/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: Hsien Tsin 11.4 body link should appear once");
+    }
+    if (countRegex(enMinHtml, />The Analects · Hsien Tsin 11\.12<\/a>/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: Hsien Tsin 11.12 body link should appear once");
+    }
+    if (countRegex(enMinHtml, />The Analects · Hsien Tsin 11\.13<\/a>/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: Hsien Tsin 11.13 body link should appear once");
+    }
+    if (countRegex(enMinHtml, />闵子骞<\/a>/g) !== 0) {
+      fail("/en/blogs/min-zijian-in-the-analects: Chinese index anchor should not appear on en");
+    }
+    if (countRegex(enMinHtml, />论语 · 雍也 6\.7<\/a>/g) !== 0) {
+      fail("/en/blogs/min-zijian-in-the-analects: Chinese 6.7 body link should not appear on en");
+    }
+    if (countRegex(enMinHtml, /href="\/en\/index\/min-zijian"/g) !== 1) {
+      fail("/en/blogs/min-zijian-in-the-analects: Min Zijian index href should appear once");
+    }
+    assertNoteTitleStrategy(enMinHtml, "/en/blogs/min-zijian-in-the-analects", "Min Zijian in the Analects");
+    assertReadableRelatedChips(enMinHtml, "/en/blogs/min-zijian-in-the-analects");
+    if (!enMinHtml.includes(">The Analects · Yung Yey 6.7</span>")) {
+      fail("/en/blogs/min-zijian-in-the-analects: related chip should show the passage short title");
+    }
+    if (!enMinHtml.includes(">Min Zijian</span>")) {
+      fail("/en/blogs/min-zijian-in-the-analects: related chip should show the index short title");
+    }
+    const coverPreloaded = /<link\b[^>]*rel="preload"[^>]*as="image"[^>]*>/i.test(enMinHtml)
+      || /<link\b[^>]*as="image"[^>]*rel="preload"[^>]*>/i.test(enMinHtml);
+    if (!/fetchpriority="high"/i.test(enMinHtml) || !coverPreloaded) {
+      fail("/en/blogs/min-zijian-in-the-analects: cover should be the high-priority preloaded LCP image");
+    }
+    if (/logo-seal-solid[^>]*fetchpriority="high"/i.test(enMinHtml)) {
+      fail("/en/blogs/min-zijian-in-the-analects: header seal must not take high fetch priority from the cover");
+    }
+    for (const forbidden of minZijianForbidden) {
+      if (enMinHtml.includes(forbidden)) {
+        fail(`/en/blogs/min-zijian-in-the-analects: ${forbidden} must not be linked`);
       }
     }
   }
@@ -9738,6 +10113,16 @@ for (const locale of locales) {
     `/${locale}/analects/zi-lu/zi-lu-004`,
     `/${locale}/analects/zi-lu/zi-lu-019`,
   ]);
+  checkHtml(`/${locale}/index/min-zijian`, [
+    locale === "en" ? ">Min Zijian<" : ">闵子骞<",
+    `href="/${locale}/blogs/min-zijian-in-the-analects"`,
+    locale === "en" ? "Min Zijian in the Analects" : "《论语》里的闵子骞",
+    `/${locale}/analects/yong-ye/yong-ye-007`,
+    `/${locale}/analects/xian-jin/xian-jin-002`,
+    `/${locale}/analects/xian-jin/xian-jin-004`,
+    `/${locale}/analects/xian-jin/xian-jin-012`,
+    `/${locale}/analects/xian-jin/xian-jin-013`,
+  ]);
   checkHtml(`/${locale}/index/guan-zhong`, [
     locale === "en" ? ">Guan Zhong<" : ">管仲<",
     `href="/${locale}/blogs/guan-zhong-in-the-analects"`,
@@ -10052,6 +10437,8 @@ assertIncludes(sitemap, `${siteUrl}/en/blogs/yao-shun-yu-in-the-analects`, "site
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/yao-shun-yu-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/duke-ling-of-wei-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/en/blogs/min-zijian-in-the-analects`, "sitemap");
+assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/min-zijian-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/guan-zhong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/zh-Hans/blogs/guan-zhong-in-the-analects`, "sitemap");
 assertIncludes(sitemap, `${siteUrl}/en/blogs/xin-trustworthiness-in-the-analects`, "sitemap");
@@ -10133,8 +10520,14 @@ function sitemapLastmodFor(loc) {
 }
 for (const locale of locales) {
   const lastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs`);
-    if (!lastmod.includes("2026-11-04")) {
+    if (!lastmod.includes("2026-11-05")) {
       fail(`sitemap: /${locale}/blogs lastmod should follow newest editorial post, got ${lastmod || "missing"}`);
+    }
+    const minZijianLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/min-zijian-in-the-analects`);
+    if (!minZijianLastmod.includes("2026-11-05")) {
+      fail(
+        `sitemap: /${locale}/blogs/min-zijian-in-the-analects lastmod should be 2026-11-05, got ${minZijianLastmod || "missing"}`
+      );
     }
     const guanZhongLastmod = sitemapLastmodFor(`${siteUrl}/${locale}/blogs/guan-zhong-in-the-analects`);
     if (!guanZhongLastmod.includes("2026-11-04")) {
@@ -10320,7 +10713,12 @@ if (!rssBodyFile) {
   fail("rss.xml: static build body missing");
 } else {
   const rss = read(rssBodyFile);
-  assertIncludes(rss, "<lastBuildDate>Wed, 04 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  assertIncludes(rss, "<lastBuildDate>Thu, 05 Nov 2026 00:00:00 GMT</lastBuildDate>", "rss lastBuildDate");
+  const minZijianItem = rss.split("<item>").find((part) => part.includes("/blogs/min-zijian-in-the-analects"));
+  if (!minZijianItem) fail("rss: missing min-zijian-in-the-analects");
+  else if (!minZijianItem.includes("05 Nov 2026")) {
+    fail("rss: min-zijian-in-the-analects pubDate should be 05 Nov 2026");
+  }
   const guanZhongItem = rss.split("<item>").find((part) => part.includes("/blogs/guan-zhong-in-the-analects"));
   if (!guanZhongItem) fail("rss: missing guan-zhong-in-the-analects");
   else if (!guanZhongItem.includes("04 Nov 2026")) {
@@ -10390,6 +10788,7 @@ for (const locale of locales) {
     fail(`sitemap: ${loc} should lastmod ${stableLastmod}, got ${lastmod || "missing"}`);
   }
 }
+const minZijianEditorialLastmod = "2026-11-05";
 const guanZhongEditorialLastmod = "2026-11-04";
 const xinEditorialLastmod = "2026-11-03";
 const xiaShangZhouEditorialLastmod = "2026-11-02";
@@ -10425,6 +10824,7 @@ const sitemapWithoutStableDates = sitemap
   .replaceAll(`${intentHubLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${featuredIndexLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${entityIndexRefreshLastmod}T00:00:00.000Z`, "")
+  .replaceAll(`${minZijianEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${guanZhongEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${xinEditorialLastmod}T00:00:00.000Z`, "")
   .replaceAll(`${xiaShangZhouEditorialLastmod}T00:00:00.000Z`, "")
