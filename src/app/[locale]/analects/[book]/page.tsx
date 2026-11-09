@@ -137,7 +137,26 @@ export default async function AnalectsBookPage({
           <Link href={listenHref} className="chip">
             {t(locale, "打开听读", "Open listening")}
           </Link>
+          {book.slug === "wei-ling-gong" && (
+            <>
+              <Link href={`/${locale}/index/wei-ling-gong-person`} className="chip">
+                {t(locale, "卫灵公这个人", "Duke Ling of Wei, the person")}
+              </Link>
+              <Link href={`/${locale}/blogs/duke-ling-of-wei-in-the-analects`} className="chip">
+                {t(locale, "卫灵公札记", "Who was Duke Ling of Wei?")}
+              </Link>
+            </>
+          )}
         </div>
+        {book.slug === "wei-ling-gong" && (
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-ink-soft">
+            {t(
+              locale,
+              "篇名取自首章的话，不是卫灵公这个人的专页。人与篇名分开读。",
+              "The book title is taken from its opening line. It is not the page for the person Duke Ling of Wei."
+            )}
+          </p>
+        )}
 
         <section
           className="mt-10 border-y border-rule bg-surface px-4 py-2 sm:px-6"

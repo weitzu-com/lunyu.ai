@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { SiteMeasurement } from "@/components/SiteMeasurement";
 import { Locale, locales } from "@/lib/analects";
 import { siteName, siteUrl } from "@/lib/site";
 import "../globals.css";
@@ -39,9 +39,7 @@ export default async function LocaleRootLayout({
   return (
     <html lang={meta.htmlLang}>
       <body className="min-h-screen bg-paper text-ink antialiased">{children}</body>
-      {process.env.VERCEL_ENV === "production" && (
-        <GoogleAnalytics gaId="G-7KQTRXVXF4" />
-      )}
+      <SiteMeasurement />
     </html>
   );
 }

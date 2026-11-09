@@ -225,7 +225,47 @@ checkHtml("/en", [
   `hrefLang="zh-Hans" href="${siteUrl}/zh-Hans"`,
   '"@type":"WebSite"',
   'alt="lunyu.ai"',
+  "Lunyu (The Analects)",
+  'href="/en/topics/lunyu"',
+  'href="/en/blogs/zai-wo-in-the-analects"',
+  'href="/en/blogs/zi-lu-in-the-analects"',
+  'href="/en/index/junzi"',
+  'href="/en/index/wei-ling-gong-person"',
+  'href="/en/index/lu"',
+  'href="/en/index/duke-ai"',
+  'href="/en/blogs/yao-shun-yu-in-the-analects"',
 ]);
+{
+  const titled = [
+    ["/en", "Lunyu (The Analects) —"],
+    ["/en/index/junzi", "Junzi in the Analects · lunyu.ai"],
+    ["/en/index/zai-wo", "Zai Wo (Zaiwo) in the Analects · lunyu.ai"],
+    ["/en/index/zi-lu", "Zi Lu in the Analects · lunyu.ai"],
+    ["/en/index/lu", "The State of Lu in the Analects · lunyu.ai"],
+    ["/en/index/duke-ai", "Duke Ai of Lu in the Analects · lunyu.ai"],
+    ["/en/index/duke-ding", "Duke Ding of Lu in the Analects · lunyu.ai"],
+    ["/en/index/wei-ling-gong-person", "Duke Ling of Wei in the Analects · lunyu.ai"],
+    ["/en/index/yao-shun-yu", "Yao, Shun, and Yu in the Analects · lunyu.ai"],
+    ["/en/sources", "Analects sources and the Legge translation · lunyu.ai"],
+    ["/en/blogs/zai-wo-in-the-analects", "Who Was Zai Wo in the Analects?"],
+  ];
+  for (const [route, expected] of titled) {
+    const html = exists(htmlPath(route)) ? read(htmlPath(route)) : "";
+    const title = html.match(/<title>([^<]*)<\/title>/)?.[1] ?? "";
+    if (!title.startsWith(expected)) fail(`${route}: title should start with ${expected}, got ${title}`);
+  }
+  const zai = read(htmlPath("/en/blogs/zai-wo-in-the-analects"));
+  if (!extractMetaDescription(zai).includes("Zaiwo")) {
+    fail("/en/blogs/zai-wo-in-the-analects: description should name the Zaiwo spelling");
+  }
+  const book15 = read(htmlPath("/en/analects/wei-ling-gong"));
+  if (!book15.includes('href="/en/index/wei-ling-gong-person"')) {
+    fail("/en/analects/wei-ling-gong: missing person link");
+  }
+  if (!book15.includes('href="/en/blogs/duke-ling-of-wei-in-the-analects"')) {
+    fail("/en/analects/wei-ling-gong: missing Duke Ling note link");
+  }
+}
 
 const gameRoute = "/zh-Hans/game";
 const gameUrl = `${siteUrl}${gameRoute}`;

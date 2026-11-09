@@ -6,6 +6,7 @@ import { PinyinRuby } from "@/components/PinyinRuby";
 import type { Locale } from "@/lib/analects";
 import type { ListenChapter } from "@/lib/listen";
 import { listenFragment, parseListenHash } from "@/lib/listen-hash";
+import { trackMeasurement } from "@/lib/measurement-browser";
 
 function formatClock(seconds: number) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
@@ -53,10 +54,12 @@ function writeListenHash(sentenceId: string) {
 export function ListenControls({
   locale,
   bookTitle,
+  bookSlug,
   chapters,
 }: {
   locale: Locale;
   bookTitle: string;
+  bookSlug: string;
   chapters: ListenChapter[];
 }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -110,7 +113,13 @@ export function ListenControls({
       }));
     };
     const syncPause = () => setIsPlaying(false);
-    const syncPlay = () => setIsPlaying(true);
+    const syncPlay = () => {
+      setIsPlaying(true);
+      const passageId = chapters[index]?.id;
+      if (passageId) {
+        trackMeasurement({ name: "listen_play", passage_id: passageId, book_slug: bookSlug });
+      }
+    };
     const playNextChapter = () => {
       setIsPlaying(false);
       if (!autoPlay) return;
@@ -137,7 +146,7 @@ export function ListenControls({
       audio.removeEventListener("play", syncPlay);
       audio.removeEventListener("ended", playNextChapter);
     };
-  }, [autoPlay, chapters, findAvailableIndex, index]);
+  }, [autoPlay, bookSlug, chapters, findAvailableIndex, index]);
 
   useEffect(() => {
     if (!active) return;

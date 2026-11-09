@@ -127,6 +127,7 @@ export function BookListenPage({ locale, book }: { locale: Locale; book: Book })
         <ListenControls
           locale={locale}
           bookTitle={t(locale, `论语 · ${zhOrdinalTitle(book)}`, `The Analects · ${book.pinyin}`)}
+          bookSlug={book.slug}
           chapters={chapters}
         />
       </section>

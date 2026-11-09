@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { trackMeasurement } from "@/lib/measurement-browser";
 import { gameChapters, virtueLabels, type GameChoice } from "@/data/confucius-game";
 import { emptyProgress, gameStats, getProgressSnapshot, getServerProgressSnapshot, saveProgress, subscribeProgress, type GameProgress } from "@/lib/game-progress";
 import { GameLandscape } from "./GameLandscape";
@@ -68,13 +69,18 @@ export function ConfuciusGame({ characters = [] }: { characters?: GameCharacter[
   }
   function resumeJourney() {
     const bookmark = readReadingPosition(progress);
-    if (bookmark) openReadingPosition(bookmark);
-    else if (answered === totalScenes) navigate("ending");
-    else enterChapter(Math.min(completed, 7));
+    if (bookmark) {
+      trackMeasurement({ name: "game_start", mode: answered > 0 ? "resume" : "new" });
+      openReadingPosition(bookmark);
+    } else if (answered === totalScenes) {
+      trackMeasurement({ name: "game_start", mode: "review" });
+      navigate("ending");
+    } else enterChapter(Math.min(completed, 7));
   }
   function finishJourney() { clearReadingPosition(); navigate("ending"); }
   function enterChapter(index: number) {
     if (index > completed) { setNotice(`先完成第${numerals[completed]}章，再开启这段旅程。`); return; }
+    trackMeasurement({ name: "game_start", mode: answered > 0 ? "resume" : "new" });
     const item = gameChapters[index];
     const firstUnanswered = item.scenes.findIndex((story) => !progress.answers[story.id]);
     setChapterIndex(index);
@@ -95,6 +101,7 @@ export function ConfuciusGame({ characters = [] }: { characters?: GameCharacter[
       return;
     }
     const next = { ...progress, answers: { ...progress.answers, [scene.id]: choice.id } };
+    trackMeasurement({ name: "game_choice", scene_id: scene.id, choice_id: choice.id });
     persist(next);
     writeReadingPosition({ chapterIndex, sceneIndex, summary: false }, next);
     requestAnimationFrame(() => {

@@ -14,6 +14,7 @@
     "qa:biographies": "node scripts/biography-qa.mjs",
     "qa:provenance": "node scripts/provenance-qa.mjs",
     "qa:seo": "node scripts/seo-qa.mjs",
+    "qa:measurement": "node scripts/measurement-qa.mjs",
     "cf:setup": "node scripts/cloudflare-setup.mjs",
     "build:favicon": "node scripts/make-favicon.mjs",
     "prebuild": "node scripts/make-favicon.mjs && node scripts/generate-geography-maps.mjs",
