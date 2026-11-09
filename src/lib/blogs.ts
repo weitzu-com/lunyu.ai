@@ -336,8 +336,10 @@ export const blogEntities: BlogEntity[] = [
     zhName: "鲁",
     enName: "Lu",
     aliases: ["鲁"],
-    zhSummary: "孔子故国，也是许多政治问答、礼乐失序与家族权力问题发生之地。",
-    enSummary: "Confucius's home state and a frequent setting for political and ritual questions.",
+    zhSummary:
+      "《论语》里的鲁国是孔子故国，不是某一位鲁公。鲁哀公与鲁定公另有专页；本页只汇集原文点出「鲁」的章句。",
+    enSummary:
+      "The State of Lu in the Analects is Confucius's home state, not a single duke. Duke Ai of Lu and Duke Ding of Lu have their own pages. This index gathers source passages that name 鲁.",
   },
   {
     slug: "qi",
@@ -556,8 +558,58 @@ export function blogUrl(locale: Locale, entity: BlogEntity) {
   return `/${locale}/index/${entity.slug}`;
 }
 
+/**
+ * Document titles for index URLs that already rank, where the visible name is
+ * only the bare term. Headings and in-body anchors stay on `blogTitle`.
+ * Nov 7 window (through 2026-11-07) and Nov 8 window (through 2026-11-08)
+ * name the same English pages; the extra day does not add a different URL.
+ */
+const indexDocumentTitles: Partial<Record<string, { zh: string; en: string }>> = {
+  junzi: { zh: "《论语》里的君子", en: "Junzi in the Analects" },
+  "zai-wo": { zh: "《论语》里的宰我（Zai Wo / Zaiwo）", en: "Zai Wo (Zaiwo) in the Analects" },
+  "zi-lu": { zh: "《论语》里的子路", en: "Zi Lu in the Analects" },
+  lu: { zh: "《论语》里的鲁国", en: "The State of Lu in the Analects" },
+  "duke-ai": { zh: "《论语》里的鲁哀公", en: "Duke Ai of Lu in the Analects" },
+  "duke-ding": { zh: "《论语》里的鲁定公", en: "Duke Ding of Lu in the Analects" },
+  "wei-ling-gong-person": { zh: "《论语》里的卫灵公", en: "Duke Ling of Wei in the Analects" },
+  "yao-shun-yu": { zh: "《论语》里的尧、舜、禹", en: "Yao, Shun, and Yu in the Analects" },
+};
+
 export function blogTitle(locale: Locale, entity: BlogEntity) {
   return t(locale, entity.zhName, entity.enName);
+}
+
+export function blogDocumentTitle(locale: Locale, entity: BlogEntity) {
+  const titled = indexDocumentTitles[entity.slug];
+  return titled ? t(locale, titled.zh, titled.en) : blogTitle(locale, entity);
+}
+
+/** Existing pages for the same search cluster. These are not new articles. */
+export function indexSearchLinks(slug: string): Array<{ href: string; zh: string; en: string }> {
+  if (slug === "lu") {
+    return [
+      { href: "/index/duke-ai", zh: "鲁哀公", en: "Duke Ai of Lu" },
+      { href: "/index/duke-ding", zh: "鲁定公", en: "Duke Ding of Lu" },
+    ];
+  }
+  if (slug === "duke-ai" || slug === "duke-ding") {
+    return [
+      { href: "/index/lu", zh: "鲁国", en: "The State of Lu" },
+      slug === "duke-ai"
+        ? { href: "/index/duke-ding", zh: "鲁定公", en: "Duke Ding of Lu" }
+        : { href: "/index/duke-ai", zh: "鲁哀公", en: "Duke Ai of Lu" },
+    ];
+  }
+  if (slug === "wei-ling-gong-person") {
+    return [
+      {
+        href: "/analects/wei-ling-gong",
+        zh: "卫灵公篇（书名，不是这个人）",
+        en: "Book 15, Wei Ling Gong (the book, not this person)",
+      },
+    ];
+  }
+  return [];
 }
 
 export function blogSummary(locale: Locale, entity: BlogEntity) {

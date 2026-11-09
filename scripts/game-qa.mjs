@@ -82,6 +82,8 @@ function createHarness() {
       if (specifier === "@/data/confucius-game") return load("src/data/confucius-game.ts");
       if (specifier === "@/lib/game-progress") return load("src/lib/game-progress.ts");
       if (specifier === "@/lib/game-reading-position") return load("src/lib/game-reading-position.ts");
+      if (specifier === "@/lib/measurement-browser") return load("src/lib/measurement-browser.ts");
+      if (specifier === "@/lib/measurement") return load("src/lib/measurement.ts");
       throw new Error(`Unexpected import: ${specifier}`);
     };
     vm.runInContext(`(function (require, module, exports) {${output}\n})`, context, { filename: relative })(localRequire, loadedModule, loadedModule.exports);

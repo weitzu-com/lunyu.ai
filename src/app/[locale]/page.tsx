@@ -10,6 +10,17 @@ import { contentCoverage, contentCoverageSummary } from "@/lib/content-coverage"
 import { alternates, openGraph, twitterCard } from "@/lib/seo";
 import { contentModifiedDate, jsonLd, organizationId, sameAs, siteName, siteUrl, websiteId } from "@/lib/site";
 
+const homeSearchLinks = [
+  { href: "/topics/lunyu", zh: "《论语》原文与读法", en: "Lunyu: the text" },
+  { href: "/blogs/zai-wo-in-the-analects", zh: "宰我（Zai Wo）", en: "Zai Wo (Zaiwo)" },
+  { href: "/blogs/zi-lu-in-the-analects", zh: "子路", en: "Zi Lu" },
+  { href: "/index/junzi", zh: "君子", en: "Junzi" },
+  { href: "/index/wei-ling-gong-person", zh: "卫灵公", en: "Duke Ling of Wei" },
+  { href: "/index/lu", zh: "鲁国", en: "The State of Lu" },
+  { href: "/index/duke-ai", zh: "鲁哀公", en: "Duke Ai of Lu" },
+  { href: "/blogs/yao-shun-yu-in-the-analects", zh: "尧、舜、禹", en: "Yao, Shun, and Yu" },
+] as const;
+
 export function generateStaticParams() {
   return Object.keys(locales).map((locale) => ({ locale }));
 }
@@ -23,19 +34,22 @@ export function generateMetadata({
     const title = t(
       locale,
       `《论语》二十篇 · ${contentCoverage.totalPassages} 章逐句可读`,
-      `The Analects — ${contentCoverage.totalPassages} passages, book by book`
+      `Lunyu (The Analects) — ${contentCoverage.totalPassages} passages, book by book`
     );
     const description = t(
       locale,
-      `《论语》二十篇 ${contentCoverage.totalPassages} 章：简体原文、${contentCoverage.reviewedGuide.complete ? "审校白话导读" : `白话导读（已审校 ${contentCoverage.reviewedGuide.ratio}）`}、James Legge 公版英译与注释，逐句可读。`,
-      `All ${contentCoverage.totalPassages} Analects passages, book by book: simplified Chinese, ${contentCoverage.reviewedGuide.complete ? "a reviewed modern Chinese guide" : `a modern Chinese guide reviewed for ${contentCoverage.reviewedGuide.ratio} passages`}, Legge's public-domain English, and notes.`
+      `《论语》（Lunyu）二十篇 ${contentCoverage.totalPassages} 章：简体原文、${contentCoverage.reviewedGuide.complete ? "审校白话导读" : `白话导读（已审校 ${contentCoverage.reviewedGuide.ratio}）`}、James Legge 公版英译与注释，逐句可读。`,
+      `Lunyu (The Analects): all ${contentCoverage.totalPassages} passages, book by book, with simplified Chinese, ${contentCoverage.reviewedGuide.complete ? "a reviewed modern Chinese guide" : `a modern Chinese guide reviewed for ${contentCoverage.reviewedGuide.ratio} passages`}, Legge's public-domain English, and notes.`
     );
+    // The locale home is the page of the layout that sets the title template, and
+    // that template is not applied here. Set the full document title explicitly.
+    const documentTitle = `${title} · ${siteName}`;
     return {
-      title,
+      title: { absolute: documentTitle },
       description,
       alternates: alternates(locale, ""),
-      openGraph: openGraph(locale, "", `${title} · lunyu.ai`, description),
-      twitter: twitterCard(locale, "", `${title} · lunyu.ai`, description),
+      openGraph: openGraph(locale, "", documentTitle, description),
+      twitter: twitterCard(locale, "", documentTitle, description),
     };
   });
 }
@@ -112,6 +126,13 @@ export default async function LocaleHome({
               {t(locale, "从学而第一篇开始", "Start with Xue Er")}
             </Link>
           </div>
+          <nav aria-label={t(locale, "读者常找的名字", "Names readers look up")} className="mt-6 flex flex-wrap gap-2">
+            {homeSearchLinks.map((item) => (
+              <Link key={item.href} href={`/${locale}${item.href}`} className="chip">
+                {t(locale, item.zh, item.en)}
+              </Link>
+            ))}
+          </nav>
         </div>
         <div className="relative border-y border-rule bg-surface px-4 py-5 shadow-sm sm:border sm:p-6">
           <div className="absolute right-4 top-4">

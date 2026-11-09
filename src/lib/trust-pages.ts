@@ -30,6 +30,18 @@ export function trustPageTitle(locale: Locale, slug: TrustPageSlug) {
   return trustPageLabel(locale, slug);
 }
 
+/** `<title>` only. The visible heading stays the short trust label. */
+export function trustDocumentTitle(locale: Locale, slug: TrustPageSlug) {
+  if (slug === "sources") {
+    return t(
+      locale,
+      "《论语》底本与 Legge 英译",
+      "Analects sources and the Legge translation"
+    );
+  }
+  return trustPageTitle(locale, slug);
+}
+
 export function trustPageDescription(locale: Locale, slug: TrustPageSlug) {
   const descriptions: Record<TrustPageSlug, string> = {
     about: t(

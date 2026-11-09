@@ -10,9 +10,9 @@ import { jsonLd, trustPageLabel } from "@/lib/site";
 import {
   faqItems,
   trustJsonLd,
+  trustDocumentTitle,
   trustPageDescription,
   trustPageSlugs,
-  trustPageTitle,
   trustSections,
   TrustPageSlug,
 } from "@/lib/trust-pages";
@@ -35,7 +35,7 @@ export async function generateMetadata({
   const { locale, trust } = await params;
   const slug = normalizeTrustSlug(trust);
   if (!slug) return {};
-  const title = trustPageTitle(locale, slug);
+  const title = trustDocumentTitle(locale, slug);
   const description = trustPageDescription(locale, slug);
   const path = `/${slug}`;
   return {

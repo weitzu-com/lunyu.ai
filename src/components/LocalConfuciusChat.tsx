@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useMemo, useState } from "react";
 import { Locale, Sentence, t } from "@/lib/analects";
+import { trackMeasurement } from "@/lib/measurement-browser";
 import { buildReflectionAnswer, ReflectionAnswer } from "@/lib/confucius-reflection";
 
 type Message = {
@@ -45,9 +46,14 @@ export function LocalConfuciusChat({
   const [messages, setMessages] = useState<Message[]>([initial]);
   const [input, setInput] = useState("");
 
-  function ask(question: string) {
+  function ask(question: string, promptKind: "preset" | "written" = "written") {
     const trimmed = question.trim();
     if (!trimmed) return;
+    trackMeasurement({
+      name: "reader_reflect",
+      passage_id: sentence.id,
+      prompt_kind: promptKind,
+    });
     const answer = buildReflectionAnswer(locale, trimmed, sentence);
     setMessages((current) => [
       ...current,
@@ -87,7 +93,7 @@ export function LocalConfuciusChat({
               <button
                 key={prompt}
                 type="button"
-                onClick={() => ask(prompt)}
+                onClick={() => ask(prompt, "preset")}
                 className="chip"
               >
                 {prompt}

@@ -30,6 +30,8 @@ jobs:
 
       - run: npm run qa:game
 
+      - run: npm run qa:measurement
+
       - run: npm run qa:geography
 
       - run: npm run build

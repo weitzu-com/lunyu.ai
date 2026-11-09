@@ -6048,6 +6048,10 @@ export const editorialPosts: EditorialPost[] = [
       "你搜「宰我」时，多半是想在一串弟子名里把他安顿下来。在本站，你遇见他，是因为他的提问常引出尖锐答复——丧期、社主、仁者、以及言行是否相称。你不必先读完整弟子传；你可以直接打开他出现的篇章，看夫子怎样回答他。",
     dekEn:
       'When you search "zai wo," you are usually trying to place one disciple among many names. On this site you meet him as a speaker whose questions draw sharp replies—on mourning, altars, benevolence, and whether words match deeds. You do not need a full biography first; you can read the passages where he appears and notice how the Master answers him.',
+    descriptionZh:
+      "宰我（Zai Wo，亦作 Zaiwo、Tsai Wo）是《论语》中的弟子。本篇顺着丧期、社主与言行是否相称的提问，回到可核对的章句。",
+    descriptionEn:
+      "Zai Wo (Zaiwo, Tsai Wo; 宰我) is an Analects disciple. This note follows his questions on mourning, the land altars, and whether words match deeds, then returns to the source chapters.",
     datePublished: "2026-09-14",
     dateModified: "2026-09-14",
     tagsZh: ["宰我", "弟子", "阳货"],

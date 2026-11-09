@@ -8,10 +8,12 @@ import { biographyProfiles } from "@/lib/biographies";
 import { geographyPlaces } from "@/lib/geography";
 import {
   blogCountLine,
+  blogDocumentTitle,
   blogEntities,
   blogSummary,
   blogTitle,
   blogUrl,
+  indexSearchLinks,
   categoryLabel,
   getBlogEntity,
   getRelatedBlogs,
@@ -51,7 +53,7 @@ export async function generateMetadata({
   const entity = getBlogEntity(slug);
   if (!entity) return {};
   const featured = getFeaturedIndex(slug);
-  const title = blogTitle(locale, entity);
+  const title = blogDocumentTitle(locale, entity);
   const description = featured
     ? localizeFeatured(locale, featured.metaDescription)
     : blogSummary(locale, entity);
@@ -181,6 +183,15 @@ export default async function KnowledgeEntryPage({
               </Link>
             ))}
           </div>
+        )}
+        {indexSearchLinks(entity.slug).length > 0 && (
+          <nav aria-label={t(locale, "同一检索簇", "Same search cluster")} className="mt-5 flex flex-wrap gap-2">
+            {indexSearchLinks(entity.slug).map((item) => (
+              <Link key={item.href} href={`/${locale}${item.href}`} className="chip">
+                {t(locale, item.zh, item.en)}
+              </Link>
+            ))}
+          </nav>
         )}
         {biography && <Link className="ui-button mt-6" href={`/zh-Hans/people/${biography.slug}`}>查看{biography.name}的肖像、著作与生平年表 →</Link>}
         {geographicEntries.length > 0 && <div className="mt-6 flex flex-wrap gap-3">{geographicEntries.map((place) => <Link key={place.slug} className="ui-button" href={`/zh-Hans/places/${place.slug}`}>查看{place.name}的图片、地望与人物活动 →</Link>)}</div>}
