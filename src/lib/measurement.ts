@@ -42,6 +42,26 @@ export function claimPageView(seen: Set<string>, path: string | null) {
   return true;
 }
 
+/**
+ * gtag.js only runs dataLayer entries that are an `arguments` object.
+ * A rest-parameter array is left in the queue and never becomes a hit.
+ */
+const executableGtagCommands = new Set(["config", "consent", "event", "get", "js", "set"]);
+
+export function enqueueGtagCommand(dataLayer: unknown[], command: IArguments) {
+  dataLayer.push(command);
+}
+
+export function isExecutableGtagCommand(entry: unknown) {
+  if (entry == null || typeof entry !== "object") return false;
+  const isArgumentsObject =
+    Object.prototype.toString.call(entry) === "[object Arguments]" ||
+    Object.prototype.hasOwnProperty.call(entry, "callee");
+  if (!isArgumentsObject) return false;
+  const name = (entry as { 0?: unknown })[0];
+  return typeof name === "string" && executableGtagCommands.has(name);
+}
+
 export function measurementParams(event: MeasurementEvent): Record<string, string> | null {
   const params: Record<string, string> = {};
   for (const [key, value] of Object.entries(event)) {

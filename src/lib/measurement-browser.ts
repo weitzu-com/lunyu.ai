@@ -3,6 +3,7 @@
 import {
   MEASUREMENT_ID,
   claimPageView,
+  enqueueGtagCommand,
   isProductionMeasurementHost,
   measurementParams,
   pageViewPath,
@@ -18,13 +19,17 @@ declare global {
   }
 }
 
+function queueGtag() {
+  const dataLayer = (window.dataLayer ??= []);
+  // Must forward the Arguments object. A rest-parameter array is ignored by gtag.js.
+  enqueueGtagCommand(dataLayer, arguments);
+}
+
 function ensureMeasurement() {
   if (window.__lunyuGaInit) return;
   window.__lunyuGaInit = true;
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer?.push(args);
-  };
+  window.gtag = queueGtag;
   window.gtag("js", new Date());
   // The default config pageview is off. A later call records one path once.
   window.gtag("config", MEASUREMENT_ID, { send_page_view: false });
